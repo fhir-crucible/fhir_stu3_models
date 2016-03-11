@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  Copyright (c) 2011+, HL7, Inc.
+  All rights reserved.
+  
+  Redistribution and use in source and binary forms, with or without modification, 
+  are permitted provided that the following conditions are met:
+  
+   * Redistributions of source code must retain the above copyright notice, this 
+     list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above copyright notice, 
+     this list of conditions and the following disclaimer in the documentation 
+     and/or other materials provided with the distribution.
+   * Neither the name of HL7 nor the names of its contributors may be used to 
+     endorse or promote products derived from this software without specific 
+     prior written permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  POSSIBILITY OF SUCH DAMAGE.
+  
+
+  Generated on Thu, Mar 10, 2016 13:03-0500 for FHIR v1.3.0 
+
+  Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
+  valid. Implementers will still need to be familiar with the content of the specification and with
+  any profiles that apply to the resources in order to make a conformant implementation.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="1.0">
+  <xs:include schemaLocation="fhir-base.xsd"/>
+  <xs:element name="GuidanceResponse" type="GuidanceResponse">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">A guidance response is the formal response to a previous guidance request. It is a derivative of the knowledge response that provides additional information relevant specifically to clinical decision support such as a description of any proposed actions to be taken.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="GuidanceResponse">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">A guidance response is the formal response to a previous guidance request. It is a derivative of the knowledge response that provides additional information relevant specifically to clinical decision support such as a description of any proposed actions to be taken.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DomainResource">
+        <xs:sequence>
+          <xs:element name="requestId" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The id of the request associated with this response. If an id was provided as part of the request, it will be provided here to enable the requester to more easily identify the response in a multi-request scenario.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="module" minOccurs="1" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A reference to a knowledge module involved in an interaction.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="GuidanceResponseStatus">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The status of the response. If the evaluation is completed successfully, the status will indicate success. However, in order to complete the evaluation, the engine may require more information. In this case, the status will be data-required, and the response will contain a description of the additional required information. If the evaluation completed successfully, but the engine determines that a potentially more accurate response could be provided if more data was available, the status will be data-requested, and the response will contain a description of the additional requested information.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="evaluationMessage" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Messages resulting from the evaluation of the artifact or artifacts. As part of evaluating the request, the engine may produce informational or warning messages. These messages will be provided by this element.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="outputParameters" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The output parameters of the evaluation, if any. Many modules will result in the return of specific resources such as procedure or communication requests that are returned as part of the operation result. However, modules may define specific outputs that would be returned as the result of the evaluation, and these would be returned in this element.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="action" type="GuidanceResponse.Action" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The actions, if any, produced by the evaluation of the artifact.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="dataRequirement" minOccurs="0" maxOccurs="unbounded" type="DataRequirement">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">If the evaluation could not be completed due to lack of information, or additional information would potentially result in a more accurate response, this element will a description of the data required in order to proceed with the evaluation. A subsequent request to the service should include this data.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GuidanceResponse.Action">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">A guidance response is the formal response to a previous guidance request. It is a derivative of the knowledge response that provides additional information relevant specifically to clinical decision support such as a description of any proposed actions to be taken.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="actionIdentifier" minOccurs="0" maxOccurs="1" type="Identifier">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A unique identifier for the action.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="number" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A user-visible number for the action.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="supportingEvidence" minOccurs="0" maxOccurs="unbounded" type="Attachment">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Supporting evidence for the action.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="documentation" minOccurs="0" maxOccurs="unbounded" type="Attachment">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Supporting documentation for the action.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="participant" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The participant in the action.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="title" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The title of the action.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A short description of the action.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="textEquivalent" minOccurs="0" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A text equivalent of the action to be performed.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="concept" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Concepts associated with the action.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="type" minOccurs="0" maxOccurs="1" type="GuidanceResponseActionType">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The type of action to perform (create, update, remove).</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="resource" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The resource that is the target of the action (e.g. CommunicationRequest).</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="actions" type="GuidanceResponse.Action" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Sub actions.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="GuidanceResponseStatus-list">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="GuidanceResponseStatus">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The status of a guidance response</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="GuidanceResponseStatus-list" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="GuidanceResponseActionType-list">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="GuidanceResponseActionType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The type of action to be performed</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="GuidanceResponseActionType-list" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>
