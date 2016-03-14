@@ -1,8 +1,8 @@
 module FHIR
   module Boot
-    class Definition
+    class Preprocess
 
-      def self.post_process_bundle(filename)
+      def self.pre_process_bundle(filename)
         # Read the file
         puts "Processing #{File.basename(filename)}..."
         start = File.size(filename)
@@ -17,9 +17,9 @@ module FHIR
         # Remove unnecessary elements from the hash
         hash['entry'].each do |entry|
           if entry['resource']
-            post_process_structuredefinition(entry['resource']) if 'StructureDefinition'==entry['resource']['resourceType']
-            post_process_valueset(entry['resource']) if 'ValueSet'==entry['resource']['resourceType']
-            post_process_codesystem(entry['resource']) if 'CodeSystem'==entry['resource']['resourceType']
+            pre_process_structuredefinition(entry['resource']) if 'StructureDefinition'==entry['resource']['resourceType']
+            pre_process_valueset(entry['resource']) if 'ValueSet'==entry['resource']['resourceType']
+            pre_process_codesystem(entry['resource']) if 'CodeSystem'==entry['resource']['resourceType']
             remove_fhir_comments(entry['resource'])
           end
         end
@@ -32,7 +32,7 @@ module FHIR
         puts "  Removed #{(start-finish) / 1024} KB" if (start!=finish)
       end
 
-      def self.post_process_structuredefinition(hash)
+      def self.pre_process_structuredefinition(hash)
         # Remove large HTML narratives and unused content
         ['text','publisher','contact','description','requirements','mapping'].each{|key| hash.delete(key) }
         
@@ -50,7 +50,7 @@ module FHIR
         end
       end
 
-      def self.post_process_valueset(hash)
+      def self.pre_process_valueset(hash)
         # Remove large HTML narratives and unused content
         ['meta','text','publisher','contact','description','requirements'].each{|key| hash.delete(key) }
 
@@ -75,22 +75,22 @@ module FHIR
         end
       end
 
-      def self.post_process_codesystem(hash)
+      def self.pre_process_codesystem(hash)
         # Remove large HTML narratives and unused content
         ['meta','text','publisher','contact','description','requirements'].each{|key| hash.delete(key) }
 
         if(hash['concept'])
           hash['concept'].each do |concept|
-            post_process_codesystem_concept(concept)
+            pre_process_codesystem_concept(concept)
           end
         end
       end
 
-      def self.post_process_codesystem_concept(hash)
+      def self.pre_process_codesystem_concept(hash)
         ['extension','definition','designation'].each{|key| hash.delete(key) }
         if hash['concept']
           hash['concept'].each do |concept|
-            post_process_codesystem_concept(concept)
+            pre_process_codesystem_concept(concept)
           end
         end
       end
@@ -111,7 +111,7 @@ module FHIR
         end
       end
 
-      def self.post_process_schema(filename)
+      def self.pre_process_schema(filename)
         # Read the file
         puts "Processing #{File.basename(filename)}..."
         start = File.size(filename)
