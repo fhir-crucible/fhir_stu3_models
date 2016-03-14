@@ -26,7 +26,7 @@ module FHIR
 
         # Output the post processed file
         f = File.open(filename,'w:UTF-8')
-        f.write(JSON.pretty_unparse(hash))
+        f.write(JSON.unparse(hash))
         f.close
         finish = File.size(filename)
         puts "  Removed #{(start-finish) / 1024} KB" if (start!=finish)
@@ -98,7 +98,13 @@ module FHIR
       def self.remove_fhir_comments(hash)
         hash.delete('fhir_comments')
         hash.each do |key,value|
-          remove_fhir_comments(value) if value.is_a?(Hash)
+          if value.is_a?(Hash)
+            remove_fhir_comments(value)
+          elsif value.is_a?(Array)
+            value.each do |v|
+              remove_fhir_comments(v) if v.is_a?(Hash)
+            end
+          end
         end
         hash.keep_if do |key,value|
           !value.is_a?(Hash) || !value.empty?
@@ -106,7 +112,22 @@ module FHIR
       end
 
       def self.post_process_schema(filename)
+        # Read the file
+        puts "Processing #{File.basename(filename)}..."
+        start = File.size(filename)
+        raw = File.open(filename,'r:UTF-8',&:read)
 
+        # Remove annotations
+        doc = Nokogiri::XML(raw)
+        doc.root.add_namespace_definition('xs', 'http://www.w3.org/2001/XMLSchema')
+        doc.search('//xs:annotation').each{ |e| e.remove }
+
+        # Output the post processed file
+        f = File.open(filename,'w:UTF-8')
+        f.write(doc.to_xml)
+        f.close
+        finish = File.size(filename)
+        puts "  Removed #{(start-finish) / 1024} KB" if (start!=finish)
       end
 
     end

@@ -19,6 +19,9 @@ namespace :fhir do
     Dir.glob(File.join(defns,'valuesets','*.json')).each do |file|
       FHIR::Boot::Definition.post_process_bundle(file)
     end
+    Dir.glob(File.join(defns,'schema','*.xsd')).each do |file|
+      FHIR::Boot::Definition.post_process_schema(file)
+    end    
   end
 
 end

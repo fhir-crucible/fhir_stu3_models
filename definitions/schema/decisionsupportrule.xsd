@@ -37,42 +37,27 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="1.0">
   <xs:include schemaLocation="fhir-base.xsd"/>
   <xs:element name="DecisionSupportRule" type="DecisionSupportRule">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">This resource defines a decision support rule of the form [on Event] if Condition then Action.</xs:documentation>
-    </xs:annotation>
+    
   </xs:element>
   <xs:complexType name="DecisionSupportRule">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">This resource defines a decision support rule of the form [on Event] if Condition then Action.</xs:documentation>
-      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
-    </xs:annotation>
+    
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
           <xs:element name="moduleMetadata" minOccurs="0" maxOccurs="1" type="ModuleMetadata">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A reference to a ModuleMetadata resource that provides metadata for the rule.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
           <xs:element name="library" minOccurs="0" maxOccurs="unbounded" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A reference to a Library containing the formal logic used by the rule.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
           <xs:element name="trigger" minOccurs="0" maxOccurs="unbounded" type="TriggerDefinition">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The trigger element defines when the rule should be invoked. This information is used by consumers of the rule to determine how to integrate the rule into a specific workflow.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
           <xs:element name="condition" minOccurs="0" maxOccurs="1" type="string">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The condition element describes he &quot;if&quot; portion of the rule that determines whether or not the rule &quot;fires&quot;. The condition must be the name of an expression in a referenced library.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
           <xs:element name="action" minOccurs="0" maxOccurs="unbounded" type="ActionDefinition">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The action element defines the &quot;when&quot; portion of the rule that determines what actions should be performed if the condition evaluates to true.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
         </xs:sequence>
       </xs:extension>

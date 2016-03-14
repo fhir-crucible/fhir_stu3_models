@@ -37,114 +37,75 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="1.0">
   <xs:include schemaLocation="fhir-base.xsd"/>
   <xs:element name="QuestionnaireResponse" type="QuestionnaireResponse">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions.</xs:documentation>
-    </xs:annotation>
+    
   </xs:element>
   <xs:complexType name="QuestionnaireResponse">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions.</xs:documentation>
-      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
-    </xs:annotation>
+    
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
           <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A business identifier assigned to a particular completed (or partially completed) questionnaire.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
           <xs:element name="questionnaire" minOccurs="0" maxOccurs="1" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Indicates the Questionnaire resource that defines the form for which answers are being provided.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
           <xs:element name="status" minOccurs="1" maxOccurs="1" type="QuestionnaireResponseStatus">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The lifecycle status of the questionnaire response as a whole.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
           <xs:element name="subject" minOccurs="0" maxOccurs="1" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The subject of the questionnaire response.  This could be a patient, organization, practitioner, device, etc.  This is who/what the answers apply to, but is not necessarily the source of information.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
           <xs:element name="author" minOccurs="0" maxOccurs="1" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Person who received the answers to the questions in the QuestionnaireResponse and recorded them in the system.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
           <xs:element name="authored" minOccurs="0" maxOccurs="1" type="dateTime">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The date and/or time that this version of the questionnaire response was authored.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
           <xs:element name="source" minOccurs="0" maxOccurs="1" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The person who answered the questions about the subject.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
           <xs:element name="encounter" minOccurs="0" maxOccurs="1" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Encounter during which this set of questionnaire response were collected. When there were multiple encounters, this is the one considered most relevant to the context of the answers.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
           <xs:element name="item" type="QuestionnaireResponse.Item" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Corresponds to a group or question item from the original questionnaire.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="QuestionnaireResponse.Item">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions.</xs:documentation>
-    </xs:annotation>
+    
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
           <xs:element name="linkId" minOccurs="0" maxOccurs="1" type="string">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Identifies the item from the Questionnaire that corresponds to this item in the QuestionnaireResponse resource.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
           <xs:element name="text" minOccurs="0" maxOccurs="1" type="string">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Text that is displayed above the contents of the group or as the text of the question being answered.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
           <xs:element name="subject" minOccurs="0" maxOccurs="1" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">More specific subject this section's answers are about, details the subject given in QuestionnaireResponse.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
           <xs:element name="answer" type="QuestionnaireResponse.Answer" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The respondent's answer(s) to the question.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
           <xs:element name="item" type="QuestionnaireResponse.Item" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Questions or sub-groups nested beneath a question or group.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="QuestionnaireResponse.Answer">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions.</xs:documentation>
-    </xs:annotation>
+    
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:choice minOccurs="0" maxOccurs="1" >
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The answer (or one of the answers) provided by the respondent to the question.</xs:documentation>
-            </xs:annotation>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
             <xs:element name="valueBoolean" type="boolean"/>
             <xs:element name="valueDecimal" type="decimal"/>
             <xs:element name="valueInteger" type="integer"/>
@@ -160,9 +121,7 @@
             <xs:element name="valueReference" type="Reference"/>
           </xs:choice>
           <xs:element name="item" type="QuestionnaireResponse.Item" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Nested groups and/or questions found within this particular answer.</xs:documentation>
-           </xs:annotation>
+            
           </xs:element>
         </xs:sequence>
       </xs:extension>
@@ -173,10 +132,7 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="QuestionnaireResponseStatus">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">Lifecycle status of the questionnaire response.</xs:documentation>
-      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
-    </xs:annotation>
+    
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:attribute name="value" type="QuestionnaireResponseStatus-list" use="optional"/>
