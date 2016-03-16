@@ -10,10 +10,21 @@ require 'bcp47'
 
 root = File.expand_path '..', File.dirname(File.absolute_path(__FILE__))
 
+# Need to require Hashable first
+require File.join(root,'lib','bootstrap','Hashable.rb')
+
 Dir.glob(File.join(root, 'lib','bootstrap','*.rb')).each do |file|
   require file
 end
-
 Dir.glob(File.join(root, 'lib','bootstrap','**','*.rb')).each do |file|
   require file
 end
+
+# Require the generated code
+Dir.glob(File.join(root, 'lib','fhir','*.rb')).each do |file|
+  require file
+end
+Dir.glob(File.join(root, 'lib','fhir','**','*.rb')).each do |file|
+  require file
+end
+

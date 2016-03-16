@@ -26,7 +26,7 @@ module FHIR
 
         # Output the post processed file
         f = File.open(filename,'w:UTF-8')
-        f.write(JSON.unparse(hash))
+        f.write(JSON.pretty_unparse(hash))
         f.close
         finish = File.size(filename)
         puts "  Removed #{(start-finish) / 1024} KB" if (start!=finish)
