@@ -86,95 +86,140 @@ module FHIR
         folder = File.join @lib,'fhir','types'
         # complex data types start with an uppercase letter
         complexTypes = @types.select{|t|t['id'][0]==t['id'][0].upcase}
-        generate_class(folder,complexTypes)
+        generate_class_files(folder,complexTypes)
       end
 
       def generate_resources
         folder = File.join @lib,'fhir','resources'
-        generate_class(folder,@resources)
+        generate_class_files(folder,@resources)
       end
 
-      def generate_class(folder=@lib,structureDefs)
+      def generate_class_files(folder=@lib,structureDefs)
         structureDefs.each do |structureDef|
           typeName = structureDef['id']
-          constrainedType = structureDef['constrainedType']
-          pathType = typeName
-          pathType = constrainedType if constrainedType
+          template = generate_class(structureDef,true)
+          filename = File.join(folder,"#{typeName}.rb")
+          file = File.open(filename,'w:UTF-8')
+          file.write(template.to_s)
+          file.close
+        end
+      end
 
-          template = FHIR::Boot::Template.new([ typeName ])
-          multipleDataTypes = {}
+      def generate_class(structureDef,top_level=false)
+        typeName = structureDef['id']
+        constrainedType = structureDef['constrainedType']
+        pathType = typeName
+        pathType = constrainedType if constrainedType
 
+        template = FHIR::Boot::Template.new([ typeName ],top_level)
+        multipleDataTypes = {}
+
+        # examine the snapshot.elements... move the Element and BackboneElements, 
+        # and their children, into separate StructureDefiniton hashes and process as
+        # child templates.
+        child_templates = []
+        structureDef['snapshot']['element'].each do |element|
+          # skip the first element
+          next if element['path']==pathType
+          if element['type']
+            unique_types = element['type'].map{|t|t['code']}.uniq 
+            if unique_types.include?('Element') || unique_types.include?('BackboneElement')
+              child_templates << element['path']
+            end
+          end
+        end
+        child_templates.each do |child_name|
+          child_fixed_name = child_name.gsub("#{typeName}.",'').capitalize
+          next if child_fixed_name.include?('.')
+          child_def = { 'id'=> child_fixed_name, 'snapshot'=>{'element'=>[]} }
+          # Copy the element definitions for the child structure
           structureDef['snapshot']['element'].each do |element|
-            # skip the first element
-            next if element['path']==pathType
+            child_def['snapshot']['element'] << element.clone if element['path'].start_with?(child_name)
+          end
+          # Remove the child elements
+          child_paths = child_def['snapshot']['element'].map{|e|e['path']}
+          child_paths = child_paths.drop(1)
+          structureDef['snapshot']['element'].keep_if do |element|
+            !child_paths.include?(element['path'])
+          end
+          # Rename the child paths
+          child_def['snapshot']['element'].each do |element|
+            element['path'] = element['path'].gsub(child_name,child_fixed_name)
+          end
+          # add the child
+          template.templates << generate_class(child_def)
+        end
 
-            field_base_name = element['path'].gsub("#{pathType}.",'')
-            # If the element has a type, treat it as a datatype or resource
-            # If not, treat it as a reference to an already declared internal class
-            if !element['type'].nil?
-              # profiles contains a list of profiles if the datatype is Reference
-              profiles = []
-              element['type'].select{|t|t['code']=='Reference'}.each do |dataType|
-                profiles << dataType['profile']
-              end
-              profiles.select!{|p|!p.nil?}
-              profiles.flatten!
+        # Process the remaining attributes (none of which are Elements or BackboneElements)
+        structureDef['snapshot']['element'].each do |element|
+          # skip the first element
+          next if element['path']==pathType
 
-              # Calculate fields that have multiple data types
-              if element['type'].length > 1
-                fieldname = field_base_name.gsub('[x]','')
-                unique_types = element['type'].map{|t|t['code']}.uniq
-                multipleDataTypes[fieldname] = unique_types if(unique_types.length>1)
-              end
+          field_base_name = element['path'].gsub("#{pathType}.",'')
+          # If the element has a type, treat it as a datatype or resource
+          # If not, treat it as a reference to an already declared internal class
+          if !element['type'].nil?
+            # profiles contains a list of profiles if the datatype is Reference
+            profiles = []
+            element['type'].select{|t|t['code']=='Reference'}.each do |dataType|
+              profiles << dataType['profile']
+            end
+            profiles.select!{|p|!p.nil?}
+            profiles.flatten!
 
-              # generate a field for each valid datatype... this is for things like Resource.attribute[x]
-              element['type'].map{|t|t['code']}.uniq.each do |dataType|
-                capitalized = String.new(dataType)
-                # capitalize first letter, cannot use capitalize method because of camel-cased names
-                capitalized[0] = capitalized[0].upcase
-                fieldname = field_base_name.gsub('[x]',capitalized)
-                field = FHIR::Field.new(fieldname)
-                field.path = element['path'].gsub(pathType,typeName)
-                field.type = dataType
-                field.type_profiles = profiles if dataType=='Reference'
-                field.min = element['min']
-                field.max = element['max']
-                field.max = field.max.to_i
-                field.max = '*' if element['max']=='*'
+            # Calculate fields that have multiple data types
+            if element['type'].length > 1
+              fieldname = field_base_name.gsub('[x]','')
+              unique_types = element['type'].map{|t|t['code']}.uniq
+              multipleDataTypes[fieldname] = unique_types if(unique_types.length>1)
+            end
 
-                if ['code','Coding','CodeableConcept'].include?(dataType) && element['binding']
-                  field.binding = element['binding']
-                  field.binding['uri'] = field.binding['valueSetUri']
-                  field.binding['uri'] = field.binding['valueSetReference'] if field.binding['uri'].nil?
-                  field.binding['uri'] = field.binding['uri']['reference'] if field.binding['uri'].is_a?(Hash)
-                  field.binding.delete('valueSetUri')
-                  field.binding.delete('valueSetReference')
-                  field.binding.delete('description')
-                  # TODO: need to replace with actual code list
-                  # field.valid_codes <<
-                end
-
-                template.fields << field
-              end
-            else # If there is not data type, treat the type as a reference to an already declared internal class
-              field = FHIR::Field.new(field_base_name)
+            # generate a field for each valid datatype... this is for things like Resource.attribute[x]
+            element['type'].map{|t|t['code']}.uniq.each do |dataType|
+              capitalized = String.new(dataType)
+              # capitalize first letter, cannot use capitalize method because of camel-cased names
+              capitalized[0] = capitalized[0].upcase
+              fieldname = field_base_name.gsub('[x]',capitalized)
+              field = FHIR::Field.new(fieldname)
               field.path = element['path'].gsub(pathType,typeName)
-              field.type = element['nameReference']
+              field.type = dataType
+              field.type_profiles = profiles if dataType=='Reference'
               field.min = element['min']
               field.max = element['max']
               field.max = field.max.to_i
               field.max = '*' if element['max']=='*'
+
+              if ['code','Coding','CodeableConcept'].include?(dataType) && element['binding']
+                field.binding = element['binding']
+                field.binding['uri'] = field.binding['valueSetUri']
+                field.binding['uri'] = field.binding['valueSetReference'] if field.binding['uri'].nil?
+                field.binding['uri'] = field.binding['uri']['reference'] if field.binding['uri'].is_a?(Hash)
+                field.binding.delete('valueSetUri')
+                field.binding.delete('valueSetReference')
+                field.binding.delete('description')
+                # TODO: need to replace with actual code list
+                # field.valid_codes <<
+              elsif ['Element','BackboneElement'].include?(dataType)
+                # This is a nested structure or class
+                field.type = "FHIR::#{template.name.join('::')}::#{field.name.capitalize}"
+              end
+
               template.fields << field
             end
+          else # If there is not data type, treat the type as a reference to an already declared internal class
+            field = FHIR::Field.new(field_base_name)
+            field.path = element['path'].gsub(pathType,typeName)
+            field.type = element['nameReference']
+            field.min = element['min']
+            field.max = element['max']
+            field.max = field.max.to_i
+            field.max = '*' if element['max']=='*'
+            template.fields << field
           end
-
-          template.constants['MULTIPLE_TYPES'] = multipleDataTypes if !multipleDataTypes.empty?
-
-          filename = File.join(folder,"#{typeName}.rb")
-          file = File.open(filename,'w:UTF-8')
-          file.write(template.to_s)
-          file.close 
         end
+
+        template.constants['MULTIPLE_TYPES'] = multipleDataTypes if !multipleDataTypes.empty?
+        template
       end
 
     end
