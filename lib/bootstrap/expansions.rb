@@ -16,7 +16,10 @@ module FHIR
       codes = nil
       valueset = @expansions.select{|x|x['url']==uri}.first
       if !valueset.nil?
-        codes = valueset['expansion']['contains'].map{|x|x['code']} rescue nil
+        codes = {}
+        keys = valueset['expansion']['contains'].map{|x|x['system']}.uniq
+        keys.each{|x| codes[x]=[]}
+        valueset['expansion']['contains'].each{|x| codes[x['system']] << x['code']}
       end
       codes
     end

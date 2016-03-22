@@ -205,7 +205,6 @@ module FHIR
                 codes = @expansions.get_codes( field.binding['uri'] )
                 field.valid_codes = codes if !codes.nil?
                 puts "  MISSING EXPANSION -- #{field.path} #{field.min}..#{field.max}: #{field.binding['uri']} (#{field.binding['strength']})" if field.valid_codes.empty? && field.binding['uri'] && !field.binding['uri'].end_with?('bcp47') && !field.binding['uri'].end_with?('bcp13.txt')
-                field.valid_codes.compact!
               elsif ['Element','BackboneElement'].include?(dataType)
                 # This is a nested structure or class
                 field.type = "FHIR::#{template.name.join('::')}::#{field.name.capitalize}"
