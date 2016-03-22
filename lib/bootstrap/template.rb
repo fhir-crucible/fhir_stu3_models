@@ -65,6 +65,7 @@ module FHIR
         # add internal nested classes
         @templates.each do |template|
           s << template.to_s(space.length-2)
+          s << ''          
         end
 
         # calculate the longest field name for whitespace layout
@@ -85,14 +86,12 @@ module FHIR
           end
           s[-1] << " ]" if(field.max.to_i > 1 || field.max=='*')          
         end
-        s << ''
 
         # close all the class and module declarations
         (0..@name.length-1).reverse_each do |index|
           space = indent(index+1,offset)
           s << "#{space}end"          
         end
-        s << ''
         s << 'end' if @top_level
         s.join("\n")
       end
