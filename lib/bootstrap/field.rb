@@ -1,6 +1,5 @@
 module FHIR
   class Field
-    include FHIR::Hashable
 
     attr_accessor :name
     attr_accessor :path
@@ -18,5 +17,21 @@ module FHIR
       @type_profiles = []
       @valid_codes = []
     end
+
+    def serialize
+      hash = Hash.new
+      self.instance_variables.each do |v|
+        hash[v.to_s[1..-1]] = self.instance_variable_get(v)
+      end
+      hash.delete('name')
+      hash.keep_if do |key,value|
+        !value.nil? && (  (value.is_a?(Hash) && !value.empty?) || 
+                          (value.is_a?(Array) && !value.empty?) || 
+                          (!value.is_a?(Hash) && !value.is_a?(Array))
+                       )
+      end
+      hash
+    end
+
   end
 end

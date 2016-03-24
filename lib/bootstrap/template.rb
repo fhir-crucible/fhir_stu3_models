@@ -33,13 +33,14 @@ module FHIR
 
         # include modules
         space = indent(@name.length+1,offset)
-        s << "#{space}include Hashable" if(@name.length > 0)
+        s << "#{space}include FHIR::Hashable" if(@name.length > 0)
+        s << "#{space}include FHIR::Json" if(@name.length > 0)
         s << ''
 
         # add mandatory METADATA constant
         metadata = {}
         @fields.each do |field|
-          metadata[field.name] = field.to_hash
+          metadata[field.name] = field.serialize
           metadata[field.name].delete('name')
         end
         @constants['METADATA'] = metadata if !metadata.empty?

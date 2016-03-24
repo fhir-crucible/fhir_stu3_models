@@ -50,7 +50,7 @@ module FHIR
         # primitive data types start with a lowercase letter
         primitives = @types.select{|t|t['id'][0]==t['id'][0].downcase}
 
-        template = FHIR::Boot::Template.new([])
+        template = FHIR::Boot::Template.new([],true)
         hash = {}
 
         primitives.each do |p|
@@ -75,7 +75,7 @@ module FHIR
           rescue 
           end
 
-          hash[ p['id' ] ] = field.to_hash
+          hash[ p['id' ] ] = field.serialize
         end
 
         template.constants['PRIMITIVES'] = hash
@@ -207,7 +207,7 @@ module FHIR
                 puts "  MISSING EXPANSION -- #{field.path} #{field.min}..#{field.max}: #{field.binding['uri']} (#{field.binding['strength']})" if field.valid_codes.empty? && field.binding['uri'] && !field.binding['uri'].end_with?('bcp47') && !field.binding['uri'].end_with?('bcp13.txt')
               elsif ['Element','BackboneElement'].include?(dataType)
                 # This is a nested structure or class
-                field.type = "FHIR::#{template.name.join('::')}::#{field.name.capitalize}"
+                field.type = "#{template.name.join('::')}::#{field.name.capitalize}"
               end
 
               template.fields << field

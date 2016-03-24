@@ -11,7 +11,8 @@ require 'bcp47'
 root = File.expand_path '..', File.dirname(File.absolute_path(__FILE__))
 
 # Need to require Hashable first
-require File.join(root,'lib','bootstrap','Hashable.rb')
+require File.join(root,'lib','bootstrap','hashable.rb')
+require File.join(root,'lib','bootstrap','json.rb')
 
 Dir.glob(File.join(root, 'lib','bootstrap','*.rb')).each do |file|
   require file
