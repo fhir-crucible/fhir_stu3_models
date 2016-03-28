@@ -19,6 +19,7 @@ Rake::TestTask.new(:test_unit) do |t|
 end
 
 task :test => [:test_unit] do
+  Rake::Task['fhir:generate'].invoke
   system("open coverage/index.html")
 end
 

@@ -35,4 +35,47 @@ namespace :fhir do
     end    
   end
 
+  desc 'copy artifacts from FHIR build'
+  task :update, [:fhir_build_path] do |t, args|
+    fhir_build_path = args[:fhir_build_path]
+    root = File.expand_path '../..',File.dirname(File.absolute_path(__FILE__))
+    defns = File.join(root,'definitions')
+
+    # copy structure definitions and profiles...
+    src = File.join(fhir_build_path,'publish')
+    dest = File.join(defns,'structures')
+    copy_artifacts( ['profiles-types.json','profiles-resources.json','profiles-others.json','search-parameters.json','extension-definitions.json'], src, dest)
+
+    # copy valuesets and expansions...
+    dest = File.join(defns,'valuesets')
+    copy_artifacts( ['expansions.json','valuesets.json','v2-tables.json','v3-codesystems.json'], src, dest)
+
+    # copy all the XML schemas
+    puts '  Copying XML schemas...'
+    files = Dir.glob(File.join(src,'*.xsd'))
+    files.map!{|f|File.basename(f)}
+    dest = File.join(defns,'schema')
+    copy_artifacts(files, src, dest, false)
+    
+    # delete the examples
+    dest = File.join(root,'examples','json')
+    puts '  Replacing JSON examples...'
+    Dir.glob(File.join(dest,'*')).each{|f|File.delete(f) if !File.directory?(f)}
+    # copy the new examples over
+    files = Dir.glob(File.join(src,'*-example*.json'))
+    files.map!{|f|File.basename(f)}
+    files.keep_if{|f| !f.include?('canonical')}
+    copy_artifacts(files, src, dest, false)
+
+    puts 'Done.'
+  end
+
+  def copy_artifacts(artifacts,src_folder,dest_folder,verbose=true)
+    artifacts.each do |artifact|
+      puts "  Copying #{artifact}..." if verbose
+      src = File.join(src_folder,artifact)
+      FileUtils.copy src, dest_folder
+    end
+  end
+
 end
