@@ -4,6 +4,8 @@ module FHIR
       include FHIR::Hashable
 
       attr_accessor :name
+      attr_accessor :hierarchy
+      attr_accessor :kind
       attr_accessor :constants
       attr_accessor :fields
       attr_accessor :templates
@@ -11,6 +13,8 @@ module FHIR
 
       def initialize(name=['Template'],top_level=false)
         @name = name
+        @hierarchy = []
+        @kind = nil
         @constants = {}
         @fields = []
         @templates = []
@@ -71,13 +75,17 @@ module FHIR
 
         # calculate the longest field name for whitespace layout
         max_name_size = 0
-        @fields.each{|f| max_name_size=f.name.length if(f.name.length > max_name_size)}
+        @fields.each do |f| 
+          name = f.local_name || f.name
+          max_name_size=name.length if(name.length > max_name_size)
+        end
         max_name_size += 1
 
         # declare attributes
         @fields.each do |field|
           s << "#{space}attr_accessor :"
-          s[-1] << ("%-#{max_name_size}s" % "#{field.name}")
+          local_name = field.local_name || field.name
+          s[-1] << ("%-#{max_name_size}s" % "#{local_name}")
           # add comment after field declaration
           s[-1] << "# #{field.min}-#{field.max} "
           s[-1] << "[ " if(field.max.to_i > 1 || field.max=='*')
@@ -86,6 +94,13 @@ module FHIR
             s[-1] << "(#{ field.type_profiles.map{|p|p.split('/').last}.join('|') })"
           end
           s[-1] << " ]" if(field.max.to_i > 1 || field.max=='*')          
+        end
+
+        if @top_level && @kind=='resource'
+          s << ''
+          s << "#{space}def resourceType"
+          s << "#{space}  '#{@name.first}'"
+          s << "#{space}end"
         end
 
         # close all the class and module declarations

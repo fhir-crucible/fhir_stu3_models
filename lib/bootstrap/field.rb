@@ -2,6 +2,7 @@ module FHIR
   class Field
 
     attr_accessor :name
+    attr_accessor :local_name
     attr_accessor :path
     attr_accessor :type
     attr_accessor :type_profiles
@@ -14,6 +15,7 @@ module FHIR
 
     def initialize(name='')
       @name = name
+      @local_name = fix_name(@name)
       @type_profiles = []
       @valid_codes = []
     end
@@ -31,6 +33,12 @@ module FHIR
                        )
       end
       hash
+    end
+
+    def fix_name(name)
+      fix = nil
+      fix = "local_#{name}" if ['class'].include?(name)
+      fix
     end
 
   end

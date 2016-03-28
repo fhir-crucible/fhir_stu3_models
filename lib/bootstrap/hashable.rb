@@ -4,9 +4,11 @@ module FHIR
     def to_hash
       hash = Hash.new
       self.class::METADATA.each do |key,value|
-        hash[key] = self.instance_variable_get("@#{key}")
+        local_name = key
+        local_name = value['local_name'] if value['local_name']
+        hash[key] = self.instance_variable_get("@#{local_name}")
         if hash[key].respond_to?(:to_hash)
-          hash[key] = hash[key].to_hash 
+          hash[key] = hash[key].to_hash
         elsif hash[key].is_a? Array
           hash[key] = Array.new(hash[key]) # copy the array
           hash[key].each_with_index do |item,index|
@@ -20,26 +22,34 @@ module FHIR
                           (!value.is_a?(Hash) && !value.is_a?(Array))
                        )
       end
+      hash['resourceType'] = self.resourceType if self.respond_to?(:resourceType)
       hash
     end
 
     def from_hash(hash)
       # clear the existing variables
       self.class::METADATA.each do |key,value|
-        self.instance_variable_set("@#{key}",nil)
+        local_name = key
+        local_name = value['local_name'] if value['local_name']
+        self.instance_variable_set("@#{local_name}",nil)
       end
       # set the variables to the hash values
       hash.each do |key,value|
         meta = self.class::METADATA[key]
         if !meta.nil?
-          self.instance_variable_set("@#{key}",value) rescue nil
-          # inflate they value if it isn't a primitive
+          local_name = key
+          local_name = meta['local_name'] if meta['local_name']
+          self.instance_variable_set("@#{local_name}",value) rescue nil
+          # inflate the value if it isn't a primitive
           klass = Module.const_get("FHIR::#{meta['type']}") rescue nil
           if !klass.nil? && !value.nil?
             # handle arrays
             if value.is_a?(Array)
               value.map! do |child|
                 obj = child
+                if child['resourceType']
+                  klass = Module.const_get("FHIR::#{child['resourceType']}") rescue nil
+                end
                 begin
                   obj = klass.new
                   obj.from_hash(child)
@@ -49,6 +59,9 @@ module FHIR
                 obj
               end
             else
+              if value['resourceType']
+                klass = Module.const_get("FHIR::#{value['resourceType']}") rescue nil
+              end
               begin
                 obj = klass.new
                 obj.from_hash(value)
@@ -57,7 +70,7 @@ module FHIR
                 binding.pry
               end
             end
-            self.instance_variable_set("@#{key}",value)
+            self.instance_variable_set("@#{local_name}",value)
           elsif !FHIR::PRIMITIVES.include?(meta['type']) && meta['type']!='xhtml'
             binding.pry
           end # !klass && !nil?

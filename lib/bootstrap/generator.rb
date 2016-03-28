@@ -8,6 +8,8 @@ module FHIR
       attr_accessor :profiles
       attr_accessor :lib
       attr_accessor :expansions
+      # templates keeps track of all the templates in context within a given StructureDefinition
+      attr_accessor :templates
 
       def initialize    
         defns = File.expand_path '../../definitions',File.dirname(File.absolute_path(__FILE__))
@@ -34,6 +36,9 @@ module FHIR
         filename = File.join(defns,'structures','profiles-others.json')
         raw = File.open(filename,'r:UTF-8',&:read)
         @profiles = JSON.parse(raw)['entry'].map{|e|e['resource']}        
+
+        # templates is an array
+        @templates = []
 
         # make folders for generated content if they do not exist
         @lib = File.expand_path '..', File.dirname(File.absolute_path(__FILE__))
@@ -100,8 +105,9 @@ module FHIR
 
       def generate_class_files(folder=@lib,structureDefs)
         structureDefs.each do |structureDef|
+          @templates.clear
           typeName = structureDef['id']
-          template = generate_class(structureDef,true)
+          template = generate_class([ typeName ],structureDef,true)
           filename = File.join(folder,"#{typeName}.rb")
           file = File.open(filename,'w:UTF-8')
           file.write(template.to_s)
@@ -109,13 +115,15 @@ module FHIR
         end
       end
 
-      def generate_class(structureDef,top_level=false)
+      def generate_class(hierarchy,structureDef,top_level=false)
         typeName = structureDef['id']
         constrainedType = structureDef['constrainedType']
         pathType = typeName
         pathType = constrainedType if constrainedType
 
         template = FHIR::Boot::Template.new([ typeName ],top_level)
+        template.hierarchy = hierarchy
+        template.kind = structureDef['kind']
         multipleDataTypes = {}
 
         # examine the snapshot.elements... move the Element and BackboneElements, 
@@ -138,11 +146,11 @@ module FHIR
           child_def = { 'id'=> child_fixed_name, 'snapshot'=>{'element'=>[]} }
           # Copy the element definitions for the child structure
           structureDef['snapshot']['element'].each do |element|
-            child_def['snapshot']['element'] << element.clone if element['path'].start_with?(child_name)
+            child_def['snapshot']['element'] << element.clone if element['path'].start_with?("#{child_name}.")
           end
           # Remove the child elements
           child_paths = child_def['snapshot']['element'].map{|e|e['path']}
-          child_paths = child_paths.drop(1)
+          # child_paths = child_paths.drop(1)
           structureDef['snapshot']['element'].keep_if do |element|
             !child_paths.include?(element['path'])
           end
@@ -151,7 +159,10 @@ module FHIR
             element['path'] = element['path'].gsub(child_name,child_fixed_name)
           end
           # add the child
-          template.templates << generate_class(child_def)
+          child_hierarchy = hierarchy + [ child_fixed_name ]
+          child_klass = generate_class(child_hierarchy,child_def)
+          template.templates << child_klass
+          @templates << child_klass
         end
 
         # Process the remaining attributes (none of which are Elements or BackboneElements)
@@ -207,7 +218,7 @@ module FHIR
                 puts "  MISSING EXPANSION -- #{field.path} #{field.min}..#{field.max}: #{field.binding['uri']} (#{field.binding['strength']})" if field.valid_codes.empty? && field.binding['uri'] && !field.binding['uri'].end_with?('bcp47') && !field.binding['uri'].end_with?('bcp13.txt')
               elsif ['Element','BackboneElement'].include?(dataType)
                 # This is a nested structure or class
-                field.type = "#{template.name.join('::')}::#{field.name.capitalize}"
+                field.type = "#{hierarchy.join('::')}::#{field.name.capitalize}"
               end
 
               template.fields << field
@@ -215,7 +226,22 @@ module FHIR
           else # If there is not data type, treat the type as a reference to an already declared internal class
             field = FHIR::Field.new(field_base_name)
             field.path = element['path'].gsub(pathType,typeName)
-            field.type = element['nameReference']
+            field.type = element['contentReference']
+            field.type = field.type[1..-1] if field.type[0]=='#'
+            if (hierarchy.last.capitalize==field.type.capitalize)
+              # reference to self
+              field.type = "#{hierarchy.join('::')}" #::#{field.type.capitalize}" #field.type.capitalize
+            else
+              # reference to contained template
+              klass = @templates.select{|x|x.hierarchy.last.capitalize==field.type.capitalize}.first
+              if !klass.nil?
+                # the template/child class was declared somewhere else in this class hierarchy
+                field.type = klass.hierarchy.join('::') if !klass.nil?
+              else
+                # the template/child is a direct ancester (it isn't in @templates yet because it is being defined now)
+                field.type = hierarchy[0..hierarchy.index(field.type.capitalize)].join('::')
+              end
+            end
             field.min = element['min']
             field.max = element['max']
             field.max = field.max.to_i
