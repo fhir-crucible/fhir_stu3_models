@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 10, 2016 13:03-0500 for FHIR v1.3.0 
+  Generated on Mon, Mar 28, 2016 13:29-0400 for FHIR v1.3.0 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="1.3.0">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
@@ -69,7 +69,7 @@
   <xs:simpleType name="code-primitive">
     <xs:restriction base="xs:token">
       <xs:minLength value="1"/>
-      <xs:pattern value="[^\s]+([\s][^\s]+)*"/>
+      <xs:pattern value="[^\s]+([\s]?[^\s]+)*"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="code">
@@ -221,6 +221,7 @@
     <xs:restriction base="xs:string">
       <xs:pattern value="[A-Za-z0-9\-\.]{1,64}"/>
       <xs:minLength value="1"/>
+      <xs:maxLength value="64"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="id">
@@ -270,6 +271,7 @@
       <xs:element ref="BodySite"/>
       <xs:element ref="Bundle"/>
       <xs:element ref="CarePlan"/>
+      <xs:element ref="CareTeam"/>
       <xs:element ref="Claim"/>
       <xs:element ref="ClaimResponse"/>
       <xs:element ref="ClinicalImpression"/>
@@ -310,6 +312,7 @@
       <xs:element ref="Group"/>
       <xs:element ref="GuidanceResponse"/>
       <xs:element ref="HealthcareService"/>
+      <xs:element ref="ImagingExcerpt"/>
       <xs:element ref="ImagingObjectSelection"/>
       <xs:element ref="ImagingStudy"/>
       <xs:element ref="Immunization"/>
@@ -343,6 +346,7 @@
       <xs:element ref="PaymentReconciliation"/>
       <xs:element ref="Person"/>
       <xs:element ref="Practitioner"/>
+      <xs:element ref="PractitionerRole"/>
       <xs:element ref="Procedure"/>
       <xs:element ref="ProcedureRequest"/>
       <xs:element ref="ProcessRequest"/>
@@ -365,6 +369,7 @@
       <xs:element ref="Substance"/>
       <xs:element ref="SupplyDelivery"/>
       <xs:element ref="SupplyRequest"/>
+      <xs:element ref="Task"/>
       <xs:element ref="TestScript"/>
       <xs:element ref="ValueSet"/>
       <xs:element ref="VisionPrescription"/>
@@ -555,7 +560,7 @@
           <xs:element name="when" type="instant" minOccurs="1" maxOccurs="1">
             
           </xs:element>
-          <xs:choice minOccurs="1">
+          <xs:choice minOccurs="1" maxOccurs="1">
             
            <xs:element name="whoUri" type="uri" maxOccurs="1"/>
            <xs:element name="whoReference" type="Reference" maxOccurs="1"/>
@@ -732,7 +737,7 @@
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:sequence>
-          <xs:choice minOccurs="0">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
            <xs:element name="authorReference" type="Reference" maxOccurs="1"/>
            <xs:element name="authorString" type="string" maxOccurs="1"/>
@@ -1112,7 +1117,7 @@
           <xs:element name="eventName" type="string" minOccurs="0" maxOccurs="1">
             
           </xs:element>
-          <xs:choice minOccurs="0">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
            <xs:element name="eventTimingTiming" type="Timing" maxOccurs="1"/>
            <xs:element name="eventTimingReference" type="Reference" maxOccurs="1"/>
@@ -1362,7 +1367,7 @@
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:sequence>
-          <xs:choice minOccurs="0">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
            <xs:element name="boundsQuantity" type="Duration" maxOccurs="1"/>
            <xs:element name="boundsRange" type="Range" maxOccurs="1"/>
@@ -1371,13 +1376,16 @@
           <xs:element name="count" type="integer" minOccurs="0" maxOccurs="1">
             
           </xs:element>
+          <xs:element name="countMax" type="integer" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
           <xs:element name="duration" type="decimal" minOccurs="0" maxOccurs="1">
             
           </xs:element>
           <xs:element name="durationMax" type="decimal" minOccurs="0" maxOccurs="1">
             
           </xs:element>
-          <xs:element name="durationUnits" type="UnitsOfTime" minOccurs="0" maxOccurs="1">
+          <xs:element name="durationUnit" type="UnitsOfTime" minOccurs="0" maxOccurs="1">
             
           </xs:element>
           <xs:element name="frequency" type="integer" minOccurs="0" maxOccurs="1">
@@ -1392,10 +1400,13 @@
           <xs:element name="periodMax" type="decimal" minOccurs="0" maxOccurs="1">
             
           </xs:element>
-          <xs:element name="periodUnits" type="UnitsOfTime" minOccurs="0" maxOccurs="1">
+          <xs:element name="periodUnit" type="UnitsOfTime" minOccurs="0" maxOccurs="1">
             
           </xs:element>
           <xs:element name="when" type="EventTiming" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+          <xs:element name="offset" type="unsignedInt" minOccurs="0" maxOccurs="1">
             
           </xs:element>
         </xs:sequence>
@@ -1536,10 +1547,10 @@
           <xs:element name="base" type="ElementDefinition.Base" minOccurs="0" maxOccurs="1">
             
           </xs:element>
-          <xs:element name="type" type="ElementDefinition.Type" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="contentReference" type="uri" minOccurs="0" maxOccurs="1">
             
           </xs:element>
-          <xs:element name="nameReference" type="string" minOccurs="0" maxOccurs="1">
+          <xs:element name="type" type="ElementDefinition.Type" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
         <xs:choice minOccurs="0" maxOccurs="1">
@@ -1812,6 +1823,9 @@
           <xs:element name="human" type="string" minOccurs="1" maxOccurs="1">
             
           </xs:element>
+          <xs:element name="expression" type="string" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
           <xs:element name="xpath" type="string" minOccurs="1" maxOccurs="1">
             
           </xs:element>
@@ -1869,6 +1883,9 @@
           <xs:element name="aggregation" type="AggregationMode" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
+          <xs:element name="versioning" type="ReferenceVersionRules" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -1905,7 +1922,7 @@
           <xs:element name="description" type="string" minOccurs="0" maxOccurs="1">
             
           </xs:element>
-          <xs:choice minOccurs="0">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
            <xs:element name="valueSetUri" type="uri" maxOccurs="1"/>
            <xs:element name="valueSetReference" type="Reference" maxOccurs="1"/>
@@ -1947,6 +1964,18 @@
     <xs:complexContent>
        <xs:extension base="Element">
          <xs:attribute name="value" type="AggregationMode-list" use="optional"/>
+       </xs:extension>
+     </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ReferenceVersionRules-list">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ReferenceVersionRules">
+    
+    <xs:complexContent>
+       <xs:extension base="Element">
+         <xs:attribute name="value" type="ReferenceVersionRules-list" use="optional"/>
        </xs:extension>
      </xs:complexContent>
   </xs:complexType>
@@ -2006,12 +2035,18 @@
           <xs:element name="path" type="string" minOccurs="1" maxOccurs="1">
             
           </xs:element>
-          <xs:choice minOccurs="0">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
            <xs:element name="valueSetString" type="string" maxOccurs="1"/>
            <xs:element name="valueSetReference" type="Reference" maxOccurs="1"/>
           </xs:choice>
-          <xs:element name="codeableConcept" type="CodeableConcept" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="valueCode" type="code" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="valueCoding" type="Coding" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="valueCodeableConcept" type="CodeableConcept" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
         </xs:sequence>
@@ -2026,7 +2061,7 @@
           <xs:element name="path" type="string" minOccurs="1" maxOccurs="1">
             
           </xs:element>
-          <xs:choice minOccurs="0">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
            <xs:element name="valueDateTime" type="dateTime" maxOccurs="1"/>
            <xs:element name="valuePeriod" type="Period" maxOccurs="1"/>
@@ -2043,7 +2078,7 @@
           <xs:element name="actionIdentifier" type="Identifier" minOccurs="0" maxOccurs="1">
             
           </xs:element>
-          <xs:element name="number" type="string" minOccurs="0" maxOccurs="1">
+          <xs:element name="label" type="string" minOccurs="0" maxOccurs="1">
             
           </xs:element>
           <xs:element name="title" type="string" minOccurs="0" maxOccurs="1">
@@ -2064,6 +2099,9 @@
           <xs:element name="documentation" type="Attachment" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
+          <xs:element name="relatedAction" type="ActionDefinition.RelatedAction" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
           <xs:element name="participantType" type="ParticipantType" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
@@ -2079,7 +2117,30 @@
           <xs:element name="customization" type="ActionDefinition.Customization" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="actions" type="ActionDefinition" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="action" type="ActionDefinition" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ActionDefinition.RelatedAction">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:sequence>
+          <xs:element name="actionIdentifier" type="Identifier" minOccurs="1" maxOccurs="1">
+            
+          </xs:element>
+          <xs:element name="relationship" type="ActionRelationshipType" minOccurs="1" maxOccurs="1">
+            
+          </xs:element>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+           <xs:element name="offsetQuantity" type="Duration" maxOccurs="1"/>
+           <xs:element name="offsetRange" type="Range" maxOccurs="1"/>
+          </xs:choice>
+          <xs:element name="anchor" type="ActionRelationshipAnchor" minOccurs="0" maxOccurs="1">
             
           </xs:element>
         </xs:sequence>
@@ -2137,6 +2198,30 @@
     <xs:complexContent>
        <xs:extension base="Element">
          <xs:attribute name="value" type="ActionType-list" use="optional"/>
+       </xs:extension>
+     </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ActionRelationshipType-list">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ActionRelationshipType">
+    
+    <xs:complexContent>
+       <xs:extension base="Element">
+         <xs:attribute name="value" type="ActionRelationshipType-list" use="optional"/>
+       </xs:extension>
+     </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ActionRelationshipAnchor-list">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ActionRelationshipAnchor">
+    
+    <xs:complexContent>
+       <xs:extension base="Element">
+         <xs:attribute name="value" type="ActionRelationshipAnchor-list" use="optional"/>
        </xs:extension>
      </xs:complexContent>
   </xs:complexType>
@@ -2522,7 +2607,16 @@
           <xs:element name="status" minOccurs="1" maxOccurs="1" type="AppointmentStatus">
             
           </xs:element>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="serviceCategory" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="serviceType" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="specialty" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="appointmentType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="reason" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -2544,6 +2638,9 @@
             
           </xs:element>
           <xs:element name="slot" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
+          <xs:element name="created" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
           <xs:element name="comment" minOccurs="0" maxOccurs="1" type="string">
@@ -2639,25 +2736,13 @@
           <xs:element name="actor" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="participantStatus" minOccurs="1" maxOccurs="1" type="ParticipantStatus">
+          <xs:element name="participantStatus" minOccurs="1" maxOccurs="1" type="code">
             
           </xs:element>
           <xs:element name="comment" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
         </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="ParticipantStatus-list">
-    <xs:restriction base="xs:string">
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="ParticipantStatus">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="ParticipantStatus-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -3317,6 +3402,60 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:element name="CareTeam" type="CareTeam">
+    
+  </xs:element>
+  <xs:complexType name="CareTeam">
+    
+    <xs:complexContent>
+      <xs:extension base="DomainResource">
+        <xs:sequence>
+          <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
+            
+          </xs:element>
+          <xs:element name="status" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="type" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="subject" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="period" minOccurs="0" maxOccurs="1" type="Period">
+            
+          </xs:element>
+          <xs:element name="participant" type="CareTeam.Participant" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="managingOrganization" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CareTeam.Participant">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="role" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="member" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="period" minOccurs="0" maxOccurs="1" type="Period">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:element name="Claim" type="Claim">
     
   </xs:element>
@@ -3441,11 +3580,9 @@
           <xs:element name="interventionException" minOccurs="0" maxOccurs="unbounded" type="Coding">
             
           </xs:element>
-          <xs:choice minOccurs="0" maxOccurs="1">
+          <xs:element name="onset" type="Claim.Onset" minOccurs="0" maxOccurs="unbounded">
             
-            <xs:element name="onsetDate" type="date"/>
-            <xs:element name="onsetPeriod" type="Period"/>
-          </xs:choice>
+          </xs:element>
           <xs:element name="employmentImpacted" minOccurs="0" maxOccurs="1" type="Period">
             
           </xs:element>
@@ -3458,7 +3595,7 @@
           <xs:element name="total" minOccurs="0" maxOccurs="1" type="Money">
             
           </xs:element>
-          <xs:element name="additionalMaterials" minOccurs="0" maxOccurs="unbounded" type="Coding">
+          <xs:element name="additionalMaterial" minOccurs="0" maxOccurs="unbounded" type="Coding">
             
           </xs:element>
           <xs:element name="missingTeeth" type="Claim.MissingTeeth" minOccurs="0" maxOccurs="unbounded">
@@ -3528,7 +3665,7 @@
           <xs:element name="sequence" minOccurs="1" maxOccurs="1" type="positiveInt">
             
           </xs:element>
-          <xs:element name="date" minOccurs="0" maxOccurs="1" type="date">
+          <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
           <xs:choice minOccurs="1" maxOccurs="1">
@@ -3572,6 +3709,23 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="Claim.Onset">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="timeDate" type="date"/>
+            <xs:element name="timePeriod" type="Period"/>
+          </xs:choice>
+          <xs:element name="type" minOccurs="0" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="Claim.Item">
     
     <xs:complexContent>
@@ -3588,6 +3742,11 @@
             <xs:element name="providerIdentifier" type="Identifier"/>
             <xs:element name="providerReference" type="Reference"/>
           </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="supervisorIdentifier" type="Identifier"/>
+            <xs:element name="supervisorReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="providerQualification" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
@@ -3598,6 +3757,12 @@
             
           </xs:element>
           <xs:element name="serviceModifier" minOccurs="0" maxOccurs="unbounded" type="Coding">
+            
+          </xs:element>
+          <xs:element name="modifier" minOccurs="0" maxOccurs="unbounded" type="Coding">
+            
+          </xs:element>
+          <xs:element name="programCode" minOccurs="0" maxOccurs="unbounded" type="Coding">
             
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1">
@@ -3623,16 +3788,13 @@
           <xs:element name="net" minOccurs="0" maxOccurs="1" type="Money">
             
           </xs:element>
-          <xs:element name="udi" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="udi" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
           <xs:element name="bodySite" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="subSite" minOccurs="0" maxOccurs="unbounded" type="Coding">
-            
-          </xs:element>
-          <xs:element name="modifier" minOccurs="0" maxOccurs="unbounded" type="Coding">
             
           </xs:element>
           <xs:element name="detail" type="Claim.Detail" minOccurs="0" maxOccurs="unbounded">
@@ -3659,6 +3821,9 @@
           <xs:element name="service" minOccurs="1" maxOccurs="1" type="Coding">
             
           </xs:element>
+          <xs:element name="programCode" minOccurs="0" maxOccurs="unbounded" type="Coding">
+            
+          </xs:element>
           <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="SimpleQuantity">
             
           </xs:element>
@@ -3674,7 +3839,7 @@
           <xs:element name="net" minOccurs="0" maxOccurs="1" type="Money">
             
           </xs:element>
-          <xs:element name="udi" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="udi" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
           <xs:element name="subDetail" type="Claim.SubDetail" minOccurs="0" maxOccurs="unbounded">
@@ -3698,6 +3863,9 @@
           <xs:element name="service" minOccurs="1" maxOccurs="1" type="Coding">
             
           </xs:element>
+          <xs:element name="programCode" minOccurs="0" maxOccurs="unbounded" type="Coding">
+            
+          </xs:element>
           <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="SimpleQuantity">
             
           </xs:element>
@@ -3713,7 +3881,7 @@
           <xs:element name="net" minOccurs="0" maxOccurs="1" type="Money">
             
           </xs:element>
-          <xs:element name="udi" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="udi" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
         </xs:sequence>
@@ -3791,9 +3959,11 @@
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             
           </xs:element>
-          <xs:element name="request" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="requestIdentifier" type="Identifier"/>
+            <xs:element name="requestReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="ruleset" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
@@ -3803,15 +3973,21 @@
           <xs:element name="created" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="organization" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="requestProvider" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="organizationIdentifier" type="Identifier"/>
+            <xs:element name="organizationReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="requestOrganization" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="requestProviderIdentifier" type="Identifier"/>
+            <xs:element name="requestProviderReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="requestOrganizationIdentifier" type="Identifier"/>
+            <xs:element name="requestOrganizationReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="outcome" minOccurs="0" maxOccurs="1" type="RemittanceOutcome">
             
           </xs:element>
@@ -3896,7 +4072,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="code" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:element name="category" minOccurs="1" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="reason" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="amount" minOccurs="0" maxOccurs="1" type="Money">
@@ -3932,7 +4111,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="code" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:element name="category" minOccurs="1" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="reason" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="amount" minOccurs="0" maxOccurs="1" type="Money">
@@ -3965,7 +4147,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="code" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:element name="category" minOccurs="1" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="reason" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="amount" minOccurs="0" maxOccurs="1" type="Money">
@@ -4010,7 +4195,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="code" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:element name="category" minOccurs="1" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="reason" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="amount" minOccurs="0" maxOccurs="1" type="Money">
@@ -4046,7 +4234,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="code" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:element name="category" minOccurs="1" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="reason" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="amount" minOccurs="0" maxOccurs="1" type="Money">
@@ -4109,22 +4300,18 @@
           <xs:element name="focal" minOccurs="1" maxOccurs="1" type="boolean">
             
           </xs:element>
-          <xs:element name="coverage" minOccurs="1" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="1" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="coverageIdentifier" type="Identifier"/>
+            <xs:element name="coverageReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="businessArrangement" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-          <xs:element name="relationship" minOccurs="1" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="preAuthRef" minOccurs="0" maxOccurs="unbounded" type="string">
             
           </xs:element>
           <xs:element name="claimResponse" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="originalRuleset" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
         </xs:sequence>
@@ -4445,6 +4632,7 @@
             <xs:element name="valueString" type="string"/>
             <xs:element name="valueInteger" type="integer"/>
             <xs:element name="valueBoolean" type="boolean"/>
+            <xs:element name="valueDateTime" type="dateTime"/>
           </xs:choice>
         </xs:sequence>
       </xs:extension>
@@ -4959,10 +5147,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="codeSystem" minOccurs="0" maxOccurs="1" type="uri">
+          <xs:element name="system" minOccurs="0" maxOccurs="1" type="uri">
             
           </xs:element>
-          <xs:element name="codeSystemVersion" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
           <xs:element name="code" minOccurs="0" maxOccurs="1" type="code">
@@ -4980,10 +5168,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="codeSystem" minOccurs="0" maxOccurs="1" type="uri">
+          <xs:element name="system" minOccurs="0" maxOccurs="1" type="uri">
             
           </xs:element>
-          <xs:element name="codeSystemVersion" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
           <xs:element name="code" minOccurs="0" maxOccurs="1" type="code">
@@ -5013,7 +5201,7 @@
           <xs:element name="element" minOccurs="1" maxOccurs="1" type="uri">
             
           </xs:element>
-          <xs:element name="codeSystem" minOccurs="1" maxOccurs="1" type="uri">
+          <xs:element name="system" minOccurs="1" maxOccurs="1" type="uri">
             
           </xs:element>
           <xs:element name="code" minOccurs="1" maxOccurs="1" type="string">
@@ -5153,7 +5341,7 @@
           <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="status" minOccurs="0" maxOccurs="1" type="ConformanceResourceStatus">
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="ConformanceResourceStatus">
             
           </xs:element>
           <xs:element name="experimental" minOccurs="0" maxOccurs="1" type="boolean">
@@ -5169,6 +5357,9 @@
             
           </xs:element>
           <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="requirements" minOccurs="0" maxOccurs="1" type="string">
@@ -5273,7 +5464,7 @@
           <xs:element name="security" type="Conformance.Security" minOccurs="0" maxOccurs="1">
             
           </xs:element>
-          <xs:element name="resource" type="Conformance.Resource" minOccurs="1" maxOccurs="unbounded">
+          <xs:element name="resource" type="Conformance.Resource" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
           <xs:element name="interaction" type="Conformance.Interaction1" minOccurs="0" maxOccurs="unbounded">
@@ -5636,9 +5827,6 @@
       <xs:enumeration value="history-instance">
         
       </xs:enumeration>
-      <xs:enumeration value="validate">
-        
-      </xs:enumeration>
       <xs:enumeration value="history-type">
         
       </xs:enumeration>
@@ -5732,6 +5920,9 @@
           <xs:element name="applies" minOccurs="0" maxOccurs="1" type="Period">
             
           </xs:element>
+          <xs:element name="subject" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
           <xs:element name="topic" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
@@ -5803,13 +5994,13 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="Coding">
             
           </xs:element>
-          <xs:element name="party" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="party" minOccurs="1" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="signature" minOccurs="0" maxOccurs="unbounded" type="Signature">
+          <xs:element name="signature" minOccurs="1" maxOccurs="unbounded" type="Signature">
             
           </xs:element>
         </xs:sequence>
@@ -7126,34 +7317,45 @@
           <xs:element name="created" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="target" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="provider" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="targetIdentifier" type="Identifier"/>
+            <xs:element name="targetReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="organization" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="providerIdentifier" type="Identifier"/>
+            <xs:element name="providerReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="organizationIdentifier" type="Identifier"/>
+            <xs:element name="organizationReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="priority" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
-          <xs:element name="enterer" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="facility" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="entererIdentifier" type="Identifier"/>
+            <xs:element name="entererReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="patient" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="facilityIdentifier" type="Identifier"/>
+            <xs:element name="facilityReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="coverage" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="patientIdentifier" type="Identifier"/>
+            <xs:element name="patientReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="coverageIdentifier" type="Identifier"/>
+            <xs:element name="coverageReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="businessArrangement" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-          <xs:element name="relationship" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1">
@@ -7182,9 +7384,11 @@
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             
           </xs:element>
-          <xs:element name="request" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="requestIdentifier" type="Identifier"/>
+            <xs:element name="requestReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="outcome" minOccurs="0" maxOccurs="1" type="RemittanceOutcome">
             
           </xs:element>
@@ -7200,15 +7404,21 @@
           <xs:element name="created" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="organization" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="requestProvider" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="organizationIdentifier" type="Identifier"/>
+            <xs:element name="organizationReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="requestOrganization" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="requestProviderIdentifier" type="Identifier"/>
+            <xs:element name="requestProviderReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="requestOrganizationIdentifier" type="Identifier"/>
+            <xs:element name="requestOrganizationReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="inforce" minOccurs="0" maxOccurs="1" type="boolean">
             
           </xs:element>
@@ -7609,7 +7819,7 @@
           <xs:element name="careManager" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="careTeam" type="EpisodeOfCare.CareTeam" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="team" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
         </xs:sequence>
@@ -7625,24 +7835,6 @@
             
           </xs:element>
           <xs:element name="period" minOccurs="1" maxOccurs="1" type="Period">
-            
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="EpisodeOfCare.CareTeam">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="role" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="period" minOccurs="0" maxOccurs="1" type="Period">
-            
-          </xs:element>
-          <xs:element name="member" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
         </xs:sequence>
@@ -7897,10 +8089,17 @@
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             
           </xs:element>
-          <xs:element name="claim" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="claimResponse" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="claimIdentifier" type="Identifier"/>
+            <xs:element name="claimReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="claimResponseIdentifier" type="Identifier"/>
+            <xs:element name="claimResponseReference" type="Reference"/>
+          </xs:choice>
+          <xs:element name="subType" minOccurs="0" maxOccurs="unbounded" type="Coding">
             
           </xs:element>
           <xs:element name="ruleset" minOccurs="0" maxOccurs="1" type="Coding">
@@ -7918,49 +8117,69 @@
           <xs:element name="disposition" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="provider" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="providerIdentifier" type="Identifier"/>
+            <xs:element name="providerReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="organizationIdentifier" type="Identifier"/>
+            <xs:element name="organizationReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="facilityIdentifier" type="Identifier"/>
+            <xs:element name="facilityReference" type="Reference"/>
+          </xs:choice>
+          <xs:element name="related" type="ExplanationOfBenefit.Related" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="organization" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="facility" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="prescriptionIdentifier" type="Identifier"/>
+            <xs:element name="prescriptionReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="relatedClaim" minOccurs="0" maxOccurs="unbounded" type="Reference">
-            
-          </xs:element>
-          <xs:element name="prescription" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="originalPrescription" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
+            <xs:element name="originalPrescriptionIdentifier" type="Identifier"/>
+            <xs:element name="originalPrescriptionReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="payee" type="ExplanationOfBenefit.Payee" minOccurs="0" maxOccurs="1">
             
           </xs:element>
-          <xs:element name="referral" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="referralIdentifier" type="Identifier"/>
+            <xs:element name="referralReference" type="Reference"/>
+          </xs:choice>
+          <xs:element name="occurrenceCode" minOccurs="0" maxOccurs="unbounded" type="Coding">
+            
+          </xs:element>
+          <xs:element name="occurenceSpanCode" minOccurs="0" maxOccurs="unbounded" type="Coding">
+            
+          </xs:element>
+          <xs:element name="valueCode" minOccurs="0" maxOccurs="unbounded" type="Coding">
             
           </xs:element>
           <xs:element name="diagnosis" type="ExplanationOfBenefit.Diagnosis" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
+          <xs:element name="procedure" type="ExplanationOfBenefit.Procedure" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
           <xs:element name="specialCondition" minOccurs="0" maxOccurs="unbounded" type="Coding">
             
           </xs:element>
-          <xs:element name="patient" minOccurs="1" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="1" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="patientIdentifier" type="Identifier"/>
+            <xs:element name="patientReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="precedence" minOccurs="0" maxOccurs="1" type="positiveInt">
             
           </xs:element>
           <xs:element name="coverage" type="ExplanationOfBenefit.Coverage" minOccurs="1" maxOccurs="1">
-            
-          </xs:element>
-          <xs:element name="exception" minOccurs="0" maxOccurs="unbounded" type="Coding">
-            
-          </xs:element>
-          <xs:element name="school" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
           <xs:element name="accidentDate" minOccurs="0" maxOccurs="1" type="date">
@@ -7971,18 +8190,15 @@
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1">
             
-            <xs:element name="accidentLocationString" type="string"/>
             <xs:element name="accidentLocationAddress" type="Address"/>
             <xs:element name="accidentLocationReference" type="Reference"/>
           </xs:choice>
           <xs:element name="interventionException" minOccurs="0" maxOccurs="unbounded" type="Coding">
             
           </xs:element>
-          <xs:choice minOccurs="0" maxOccurs="1">
+          <xs:element name="onset" type="ExplanationOfBenefit.Onset" minOccurs="0" maxOccurs="unbounded">
             
-            <xs:element name="onsetDate" type="date"/>
-            <xs:element name="onsetPeriod" type="Period"/>
-          </xs:choice>
+          </xs:element>
           <xs:element name="employmentImpacted" minOccurs="0" maxOccurs="1" type="Period">
             
           </xs:element>
@@ -7995,10 +8211,10 @@
           <xs:element name="addItem" type="ExplanationOfBenefit.AddItem" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="claimTotal" minOccurs="0" maxOccurs="1" type="Money">
+          <xs:element name="missingTeeth" type="ExplanationOfBenefit.MissingTeeth" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="missingTeeth" type="ExplanationOfBenefit.MissingTeeth" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="totalCost" minOccurs="0" maxOccurs="1" type="Money">
             
           </xs:element>
           <xs:element name="unallocDeductable" minOccurs="0" maxOccurs="1" type="Money">
@@ -8038,6 +8254,26 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="ExplanationOfBenefit.Related">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="claimIdentifier" type="Identifier"/>
+            <xs:element name="claimReference" type="Reference"/>
+          </xs:choice>
+          <xs:element name="relationship" minOccurs="0" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="reference" minOccurs="0" maxOccurs="1" type="Identifier">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="ExplanationOfBenefit.Payee">
     
     <xs:complexContent>
@@ -8046,15 +8282,11 @@
           <xs:element name="type" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
-          <xs:element name="provider" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="organization" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="person" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
+            <xs:element name="partyIdentifier" type="Identifier"/>
+            <xs:element name="partyReference" type="Reference"/>
+          </xs:choice>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -8074,18 +8306,54 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="ExplanationOfBenefit.Procedure">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="sequence" minOccurs="1" maxOccurs="1" type="positiveInt">
+            
+          </xs:element>
+          <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
+            
+          </xs:element>
+          <xs:choice minOccurs="1" maxOccurs="1">
+            
+            <xs:element name="procedureCoding" type="Coding"/>
+            <xs:element name="procedureReference" type="Reference"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="ExplanationOfBenefit.Coverage">
     
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="coverage" minOccurs="1" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="1" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="relationship" minOccurs="1" maxOccurs="1" type="Coding">
-            
-          </xs:element>
+            <xs:element name="coverageIdentifier" type="Identifier"/>
+            <xs:element name="coverageReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="preAuthRef" minOccurs="0" maxOccurs="unbounded" type="string">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ExplanationOfBenefit.Onset">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="timeDate" type="date"/>
+            <xs:element name="timePeriod" type="Period"/>
+          </xs:choice>
+          <xs:element name="type" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
         </xs:sequence>
@@ -8103,13 +8371,32 @@
           <xs:element name="type" minOccurs="1" maxOccurs="1" type="Coding">
             
           </xs:element>
-          <xs:element name="provider" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="providerIdentifier" type="Identifier"/>
+            <xs:element name="providerReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="supervisorIdentifier" type="Identifier"/>
+            <xs:element name="supervisorReference" type="Reference"/>
+          </xs:choice>
+          <xs:element name="providerQualification" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="diagnosisLinkId" minOccurs="0" maxOccurs="unbounded" type="positiveInt">
             
           </xs:element>
           <xs:element name="service" minOccurs="1" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="serviceModifier" minOccurs="0" maxOccurs="unbounded" type="Coding">
+            
+          </xs:element>
+          <xs:element name="modifier" minOccurs="0" maxOccurs="unbounded" type="Coding">
+            
+          </xs:element>
+          <xs:element name="programCode" minOccurs="0" maxOccurs="unbounded" type="Coding">
             
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1">
@@ -8135,16 +8422,13 @@
           <xs:element name="net" minOccurs="0" maxOccurs="1" type="Money">
             
           </xs:element>
-          <xs:element name="udi" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="udi" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
           <xs:element name="bodySite" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="subSite" minOccurs="0" maxOccurs="unbounded" type="Coding">
-            
-          </xs:element>
-          <xs:element name="modifier" minOccurs="0" maxOccurs="unbounded" type="Coding">
             
           </xs:element>
           <xs:element name="noteNumber" minOccurs="0" maxOccurs="unbounded" type="positiveInt">
@@ -8198,6 +8482,9 @@
           <xs:element name="service" minOccurs="1" maxOccurs="1" type="Coding">
             
           </xs:element>
+          <xs:element name="programCode" minOccurs="0" maxOccurs="unbounded" type="Coding">
+            
+          </xs:element>
           <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="SimpleQuantity">
             
           </xs:element>
@@ -8213,7 +8500,7 @@
           <xs:element name="net" minOccurs="0" maxOccurs="1" type="Money">
             
           </xs:element>
-          <xs:element name="udi" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="udi" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
           <xs:element name="adjudication" type="ExplanationOfBenefit.Adjudication1" minOccurs="0" maxOccurs="unbounded">
@@ -8231,7 +8518,7 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="code" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:element name="category" minOccurs="1" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="reason" minOccurs="0" maxOccurs="1" type="Coding">
@@ -8261,6 +8548,9 @@
           <xs:element name="service" minOccurs="1" maxOccurs="1" type="Coding">
             
           </xs:element>
+          <xs:element name="programCode" minOccurs="0" maxOccurs="unbounded" type="Coding">
+            
+          </xs:element>
           <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="SimpleQuantity">
             
           </xs:element>
@@ -8276,7 +8566,7 @@
           <xs:element name="net" minOccurs="0" maxOccurs="1" type="Money">
             
           </xs:element>
-          <xs:element name="udi" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="udi" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
           <xs:element name="adjudication" type="ExplanationOfBenefit.Adjudication2" minOccurs="0" maxOccurs="unbounded">
@@ -8291,7 +8581,7 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="code" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:element name="category" minOccurs="1" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="reason" minOccurs="0" maxOccurs="1" type="Coding">
@@ -8357,7 +8647,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="code" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:element name="category" minOccurs="1" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="reason" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="amount" minOccurs="0" maxOccurs="1" type="Money">
@@ -8393,7 +8686,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="code" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:element name="category" minOccurs="1" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="reason" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="amount" minOccurs="0" maxOccurs="1" type="Money">
@@ -8854,16 +9150,7 @@
           <xs:element name="actionIdentifier" minOccurs="0" maxOccurs="1" type="Identifier">
             
           </xs:element>
-          <xs:element name="number" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-          <xs:element name="supportingEvidence" minOccurs="0" maxOccurs="unbounded" type="Attachment">
-            
-          </xs:element>
-          <xs:element name="documentation" minOccurs="0" maxOccurs="unbounded" type="Attachment">
-            
-          </xs:element>
-          <xs:element name="participant" minOccurs="0" maxOccurs="unbounded" type="Reference">
+          <xs:element name="label" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
           <xs:element name="title" minOccurs="0" maxOccurs="1" type="string">
@@ -8878,13 +9165,66 @@
           <xs:element name="concept" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="GuidanceResponseActionType">
+          <xs:element name="supportingEvidence" minOccurs="0" maxOccurs="unbounded" type="Attachment">
+            
+          </xs:element>
+          <xs:element name="relatedAction" type="GuidanceResponse.RelatedAction" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+          <xs:element name="documentation" minOccurs="0" maxOccurs="unbounded" type="Attachment">
+            
+          </xs:element>
+          <xs:element name="participant" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
+          <xs:element name="type" minOccurs="0" maxOccurs="1" type="code">
+            
+          </xs:element>
+          <xs:element name="behavior" type="GuidanceResponse.Behavior" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
           <xs:element name="resource" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="actions" type="GuidanceResponse.Action" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="action" type="GuidanceResponse.Action" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GuidanceResponse.RelatedAction">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="actionIdentifier" minOccurs="1" maxOccurs="1" type="Identifier">
+            
+          </xs:element>
+          <xs:element name="relationship" minOccurs="1" maxOccurs="1" type="code">
+            
+          </xs:element>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="offsetQuantity" type="Duration"/>
+            <xs:element name="offsetRange" type="Range"/>
+          </xs:choice>
+          <xs:element name="anchor" minOccurs="0" maxOccurs="1" type="code">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GuidanceResponse.Behavior">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="value" minOccurs="1" maxOccurs="1" type="Coding">
             
           </xs:element>
         </xs:sequence>
@@ -8900,18 +9240,6 @@
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:attribute name="value" type="GuidanceResponseStatus-list" use="optional"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="GuidanceResponseActionType-list">
-    <xs:restriction base="xs:string">
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="GuidanceResponseActionType">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="GuidanceResponseActionType-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -8935,7 +9263,7 @@
           <xs:element name="serviceType" type="HealthcareService.ServiceType" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="location" minOccurs="1" maxOccurs="1" type="Reference">
+          <xs:element name="location" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
           <xs:element name="serviceName" minOccurs="0" maxOccurs="1" type="string">
@@ -9053,6 +9381,192 @@
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:attribute name="value" type="DaysOfWeek-list" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ImagingExcerpt" type="ImagingExcerpt">
+    
+  </xs:element>
+  <xs:complexType name="ImagingExcerpt">
+    
+    <xs:complexContent>
+      <xs:extension base="DomainResource">
+        <xs:sequence>
+          <xs:element name="uid" minOccurs="1" maxOccurs="1" type="oid">
+            
+          </xs:element>
+          <xs:element name="patient" minOccurs="1" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="authoringTime" minOccurs="0" maxOccurs="1" type="dateTime">
+            
+          </xs:element>
+          <xs:element name="author" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="title" minOccurs="1" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="study" type="ImagingExcerpt.Study" minOccurs="1" maxOccurs="unbounded">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ImagingExcerpt.Study">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="uid" minOccurs="1" maxOccurs="1" type="oid">
+            
+          </xs:element>
+          <xs:element name="imagingStudy" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="dicom" type="ImagingExcerpt.Dicom" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="viewable" type="ImagingExcerpt.Viewable" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="series" type="ImagingExcerpt.Series" minOccurs="1" maxOccurs="unbounded">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ImagingExcerpt.Dicom">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="dWebType">
+            
+          </xs:element>
+          <xs:element name="url" minOccurs="1" maxOccurs="1" type="uri">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ImagingExcerpt.Viewable">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="contentType" minOccurs="1" maxOccurs="1" type="code">
+            
+          </xs:element>
+          <xs:element name="height" minOccurs="0" maxOccurs="1" type="positiveInt">
+            
+          </xs:element>
+          <xs:element name="width" minOccurs="0" maxOccurs="1" type="positiveInt">
+            
+          </xs:element>
+          <xs:element name="frames" minOccurs="0" maxOccurs="1" type="positiveInt">
+            
+          </xs:element>
+          <xs:element name="duration" minOccurs="0" maxOccurs="1" type="unsignedInt">
+            
+          </xs:element>
+          <xs:element name="size" minOccurs="0" maxOccurs="1" type="unsignedInt">
+            
+          </xs:element>
+          <xs:element name="title" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="url" minOccurs="1" maxOccurs="1" type="uri">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ImagingExcerpt.Series">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="uid" minOccurs="1" maxOccurs="1" type="oid">
+            
+          </xs:element>
+          <xs:element name="dicom" type="ImagingExcerpt.Dicom1" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="instance" type="ImagingExcerpt.Instance" minOccurs="1" maxOccurs="unbounded">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ImagingExcerpt.Dicom1">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="dWebType">
+            
+          </xs:element>
+          <xs:element name="url" minOccurs="1" maxOccurs="1" type="uri">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ImagingExcerpt.Instance">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="sopClass" minOccurs="1" maxOccurs="1" type="oid">
+            
+          </xs:element>
+          <xs:element name="uid" minOccurs="1" maxOccurs="1" type="oid">
+            
+          </xs:element>
+          <xs:element name="dicom" type="ImagingExcerpt.Dicom2" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="frameNumbers" minOccurs="0" maxOccurs="unbounded" type="unsignedInt">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ImagingExcerpt.Dicom2">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="dWebType">
+            
+          </xs:element>
+          <xs:element name="url" minOccurs="1" maxOccurs="1" type="uri">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="dWebType-list">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="dWebType">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="dWebType-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -9664,7 +10178,7 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="purpose" minOccurs="1" maxOccurs="1" type="GuideResourcePurpose">
+          <xs:element name="example" minOccurs="1" maxOccurs="1" type="boolean">
             
           </xs:element>
           <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
@@ -9730,18 +10244,6 @@
             
           </xs:element>
         </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="GuideResourcePurpose-list">
-    <xs:restriction base="xs:string">
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="GuideResourcePurpose">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="GuideResourcePurpose-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -10136,7 +10638,7 @@
           <xs:element name="scoring" minOccurs="0" maxOccurs="1" type="MeasureScoring">
             
           </xs:element>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="MeasureType">
+          <xs:element name="type" minOccurs="0" maxOccurs="unbounded" type="MeasureType">
             
           </xs:element>
           <xs:element name="riskAdjustment" minOccurs="0" maxOccurs="1" type="string">
@@ -10166,10 +10668,7 @@
           <xs:element name="group" type="Measure.Group" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="stratifier" minOccurs="0" maxOccurs="unbounded" type="string">
-            
-          </xs:element>
-          <xs:element name="supplementalData" minOccurs="0" maxOccurs="unbounded" type="string">
+          <xs:element name="supplementalData" type="Measure.SupplementalData" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
         </xs:sequence>
@@ -10181,10 +10680,19 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="name" minOccurs="1" maxOccurs="1" type="string">
+          <xs:element name="identifier" minOccurs="1" maxOccurs="1" type="Identifier">
+            
+          </xs:element>
+          <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
           <xs:element name="population" type="Measure.Population" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="stratifier" type="Measure.Stratifier" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
         </xs:sequence>
@@ -10215,6 +10723,45 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="Measure.Stratifier">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="identifier" minOccurs="1" maxOccurs="1" type="Identifier">
+            
+          </xs:element>
+          <xs:element name="criteria" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="path" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Measure.SupplementalData">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="identifier" minOccurs="1" maxOccurs="1" type="Identifier">
+            
+          </xs:element>
+          <xs:element name="usage" minOccurs="0" maxOccurs="unbounded" type="MeasureDataUsage">
+            
+          </xs:element>
+          <xs:element name="criteria" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="path" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:simpleType name="MeasureType-list">
     <xs:restriction base="xs:string">
     </xs:restriction>
@@ -10224,6 +10771,18 @@
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:attribute name="value" type="MeasureType-list" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="MeasureDataUsage-list">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="MeasureDataUsage">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="MeasureDataUsage-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -10259,37 +10818,43 @@
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
-          <xs:element name="measure" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="measure" minOccurs="1" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="MeasureReportType">
             
           </xs:element>
           <xs:element name="patient" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="period" minOccurs="0" maxOccurs="1" type="Period">
+          <xs:element name="period" minOccurs="1" maxOccurs="1" type="Period">
             
           </xs:element>
-          <xs:element name="status" minOccurs="0" maxOccurs="1" type="MeasureReportStatus">
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="MeasureReportStatus">
             
           </xs:element>
-          <xs:element name="populationReport" type="MeasureReport.PopulationReport" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="reportingOrganization" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="reportingOrganization" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="evaluatedResources" type="MeasureReport.EvaluatedResources" minOccurs="0" maxOccurs="1">
+          <xs:element name="group" type="MeasureReport.Group" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="evaluatedResources" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="MeasureReport.PopulationReport">
+  <xs:complexType name="MeasureReport.Group">
     
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="name" minOccurs="1" maxOccurs="1" type="string">
+          <xs:element name="identifier" minOccurs="1" maxOccurs="1" type="Identifier">
             
           </xs:element>
           <xs:element name="population" type="MeasureReport.Population" minOccurs="0" maxOccurs="unbounded">
@@ -10331,7 +10896,22 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="name" minOccurs="1" maxOccurs="1" type="string">
+          <xs:element name="identifier" minOccurs="1" maxOccurs="1" type="Identifier">
+            
+          </xs:element>
+          <xs:element name="group" type="MeasureReport.Group1" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MeasureReport.Group1">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="value" minOccurs="1" maxOccurs="1" type="string">
             
           </xs:element>
           <xs:element name="population" type="MeasureReport.Population1" minOccurs="0" maxOccurs="unbounded">
@@ -10367,40 +10947,28 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="name" minOccurs="1" maxOccurs="1" type="string">
+          <xs:element name="identifier" minOccurs="1" maxOccurs="1" type="Identifier">
             
           </xs:element>
-          <xs:element name="group" type="MeasureReport.Group" minOccurs="1" maxOccurs="unbounded">
+          <xs:element name="group" type="MeasureReport.Group2" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="MeasureReport.Group">
+  <xs:complexType name="MeasureReport.Group2">
     
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="count" minOccurs="1" maxOccurs="1" type="integer">
+          <xs:element name="value" minOccurs="1" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="count" minOccurs="0" maxOccurs="1" type="integer">
             
           </xs:element>
           <xs:element name="patients" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="MeasureReport.EvaluatedResources">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="url" minOccurs="1" maxOccurs="1" type="uri">
-            
-          </xs:element>
-          <xs:element name="value" minOccurs="1" maxOccurs="1" type="string">
             
           </xs:element>
         </xs:sequence>
@@ -10416,6 +10984,18 @@
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:attribute name="value" type="MeasureReportStatus-list" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="MeasureReportType-list">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="MeasureReportType">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="MeasureReportType-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -10529,9 +11109,11 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="item" minOccurs="1" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="1" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="itemCodeableConcept" type="CodeableConcept"/>
+            <xs:element name="itemReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="amount" minOccurs="0" maxOccurs="1" type="Ratio">
             
           </xs:element>
@@ -10574,9 +11156,11 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="item" minOccurs="1" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="1" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="itemCodeableConcept" type="CodeableConcept"/>
+            <xs:element name="itemReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="amount" minOccurs="0" maxOccurs="1" type="SimpleQuantity">
             
           </xs:element>
@@ -10855,11 +11439,12 @@
           <xs:element name="prescriber" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:choice minOccurs="0" maxOccurs="1">
+          <xs:element name="reasonCode" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
-            <xs:element name="reasonCodeableConcept" type="CodeableConcept"/>
-            <xs:element name="reasonReference" type="Reference"/>
-          </xs:choice>
+          </xs:element>
+          <xs:element name="reasonReference" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
           <xs:element name="dateEnded" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
@@ -10924,6 +11509,7 @@
             
             <xs:element name="rateRatio" type="Ratio"/>
             <xs:element name="rateRange" type="Range"/>
+            <xs:element name="rateQuantity" type="SimpleQuantity"/>
           </xs:choice>
           <xs:element name="maxDosePerPeriod" minOccurs="0" maxOccurs="1" type="Ratio">
             
@@ -11015,6 +11601,9 @@
           <xs:element name="informationSource" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
+          <xs:element name="supportingInformation" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
           <xs:element name="dateAsserted" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
@@ -11030,9 +11619,6 @@
             <xs:element name="reasonForUseReference" type="Reference"/>
           </xs:choice>
           <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
-            
-          </xs:element>
-          <xs:element name="supportingInformation" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
           <xs:element name="dosage" type="MedicationStatement.Dosage" minOccurs="0" maxOccurs="unbounded">
@@ -11433,6 +12019,9 @@
           <xs:element name="kind" minOccurs="1" maxOccurs="1" type="NamingSystemType">
             
           </xs:element>
+          <xs:element name="date" minOccurs="1" maxOccurs="1" type="dateTime">
+            
+          </xs:element>
           <xs:element name="publisher" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
@@ -11440,9 +12029,6 @@
             
           </xs:element>
           <xs:element name="responsible" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-          <xs:element name="date" minOccurs="1" maxOccurs="1" type="dateTime">
             
           </xs:element>
           <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -11928,16 +12514,19 @@
           <xs:element name="experimental" minOccurs="0" maxOccurs="1" type="boolean">
             
           </xs:element>
+          <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
+            
+          </xs:element>
           <xs:element name="publisher" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
           <xs:element name="contact" type="OperationDefinition.Contact" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="requirements" minOccurs="0" maxOccurs="1" type="string">
@@ -11949,7 +12538,7 @@
           <xs:element name="code" minOccurs="1" maxOccurs="1" type="code">
             
           </xs:element>
-          <xs:element name="notes" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="comment" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
           <xs:element name="base" minOccurs="0" maxOccurs="1" type="Reference">
@@ -12007,6 +12596,9 @@
             
           </xs:element>
           <xs:element name="type" minOccurs="0" maxOccurs="1" type="code">
+            
+          </xs:element>
+          <xs:element name="searchType" minOccurs="0" maxOccurs="1" type="SearchParamType">
             
           </xs:element>
           <xs:element name="profile" minOccurs="0" maxOccurs="1" type="Reference">
@@ -12096,6 +12688,9 @@
             
           </xs:element>
           <xs:element name="location" minOccurs="0" maxOccurs="unbounded" type="string">
+            
+          </xs:element>
+          <xs:element name="expression" minOccurs="0" maxOccurs="unbounded" type="string">
             
           </xs:element>
         </xs:sequence>
@@ -12555,21 +13150,31 @@
           <xs:element name="created" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="target" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="provider" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="targetIdentifier" type="Identifier"/>
+            <xs:element name="targetReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="organization" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="providerIdentifier" type="Identifier"/>
+            <xs:element name="providerReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="request" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="organizationIdentifier" type="Identifier"/>
+            <xs:element name="organizationReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="response" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="requestIdentifier" type="Identifier"/>
+            <xs:element name="requestReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="responseIdentifier" type="Identifier"/>
+            <xs:element name="responseReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="paymentStatus" minOccurs="1" maxOccurs="1" type="Coding">
             
           </xs:element>
@@ -12591,9 +13196,11 @@
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             
           </xs:element>
-          <xs:element name="request" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="requestIdentifier" type="Identifier"/>
+            <xs:element name="requestReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="outcome" minOccurs="0" maxOccurs="1" type="RemittanceOutcome">
             
           </xs:element>
@@ -12612,15 +13219,21 @@
           <xs:element name="period" minOccurs="0" maxOccurs="1" type="Period">
             
           </xs:element>
-          <xs:element name="organization" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="requestProvider" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="organizationIdentifier" type="Identifier"/>
+            <xs:element name="organizationReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="requestOrganization" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="requestProviderIdentifier" type="Identifier"/>
+            <xs:element name="requestProviderReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="requestOrganizationIdentifier" type="Identifier"/>
+            <xs:element name="requestOrganizationReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="detail" type="PaymentReconciliation.Detail" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
@@ -12645,18 +13258,26 @@
           <xs:element name="type" minOccurs="1" maxOccurs="1" type="Coding">
             
           </xs:element>
-          <xs:element name="request" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="responce" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="requestIdentifier" type="Identifier"/>
+            <xs:element name="requestReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="submitter" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="responceIdentifier" type="Identifier"/>
+            <xs:element name="responceReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="payee" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="submitterIdentifier" type="Identifier"/>
+            <xs:element name="submitterReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="payeeIdentifier" type="Identifier"/>
+            <xs:element name="payeeReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="date" minOccurs="0" maxOccurs="1" type="date">
             
           </xs:element>
@@ -12765,7 +13386,7 @@
           <xs:element name="active" minOccurs="0" maxOccurs="1" type="boolean">
             
           </xs:element>
-          <xs:element name="name" minOccurs="0" maxOccurs="1" type="HumanName">
+          <xs:element name="name" minOccurs="0" maxOccurs="unbounded" type="HumanName">
             
           </xs:element>
           <xs:element name="telecom" minOccurs="0" maxOccurs="unbounded" type="ContactPoint">
@@ -12801,13 +13422,19 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="managingOrganization" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="organization" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
           <xs:element name="role" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="specialty" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
+            
+          </xs:element>
+          <xs:element name="telecom" minOccurs="0" maxOccurs="unbounded" type="ContactPoint">
             
           </xs:element>
           <xs:element name="period" minOccurs="0" maxOccurs="1" type="Period">
@@ -12838,6 +13465,48 @@
             
           </xs:element>
           <xs:element name="issuer" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PractitionerRole" type="PractitionerRole">
+    
+  </xs:element>
+  <xs:complexType name="PractitionerRole">
+    
+    <xs:complexContent>
+      <xs:extension base="DomainResource">
+        <xs:sequence>
+          <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
+            
+          </xs:element>
+          <xs:element name="active" minOccurs="0" maxOccurs="1" type="boolean">
+            
+          </xs:element>
+          <xs:element name="practitioner" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="organization" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="role" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="specialty" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="location" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
+          <xs:element name="healthcareService" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
+          <xs:element name="telecom" minOccurs="0" maxOccurs="unbounded" type="ContactPoint">
+            
+          </xs:element>
+          <xs:element name="period" minOccurs="0" maxOccurs="1" type="Period">
             
           </xs:element>
         </xs:sequence>
@@ -13073,21 +13742,31 @@
           <xs:element name="created" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="target" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="provider" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="targetIdentifier" type="Identifier"/>
+            <xs:element name="targetReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="organization" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="providerIdentifier" type="Identifier"/>
+            <xs:element name="providerReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="request" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="organizationIdentifier" type="Identifier"/>
+            <xs:element name="organizationReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="response" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="requestIdentifier" type="Identifier"/>
+            <xs:element name="requestReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="responseIdentifier" type="Identifier"/>
+            <xs:element name="responseReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="nullify" minOccurs="0" maxOccurs="1" type="boolean">
             
           </xs:element>
@@ -13145,9 +13824,11 @@
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             
           </xs:element>
-          <xs:element name="request" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="requestIdentifier" type="Identifier"/>
+            <xs:element name="requestReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="outcome" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
@@ -13163,15 +13844,21 @@
           <xs:element name="created" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="organization" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="requestProvider" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="organizationIdentifier" type="Identifier"/>
+            <xs:element name="organizationReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="requestOrganization" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="requestProviderIdentifier" type="Identifier"/>
+            <xs:element name="requestProviderReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="requestOrganizationIdentifier" type="Identifier"/>
+            <xs:element name="requestOrganizationReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="form" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
@@ -13958,7 +14645,13 @@
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             
           </xs:element>
-          <xs:element name="type" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+          <xs:element name="serviceCategory" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="serviceType" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="specialty" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="actor" minOccurs="1" maxOccurs="1" type="Reference">
@@ -13994,13 +14687,16 @@
           <xs:element name="experimental" minOccurs="0" maxOccurs="1" type="boolean">
             
           </xs:element>
+          <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
+            
+          </xs:element>
           <xs:element name="publisher" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
           <xs:element name="contact" type="SearchParameter.Contact" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
+          <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="requirements" minOccurs="0" maxOccurs="1" type="string">
@@ -14016,6 +14712,9 @@
             
           </xs:element>
           <xs:element name="description" minOccurs="1" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="expression" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
           <xs:element name="xpath" minOccurs="0" maxOccurs="1" type="string">
@@ -14069,28 +14768,25 @@
           <xs:element name="type" minOccurs="1" maxOccurs="1" type="sequenceType">
             
           </xs:element>
-          <xs:element name="variationID" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+          <xs:element name="patient" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="referenceSeq" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="specimen" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="device" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
           <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="Quantity">
             
           </xs:element>
-          <xs:element name="coordinate" type="Sequence.Coordinate" minOccurs="0" maxOccurs="unbounded">
-            
-          </xs:element>
           <xs:element name="species" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="observedAllele" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="referenceSeq" type="Sequence.ReferenceSeq" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="referenceAllele" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-          <xs:element name="cigar" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="variation" type="Sequence.Variation" minOccurs="0" maxOccurs="1">
             
           </xs:element>
           <xs:element name="quality" type="Sequence.Quality" minOccurs="0" maxOccurs="unbounded">
@@ -14108,17 +14804,26 @@
           <xs:element name="readCoverage" minOccurs="0" maxOccurs="1" type="integer">
             
           </xs:element>
-          <xs:element name="chip" type="Sequence.Chip" minOccurs="0" maxOccurs="1">
+          <xs:element name="repository" type="Sequence.Repository" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="repository" type="Sequence.Repository" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="pointer" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
+          <xs:element name="observedSeq" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="observation" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="structureVariation" type="Sequence.StructureVariation" minOccurs="0" maxOccurs="1">
             
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="Sequence.Coordinate">
+  <xs:complexType name="Sequence.ReferenceSeq">
     
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -14126,13 +14831,46 @@
           <xs:element name="chromosome" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
+          <xs:element name="genomeBuild" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="referenceSeqId" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="referenceSeqPointer" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="referenceSeqString" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="windowStart" minOccurs="1" maxOccurs="1" type="integer">
+            
+          </xs:element>
+          <xs:element name="windowEnd" minOccurs="1" maxOccurs="1" type="integer">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Sequence.Variation">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
           <xs:element name="start" minOccurs="0" maxOccurs="1" type="integer">
             
           </xs:element>
           <xs:element name="end" minOccurs="0" maxOccurs="1" type="integer">
             
           </xs:element>
-          <xs:element name="genomeBuild" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="observedAllele" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="referenceAllele" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="cigar" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
         </xs:sequence>
@@ -14153,25 +14891,7 @@
           <xs:element name="score" minOccurs="0" maxOccurs="1" type="Quantity">
             
           </xs:element>
-          <xs:element name="platform" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Sequence.Chip">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="chipId" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-          <xs:element name="manufacturerId" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-          <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="method" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
         </xs:sequence>
@@ -14189,13 +14909,64 @@
           <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="structure" minOccurs="0" maxOccurs="1" type="uri">
-            
-          </xs:element>
           <xs:element name="variantId" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="readGroupSetId" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="readId" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Sequence.StructureVariation">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="precisionOfBoundaries" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="reportedaCGHRatio" minOccurs="0" maxOccurs="1" type="decimal">
+            
+          </xs:element>
+          <xs:element name="length" minOccurs="0" maxOccurs="1" type="integer">
+            
+          </xs:element>
+          <xs:element name="outer" type="Sequence.Outer" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+          <xs:element name="inner" type="Sequence.Inner" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Sequence.Outer">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="start" minOccurs="0" maxOccurs="1" type="integer">
+            
+          </xs:element>
+          <xs:element name="end" minOccurs="0" maxOccurs="1" type="integer">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Sequence.Inner">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="start" minOccurs="0" maxOccurs="1" type="integer">
+            
+          </xs:element>
+          <xs:element name="end" minOccurs="0" maxOccurs="1" type="integer">
             
           </xs:element>
         </xs:sequence>
@@ -14225,13 +14996,22 @@
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             
           </xs:element>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="serviceCategory" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="serviceType" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="specialty" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="appointmentType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="schedule" minOccurs="1" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="freeBusyType" minOccurs="1" maxOccurs="1" type="SlotStatus">
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="SlotStatus">
             
           </xs:element>
           <xs:element name="start" minOccurs="1" maxOccurs="1" type="instant">
@@ -14715,6 +15495,9 @@
           <xs:element name="target" type="StructureMap.Target" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
+          <xs:element name="rule" type="StructureMap.Rule" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
           <xs:element name="dependent" type="StructureMap.Dependent" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
@@ -14739,7 +15522,10 @@
           <xs:element name="contextType" minOccurs="1" maxOccurs="1" type="StructureMapContextType">
             
           </xs:element>
-          <xs:element name="field" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="element" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="listMode" minOccurs="0" maxOccurs="1" type="StructureMapListMode">
             
           </xs:element>
           <xs:element name="variable" minOccurs="0" maxOccurs="1" type="id">
@@ -14766,7 +15552,7 @@
           <xs:element name="contextType" minOccurs="1" maxOccurs="1" type="StructureMapContextType">
             
           </xs:element>
-          <xs:element name="field" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="element" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
           <xs:element name="variable" minOccurs="0" maxOccurs="1" type="id">
@@ -15152,6 +15938,206 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:element name="Task" type="Task">
+    
+  </xs:element>
+  <xs:complexType name="Task">
+    
+    <xs:complexContent>
+      <xs:extension base="DomainResource">
+        <xs:sequence>
+          <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
+            
+          </xs:element>
+          <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="performerType" minOccurs="0" maxOccurs="unbounded" type="Coding">
+            
+          </xs:element>
+          <xs:element name="priority" minOccurs="0" maxOccurs="1" type="TaskPriority">
+            
+          </xs:element>
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="TaskStatus">
+            
+          </xs:element>
+          <xs:element name="suspended" minOccurs="1" maxOccurs="1" type="boolean">
+            
+          </xs:element>
+          <xs:element name="failureReason" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="subject" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="for" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="definition" minOccurs="0" maxOccurs="1" type="uri">
+            
+          </xs:element>
+          <xs:element name="created" minOccurs="1" maxOccurs="1" type="dateTime">
+            
+          </xs:element>
+          <xs:element name="lastModified" minOccurs="1" maxOccurs="1" type="dateTime">
+            
+          </xs:element>
+          <xs:element name="creator" minOccurs="1" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="owner" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="subtask" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
+          <xs:element name="input" type="Task.Input" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="output" type="Task.Output" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Task.Input">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="name" minOccurs="1" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:choice minOccurs="1" maxOccurs="1">
+            
+            <xs:element name="valueBoolean" type="boolean"/>
+            <xs:element name="valueInteger" type="integer"/>
+            <xs:element name="valueDecimal" type="decimal"/>
+            <xs:element name="valueBase64Binary" type="base64Binary"/>
+            <xs:element name="valueInstant" type="instant"/>
+            <xs:element name="valueString" type="string"/>
+            <xs:element name="valueUri" type="uri"/>
+            <xs:element name="valueDate" type="date"/>
+            <xs:element name="valueDateTime" type="dateTime"/>
+            <xs:element name="valueTime" type="time"/>
+            <xs:element name="valueCode" type="code"/>
+            <xs:element name="valueOid" type="oid"/>
+            <xs:element name="valueUuid" type="uuid"/>
+            <xs:element name="valueId" type="id"/>
+            <xs:element name="valueUnsignedInt" type="unsignedInt"/>
+            <xs:element name="valuePositiveInt" type="positiveInt"/>
+            <xs:element name="valueMarkdown" type="markdown"/>
+            <xs:element name="valueAnnotation" type="Annotation"/>
+            <xs:element name="valueAttachment" type="Attachment"/>
+            <xs:element name="valueIdentifier" type="Identifier"/>
+            <xs:element name="valueCodeableConcept" type="CodeableConcept"/>
+            <xs:element name="valueCoding" type="Coding"/>
+            <xs:element name="valueQuantity" type="Quantity"/>
+            <xs:element name="valueRange" type="Range"/>
+            <xs:element name="valuePeriod" type="Period"/>
+            <xs:element name="valueRatio" type="Ratio"/>
+            <xs:element name="valueReference" type="Reference"/>
+            <xs:element name="valueSampledData" type="SampledData"/>
+            <xs:element name="valueSignature" type="Signature"/>
+            <xs:element name="valueHumanName" type="HumanName"/>
+            <xs:element name="valueAddress" type="Address"/>
+            <xs:element name="valueContactPoint" type="ContactPoint"/>
+            <xs:element name="valueTiming" type="Timing"/>
+            <xs:element name="valueMeta" type="Meta"/>
+            <xs:element name="valueElementDefinition" type="ElementDefinition"/>
+            <xs:element name="valueModuleMetadata" type="ModuleMetadata"/>
+            <xs:element name="valueDataRequirement" type="DataRequirement"/>
+            <xs:element name="valueActionDefinition" type="ActionDefinition"/>
+            <xs:element name="valueParameterDefinition" type="ParameterDefinition"/>
+            <xs:element name="valueTriggerDefinition" type="TriggerDefinition"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Task.Output">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="name" minOccurs="1" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:choice minOccurs="1" maxOccurs="1">
+            
+            <xs:element name="valueBoolean" type="boolean"/>
+            <xs:element name="valueInteger" type="integer"/>
+            <xs:element name="valueDecimal" type="decimal"/>
+            <xs:element name="valueBase64Binary" type="base64Binary"/>
+            <xs:element name="valueInstant" type="instant"/>
+            <xs:element name="valueString" type="string"/>
+            <xs:element name="valueUri" type="uri"/>
+            <xs:element name="valueDate" type="date"/>
+            <xs:element name="valueDateTime" type="dateTime"/>
+            <xs:element name="valueTime" type="time"/>
+            <xs:element name="valueCode" type="code"/>
+            <xs:element name="valueOid" type="oid"/>
+            <xs:element name="valueUuid" type="uuid"/>
+            <xs:element name="valueId" type="id"/>
+            <xs:element name="valueUnsignedInt" type="unsignedInt"/>
+            <xs:element name="valuePositiveInt" type="positiveInt"/>
+            <xs:element name="valueMarkdown" type="markdown"/>
+            <xs:element name="valueAnnotation" type="Annotation"/>
+            <xs:element name="valueAttachment" type="Attachment"/>
+            <xs:element name="valueIdentifier" type="Identifier"/>
+            <xs:element name="valueCodeableConcept" type="CodeableConcept"/>
+            <xs:element name="valueCoding" type="Coding"/>
+            <xs:element name="valueQuantity" type="Quantity"/>
+            <xs:element name="valueRange" type="Range"/>
+            <xs:element name="valuePeriod" type="Period"/>
+            <xs:element name="valueRatio" type="Ratio"/>
+            <xs:element name="valueReference" type="Reference"/>
+            <xs:element name="valueSampledData" type="SampledData"/>
+            <xs:element name="valueSignature" type="Signature"/>
+            <xs:element name="valueHumanName" type="HumanName"/>
+            <xs:element name="valueAddress" type="Address"/>
+            <xs:element name="valueContactPoint" type="ContactPoint"/>
+            <xs:element name="valueTiming" type="Timing"/>
+            <xs:element name="valueMeta" type="Meta"/>
+            <xs:element name="valueElementDefinition" type="ElementDefinition"/>
+            <xs:element name="valueModuleMetadata" type="ModuleMetadata"/>
+            <xs:element name="valueDataRequirement" type="DataRequirement"/>
+            <xs:element name="valueActionDefinition" type="ActionDefinition"/>
+            <xs:element name="valueParameterDefinition" type="ParameterDefinition"/>
+            <xs:element name="valueTriggerDefinition" type="TriggerDefinition"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="TaskPriority-list">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="TaskPriority">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="TaskPriority-list" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="TaskStatus-list">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="TaskStatus">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="TaskStatus-list" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:element name="TestScript" type="TestScript">
     
   </xs:element>
@@ -15199,16 +16185,13 @@
           <xs:element name="copyright" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="metadata" type="TestScript.Metadata" minOccurs="0" maxOccurs="1">
-            
-          </xs:element>
           <xs:element name="origin" type="TestScript.Origin" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
           <xs:element name="destination" type="TestScript.Destination" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="multiserver" minOccurs="0" maxOccurs="1" type="boolean">
+          <xs:element name="metadata" type="TestScript.Metadata" minOccurs="0" maxOccurs="1">
             
           </xs:element>
           <xs:element name="fixture" type="TestScript.Fixture" minOccurs="0" maxOccurs="unbounded">
@@ -15218,6 +16201,12 @@
             
           </xs:element>
           <xs:element name="variable" type="TestScript.Variable" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="rule" type="TestScript.Rule" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="ruleset" type="TestScript.Ruleset" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
           <xs:element name="setup" type="TestScript.Setup" minOccurs="0" maxOccurs="1">
@@ -15242,6 +16231,36 @@
             
           </xs:element>
           <xs:element name="telecom" minOccurs="0" maxOccurs="unbounded" type="ContactPoint">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TestScript.Origin">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="index" minOccurs="1" maxOccurs="1" type="integer">
+            
+          </xs:element>
+          <xs:element name="profile" minOccurs="1" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TestScript.Destination">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="index" minOccurs="1" maxOccurs="1" type="integer">
+            
+          </xs:element>
+          <xs:element name="profile" minOccurs="1" maxOccurs="1" type="Coding">
             
           </xs:element>
         </xs:sequence>
@@ -15308,36 +16327,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="TestScript.Origin">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="index" minOccurs="1" maxOccurs="1" type="integer">
-            
-          </xs:element>
-          <xs:element name="profile" minOccurs="1" maxOccurs="1" type="ProfileOriginType">
-            
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="TestScript.Destination">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="index" minOccurs="1" maxOccurs="1" type="integer">
-            
-          </xs:element>
-          <xs:element name="profile" minOccurs="1" maxOccurs="1" type="ProfileDestinationType">
-            
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="TestScript.Fixture">
     
     <xs:complexContent>
@@ -15374,6 +16363,78 @@
             
           </xs:element>
           <xs:element name="sourceId" minOccurs="0" maxOccurs="1" type="id">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TestScript.Rule">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="resource" minOccurs="1" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="param" type="TestScript.Param" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TestScript.Param">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="name" minOccurs="1" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="value" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TestScript.Ruleset">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="resource" minOccurs="1" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="rule" type="TestScript.Rule1" minOccurs="1" maxOccurs="unbounded">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TestScript.Rule1">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="param" type="TestScript.Param1" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TestScript.Param1">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="name" minOccurs="1" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="value" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
         </xs:sequence>
@@ -15526,6 +16587,12 @@
           <xs:element name="responseCode" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
+          <xs:element name="rule" type="TestScript.Rule2" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+          <xs:element name="ruleset" type="TestScript.Ruleset1" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
           <xs:element name="sourceId" minOccurs="0" maxOccurs="1" type="id">
             
           </xs:element>
@@ -15536,6 +16603,72 @@
             
           </xs:element>
           <xs:element name="warningOnly" minOccurs="0" maxOccurs="1" type="boolean">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TestScript.Rule2">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="param" type="TestScript.Param2" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TestScript.Param2">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="name" minOccurs="1" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="value" minOccurs="1" maxOccurs="1" type="string">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TestScript.Ruleset1">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="rule" type="TestScript.Rule3" minOccurs="1" maxOccurs="unbounded">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TestScript.Rule3">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="param" type="TestScript.Param3" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TestScript.Param3">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="name" minOccurs="1" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="value" minOccurs="1" maxOccurs="1" type="string">
             
           </xs:element>
         </xs:sequence>
@@ -15602,18 +16735,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:simpleType name="ProfileOriginType-list">
-    <xs:restriction base="xs:string">
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="ProfileOriginType">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="ProfileOriginType-list" use="optional"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:simpleType name="ContentType-list">
     <xs:restriction base="xs:string">
     </xs:restriction>
@@ -15659,18 +16780,6 @@
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:attribute name="value" type="AssertionResponseTypes-list" use="optional"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="ProfileDestinationType-list">
-    <xs:restriction base="xs:string">
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="ProfileDestinationType">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="ProfileDestinationType-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
