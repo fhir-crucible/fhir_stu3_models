@@ -8,7 +8,6 @@ module FHIR
     def to_json
       hash = {}
       hash = self.to_hash
-      hash['resourceType'] = self.class.name.split('::').last
       JSON.pretty_unparse(hash)
     end
 

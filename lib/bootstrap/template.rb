@@ -39,6 +39,7 @@ module FHIR
         space = indent(@name.length+1,offset)
         s << "#{space}include FHIR::Hashable" if(@name.length > 0)
         s << "#{space}include FHIR::Json" if(@name.length > 0)
+        s << "#{space}include FHIR::Xml" if(@name.length > 0)
         s << ''
 
         # add mandatory METADATA constant

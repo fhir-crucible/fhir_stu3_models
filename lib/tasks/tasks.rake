@@ -7,7 +7,7 @@ namespace :fhir do
 
   desc 'generate fhir models'
   task :generate, [] do |t, args|
-    # createa a generator and load the definitions
+    # create a generator and load the definitions
     generator = FHIR::Boot::Generator.new
     # 1. generate the primitive data types
     generator.generate_primitives
@@ -69,7 +69,7 @@ namespace :fhir do
 
     # copy the version info
     copy_artifacts( ['version.info'], src, defns)
-    
+
     puts 'Done.'
   end
 
