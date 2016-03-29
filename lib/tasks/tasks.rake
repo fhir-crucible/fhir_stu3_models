@@ -67,6 +67,9 @@ namespace :fhir do
     files.keep_if{|f| !f.include?('canonical')}
     copy_artifacts(files, src, dest, false)
 
+    # copy the version info
+    copy_artifacts( ['version.info'], src, defns)
+    
     puts 'Done.'
   end
 
