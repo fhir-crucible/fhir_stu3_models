@@ -9,7 +9,6 @@ module FHIR
       hash = {}
       hash = self.to_hash
       hash['resourceType'] = self.class.name.split('::').last
-      # TODO special handling for extensions
       JSON.pretty_unparse(hash)
     end
 
