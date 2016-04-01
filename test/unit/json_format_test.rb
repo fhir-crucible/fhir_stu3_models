@@ -15,7 +15,7 @@ class JsonFormatTest < Test::Unit::TestCase
   ERROR_DIR = File.join('errors', 'JsonFormatTest')
   EXAMPLE_ROOT = File.join('examples','json')
 
-  # Automatically generate one test method per measure file
+  # Automatically generate one test method per example file
   example_files = File.join(EXAMPLE_ROOT, '**', '*.json')
 
   # Create a blank folder for the errors
@@ -23,7 +23,7 @@ class JsonFormatTest < Test::Unit::TestCase
   FileUtils.mkdir_p ERROR_DIR
   
   Dir.glob(example_files).each do | example_file |
-    example_name = File.basename(example_file, ".canonical.json")
+    example_name = File.basename(example_file, ".json")
     define_method("test_json_format_#{example_name}") do
       run_json_roundtrip_test(example_file, example_name)
     end

@@ -9,8 +9,8 @@ namespace :fhir do
   task :generate, [] do |t, args|
     # create a generator and load the definitions
     generator = FHIR::Boot::Generator.new
-    # 1. generate the primitive data types
-    generator.generate_primitives
+    # 1. generate the lists of primitive data types, complex types, and resources
+    generator.generate_metadata
     # 2. generate the complex data types
     generator.generate_types
     # 3. generate the base Resources
@@ -57,12 +57,22 @@ namespace :fhir do
     dest = File.join(defns,'schema')
     copy_artifacts(files, src, dest, false)
     
-    # delete the examples
+    # delete the JSON examples
     dest = File.join(root,'examples','json')
     puts '  Replacing JSON examples...'
     Dir.glob(File.join(dest,'*')).each{|f|File.delete(f) if !File.directory?(f)}
-    # copy the new examples over
+    # copy the new JSON examples over
     files = Dir.glob(File.join(src,'*-example*.json'))
+    files.map!{|f|File.basename(f)}
+    files.keep_if{|f| !f.include?('canonical')}
+    copy_artifacts(files, src, dest, false)
+
+    # delete the XML examples
+    dest = File.join(root,'examples','xml')
+    puts '  Replacing XML examples...'
+    Dir.glob(File.join(dest,'*')).each{|f|File.delete(f) if !File.directory?(f)}
+    # copy the new XML examples over
+    files = Dir.glob(File.join(src,'*-example*.xml'))
     files.map!{|f|File.basename(f)}
     files.keep_if{|f| !f.include?('canonical')}
     copy_artifacts(files, src, dest, false)
