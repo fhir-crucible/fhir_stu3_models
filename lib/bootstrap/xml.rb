@@ -20,7 +20,20 @@ module FHIR
     # to be the correct order for the XML serialization.
     def hash_to_xml_node(name,hash,doc)
       node = Nokogiri::XML::Node.new(name,doc)
+
+      # if hash contains resourceType
+      # create a child node with the name==resourceType
+      # fill that, and place the child under the above `node`
+      if hash['resourceType']
+        child_name = hash['resourceType']
+        hash.delete('resourceType')
+        child = hash_to_xml_node(child_name, hash, doc)
+        node.add_child(child)
+        return node
+      end
+
       hash.each do |key,value|
+        next if(['extension','modifierExtension'].include?(name) && key=='url')
         if value.is_a?(Hash)
           node.add_child(hash_to_xml_node(key,value,doc))
         elsif value.is_a?(Array)
@@ -46,6 +59,7 @@ module FHIR
           node.add_child(child)
         end
       end
+      node.set_attribute('url', hash['url']) if ['extension','modifierExtension'].include?(name)
       node
     end
 
@@ -89,9 +103,20 @@ module FHIR
             hash[key] = value
           end
         end
-
        end
-      hash
+      hash['url'] = node.get_attribute('url') if ['extension','modifierExtension'].include?(node.name)
+      hash['resourceType'] = node.name if FHIR::RESOURCES.include?(node.name)
+
+      if(
+          hash.keys.length==1 && 
+          FHIR::RESOURCES.include?(hash.keys.first) && 
+          hash.values.first.is_a?(Hash) && 
+          hash.values.first['resourceType']==hash.keys.first
+        )
+        hash.values.first
+      else
+        hash
+      end
     end
 
     private :hash_to_xml_node

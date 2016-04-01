@@ -51,13 +51,12 @@ module FHIR
         Dir.glob(File.join(@lib,'fhir','**','*')).each{|f|File.delete(f) if !File.directory?(f)}
       end
 
-      def generate_primitives
+      def generate_metadata
+        template = FHIR::Boot::Template.new([],true)
+        
         # primitive data types start with a lowercase letter
         primitives = @types.select{|t|t['id'][0]==t['id'][0].downcase}
-
-        template = FHIR::Boot::Template.new([],true)
         hash = {}
-
         primitives.each do |p|
           field = FHIR::Field.new
           field.name = nil
@@ -82,10 +81,16 @@ module FHIR
 
           hash[ p['id' ] ] = field.serialize
         end
-
         template.constants['PRIMITIVES'] = hash
 
-        filename = File.join(@lib,'fhir','types','primitives.rb')
+        # complex data types start with an uppercase letter
+        complexTypes = @types.select{|t|t['id'][0]==t['id'][0].upcase}.map{|t|t['id']}
+        template.constants['TYPES'] = complexTypes
+
+        # resources
+        template.constants['RESOURCES'] = @resources.map{|r|r['id']}
+
+        filename = File.join(@lib,'fhir','metadata.rb')
         file = File.open(filename,'w:UTF-8')
         file.write(template.to_s)
         file.close
