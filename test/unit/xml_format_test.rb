@@ -38,6 +38,9 @@ class XmlFormatTest < Test::Unit::TestCase
     input_nodes = Nokogiri::XML(input_xml)
     output_nodes = Nokogiri::XML(output_xml)
 
+    clean_nodes(input_nodes.root)
+    clean_nodes(output_nodes.root)
+
     errors = input_nodes.diff(output_nodes, added: true, removed: true).to_a
     errors.keep_if do |error|
       is_comment = (error.last.class==Nokogiri::XML::Comment)
@@ -52,6 +55,14 @@ class XmlFormatTest < Test::Unit::TestCase
     end
 
     assert errors.empty?, "Differences in generated XML vs original"
+  end
+
+  # process input to remove newlines and whitespace around text
+  def clean_nodes(node)
+    node.children.each do |child|
+      child.content = child.content.strip if(child.is_a?(Nokogiri::XML::Text))
+      clean_nodes(child) if !child.children.empty?
+    end
   end
 
 end
