@@ -85,7 +85,7 @@ module FHIR
     def self.xml_node_to_hash(node)
       hash = {}
       node.children.each do |child|
-        next if [Nokogiri::XML::Text].include?(child.class)
+        next if [Nokogiri::XML::Text,Nokogiri::XML::Comment].include?(child.class)
 
         key = child.name
         if node.name=='text' && key=='div'
@@ -107,7 +107,8 @@ module FHIR
       hash['url'] = node.get_attribute('url') if ['extension','modifierExtension'].include?(node.name)
       hash['resourceType'] = node.name if FHIR::RESOURCES.include?(node.name)
 
-      if(
+      if( # If this hash contains nothing but an embedded resource, we should return that
+          # embedded resource without the wrapper
           hash.keys.length==1 && 
           FHIR::RESOURCES.include?(hash.keys.first) && 
           hash.values.first.is_a?(Hash) && 
