@@ -2,7 +2,7 @@
   "resourceType": "Bundle",
   "id": "types",
   "meta": {
-    "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+    "lastUpdated": "2016-03-31T08:59:41.431-04:00"
   },
   "type": "collection",
   "entry": [
@@ -12,16 +12,18 @@
         "resourceType": "StructureDefinition",
         "id": "date",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/date",
         "name": "date",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -146,16 +148,18 @@
         "resourceType": "StructureDefinition",
         "id": "dateTime",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/dateTime",
         "name": "dateTime",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -280,17 +284,18 @@
         "resourceType": "StructureDefinition",
         "id": "code",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/code",
         "name": "code",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
-        "constrainedType": "string",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/string",
+        "baseType": "string",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/string",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -412,16 +417,18 @@
         "resourceType": "StructureDefinition",
         "id": "string",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/string",
         "name": "string",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -536,16 +543,18 @@
         "resourceType": "StructureDefinition",
         "id": "integer",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/integer",
         "name": "integer",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -674,17 +683,18 @@
         "resourceType": "StructureDefinition",
         "id": "oid",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/oid",
         "name": "oid",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
-        "constrainedType": "uri",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/uri",
+        "baseType": "uri",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/uri",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -806,16 +816,18 @@
         "resourceType": "StructureDefinition",
         "id": "uri",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/uri",
         "name": "uri",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -928,17 +940,18 @@
         "resourceType": "StructureDefinition",
         "id": "uuid",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/uuid",
         "name": "uuid",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
-        "constrainedType": "uri",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/uri",
+        "baseType": "uri",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/uri",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -1060,16 +1073,18 @@
         "resourceType": "StructureDefinition",
         "id": "instant",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/instant",
         "name": "instant",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -1182,16 +1197,18 @@
         "resourceType": "StructureDefinition",
         "id": "boolean",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/boolean",
         "name": "boolean",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -1304,16 +1321,18 @@
         "resourceType": "StructureDefinition",
         "id": "base64Binary",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/base64Binary",
         "name": "base64Binary",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -1426,17 +1445,18 @@
         "resourceType": "StructureDefinition",
         "id": "unsignedInt",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/unsignedInt",
         "name": "unsignedInt",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
-        "constrainedType": "integer",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/integer",
+        "baseType": "integer",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/integer",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -1558,17 +1578,18 @@
         "resourceType": "StructureDefinition",
         "id": "markdown",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/markdown",
         "name": "markdown",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
-        "constrainedType": "string",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/string",
+        "baseType": "string",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/string",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -1678,16 +1699,18 @@
         "resourceType": "StructureDefinition",
         "id": "time",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/time",
         "name": "time",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -1812,17 +1835,18 @@
         "resourceType": "StructureDefinition",
         "id": "id",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/id",
         "name": "id",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
-        "constrainedType": "string",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/string",
+        "baseType": "string",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/string",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -1944,17 +1968,18 @@
         "resourceType": "StructureDefinition",
         "id": "positiveInt",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/positiveInt",
         "name": "positiveInt",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
-        "constrainedType": "integer",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/integer",
+        "baseType": "integer",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/integer",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -2076,16 +2101,18 @@
         "resourceType": "StructureDefinition",
         "id": "decimal",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/decimal",
         "name": "decimal",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -2210,16 +2237,18 @@
         "resourceType": "StructureDefinition",
         "id": "Identifier",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Identifier",
         "name": "Identifier",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -2461,16 +2490,18 @@
         "resourceType": "StructureDefinition",
         "id": "Coding",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Coding",
         "name": "Coding",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -2650,16 +2681,18 @@
         "resourceType": "StructureDefinition",
         "id": "Reference",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Reference",
         "name": "Reference",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -2676,7 +2709,7 @@
                   "key": "ref-1",
                   "severity": "error",
                   "human": "SHALL have a local reference if the resource is provided inline",
-                  "expression": "reference.startsWith(\"#\").not() or ($context.reference.substring(1).log(\"url\") in $resource.contained.id.log(\"ids\"))",
+                  "expression": "reference.startsWith('#').not() or ($context.reference.substring(1).trace('url') in $resource.contained.id.trace('ids'))",
                   "xpath": "not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])"
                 }
               ]
@@ -2757,7 +2790,7 @@
                   "key": "ref-1",
                   "severity": "error",
                   "human": "SHALL have a local reference if the resource is provided inline",
-                  "expression": "reference.startsWith(\"#\").not() or ($context.reference.substring(1).log(\"url\") in $resource.contained.id.log(\"ids\"))",
+                  "expression": "reference.startsWith('#').not() or ($context.reference.substring(1).trace('url') in $resource.contained.id.trace('ids'))",
                   "xpath": "not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])"
                 }
               ]
@@ -2797,16 +2830,18 @@
         "resourceType": "StructureDefinition",
         "id": "Signature",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Signature",
         "name": "Signature",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -3068,16 +3103,18 @@
         "resourceType": "StructureDefinition",
         "id": "SampledData",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/SampledData",
         "name": "SampledData",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -3307,16 +3344,18 @@
         "resourceType": "StructureDefinition",
         "id": "Quantity",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Quantity",
         "name": "Quantity",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -3538,16 +3577,18 @@
         "resourceType": "StructureDefinition",
         "id": "Period",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Period",
         "name": "Period",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -3693,16 +3734,18 @@
         "resourceType": "StructureDefinition",
         "id": "Attachment",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Attachment",
         "name": "Attachment",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -3992,16 +4035,18 @@
         "resourceType": "StructureDefinition",
         "id": "Ratio",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Ratio",
         "name": "Ratio",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -4133,16 +4178,18 @@
         "resourceType": "StructureDefinition",
         "id": "Range",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Range",
         "name": "Range",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -4298,16 +4345,18 @@
         "resourceType": "StructureDefinition",
         "id": "Annotation",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Annotation",
         "name": "Annotation",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -4477,16 +4526,18 @@
         "resourceType": "StructureDefinition",
         "id": "CodeableConcept",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/CodeableConcept",
         "name": "CodeableConcept",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -4600,16 +4651,18 @@
         "resourceType": "StructureDefinition",
         "id": "Extension",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Extension",
         "name": "Extension",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -4917,16 +4970,18 @@
         "resourceType": "StructureDefinition",
         "id": "BackboneElement",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/BackboneElement",
         "name": "BackboneElement",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": true,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -5020,16 +5075,18 @@
         "resourceType": "StructureDefinition",
         "id": "Narrative",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Narrative",
         "name": "Narrative",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -5193,13 +5250,13 @@
         "resourceType": "StructureDefinition",
         "id": "Element",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Element",
         "name": "Element",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": true,
         "snapshot": {
@@ -5298,16 +5355,18 @@
         "resourceType": "StructureDefinition",
         "id": "HumanName",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/HumanName",
         "name": "HumanName",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -5547,16 +5606,18 @@
         "resourceType": "StructureDefinition",
         "id": "ContactPoint",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/ContactPoint",
         "name": "ContactPoint",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -5790,16 +5851,18 @@
         "resourceType": "StructureDefinition",
         "id": "Meta",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Meta",
         "name": "Meta",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -6001,16 +6064,18 @@
         "resourceType": "StructureDefinition",
         "id": "Address",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Address",
         "name": "Address",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -6352,16 +6417,18 @@
         "resourceType": "StructureDefinition",
         "id": "TriggerDefinition",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/TriggerDefinition",
         "name": "TriggerDefinition",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -6557,16 +6624,18 @@
         "resourceType": "StructureDefinition",
         "id": "ModuleMetadata",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/ModuleMetadata",
         "name": "ModuleMetadata",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -7559,16 +7628,18 @@
         "resourceType": "StructureDefinition",
         "id": "Timing",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Timing",
         "name": "Timing",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -8237,16 +8308,18 @@
         "resourceType": "StructureDefinition",
         "id": "ElementDefinition",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/ElementDefinition",
         "name": "ElementDefinition",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -8263,63 +8336,63 @@
                   "key": "eld-2",
                   "severity": "error",
                   "human": "Min <= Max",
-                  "expression": "min.empty() or max.empty() or (max = \"*\") or (min <= max.asInteger())",
+                  "expression": "min.empty() or max.empty() or (max = '*') or (min <= max.toInteger())",
                   "xpath": "not(exists(f:min)) or not(exists(f:max)) or (not(f:max/@value) and not(f:min/@value)) or (f:max/@value = '*') or (number(f:max/@value) >= f:min/@value)"
                 },
                 {
                   "key": "eld-5",
                   "severity": "error",
                   "human": "if the element definition has a contentReference, it cannot have type, defaultValue, fixed, pattern, example, minValue, maxValue, maxLength, or binding",
-                  "expression": "contentReference.empty() or (type.empty() and defaultValue[x].empty() and fixed[x].empty() and pattern[x].empty() and example[x].empty() and minValue[x].empty() and maxValue[x].empty() and maxLength.empty() and binding.empty())",
+                  "expression": "contentReference.empty() or (type.empty() and defaultValue.empty() and fixed.empty() and pattern.empty() and example.empty() and minValue.empty() and maxValue.empty() and maxLength.empty() and binding.empty())",
                   "xpath": "not(exists(f:contentReference) and (exists(f:type) or exists(f:*[starts-with(local-name(.), 'value')]) or exists(f:*[starts-with(local-name(.), 'defaultValue')])  or exists(f:*[starts-with(local-name(.), 'fixed')]) or exists(f:*[starts-with(local-name(.), 'pattern')]) or exists(f:*[starts-with(local-name(.), 'example')]) or exists(f:*[starts-with(local-name(.), 'f:minValue')]) or exists(f:*[starts-with(local-name(.), 'f:maxValue')]) or exists(f:maxLength) or exists(f:binding)))"
                 },
                 {
                   "key": "eld-7",
                   "severity": "error",
                   "human": "Pattern may only be specified if there is one type",
-                  "expression": "pattern[x].empty() or (type.count() = 1)",
+                  "expression": "pattern.empty() or (type.count() = 1)",
                   "xpath": "not(exists(f:*[starts-with(local-name(.), 'pattern')])) or (count(f:type)=1)"
                 },
                 {
                   "key": "eld-6",
                   "severity": "error",
                   "human": "Fixed value may only be specified if there is one type",
-                  "expression": "fixed[x].empty() or (type.count() = 1)",
+                  "expression": "fixed.empty() or (type.count() = 1)",
                   "xpath": "not(exists(f:*[starts-with(local-name(.), 'fixed')])) or (count(f:type)=1)"
                 },
                 {
                   "key": "eld-11",
                   "severity": "error",
                   "human": "Binding can only be present for coded elements, string, and uri",
-                  "expression": "binding.empty() or type.code.empty() or type.any((code = 'code') or (code = 'Coding') or (code='CodeableConcept') or (code = 'Quantity') or (code = 'Extension') or (code = 'string') or (code = 'uri'))",
+                  "expression": "binding.empty() or type.code.empty() or type.select((code = 'code') or (code = 'Coding') or (code='CodeableConcept') or (code = 'Quantity') or (code = 'Extension') or (code = 'string') or (code = 'uri')).exists()",
                   "xpath": "not(exists(f:binding)) or (count(f:type/f:code) = 0) or  f:type/f:code/@value=('code','Coding','CodeableConcept','Quantity','Extension', 'string', 'uri')"
                 },
                 {
                   "key": "eld-8",
                   "severity": "error",
                   "human": "Pattern and value are mutually exclusive",
-                  "expression": "pattern[x].empty() or fixed[x].empty()",
+                  "expression": "pattern.empty() or fixed.empty()",
                   "xpath": "not(exists(f:*[starts-with(local-name(.), 'pattern')])) or not(exists(f:*[starts-with(local-name(.), 'value')]))"
                 },
                 {
                   "key": "eld-14",
                   "severity": "error",
                   "human": "Constraints must be unique by key",
-                  "expression": "constraint.distinct(key)",
+                  "expression": "constraint.select(key).distinct()",
                   "xpath": "count(f:constraint) = count(distinct-values(f:constraint/f:key/@value))"
                 },
                 {
                   "key": "eld-13",
                   "severity": "error",
                   "human": "Types must be unique by the combination of code and profile",
-                  "expression": "type.distinct(code,profile)",
+                  "expression": "type.select(code+profile).distinct()",
                   "xpath": "not(exists(for $type in f:type return $type/preceding-sibling::f:type[f:code/@value=$type/f:code/@value and f:profile/@value = $type/f:profile/@value]))"
                 },
                 {
                   "key": "eld-15",
                   "severity": "error",
                   "human": "default value and meaningWhenMissing are mutually exclusive",
-                  "expression": "defaultValue[x].empty() or meaningWhenMissing.empty()",
+                  "expression": "defaultValue.empty() or meaningWhenMissing.empty()",
                   "xpath": "not(exists(f:*[starts-with(local-name(.), 'fixed')])) or not(exists(f:meaningWhenMissing))"
                 }
               ]
@@ -8621,7 +8694,7 @@
                   "key": "eld-3",
                   "severity": "error",
                   "human": "Max SHALL be a number or \"*\"",
-                  "expression": "max.empty() or (max = \"*\") or (max.asInteger() >= 0)",
+                  "expression": "max.empty() or (max = '*') or (max.toInteger() >= 0)",
                   "xpath": "@value='*' or (normalize-space(@value)!='' and normalize-space(translate(@value, '0123456789',''))='')"
                 }
               ],
@@ -8741,7 +8814,7 @@
                   "key": "eld-4",
                   "severity": "error",
                   "human": "Aggregation may only be specified if one of the allowed types for the element is a resource",
-                  "expression": "aggregation.empty() or (code = \"Reference\")",
+                  "expression": "aggregation.empty() or (code = 'Reference')",
                   "xpath": "not(exists(f:aggregation)) or exists(f:code[@value = 'Reference'])"
                 }
               ],
@@ -9713,7 +9786,7 @@
                   "key": "eld-10",
                   "severity": "error",
                   "human": "provide either a reference or a description (or both)",
-                  "expression": "valueSet[x] or description",
+                  "expression": "valueSet or description",
                   "xpath": "(exists(f:valueSetUri) or exists(f:valueSetReference)) or exists(f:description)"
                 }
               ],
@@ -9914,63 +9987,63 @@
                   "key": "eld-2",
                   "severity": "error",
                   "human": "Min <= Max",
-                  "expression": "min.empty() or max.empty() or (max = \"*\") or (min <= max.asInteger())",
+                  "expression": "min.empty() or max.empty() or (max = '*') or (min <= max.toInteger())",
                   "xpath": "not(exists(f:min)) or not(exists(f:max)) or (not(f:max/@value) and not(f:min/@value)) or (f:max/@value = '*') or (number(f:max/@value) >= f:min/@value)"
                 },
                 {
                   "key": "eld-5",
                   "severity": "error",
                   "human": "if the element definition has a contentReference, it cannot have type, defaultValue, fixed, pattern, example, minValue, maxValue, maxLength, or binding",
-                  "expression": "contentReference.empty() or (type.empty() and defaultValue[x].empty() and fixed[x].empty() and pattern[x].empty() and example[x].empty() and minValue[x].empty() and maxValue[x].empty() and maxLength.empty() and binding.empty())",
+                  "expression": "contentReference.empty() or (type.empty() and defaultValue.empty() and fixed.empty() and pattern.empty() and example.empty() and minValue.empty() and maxValue.empty() and maxLength.empty() and binding.empty())",
                   "xpath": "not(exists(f:contentReference) and (exists(f:type) or exists(f:*[starts-with(local-name(.), 'value')]) or exists(f:*[starts-with(local-name(.), 'defaultValue')])  or exists(f:*[starts-with(local-name(.), 'fixed')]) or exists(f:*[starts-with(local-name(.), 'pattern')]) or exists(f:*[starts-with(local-name(.), 'example')]) or exists(f:*[starts-with(local-name(.), 'f:minValue')]) or exists(f:*[starts-with(local-name(.), 'f:maxValue')]) or exists(f:maxLength) or exists(f:binding)))"
                 },
                 {
                   "key": "eld-7",
                   "severity": "error",
                   "human": "Pattern may only be specified if there is one type",
-                  "expression": "pattern[x].empty() or (type.count() = 1)",
+                  "expression": "pattern.empty() or (type.count() = 1)",
                   "xpath": "not(exists(f:*[starts-with(local-name(.), 'pattern')])) or (count(f:type)=1)"
                 },
                 {
                   "key": "eld-6",
                   "severity": "error",
                   "human": "Fixed value may only be specified if there is one type",
-                  "expression": "fixed[x].empty() or (type.count() = 1)",
+                  "expression": "fixed.empty() or (type.count() = 1)",
                   "xpath": "not(exists(f:*[starts-with(local-name(.), 'fixed')])) or (count(f:type)=1)"
                 },
                 {
                   "key": "eld-11",
                   "severity": "error",
                   "human": "Binding can only be present for coded elements, string, and uri",
-                  "expression": "binding.empty() or type.code.empty() or type.any((code = 'code') or (code = 'Coding') or (code='CodeableConcept') or (code = 'Quantity') or (code = 'Extension') or (code = 'string') or (code = 'uri'))",
+                  "expression": "binding.empty() or type.code.empty() or type.select((code = 'code') or (code = 'Coding') or (code='CodeableConcept') or (code = 'Quantity') or (code = 'Extension') or (code = 'string') or (code = 'uri')).exists()",
                   "xpath": "not(exists(f:binding)) or (count(f:type/f:code) = 0) or  f:type/f:code/@value=('code','Coding','CodeableConcept','Quantity','Extension', 'string', 'uri')"
                 },
                 {
                   "key": "eld-8",
                   "severity": "error",
                   "human": "Pattern and value are mutually exclusive",
-                  "expression": "pattern[x].empty() or fixed[x].empty()",
+                  "expression": "pattern.empty() or fixed.empty()",
                   "xpath": "not(exists(f:*[starts-with(local-name(.), 'pattern')])) or not(exists(f:*[starts-with(local-name(.), 'value')]))"
                 },
                 {
                   "key": "eld-14",
                   "severity": "error",
                   "human": "Constraints must be unique by key",
-                  "expression": "constraint.distinct(key)",
+                  "expression": "constraint.select(key).distinct()",
                   "xpath": "count(f:constraint) = count(distinct-values(f:constraint/f:key/@value))"
                 },
                 {
                   "key": "eld-13",
                   "severity": "error",
                   "human": "Types must be unique by the combination of code and profile",
-                  "expression": "type.distinct(code,profile)",
+                  "expression": "type.select(code+profile).distinct()",
                   "xpath": "not(exists(for $type in f:type return $type/preceding-sibling::f:type[f:code/@value=$type/f:code/@value and f:profile/@value = $type/f:profile/@value]))"
                 },
                 {
                   "key": "eld-15",
                   "severity": "error",
                   "human": "default value and meaningWhenMissing are mutually exclusive",
-                  "expression": "defaultValue[x].empty() or meaningWhenMissing.empty()",
+                  "expression": "defaultValue.empty() or meaningWhenMissing.empty()",
                   "xpath": "not(exists(f:*[starts-with(local-name(.), 'fixed')])) or not(exists(f:meaningWhenMissing))"
                 }
               ]
@@ -10206,7 +10279,7 @@
                   "key": "eld-3",
                   "severity": "error",
                   "human": "Max SHALL be a number or \"*\"",
-                  "expression": "max.empty() or (max = \"*\") or (max.asInteger() >= 0)",
+                  "expression": "max.empty() or (max = '*') or (max.toInteger() >= 0)",
                   "xpath": "@value='*' or (normalize-space(@value)!='' and normalize-space(translate(@value, '0123456789',''))='')"
                 }
               ],
@@ -10293,7 +10366,7 @@
                   "key": "eld-4",
                   "severity": "error",
                   "human": "Aggregation may only be specified if one of the allowed types for the element is a resource",
-                  "expression": "aggregation.empty() or (code = \"Reference\")",
+                  "expression": "aggregation.empty() or (code = 'Reference')",
                   "xpath": "not(exists(f:aggregation)) or exists(f:code[@value = 'Reference'])"
                 }
               ],
@@ -11199,7 +11272,7 @@
                   "key": "eld-10",
                   "severity": "error",
                   "human": "provide either a reference or a description (or both)",
-                  "expression": "valueSet[x] or description",
+                  "expression": "valueSet or description",
                   "xpath": "(exists(f:valueSetUri) or exists(f:valueSetReference)) or exists(f:description)"
                 }
               ],
@@ -11326,16 +11399,18 @@
         "resourceType": "StructureDefinition",
         "id": "DataRequirement",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/DataRequirement",
         "name": "DataRequirement",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -11773,16 +11848,18 @@
         "resourceType": "StructureDefinition",
         "id": "ActionDefinition",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/ActionDefinition",
         "name": "ActionDefinition",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -12545,16 +12622,18 @@
         "resourceType": "StructureDefinition",
         "id": "ParameterDefinition",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/ParameterDefinition",
         "name": "ParameterDefinition",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Element",
+        "baseType": "Element",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+        "derivation": "specialization",
         "snapshot": {
           "element": [
             {
@@ -12812,17 +12891,18 @@
         "resourceType": "StructureDefinition",
         "id": "Money",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Money",
         "name": "Money",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
-        "constrainedType": "Quantity",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Quantity",
+        "baseType": "Quantity",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Quantity",
+        "derivation": "constraint",
         "snapshot": {
           "element": [
             {
@@ -13017,17 +13097,18 @@
         "resourceType": "StructureDefinition",
         "id": "SimpleQuantity",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/SimpleQuantity",
         "name": "SimpleQuantity",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
-        "constrainedType": "Quantity",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Quantity",
+        "baseType": "Quantity",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Quantity",
+        "derivation": "constraint",
         "snapshot": {
           "element": [
             {
@@ -13226,17 +13307,18 @@
         "resourceType": "StructureDefinition",
         "id": "Duration",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Duration",
         "name": "Duration",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
-        "constrainedType": "Quantity",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Quantity",
+        "baseType": "Quantity",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Quantity",
+        "derivation": "constraint",
         "snapshot": {
           "element": [
             {
@@ -13431,17 +13513,18 @@
         "resourceType": "StructureDefinition",
         "id": "Count",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Count",
         "name": "Count",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
-        "constrainedType": "Quantity",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Quantity",
+        "baseType": "Quantity",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Quantity",
+        "derivation": "constraint",
         "snapshot": {
           "element": [
             {
@@ -13636,17 +13719,18 @@
         "resourceType": "StructureDefinition",
         "id": "Distance",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Distance",
         "name": "Distance",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
-        "constrainedType": "Quantity",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Quantity",
+        "baseType": "Quantity",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Quantity",
+        "derivation": "constraint",
         "snapshot": {
           "element": [
             {
@@ -13841,17 +13925,18 @@
         "resourceType": "StructureDefinition",
         "id": "Age",
         "meta": {
-          "lastUpdated": "2016-03-28T13:29:48.222-04:00"
+          "lastUpdated": "2016-03-31T08:59:41.431-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Age",
         "name": "Age",
         "status": "draft",
-        "date": "2016-03-28T13:29:48-04:00",
-        "fhirVersion": "1.3.0",
+        "date": "2016-03-31T08:59:41-04:00",
+        "fhirVersion": "1.4.0",
         "kind": "datatype",
-        "constrainedType": "Quantity",
         "abstract": false,
-        "base": "http://hl7.org/fhir/StructureDefinition/Quantity",
+        "baseType": "Quantity",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Quantity",
+        "derivation": "constraint",
         "snapshot": {
           "element": [
             {

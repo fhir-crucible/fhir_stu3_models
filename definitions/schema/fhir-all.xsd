@@ -26,9 +26,9 @@ Copyright (c) 2011+, HL7, Inc
  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  POSSIBILITY OF SUCH DAMAGE.
 
- Generated on Mon, Mar 28, 2016 13:29-0400 for FHIR v1.3.0
+ Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0
 -->
-<xs:schema xmlns="http://hl7.org/fhir" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="1.3.0">
+<xs:schema xmlns="http://hl7.org/fhir" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="1.4.0">
   <xs:include schemaLocation="account.xsd"/>
   <xs:include schemaLocation="allergyintolerance.xsd"/>
   <xs:include schemaLocation="appointment.xsd"/>

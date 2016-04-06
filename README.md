@@ -11,6 +11,14 @@ $ bundle exec rake fhir:generate
 $ bundle exec rake fhir:console
 ```
 
+### Features
+- FHIR STU3 Resource Models
+- XML and JSON support
+- Not Supported
+  - Primitive Extensions
+  - Internal Element Ids
+  - FHIR Comments
+
 # License
 
 Copyright 2014-2016 The MITRE Corporation

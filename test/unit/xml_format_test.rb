@@ -43,9 +43,13 @@ class XmlFormatTest < Test::Unit::TestCase
 
     errors = input_nodes.diff(output_nodes, added: true, removed: true).to_a
     errors.keep_if do |error|
+      # we do not support the preservation of comments, ignore them
       is_comment = (error.last.class==Nokogiri::XML::Comment)
+      # we do not care about empty whitespace
       is_empty_text = (error.last.class==Nokogiri::XML::Text && error.last.text.strip=='')
-      !(is_comment || is_empty_text)
+      # we do not support internal element ids, ignore them
+      is_internal_element_id = (error.last.class==Nokogiri::XML::Attr && error.last.name=='id')
+      !(is_comment || is_empty_text || is_internal_element_id)
     end
 
     if !errors.empty?
@@ -57,10 +61,16 @@ class XmlFormatTest < Test::Unit::TestCase
     assert errors.empty?, "Differences in generated XML vs original"
   end
 
-  # process input to remove newlines and whitespace around text
+  # process input to remove leading and trailing newlines and whitespace around text
   def clean_nodes(node)
     node.children.each do |child|
       child.content = child.content.strip if(child.is_a?(Nokogiri::XML::Text))
+      if child.has_attribute?('value')
+        child.children = ''
+        # while(child.children.pop)
+        #   # remove all the children -- these will be primitive extensions which we do not support.
+        # end
+      end
       clean_nodes(child) if !child.children.empty?
     end
   end

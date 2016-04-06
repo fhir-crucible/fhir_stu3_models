@@ -27,9 +27,9 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Mon, Mar 28, 2016 13:29-0400 for FHIR v1.3.0 
+  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
 -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="1.3.0">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="1.4.0">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
   <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
   <xs:import namespace="http://www.w3.org/1999/xhtml" schemaLocation="fhir-xhtml.xsd"/>
@@ -9260,7 +9260,10 @@
           <xs:element name="serviceCategory" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="serviceType" type="HealthcareService.ServiceType" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="serviceType" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="specialty" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="location" minOccurs="0" maxOccurs="unbounded" type="Reference">
@@ -9315,21 +9318,6 @@
             
           </xs:element>
           <xs:element name="availabilityExceptions" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="HealthcareService.ServiceType">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="specialty" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
         </xs:sequence>
@@ -13509,6 +13497,51 @@
           <xs:element name="period" minOccurs="0" maxOccurs="1" type="Period">
             
           </xs:element>
+          <xs:element name="availableTime" type="PractitionerRole.AvailableTime" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="notAvailable" type="PractitionerRole.NotAvailable" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="availabilityExceptions" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PractitionerRole.AvailableTime">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="daysOfWeek" minOccurs="0" maxOccurs="unbounded" type="code">
+            
+          </xs:element>
+          <xs:element name="allDay" minOccurs="0" maxOccurs="1" type="boolean">
+            
+          </xs:element>
+          <xs:element name="availableStartTime" minOccurs="0" maxOccurs="1" type="time">
+            
+          </xs:element>
+          <xs:element name="availableEndTime" minOccurs="0" maxOccurs="1" type="time">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PractitionerRole.NotAvailable">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="description" minOccurs="1" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="during" minOccurs="0" maxOccurs="1" type="Period">
+            
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -14252,6 +14285,9 @@
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
+          <xs:element name="url" minOccurs="0" maxOccurs="1" type="uri">
+            
+          </xs:element>
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             
           </xs:element>
@@ -14268,6 +14304,9 @@
             
           </xs:element>
           <xs:element name="telecom" minOccurs="0" maxOccurs="unbounded" type="ContactPoint">
+            
+          </xs:element>
+          <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="title" minOccurs="0" maxOccurs="1" type="string">
@@ -14297,10 +14336,16 @@
           <xs:element name="concept" minOccurs="0" maxOccurs="unbounded" type="Coding">
             
           </xs:element>
+          <xs:element name="prefix" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
           <xs:element name="text" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
           <xs:element name="type" minOccurs="1" maxOccurs="1" type="QuestionnaireItemType">
+            
+          </xs:element>
+          <xs:element name="enableWhen" type="Questionnaire.EnableWhen" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
           <xs:element name="required" minOccurs="0" maxOccurs="1" type="boolean">
@@ -14309,15 +14354,85 @@
           <xs:element name="repeats" minOccurs="0" maxOccurs="1" type="boolean">
             
           </xs:element>
+          <xs:element name="readOnly" minOccurs="0" maxOccurs="1" type="boolean">
+            
+          </xs:element>
+          <xs:element name="maxLength" minOccurs="0" maxOccurs="1" type="integer">
+            
+          </xs:element>
           <xs:element name="options" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="option" minOccurs="0" maxOccurs="unbounded" type="Coding">
+          <xs:element name="option" type="Questionnaire.Option" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="initialBoolean" type="boolean"/>
+            <xs:element name="initialDecimal" type="decimal"/>
+            <xs:element name="initialInteger" type="integer"/>
+            <xs:element name="initialDate" type="date"/>
+            <xs:element name="initialDateTime" type="dateTime"/>
+            <xs:element name="initialInstant" type="instant"/>
+            <xs:element name="initialTime" type="time"/>
+            <xs:element name="initialString" type="string"/>
+            <xs:element name="initialUri" type="uri"/>
+            <xs:element name="initialAttachment" type="Attachment"/>
+            <xs:element name="initialCoding" type="Coding"/>
+            <xs:element name="initialQuantity" type="Quantity"/>
+            <xs:element name="initialReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="item" type="Questionnaire.Item" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Questionnaire.EnableWhen">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="question" minOccurs="1" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="answered" minOccurs="0" maxOccurs="1" type="boolean">
+            
+          </xs:element>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="answerBoolean" type="boolean"/>
+            <xs:element name="answerDecimal" type="decimal"/>
+            <xs:element name="answerInteger" type="integer"/>
+            <xs:element name="answerDate" type="date"/>
+            <xs:element name="answerDateTime" type="dateTime"/>
+            <xs:element name="answerInstant" type="instant"/>
+            <xs:element name="answerTime" type="time"/>
+            <xs:element name="answerString" type="string"/>
+            <xs:element name="answerUri" type="uri"/>
+            <xs:element name="answerAttachment" type="Attachment"/>
+            <xs:element name="answerCoding" type="Coding"/>
+            <xs:element name="answerQuantity" type="Quantity"/>
+            <xs:element name="answerReference" type="Reference"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Questionnaire.Option">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:choice minOccurs="1" maxOccurs="1">
+            
+            <xs:element name="valueInteger" type="integer"/>
+            <xs:element name="valueDate" type="date"/>
+            <xs:element name="valueTime" type="time"/>
+            <xs:element name="valueString" type="string"/>
+            <xs:element name="valueCoding" type="Coding"/>
+          </xs:choice>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -14457,19 +14572,22 @@
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
-          <xs:element name="status" minOccurs="1" maxOccurs="1" type="ReferralStatus">
-            
-          </xs:element>
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             
           </xs:element>
-          <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
+          <xs:element name="basedOn" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
+          <xs:element name="parent" minOccurs="0" maxOccurs="1" type="Identifier">
+            
+          </xs:element>
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="ReferralStatus">
+            
+          </xs:element>
+          <xs:element name="category" minOccurs="1" maxOccurs="1" type="ReferralCategory">
             
           </xs:element>
           <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="specialty" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="priority" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -14478,16 +14596,22 @@
           <xs:element name="patient" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
+          <xs:element name="context" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="fulfillmentTime" minOccurs="0" maxOccurs="1" type="Period">
+            
+          </xs:element>
+          <xs:element name="authored" minOccurs="0" maxOccurs="1" type="dateTime">
+            
+          </xs:element>
           <xs:element name="requester" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
+          <xs:element name="specialty" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
           <xs:element name="recipient" minOccurs="0" maxOccurs="unbounded" type="Reference">
-            
-          </xs:element>
-          <xs:element name="encounter" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="dateSent" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
           <xs:element name="reason" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -14502,10 +14626,19 @@
           <xs:element name="supportingInformation" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
-          <xs:element name="fulfillmentTime" minOccurs="0" maxOccurs="1" type="Period">
-            
-          </xs:element>
         </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ReferralCategory-list">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ReferralCategory">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="ReferralCategory-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -14834,7 +14967,7 @@
           <xs:element name="genomeBuild" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="referenceSeqId" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="referenceSeqId" minOccurs="1" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="referenceSeqPointer" minOccurs="0" maxOccurs="1" type="Reference">
@@ -15234,9 +15367,6 @@
           <xs:element name="kind" minOccurs="1" maxOccurs="1" type="StructureDefinitionKind">
             
           </xs:element>
-          <xs:element name="constrainedType" minOccurs="0" maxOccurs="1" type="code">
-            
-          </xs:element>
           <xs:element name="abstract" minOccurs="1" maxOccurs="1" type="boolean">
             
           </xs:element>
@@ -15246,7 +15376,13 @@
           <xs:element name="context" minOccurs="0" maxOccurs="unbounded" type="string">
             
           </xs:element>
-          <xs:element name="base" minOccurs="0" maxOccurs="1" type="uri">
+          <xs:element name="baseType" minOccurs="0" maxOccurs="1" type="code">
+            
+          </xs:element>
+          <xs:element name="baseDefinition" minOccurs="0" maxOccurs="1" type="uri">
+            
+          </xs:element>
+          <xs:element name="derivation" minOccurs="0" maxOccurs="1" type="TypeDerivationRule">
             
           </xs:element>
           <xs:element name="snapshot" type="StructureDefinition.Snapshot" minOccurs="0" maxOccurs="1">
@@ -15328,6 +15464,18 @@
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:attribute name="value" type="StructureDefinitionKind-list" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="TypeDerivationRule-list">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="TypeDerivationRule">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="TypeDerivationRule-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -15964,9 +16112,6 @@
           <xs:element name="status" minOccurs="1" maxOccurs="1" type="TaskStatus">
             
           </xs:element>
-          <xs:element name="suspended" minOccurs="1" maxOccurs="1" type="boolean">
-            
-          </xs:element>
           <xs:element name="failureReason" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
@@ -15991,7 +16136,7 @@
           <xs:element name="owner" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="subtask" minOccurs="0" maxOccurs="unbounded" type="Reference">
+          <xs:element name="parent" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
           <xs:element name="input" type="Task.Input" minOccurs="0" maxOccurs="unbounded">

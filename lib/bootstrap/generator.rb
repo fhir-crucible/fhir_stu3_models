@@ -84,7 +84,8 @@ module FHIR
         template.constants['PRIMITIVES'] = hash
 
         # complex data types start with an uppercase letter
-        complexTypes = @types.select{|t|t['id'][0]==t['id'][0].upcase}.map{|t|t['id']}
+        # and we'll filter out profiles on types (for example, Age is a profile on Quantity)
+        complexTypes = @types.select{|t| (t['id'][0]==t['id'][0].upcase) && (t['id']==t['snapshot']['element'].first['path'])}.map{|t|t['id']}
         template.constants['TYPES'] = complexTypes
 
         # resources
@@ -99,7 +100,8 @@ module FHIR
       def generate_types
         folder = File.join @lib,'fhir','types'
         # complex data types start with an uppercase letter
-        complexTypes = @types.select{|t|t['id'][0]==t['id'][0].upcase}
+        # and we'll filter out profiles on types (for example, Age is a profile on Quantity)
+        complexTypes = @types.select{|t| (t['id'][0]==t['id'][0].upcase) && (t['id']==t['snapshot']['element'].first['path'])}
         generate_class_files(folder,complexTypes)
       end
 
