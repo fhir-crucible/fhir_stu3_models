@@ -66,10 +66,8 @@ class XmlFormatTest < Test::Unit::TestCase
     node.children.each do |child|
       child.content = child.content.strip if(child.is_a?(Nokogiri::XML::Text))
       if child.has_attribute?('value')
+        # remove all the children -- these will be primitive extensions which we do not support.
         child.children = ''
-        # while(child.children.pop)
-        #   # remove all the children -- these will be primitive extensions which we do not support.
-        # end
       end
       clean_nodes(child) if !child.children.empty?
     end
