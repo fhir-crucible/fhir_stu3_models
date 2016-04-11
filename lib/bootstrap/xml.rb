@@ -51,7 +51,9 @@ module FHIR
           if(name=='text' && key=='div')
             child.set_attribute('xmlns','http://www.w3.org/1999/xhtml')
             html = value.strip
-            html = html[5..-4] if html.start_with?('<div>') && html.end_with?('</div>')
+            if html.start_with?('<div') && html.end_with?('</div>')
+              html = html[html.index('>')+1..-7]
+            end
             child.inner_html = html
           else
             child.set_attribute('value',value)
@@ -89,7 +91,7 @@ module FHIR
 
         key = child.name
         if node.name=='text' && key=='div'
-          hash[key] = child.inner_html
+          hash[key] = child.to_xml
         else
           value = child.get_attribute('value')
           if value.nil? && !child.children.empty?
