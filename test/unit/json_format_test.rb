@@ -13,6 +13,7 @@ class JsonFormatTest < Test::Unit::TestCase
   $VERBOSE=nil
 
   ERROR_DIR = File.join('errors', 'JsonFormatTest')
+  ERROR_LOSSY_DIR = File.join('errors', 'JsonLossinessTest')
   EXAMPLE_ROOT = File.join('examples','json')
 
   # Automatically generate one test method per example file
@@ -21,11 +22,16 @@ class JsonFormatTest < Test::Unit::TestCase
   # Create a blank folder for the errors
   FileUtils.rm_rf(ERROR_DIR) if File.directory?(ERROR_DIR)
   FileUtils.mkdir_p ERROR_DIR
-  
+  FileUtils.rm_rf(ERROR_LOSSY_DIR) if File.directory?(ERROR_LOSSY_DIR)
+  FileUtils.mkdir_p ERROR_LOSSY_DIR
+
   Dir.glob(example_files).each do | example_file |
     example_name = File.basename(example_file, ".json")
     define_method("test_json_format_#{example_name}") do
       run_json_roundtrip_test(example_file, example_name)
+    end
+    define_method("test_json_xml_json_lossiness_#{example_name}") do
+      run_json_xml_json_lossiness_test(example_file, example_name)
     end
   end
 
@@ -46,6 +52,27 @@ class JsonFormatTest < Test::Unit::TestCase
     end
 
     assert errors.empty?, "Differences in generated JSON vs original"
+  end
+
+  def run_json_xml_json_lossiness_test(example_file, example_name)
+    input_json = File.read(example_file)
+    resource_from_json = FHIR::Json.from_json(input_json)
+    output_xml = resource_from_json.to_xml
+    resource_from_xml = FHIR::Xml.from_xml(output_xml)
+    output_json = resource_from_xml.to_json
+
+    input_hash = JSON.parse(input_json)
+    output_hash = JSON.parse(output_json)
+
+    errors = compare(input_hash,output_hash)
+
+    if !errors.empty?
+      File.open("#{ERROR_LOSSY_DIR}/#{example_name}.err", 'w:UTF-8') {|file| file.write(errors.join("\n"))}
+      File.open("#{ERROR_LOSSY_DIR}/#{example_name}_PRODUCED.json", 'w:UTF-8') {|file| file.write(output_json)}
+      File.open("#{ERROR_LOSSY_DIR}/#{example_name}_ORIGINAL.json", 'w:UTF-8') {|file| file.write(input_json)}      
+    end
+
+    assert errors.empty?, "Differences in generated JSON vs original"    
   end
 
   def compare(hash_input,hash_output)
