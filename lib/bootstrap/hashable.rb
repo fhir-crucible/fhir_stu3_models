@@ -35,6 +35,7 @@ module FHIR
       end
       # set the variables to the hash values
       hash.each do |key,value|
+        key = key.to_s
         meta = self.class::METADATA[key]
         if !meta.nil?
           local_name = key
@@ -47,14 +48,16 @@ module FHIR
             if value.is_a?(Array)
               value.map! do |child|
                 obj = child
-                if child['resourceType']
-                  klass = Module.const_get("FHIR::#{child['resourceType']}") rescue nil
-                end
-                begin
-                  obj = klass.new
-                  obj.from_hash(child)
-                rescue Exception => e
-                  binding.pry
+                unless [FHIR::RESOURCES, FHIR::TYPES].flatten.include? child.class.name.demodulize
+                  if child['resourceType']
+                    klass = Module.const_get("FHIR::#{child['resourceType']}") rescue nil
+                  end
+                  begin
+                    obj = klass.new
+                    obj.from_hash(child)
+                  rescue Exception => e
+                    binding.pry
+                  end
                 end
                 obj
               end
@@ -76,7 +79,7 @@ module FHIR
           end # !klass && !nil?
         end # !meta.nil?
       end # hash loop
+      self
     end
-    self
   end
 end
