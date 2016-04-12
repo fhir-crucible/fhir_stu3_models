@@ -43,7 +43,7 @@ module FHIR
           # inflate the value if it isn't a primitive
           klass = Module.const_get("FHIR::#{meta['type']}") rescue nil
           if !klass.nil? && !value.nil?
-            # handle arrays
+            # handle array of objects
             if value.is_a?(Array)
               value.map! do |child|
                 obj = child
@@ -58,7 +58,7 @@ module FHIR
                 end
                 obj
               end
-            else
+            else # handle single object
               if value['resourceType']
                 klass = Module.const_get("FHIR::#{value['resourceType']}") rescue nil
               end
@@ -69,14 +69,51 @@ module FHIR
               rescue Exception => e
                 binding.pry
               end
+              # if there is only one of these, but cardinality allows more, we need to wrap it in an array.              
+              value = [ value ] if(value && (meta['max'] > 1))
             end
             self.instance_variable_set("@#{local_name}",value)
           elsif !FHIR::PRIMITIVES.include?(meta['type']) && meta['type']!='xhtml'
             binding.pry
+          else
+            # primitive
+            if value.is_a?(Array)
+              # array of primitives
+              value.map!{|child| convert_primitive(child,meta)}
+              self.instance_variable_set("@#{local_name}",value)
+            else
+              # single primitive
+              value = convert_primitive(value,meta)
+              # if there is only one of these, but cardinality allows more, we need to wrap it in an array.              
+              value = [ value ] if(value && (meta['max'] > 1))
+              self.instance_variable_set("@#{local_name}",value)
+            end
           end # !klass && !nil?
         end # !meta.nil?
       end # hash loop
     end
-    self
+
+    def convert_primitive(value,meta)
+      return value if !value.is_a?(String)
+
+      rval = value
+      if meta['type']=='boolean'
+        rval = false
+        rval = true if value.strip=='true'
+      elsif FHIR::PRIMITIVES.include?(meta['type'])
+        primitive_meta = FHIR::PRIMITIVES[ meta['type'] ]
+        if primitive_meta['type'] == 'number'
+          rval = BigDecimal.new(value.to_s)
+          if rval.frac==0
+            rval = rval.to_i
+          else
+            rval = rval.to_f
+          end
+        end # primitive is number
+      end # boolean else
+      rval
+    end
+
+    private :convert_primitive
   end
 end

@@ -68,6 +68,7 @@ class JsonFormatTest < Test::Unit::TestCase
 
     if !errors.empty?
       File.open("#{ERROR_LOSSY_DIR}/#{example_name}.err", 'w:UTF-8') {|file| file.write(errors.join("\n"))}
+      File.open("#{ERROR_LOSSY_DIR}/#{example_name}_PRODUCED.xml", 'w:UTF-8') {|file| file.write(output_xml)}
       File.open("#{ERROR_LOSSY_DIR}/#{example_name}_PRODUCED.json", 'w:UTF-8') {|file| file.write(output_json)}
       File.open("#{ERROR_LOSSY_DIR}/#{example_name}_ORIGINAL.json", 'w:UTF-8') {|file| file.write(input_json)}      
     end

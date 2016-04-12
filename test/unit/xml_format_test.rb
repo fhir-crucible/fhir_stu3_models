@@ -25,7 +25,7 @@ class XmlFormatTest < Test::Unit::TestCase
   FileUtils.mkdir_p ERROR_DIR
   FileUtils.rm_rf(ERROR_LOSSY_DIR) if File.directory?(ERROR_LOSSY_DIR)
   FileUtils.mkdir_p ERROR_LOSSY_DIR
-    
+
   Dir.glob(example_files).each do | example_file |
     example_name = File.basename(example_file, ".xml")
     define_method("test_xml_format_#{example_name}") do
@@ -91,6 +91,27 @@ class XmlFormatTest < Test::Unit::TestCase
       is_internal_element_id = (error.last.class==Nokogiri::XML::Attr && error.last.name=='id')
       !(is_comment || is_empty_text || is_internal_element_id)
     end
+    # we do not care about preservation of trailing zeros
+    # on numbers. Remove things from the error list like "1.5" != "1.50"
+    left = []
+    right = []
+    errors.each do |error|
+      if error.first=='-'
+        left << error
+      else
+        right << error
+      end
+    end
+    regex = /-?([0]|([1-9][0-9]*))(\\.[0-9]+)?/
+    left.each_with_index do |error,index|
+      right_error = right[index]
+      two_numerics = ( (error.last.value =~ regex) && (right_error.last.value =~regex) )
+      if two_numerics && (error.last.value.to_f == right_error.last.value.to_f)
+        errors.delete(error)
+        errors.delete(right_error)
+      end
+    end
+    # return the remaining errors
     errors
   end
 

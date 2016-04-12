@@ -7,6 +7,7 @@ require 'date_time_precision'
 require 'date_time_precision/format/iso8601'
 require 'mime/types'
 require 'bcp47'
+require 'bigdecimal'
 
 root = File.expand_path '..', File.dirname(File.absolute_path(__FILE__))
 
