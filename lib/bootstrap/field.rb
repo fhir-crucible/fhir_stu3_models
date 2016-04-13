@@ -37,7 +37,7 @@ module FHIR
 
     def fix_name(name)
       fix = nil
-      fix = "local_#{name}" if ['class'].include?(name)
+      fix = "local_#{name}" if ['class','method'].include?(name)
       fix
     end
 
