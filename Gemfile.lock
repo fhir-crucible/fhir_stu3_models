@@ -56,6 +56,3 @@ DEPENDENCIES
   rake
   simplecov
   turn
-
-BUNDLED WITH
-   1.11.1

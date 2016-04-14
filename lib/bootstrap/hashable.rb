@@ -77,7 +77,7 @@ module FHIR
             end
             self.instance_variable_set("@#{local_name}",value)
           elsif !FHIR::PRIMITIVES.include?(meta['type']) && meta['type']!='xhtml'
-            binding.pry
+            #binding.pry
           else
             # primitive
             if value.is_a?(Array)
