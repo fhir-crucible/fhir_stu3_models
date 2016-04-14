@@ -6,6 +6,7 @@ module FHIR
       attr_accessor :resources
       attr_accessor :extensions
       attr_accessor :profiles
+      attr_accessor :search_params
       attr_accessor :lib
       attr_accessor :expansions
       # templates keeps track of all the templates in context within a given StructureDefinition
@@ -36,6 +37,11 @@ module FHIR
         filename = File.join(defns,'structures','profiles-others.json')
         raw = File.open(filename,'r:UTF-8',&:read)
         @profiles = JSON.parse(raw)['entry'].map{|e|e['resource']}        
+
+        # load the search parameters
+        filename = File.join(defns,'structures','search-parameters.json')
+        raw = File.open(filename,'r:UTF-8',&:read)
+        @search_params = JSON.parse(raw)['entry'].map{|e|e['resource']}        
 
         # templates is an array
         @templates = []
@@ -115,11 +121,17 @@ module FHIR
           @templates.clear
           typeName = structureDef['id']
           template = generate_class([ typeName ],structureDef,true)
+          params = generate_search_parameters(typeName)
+          template.constants['SEARCH_PARAMS'] = params if !params.nil? && !params.empty?
           filename = File.join(folder,"#{typeName}.rb")
           file = File.open(filename,'w:UTF-8')
           file.write(template.to_s)
           file.close
         end
+      end
+
+      def generate_search_parameters(typeName)
+        @search_params.select{|p|p['base']==typeName}.map{|p|p['code']}
       end
 
       def generate_class(hierarchy,structureDef,top_level=false)

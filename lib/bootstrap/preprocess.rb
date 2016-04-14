@@ -11,7 +11,7 @@ module FHIR
 
         # Remove entries that do not interest us: CompartmentDefinitions, OperationDefinitions, Conformance statements
         hash['entry'].select! do |entry|
-          ['StructureDefinition','ValueSet','CodeSystem'].include? entry['resource']['resourceType']
+          ['StructureDefinition','ValueSet','CodeSystem','SearchParameter'].include? entry['resource']['resourceType']
         end
 
         # Remove unnecessary elements from the hash
@@ -20,6 +20,7 @@ module FHIR
             pre_process_structuredefinition(entry['resource']) if 'StructureDefinition'==entry['resource']['resourceType']
             pre_process_valueset(entry['resource']) if 'ValueSet'==entry['resource']['resourceType']
             pre_process_codesystem(entry['resource']) if 'CodeSystem'==entry['resource']['resourceType']
+            pre_process_searchparam(entry['resource']) if 'SearchParameter'==entry['resource']['resourceType']
             remove_fhir_comments(entry['resource'])
           end
         end
@@ -93,6 +94,11 @@ module FHIR
             pre_process_codesystem_concept(concept)
           end
         end
+      end
+
+      def self.pre_process_searchparam(hash)
+        # Remove large HTML narratives and unused content
+        ['id','url','name','date','publisher','contact','description','xpathUsage'].each{|key| hash.delete(key) }
       end
 
       def self.remove_fhir_comments(hash)
