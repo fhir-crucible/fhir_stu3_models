@@ -122,6 +122,17 @@ module FHIR
       end
     end
 
+    def self.is_valid?(xml)
+      validate(xml).empty?
+    end
+
+    def self.validate(xml)
+      defns = File.expand_path '../../definitions/schema',File.dirname(File.absolute_path(__FILE__))
+      schema = File.join(defns,'fhir-all.xsd')
+      xsd = Nokogiri::XML::Schema(File.new(schema))
+      xsd.validate(Nokogiri::XML(xml))
+    end
+
     private :hash_to_xml_node
     private_class_method :xml_node_to_hash
 
