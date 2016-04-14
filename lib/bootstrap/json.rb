@@ -17,8 +17,7 @@ module FHIR
       begin
         resourceType = hash['resourceType']
         klass = Module.const_get("FHIR::#{resourceType}")
-        resource = klass.new
-        resource.from_hash(hash)
+        resource = klass.new(hash)
       rescue Exception => e
         $LOG.error("Failed to deserialize JSON:\n#{json}\n#{e.backtrace}")
         resource = nil
