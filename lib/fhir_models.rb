@@ -9,6 +9,8 @@ require 'mime/types'
 require 'bcp47'
 require 'bigdecimal'
 
+$LOG = Logger.new("fhir_models.log", 10, 1024000)
+
 root = File.expand_path '..', File.dirname(File.absolute_path(__FILE__))
 
 # Need to require Hashable first
@@ -21,6 +23,8 @@ end
 Dir.glob(File.join(root, 'lib','bootstrap','**','*.rb')).each do |file|
   require file
 end
+
+require File.join(root, 'lib','fhir.rb')
 
 # Require the generated code
 Dir.glob(File.join(root, 'lib','fhir','*.rb')).each do |file|

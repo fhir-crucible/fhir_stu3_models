@@ -20,7 +20,7 @@ module FHIR
         resource = klass.new
         resource.from_hash(hash)
       rescue Exception => e
-        binding.pry
+        $LOG.error("Failed to deserialize JSON:\n#{json}\n#{e.backtrace}")
         resource = nil
       end
       resource

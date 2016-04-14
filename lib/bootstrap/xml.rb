@@ -80,7 +80,7 @@ module FHIR
         resource = klass.new
         resource.from_hash(hash)
       rescue Exception => e
-        binding.pry
+        $LOG.error("Failed to deserialize XML:\n#{xml}\n#{e.backtrace}")
         resource = nil
       end
       resource

@@ -1,4 +1,4 @@
 .DS_Store
 errors/**
 coverage/**
-
+fhir_models*log
