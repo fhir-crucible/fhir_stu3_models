@@ -87,9 +87,7 @@ class XmlFormatTest < Test::Unit::TestCase
       is_comment = (error.last.class==Nokogiri::XML::Comment)
       # we do not care about empty whitespace
       is_empty_text = (error.last.class==Nokogiri::XML::Text && error.last.text.strip=='')
-      # we do not support internal element ids, ignore them
-      is_internal_element_id = (error.last.class==Nokogiri::XML::Attr && error.last.name=='id')
-      !(is_comment || is_empty_text || is_internal_element_id)
+      !(is_comment || is_empty_text)
     end
     # we do not care about preservation of trailing zeros
     # on numbers. Remove things from the error list like "1.5" != "1.50"
