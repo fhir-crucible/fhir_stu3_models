@@ -14,9 +14,9 @@ $ bundle exec rake fhir:console
 ### Features
 - FHIR STU3 Resource Models
 - XML and JSON support
+- Resource Validation
 - Not Supported
   - Primitive Extensions
-  - Internal Element Ids
   - FHIR Comments
 
 # License
