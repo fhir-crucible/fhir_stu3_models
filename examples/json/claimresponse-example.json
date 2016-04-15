@@ -12,7 +12,7 @@
     }
   ],
   "requestReference": {
-    "reference": "http://www.BenefitsInc.com/fhir/oralhealthclaim/15476332402"
+    "reference": "http://www.BenefitsInc.com/fhir/Claim/15476332402"
   },
   "created": "2014-08-16",
   "organizationIdentifier": {

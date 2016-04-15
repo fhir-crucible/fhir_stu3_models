@@ -7,12 +7,12 @@
   </text>
 
   <type value="vision"/>
-  
+
   <identifier>
     <system value="http://happysight.com/claim"/>
     <value value="6612346"/>
  </identifier>
- 
+
   <created value="2014-08-16"/>
 
  <targetReference>
@@ -30,26 +30,26 @@
  </priority>
 
  <prescriptionReference>
-   <reference value="http://www.optdocs.com/prescription/12345"/>
- </prescriptionReference>   
- 
+   <reference value="http://www.optdocs.com/VisionPrescription/12345"/>
+ </prescriptionReference>
+
  <payee>
    <type>
      <code value="provider"/>
    </type>
  </payee>
- 
+
   <diagnosis>
     <sequence value="1"/>
 	<diagnosis>
 	  <code value="654321"/>
 	  </diagnosis>
   </diagnosis>
- 
+
  <patientReference>
    <reference value="Patient/1"/>
  </patientReference>
- 
+
  <coverage>
    <sequence value="1"/>
    <focal value="true"/>
@@ -57,7 +57,7 @@
      <reference value="Coverage/9876B1"/>
    </coverageReference>
  </coverage>
-  
+
  <item>
    <sequence value="1"/>
    <type>
@@ -74,13 +74,13 @@
    <unitPrice>
       <value value="214.00"/>
 	  <system value="urn:iso:std:iso:4217"/>
-      <code value="USD"/> 
-   </unitPrice> 
+      <code value="USD"/>
+   </unitPrice>
    <net>
       <value value="214.00"/>
 	  <system value="urn:iso:std:iso:4217"/>
-      <code value="USD"/> 
-   </net> 
+      <code value="USD"/>
+   </net>
    <detail>
      <sequence value="1"/>
      <type>
@@ -93,13 +93,13 @@
      <unitPrice>
        <value value="100.00"/>
        <system value="urn:iso:std:iso:4217"/>
-       <code value="USD"/> 
-     </unitPrice> 
+       <code value="USD"/>
+     </unitPrice>
      <net>
        <value value="100.00"/>
        <system value="urn:iso:std:iso:4217"/>
-       <code value="USD"/> 
-     </net> 
+       <code value="USD"/>
+     </net>
    </detail>
    <detail>
      <sequence value="2"/>
@@ -116,13 +116,13 @@
      <unitPrice>
        <value value="50.00"/>
        <system value="urn:iso:std:iso:4217"/>
-       <code value="USD"/> 
-     </unitPrice> 
+       <code value="USD"/>
+     </unitPrice>
      <net>
        <value value="100.00"/>
        <system value="urn:iso:std:iso:4217"/>
-       <code value="USD"/> 
-     </net> 
+       <code value="USD"/>
+     </net>
    </detail>
    <detail>
      <sequence value="3"/>
@@ -136,14 +136,14 @@
      <unitPrice>
        <value value="200.00"/>
        <system value="urn:iso:std:iso:4217"/>
-       <code value="USD"/> 
-     </unitPrice> 
+       <code value="USD"/>
+     </unitPrice>
      <factor value="0.07"/>
      <net>
        <value value="14.00"/>
        <system value="urn:iso:std:iso:4217"/>
-       <code value="USD"/> 
-     </net> 
+       <code value="USD"/>
+     </net>
    </detail>
   </item>
 

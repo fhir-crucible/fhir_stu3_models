@@ -6,13 +6,13 @@
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
       <h2>Specimen mapping from v2 table 0487 to SNOMED CT (http://hl7.org/fhir/ConceptMap/102)</h2>
-      <p>Mapping from 
-        <a href="v2/0487/index.html">http://hl7.org/fhir/ValueSet/v2-0487</a> to 
+      <p>Mapping from
+        <a href="v2/0487/index.html">http://hl7.org/fhir/ValueSet/v2-0487</a> to
         <a href="http://snomed.info/id">SNOMED-CT</a>
       </p>
       <p>DRAFT. Published on Jul 25, 2013 by FHIR project team (original source: LabMCoP) (
-        <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>; , 
-        <a href="http://www.phconnect.org/group/laboratorymessagingcommunityofpractice/forum/attachment/download?id=3649725%3AUploadedFile%3A145786">http://www.phconnect.org/group...</a>; ). 
+        <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>; ,
+        <a href="http://www.phconnect.org/group/laboratorymessagingcommunityofpractice/forum/attachment/download?id=3649725%3AUploadedFile%3A145786">http://www.phconnect.org/group...</a>; ).
       </p>
       <br/>
       <table class="grid">
@@ -2532,9 +2532,7 @@
   <sourceReference>
     <reference value="http://hl7.org/fhir/ValueSet/v2-0487"/>
   </sourceReference>
-  <targetReference>
-    <reference value="http://snomed.info/id"/>
-  </targetReference>
+  <targetUri value="http://snomed.info/id"/>
   <element>
     <system value="http://hl7.org/fhir/v2/0487"/>
     <code value="ACNE"/>

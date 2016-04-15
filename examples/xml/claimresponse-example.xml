@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><ClaimResponse xmlns="http://hl7.org/fhir">
- 
+
  <id value="R3500"/>
 
  <text>
@@ -13,12 +13,12 @@
   </identifier>
 
   <requestReference>
-    <reference value="http://www.BenefitsInc.com/fhir/oralhealthclaim/15476332402"/>
+    <reference value="http://www.BenefitsInc.com/fhir/Claim/15476332402"/>
   </requestReference>
 
   <created value="2014-08-16"/>
 
-<!--  
+<!--
   <OrganizationReference>
     <reference value="Organization/2"/>
   </OrganizationReference>
@@ -33,7 +33,7 @@
   </requestOrganizationReference>
  -->
   <outcome value="complete"/>
- 
+
   <disposition value="Claim settled as per contract."/>
 
   <payeeType>
@@ -42,10 +42,10 @@
   </payeeType>
 
  <!--  Adjudication details  -->
- 
+
  <item>
 
-   <sequenceLinkId value="1"/> 
+   <sequenceLinkId value="1"/>
 
    <adjudication>
      <category>
@@ -66,7 +66,7 @@
 	    <value value="10.00"/>
 		<system value="urn:iso:std:iso:4217"/>
 		<code value="USD"/>
-	 </amount>  
+	 </amount>
    </adjudication>
 
    <adjudication>
@@ -84,17 +84,17 @@
   	    <value value="100.47"/>
 		<system value="urn:iso:std:iso:4217"/>
 		<code value="USD"/>
-	 </amount>	
+	 </amount>
    </adjudication>
-   
+
  </item>
 
  <totalCost>
 	<value value="135.57"/>
 	<system value="urn:iso:std:iso:4217"/>
 	<code value="USD"/>
- </totalCost>	
- 
+ </totalCost>
+
  <totalBenefit>
 	<value value="100.47"/>
 	<system value="urn:iso:std:iso:4217"/>
@@ -102,18 +102,18 @@
  </totalBenefit>
 
  <!--  Payment details  -->
- 
+
  <paymentDate value="2014-08-31"/>
- 
+
  <paymentAmount>
 	<value value="100.47"/>
 	<system value="urn:iso:std:iso:4217"/>
 	<code value="USD"/>
- </paymentAmount>	
- 
+ </paymentAmount>
+
  <paymentRef>
     <system value="http://www.BenefitsInc.com/fhir/paymentRef"/>
     <value value="201408-2-1569478"/>
- </paymentRef>	
- 
+ </paymentRef>
+
 </ClaimResponse>
