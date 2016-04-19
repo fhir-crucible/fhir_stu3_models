@@ -8,6 +8,7 @@ require 'date_time_precision/format/iso8601'
 require 'mime/types'
 require 'bcp47'
 require 'bigdecimal'
+require 'logger'
 
 $LOG = Logger.new("fhir_models.log", 10, 1024000)
 
