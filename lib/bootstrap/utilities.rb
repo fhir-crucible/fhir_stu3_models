@@ -37,7 +37,7 @@ module FHIR
         left.equals? right, exclude
       elsif left.is_a?(Array) && right.is_a?(Array) && (left.length == right.length)
         result = true
-        (0...(left.length)).each {|i| result &&= compare_attribute(left[i], right[i])}
+        (0...(left.length)).each {|i| result &&= compare_attribute(left[i], right[i], exclude)}
         result
       else
         left == right
