@@ -17,8 +17,9 @@ module FHIR
             self.class::MULTIPLE_TYPES[method.to_s].each do |type| 
               type[0] = type[0].upcase
               value = self.method("#{method}#{type}").call()
-              return value if value
+              return value if !value.nil?
             end
+            return nil
           end
           super(method, *args, &block)
         end
