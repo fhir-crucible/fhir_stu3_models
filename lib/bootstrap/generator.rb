@@ -131,7 +131,7 @@ module FHIR
       end
 
       def generate_search_parameters(typeName)
-        @search_params.select{|p|p['base']==typeName}.map{|p|p['code']}
+        @search_params.select{|p|p['base']==typeName && p['xpath'] && !p['xpath'].include?('extension')}.map{|p|p['code']}
       end
 
       def generate_class(hierarchy,structureDef,top_level=false)
