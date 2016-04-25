@@ -122,7 +122,7 @@ module FHIR
           typeName = structureDef['id']
           template = generate_class([ typeName ],structureDef,true)
           params = generate_search_parameters(typeName)
-          template.constants['SEARCH_PARAMS'] = params if !params.nil? && !params.empty?
+          template.constants['SEARCH_PARAMS'] = params if !params.nil?
           filename = File.join(folder,"#{typeName}.rb")
           file = File.open(filename,'w:UTF-8')
           file.write(template.to_s)
