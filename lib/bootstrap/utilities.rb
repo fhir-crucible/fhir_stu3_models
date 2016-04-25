@@ -5,7 +5,7 @@ module FHIR
       base.class_exec do
         def initialize(hash={})
           self.from_hash(hash)
-          self.class::METADATA.each do |key, value| 
+          self.class::METADATA.each do |key, value|
             if value['max'] > 1 && self.instance_variable_get("@#{key}").nil?
               self.instance_variable_set("@#{key}".to_sym, [])
             end
@@ -14,7 +14,7 @@ module FHIR
 
         def method_missing(method, *args, &block)
           if defined?(self.class::MULTIPLE_TYPES) && self.class::MULTIPLE_TYPES[method.to_s]
-            self.class::MULTIPLE_TYPES[method.to_s].each do |type| 
+            self.class::MULTIPLE_TYPES[method.to_s].each do |type|
               type[0] = type[0].upcase
               value = self.method("#{method}#{type}").call()
               return value if !value.nil?
@@ -22,6 +22,10 @@ module FHIR
             return nil
           end
           super(method, *args, &block)
+        end
+
+        def to_reference
+          "#{self.class.name.demodulize}/#{self.id}"
         end
       end
     end
@@ -31,6 +35,26 @@ module FHIR
         return false unless compare_attribute(self.instance_variable_get("@#{attribute}".to_sym), other.instance_variable_get("@#{attribute}".to_sym), exclude)
       end
       true
+    end
+
+    def mismatch(other, exclude=[])
+      misses = []
+      (self.class::METADATA.keys - exclude).each do |key|
+        these = attribute_mismatch(self.instance_variable_get("@#{key}".to_sym), other.instance_variable_get("@#{key}".to_sym), exclude)
+        if !these || (these.is_a?(Array) && !these.empty?)
+          misses << "#{self.class}::#{key}"
+          misses.concat these if these.is_a?(Array)
+        end
+      end
+      misses
+    end
+
+    def attribute_mismatch(left, right, exclude=[])
+      if left.respond_to?(:mismatch) && right.respond_to?(:mismatch)
+        left.mismatch right, exclude
+      else
+        compare_attribute(left, right, exclude)
+      end
     end
 
     def compare_attribute(left, right, exclude=[])
@@ -75,7 +99,7 @@ module FHIR
               errors[field] << validation if !validation.empty?
             else
               errors[field] << "#{meta['path']}: incorrect type. Found #{klassname} expected #{datatype}"
-            end            
+            end
           # if the data type is a Reference, validate it, but also check the
           # type_profiles metadata. For example, if it should be a Reference(Patient)
           elsif datatype=='Reference'
@@ -97,7 +121,7 @@ module FHIR
                       p = p.split('/').last
                       matches_one_profile = true if r.resourceType==p
                     end
-                  end          
+                  end
                 end
                 errors[field] << "#{meta['path']}: incorrect Reference type, expected #{meta['type_profiles'].map{|x|x.split('/').last}.join('|')}" if !matches_one_profile
               end
@@ -145,7 +169,7 @@ module FHIR
               end
               errors[field] << "#{meta['path']}: invalid codes #{the_codes}" if !has_valid_code
             end
-          end          
+          end
         end # value.each
         errors.delete(field) if value.empty?
       end # metadata.each
@@ -161,7 +185,7 @@ module FHIR
       errors.keep_if{|k,v|(v && !v.empty?)}
     end
 
-    def is_primitive?(datatype,value)      
+    def is_primitive?(datatype,value)
       # Remaining data types: handle special cases before checking type StructureDefinitions
       return case datatype.downcase
       when 'boolean'
@@ -174,8 +198,8 @@ module FHIR
         fragment = Nokogiri::HTML::DocumentFragment.parse(value)
         value.is_a?(String) && fragment.errors.size == 0
       when 'base64binary'
-        regex = /[^0-9\+\/\=A-Za-z\r\n ]/ 
-        value.is_a?(String) && (regex =~ value).nil?     
+        regex = /[^0-9\+\/\=A-Za-z\r\n ]/
+        value.is_a?(String) && (regex =~ value).nil?
       when 'uri'
         !URI.parse(value).nil? rescue false
       when 'instant'
@@ -184,7 +208,7 @@ module FHIR
       when 'integer','unsignedint'
         (!Integer(value).nil? rescue false)
       when 'positiveint'
-        (!Integer(value).nil? rescue false) && (Integer(value) >= 0)     
+        (!Integer(value).nil? rescue false) && (Integer(value) >= 0)
       when 'decimal'
         (!Float(value).nil? rescue false)
       else
@@ -199,7 +223,7 @@ module FHIR
         json_or_xml = value.downcase.include?('xml') || value.downcase.include?('json')
         known_weird = ['application/cql+text'].include?(value)
         valid = json_or_xml || known_weird || (!matches.nil? && !matches.empty?)
-      elsif uri=='http://tools.ietf.org/html/bcp47' 
+      elsif uri=='http://tools.ietf.org/html/bcp47'
         hasRegion = (!(value =~ /-/).nil?)
         valid = !BCP47::Language.identify(value.downcase).nil? && (!hasRegion || !BCP47::Region.identify(value.upcase).nil?)
       else
