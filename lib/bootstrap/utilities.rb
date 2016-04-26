@@ -25,7 +25,7 @@ module FHIR
         end
 
         def to_reference
-          "#{self.class.name.demodulize}/#{self.id}"
+          FHIR::Reference.new(reference: "#{self.class.name.demodulize}/#{self.id}")
         end
       end
     end
