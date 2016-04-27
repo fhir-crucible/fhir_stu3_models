@@ -53,8 +53,7 @@ module FHIR
                     klass = Module.const_get("FHIR::#{child['resourceType']}") rescue nil
                   end
                   begin
-                    obj = klass.new
-                    obj.from_hash(child)
+                    obj = klass.new(child)
                   rescue Exception => e
                     $LOG.error("Unable to inflate embedded class #{klass}\n#{e.backtrace}")
                   end
@@ -66,8 +65,7 @@ module FHIR
                 klass = Module.const_get("FHIR::#{value['resourceType']}") rescue nil
               end
               begin
-                obj = klass.new
-                obj.from_hash(value)
+                obj = klass.new(value)
                 value = obj
               rescue Exception => e
                 $LOG.error("Unable to inflate embedded class #{klass}\n#{e.backtrace}")
