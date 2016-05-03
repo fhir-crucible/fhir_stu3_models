@@ -1,4 +1,4 @@
 module FHIR
-  class Base
+  class Model
   end
 end

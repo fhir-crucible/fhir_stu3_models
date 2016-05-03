@@ -33,7 +33,7 @@ module FHIR
           type = 'module'
           type = 'class' if index==@name.length-1
           classdef = "#{space}#{type} #{name}"
-          classdef += " < FHIR::Base" if type == 'class'
+          classdef += " < FHIR::Model" if type == 'class'
           s << classdef
         end
 
