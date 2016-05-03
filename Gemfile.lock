@@ -2,6 +2,11 @@ PATH
   remote: .
   specs:
     fhir_models (1.0.0)
+      bcp47 (>= 0.3)
+      date_time_precision (>= 0.8)
+      mime-types (>= 1.16, < 3)
+      nokogiri (>= 1.6)
+      rake (>= 0.8.7)
 
 GEM
   remote: http://rubygems.org/
@@ -11,7 +16,7 @@ GEM
     bcp47 (0.3.3)
       i18n
     coderay (1.1.1)
-    date_time_precision (0.8.0)
+    date_time_precision (0.8.1)
     docile (1.1.5)
     i18n (0.7.0)
     json (1.8.3)
@@ -28,7 +33,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    rake (11.1.0)
+    rake (11.1.2)
     simplecov (0.11.2)
       docile (~> 1.1.0)
       json (~> 1.8)
@@ -45,14 +50,12 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  bcp47
-  date_time_precision
   fhir_models!
-  mime-types
   minitest (~> 4.0)
-  nokogiri
   nokogiri-diff
   pry
-  rake
   simplecov
   turn
+
+BUNDLED WITH
+   1.10.6
