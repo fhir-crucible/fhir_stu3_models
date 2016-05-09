@@ -20,6 +20,32 @@ module FHIR
               return value if !value.nil?
             end
             return nil
+          elsif !@extension.empty?
+            ext = @extension.select do |x|
+              name = x.url.gsub('-','_').split('/').last
+              anchor = name.split('#').last
+              (method.to_s==name || method.to_s==anchor)
+            end
+            if !ext.first.nil?
+              if !ext.first.value.nil?
+                return ext.first.value 
+              else
+                return ext.first
+              end
+            end
+          elsif !@modifierExtension.empty?
+            ext = @modifierExtension.select do |x|
+              name = x.url.gsub('-','_').split('/').last
+              anchor = name.split('#').last
+              (method.to_s==name || method.to_s==anchor)
+            end
+            if !ext.first.nil?
+              if !ext.first.value.nil?
+                return ext.first.value 
+              else
+                return ext.first
+              end
+            end
           end
           super(method, *args, &block)
         end
