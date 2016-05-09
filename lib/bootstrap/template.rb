@@ -32,7 +32,9 @@ module FHIR
           space = indent(index+1,offset)
           type = 'module'
           type = 'class' if index==@name.length-1
-          s << "#{space}#{type} #{name}"
+          classdef = "#{space}#{type} #{name}"
+          classdef += " < FHIR::Model" if type == 'class'
+          s << classdef
         end
 
         # include modules
