@@ -21,6 +21,15 @@ module FHIR
         @top_level = top_level
       end
 
+      def get_metadata
+        metadata = {}
+        @fields.each do |field|
+          metadata[field.name] = field.serialize
+          metadata[field.name].delete('name')
+        end
+        metadata
+      end
+
       def to_s(offset=0)
         # create an array of Strings, one per line
         s = []
@@ -45,11 +54,7 @@ module FHIR
         s << ''
 
         # add mandatory METADATA constant
-        metadata = {}
-        @fields.each do |field|
-          metadata[field.name] = field.serialize
-          metadata[field.name].delete('name')
-        end
+        metadata = get_metadata
         @constants['METADATA'] = metadata if !metadata.empty?
 
         # add constants

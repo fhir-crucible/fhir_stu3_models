@@ -1,0 +1,79 @@
+{
+  "resourceType": "Goal",
+  "id": "goal-example-qicore",
+  "text": {
+    "status": "additional",
+    "div": "<div>\n\t\t\t<p> A simple care goal for a patient to lose weight due to obesity.</p>\n\t\t</div>"
+  },
+  "extension": [
+    {
+      "extension": [
+        {
+          "url": "measure",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://loinc.org",
+                "code": "3141-9",
+                "display": "Weight Measured"
+              }
+            ]
+          }
+        },
+        {
+          "url": "detail",
+          "valueRange": {
+            "low": {
+              "value": 160,
+              "unit": "lbs",
+              "system": "http://unitsofmeasure.org",
+              "code": "[lb_av]"
+            },
+            "high": {
+              "value": 180,
+              "unit": "lbs",
+              "system": "http://unitsofmeasure.org",
+              "code": "[lb_av]"
+            }
+          }
+        }
+      ],
+      "url": "http://hl7.org/fhir/StructureDefinition/goal-target"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/goal-reasonRejected",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/v3/ActReason",
+            "code": "PREFUS",
+            "display": "patient refuse"
+          }
+        ]
+      }
+    }
+  ],
+  "subject": {
+    "reference": "Patient/example",
+    "display": "Peter James Chalmers"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "289169006",
+          "display": "weight loss"
+        }
+      ]
+    }
+  ],
+  "description": "Target weight is 160 to 180 lbs.",
+  "status": "rejected",
+  "addresses": [
+    {
+      "reference": "Condition/12345",
+      "display": "obesity"
+    }
+  ]
+}

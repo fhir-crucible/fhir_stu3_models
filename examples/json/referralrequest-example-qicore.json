@@ -1,0 +1,86 @@
+{
+  "resourceType": "ReferralRequest",
+  "id": "referralrequest-example-qicore",
+  "text": {
+    "status": "generated",
+    "div": "<div>Referral to Dr Dave for Beverly weaver to have grommets inserted in her r) ear</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/referralrequest-reasonRefused",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "609589008",
+            "display": "Refused by parents of subject"
+          }
+        ]
+      }
+    }
+  ],
+  "status": "cancelled",
+  "category": "request",
+  "type": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "700274009",
+        "display": "Referral for procedure"
+      }
+    ]
+  },
+  "priority": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "394848005",
+        "display": "Normal priority"
+      }
+    ]
+  },
+  "patient": {
+    "reference": "https://fhir.orionhealth.com/blaze/fhir/Patient/77662",
+    "display": "Beverly Weaver"
+  },
+  "authored": "2014-02-14",
+  "requester": {
+    "reference": "https://fhir.orionhealth.com/blaze/fhir/Practitioner/77272",
+    "display": "Serena Shrink"
+  },
+  "specialty": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "417887005",
+        "display": "Pediatric otolaryngology"
+      }
+    ]
+  },
+  "recipient": [
+    {
+      "reference": "https://fhir.orionhealth.com/blaze/fhir/Practitioner/76597",
+      "display": "Dr Dave"
+    }
+  ],
+  "reason": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "65363002",
+        "display": "Otitis media"
+      }
+    ]
+  },
+  "serviceRequested": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "172676009",
+          "display": "Myringotomy and insertion of short-term tympanic ventilation tube (procedure)"
+        }
+      ]
+    }
+  ]
+}

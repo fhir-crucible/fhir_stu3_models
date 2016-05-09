@@ -96,7 +96,10 @@ module FHIR
     end
 
     def validate(contained=nil)
-      metadata = self.class::METADATA
+      validate_profile(self.class::METADATA,contained)
+    end
+
+    def validate_profile(metadata,contained=nil)
       contained_here = [ self.instance_variable_get("@contained".to_sym) ].flatten
       contained_here << contained
       contained_here = contained_here.flatten.compact
@@ -131,13 +134,20 @@ module FHIR
               if v.reference && meta['type_profiles']
                 matches_one_profile = false
                 meta['type_profiles'].each do |p|
-                  p = p.split('/').last
-                  matches_one_profile = true if v.reference.include?(p)
+                  basetype = p.split('/').last
+                  matches_one_profile = true if v.reference.include?(basetype)
+                  # check profiled resources
+                  profile_basetype = FHIR::Profiles.get_basetype(p)
+                  matches_one_profile = true if profile_basetype && v.reference.include?(profile_basetype)
                 end
                 matches_one_profile = true if meta['type_profiles'].include?('http://hl7.org/fhir/StructureDefinition/Resource')
                 if !matches_one_profile && v.reference.start_with?('#')
                   # we need to look at the local contained resources
-                  r = contained_here.select{|x|x.id==v.reference[1..-1]}.first
+                  begin
+                    r = contained_here.select{|x|x.id==v.reference[1..-1]}.first
+                  rescue Exception => e
+                    binding.pry
+                  end
                   if !r.nil?
                     meta['type_profiles'].each do |p|
                       p = p.split('/').last

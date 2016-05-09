@@ -12,11 +12,16 @@ module FHIR
       # templates keeps track of all the templates in context within a given StructureDefinition
       attr_accessor :templates
 
-      def initialize    
-        defns = File.expand_path '../../definitions',File.dirname(File.absolute_path(__FILE__))
-
+      def initialize(auto_setup=true)   
         # load the valueset expansions
         @expansions = FHIR::Expansions.new
+        # templates is an array
+        @templates = []
+        setup if auto_setup
+      end
+
+      def setup
+        defns = File.expand_path '../../definitions',File.dirname(File.absolute_path(__FILE__))
 
         # load the types
         filename = File.join(defns,'structures','profiles-types.json')
@@ -42,10 +47,7 @@ module FHIR
         filename = File.join(defns,'structures','search-parameters.json')
         raw = File.open(filename,'r:UTF-8',&:read)
         @search_params = JSON.parse(raw)['entry'].map{|e|e['resource']}        
-
-        # templates is an array
-        @templates = []
-
+ 
         # make folders for generated content if they do not exist
         @lib = File.expand_path '..', File.dirname(File.absolute_path(__FILE__))
         Dir.mkdir(File.join(@lib,'fhir')) if !Dir.exists?(File.join(@lib,'fhir'))
@@ -143,12 +145,14 @@ module FHIR
         template = FHIR::Boot::Template.new([ typeName ],top_level)
         template.hierarchy = hierarchy
         template.kind = structureDef['kind']
+        return template if structureDef['snapshot'].nil? || structureDef['snapshot']['element'].nil?
+
         multipleDataTypes = {}
 
         # examine the snapshot.elements... move the Element and BackboneElements, 
         # and their children, into separate StructureDefiniton hashes and process as
         # child templates.
-        child_templates = []
+        child_templates = [] 
         structureDef['snapshot']['element'].each do |element|
           # skip the first element
           next if element['path']==pathType
@@ -242,7 +246,7 @@ module FHIR
 
               template.fields << field
             end
-          else # If there is not data type, treat the type as a reference to an already declared internal class
+          else # If there is no data type, treat the type as a reference to an already declared internal class
             field = FHIR::Field.new(field_base_name)
             field.path = element['path'].gsub(pathType,typeName)
             field.type = element['contentReference']
