@@ -35,3 +35,7 @@ Dir.glob(File.join(root, 'lib','fhir','**','*.rb')).each do |file|
   require file
 end
 
+# Require the fluentpath code
+Dir.glob(File.join(root, 'lib','fluentpath','*.rb')).each do |file|
+  require file
+end
