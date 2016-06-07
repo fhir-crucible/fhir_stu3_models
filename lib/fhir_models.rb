@@ -29,9 +29,9 @@ require File.join(root, 'lib','fhir.rb')
 
 # Require the generated code
 Dir.glob(File.join(root, 'lib','fhir','*.rb')).each do |file|
-  load file
+  require file
 end
 Dir.glob(File.join(root, 'lib','fhir','**','*.rb')).each do |file|
-  load file
+  require file
 end
 

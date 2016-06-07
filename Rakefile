@@ -12,7 +12,6 @@ end
 
 desc "Run basic tests"
 Rake::TestTask.new(:test_unit) do |t|
-  Rake::Task['fhir:generate'].invoke
   t.libs << "test"
   t.test_files = FileList['test/**/*_test.rb']
   t.verbose = true
