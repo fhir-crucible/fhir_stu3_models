@@ -83,6 +83,35 @@ namespace :fhir do
     puts 'Done.'
   end
 
+  desc 'output invariant expressions from definitions'
+  task :invariants, [] do |t, args|
+    # create a generator and load the definitions
+    generator = FHIR::Boot::Generator.new
+    defs = generator.types + generator.resources + generator.extensions + generator.profiles
+    invariants = {}
+    defs.each do |structureDef|
+      structureDef['snapshot']['element'].each do |element|
+        if element['constraint']
+          element['constraint'].each do |constraint|
+            if constraint['expression']
+              invariants[constraint['key']] = { 
+                :path => element['path'],
+                :expression => constraint['expression'],
+                :human => constraint['human']
+              }
+            end
+          end
+        end
+      end
+    end
+    file = File.open('invariants.txt','w:UTF-8')
+    invariants.each do |key,value|
+      file.write "#{key}|#{value[:path]}|#{value[:expression]}|#{value[:human]}\n"
+    end
+    file.close
+    puts "Wrote invariants into pipe-delimited file: invariants.txt"
+  end
+
   def copy_artifacts(artifacts,src_folder,dest_folder,verbose=true)
     artifacts.each do |artifact|
       puts "  Copying #{artifact}..." if verbose
