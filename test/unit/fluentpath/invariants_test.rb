@@ -133,4 +133,44 @@ class InvariantsTest < Test::Unit::TestCase
     assert result==true, 'Failed obs-7 test.'
   end
 
+  def test_per1_date_true
+    expression = "start.empty() or end.empty() or (start <= end)"
+    data = {
+      'start' => '2016-06-06',
+      'end' => '2016-06-16'
+    }
+    result = FluentPath.evaluate(expression,data)
+    assert result==true, 'Failed per-1 test.'
+  end
+
+  def test_per1_date_false
+    expression = "start.empty() or end.empty() or (start <= end)"
+    data = {
+      'start' => '2016-06-06',
+      'end' => '2016-06-01'
+    }
+    result = FluentPath.evaluate(expression,data)
+    assert result==false, 'Failed per-1 test.'
+  end  
+
+  def test_per1_dateTime_true
+    expression = "start.empty() or end.empty() or (start <= end)"
+    data = {
+      'start' => '2016-06-06T10:55:34+01:00',
+      'end' => '2016-06-16T09:44:23+01:00'
+    }
+    result = FluentPath.evaluate(expression,data)
+    assert result==true, 'Failed per-1 test.'
+  end
+
+  def test_per1_dateTime_false
+    expression = "start.empty() or end.empty() or (start <= end)"
+    data = {
+      'start' => '2016-06-06T10:55:34+01:00',
+      'end' => '2016-06-01T09:44:23+01:00'
+    }
+    result = FluentPath.evaluate(expression,data)
+    assert result==false, 'Failed per-1 test.'
+  end
+
 end

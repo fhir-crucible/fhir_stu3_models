@@ -191,7 +191,7 @@ module FluentPath
     # evaluate all add/sub
 
     # evaluate all equality tests
-    functions = [:"="]
+    functions = [:"=",:"<="]
     size = -1
     while(tree.length!=size)
       puts "EQ: #{tree}"
@@ -207,6 +207,8 @@ module FluentPath
           case node
           when :"="
             tree[index] = (left==right)
+          when :"<="
+            tree[index] = (left<=right)
           else
             raise "Equality operator not implemented: #{node}"
           end
