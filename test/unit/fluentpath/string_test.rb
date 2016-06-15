@@ -31,4 +31,15 @@ class StringTest < Test::Unit::TestCase
     assert result==false, 'Failed startsWith test.'
   end
 
+  # ------------------------- contains() -------------------------------------
+  def test_contains_true
+    result = FluentPath.evaluate("name.contains('hn')",DATA)
+    assert result==true, 'Failed contains test.'
+  end
+
+  def test_contains_false
+    result = FluentPath.evaluate("name.contains('.')",DATA)
+    assert result==false, 'Failed contains test.'
+  end
+
 end

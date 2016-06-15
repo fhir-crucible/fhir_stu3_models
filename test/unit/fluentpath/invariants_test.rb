@@ -173,4 +173,26 @@ class InvariantsTest < Test::Unit::TestCase
     assert result==false, 'Failed per-1 test.'
   end
 
+  def test_dis1_true
+    expression = "(code or value.empty()) and (system.empty() or system = %ucum)"
+    data = {
+      'code' => 'kg',
+      'system' => 'http://unitsofmeasure.org',
+      'value' => 300
+    }
+    result = FluentPath.evaluate(expression,data)
+    assert result==true, 'Failed dis-1 test.'
+  end
+
+  def test_dis1_false
+    expression = "(code or value.empty()) and (system.empty() or system = %ucum)"
+    data = {
+      'code' => 'kg',
+      'system' => 'foobar',
+      'value' => 300
+    }
+    result = FluentPath.evaluate(expression,data)
+    assert result==false, 'Failed dis-1 test.'
+  end
+
 end

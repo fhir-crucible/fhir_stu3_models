@@ -1,6 +1,6 @@
 module FluentPath
 
-  @@reserved = ['all','not','empty','exists','where','select','startsWith','distinct','=','!=','<=','>=','<','>','and','or','xor']
+  @@reserved = ['all','not','empty','exists','where','select','startsWith','contains','distinct','=','!=','<=','>=','<','>','and','or','xor']
 
   def self.parse(expression)
     build_tree( tokenize(expression) )
@@ -8,7 +8,15 @@ module FluentPath
 
   # This method tokenizes the expression into a flat array of tokens
   def self.tokenize(expression)
-    tokens = expression.gsub('()','').split /(\(|\)|\s|\.)/
+    raw_tokens = expression.gsub('()','').split /(\(|\)|\s)/
+    tokens = []
+    raw_tokens.each do |token|
+      if token.include?('.') && !(token.start_with?('\'') && token.end_with?('\''))
+        token.split('.').each{|t|tokens << t}
+      else
+        tokens << token
+      end
+    end
     tokens.delete_if { |token| (token.length==0 || (token =~ /\s/)) }
   end
 

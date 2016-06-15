@@ -14,6 +14,7 @@ module FluentPath
   # self references
   def self.get(key,hash)
     return @@context if ['$context','$resource'].include?(key)
+    return 'http://unitsofmeasure.org' if key=='%ucum'
     return :null if !hash.is_a?(Hash)
     return key.gsub!(/\A\'|\'\Z/,'') if key.start_with?("'") && key.end_with?("'")
     key.gsub!(/\A"|"\Z/,'') # remove quotes around path if they exist
@@ -77,7 +78,7 @@ module FluentPath
     puts "DATA: #{tree}"
 
     # evaluate all the functions at this level
-    functions = [:all,:not,:empty,:exists,:where,:select,:startsWith,:distinct]
+    functions = [:all,:not,:empty,:exists,:where,:select,:startsWith,:contains,:distinct]
     size = -1
     while(tree.length!=size)
       puts "FUNC: #{tree}"
@@ -179,7 +180,25 @@ module FluentPath
             else
               raise "StartsWith function not applicable to #{previous_node.class}: #{previous_node}"
             end
-            break            
+            break
+          when :contains
+            # the previous node should be a data (as String)
+            # the next node should be a block or subexpression (as FluentPath::Expression)
+            block = tree[index+1]
+            if block.is_a?(FluentPath::Expression)
+              tree[index+1] = nil
+            else
+              raise "Contains function requires a block."
+            end
+            if previous_node.is_a?(String)
+              puts "Evaling Contains Block...."
+              substring = eval(block,data)
+              tree[index] = previous_node.include?(substring) rescue false
+              tree[previous_index] = nil if !previous_index.nil?
+            else
+              raise "Contains function not applicable to #{previous_node.class}: #{previous_node}"
+            end
+            break                 
           else
             raise "Function not implemented: #{node}"
           end
