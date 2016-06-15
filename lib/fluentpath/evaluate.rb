@@ -14,18 +14,22 @@ module FluentPath
   # self references
   def self.get(key,hash)
     return @@context if ['$context','$resource'].include?(key)
-    return nil if !hash.is_a?(Hash)
+    return :null if !hash.is_a?(Hash)
     return key.gsub!(/\A\'|\'\Z/,'') if key.start_with?("'") && key.end_with?("'")
     key.gsub!(/\A"|"\Z/,'') # remove quotes around path if they exist
     return hash if hash['resourceType']==key
-    hash[key]
+    val = hash[key]
+    val = :null if val.nil?
+    val
   end
 
   # Convert nils and empty Arrays to false
   # Everything else is true.
   def self.convertToBoolean(value)
     return false if value.nil?
-    return false if value.is_a?(Array) && value.empty?
+    return false if value.is_a?(Array) && value.empty?    
+    return false if value.is_a?(Hash) && value.empty?
+    return false if value==:null
     return false if value==false
     return true
   end
@@ -98,10 +102,10 @@ module FluentPath
             tree[index] = !convertToBoolean(previous_node)
             tree[previous_index] = nil if !previous_index.nil?
           when :empty
-            tree[index] = (previous_node.empty? rescue previous_node.nil?)
+            tree[index] = (previous_node==:null || previous_node.empty? rescue previous_node.nil?)
             tree[previous_index] = nil if !previous_index.nil?
           when :exists
-            tree[index] = !previous_node.nil?
+            tree[index] = !previous_node.nil? && previous_node!=:null
             tree[previous_index] = nil if !previous_index.nil?            
           when :distinct
             tree[index] = (previous_node.uniq rescue previous_node)
@@ -232,7 +236,7 @@ module FluentPath
     puts "EQ: #{tree}"
 
     # evaluate all logical tests
-    functions = [:and,:or]
+    functions = [:and,:or,:xor]
     size = -1
     while(tree.length!=size)
       puts "LOGIC: #{tree}"
@@ -250,6 +254,8 @@ module FluentPath
             tree[index] = (left&&right)
           when :or
             tree[index] = (left||right)
+          when :xor
+            tree[index] = (left^right)
           else
             raise "Logical operator not implemented: #{node}"
           end

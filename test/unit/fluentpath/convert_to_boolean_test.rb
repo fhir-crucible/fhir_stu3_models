@@ -27,10 +27,10 @@ class ConvertToBooleanTest < Test::Unit::TestCase
     assert result==false, 'nil should be converted to false.'
   end
 
-  def test_empty_hash_is_true
+  def test_empty_hash_is_false
     data = {}
     result = FluentPath.convertToBoolean(data)
-    assert result==true, 'An empty hash should be converted to true.'
+    assert result==false, 'An empty hash should be converted to false.'
   end
 
   def test_empty_array_is_false

@@ -21,5 +21,57 @@ class AndOrNotTest < Test::Unit::TestCase
     assert result==true, 'Failed and_or_not test.'
   end
 
+  def test_xor_tt
+    data = {
+      'a' => true,
+      'b' => true
+    }
+    result = FluentPath.evaluate('a xor b',data)
+    assert result==false, 'Failed xor test.'    
+  end
+
+  def test_xor_tf
+    data = {
+      'a' => true,
+      'b' => false
+    }
+    result = FluentPath.evaluate('a xor b',data)
+    assert result==true, 'Failed xor test.'    
+  end
+
+  def test_xor_ft
+    data = {
+      'a' => false,
+      'b' => true
+    }
+    result = FluentPath.evaluate('a xor b',data)
+    assert result==true, 'Failed xor test.'    
+  end
+
+  def test_xor_ff
+    data = {
+      'a' => false,
+      'b' => false
+    }
+    result = FluentPath.evaluate('a xor b',data)
+    assert result==false, 'Failed xor test.'    
+  end
+
+  def test_xor_tnil
+    data = {
+      'a' => true
+    }
+    result = FluentPath.evaluate('a xor b',data)
+    assert result==true, 'Failed xor test.'    
+  end
+
+  def test_xor_nilstring
+    data = {
+      'b' => 'foo'
+    }
+    puts "------------------------------------"
+    result = FluentPath.evaluate('a xor b',data)
+    assert result==true, 'Failed xor test.'    
+  end  
 
 end
