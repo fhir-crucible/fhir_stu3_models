@@ -78,7 +78,7 @@ module FluentPath
     puts "DATA: #{tree}"
 
     # evaluate all the functions at this level
-    functions = [:all,:not,:empty,:exists,:where,:select,:startsWith,:contains,:distinct]
+    functions = [:all,:not,:empty,:exists,:where,:select,:startsWith,:contains,:in,:distinct]
     size = -1
     while(tree.length!=size)
       puts "FUNC: #{tree}"
@@ -198,7 +198,29 @@ module FluentPath
             else
               raise "Contains function not applicable to #{previous_node.class}: #{previous_node}"
             end
-            break                 
+            break      
+          when :in
+            # the previous node should be a data (as String, Number, or Boolean)
+            # the next node should an Array (possibly as a block or subexpression/FluentPath::Expression)
+            block = tree[index+1]
+            if block.is_a?(FluentPath::Expression)
+              puts "Evaling In Block...."
+              tree[index+1] = eval(block,data)
+            end
+            array = tree[index+1]
+            if array.is_a?(Array)
+              tree[index+1] = nil
+            else
+              raise "In function requires an array."
+            end
+            if previous_node.is_a?(String) || previous_node==true || previous_node==false || previous_node.is_a?(Numeric)
+              tree[index] = array.include?(previous_node) rescue false
+              tree[previous_index] = nil if !previous_index.nil?
+            else
+              raise "In function not applicable to #{previous_node.class}: #{previous_node}"
+            end
+            break      
+
           else
             raise "Function not implemented: #{node}"
           end
@@ -296,6 +318,14 @@ module FluentPath
 
     puts "OUT: #{tree}"
 
+    tree.map! do |out|
+      while out.is_a?(FluentPath::Expression)
+        out = eval(out,data)
+      end
+      out
+    end
+    
+    puts "RETURN: #{tree.first}"
     tree.first
   end
 

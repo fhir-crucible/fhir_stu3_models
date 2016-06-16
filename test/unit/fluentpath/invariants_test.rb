@@ -195,4 +195,14 @@ class InvariantsTest < Test::Unit::TestCase
     assert result==false, 'Failed dis-1 test.'
   end
 
+  def test_que10_true
+    expression = "(type in ('boolean'|'decimal'|'integer'|string'|'text'|'url')) or maxLength.empty()"
+    data = {
+      'type' => 'string',
+      'maxLength' => 300
+    }
+    result = FluentPath.evaluate(expression,data)
+    assert result==true, 'Failed que-10 test.'
+  end
+
 end

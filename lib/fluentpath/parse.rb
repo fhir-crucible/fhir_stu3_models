@@ -1,6 +1,6 @@
 module FluentPath
 
-  @@reserved = ['all','not','empty','exists','where','select','startsWith','contains','distinct','=','!=','<=','>=','<','>','and','or','xor']
+  @@reserved = ['all','not','empty','exists','where','select','startsWith','contains','in','distinct','=','!=','<=','>=','<','>','and','or','xor']
 
   def self.parse(expression)
     build_tree( tokenize(expression) )
@@ -13,11 +13,17 @@ module FluentPath
     raw_tokens.each do |token|
       if token.include?('.') && !(token.start_with?('\'') && token.end_with?('\''))
         token.split('.').each{|t|tokens << t}
+      elsif token.include?('|')
+        array = []
+        token.split('|').each{|t|array << t.gsub('\'','')}
+        tokens << array
       else
         tokens << token
       end
     end
     tokens.delete_if { |token| (token.length==0 || (token =~ /\s/)) }
+    puts "TOKENS: #{tokens}"
+    tokens
   end
 
   # This method builds an Abstract Syntax Tree (AST) from a flat list of tokens

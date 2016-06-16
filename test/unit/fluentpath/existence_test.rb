@@ -96,5 +96,66 @@ class ExistenceTest < Test::Unit::TestCase
   end
 
   # ------------------------- count() -------------------------------------
+  # ------------------------- in -------------------------------------
+  def test_in_numbers
+    data = {
+      'foo' => 2,
+      'set' => [1,2,3]
+    }
+    result = FluentPath.evaluate('foo in set',data)
+    assert result==true, 'Failed in_numbers test.'
+  end
+
+  def test_in_strings
+    data = {
+      'foo' => 'B',
+      'set' => ['A','B','C']
+    }
+    result = FluentPath.evaluate('foo in set',data)
+    assert result==true, 'Failed in_strings test.'
+  end
+
+  def test_in_booleans
+    data = {
+      'foo' => true,
+      'set' => [false,true,false]
+    }
+    result = FluentPath.evaluate('foo in set',data)
+    assert result==true, 'Failed in_booleans test.'
+  end
+
+  def test_in_numbers_false
+    data = {
+      'foo' => 5,
+      'set' => [1,2,3]
+    }
+    result = FluentPath.evaluate('foo in set',data)
+    assert result==false, 'Failed in_numbers_false test.'
+  end
+
+  def test_in_strings_false
+    data = {
+      'foo' => 'D',
+      'set' => ['A','B','C']
+    }
+    result = FluentPath.evaluate('foo in set',data)
+    assert result==false, 'Failed in_strings_false test.'
+  end
+
+  def test_in_booleans_false
+    data = {
+      'foo' => true,
+      'set' => [false,false]
+    }
+    result = FluentPath.evaluate('foo in set',data)
+    assert result==false, 'Failed in_booleans_false test.'
+  end
+
+  # ------------------- set creation ------------------------
+  def test_set_creation
+    data = {}
+    result = FluentPath.evaluate("('A'|'B'|'C')",data)
+    assert result==['A','B','C'], 'Failed set creation.'
+  end
 
 end
