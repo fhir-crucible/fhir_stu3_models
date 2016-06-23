@@ -117,6 +117,33 @@ class FluentEqualityTest < Test::Unit::TestCase
     assert result==true, 'Failed greater_than test.'
   end  
 
+  def test_greater_than_equals_strings
+    data = {
+      'a' => 'd',
+      'b' => 'b'
+    }
+    result = FluentPath.evaluate('a >= b',data)
+    assert result==true, 'Failed greater_than_equals test.'
+  end
+
+  def test_greater_than_equals_numbers
+    data = {
+      'a' => 1.55,
+      'b' => 1.5
+    }
+    result = FluentPath.evaluate('a >= b',data)
+    assert result==true, 'Failed greater_than_equals test.'
+  end
+
+  def test_greater_than_equals_dateTimes
+    data = {
+      'a' => '2016-06-18T10:55:34+01:00',
+      'b' => '2016-06-09T10:55:34+01:00'
+    }
+    result = FluentPath.evaluate('a >= b',data)
+    assert result==true, 'Failed greater_than_equals test.'
+  end  
+
   # -------------------------------------- negative tests -----------------------------------------
 
   def test_equals_strings_false

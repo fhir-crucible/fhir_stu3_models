@@ -1,6 +1,6 @@
 module FluentPath
 
-  @@reserved = ['all','not','empty','exists','where','select','extension','startsWith','contains','in','distinct','=','!=','<=','>=','<','>','and','or','xor']
+  @@reserved = ['all','not','empty','exists','where','select','extension','startsWith','contains','in','distinct','=','!=','<=','>=','<','>','and','or','xor','+','-','/','*']
 
   def self.parse(expression)
     build_tree( tokenize(expression) )
@@ -9,10 +9,24 @@ module FluentPath
   # This method tokenizes the expression into a flat array of tokens
   def self.tokenize(expression)
     raw_tokens = expression.gsub('()','').split /(\(|\)|\s)/
+    # recreate strings if they were split
+    size = nil
+    while(raw_tokens.include?("'") && size!=raw_tokens.length)
+      index = raw_tokens.index("'")
+      e_index = raw_tokens[(index+1)..raw_tokens.length].index("'")
+      raw_tokens[index] = raw_tokens[index..(index+e_index+1)].join
+      for i in (index+1)..(index+e_index+1)
+        raw_tokens[i] = nil
+      end
+      raw_tokens.compact!
+      size = raw_tokens.length
+    end
     tokens = []
     raw_tokens.each do |token|
+      # split a path unless it is quoted
       if token.include?('.') && !(token.start_with?('\'') && token.end_with?('\''))
         token.split('.').each{|t|tokens << t}
+      # split arrays and replace with array
       elsif token.include?('|')
         array = []
         token.split('|').each{|t|array << t.gsub('\'','')}
@@ -21,7 +35,7 @@ module FluentPath
         tokens << token
       end
     end
-    tokens.delete_if { |token| (token.length==0 || (token =~ /\s/)) }
+    tokens.delete_if { |token| (token.length==0 || (token.is_a?(String) && token.match(/\S/).nil?) ) }
     puts "TOKENS: #{tokens}"
     tokens
   end

@@ -288,8 +288,66 @@ module FluentPath
     end
 
     # evaluate all mult/div
+    functions = [:"/",:"*"]
+    size = -1
+    while(tree.length!=size)
+      puts "MATH: #{tree}"
+      previous_node = nil
+      previous_index = nil
+      size = tree.length
+      tree.each_with_index do |node,index|
+        if node.is_a?(Symbol) && functions.include?(node)
+          previous_node = eval(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
+          tree[index+1] = eval(tree[index+1],data) if tree[index+1].is_a?(FluentPath::Expression)
+          left = previous_node
+          right = tree[index+1]
+          case node
+          when :"/"
+            tree[index] = (left/right)
+          when :"*"
+            tree[index] = (left*right)
+          end
+          tree[previous_index] = nil
+          tree[index+1] = nil
+          break
+        end
+        previous_index = index
+        previous_node = node
+      end
+      tree.compact!
+    end
+    puts "MATH: #{tree}"
 
     # evaluate all add/sub
+    functions = [:"+",:"-"]
+    size = -1
+    while(tree.length!=size)
+      puts "MATH: #{tree}"
+      previous_node = nil
+      previous_index = nil
+      size = tree.length
+      tree.each_with_index do |node,index|
+        if node.is_a?(Symbol) && functions.include?(node)
+          previous_node = eval(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
+          tree[index+1] = eval(tree[index+1],data) if tree[index+1].is_a?(FluentPath::Expression)
+          left = previous_node
+          right = tree[index+1]
+          case node
+          when :"+"
+            tree[index] = (left+right)
+          when :"-"
+            tree[index] = (left-right)
+          end
+          tree[previous_index] = nil
+          tree[index+1] = nil
+          break
+        end
+        previous_index = index
+        previous_node = node
+      end
+      tree.compact!
+    end
+    puts "MATH: #{tree}"
 
     # evaluate all equality tests
     functions = [:"=",:"!=",:"<=",:">=",:"<",:">"]
