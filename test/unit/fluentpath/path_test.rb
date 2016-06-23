@@ -22,6 +22,10 @@ class PathTest < Test::Unit::TestCase
       'PID-1' => PID1
     }
   }
+  ARRAY = {
+    'Array' => ['A','B'],
+    'index' => 1
+  }
 
   def test_path_without_type
     result = FluentPath.evaluate('name.given',PATIENT)
@@ -36,6 +40,16 @@ class PathTest < Test::Unit::TestCase
   def test_path_with_quotes
     result = FluentPath.evaluate('Message."PID-1"',MESSAGE)
     assert result==PID1, 'Failed to navigate path.'
+  end
+
+  def test_array_access
+    result = FluentPath.evaluate('Array[0]',ARRAY)
+    assert result=='A', 'Failed to navigate path.'
+  end  
+
+  def test_array_access_with_variable
+    result = FluentPath.evaluate('Array[index]',ARRAY)
+    assert result=='B', 'Failed to navigate path.'
   end
 
 end

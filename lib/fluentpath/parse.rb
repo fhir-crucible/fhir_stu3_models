@@ -1,6 +1,6 @@
 module FluentPath
 
-  @@reserved = ['all','not','empty','exists','where','select','startsWith','contains','in','distinct','=','!=','<=','>=','<','>','and','or','xor']
+  @@reserved = ['all','not','empty','exists','where','select','extension','startsWith','contains','in','distinct','=','!=','<=','>=','<','>','and','or','xor']
 
   def self.parse(expression)
     build_tree( tokenize(expression) )
@@ -38,6 +38,13 @@ module FluentPath
         return tree
       elsif '.' != token
         tree << atom(token)
+      end
+    end
+    # post-processing
+    tree.each_with_index do |token,index|
+      if token==:extension # 'extension' can be a path or a function call (if followed by a block)
+        next_token = tree[index+1]
+        tree[index] = 'extension' if next_token.nil? || !next_token.is_a?(FluentPath::Expression)
       end
     end
     tree
