@@ -205,4 +205,13 @@ class InvariantsTest < Test::Unit::TestCase
     assert result==true, 'Failed que-10 test.'
   end
 
+  def test_eld14_true
+    expression = "constraint.select(key).distinct()"
+    data = {
+      'constraint' => [{'key'=>'A'},{'key'=>'B'},{'key'=>'A'}]
+    }
+    result = FluentPath.evaluate(expression,data)
+    assert result==['A','B'], 'Failed eld-14 test.'
+  end
+
 end

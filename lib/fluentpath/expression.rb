@@ -14,6 +14,11 @@ module FluentPath
     def inspect
       to_s
     end
+
+    def clone
+      clone_tree = @tree.map{|x|x.clone rescue x}      
+      FluentPath::Expression.new(clone_tree)
+    end
     
   end
 end

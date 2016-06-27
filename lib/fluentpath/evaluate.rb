@@ -106,7 +106,7 @@ module FluentPath
             end
             if previous_node.is_a?(Array)
               previous_node.keep_if do |item|
-                sub = eval(block,item)
+                sub = eval(block.clone,item)
                 convertToBoolean(sub)
               end
               tree[index] = previous_node
@@ -136,7 +136,7 @@ module FluentPath
             end
             if previous_node.is_a?(Array)
               previous_node.map! do |item|
-                eval(block,item)
+                eval(block.clone,item)
               end
               tree[index] = previous_node
               tree[previous_index] = nil if !previous_index.nil?
