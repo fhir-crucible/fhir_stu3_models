@@ -214,4 +214,34 @@ class InvariantsTest < Test::Unit::TestCase
     assert result==['A','B'], 'Failed eld-14 test.'
   end
 
+  def test_eld2_true
+    expression = "min.empty() or max.empty() or (max = '*') or (min <= max.toInteger())"
+    data = {
+      'min' => 1,
+      'max' => '2'
+    }
+    result = FluentPath.evaluate(expression,data)
+    assert result==true, 'Failed eld-2 test.'
+  end
+
+  def test_eld2_false
+    expression = "min.empty() or max.empty() or (max = '*') or (min <= max.toInteger())"
+    data = {
+      'min' => 1,
+      'max' => '0'
+    }
+    result = FluentPath.evaluate(expression,data)
+    assert result==false, 'Failed eld-2 test.'
+  end
+
+  def test_eld2_unlimited
+    expression = "min.empty() or max.empty() or (max = '*') or (min <= max.toInteger())"
+    data = {
+      'min' => 1,
+      'max' => '*'
+    }
+    result = FluentPath.evaluate(expression,data)
+    assert result==true, 'Failed eld-2 test.'
+  end
+
 end

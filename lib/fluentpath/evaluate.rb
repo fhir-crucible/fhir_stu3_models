@@ -186,7 +186,7 @@ module FluentPath
     puts "DATA: #{tree}"
 
     # evaluate all the functions at this level
-    functions = [:all,:not,:empty,:exists,:startsWith,:contains,:in,:distinct]
+    functions = [:all,:not,:empty,:exists,:startsWith,:contains,:in,:distinct,:toInteger]
     size = -1
     while(tree.length!=size)
       puts "FUNC: #{tree}"
@@ -276,7 +276,18 @@ module FluentPath
               raise "In function not applicable to #{previous_node.class}: #{previous_node}"
             end
             break      
-
+          when :toInteger
+            # the previous node should be a data (as String, Integer, Boolean)
+            if previous_node.is_a?(String)
+              tree[index] = previous_node.to_i rescue 0
+            elsif previous_node.is_a?(Numeric)
+              tree[index] = previous_node.to_i
+            else
+              tree[index] = 0
+              tree[index] = 1 if convertToBoolean(previous_node)
+            end
+            tree[previous_index] = nil if !previous_index.nil?  
+            break                  
           else
             raise "Function not implemented: #{node}"
           end
