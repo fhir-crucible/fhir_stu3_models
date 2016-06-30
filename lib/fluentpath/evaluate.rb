@@ -436,6 +436,37 @@ module FluentPath
     end
     puts "LOGIC: #{tree}"    
 
+    functions = [:implies]
+    size = -1
+    while(tree.length!=size)
+      puts "IMPLIES: #{tree}"
+      previous_node = nil
+      previous_index = nil
+      size = tree.length
+      tree.each_with_index do |node,index|
+        if node.is_a?(Symbol) && functions.include?(node)
+          previous_node = eval(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
+          tree[index+1] = eval(tree[index+1],data) if tree[index+1].is_a?(FluentPath::Expression)
+          case node
+          when :implies
+            tree[index] = false
+            exists = !previous_node.nil? && previous_node!=:null
+            implication = convertToBoolean(tree[index+1])
+            tree[index] = true if (exists && (implication || tree[index+1]==false))
+          else
+            raise "Logical operator not implemented: #{node}"
+          end
+          tree[previous_index] = nil
+          tree[index+1] = nil
+          break
+        end
+        previous_index = index
+        previous_node = node
+      end
+      tree.compact!
+    end
+    puts "IMPLIES: #{tree}"  
+
     # check for symbols
     tree.each do |node|
       raise "Unhandled reserved symbol: #{node}" if node.is_a?(Symbol)

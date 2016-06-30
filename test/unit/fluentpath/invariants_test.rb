@@ -244,4 +244,26 @@ class InvariantsTest < Test::Unit::TestCase
     assert result==true, 'Failed eld-2 test.'
   end
 
+  def test_opd2
+    expression = "searchType implies type = 'string'"
+    data = {
+      'searchType' => 'number',
+      'type' => 'string'
+    }
+    result = FluentPath.evaluate(expression,data)
+    assert result==true, 'Failed opd-2 test.'    
+  end
+
+  def test_sdf12
+    expression = "snapshot.element.select(base) implies baseType"
+    data = {
+      'baseType' => 'Patient',
+      'snapshot' => {
+        'element' => [{ 'base' => 'Patient' }]
+      }
+    }
+    result = FluentPath.evaluate(expression,data)
+    assert result==true, 'Failed sdf-12 test.'    
+  end
+
 end
