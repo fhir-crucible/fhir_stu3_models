@@ -234,7 +234,7 @@ module FHIR
       when 'decimal'
         (!Float(value).nil? rescue false)
       else
-        $LOG.warn "Unable to check #{value} for datatype #{datatype}"
+        FHIR.logger.warn "Unable to check #{value} for datatype #{datatype}"
       end
     end
 
@@ -249,7 +249,7 @@ module FHIR
         hasRegion = (!(value =~ /-/).nil?)
         valid = !BCP47::Language.identify(value.downcase).nil? && (!hasRegion || !BCP47::Region.identify(value.upcase).nil?)
       else
-        $LOG.warn "Unable to check_binding on unknown ValueSet: #{uri}"
+        FHIR.logger.warn "Unable to check_binding on unknown ValueSet: #{uri}"
       end
       valid
     end

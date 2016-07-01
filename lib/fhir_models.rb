@@ -10,8 +10,6 @@ require 'bcp47'
 require 'bigdecimal'
 require 'logger'
 
-$LOG = Logger.new("fhir_models.log", 10, 1024000)
-
 root = File.expand_path '..', File.dirname(File.absolute_path(__FILE__))
 
 # Need to require Hashable first
