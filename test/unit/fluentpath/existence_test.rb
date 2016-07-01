@@ -30,7 +30,7 @@ class ExistenceTest < Test::Unit::TestCase
   end
 
   def test_empty_true
-    result = FluentPath.evaluate('Patient.name.last.empty()',PATIENT)
+    result = FluentPath.evaluate('Patient.name.family.empty()',PATIENT)
     assert result==true, 'Failed empty test.'
   end
 
@@ -61,7 +61,7 @@ class ExistenceTest < Test::Unit::TestCase
   end
 
   def test_exists_false
-    result = FluentPath.evaluate('Patient.name.last.exists()',PATIENT)
+    result = FluentPath.evaluate('Patient.name.family.exists()',PATIENT)
     assert result==false, 'Failed exists test.'
   end
 
