@@ -1,10 +1,12 @@
 module FluentPath
 
   @@context = Hash.new
+  @@parent = nil
 
   # This is the entry point to using the FluentPath class
-  def self.evaluate(expression,hash)
+  def self.evaluate(expression,hash,parent=nil)
     @@context = hash
+    @@parent = parent
     tree = FluentPath.parse(expression)
     $LOG.debug "TREE: #{tree}"
     eval(tree,hash)
@@ -14,6 +16,7 @@ module FluentPath
   # self references
   def self.get(key,hash)
     return @@context if ['$context','$resource'].include?(key)
+    return @@parent if key=='$parent'
     return 'http://unitsofmeasure.org' if key=='%ucum'
     return 'http://snomed.info/sct' if key=='%sct'
     return 'http://loinc.org' if key=='%loinc'
@@ -46,6 +49,7 @@ module FluentPath
       end
     end
     val = :null if val.nil?
+    val = "'#{val}'" if val.is_a?(String) && !(val.start_with?("'") && val.end_with?("'"))
     val
   end
 
@@ -89,7 +93,7 @@ module FluentPath
       previous_index = nil
       size = tree.length
       tree.each_with_index do |node,index|
-        if node.is_a?(String)
+        if node.is_a?(String) && !(node.start_with?("'") && node.end_with?("'"))
           array_index = nil
           if node.include?('[') && node.end_with?(']')
             array_index = node[node.index('[')..-1].gsub(/\[|\]/,'')
@@ -239,6 +243,9 @@ module FluentPath
       end
       $LOG.debug "---------------------------------------------------"
       tree.compact!
+    end
+    tree.each_with_index do |node,index|
+      tree[index] = node[1..-2] if node.is_a?(String) && node.start_with?("'") && node.end_with?("'")
     end
     $LOG.debug "DATA: #{tree}"
 

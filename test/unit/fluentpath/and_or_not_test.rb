@@ -69,7 +69,6 @@ class AndOrNotTest < Test::Unit::TestCase
     data = {
       'b' => 'foo'
     }
-    puts "------------------------------------"
     result = FluentPath.evaluate('a xor b',data)
     assert result==true, 'Failed xor test.'    
   end  

@@ -8,7 +8,7 @@ module FluentPath
 
   # This method tokenizes the expression into a flat array of tokens
   def self.tokenize(expression)
-    raw_tokens = expression.gsub('()','').split /(\(|\)|\s)/
+    raw_tokens = expression.gsub('()','').split(/(\(|\)|\s|>=|<=|>|<|=|!=|\+|-|\/|\*)/)
     # recreate strings if they were split
     size = nil
     while(raw_tokens.include?("'") && size!=raw_tokens.length)
@@ -21,10 +21,12 @@ module FluentPath
       raw_tokens.compact!
       size = raw_tokens.length
     end
+    # reassemble strings that might have been inadvertently split that start and end with double-quotes
+    reassemble_strings(raw_tokens)
     tokens = []
     raw_tokens.each do |token|
       # split a path unless it is quoted
-      if token.include?('.') && !(token.start_with?('\'') && token.end_with?('\''))
+      if token.include?('.') && !(token.start_with?("'") && token.end_with?("'"))
         token.split('.').each{|t|tokens << t}
       # split arrays and replace with array
       elsif token.include?('|')
@@ -35,9 +37,32 @@ module FluentPath
         tokens << token
       end
     end
+    # we may need to reassemble quoted strings again
+    reassemble_strings(tokens)
     tokens.delete_if { |token| (token.length==0 || (token.is_a?(String) && token.match(/\S/).nil?) ) }
     $LOG.debug "TOKENS: #{tokens}"
     tokens
+  end
+
+  def self.reassemble_strings(tokens)
+    tokens.each_with_index do |token,index|
+      if token.is_a?(String)
+        e_index = nil
+        if token.start_with?('"') && !token.end_with?('"')
+          e_index = tokens[index..-1].index{|t| t.end_with?('"')}
+        elsif token.start_with?("'") && !token.end_with?("'")
+          e_index = tokens[index..-1].index{|t| t.end_with?("'")}
+        end
+        if e_index
+          i = index+1
+          while(i <= index+e_index)
+            tokens[index] += tokens[i]
+            tokens[i] = ''
+            i+=1
+          end
+        end
+      end
+    end
   end
 
   # This method builds an Abstract Syntax Tree (AST) from a flat list of tokens

@@ -83,28 +83,43 @@ class PathTest < Test::Unit::TestCase
     expression = "list.first"
     data = { 'list' => LIST }
     result = FluentPath.evaluate(expression,data)
-    assert result=LIST.first, 'Failed to access first element.'
+    assert result==LIST.first, 'Failed to access first element.'
   end
 
   def test_last
     expression = "list.last"
     data = { 'list' => LIST }
     result = FluentPath.evaluate(expression,data)
-    assert result=LIST.last, 'Failed to access last element.'
+    assert result==LIST.last, 'Failed to access last element.'
   end
 
   def test_tail
     expression = "list.tail"
     data = { 'list' => LIST }
     result = FluentPath.evaluate(expression,data)
-    assert result=LIST.last(LIST.length-1), 'Failed to access tail elements.'
+    assert result==LIST.last(LIST.length-1), 'Failed to access tail elements.'
   end
 
   def test_count
     expression = "list.count"
     data = { 'list' => LIST }
     result = FluentPath.evaluate(expression,data)
-    assert result=LIST.length, 'Failed to count elements.'
+    assert result==LIST.length, 'Failed to count elements.'
+  end
+
+  def test_parent
+    expression = "$parent.type='integer' or $parent.type='decimal'"
+    data = {}
+    parent = { 'type' => 'integer' }
+    result = FluentPath.evaluate(expression,data,parent)
+    assert result==true, 'Failed to access parent.'
+  end
+
+  def test_parent_nil
+    expression = "$parent.type='integer' or $parent.type='decimal'"
+    data = {}
+    result = FluentPath.evaluate(expression,data)
+    assert result==false, 'Failed to gracefully handle no $parent.'
   end
 
 end
