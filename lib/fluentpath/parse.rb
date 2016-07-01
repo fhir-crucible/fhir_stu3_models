@@ -1,6 +1,6 @@
 module FluentPath
 
-  @@reserved = ['all','not','empty','exists','where','select','extension','startsWith','contains','in','distinct','=','!=','<=','>=','<','>','and','or','xor','+','-','/','*','toInteger','implies']
+  @@reserved = ['all','not','empty','exists','where','select','extension','startsWith','contains','in','distinct','=','!=','<=','>=','<','>','and','or','xor','+','-','/','*','toInteger','implies','children','first','substring']
 
   def self.parse(expression)
     build_tree( tokenize(expression) )

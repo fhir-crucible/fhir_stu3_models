@@ -266,4 +266,35 @@ class InvariantsTest < Test::Unit::TestCase
     assert result==true, 'Failed sdf-12 test.'    
   end
 
+  def test_sdf9_true
+    expression = "children().element.first().label.empty() and children().element.first().code.empty() and children().element.first().requirements.empty()"
+    data = {
+      'baseType' => 'Patient',
+      'snapshot' => {
+        'element' => [{ 
+          'base' => 'Patient'
+        }]
+      }
+    }
+    result = FluentPath.evaluate(expression,data)
+    assert result==true, 'Failed sdf-9 test.'    
+  end
+
+  def test_sdf9_false
+    expression = "children().element.first().label.empty() and children().element.first().code.empty() and children().element.first().requirements.empty()"
+    data = {
+      'baseType' => 'Patient',
+      'snapshot' => {
+        'element' => [{ 
+          'base' => 'Patient',
+          'label' => 'Foo',
+          'code' => [{'code'=>'Bar'}],
+          'requirements' => 'Baz'
+        }]
+      }
+    }
+    result = FluentPath.evaluate(expression,data)
+    assert result==false, 'Failed sdf-9 test.'    
+  end
+
 end

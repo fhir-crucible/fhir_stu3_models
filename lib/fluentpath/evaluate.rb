@@ -17,9 +17,23 @@ module FluentPath
     return 'http://unitsofmeasure.org' if key=='%ucum'
     return 'http://snomed.info/sct' if key=='%sct'
     return 'http://loinc.org' if key=='%loinc'
-    return :null if !hash.is_a?(Hash)
     return key.gsub!(/\A\'|\'\Z/,'') if key.start_with?("'") && key.end_with?("'")
     key.gsub!(/\A"|"\Z/,'') # remove quotes around path if they exist
+    if hash.is_a?(Array)
+      response = []
+      hash.each do |e|
+        if e.is_a?(Hash)
+          item = e[key]
+          if item.is_a?(Array)
+            item.each{|i| response << i }
+          else
+            response << item
+          end
+        end
+      end
+      return response
+    end
+    return :null if !hash.is_a?(Hash)
     return hash if hash['resourceType']==key
     val = hash[key]
     if val.nil?
@@ -65,9 +79,11 @@ module FluentPath
     #13: implies
 
     # evaluate all the data at this level
-    functions = [:where,:select,:extension]
+    functions = [:where,:select,:extension,:children,:first]
     size = -1
-    while(tree.length!=size)
+    substitutions = 1
+    while(tree.length!=size || substitutions > 0)
+      substitutions = 0
       puts "DATA: #{tree}"
       previous_node = nil
       previous_index = nil
@@ -82,7 +98,7 @@ module FluentPath
             array_index = t
             node = node[0..node.index('[')-1]
           end
-          if previous_node.is_a?(Hash)
+          if previous_node.is_a?(Hash) || previous_node.is_a?(Array)
             tree[index] = get(node,previous_node)
             tree[previous_index] = nil if !previous_index.nil?
           elsif !previous_node.is_a?(FluentPath::Expression)
@@ -91,7 +107,7 @@ module FluentPath
           if array_index && tree[index].is_a?(Array)
             tree[index] = tree[index][array_index]
           end
-          puts "====> #{tree}"
+          puts "V===> #{tree}"
         elsif node.is_a?(Symbol) && functions.include?(node)
           previous_node = eval(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
           case node
@@ -118,7 +134,8 @@ module FluentPath
                 tree[previous_index] = nil if !previous_index.nil?
               else
                 tree[index] = {}
-                tree[previous_index] = nil if !previous_index.nil?                
+                tree[previous_index] = nil if !previous_index.nil?   
+                             
               end
             else
               raise "Where function not applicable to #{previous_node.class}: #{previous_node}"
@@ -176,21 +193,45 @@ module FluentPath
               raise "Extension not applicable to #{previous_node.class}: #{previous_node}"
             end
             break
-          end
+          when :children
+            # if there is a previous node, it should be data (as Hash)
+            # otherwise, use the context as data
+            if previous_node.is_a?(Hash)
+              tree[index] = previous_node.values
+              tree[previous_index] = nil if !previous_index.nil?
+              substitutions+=1
+            elsif data.is_a?(Hash)
+              tree[index] = data.values
+              substitutions+=1
+            else
+              raise "Children not applicable to #{previous_node.class}: #{previous_node}"
+            end
+            break
+          when :first
+            # the previous node should be an Array of length > 1
+            if previous_node.is_a?(Array)
+              tree[index] = previous_node.first
+              tree[previous_index] = nil if !previous_index.nil?
+            else
+              raise "First function is not applicable to #{previous_node.class}: #{previous_node}"
+            end
+          end          
+          puts "F===> #{tree}"
         end
         previous_index = index
         previous_node = tree[index]
       end
+      puts "---------------------------------------------------"
       tree.compact!
     end
     puts "DATA: #{tree}"
 
     # evaluate all the functions at this level
-    functions = [:all,:not,:empty,:exists,:startsWith,:contains,:in,:distinct,:toInteger]
+    functions = [:all,:not,:empty,:exists,:startsWith,:substring,:contains,:in,:distinct,:toInteger]
     size = -1
     while(tree.length!=size)
       puts "FUNC: #{tree}"
-      previous_node = nil
+      previous_node = data
       previous_index = nil
       size = tree.length
       tree.each_with_index do |node,index|
@@ -237,6 +278,34 @@ module FluentPath
               raise "StartsWith function not applicable to #{previous_node.class}: #{previous_node}"
             end
             break
+          when :substring
+            # the previous node should be a data (as String)
+            # the next node should be a block or subexpression (as FluentPath::Expression)
+            block = tree[index+1]
+            if block.is_a?(FluentPath::Expression)
+              tree[index+1] = nil
+            else
+              raise "Substring function requires a block."
+            end
+            if previous_node.is_a?(String)
+              args = block.tree.first
+              start = 0
+              length = previous_node.length
+              if args.is_a?(String) && args.include?(',')
+                args = args.split(',')
+                start = args.first.to_i
+                length = args.last.to_i-1
+              else
+                puts "Evaling Substring Block...."
+                start = eval(block,data)
+                length = previous_node.length - start
+              end   
+              tree[index] = previous_node[start..(start+length)]
+              tree[previous_index] = nil if !previous_index.nil?
+            else
+              raise "Substring function not applicable to #{previous_node.class}: #{previous_node}"
+            end
+            break                        
           when :contains
             # the previous node should be a data (as String)
             # the next node should be a block or subexpression (as FluentPath::Expression)
