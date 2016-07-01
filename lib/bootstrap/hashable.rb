@@ -55,7 +55,7 @@ module FHIR
                   begin
                     obj = klass.new(child)
                   rescue Exception => e
-                    $LOG.error("Unable to inflate embedded class #{klass}\n#{e.backtrace}")
+                    FHIR.logger.error("Unable to inflate embedded class #{klass}\n#{e.backtrace}")
                   end
                 end
                 obj
@@ -68,14 +68,14 @@ module FHIR
                 obj = klass.new(value)
                 value = obj
               rescue Exception => e
-                $LOG.error("Unable to inflate embedded class #{klass}\n#{e.backtrace}")
+                FHIR.logger.error("Unable to inflate embedded class #{klass}\n#{e.backtrace}")
               end
               # if there is only one of these, but cardinality allows more, we need to wrap it in an array.              
               value = [ value ] if(value && (meta['max'] > 1))
             end
             self.instance_variable_set("@#{local_name}",value)
           elsif !FHIR::PRIMITIVES.include?(meta['type']) && meta['type']!='xhtml'
-            $LOG.error("Unhandled and unrecognized class/type: #{meta['type']}")
+            FHIR.logger.error("Unhandled and unrecognized class/type: #{meta['type']}")
           else
             # primitive
             if value.is_a?(Array)
