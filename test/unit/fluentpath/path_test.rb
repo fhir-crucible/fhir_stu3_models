@@ -30,6 +30,7 @@ class PathTest < Test::Unit::TestCase
     'index' => 1
   }
   ITEM = { 'base' => 'Patient' }
+  LIST = [5,4,3,2,1]
 
   def test_path_without_type
     result = FluentPath.evaluate('name.given',PATIENT)
@@ -76,6 +77,34 @@ class PathTest < Test::Unit::TestCase
     }
     result = FluentPath.evaluate(expression,data)
     assert result==ITEM, 'Failed to navigate children.'    
+  end
+
+  def test_first
+    expression = "list.first"
+    data = { 'list' => LIST }
+    result = FluentPath.evaluate(expression,data)
+    assert result=LIST.first, 'Failed to access first element.'
+  end
+
+  def test_last
+    expression = "list.last"
+    data = { 'list' => LIST }
+    result = FluentPath.evaluate(expression,data)
+    assert result=LIST.last, 'Failed to access last element.'
+  end
+
+  def test_tail
+    expression = "list.tail"
+    data = { 'list' => LIST }
+    result = FluentPath.evaluate(expression,data)
+    assert result=LIST.last(LIST.length-1), 'Failed to access tail elements.'
+  end
+
+  def test_count
+    expression = "list.count"
+    data = { 'list' => LIST }
+    result = FluentPath.evaluate(expression,data)
+    assert result=LIST.length, 'Failed to count elements.'
   end
 
 end

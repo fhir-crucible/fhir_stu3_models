@@ -1,6 +1,6 @@
 module FluentPath
 
-  @@reserved = ['all','not','empty','exists','where','select','extension','startsWith','contains','in','distinct','=','!=','<=','>=','<','>','and','or','xor','+','-','/','*','toInteger','implies','children','first','substring']
+  @@reserved = ['all','not','empty','exists','where','select','extension','startsWith','contains','in','distinct','=','!=','<=','>=','<','>','and','or','xor','+','-','/','*','toInteger','implies','children','first','last','tail','count','substring']
 
   def self.parse(expression)
     build_tree( tokenize(expression) )
@@ -36,7 +36,7 @@ module FluentPath
       end
     end
     tokens.delete_if { |token| (token.length==0 || (token.is_a?(String) && token.match(/\S/).nil?) ) }
-    puts "TOKENS: #{tokens}"
+    $LOG.debug "TOKENS: #{tokens}"
     tokens
   end
 

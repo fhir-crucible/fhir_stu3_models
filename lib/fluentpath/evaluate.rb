@@ -6,7 +6,7 @@ module FluentPath
   def self.evaluate(expression,hash)
     @@context = hash
     tree = FluentPath.parse(expression)
-    puts "TREE: #{tree}"
+    $LOG.debug "TREE: #{tree}"
     eval(tree,hash)
   end
 
@@ -79,12 +79,12 @@ module FluentPath
     #13: implies
 
     # evaluate all the data at this level
-    functions = [:where,:select,:extension,:children,:first]
+    functions = [:where,:select,:extension,:children,:first,:last,:tail]
     size = -1
     substitutions = 1
     while(tree.length!=size || substitutions > 0)
       substitutions = 0
-      puts "DATA: #{tree}"
+      $LOG.debug "DATA: #{tree}"
       previous_node = nil
       previous_index = nil
       size = tree.length
@@ -107,7 +107,7 @@ module FluentPath
           if array_index && tree[index].is_a?(Array)
             tree[index] = tree[index][array_index]
           end
-          puts "V===> #{tree}"
+          $LOG.debug "V===> #{tree}"
         elsif node.is_a?(Symbol) && functions.include?(node)
           previous_node = eval(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
           case node
@@ -174,7 +174,7 @@ module FluentPath
               raise "Extension function requires a block."
             end
             if previous_node.is_a?(Hash)
-              puts "Evaling Extension Block...."
+              $LOG.debug "Evaling Extension Block...."
               exts = data['extension']
               if exts.is_a?(Array)
                 url = nil
@@ -215,22 +215,38 @@ module FluentPath
             else
               raise "First function is not applicable to #{previous_node.class}: #{previous_node}"
             end
+          when :last
+            # the previous node should be an Array of length > 1
+            if previous_node.is_a?(Array)
+              tree[index] = previous_node.last
+              tree[previous_index] = nil if !previous_index.nil?
+            else
+              raise "Last function is not applicable to #{previous_node.class}: #{previous_node}"
+            end
+          when :tail
+            # the previous node should be an Array of length > 1
+            if previous_node.is_a?(Array)
+              tree[index] = previous_node.last(previous_node.length-1)
+              tree[previous_index] = nil if !previous_index.nil?
+            else
+              raise "Tail function is not applicable to #{previous_node.class}: #{previous_node}"
+            end
           end          
-          puts "F===> #{tree}"
+          $LOG.debug "F===> #{tree}"
         end
         previous_index = index
         previous_node = tree[index]
       end
-      puts "---------------------------------------------------"
+      $LOG.debug "---------------------------------------------------"
       tree.compact!
     end
-    puts "DATA: #{tree}"
+    $LOG.debug "DATA: #{tree}"
 
     # evaluate all the functions at this level
-    functions = [:all,:not,:empty,:exists,:startsWith,:substring,:contains,:in,:distinct,:toInteger]
+    functions = [:all,:not,:empty,:exists,:startsWith,:substring,:contains,:in,:distinct,:toInteger,:count]
     size = -1
     while(tree.length!=size)
-      puts "FUNC: #{tree}"
+      $LOG.debug "FUNC: #{tree}"
       previous_node = data
       previous_index = nil
       size = tree.length
@@ -251,6 +267,11 @@ module FluentPath
           when :not
             tree[index] = !convertToBoolean(previous_node)
             tree[previous_index] = nil if !previous_index.nil?
+          when :count
+            tree[index] = 0
+            tree[index] = 1 if !previous_node.nil?
+            tree[index] = previous_node.length if previous_node.is_a?(Array)
+            tree[previous_index] = nil if !previous_index.nil?
           when :empty
             tree[index] = (previous_node==:null || previous_node.empty? rescue previous_node.nil?)
             tree[previous_index] = nil if !previous_index.nil?
@@ -270,7 +291,7 @@ module FluentPath
               raise "StartsWith function requires a block."
             end
             if previous_node.is_a?(String)
-              puts "Evaling StartsWith Block...."
+              $LOG.debug "Evaling StartsWith Block...."
               prefix = eval(block,data)
               tree[index] = previous_node.start_with?(prefix) rescue false
               tree[previous_index] = nil if !previous_index.nil?
@@ -296,7 +317,7 @@ module FluentPath
                 start = args.first.to_i
                 length = args.last.to_i-1
               else
-                puts "Evaling Substring Block...."
+                $LOG.debug "Evaling Substring Block...."
                 start = eval(block,data)
                 length = previous_node.length - start
               end   
@@ -316,7 +337,7 @@ module FluentPath
               raise "Contains function requires a block."
             end
             if previous_node.is_a?(String)
-              puts "Evaling Contains Block...."
+              $LOG.debug "Evaling Contains Block...."
               substring = eval(block,data)
               tree[index] = previous_node.include?(substring) rescue false
               tree[previous_index] = nil if !previous_index.nil?
@@ -329,7 +350,7 @@ module FluentPath
             # the next node should an Array (possibly as a block or subexpression/FluentPath::Expression)
             block = tree[index+1]
             if block.is_a?(FluentPath::Expression)
-              puts "Evaling In Block...."
+              $LOG.debug "Evaling In Block...."
               tree[index+1] = eval(block,data)
             end
             array = tree[index+1]
@@ -371,7 +392,7 @@ module FluentPath
     functions = [:"/",:"*"]
     size = -1
     while(tree.length!=size)
-      puts "MATH: #{tree}"
+      $LOG.debug "MATH: #{tree}"
       previous_node = nil
       previous_index = nil
       size = tree.length
@@ -396,13 +417,13 @@ module FluentPath
       end
       tree.compact!
     end
-    puts "MATH: #{tree}"
+    $LOG.debug "MATH: #{tree}"
 
     # evaluate all add/sub
     functions = [:"+",:"-"]
     size = -1
     while(tree.length!=size)
-      puts "MATH: #{tree}"
+      $LOG.debug "MATH: #{tree}"
       previous_node = nil
       previous_index = nil
       size = tree.length
@@ -427,13 +448,13 @@ module FluentPath
       end
       tree.compact!
     end
-    puts "MATH: #{tree}"
+    $LOG.debug "MATH: #{tree}"
 
     # evaluate all equality tests
     functions = [:"=",:"!=",:"<=",:">=",:"<",:">"]
     size = -1
     while(tree.length!=size)
-      puts "EQ: #{tree}"
+      $LOG.debug "EQ: #{tree}"
       previous_node = nil
       previous_index = nil
       size = tree.length
@@ -468,13 +489,13 @@ module FluentPath
       end
       tree.compact!
     end
-    puts "EQ: #{tree}"
+    $LOG.debug "EQ: #{tree}"
 
     # evaluate all logical tests
     functions = [:and,:or,:xor]
     size = -1
     while(tree.length!=size)
-      puts "LOGIC: #{tree}"
+      $LOG.debug "LOGIC: #{tree}"
       previous_node = nil
       previous_index = nil
       size = tree.length
@@ -503,12 +524,12 @@ module FluentPath
       end
       tree.compact!
     end
-    puts "LOGIC: #{tree}"    
+    $LOG.debug "LOGIC: #{tree}"    
 
     functions = [:implies]
     size = -1
     while(tree.length!=size)
-      puts "IMPLIES: #{tree}"
+      $LOG.debug "IMPLIES: #{tree}"
       previous_node = nil
       previous_index = nil
       size = tree.length
@@ -534,14 +555,14 @@ module FluentPath
       end
       tree.compact!
     end
-    puts "IMPLIES: #{tree}"  
+    $LOG.debug "IMPLIES: #{tree}"  
 
     # check for symbols
     tree.each do |node|
       raise "Unhandled reserved symbol: #{node}" if node.is_a?(Symbol)
     end
 
-    puts "OUT: #{tree}"
+    $LOG.debug "OUT: #{tree}"
 
     tree.map! do |out|
       while out.is_a?(FluentPath::Expression)
@@ -550,7 +571,7 @@ module FluentPath
       out
     end
     
-    puts "RETURN: #{tree.first}"
+    $LOG.debug "RETURN: #{tree.first}"
     tree.first
   end
 
