@@ -8,7 +8,7 @@ module FluentPath
     @@context = hash
     @@parent = parent
     tree = FluentPath.parse(expression)
-    $LOG.debug "TREE: #{tree}"
+    FHIR.logger.debug "TREE: #{tree}"
     eval(tree,hash)
   end
 
@@ -88,7 +88,7 @@ module FluentPath
     substitutions = 1
     while(tree.length!=size || substitutions > 0)
       substitutions = 0
-      $LOG.debug "DATA: #{tree}"
+      FHIR.logger.debug "DATA: #{tree}"
       previous_node = nil
       previous_index = nil
       size = tree.length
@@ -111,7 +111,7 @@ module FluentPath
           if array_index && tree[index].is_a?(Array)
             tree[index] = tree[index][array_index]
           end
-          $LOG.debug "V===> #{tree}"
+          FHIR.logger.debug "V===> #{tree}"
         elsif node.is_a?(Symbol) && functions.include?(node)
           previous_node = eval(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
           case node
@@ -178,7 +178,7 @@ module FluentPath
               raise "Extension function requires a block."
             end
             if previous_node.is_a?(Hash)
-              $LOG.debug "Evaling Extension Block...."
+              FHIR.logger.debug "Evaling Extension Block...."
               exts = data['extension']
               if exts.is_a?(Array)
                 url = nil
@@ -236,24 +236,24 @@ module FluentPath
               raise "Tail function is not applicable to #{previous_node.class}: #{previous_node}"
             end
           end          
-          $LOG.debug "F===> #{tree}"
+          FHIR.logger.debug "F===> #{tree}"
         end
         previous_index = index
         previous_node = tree[index]
       end
-      $LOG.debug "---------------------------------------------------"
+      FHIR.logger.debug "---------------------------------------------------"
       tree.compact!
     end
     tree.each_with_index do |node,index|
       tree[index] = node[1..-2] if node.is_a?(String) && node.start_with?("'") && node.end_with?("'")
     end
-    $LOG.debug "DATA: #{tree}"
+    FHIR.logger.debug "DATA: #{tree}"
 
     # evaluate all the functions at this level
     functions = [:all,:not,:empty,:exists,:startsWith,:substring,:contains,:in,:distinct,:toInteger,:count]
     size = -1
     while(tree.length!=size)
-      $LOG.debug "FUNC: #{tree}"
+      FHIR.logger.debug "FUNC: #{tree}"
       previous_node = data
       previous_index = nil
       size = tree.length
@@ -298,7 +298,7 @@ module FluentPath
               raise "StartsWith function requires a block."
             end
             if previous_node.is_a?(String)
-              $LOG.debug "Evaling StartsWith Block...."
+              FHIR.logger.debug "Evaling StartsWith Block...."
               prefix = eval(block,data)
               tree[index] = previous_node.start_with?(prefix) rescue false
               tree[previous_index] = nil if !previous_index.nil?
@@ -324,7 +324,7 @@ module FluentPath
                 start = args.first.to_i
                 length = args.last.to_i-1
               else
-                $LOG.debug "Evaling Substring Block...."
+                FHIR.logger.debug "Evaling Substring Block...."
                 start = eval(block,data)
                 length = previous_node.length - start
               end   
@@ -344,7 +344,7 @@ module FluentPath
               raise "Contains function requires a block."
             end
             if previous_node.is_a?(String)
-              $LOG.debug "Evaling Contains Block...."
+              FHIR.logger.debug "Evaling Contains Block...."
               substring = eval(block,data)
               tree[index] = previous_node.include?(substring) rescue false
               tree[previous_index] = nil if !previous_index.nil?
@@ -357,7 +357,7 @@ module FluentPath
             # the next node should an Array (possibly as a block or subexpression/FluentPath::Expression)
             block = tree[index+1]
             if block.is_a?(FluentPath::Expression)
-              $LOG.debug "Evaling In Block...."
+              FHIR.logger.debug "Evaling In Block...."
               tree[index+1] = eval(block,data)
             end
             array = tree[index+1]
@@ -399,7 +399,7 @@ module FluentPath
     functions = [:"/",:"*"]
     size = -1
     while(tree.length!=size)
-      $LOG.debug "MATH: #{tree}"
+      FHIR.logger.debug "MATH: #{tree}"
       previous_node = nil
       previous_index = nil
       size = tree.length
@@ -424,13 +424,13 @@ module FluentPath
       end
       tree.compact!
     end
-    $LOG.debug "MATH: #{tree}"
+    FHIR.logger.debug "MATH: #{tree}"
 
     # evaluate all add/sub
     functions = [:"+",:"-"]
     size = -1
     while(tree.length!=size)
-      $LOG.debug "MATH: #{tree}"
+      FHIR.logger.debug "MATH: #{tree}"
       previous_node = nil
       previous_index = nil
       size = tree.length
@@ -455,13 +455,13 @@ module FluentPath
       end
       tree.compact!
     end
-    $LOG.debug "MATH: #{tree}"
+    FHIR.logger.debug "MATH: #{tree}"
 
     # evaluate all equality tests
     functions = [:"=",:"!=",:"<=",:">=",:"<",:">"]
     size = -1
     while(tree.length!=size)
-      $LOG.debug "EQ: #{tree}"
+      FHIR.logger.debug "EQ: #{tree}"
       previous_node = nil
       previous_index = nil
       size = tree.length
@@ -496,13 +496,13 @@ module FluentPath
       end
       tree.compact!
     end
-    $LOG.debug "EQ: #{tree}"
+    FHIR.logger.debug "EQ: #{tree}"
 
     # evaluate all logical tests
     functions = [:and,:or,:xor]
     size = -1
     while(tree.length!=size)
-      $LOG.debug "LOGIC: #{tree}"
+      FHIR.logger.debug "LOGIC: #{tree}"
       previous_node = nil
       previous_index = nil
       size = tree.length
@@ -531,12 +531,12 @@ module FluentPath
       end
       tree.compact!
     end
-    $LOG.debug "LOGIC: #{tree}"    
+    FHIR.logger.debug "LOGIC: #{tree}"    
 
     functions = [:implies]
     size = -1
     while(tree.length!=size)
-      $LOG.debug "IMPLIES: #{tree}"
+      FHIR.logger.debug "IMPLIES: #{tree}"
       previous_node = nil
       previous_index = nil
       size = tree.length
@@ -562,14 +562,14 @@ module FluentPath
       end
       tree.compact!
     end
-    $LOG.debug "IMPLIES: #{tree}"  
+    FHIR.logger.debug "IMPLIES: #{tree}"  
 
     # check for symbols
     tree.each do |node|
       raise "Unhandled reserved symbol: #{node}" if node.is_a?(Symbol)
     end
 
-    $LOG.debug "OUT: #{tree}"
+    FHIR.logger.debug "OUT: #{tree}"
 
     tree.map! do |out|
       while out.is_a?(FluentPath::Expression)
@@ -578,7 +578,7 @@ module FluentPath
       out
     end
     
-    $LOG.debug "RETURN: #{tree.first}"
+    FHIR.logger.debug "RETURN: #{tree.first}"
     tree.first
   end
 
