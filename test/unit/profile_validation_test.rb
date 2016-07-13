@@ -37,7 +37,6 @@ class ProfileValidationTest < Test::Unit::TestCase
     resource = FHIR::Json.from_json(input_json)
     profile_uri = "http://hl7.org/fhir/StructureDefinition/qicore-#{resource.resourceType.downcase}"
     profile_metadata = FHIR::Profiles.get_metadata(profile_uri)
-    binding.pry if example_name=='condition-example-qicore'
     errors = resource.validate_profile(profile_metadata)
     if !errors.empty?
       File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') {|file| file.write(JSON.pretty_unparse(errors))}
