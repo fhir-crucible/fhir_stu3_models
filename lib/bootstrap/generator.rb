@@ -197,9 +197,9 @@ module FHIR
           # If the element has a type, treat it as a datatype or resource
           # If not, treat it as a reference to an already declared internal class
           if !element['type'].nil?
-            # profiles contains a list of profiles if the datatype is Reference
+            # profiles contains a list of profiles if the datatype is Reference or Extension
             profiles = []
-            element['type'].select{|t|t['code']=='Reference'}.each do |dataType|
+            element['type'].select{|t|t['code']=='Reference' || t['code']=='Extension'}.each do |dataType|
               profiles << dataType['profile']
             end
             profiles.select!{|p|!p.nil?}
@@ -221,7 +221,8 @@ module FHIR
               field = FHIR::Field.new(fieldname)
               field.path = element['path'].gsub(pathType,typeName)
               field.type = dataType
-              field.type_profiles = profiles if dataType=='Reference'
+              field.type = 'Extension' if field.path.end_with?('extension')
+              field.type_profiles = profiles if(dataType=='Reference' || dataType=='Extension')
               field.min = element['min']
               field.max = element['max']
               field.max = field.max.to_i
@@ -238,7 +239,7 @@ module FHIR
                 # set the actual code list
                 codes = @expansions.get_codes( field.binding['uri'] )
                 field.valid_codes = codes if !codes.nil?
-                puts "  MISSING EXPANSION -- #{field.path} #{field.min}..#{field.max}: #{field.binding['uri']} (#{field.binding['strength']})" if field.valid_codes.empty? && field.binding['uri'] && !field.binding['uri'].end_with?('bcp47') && !field.binding['uri'].end_with?('bcp13.txt')
+                FHIR.logger.warn "  MISSING EXPANSION -- #{field.path} #{field.min}..#{field.max}: #{field.binding['uri']} (#{field.binding['strength']})" if field.valid_codes.empty? && field.binding['uri'] && !field.binding['uri'].end_with?('bcp47') && !field.binding['uri'].end_with?('bcp13.txt')
               elsif ['Element','BackboneElement'].include?(dataType)
                 # This is a nested structure or class
                 field.type = "#{hierarchy.join('::')}::#{field.name.capitalize}"
