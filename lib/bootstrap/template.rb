@@ -24,8 +24,20 @@ module FHIR
       def get_metadata
         metadata = {}
         @fields.each do |field|
-          metadata[field.name] = field.serialize
-          metadata[field.name].delete('name')
+          if metadata.keys.include?(field.name)
+            # this field has already been declared, so we're dealing
+            # with a `slice` which we'll track with an array.
+            x = field.serialize
+            x.delete('name')
+            if metadata[field.name].is_a?(Array)
+              metadata[field.name] << x
+            else
+              metadata[field.name] = [ metadata[field.name], x ]
+            end
+          else
+            metadata[field.name] = field.serialize
+            metadata[field.name].delete('name')
+          end
         end
         metadata
       end

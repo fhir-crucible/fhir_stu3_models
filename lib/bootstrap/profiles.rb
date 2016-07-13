@@ -45,7 +45,11 @@ module FHIR
         template = generator.generate_class([ type ],defn)
         metadata = template.get_metadata
         metadata.each do |key,value|
-          value['max'] = Float::INFINITY if value['max']=='*' 
+          if value.is_a?(Array) # this field was declared multiple times, handle each slice...
+            value.each{|v|v['max'] = Float::INFINITY if v['max']=='*' }
+          else # this field is declared once...
+            value['max'] = Float::INFINITY if value['max']=='*' 
+          end
         end
       end
       metadata
