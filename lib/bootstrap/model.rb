@@ -18,7 +18,7 @@ module FHIR
           return value if !value.nil?
         end
         return nil
-      elsif !@extension.empty?
+      elsif (!@extenson.nil? && !@extension.empty?)
         ext = @extension.select do |x|
           name = x.url.gsub('-','_').split('/').last
           anchor = name.split('#').last
@@ -31,7 +31,7 @@ module FHIR
             return ext.first
           end
         end
-      elsif !@modifierExtension.empty?
+      elsif (!@modifierExtension.nil? && !@modifierExtension.empty?)
         ext = @modifierExtension.select do |x|
           name = x.url.gsub('-','_').split('/').last
           anchor = name.split('#').last
@@ -179,7 +179,7 @@ module FHIR
                 basetype = p.split('/').last
                 matches_one_profile = true if v.reference.include?(basetype)
                 # check profiled resources
-                profile_basetype = FHIR::Profiles.get_basetype(p)
+                profile_basetype = FHIR::Definitions.get_basetype(p)
                 matches_one_profile = true if profile_basetype && v.reference.include?(profile_basetype)
               end
               matches_one_profile = true if meta['type_profiles'].include?('http://hl7.org/fhir/StructureDefinition/Resource')
