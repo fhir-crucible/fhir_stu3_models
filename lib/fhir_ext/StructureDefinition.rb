@@ -496,12 +496,27 @@ module FHIR
               @errors << "#{element.path} value of '#{value}' did not match fixed value: #{element.fixed}"
             end
           end
-       end
+        end
 
-        # check 'constraint.xpath' constraints
+        # Check FluentPath invariants 'constraint.xpath' constraints...
+        # This code is not very robust, and is likely to be throwing *many* exceptions.
+        # This is partially because the FluentPath evaluator is not complete, and partially
+        # because the context of an expression (element.constraint.expression) is not always
+        # consistent with the current context (element.path). For example, sometimes expressions appear to be
+        # written to be evaluated within the element, other times at the resource level, or perhaps
+        # elsewhere. There is no good way to determine "where" you should evaluate the expression.
         if !element.constraint.empty?
           element.constraint.each do |constraint|
-            @warnings << "#{element.path}: unable to evaluate XPath expression against JSON for #{name} invariant rule #{constraint.key}: #{constraint.human}"
+            if constraint.expression && !nodes.empty?
+              begin
+                result = FluentPath.evaluate(constraint.expression,json)
+                if !result && constraint.severity=='error'
+                  @errors << "#{element.path}: FluentPath expression evaluates to false for #{name} invariant rule #{constraint.key}: #{constraint.human}"
+                end
+              rescue Exception => e
+                @warnings << "#{element.path}: unable to evaluate FluentPath expression against JSON for #{name} invariant rule #{constraint.key}: #{constraint.human}"
+              end
+            end
           end
         end
 
