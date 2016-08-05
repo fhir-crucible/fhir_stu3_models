@@ -18,7 +18,7 @@ module FHIR
           return value if !value.nil?
         end
         return nil
-      elsif (!@extenson.nil? && !@extension.empty?)
+      elsif (!@extension.nil? && !@extension.empty?)
         ext = @extension.select do |x|
           name = x.url.gsub('-','_').split('/').last
           anchor = name.split('#').last
