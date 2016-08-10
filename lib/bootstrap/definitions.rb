@@ -58,7 +58,7 @@ module FHIR
 
     def self.get_resource_definitions
       load_resources
-      @@resources.map{|x| FHIR::StructureDefinition.new(x) }
+      @@resources
     end
 
     def self.get_resource_definition(resource_name)

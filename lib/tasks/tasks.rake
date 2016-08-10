@@ -97,8 +97,8 @@ namespace :fhir do
   desc 'output invariant expressions from definitions'
   task :invariants, [] do |t, args|
     # create a generator and load the definitions
-    generator = FHIR::Boot::Generator.new
-    defs = generator.types + generator.resources + generator.extensions + generator.profiles
+    d = FHIR::Definitions
+    defs =  d.get_complex_types + d.get_resource_definitions
     invariants = {}
     defs.each do |structureDef|
       structureDef['snapshot']['element'].each do |element|
