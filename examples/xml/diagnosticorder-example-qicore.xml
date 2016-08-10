@@ -6,6 +6,15 @@
         Example Diagnostic Order
         </div>
 	</text>
+	<extension url="http://hl7.org/fhir/StructureDefinition/diagnosticorder-reason">
+		<valueCodeableConcept>
+			<coding>
+				<system value="http://hl7.org/fhir/v3/ActReason"/>
+				<code value="PHY"/>
+				<display value="Physician request"/>
+			</coding>
+		</valueCodeableConcept>
+	</extension>
 	<extension url="http://hl7.org/fhir/StructureDefinition/diagnosticorder-reasonRejected">
 		<valueCodeableConcept>
 			<coding>

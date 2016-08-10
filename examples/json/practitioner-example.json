@@ -3,7 +3,7 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div>\n      <p>Dr Adam Careful is a Referring Practitioner for Acme Hospital from 1-Jan 2012 to 31-Mar\n        2012</p>\n    </div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>Dr Adam Careful is a Referring Practitioner for Acme Hospital from 1-Jan 2012 to 31-Mar\n        2012</p>\n    </div>"
   },
   "identifier": [
     {
@@ -25,15 +25,23 @@
       ]
     }
   ],
-  "practitionerRole": [
+  "address": [
+    {
+      "use": "home",
+      "line": [
+        "534 Erewhon St"
+      ],
+      "city": "PleasantVille",
+      "state": "Vic",
+      "postalCode": "3999"
+    }
+  ],
+  "role": [
     {
       "organization": {
         "reference": "Organization/f001"
       },
-      "role": {
-        "fhir_comments": [
-          "  Referring Practitioner for the first 3 months of 2012  "
-        ],
+      "code": {
         "coding": [
           {
             "system": "http://hl7.org/fhir/v2/0286",
@@ -41,6 +49,18 @@
           }
         ]
       },
+      "identifier": [
+        {
+          "system": "http://example.org/role-identifier",
+          "value": "52"
+        }
+      ],
+      "telecom": [
+        {
+          "system": "email",
+          "value": "dr.adam.careful@example.org"
+        }
+      ],
       "period": {
         "start": "2012-01-01",
         "end": "2012-03-31"
@@ -55,7 +75,21 @@
         {
           "reference": "HealthcareService/example"
         }
+      ],
+      "endpoint": [
+        {
+          "reference": "Endpoint/example"
+        }
       ]
+    },
+    {
+      "organization": {
+        "reference": "Organization/2",
+        "display": "Good Health Clinic"
+      },
+      "period": {
+        "start": "2012-01-01"
+      }
     }
   ],
   "qualification": [

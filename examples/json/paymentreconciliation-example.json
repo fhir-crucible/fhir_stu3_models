@@ -3,7 +3,7 @@
   "id": "ER2500",
   "text": {
     "status": "generated",
-    "div": "<div>A human-readable rendering of the PaymentReconciliation</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the PaymentReconciliation</div>"
   },
   "identifier": [
     {
@@ -11,8 +11,9 @@
       "value": "781234"
     }
   ],
+  "status": "active",
   "requestReference": {
-    "reference": "http://www.BenefitsInc.com/fhir/ProcessRequest/225476332402"
+    "reference": "http://www.BenefitsInc.com/fhir/eligibility/225476332402"
   },
   "outcome": "complete",
   "disposition": "2014 August mid-month settlement.",
@@ -22,9 +23,6 @@
   },
   "detail": [
     {
-      "fhir_comments": [
-        " \n  <requestOrganizationReference>\n    <reference value=\"Organization/1\"/>\n  </requestOrganizationReference>\n   "
-      ],
       "type": {
         "system": "http://hl7.org/fhir/paymenttype",
         "code": "payment"

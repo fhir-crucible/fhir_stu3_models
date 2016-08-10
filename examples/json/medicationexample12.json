@@ -19,6 +19,6 @@
   },
   "isBrand": true,
   "manufacturer": {
-    "reference": "http://us.gsk.com/fhir/Organization/1"
+    "reference": "http://us.gsk.com/fhirresource/1"
   }
 }

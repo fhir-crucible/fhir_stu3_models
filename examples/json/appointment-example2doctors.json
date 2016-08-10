@@ -3,7 +3,7 @@
   "id": "2docs",
   "text": {
     "status": "generated",
-    "div": "<div>Brian MRI results discussion</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Brian MRI results discussion</div>"
   },
   "status": "booked",
   "serviceCategory": {

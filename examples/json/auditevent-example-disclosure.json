@@ -3,7 +3,7 @@
   "id": "example-disclosure",
   "text": {
     "status": "generated",
-    "div": "<div>Disclosure by some idiot, for marketing reasons, to places unknown, of a Poor Sap, data about Everthing important.</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Disclosure by some idiot, for marketing reasons, to places unknown, of a Poor Sap, data about Everthing important.</div>"
   },
   "type": {
     "system": "http://nema.org/dicom/dicm",
@@ -31,9 +31,6 @@
     {
       "role": [
         {
-          "fhir_comments": [
-            "  who disclosed the data  "
-          ],
           "coding": [
             {
               "system": "http://nema.org/dicom/dicm",
@@ -63,9 +60,6 @@
     {
       "role": [
         {
-          "fhir_comments": [
-            "  who received the data  "
-          ],
           "coding": [
             {
               "system": "http://nema.org/dicom/dicm",
@@ -97,11 +91,6 @@
   ],
   "source": {
     "site": "Watcher",
-    "_site": {
-      "fhir_comments": [
-        "  what system detected this disclosure  "
-      ]
-    },
     "identifier": {
       "value": "Watchers Accounting of Disclosures Application"
     },
@@ -116,9 +105,6 @@
   "entity": [
     {
       "reference": {
-        "fhir_comments": [
-          "  patient whos data got disclosed  "
-        ],
         "reference": "Patient/example"
       },
       "type": {
@@ -134,9 +120,6 @@
     },
     {
       "identifier": {
-        "fhir_comments": [
-          "  data that got disclosed  "
-        ],
         "value": "What.id"
       },
       "reference": {

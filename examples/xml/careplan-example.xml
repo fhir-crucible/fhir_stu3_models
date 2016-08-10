@@ -14,29 +14,15 @@
   <contained>
     <Condition>
       <id value="p1"/>
-      <patient>
-        <reference value="Patient/example"/>
-        <display value="Peter James Chalmers"/>
-      </patient>
+      <verificationStatus value="confirmed"/>
       <code>
         <text value="Obesity"/>
       </code>
-      <verificationStatus value="confirmed"/>
+      <subject>
+        <reference value="Patient/example"/>
+        <display value="Peter James Chalmers"/>
+      </subject>
     </Condition>
-  </contained>
-  <contained>
-    <Practitioner>
-      <id value="pr1"/>
-      <name>
-        <family value="Dietician"/>
-        <given value="Dorothy"/>
-      </name>
-      <practitionerRole>
-        <specialty>
-          <text value="Dietician"/>
-        </specialty>
-      </practitionerRole>
-    </Practitioner>
   </contained>
   <contained>
     <Goal>
@@ -49,7 +35,7 @@
               <code value="29463-7"/>
               <display value="Body weight"/>
             </coding>
-          </valueCodeableConcept>  
+          </valueCodeableConcept>
         </extension>
         <extension url="goal-target.detail">
           <valueQuantity>
@@ -63,7 +49,9 @@
         <reference value="Patient/example"/>
         <display value="Peter James Chalmers"/>
       </subject>
-      <description value="Target weight is 80 kg"/>
+      <description>
+        <text value="Target weight is 80 kg"/>
+      </description>
       <status value="planned"/>
     </Goal>
   </contained>
@@ -79,30 +67,20 @@
     <reference value="#p1"/>
     <display value="obesity"/>
   </addresses>
-  <participant>
-    <role>
-      <text value="responsiblePerson"/>
-    </role>
-    <member>
-      <reference value="Patient/example"/>
-      <display value="Peter James Chalmers"/>
-    </member>
-  </participant>
-  <participant>
-    <role>
-      <text value="adviser"/>
-    </role>
-    <member>
-      <reference value="#pr1"/>
-      <display value="Dorothy Dietition"/>
-    </member>
-  </participant>
+  <careTeam>
+    <reference value="CareTeam/example"/>
+  </careTeam>
   <goal>
     <reference value="#goal"/>
   </goal>
   <activity>
     <detail>
-      <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="observation"/></coding></category>
+      <category>
+        <coding>
+          <system value="http://hl7.org/fhir/care-plan-activity-category"/>
+          <code value="observation"/>
+        </coding>
+      </category>
       <code>
         <text value="a code for weight measurement"/>
       </code>

@@ -17,6 +17,18 @@
           }
         ]
       }
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/observation-delta",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "1250004",
+            "display": "Decreased (qualifier value)"
+          }
+        ]
+      }
     }
   ],
   "status": "final",

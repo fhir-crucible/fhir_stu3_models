@@ -3,55 +3,16 @@
   "id": "f001",
   "text": {
     "status": "generated",
-    "div": "<div><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f001</p><p><b>contained</b>: </p><p><b>identifier</b>: nr1239044 (OFFICIAL)</p><p><b>status</b>: final</p><p><b>category</b>: Haematology test <span>(Details : {SNOMED CT code '252275004' = 'Hematology test (procedure)', given as 'Haematology test'}; {http://hl7.org/fhir/v2/0074 code 'HM' = 'Hematology)</span></p><p><b>code</b>: Complete blood count (hemogram) panel - Blood by Automated count <span>(Details : {LOINC code '58410-2' = 'Complete blood count (hemogram) panel - Blood by Automated count', given as 'Complete blood count (hemogram) panel - Blood by Automated count'})</span></p><p><b>subject</b>: <a>P. van den Heuvel</a></p><p><b>effective</b>: Apr 2, 2013</p><p><b>issued</b>: May 15, 2013 7:32:52 PM</p><p><b>performer</b>: <a>Burgers University Medical Centre</a></p><p><b>request</b>: id: req; L2381 (OFFICIAL); P. van den Heuvel; patient almost fainted during procedure <span>(Details )</span></p><p><b>result</b>: </p><ul><li><a>Observation/f001</a></li><li><a>Observation/f002</a></li><li><a>Observation/f003</a></li><li><a>Observation/f004</a></li><li><a>Observation/f005</a></li></ul><p><b>conclusion</b>: Core lab</p></div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f001</p><p><b>contained</b>: </p><p><b>identifier</b>: nr1239044 (OFFICIAL)</p><p><b>status</b>: final</p><p><b>category</b>: Haematology test <span>(Details : {SNOMED CT code '252275004' = 'Hematology test (procedure)', given as 'Haematology test'}; {http://hl7.org/fhir/v2/0074 code 'HM' = 'Hematology)</span></p><p><b>code</b>: Complete blood count (hemogram) panel - Blood by Automated count <span>(Details : {LOINC code '58410-2' = 'Complete blood count (hemogram) panel - Blood by Automated count', given as 'Complete blood count (hemogram) panel - Blood by Automated count'})</span></p><p><b>subject</b>: <a>P. van den Heuvel</a></p><p><b>effective</b>: Apr 2, 2013</p><p><b>issued</b>: May 15, 2013 7:32:52 PM</p><p><b>performer</b>: <a>Burgers University Medical Centre</a></p><p><b>request</b>: id: req; Extensions: todo; L2381; Original Order <span>(Details : {http://hl7.org/fhir/request-stage code 'original-order' = 'Original Order)</span>; Complete blood count (hemogram) panel - Blood by Automated count <span>(Details : {LOINC code '58410-2' = 'Complete blood count (hemogram) panel - Blood by Automated count', given as 'Complete blood count (hemogram) panel - Blood by Automated count'})</span>; P. van den Heuvel; ????; E.van den Broek; Annotation: patient almost fainted during procedure</p><p><b>result</b>: </p><ul><li><a>Observation/f001</a></li><li><a>Observation/f002</a></li><li><a>Observation/f003</a></li><li><a>Observation/f004</a></li><li><a>Observation/f005</a></li></ul><p><b>conclusion</b>: Core lab</p></div>"
   },
   "contained": [
     {
-      "resourceType": "DiagnosticOrder",
+      "resourceType": "DiagnosticRequest",
       "id": "req",
-      "identifier": [
+      "extension": [
         {
-          "use": "official",
-          "system": "http://www.bmc.nl/zorgportal/identifiers/labresults",
-          "value": "L2381"
-        }
-      ],
-      "subject": {
-        "reference": "Patient/f001",
-        "display": "P. van den Heuvel"
-      },
-      "encounter": {
-        "fhir_comments": [
-          "   TODO Correcte verwijzing   "
-        ],
-        "reference": "Encounter/f001"
-      },
-      "orderer": {
-        "reference": "Practitioner/f001",
-        "display": "E.van den Broek"
-      },
-      "reason": [
-        {
-          "text": "patient almost fainted during procedure"
-        }
-      ],
-      "item": [
-        {
-          "code": {
-            "coding": [
-              {
-                "system": "http://loinc.org",
-                "code": "58410-2",
-                "_code": {
-                  "fhir_comments": [
-                    "     LOINC     "
-                  ]
-                },
-                "display": "Complete blood count (hemogram) panel - Blood by Automated count"
-              }
-            ]
-          },
-          "bodySite": {
+          "url": "http://example.org/bodysitecode",
+          "valueCodeableConcept": {
             "coding": [
               {
                 "system": "http://snomed.info/sct",
@@ -60,6 +21,45 @@
               }
             ]
           }
+        }
+      ],
+      "identifier": [
+        {
+          "system": "http://www.bmc.nl/zorgportal/identifiers/labresults",
+          "value": "L2381"
+        }
+      ],
+      "stage": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/request-stage",
+            "code": "original-order"
+          }
+        ]
+      },
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "58410-2",
+            "display": "Complete blood count (hemogram) panel - Blood by Automated count"
+          }
+        ]
+      },
+      "subject": {
+        "reference": "Patient/f001",
+        "display": "P. van den Heuvel"
+      },
+      "context": {
+        "reference": "Encounter/f001"
+      },
+      "requester": {
+        "reference": "Practitioner/f001",
+        "display": "E.van den Broek"
+      },
+      "note": [
+        {
+          "text": "patient almost fainted during procedure"
         }
       ]
     }
@@ -95,23 +95,17 @@
     ]
   },
   "subject": {
-    "fhir_comments": [
-      "    ISO 8601    "
-    ],
     "reference": "Patient/f001",
     "display": "P. van den Heuvel"
   },
   "effectiveDateTime": "2013-04-02",
   "issued": "2013-05-15T19:32:52+01:00",
-  "_issued": {
-    "fhir_comments": [
-      "    OID: 2.16.840.1.113883.4.642.1.7    "
-    ]
-  },
-  "performer": {
-    "reference": "Organization/f001",
-    "display": "Burgers University Medical Centre"
-  },
+  "performer": [
+    {
+      "reference": "Organization/f001",
+      "display": "Burgers University Medical Centre"
+    }
+  ],
   "request": [
     {
       "reference": "#req"

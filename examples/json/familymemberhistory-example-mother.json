@@ -3,7 +3,7 @@
   "id": "mother",
   "text": {
     "status": "generated",
-    "div": "<div>Mother died of a stroke aged 56</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Mother died of a stroke aged 56</div>"
   },
   "patient": {
     "reference": "Patient/100",
@@ -30,10 +30,11 @@
         ],
         "text": "Stroke"
       },
-      "onsetQuantity": {
+      "onsetAge": {
         "value": 56,
-        "unit": "a",
-        "system": "http://unitsofmeasure.org"
+        "unit": "yr",
+        "system": "http://unitsofmeasure.org",
+        "code": "a"
       }
     }
   ]

@@ -3,12 +3,9 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div>To be added</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">To be added</div>"
   },
   "subject": {
-    "fhir_comments": [
-      "  insert contents here  "
-    ],
     "reference": "Patient/example"
   },
   "code": {

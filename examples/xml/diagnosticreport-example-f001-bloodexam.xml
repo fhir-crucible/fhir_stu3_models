@@ -1,45 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?><DiagnosticReport xmlns="http://hl7.org/fhir">
   <id value="f001"/>
-  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f001</p><p><b>contained</b>: </p><p><b>identifier</b>: nr1239044 (OFFICIAL)</p><p><b>status</b>: final</p><p><b>category</b>: Haematology test <span>(Details : {SNOMED CT code &#39;252275004&#39; = &#39;Hematology test (procedure)&#39;, given as &#39;Haematology test&#39;}; {http://hl7.org/fhir/v2/0074 code &#39;HM&#39; = &#39;Hematology)</span></p><p><b>code</b>: Complete blood count (hemogram) panel - Blood by Automated count <span>(Details : {LOINC code &#39;58410-2&#39; = &#39;Complete blood count (hemogram) panel - Blood by Automated count&#39;, given as &#39;Complete blood count (hemogram) panel - Blood by Automated count&#39;})</span></p><p><b>subject</b>: <a>P. van den Heuvel</a></p><p><b>effective</b>: Apr 2, 2013</p><p><b>issued</b>: May 15, 2013 7:32:52 PM</p><p><b>performer</b>: <a>Burgers University Medical Centre</a></p><p><b>request</b>: id: req; L2381 (OFFICIAL); P. van den Heuvel; patient almost fainted during procedure <span>(Details )</span></p><p><b>result</b>: </p><ul><li><a>Observation/f001</a></li><li><a>Observation/f002</a></li><li><a>Observation/f003</a></li><li><a>Observation/f004</a></li><li><a>Observation/f005</a></li></ul><p><b>conclusion</b>: Core lab</p></div></text><contained>
-    <DiagnosticOrder>
-			<id value="req"/>
-			<identifier>
-        <use value="official"/>
-        <system value="http://www.bmc.nl/zorgportal/identifiers/labresults"/>
-        <value value="L2381"/>
-      </identifier>
-			<subject>
-        <reference value="Patient/f001"/>
-        <display value="P. van den Heuvel"/>
-      </subject>
-			<encounter>
-        <reference value="Encounter/f001"/>
-      <!--   TODO Correcte verwijzing   -->
-      </encounter><orderer>
-        <reference value="Practitioner/f001"/>
-        <display value="E.van den Broek"/>
-      </orderer>
-			<reason>
-        <text value="patient almost fainted during procedure"/>
-      </reason>
-			<item>
-        <code>
-          <coding>
-            <system value="http://loinc.org"/>
-          <!--     LOINC     -->
-            <code value="58410-2"/>
-            <display value="Complete blood count (hemogram) panel - Blood by Automated count"/>
-          </coding>
-        </code>
-        <bodySite>
-          <coding>
-            <system value="http://snomed.info/sct"/>
-            <code value="14975008"/>
-            <display value="Forearm structure"/>
-          </coding>
-        </bodySite>
-      </item>
-		</DiagnosticOrder>
+  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f001</p><p><b>contained</b>: </p><p><b>identifier</b>: nr1239044 (OFFICIAL)</p><p><b>status</b>: final</p><p><b>category</b>: Haematology test <span>(Details : {SNOMED CT code &#39;252275004&#39; = &#39;Hematology test (procedure)&#39;, given as &#39;Haematology test&#39;}; {http://hl7.org/fhir/v2/0074 code &#39;HM&#39; = &#39;Hematology)</span></p><p><b>code</b>: Complete blood count (hemogram) panel - Blood by Automated count <span>(Details : {LOINC code &#39;58410-2&#39; = &#39;Complete blood count (hemogram) panel - Blood by Automated count&#39;, given as &#39;Complete blood count (hemogram) panel - Blood by Automated count&#39;})</span></p><p><b>subject</b>: <a>P. van den Heuvel</a></p><p><b>effective</b>: Apr 2, 2013</p><p><b>issued</b>: May 15, 2013 7:32:52 PM</p><p><b>performer</b>: <a>Burgers University Medical Centre</a></p><p><b>request</b>: id: req; Extensions: todo; L2381; Original Order <span>(Details : {http://hl7.org/fhir/request-stage code &#39;original-order&#39; = &#39;Original Order)</span>; Complete blood count (hemogram) panel - Blood by Automated count <span>(Details : {LOINC code &#39;58410-2&#39; = &#39;Complete blood count (hemogram) panel - Blood by Automated count&#39;, given as &#39;Complete blood count (hemogram) panel - Blood by Automated count&#39;})</span>; P. van den Heuvel; ????; E.van den Broek; Annotation: patient almost fainted during procedure</p><p><b>result</b>: </p><ul><li><a>Observation/f001</a></li><li><a>Observation/f002</a></li><li><a>Observation/f003</a></li><li><a>Observation/f004</a></li><li><a>Observation/f005</a></li></ul><p><b>conclusion</b>: Core lab</p></div></text><contained>
+<DiagnosticRequest>
+	<id value="req"/>
+	<extension url="http://example.org/bodysitecode">
+		<valueCodeableConcept>
+			<coding>
+				<system value="http://snomed.info/sct"/>
+				<code value="14975008"/>
+				<display value="Forearm structure"/>
+			</coding>
+		</valueCodeableConcept>
+	</extension>
+	<identifier>
+		<system value="http://www.bmc.nl/zorgportal/identifiers/labresults"/>
+		<value value="L2381"/>
+	</identifier>
+	<stage>
+		<coding>
+			<system value="http://hl7.org/fhir/request-stage"/>
+			<code value="original-order"/>
+		</coding>
+	</stage>
+	<code>
+		<coding>
+			<system value="http://loinc.org"/>
+			<code value="58410-2"/>
+			<display value="Complete blood count (hemogram) panel - Blood by Automated count"/>
+		</coding>
+	</code>
+	<subject>
+		<reference value="Patient/f001"/>
+		<display value="P. van den Heuvel"/>
+	</subject>
+	<context>
+		<reference value="Encounter/f001"/>
+	</context>
+	<requester>
+		<reference value="Practitioner/f001"/>
+		<display value="E.van den Broek"/>
+	</requester>
+	<note>
+		<text value="patient almost fainted during procedure"/>
+	</note>
+</DiagnosticRequest>
   </contained>
   <identifier>
     <use value="official"/>

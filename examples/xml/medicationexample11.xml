@@ -17,7 +17,7 @@
   </code>  
   <isBrand value="true"/>
   <manufacturer>
-    <reference value="http://www.tevacanada.com/fhir/Organization/1"/>
+    <reference value="http://www.tevacanada.com/fhirresource/1"/>
   </manufacturer>
   <product>
     <form>

@@ -19,7 +19,7 @@
   },
   "isBrand": true,
   "manufacturer": {
-    "reference": "http://www.tevacanada.com/fhir/Organization/1"
+    "reference": "http://www.tevacanada.com/fhirresource/1"
   },
   "product": {
     "form": {

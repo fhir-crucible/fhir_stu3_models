@@ -3,7 +3,7 @@
   "id": "EB3500",
   "text": {
     "status": "generated",
-    "div": "<div>A human-readable rendering of the ExplanationOfBenefit</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the ExplanationOfBenefit</div>"
   },
   "identifier": [
     {
@@ -11,14 +11,18 @@
       "value": "987654321"
     }
   ],
+  "status": "active",
   "claimReference": {
     "reference": "Claim/100150"
   },
+  "type": {
+    "system": "http://hl7.org/fhir/ex-claimtype",
+    "code": "oral"
+  },
   "created": "2014-08-16",
-  "_created": {
-    "fhir_comments": [
-      "   \n  <claimResponseReference>\n    <reference value=\"ClaimResponse/R3500\"/>\n  </claimResponseReference>  "
-    ]
+  "outcome": {
+    "system": "http://hl7.org/fhir/remittance-outcome",
+    "code": "complete"
   },
   "disposition": "Claim settled as per contract.",
   "organizationReference": {
@@ -35,12 +39,13 @@
   "item": [
     {
       "sequence": 1,
-      "type": {
-        "code": "service"
-      },
-      "providerReference": {
-        "reference": "Practitioner/example"
-      },
+      "careTeam": [
+        {
+          "providerReference": {
+            "reference": "Practitioner/example"
+          }
+        }
+      ],
       "service": {
         "system": "http://hl7.org/fhir/service-uscls",
         "code": "1200"

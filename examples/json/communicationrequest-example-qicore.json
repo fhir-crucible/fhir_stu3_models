@@ -7,6 +7,12 @@
   },
   "extension": [
     {
+      "url": "http://hl7.org/fhir/StructureDefinition/communicationrequest-orderedBy",
+      "valueReference": {
+        "reference": "Practitioner/example"
+      }
+    },
+    {
       "url": "http://hl7.org/fhir/StructureDefinition/communicationrequest-reasonRejected",
       "valueCodeableConcept": {
         "coding": [

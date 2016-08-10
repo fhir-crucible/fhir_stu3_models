@@ -3,7 +3,7 @@
   "id": "examplereq",
   "text": {
     "status": "generated",
-    "div": "<div>Brian MRI results discussion</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Brian MRI results discussion</div>"
   },
   "identifier": [
     {
@@ -89,11 +89,6 @@
         "display": "South Wing, second floor"
       },
       "required": "required",
-      "_required": {
-        "fhir_comments": [
-          "  This resource auto accepts, so doesn't need negotiation  "
-        ]
-      },
       "status": "accepted"
     }
   ]

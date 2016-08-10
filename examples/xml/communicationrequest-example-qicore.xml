@@ -5,6 +5,12 @@
     <div xmlns="http://www.w3.org/1999/xhtml">To be filled out at a later time</div>
   </text>
 
+  <extension url="http://hl7.org/fhir/StructureDefinition/communicationrequest-orderedBy">
+    <valueReference>
+      <reference value="Practitioner/example"/>
+    </valueReference>
+  </extension>
+
   <extension url="http://hl7.org/fhir/StructureDefinition/communicationrequest-reasonRejected">
     <valueCodeableConcept>
       <coding>

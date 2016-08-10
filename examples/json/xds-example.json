@@ -15,7 +15,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div>\n\n            <a href=\"http://localhost:9556/svc/fhir/Binary/1e404af3-077f-4bee-b7a6-a9be97e1ce32\">Document: urn:oid:129.6.58.92.88336</a>undefined, created 24/12/2005\n          </div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\n            <a href=\"http://localhost:9556/svc/fhir/Binary/1e404af3-077f-4bee-b7a6-a9be97e1ce32\">Document: urn:oid:129.6.58.92.88336</a>undefined, created 24/12/2005\n          </div>"
         },
         "masterIdentifier": {
           "system": "urn:ietf:rfc:3986",
@@ -111,7 +111,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div>Person DOE, John, M, dob: 27/05/1956</div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Person DOE, John, M, dob: 27/05/1956</div>"
         },
         "identifier": [
           {
@@ -149,7 +149,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div>Author Gerald Smitty @ Cleveland Clinic</div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Author Gerald Smitty @ Cleveland Clinic</div>"
         },
         "name": [
           {
@@ -162,12 +162,12 @@
             ]
           }
         ],
-        "practitionerRole": [
+        "role": [
           {
             "organization": {
               "display": "Cleveland Clinic"
             },
-            "role": {
+            "code": {
               "coding": [
                 {
                   "code": "Attending"
@@ -202,14 +202,11 @@
         "resourceType": "Practitioner",
         "id": "a4",
         "meta": {
-          "fhir_comments": [
-            "   cid:51b578b4-3ccb-4e67-b0dc-ef519d82ef2d@healthintersections.com.au   "
-          ],
           "lastUpdated": "2013-07-01T13:11:33Z"
         },
         "text": {
           "status": "generated",
-          "div": "<div>Author Person @ Cleveland Clinic</div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Author Person @ Cleveland Clinic</div>"
         },
         "name": [
           {
@@ -222,12 +219,12 @@
             ]
           }
         ],
-        "practitionerRole": [
+        "role": [
           {
             "organization": {
               "display": "Cleveland Clinic"
             },
-            "role": {
+            "code": {
               "coding": [
                 {
                   "code": "Primary Surgon"

@@ -1,12 +1,9 @@
 {
   "resourceType": "EpisodeOfCare",
-  "fhir_comments": [
-    " <careTeam>\n    <role>\n      <coding>\n        <system value=\"http://example.org/EpisodeOfCare/Role\"/>\n        <code value=\"AO\"/>\n        <display value=\"Assessment Worker\"/>\n      </coding>\n    </role>\n    <period>\n      <start value=\"2014-09-01\"/>\n      <end value=\"2014-09-16\"/>\n    </period>\n    <member>\n      <reference value=\"Practitioner/13\"/>\n      <display value=\"Henry Seven\"/>\n    </member>\n  </careTeam> "
-  ],
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div>\n      HACC Program for Peter James Chalmers at HL7 Healthcare 15 Sept 2014 - current<br/>\n\t\t\twas on leave from 22 Sept - 24 Sept while in respite care\n    </div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      HACC Program for Peter James Chalmers at HL7 Healthcare 15 Sept 2014 - current<br/>\n\t\t\twas on leave from 22 Sept - 24 Sept while in respite care\n    </div>"
   },
   "identifier": [
     {

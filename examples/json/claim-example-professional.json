@@ -3,17 +3,21 @@
   "id": "860150",
   "text": {
     "status": "generated",
-    "div": "<div>A human-readable rendering of the Claim</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Claim</div>"
   },
-  "type": "professional",
   "identifier": [
     {
       "system": "http://happypdocs.com/claim",
       "value": "8612345"
     }
   ],
+  "status": "active",
+  "type": {
+    "system": "http://hl7.org/fhir/ex-claimtype",
+    "code": "professional"
+  },
   "created": "2014-08-16",
-  "targetReference": {
+  "insurerReference": {
     "reference": "Organization/2"
   },
   "organizationReference": {
@@ -51,12 +55,13 @@
   "item": [
     {
       "sequence": 1,
-      "type": {
-        "code": "service"
-      },
-      "providerReference": {
-        "reference": "Practitioner/example"
-      },
+      "careTeam": [
+        {
+          "providerReference": {
+            "reference": "Practitioner/example"
+          }
+        }
+      ],
       "service": {
         "system": "http://hl7.org/fhir/ex-serviceproduct",
         "code": "exam"

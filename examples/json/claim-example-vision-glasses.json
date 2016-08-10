@@ -3,17 +3,21 @@
   "id": "660151",
   "text": {
     "status": "generated",
-    "div": "<div>A human-readable rendering of the Vision Claim for Glasses</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Vision Claim for Glasses</div>"
   },
-  "type": "vision",
   "identifier": [
     {
       "system": "http://happysight.com/claim",
       "value": "6612346"
     }
   ],
+  "status": "active",
+  "type": {
+    "system": "http://hl7.org/fhir/ex-claimtype",
+    "code": "vision"
+  },
   "created": "2014-08-16",
-  "targetReference": {
+  "insurerReference": {
     "reference": "Organization/2"
   },
   "organizationReference": {
@@ -24,7 +28,7 @@
     "code": "normal"
   },
   "prescriptionReference": {
-    "reference": "http://www.optdocs.com/VisionPrescription/12345"
+    "reference": "http://www.optdocs.com/prescription/12345"
   },
   "payee": {
     "type": {
@@ -54,12 +58,13 @@
   "item": [
     {
       "sequence": 1,
-      "type": {
-        "code": "group"
-      },
-      "providerReference": {
-        "reference": "Practitioner/example"
-      },
+      "careTeam": [
+        {
+          "providerReference": {
+            "reference": "Practitioner/example"
+          }
+        }
+      ],
       "service": {
         "system": "http://hl7.org/fhir/ex-visionservice",
         "code": "glasses"
@@ -78,9 +83,6 @@
       "detail": [
         {
           "sequence": 1,
-          "type": {
-            "code": "product"
-          },
           "service": {
             "system": "http://hl7.org/fhir/ex-visionservice",
             "code": "frame"
@@ -98,9 +100,6 @@
         },
         {
           "sequence": 2,
-          "type": {
-            "code": "product"
-          },
           "service": {
             "system": "http://hl7.org/fhir/ex-visionservice",
             "code": "lens"
@@ -121,9 +120,6 @@
         },
         {
           "sequence": 3,
-          "type": {
-            "code": "tax"
-          },
           "service": {
             "system": "http://hl7.org/fhir/ex-visionservice",
             "code": "fst"

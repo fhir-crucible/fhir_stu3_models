@@ -19,18 +19,33 @@
     <given value="Adam"/>
     <prefix value="Dr"/>
   </name>
- <practitionerRole>
+  <address>
+    <use value="home"/>
+    <line value="534 Erewhon St"/>
+    <city value="PleasantVille"/>
+    <state value="Vic"/>
+    <postalCode value="3999"/>
+  </address>
+ <role>
   <organization>
     <reference value="Organization/f001"/>
   </organization>
 
   <!--  Referring Practitioner for the first 3 months of 2012  -->
-  <role>
+  <code>
     <coding>
       <system value="http://hl7.org/fhir/v2/0286"/>
       <code value="RP"/>
     </coding>
-  </role>
+  </code>
+  <identifier>
+    <system value="http://example.org/role-identifier"/>
+    <value value="52"/>
+  </identifier>
+  <telecom>
+    <system value="email"/>
+    <value value="dr.adam.careful@example.org"/>
+  </telecom>
 
   <period>
     <start value="2012-01-01"/>
@@ -43,7 +58,20 @@
 	 <healthcareService>
 		 <reference value="HealthcareService/example"/>
 	 </healthcareService>
- </practitionerRole>
+  <endpoint>
+    <!--  Endpoint that handles the v2 messaging for the external organization  -->
+    <reference value="Endpoint/example"/>
+  </endpoint>
+ </role>
+ <role>
+  <organization>
+    <reference value="Organization/2"/>
+    <display value="Good Health Clinic"/>
+  </organization>
+  <period>
+    <start value="2012-01-01"/>
+  </period>
+ </role>
 	<qualification>
 		<identifier>
 			<system value="http://example.org/UniversityIdentifier"/>

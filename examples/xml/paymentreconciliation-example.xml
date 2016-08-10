@@ -10,27 +10,29 @@
     <system value="http://www.BenefitsInc.com/fhir/enrollmentresponse"/>
     <value value="781234"/>
   </identifier>
+  
+  <status value="active"/>
 
   <requestReference>
-	<reference value="http://www.BenefitsInc.com/fhir/ProcessRequest/225476332402"/>
+	<reference value="http://www.BenefitsInc.com/fhir/eligibility/225476332402"/>
   </requestReference>
-
+  
   <outcome value="complete"/>
-
+  
   <disposition value="2014 August mid-month settlement."/>
-
+ 
   <created value="2014-08-16"/>
 
   <organizationReference>
     <reference value="Organization/2"/>
   </organizationReference>
 
-  <!--
+  <!-- 
   <requestOrganizationReference>
     <reference value="Organization/1"/>
   </requestOrganizationReference>
    -->
-
+ 
   <detail>
 	<type>
 	   <system value="http://hl7.org/fhir/paymenttype"/>
@@ -44,9 +46,9 @@
 		<value value="1000.00"/>
 		<system value="urn:iso:std:iso:4217"/>
 		<code value="USD"/>
-	</amount>
+	</amount>   
   </detail>
-
+ 
   <detail>
 	<type>
 	   <system value="http://hl7.org/fhir/paymenttype"/>
@@ -60,9 +62,9 @@
 		<value value="4000.00"/>
 		<system value="urn:iso:std:iso:4217"/>
 		<code value="USD"/>
-	</amount>
+	</amount>   
   </detail>
-
+ 
   <detail>
 	<type>
 	   <system value="http://hl7.org/fhir/paymenttype"/>
@@ -73,13 +75,13 @@
 		<value value="-1500.00"/>
 		<system value="urn:iso:std:iso:4217"/>
 		<code value="USD"/>
-	</amount>
+	</amount>   
   </detail>
-
+  
   <total>
 	<value value="3500.00"/>
 	<system value="urn:iso:std:iso:4217"/>
 	<code value="USD"/>
-  </total>
-
+  </total>  
+ 
 </PaymentReconciliation>

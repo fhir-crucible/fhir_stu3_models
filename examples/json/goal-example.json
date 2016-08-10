@@ -3,10 +3,11 @@
   "id": "example",
   "text": {
     "status": "additional",
-    "div": "<div>\n\t\t\t<p> A simple care goal for a patient to lose weight due to obesity.</p>\n\t\t</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t<p> A simple care goal for a patient to lose weight due to obesity.</p>\n\t\t</div>"
   },
   "extension": [
     {
+      "url": "http://hl7.org/fhir/StructureDefinition/goal-target",
       "extension": [
         {
           "url": "measure",
@@ -37,15 +38,16 @@
             }
           }
         }
-      ],
-      "url": "http://hl7.org/fhir/StructureDefinition/goal-target"
+      ]
     }
   ],
   "subject": {
     "reference": "Patient/example",
     "display": "Peter James Chalmers"
   },
-  "description": "Target weight is 160 to 180 lbs.",
+  "description": {
+    "text": "Target weight is 160 to 180 lbs."
+  },
   "status": "in-progress",
   "addresses": [
     {

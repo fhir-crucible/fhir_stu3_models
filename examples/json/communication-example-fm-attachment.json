@@ -1,0 +1,113 @@
+{
+  "resourceType": "Communication",
+  "id": "fm-attachment",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Attachment which is unsolicited</div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Organization",
+      "id": "provider",
+      "identifier": [
+        {
+          "system": "http://www.jurisdiction.com/provideroffices",
+          "value": "3456"
+        }
+      ]
+    },
+    {
+      "resourceType": "Organization",
+      "id": "payor",
+      "identifier": [
+        {
+          "system": "http://www.jurisdiction.com/insurer",
+          "value": "123456"
+        }
+      ]
+    },
+    {
+      "resourceType": "Claim",
+      "id": "claim",
+      "identifier": [
+        {
+          "system": "http://happyvalley.com/claim",
+          "value": "12345"
+        }
+      ],
+      "status": "draft",
+      "type": {
+        "system": "http://hl7.org/fhir/ex-claimtype",
+        "code": "oral"
+      },
+      "patientReference": {
+        "reference": "Patient/1"
+      }
+    },
+    {
+      "resourceType": "ClaimResponse",
+      "id": "claimresponse",
+      "identifier": [
+        {
+          "system": "http://www.BenefitsInc.com/fhir/claimresponse",
+          "value": "R3500"
+        }
+      ],
+      "status": "draft"
+    }
+  ],
+  "identifier": [
+    {
+      "system": "http://www.providerco.com/communication",
+      "value": "12345"
+    }
+  ],
+  "status": "completed",
+  "category": {
+    "coding": [
+      {
+        "system": "http://acme.org/messagetypes",
+        "code": "SolicitedAttachment"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/1"
+  },
+  "topic": [
+    {
+      "reference": "#claim"
+    },
+    {
+      "reference": "#claimresponse"
+    }
+  ],
+  "sent": "2016-06-12T18:01:10-08:00",
+  "sender": {
+    "reference": "#provider"
+  },
+  "recipient": [
+    {
+      "reference": "#payor"
+    }
+  ],
+  "payload": [
+    {
+      "contentAttachment": {
+        "contentType": "application/pdf",
+        "data": "SGVsbG8=",
+        "title": "accident notes 20100201.pdf",
+        "creation": "2010-02-01T11:50:23-05:00"
+      }
+    },
+    {
+      "contentAttachment": {
+        "contentType": "application/pdf",
+        "url": "http://happyvalley.com/docs/AB12345",
+        "size": 104274,
+        "hash": "SGVsbG8gdGhlcmU=",
+        "creation": "2010-02-01T10:57:34+01:00"
+      }
+    }
+  ]
+}

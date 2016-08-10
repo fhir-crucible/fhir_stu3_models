@@ -123,40 +123,40 @@
       For purposes of example, will represent this way.  -->
     <Condition>
       <id value="p1"/>
-      <patient>
-        <reference value="Patient/1"/>
-        <display value="Eve Everywoman"/>
-      </patient>
+      <verificationStatus value="confirmed"/>
       <code>
         <text value="GERDS"/>
       </code>
-      <verificationStatus value="confirmed"/>
+      <subject>
+        <reference value="Patient/1"/>
+        <display value="Eve Everywoman"/>
+      </subject>
     </Condition>
   </contained>
   <contained>
     <Condition>
       <id value="p2"/>
-      <patient>
-        <reference value="Patient/1"/>
-        <display value="Eve Everywoman"/>
-      </patient>
+      <verificationStatus value="confirmed"/>
       <code>
         <text value="Obesity"/>
       </code>
-      <verificationStatus value="confirmed"/>
+      <subject>
+        <reference value="Patient/1"/>
+        <display value="Eve Everywoman"/>
+      </subject>
     </Condition>
   </contained>
   <contained>
     <Condition>
       <id value="p3"/>
-      <patient>
-        <reference value="Patient/1"/>
-        <display value="Eve Everywoman"/>
-      </patient>
+      <verificationStatus value="confirmed"/>
       <code>
         <text value="Psoriasis"/>
       </code>
-      <verificationStatus value="confirmed"/>
+      <subject>
+        <reference value="Patient/1"/>
+        <display value="Eve Everywoman"/>
+      </subject>
     </Condition>
   </contained>
   <contained>
@@ -166,7 +166,9 @@
         <reference value="Patient/1"/>
         <display value="Eve Everywoman"/>
       </subject>
-      <description value="Eve will lose weight and reduce her GERDS symptoms by improving her diet"/>
+      <description>
+        <text value="Eve will lose weight and reduce her GERDS symptoms by improving her diet"/>
+      </description>
       <status value="in-progress"/>
     </Goal>
   </contained>
@@ -177,7 +179,9 @@
         <reference value="Patient/1"/>
         <display value="Eve Everywoman"/>
       </subject>
-      <description value="Eve will improve her GERDS symptoms"/>
+      <description>
+        <text value="Eve will improve her GERDS symptoms"/>
+      </description>
       <status value="in-progress"/>
     </Goal>
   </contained>
@@ -188,7 +192,9 @@
         <reference value="Patient/1"/>
         <display value="Eve Everywoman"/>
       </subject>
-      <description value="Eve will increase her energy by being more active"/>
+      <description>
+        <text value="Eve will increase her energy by being more active"/>
+      </description>
       <status value="in-progress"/>
     </Goal>
   </contained>
@@ -199,7 +205,9 @@
         <reference value="Patient/1"/>
         <display value="Eve Everywoman"/>
       </subject>
-      <description value="Eve will set up her medications and take as prescribed"/>
+      <description>
+        <text value="Eve will set up her medications and take as prescribed"/>
+      </description>
       <status value="in-progress"/>
     </Goal>
   </contained>
@@ -210,7 +218,9 @@
         <reference value="Patient/1"/>
         <display value="Eve Everywoman"/>
       </subject>
-      <description value="Eve will restart her light treatments"/>
+      <description>
+        <text value="Eve will restart her light treatments"/>
+      </description>
       <status value="in-progress"/>
     </Goal>
   </contained>
@@ -259,7 +269,12 @@
       <extension url="http://example.org/DoNotUse/StructureDefinition/RevisionDate">
         <valueDate value="2012-09-10"/>
       </extension>
-      <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="other"/></coding></category>
+      <category>
+        <coding>
+          <system value="http://hl7.org/fhir/care-plan-activity-category"/>
+          <code value="other"/>
+        </coding>
+      </category>
       <goal>
         <reference value="#g1"/>
       </goal>
@@ -280,7 +295,12 @@
       <extension url="http://example.org/DoNotUse/General/RevisionDate">
         <valueDate value="2012-09-10"/>
       </extension>
-      <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="other"/></coding></category>
+      <category>
+        <coding>
+          <system value="http://hl7.org/fhir/care-plan-activity-category"/>
+          <code value="other"/>
+        </coding>
+      </category>
       <goal>
         <reference value="#g1"/>
       </goal>
@@ -297,7 +317,12 @@
       <extension url="http://example.org/DoNotUse/General/RevisionDate">
         <valueDate value="2012-09-10"/>
       </extension>
-      <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="other"/></coding></category>
+      <category>
+        <coding>
+          <system value="http://hl7.org/fhir/care-plan-activity-category"/>
+          <code value="other"/>
+        </coding>
+      </category>
       <goal>
         <reference value="#g2"/>
       </goal>
@@ -322,7 +347,12 @@
       <extension url="http://example.org/DoNotUse/General/RevisionDate">
         <valueDate value="2012-09-10"/>
       </extension>
-      <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="other"/></coding></category>
+      <category>
+        <coding>
+          <system value="http://hl7.org/fhir/care-plan-activity-category"/>
+          <code value="other"/>
+        </coding>
+      </category>
       <goal>
         <reference value="#g3"/>
       </goal>
@@ -347,7 +377,12 @@
       <extension url="http://example.org/DoNotUse/General/RevisionDate">
         <valueDate value="2012-09-10"/>
       </extension>
-      <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="other"/></coding></category>
+      <category>
+        <coding>
+          <system value="http://hl7.org/fhir/care-plan-activity-category"/>
+          <code value="other"/>
+        </coding>
+      </category>
       <goal>
         <reference value="#g3"/>
       </goal>
@@ -364,7 +399,12 @@
       <extension url="http://example.org/DoNotUse/General/RevisionDate">
         <valueDate value="2012-08-13"/>
       </extension>
-      <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="other"/></coding></category>
+      <category>
+        <coding>
+          <system value="http://hl7.org/fhir/care-plan-activity-category"/>
+          <code value="other"/>
+        </coding>
+      </category>
       <goal>
         <reference value="#g4"/>
       </goal>
@@ -389,7 +429,12 @@
       <extension url="http://example.org/DoNotUse/General/RevisionDate">
         <valueDate value="2012-08-27"/>
       </extension>
-      <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="other"/></coding></category>
+      <category>
+        <coding>
+          <system value="http://hl7.org/fhir/care-plan-activity-category"/>
+          <code value="other"/>
+        </coding>
+      </category>
       <goal>
         <reference value="#g5"/>
       </goal>
@@ -410,7 +455,12 @@
       <extension url="http://example.org/DoNotUse/General/RevisionDate">
         <valueDate value="2012-09-10"/>
       </extension>
-      <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="other"/></coding></category>
+      <category>
+        <coding>
+          <system value="http://hl7.org/fhir/care-plan-activity-category"/>
+          <code value="other"/>
+        </coding>
+      </category>
       <goal>
         <reference value="#g4"/>
       </goal>
@@ -435,7 +485,12 @@
       <extension url="http://example.org/DoNotUse/General/RevisionDate">
         <valueDate value="2012-08-23"/>
       </extension>
-      <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="other"/></coding></category>
+      <category>
+        <coding>
+          <system value="http://hl7.org/fhir/care-plan-activity-category"/>
+          <code value="other"/>
+        </coding>
+      </category>
       <goal>
         <reference value="#g3"/>
       </goal>
@@ -452,7 +507,12 @@
       <extension url="http://example.org/DoNotUse/General/RevisionDate">
         <valueDate value="2012-07-23"/>
       </extension>
-      <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="other"/></coding></category>
+      <category>
+        <coding>
+          <system value="http://hl7.org/fhir/care-plan-activity-category"/>
+          <code value="other"/>
+        </coding>
+      </category>
       <goal>
         <reference value="#g4"/>
       </goal>
@@ -473,7 +533,12 @@
       <extension url="http://example.org/DoNotUse/General/RevisionDate">
         <valueDate value="2012-07-16"/>
       </extension>
-      <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="other"/></coding></category>
+      <category>
+        <coding>
+          <system value="http://hl7.org/fhir/care-plan-activity-category"/>
+          <code value="other"/>
+        </coding>
+      </category>
       <goal>
         <reference value="#g4"/>
       </goal>
@@ -498,7 +563,12 @@
       <extension url="http://example.org/DoNotUse/General/RevisionDate">
         <valueDate value="2012-08-13"/>
       </extension>
-      <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="other"/></coding></category>
+      <category>
+        <coding>
+          <system value="http://hl7.org/fhir/care-plan-activity-category"/>
+          <code value="other"/>
+        </coding>
+      </category>
       <goal>
         <reference value="#g3"/>
       </goal>

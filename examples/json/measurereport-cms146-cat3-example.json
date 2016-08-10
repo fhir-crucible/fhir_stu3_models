@@ -3,7 +3,7 @@
   "id": "measurereport-cms146-cat3-example",
   "text": {
     "status": "generated",
-    "div": "<div>\n      Calculated Summary Report for CMS146:\n      Percentage of children 2-18 years of age who were diagnosed with\n      pharyngitis, ordered an antibiotic and received a group A streptococcus\n      (strep) test for the episode.\n    </div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      Calculated Summary Report for CMS146:\n      Percentage of children 2-18 years of age who were diagnosed with\n      pharyngitis, ordered an antibiotic and received a group A streptococcus\n      (strep) test for the episode.\n    </div>"
   },
   "contained": [
     {

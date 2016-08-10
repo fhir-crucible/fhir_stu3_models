@@ -24,7 +24,7 @@
   <status value="finished"/>
   <class value="inpatient"/>
   <patient>
-    <reference value="Patient/example"/>
+    <reference value="patient-example"/>
   </patient>
   <period>
     <start value="2015-02-09T00:00:00Z"/>

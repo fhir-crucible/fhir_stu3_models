@@ -17,7 +17,7 @@
   </code>  
   <isBrand value="true"/>
   <manufacturer>
-    <reference value="http://www.a-smeds.com/fhir/Organization/1"/>
+    <reference value="http://www.a-smeds.com/fhirresource/1"/>
   </manufacturer>
   <product>
     <form>

@@ -35,6 +35,7 @@
 			<code value="468063009"/>
 			<display value="Coated femoral stem prosthesis, modular"/>
 		</coding>
+		<text value="Coated femoral stem prosthesis, modular"/><!--   note: optional text value added here for a prettier generated narrative   -->
 	</type>
 	<lotNumber value="7654321D"/>
 	<manufacturer value="Acme Devices, Inc"/>

@@ -3,7 +3,7 @@
   "id": "genetic",
   "text": {
     "status": "generated",
-    "div": "<div>To do</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">To do</div>"
   },
   "contained": [
     {
@@ -11,6 +11,7 @@
       "id": "1",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -28,8 +29,7 @@
               "url": "parent.identifier",
               "valueUri": "#2"
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -71,6 +71,7 @@
       "id": "3",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -88,8 +89,7 @@
               "url": "parent.identifier",
               "valueUri": "#2"
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -112,6 +112,7 @@
       "id": "4",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -129,8 +130,7 @@
               "url": "parent.identifier",
               "valueUri": "#2"
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -153,6 +153,7 @@
       "id": "5",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -170,8 +171,7 @@
               "url": "parent.identifier",
               "valueUri": "#2"
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -195,6 +195,7 @@
       "id": "6",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -212,8 +213,7 @@
               "url": "parent.identifier",
               "valueUri": "#2"
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -236,6 +236,7 @@
       "id": "7",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -253,8 +254,7 @@
               "url": "parent.identifier",
               "valueUri": "#2"
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -277,6 +277,7 @@
       "id": "8",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -294,8 +295,7 @@
               "url": "parent.identifier",
               "valueUri": "#5"
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {

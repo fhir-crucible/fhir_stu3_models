@@ -3,7 +3,7 @@
   "id": "measurereport-cms146-cat2-example",
   "text": {
     "status": "generated",
-    "div": "<div>\n      Calculated Patient-List Report for CMS146:\n      Percentage of children 2-18 years of age who were diagnosed with\n      pharyngitis, ordered an antibiotic and received a group A streptococcus\n      (strep) test for the episode.\n    </div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      Calculated Patient-List Report for CMS146:\n      Percentage of children 2-18 years of age who were diagnosed with\n      pharyngitis, ordered an antibiotic and received a group A streptococcus\n      (strep) test for the episode.\n    </div>"
   },
   "contained": [
     {
@@ -34,9 +34,6 @@
           "type": "initial-population",
           "count": 500,
           "patients": {
-            "fhir_comments": [
-              "  The list references a patient-level MeasureReport for each member of the population  "
-            ],
             "reference": "List/CMS146-initial-population"
           }
         },

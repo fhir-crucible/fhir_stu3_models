@@ -12,14 +12,14 @@
   <contained>
     <Condition>
       <id value="p1"/>
-      <patient>
-        <reference value="Patient/1"/>
-        <display value="Eve Everywoman"/>
-      </patient>
+      <verificationStatus value="confirmed"/>
       <code>
         <text value="pregnancy"/>
       </code>
-      <verificationStatus value="confirmed"/>
+      <subject>
+        <reference value="Patient/1"/>
+        <display value="Eve Everywoman"/>
+      </subject>
     </Condition>
   </contained>
   <contained>
@@ -29,11 +29,11 @@
         <family value="Midwife"/>
         <given value="Mavis"/>
       </name>
-      <practitionerRole>
+      <role>
         <specialty>
           <text value="Midwife"/>
         </specialty>
-      </practitionerRole>
+      </role>
     </Practitioner>
   </contained>
   <contained>
@@ -43,12 +43,47 @@
         <family value="Obstetrician"/>
         <given value="Oscar"/>
       </name>
-      <practitionerRole>
+      <role>
         <specialty>
           <text value="Obstetrician"/>
         </specialty>
-      </practitionerRole>
+      </role>
     </Practitioner>
+  </contained>
+  <contained>
+    <CareTeam>
+      <id value="careteam"/>
+      <participant>
+        <!--  In New Zealand, there is a Lead Maternity Carer (LMC) - often a midwife  -->
+        <role>
+          <coding>
+            <system value="http://example.org/mysys"/>
+            <code value="lmc"/>
+          </coding>
+          <text value="Midwife"/>
+        </role>
+        <member>
+          <!--  This links to the clinician resource, so we get all the stuff related to that like address, contact etc...  -->
+          <reference value="#pr1"/>
+          <display value="Mavis Midwife"/>
+        </member>
+      </participant>
+      <participant>
+        <!--  To indicate that there is an obstretian consultant involved in this case.  -->
+        <role>
+          <coding>
+            <system value="http://example.org/mysys"/>
+            <code value="obs"/>
+          </coding>
+          <text value="Obstretitian"/>
+        </role>
+        <member>
+          <!--  This links to the clinician resource, so we get all the stuff related to that like address, contact etc...  -->
+          <reference value="#pr2"/>
+          <display value="Oscar Obstetrician"/>
+        </member>
+      </participant>
+    </CareTeam>
   </contained>
   <contained>
     <Goal>
@@ -57,7 +92,9 @@
         <reference value="Patient/1"/>
         <display value="Eve Everywoman"/>
       </subject>
-      <description value="Maintain patient&#39;s health throughout pregnancy and ensure a healthy child"/>
+      <description>
+        <text value="Maintain patient&#39;s health throughout pregnancy and ensure a healthy child"/>
+      </description>
       <status value="in-progress"/>
     </Goal>
   </contained>
@@ -79,36 +116,9 @@
     <reference value="#p1"/>
     <display value="pregnancy"/>
   </addresses>
-  <participant>
-    <!--  In New Zealand, there is a Lead Maternity Carer (LMC) - often a midwife  -->
-    <role>
-      <coding>
-        <system value="http://example.org/mysys"/>
-        <code value="lmc"/>
-      </coding>
-      <text value="Midwife"/>
-    </role>
-    <member>
-      <!--  This links to the clinician resource, so we get all the stuff related to that like address, contact etc...  -->
-      <reference value="#pr1"/>
-      <display value="Mavis Midwife"/>
-    </member>
-  </participant>
-  <participant>
-    <!--  To indicate that there is an obstretian consultant involved in this case.  -->
-    <role>
-      <coding>
-        <system value="http://example.org/mysys"/>
-        <code value="obs"/>
-      </coding>
-      <text value="Obstretitian"/>
-    </role>
-    <member>
-      <!--  This links to the clinician resource, so we get all the stuff related to that like address, contact etc...  -->
-      <reference value="#pr2"/>
-      <display value="Oscar Obstetrician"/>
-    </member>
-  </participant>
+  <careTeam>
+    <reference value="#careteam"/>
+  </careTeam>
   <goal>
     <reference value="#goal"/>
   </goal>
@@ -119,7 +129,12 @@
       <valueUri value="http://orionhealth.com/fhir/careplan/1andetails"/>
     </extension>
     <detail>
-      <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="encounter"/></coding></category>
+      <category>
+        <coding>
+          <system value="http://hl7.org/fhir/care-plan-activity-category"/>
+          <code value="encounter"/>
+        </coding>
+      </category>
       <code>
         <coding>
           <system value="http://example.org/mySystem"/>
@@ -155,7 +170,12 @@
   <activity>
     <detail>
       <!--  This will be the second antenatal encounter - 3 months after LMP. It is not yet scheduled.  -->
-      <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="encounter"/></coding></category>
+      <category>
+        <coding>
+          <system value="http://hl7.org/fhir/care-plan-activity-category"/>
+          <code value="encounter"/>
+        </coding>
+      </category>
       <code>
         <!--  The code is just for an antenatal encounter. There are many of these, the first is special...  -->
         <coding>
@@ -192,7 +212,12 @@
   <activity>
     <detail>
       <!--  This will be the delivery. It is not yet scheduled.  -->
-      <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="encounter"/></coding></category>
+      <category>
+        <coding>
+          <system value="http://hl7.org/fhir/care-plan-activity-category"/>
+          <code value="encounter"/>
+        </coding>
+      </category>
       <code>
         <coding>
           <system value="http://example.org/mySystem"/>

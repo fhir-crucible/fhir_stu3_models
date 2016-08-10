@@ -3,12 +3,17 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div>To be filled out at a later time</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">To be filled out at a later time</div>"
   },
-  "device": {
-    "fhir_comments": [
-      "  insert contents here  "
-    ],
+  "status": "completed",
+  "stage": {
+    "coding": [
+      {
+        "code": "original-order"
+      }
+    ]
+  },
+  "deviceReference": {
     "reference": "Device/example"
   },
   "subject": {

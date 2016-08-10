@@ -1,13 +1,13 @@
 {
   "resourceType": "Observation",
-  "id": "example-observation-genetics-1",
+  "id": "example-genetics-1",
   "text": {
     "status": "generated",
-    "div": "<div><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example-observation-genetics-1</p><p><b>status</b>: final</p><p><b>code</b>: Genetic analysis master panel <span>(Details : {LOINC code '55233-1' = 'Genetic analysis master panel - Blood or Tissue by Molecular genetics method', given as 'Genetic analysis master panel'})</span></p><p><b>subject</b>: <a>Molecular Lab Patient ID: HOSP-23456</a></p><p><b>issued</b>: Apr 3, 2013 3:30:10 PM</p><p><b>performer</b>: <a>Molecular Diagnostics Laboratory</a></p><p><b>value</b>: Positive <span>(Details : {SNOMED CT code '10828004' = 'Positive (qualifier value)', given as 'Positive'})</span></p><p><b>specimen</b>: <a>Molecular Specimen ID: MLD45-Z4-1234</a></p></div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example-genetics-1</p><p><b>status</b>: final</p><p><b>code</b>: Genetic analysis master panel <span>(Details : {LOINC code '55233-1' = 'Genetic analysis master panel - Blood or Tissue by Molecular genetics method', given as 'Genetic analysis master panel'})</span></p><p><b>subject</b>: <a>Molecular Lab Patient ID: HOSP-23456</a></p><p><b>issued</b>: Apr 3, 2013 3:30:10 PM</p><p><b>performer</b>: <a>Molecular Diagnostics Laboratory</a></p><p><b>value</b>: Positive <span>(Details : {SNOMED CT code '10828004' = 'Positive (qualifier value)', given as 'Positive'})</span></p><p><b>specimen</b>: <a>Molecular Specimen ID: MLD45-Z4-1234</a></p></div>"
   },
   "extension": [
     {
-      "url": "http://hl7.org/fhir/StructureDefinition/observation-geneticsDNASequenceVariation",
+      "url": "http://hl7.org/fhir/StructureDefinition/observation-geneticsDNASequenceVariant",
       "valueString": "NG_007726.3:g.146252T>G"
     },
     {
@@ -50,13 +50,13 @@
     ]
   },
   "subject": {
-    "reference": "Patient/example-genetics-somatic",
+    "reference": "Patient/example",
     "display": "Molecular Lab Patient ID: HOSP-23456"
   },
   "issued": "2013-04-03T15:30:10+01:00",
   "performer": [
     {
-      "reference": "Practitioner/example-genetics-somatic",
+      "reference": "Practitioner/example",
       "display": "Molecular Diagnostics Laboratory"
     }
   ],

@@ -17,7 +17,7 @@
   "patient": {
     "reference": "Patient/example"
   },
-  "effectiveDateTime": "2012-06-01T14:30+14:00",
+  "effectiveDateTime": "2012-06-01T14:30:00+14:00",
   "dosage": [
     {
       "route": {
