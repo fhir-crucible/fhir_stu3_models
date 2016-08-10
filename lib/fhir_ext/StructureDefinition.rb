@@ -216,7 +216,6 @@ module FHIR
           end
           elements.uniq!
         # else
-        #   binding.pry
         #   @warnings << "StructureDefinition #{name} missing -- #{path}"
         end
       end
@@ -403,16 +402,6 @@ module FHIR
       @errors
     end
 
-    def has_bullshit?(thing)
-      if thing.is_a?(Array)
-        return true if thing.find{|x|has_bullshit?(x)}
-      elsif thing.is_a?(Hash)
-        return true if thing.values.find{|x|has_bullshit?(x)}
-      else
-        return thing.is_a?(FHIR::Model)
-      end
-    end
-
     # Checks whether or not the "json" is valid according to this definition.
     # json == the raw json for a FHIR resource
     def is_valid_json?(json)
@@ -425,8 +414,6 @@ module FHIR
         end
       end
 
-      binding.pry if has_bullshit?(json)
-
       resource_type = json['resourceType']
       baseType = snapshot.element[0].path
       snapshot.element.each do |element|
@@ -434,7 +421,6 @@ module FHIR
         path = path[(baseType.size+1)..-1] if path.start_with? baseType
 
         nodes = get_json_nodes(json,path)
-        binding.pry if has_bullshit?(nodes)
 
         # special filtering on extension urls
         extension_profile = element.type.find{|t|t.code=='Extension' && !t.profile.empty?}
@@ -572,7 +558,6 @@ module FHIR
               @warnings += definition.warnings
             end
           rescue Exception => e
-            binding.pry
             @errors << "Unable to verify #{data_type_code} as a FHIR Resource." 
           end
           return retVal
@@ -642,7 +627,6 @@ module FHIR
               @warnings += definition.warnings
             end
           rescue Exception => e
-            binding.pry
             @errors << "Unable to verify #{resource_type} as a FHIR Resource." 
           end
           retVal
@@ -660,14 +644,12 @@ module FHIR
           retVal = false
           begin
             klass = Module.const_get("FHIR::#{data_type_code}")
-            # binding.pry if data_type_code == 'BackboneElement'
             retVal = definition.validates_resource?(klass.new(deep_copy(value)))
             if !retVal
               @errors += definition.errors 
               @warnings += definition.warnings
             end
           rescue Exception => e
-            binding.pry
             @errors << "Unable to verify #{data_type_code} as a FHIR type."
           end
           retVal

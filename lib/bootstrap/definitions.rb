@@ -158,9 +158,7 @@ module FHIR
           # set the return class type
           klass = Object.const_get("FHIR::Profile::#{id}::#{type}")
         rescue Exception => e
-          puts e
-          puts f
-          binding.pry
+          FHIR.logger.error "Failed to generate class for profile #{uri}"
         end
         # unlink the file so it can be garbage collected
         f.unlink

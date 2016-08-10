@@ -118,7 +118,7 @@ module FHIR
                 subset = value
               end
             else
-              binding.pry
+              FHIR.logger.warn "Validation not supported on slices (except for Extensions)"
             end
             validate_field(field,subset,contained_here,slice,errors)
           end
@@ -188,7 +188,7 @@ module FHIR
                 begin
                   r = contained_here.select{|x|x.id==v.reference[1..-1]}.first
                 rescue Exception => e
-                  binding.pry
+                  FHIR.logger.warn "Unable to resolve reference #{v.reference}"
                 end
                 if !r.nil?
                   meta['type_profiles'].each do |p|
