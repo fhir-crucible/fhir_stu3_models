@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Wed, Aug 10, 2016 14:17-0400 for FHIR v1.5.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -47,9 +47,14 @@
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             
           </xs:element>
-          <xs:element name="request" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="EnrollmentResponseStatus">
             
           </xs:element>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="requestIdentifier" type="Identifier"/>
+            <xs:element name="requestReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="outcome" minOccurs="0" maxOccurs="1" type="RemittanceOutcome">
             
           </xs:element>
@@ -65,16 +70,46 @@
           <xs:element name="created" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="organization" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="requestProvider" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="organizationIdentifier" type="Identifier"/>
+            <xs:element name="organizationReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="requestOrganization" minOccurs="0" maxOccurs="1" type="Reference">
+            <xs:element name="requestProviderIdentifier" type="Identifier"/>
+            <xs:element name="requestProviderReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="requestOrganizationIdentifier" type="Identifier"/>
+            <xs:element name="requestOrganizationReference" type="Reference"/>
+          </xs:choice>
         </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="EnrollmentResponseStatus-list">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="active">
+        
+      </xs:enumeration>
+      <xs:enumeration value="cancelled">
+        
+      </xs:enumeration>
+      <xs:enumeration value="draft">
+        
+      </xs:enumeration>
+      <xs:enumeration value="entered-in-error">
+        
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="EnrollmentResponseStatus">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="EnrollmentResponseStatus-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

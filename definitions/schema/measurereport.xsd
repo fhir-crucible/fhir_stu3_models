@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Wed, Aug 10, 2016 14:17-0400 for FHIR v1.5.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -202,7 +202,16 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="MeasureReportStatus-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="complete">
+        
+      </xs:enumeration>
+      <xs:enumeration value="pending">
+        
+      </xs:enumeration>
+      <xs:enumeration value="error">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="MeasureReportStatus">
@@ -214,7 +223,16 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="MeasureReportType-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="individual">
+        
+      </xs:enumeration>
+      <xs:enumeration value="patient-list">
+        
+      </xs:enumeration>
+      <xs:enumeration value="summary">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="MeasureReportType">

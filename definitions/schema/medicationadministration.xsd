@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Wed, Aug 10, 2016 14:17-0400 for FHIR v1.5.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -66,7 +66,7 @@
             <xs:element name="effectiveTimeDateTime" type="dateTime"/>
             <xs:element name="effectiveTimePeriod" type="Period"/>
           </xs:choice>
-          <xs:element name="practitioner" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="performer" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
           <xs:element name="prescription" minOccurs="0" maxOccurs="1" type="Reference">
@@ -88,6 +88,9 @@
             
           </xs:element>
           <xs:element name="dosage" type="MedicationAdministration.Dosage" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+          <xs:element name="eventHistory" type="MedicationAdministration.EventHistory" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
         </xs:sequence>
@@ -113,20 +116,59 @@
           <xs:element name="method" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="SimpleQuantity">
+          <xs:element name="dose" minOccurs="0" maxOccurs="1" type="Quantity">
             
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1">
             
             <xs:element name="rateRatio" type="Ratio"/>
-            <xs:element name="rateRange" type="Range"/>
+            <xs:element name="rateQuantity" type="Quantity"/>
           </xs:choice>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="MedicationAdministration.EventHistory">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="MedicationAdministrationStatus">
+            
+          </xs:element>
+          <xs:element name="action" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="dateTime" minOccurs="1" maxOccurs="1" type="dateTime">
+            
+          </xs:element>
+          <xs:element name="actor" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="reason" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:simpleType name="MedicationAdministrationStatus-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="in-progress">
+        
+      </xs:enumeration>
+      <xs:enumeration value="on-hold">
+        
+      </xs:enumeration>
+      <xs:enumeration value="completed">
+        
+      </xs:enumeration>
+      <xs:enumeration value="entered-in-error">
+        
+      </xs:enumeration>
+      <xs:enumeration value="stopped">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="MedicationAdministrationStatus">

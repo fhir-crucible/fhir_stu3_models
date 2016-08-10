@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Wed, Aug 10, 2016 14:17-0400 for FHIR v1.5.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -97,7 +97,40 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="Measmnt-Principle-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="other">
+        
+      </xs:enumeration>
+      <xs:enumeration value="chemical">
+        
+      </xs:enumeration>
+      <xs:enumeration value="electrical">
+        
+      </xs:enumeration>
+      <xs:enumeration value="impedance">
+        
+      </xs:enumeration>
+      <xs:enumeration value="nuclear">
+        
+      </xs:enumeration>
+      <xs:enumeration value="optical">
+        
+      </xs:enumeration>
+      <xs:enumeration value="thermal">
+        
+      </xs:enumeration>
+      <xs:enumeration value="biological">
+        
+      </xs:enumeration>
+      <xs:enumeration value="mechanical">
+        
+      </xs:enumeration>
+      <xs:enumeration value="acoustical">
+        
+      </xs:enumeration>
+      <xs:enumeration value="manual">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="Measmnt-Principle">

@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Wed, Aug 10, 2016 14:17-0400 for FHIR v1.5.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -44,24 +44,43 @@
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
+          <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
+            
+          </xs:element>
+          <xs:element name="basedOn" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="parent" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="code">
+            
+          </xs:element>
+          <xs:element name="code" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
           <xs:element name="subject" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
+          <xs:element name="context" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="occurrenceDateTime" type="dateTime"/>
+            <xs:element name="occurrencePeriod" type="Period"/>
+          </xs:choice>
           <xs:element name="condition" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="encounter" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
           <xs:element name="performer" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="reasonCodeableConcept" type="CodeableConcept"/>
+            <xs:element name="reasonReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="method" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
@@ -72,6 +91,9 @@
             
           </xs:element>
           <xs:element name="mitigation" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="note" minOccurs="0" maxOccurs="1" type="Annotation">
             
           </xs:element>
         </xs:sequence>

@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Wed, Aug 10, 2016 14:17-0400 for FHIR v1.5.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -71,13 +71,13 @@
           <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
             
           </xs:element>
           <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="requirements" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="requirements" minOccurs="0" maxOccurs="1" type="markdown">
             
           </xs:element>
           <xs:element name="copyright" minOccurs="0" maxOccurs="1" type="string">
@@ -300,7 +300,13 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="StructureMapInputMode-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="source">
+        
+      </xs:enumeration>
+      <xs:enumeration value="target">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="StructureMapInputMode">
@@ -312,7 +318,13 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="StructureMapContextType-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="type">
+        
+      </xs:enumeration>
+      <xs:enumeration value="variable">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="StructureMapContextType">
@@ -324,7 +336,58 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="StructureMapTransform-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="create">
+        
+      </xs:enumeration>
+      <xs:enumeration value="copy">
+        
+      </xs:enumeration>
+      <xs:enumeration value="truncate">
+        
+      </xs:enumeration>
+      <xs:enumeration value="escape">
+        
+      </xs:enumeration>
+      <xs:enumeration value="cast">
+        
+      </xs:enumeration>
+      <xs:enumeration value="append">
+        
+      </xs:enumeration>
+      <xs:enumeration value="translate">
+        
+      </xs:enumeration>
+      <xs:enumeration value="reference">
+        
+      </xs:enumeration>
+      <xs:enumeration value="dateOp">
+        
+      </xs:enumeration>
+      <xs:enumeration value="uuid">
+        
+      </xs:enumeration>
+      <xs:enumeration value="pointer">
+        
+      </xs:enumeration>
+      <xs:enumeration value="evaluate">
+        
+      </xs:enumeration>
+      <xs:enumeration value="cc">
+        
+      </xs:enumeration>
+      <xs:enumeration value="c">
+        
+      </xs:enumeration>
+      <xs:enumeration value="qty">
+        
+      </xs:enumeration>
+      <xs:enumeration value="id">
+        
+      </xs:enumeration>
+      <xs:enumeration value="cp">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="StructureMapTransform">
@@ -336,7 +399,16 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="StructureMapListMode-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="first">
+        
+      </xs:enumeration>
+      <xs:enumeration value="share">
+        
+      </xs:enumeration>
+      <xs:enumeration value="last">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="StructureMapListMode">
@@ -348,7 +420,19 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="StructureMapModelMode-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="source">
+        
+      </xs:enumeration>
+      <xs:enumeration value="queried">
+        
+      </xs:enumeration>
+      <xs:enumeration value="target">
+        
+      </xs:enumeration>
+      <xs:enumeration value="produced">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="StructureMapModelMode">

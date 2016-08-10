@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Wed, Aug 10, 2016 14:17-0400 for FHIR v1.5.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -68,7 +68,7 @@
           <xs:element name="photo" minOccurs="0" maxOccurs="unbounded" type="Attachment">
             
           </xs:element>
-          <xs:element name="practitionerRole" type="Practitioner.PractitionerRole" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="role" type="Practitioner.Role" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
           <xs:element name="qualification" type="Practitioner.Qualification" minOccurs="0" maxOccurs="unbounded">
@@ -81,7 +81,7 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="Practitioner.PractitionerRole">
+  <xs:complexType name="Practitioner.Role">
     
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -89,7 +89,7 @@
           <xs:element name="organization" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="role" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="code" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="specialty" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
@@ -108,6 +108,9 @@
             
           </xs:element>
           <xs:element name="healthcareService" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
+          <xs:element name="endpoint" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
         </xs:sequence>
