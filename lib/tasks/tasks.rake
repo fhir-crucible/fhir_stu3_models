@@ -62,20 +62,31 @@ namespace :fhir do
     puts '  Replacing JSON examples...'
     Dir.glob(File.join(dest,'*')).each{|f|File.delete(f) if !File.directory?(f)}
     # copy the new JSON examples over
-    files = Dir.glob(File.join(src,'*-example*.json'))
+    files = Dir.glob(File.join(src,'*.json'))
     files.map!{|f|File.basename(f)}
-    files.keep_if{|f| !f.include?('canonical')}
+    files.keep_if{|f| f.include?('example') && !f.include?('canonical')}
     copy_artifacts(files, src, dest, false)
+    # copy the qicore examples too
+    qicore = File.join(src,'qicore')
+    files = Dir.glob(File.join(qicore,'*.json')) 
+    files.map!{|f|File.basename(f)}
+    files.keep_if{|f| f.include?('example') && !f.include?('canonical')}
+    copy_artifacts(files, qicore, dest, false)
 
     # delete the XML examples
     dest = File.join(root,'examples','xml')
     puts '  Replacing XML examples...'
     Dir.glob(File.join(dest,'*')).each{|f|File.delete(f) if !File.directory?(f)}
     # copy the new XML examples over
-    files = Dir.glob(File.join(src,'*-example*.xml'))
+    files = Dir.glob(File.join(src,'*.xml'))
     files.map!{|f|File.basename(f)}
-    files.keep_if{|f| !f.include?('canonical')}
+    files.keep_if{|f| f.include?('example') && !f.include?('canonical')}
     copy_artifacts(files, src, dest, false)
+    # copy the qicore examples too
+    files = Dir.glob(File.join(qicore,'*.xml')) 
+    files.map!{|f|File.basename(f)}
+    files.keep_if{|f| f.include?('example') && !f.include?('canonical')}
+    copy_artifacts(files, qicore, dest, false)
 
     # copy the version info
     copy_artifacts( ['version.info'], src, defns)
@@ -86,8 +97,8 @@ namespace :fhir do
   desc 'output invariant expressions from definitions'
   task :invariants, [] do |t, args|
     # create a generator and load the definitions
-    generator = FHIR::Boot::Generator.new
-    defs = generator.types + generator.resources + generator.extensions + generator.profiles
+    d = FHIR::Definitions
+    defs =  d.get_complex_types + d.get_resource_definitions
     invariants = {}
     defs.each do |structureDef|
       structureDef['snapshot']['element'].each do |element|

@@ -1,0 +1,103 @@
+{
+  "resourceType": "Specimen",
+  "id": "specimen-example-qicore",
+  "text": {
+    "status": "generated",
+    "div": "<div><p><b>Generated Narrative with Details</b></p><p><b>id</b>: specimen-example-qicore</p><p><b>type</b>: Venous blood specimen <span>(Details : {SNOMED CT code '122555007' = 'Venous blood specimen (specimen)', given as 'Venous blood specimen'})</span></p><p><b>subject</b>: <a>Peter Patient</a></p><p><b>receivedTime</b>: Mar 4, 2011 2:03:00 AM</p><h3>Collections</h3><table><tr><td>-</td><td><b>Extension</b></td><td><b>Collected[x]</b></td><td><b>Quantity</b></td></tr><tr><td>*</td><td>Extensions: Todo</td><td>Mar 6, 2011 1:15:00 AM</td><td>6 mL</td></tr></table><h3>Treatments</h3><table><tr><td>-</td><td><b>Extension</b></td><td><b>Description</b></td><td><b>Additive</b></td></tr><tr><td>*</td><td>Extensions: Todo</td><td>Treated with anticoagulants.</td><td><a>Substance/example</a></td></tr></table><h3>Containers</h3><table><tr><td>-</td><td><b>Extension</b></td><td><b>Type</b></td><td><b>Capacity</b></td></tr><tr><td>*</td><td>Extensions: Todo</td><td>Specimen vial <span>(Details : {SNOMED CT code '434746001' = 'Specimen vial (physical object)', given as 'Specimen vial'})</span></td><td>10 mL</td></tr></table></div>"
+  },
+  "type": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "122555007",
+        "display": "Venous blood specimen"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/example",
+    "display": "Peter Patient"
+  },
+  "receivedTime": "2011-03-04T07:03:00Z",
+  "collection": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/specimen-collectionPriority",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://example.com",
+              "code": "5",
+              "display": "ROUTINE"
+            }
+          ]
+        }
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/specimen-specialHandling",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v3/ActCode",
+              "code": "NOPERSISTP",
+              "display": "no collection beyond purpose of use"
+            }
+          ]
+        }
+      }
+    ],
+    "collectedDateTime": "2011-03-06T06:15:00Z",
+    "quantity": {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/specimen-isDryWeight",
+          "valueBoolean": false
+        }
+      ],
+      "value": 6,
+      "unit": "mL"
+    }
+  },
+  "treatment": [
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/specimen-treatmentTime",
+          "valuePeriod": {
+            "start": "2011-03-04T07:03:00Z",
+            "end": "2011-03-04T07:03:00Z"
+          }
+        }
+      ],
+      "description": "Treated with anticoagulants.",
+      "additive": [
+        {
+          "reference": "Substance/example"
+        }
+      ]
+    }
+  ],
+  "container": [
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/specimen-sequenceNumber",
+          "valueInteger": 1
+        }
+      ],
+      "type": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "434746001",
+            "display": "Specimen vial"
+          }
+        ]
+      },
+      "capacity": {
+        "value": 10,
+        "unit": "mL"
+      }
+    }
+  ]
+}

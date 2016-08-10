@@ -1,0 +1,26 @@
+{
+  "resourceType": "CommunicationRequest",
+  "id": "communicationrequest-example-qicore",
+  "text": {
+    "status": "generated",
+    "div": "<div>To be filled out at a later time</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/communicationrequest-reasonRejected",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/v3/ActReason",
+            "code": "NON-AVAIL",
+            "display": "patient not-available"
+          }
+        ]
+      }
+    }
+  ],
+  "status": "rejected",
+  "subject": {
+    "reference": "Patient/example"
+  }
+}

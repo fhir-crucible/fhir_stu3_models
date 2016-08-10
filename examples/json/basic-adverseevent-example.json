@@ -1,0 +1,69 @@
+{
+  "resourceType": "Basic",
+  "id": "basic-adverseevent-example",
+  "text": {
+    "status": "generated",
+    "div": "<div><p><b>Generated Narrative with Details</b></p><p><b>id</b>: basic-adverseevent-example</p><p><b>code</b>: Adverse Event <span>(Details : {http://hl7.org/fhir/basic-resource-type code 'advevent' = 'Adverse Event)</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>created</b>: Sep 16, 2015</p><p><b>author</b>: <a>Practitioner/example</a></p></div>"
+  },
+  "extension": [
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/qicore-adverseevent-cause#item",
+          "valueReference": {
+            "reference": "Medication/qicore"
+          }
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/qicore-adverseevent-cause#certainty",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "fhir_comments": [
+                  "   Confirmed present   "
+                ],
+                "system": "http://snomed.info/sct",
+                "code": "410605003"
+              }
+            ]
+          }
+        }
+      ],
+      "url": "http://hl7.org/fhir/StructureDefinition/qicore-adverseevent-cause"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/qicore-adverseevent-type",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/qicore-adverseevent-type",
+            "code": "unsafe",
+            "display": "Eruption due to drug (disorder)"
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/qicore-adverseevent-period",
+      "valuePeriod": {
+        "start": "2014-01-14",
+        "end": "2014-01-15"
+      }
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/basic-resource-type",
+        "code": "advevent"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "created": "2015-09-16",
+  "author": {
+    "reference": "Practitioner/example"
+  }
+}

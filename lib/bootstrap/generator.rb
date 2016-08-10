@@ -2,50 +2,20 @@ module FHIR
   module Boot
     class Generator
 
-      attr_accessor :types
-      attr_accessor :resources
-      attr_accessor :extensions
-      attr_accessor :profiles
-      attr_accessor :search_params
       attr_accessor :lib
-      attr_accessor :expansions
+      attr_accessor :defn
       # templates keeps track of all the templates in context within a given StructureDefinition
       attr_accessor :templates
 
-      def initialize    
-        defns = File.expand_path '../../definitions',File.dirname(File.absolute_path(__FILE__))
-
+      def initialize(auto_setup=true)   
         # load the valueset expansions
-        @expansions = FHIR::Expansions.new
-
-        # load the types
-        filename = File.join(defns,'structures','profiles-types.json')
-        raw = File.open(filename,'r:UTF-8',&:read)
-        @types = JSON.parse(raw)['entry'].map{|e|e['resource']}
-
-        # load the resources
-        filename = File.join(defns,'structures','profiles-resources.json')
-        raw = File.open(filename,'r:UTF-8',&:read)
-        @resources = JSON.parse(raw)['entry'].map{|e|e['resource']}
-
-        # load the extensions
-        filename = File.join(defns,'structures','extension-definitions.json')
-        raw = File.open(filename,'r:UTF-8',&:read)
-        @extensions = JSON.parse(raw)['entry'].map{|e|e['resource']}
-
-        # load the profiles
-        filename = File.join(defns,'structures','profiles-others.json')
-        raw = File.open(filename,'r:UTF-8',&:read)
-        @profiles = JSON.parse(raw)['entry'].map{|e|e['resource']}        
-
-        # load the search parameters
-        filename = File.join(defns,'structures','search-parameters.json')
-        raw = File.open(filename,'r:UTF-8',&:read)
-        @search_params = JSON.parse(raw)['entry'].map{|e|e['resource']}        
-
+        @defn = FHIR::Definitions
         # templates is an array
         @templates = []
+        setup if auto_setup
+      end
 
+      def setup
         # make folders for generated content if they do not exist
         @lib = File.expand_path '..', File.dirname(File.absolute_path(__FILE__))
         Dir.mkdir(File.join(@lib,'fhir')) if !Dir.exists?(File.join(@lib,'fhir'))
@@ -60,8 +30,7 @@ module FHIR
       def generate_metadata
         template = FHIR::Boot::Template.new([],true)
         
-        # primitive data types start with a lowercase letter
-        primitives = @types.select{|t|t['id'][0]==t['id'][0].downcase}
+        primitives = @defn.get_primitive_types
         hash = {}
         primitives.each do |p|
           field = FHIR::Field.new
@@ -89,13 +58,10 @@ module FHIR
         end
         template.constants['PRIMITIVES'] = hash
 
-        # complex data types start with an uppercase letter
-        # and we'll filter out profiles on types (for example, Age is a profile on Quantity)
-        complexTypes = @types.select{|t| (t['id'][0]==t['id'][0].upcase) && (t['id']==t['snapshot']['element'].first['path'])}.map{|t|t['id']}
-        template.constants['TYPES'] = complexTypes
+        template.constants['TYPES'] = @defn.get_complex_types.map{|t|t['id']}
 
         # resources
-        template.constants['RESOURCES'] = @resources.map{|r|r['id']}
+        template.constants['RESOURCES'] = @defn.get_resource_definitions.map{|r|r['id']}
 
         filename = File.join(@lib,'fhir','metadata.rb')
         file = File.open(filename,'w:UTF-8')
@@ -107,13 +73,13 @@ module FHIR
         folder = File.join @lib,'fhir','types'
         # complex data types start with an uppercase letter
         # and we'll filter out profiles on types (for example, Age is a profile on Quantity)
-        complexTypes = @types.select{|t| (t['id'][0]==t['id'][0].upcase) && (t['id']==t['snapshot']['element'].first['path'])}
+        complexTypes = @defn.get_complex_types
         generate_class_files(folder,complexTypes)
       end
 
       def generate_resources
         folder = File.join @lib,'fhir','resources'
-        generate_class_files(folder,@resources)
+        generate_class_files(folder,@defn.get_resource_definitions)
       end
 
       def generate_class_files(folder=@lib,structureDefs)
@@ -121,17 +87,13 @@ module FHIR
           @templates.clear
           typeName = structureDef['id']
           template = generate_class([ typeName ],structureDef,true)
-          params = generate_search_parameters(typeName)
+          params = @defn.get_search_parameters(typeName)
           template.constants['SEARCH_PARAMS'] = params if !params.nil?
           filename = File.join(folder,"#{typeName}.rb")
           file = File.open(filename,'w:UTF-8')
           file.write(template.to_s)
           file.close
         end
-      end
-
-      def generate_search_parameters(typeName)
-        @search_params.select{|p|p['base']==typeName && p['xpath'] && !p['xpath'].include?('extension')}.map{|p|p['code']}
       end
 
       def generate_class(hierarchy,structureDef,top_level=false)
@@ -143,12 +105,14 @@ module FHIR
         template = FHIR::Boot::Template.new([ typeName ],top_level)
         template.hierarchy = hierarchy
         template.kind = structureDef['kind']
+        return template if structureDef['snapshot'].nil? || structureDef['snapshot']['element'].nil?
+
         multipleDataTypes = {}
 
         # examine the snapshot.elements... move the Element and BackboneElements, 
         # and their children, into separate StructureDefiniton hashes and process as
         # child templates.
-        child_templates = []
+        child_templates = [] 
         structureDef['snapshot']['element'].each do |element|
           # skip the first element
           next if element['path']==pathType
@@ -159,6 +123,7 @@ module FHIR
             end
           end
         end
+        # now build the child templates...
         child_templates.each do |child_name|
           child_fixed_name = child_name.gsub("#{typeName}.",'').capitalize
           next if child_fixed_name.include?('.')
@@ -193,9 +158,9 @@ module FHIR
           # If the element has a type, treat it as a datatype or resource
           # If not, treat it as a reference to an already declared internal class
           if !element['type'].nil?
-            # profiles contains a list of profiles if the datatype is Reference
+            # profiles contains a list of profiles if the datatype is Reference or Extension
             profiles = []
-            element['type'].select{|t|t['code']=='Reference'}.each do |dataType|
+            element['type'].select{|t|t['code']=='Reference' || t['code']=='Extension'}.each do |dataType|
               profiles << dataType['profile']
             end
             profiles.select!{|p|!p.nil?}
@@ -217,7 +182,8 @@ module FHIR
               field = FHIR::Field.new(fieldname)
               field.path = element['path'].gsub(pathType,typeName)
               field.type = dataType
-              field.type_profiles = profiles if dataType=='Reference'
+              field.type = 'Extension' if field.path.end_with?('extension')
+              field.type_profiles = profiles if(dataType=='Reference' || dataType=='Extension')
               field.min = element['min']
               field.max = element['max']
               field.max = field.max.to_i
@@ -232,9 +198,9 @@ module FHIR
                 field.binding.delete('valueSetReference')
                 field.binding.delete('description')
                 # set the actual code list
-                codes = @expansions.get_codes( field.binding['uri'] )
+                codes = @defn.get_codes( field.binding['uri'] )
                 field.valid_codes = codes if !codes.nil?
-                puts "  MISSING EXPANSION -- #{field.path} #{field.min}..#{field.max}: #{field.binding['uri']} (#{field.binding['strength']})" if field.valid_codes.empty? && field.binding['uri'] && !field.binding['uri'].end_with?('bcp47') && !field.binding['uri'].end_with?('bcp13.txt')
+                FHIR.logger.warn "  MISSING EXPANSION -- #{field.path} #{field.min}..#{field.max}: #{field.binding['uri']} (#{field.binding['strength']})" if field.valid_codes.empty? && field.binding['uri'] && !field.binding['uri'].end_with?('bcp47') && !field.binding['uri'].end_with?('bcp13.txt')
               elsif ['Element','BackboneElement'].include?(dataType)
                 # This is a nested structure or class
                 field.type = "#{hierarchy.join('::')}::#{field.name.capitalize}"
@@ -242,7 +208,7 @@ module FHIR
 
               template.fields << field
             end
-          else # If there is not data type, treat the type as a reference to an already declared internal class
+          else # If there is no data type, treat the type as a reference to an already declared internal class
             field = FHIR::Field.new(field_base_name)
             field.path = element['path'].gsub(pathType,typeName)
             field.type = element['contentReference']

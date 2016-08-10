@@ -124,6 +124,7 @@ module FluentPath
             else
               raise "Where function requires a block."
             end
+            previous_node = [] if previous_node==:null
             if previous_node.is_a?(Array)
               previous_node.keep_if do |item|
                 sub = eval(block.clone,item)
@@ -155,6 +156,7 @@ module FluentPath
             else
               raise "Select function requires a block."
             end
+            previous_node = [] if previous_node==:null
             if previous_node.is_a?(Array)
               previous_node.map! do |item|
                 eval(block.clone,item)

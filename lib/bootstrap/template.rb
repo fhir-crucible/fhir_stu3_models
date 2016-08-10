@@ -21,6 +21,27 @@ module FHIR
         @top_level = top_level
       end
 
+      def get_metadata
+        metadata = {}
+        @fields.each do |field|
+          if metadata.keys.include?(field.name)
+            # this field has already been declared, so we're dealing
+            # with a `slice` which we'll track with an array.
+            x = field.serialize
+            x.delete('name')
+            if metadata[field.name].is_a?(Array)
+              metadata[field.name] << x
+            else
+              metadata[field.name] = [ metadata[field.name], x ]
+            end
+          else
+            metadata[field.name] = field.serialize
+            metadata[field.name].delete('name')
+          end
+        end
+        metadata
+      end
+
       def to_s(offset=0)
         # create an array of Strings, one per line
         s = []
@@ -45,11 +66,7 @@ module FHIR
         s << ''
 
         # add mandatory METADATA constant
-        metadata = {}
-        @fields.each do |field|
-          metadata[field.name] = field.serialize
-          metadata[field.name].delete('name')
-        end
+        metadata = get_metadata
         @constants['METADATA'] = metadata if !metadata.empty?
 
         # add constants
