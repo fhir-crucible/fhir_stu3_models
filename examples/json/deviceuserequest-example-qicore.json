@@ -20,7 +20,14 @@
     }
   ],
   "status": "completed",
-  "device": {
+  "stage": {
+    "coding": [
+      {
+        "code": "original-order"
+      }
+    ]
+  },
+  "deviceReference": {
     "reference": "Device/example"
   },
   "subject": {

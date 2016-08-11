@@ -16,10 +16,15 @@
   </extension>
 
   <status value="completed"/>
-
-  <device>
+  <stage>
+    <coding>
+      <code value="original-order"/>
+    </coding>
+  </stage>
+  
+  <deviceReference>
     <reference value="Device/example"/>
-  </device>
+  </deviceReference>
 
   <subject>
     <reference value="Patient/example"/>

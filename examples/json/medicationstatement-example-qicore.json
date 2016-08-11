@@ -29,7 +29,7 @@
           }
         ]
       },
-      "quantityQuantity": {
+      "doseQuantity": {
         "value": 10,
         "unit": "ml",
         "system": "http://unitsofmeasure.org",

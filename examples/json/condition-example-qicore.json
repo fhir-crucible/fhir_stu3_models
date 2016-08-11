@@ -19,19 +19,7 @@
       }
     }
   ],
-  "patient": {
-    "reference": "Patient/example"
-  },
-  "code": {
-    "coding": [
-      {
-        "system": "http://snomed.info/sct",
-        "code": "39065001",
-        "display": "Burn of ear"
-      }
-    ],
-    "text": "Burnt Ear"
-  },
+  "verificationStatus": "confirmed",
   "category": {
     "coding": [
       {
@@ -49,7 +37,6 @@
       }
     ]
   },
-  "verificationStatus": "confirmed",
   "severity": {
     "coding": [
       {
@@ -59,7 +46,16 @@
       }
     ]
   },
-  "onsetDateTime": "2012-05-24",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "39065001",
+        "display": "Burn of ear"
+      }
+    ],
+    "text": "Burnt Ear"
+  },
   "bodySite": [
     {
       "coding": [
@@ -71,5 +67,9 @@
       ],
       "text": "Left Ear"
     }
-  ]
+  ],
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "onsetDateTime": "2012-05-24"
 }
