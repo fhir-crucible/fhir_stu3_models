@@ -2,7 +2,7 @@
   "resourceType": "ValueSet",
   "id": "list-example-codes",
   "meta": {
-    "lastUpdated": "2016-08-10T14:17:03.255-04:00",
+    "lastUpdated": "2016-08-11T09:23:49.667-04:00",
     "profile": [
       "http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"
     ]
@@ -18,7 +18,7 @@
       "value": "urn:oid:2.16.840.1.113883.4.642.2.173"
     }
   ],
-  "version": "1.5.0",
+  "version": "1.6.0",
   "name": "Example Use Codes for List",
   "status": "draft",
   "experimental": true,
@@ -33,7 +33,7 @@
       ]
     }
   ],
-  "date": "2016-08-10T14:17:03-04:00",
+  "date": "2016-08-11T09:23:49-04:00",
   "description": "Example use codes for the List resource - typical kinds of use.",
   "compose": {
     "include": [
