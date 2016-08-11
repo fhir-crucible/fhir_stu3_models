@@ -56,8 +56,8 @@ class XmlSchemaValidationTest < Test::Unit::TestCase
 
     if !errors_output.empty? && !original_errors
       File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') do | file |
-        file.write "#{example_name}: #{errors.length} errors\n\n"
-        errors.each do |error|
+        file.write "#{example_name}: #{errors_output.length} errors\n\n"
+        errors_output.each do |error|
           file.write(sprintf("%-8d  %s\n", error.line, error.message))
         end
 
