@@ -9,24 +9,24 @@ module FHIR
       'id' => {'type'=>'id', 'path'=>'ReferralRequest.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'ReferralRequest.meta', 'min'=>0, 'max'=>1},
       'implicitRules' => {'type'=>'uri', 'path'=>'ReferralRequest.implicitRules', 'min'=>0, 'max'=>1},
-      'language' => {'type'=>'code', 'path'=>'ReferralRequest.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://tools.ietf.org/html/bcp47'}},
+      'language' => {'type'=>'code', 'path'=>'ReferralRequest.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}},
       'text' => {'type'=>'Narrative', 'path'=>'ReferralRequest.text', 'min'=>0, 'max'=>1},
       'contained' => {'type'=>'Resource', 'path'=>'ReferralRequest.contained', 'min'=>0, 'max'=>Float::INFINITY},
       'extension' => {'type'=>'Extension', 'path'=>'ReferralRequest.extension', 'min'=>0, 'max'=>Float::INFINITY},
       'modifierExtension' => {'type'=>'Extension', 'path'=>'ReferralRequest.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
       'identifier' => {'type'=>'Identifier', 'path'=>'ReferralRequest.identifier', 'min'=>0, 'max'=>Float::INFINITY},
-      'basedOn' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/ReferralRequest', 'http://hl7.org/fhir/StructureDefinition/CarePlan', 'http://hl7.org/fhir/StructureDefinition/DiagnosticOrder', 'http://hl7.org/fhir/StructureDefinition/ProcedureRequest'], 'type'=>'Reference', 'path'=>'ReferralRequest.basedOn', 'min'=>0, 'max'=>Float::INFINITY},
+      'basedOn' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/ReferralRequest', 'http://hl7.org/fhir/StructureDefinition/CarePlan', 'http://hl7.org/fhir/StructureDefinition/DiagnosticRequest', 'http://hl7.org/fhir/StructureDefinition/ProcedureRequest'], 'type'=>'Reference', 'path'=>'ReferralRequest.basedOn', 'min'=>0, 'max'=>Float::INFINITY},
       'parent' => {'type'=>'Identifier', 'path'=>'ReferralRequest.parent', 'min'=>0, 'max'=>1},
-      'status' => {'valid_codes'=>{'http://hl7.org/fhir/referralstatus'=>['draft', 'active', 'cancelled', 'completed', 'entered-in-error']}, 'type'=>'code', 'path'=>'ReferralRequest.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/referralstatus'}},
-      'category' => {'valid_codes'=>{'http://hl7.org/fhir/referralcategory'=>['proposal', 'plan', 'request']}, 'type'=>'code', 'path'=>'ReferralRequest.category', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/referralcategory'}},
+      'status' => {'valid_codes'=>{'http://hl7.org/fhir/referralstatus'=>['draft', 'active', 'cancelled', 'completed', 'entered-in-error', 'draft', 'active', 'cancelled', 'completed', 'entered-in-error']}, 'type'=>'code', 'path'=>'ReferralRequest.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/referralstatus'}},
+      'category' => {'valid_codes'=>{'http://hl7.org/fhir/referralcategory'=>['proposal', 'plan', 'request', 'proposal', 'plan', 'request']}, 'type'=>'code', 'path'=>'ReferralRequest.category', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/referralcategory'}},
       'type' => {'type'=>'CodeableConcept', 'path'=>'ReferralRequest.type', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>nil}},
-      'priority' => {'valid_codes'=>{'http://hl7.org/fhir/diagnostic-order-priority'=>['routine', 'urgent', 'stat', 'asap']}, 'type'=>'CodeableConcept', 'path'=>'ReferralRequest.priority', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/diagnostic-order-priority'}},
+      'priority' => {'valid_codes'=>{'http://hl7.org/fhir/request-priority'=>['routine', 'urgent', 'stat', 'asap', 'routine', 'urgent', 'stat', 'asap']}, 'type'=>'CodeableConcept', 'path'=>'ReferralRequest.priority', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/request-priority'}},
       'patient' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient'], 'type'=>'Reference', 'path'=>'ReferralRequest.patient', 'min'=>0, 'max'=>1},
       'context' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Encounter', 'http://hl7.org/fhir/StructureDefinition/EpisodeOfCare'], 'type'=>'Reference', 'path'=>'ReferralRequest.context', 'min'=>0, 'max'=>1},
       'fulfillmentTime' => {'type'=>'Period', 'path'=>'ReferralRequest.fulfillmentTime', 'min'=>0, 'max'=>1},
       'authored' => {'type'=>'dateTime', 'path'=>'ReferralRequest.authored', 'min'=>0, 'max'=>1},
       'requester' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/Organization', 'http://hl7.org/fhir/StructureDefinition/Patient'], 'type'=>'Reference', 'path'=>'ReferralRequest.requester', 'min'=>0, 'max'=>1},
-      'specialty' => {'valid_codes'=>{'http://hl7.org/fhir/practitioner-specialty'=>['cardio', 'dent', 'dietary', 'midw', 'sysarch']}, 'type'=>'CodeableConcept', 'path'=>'ReferralRequest.specialty', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/practitioner-specialty'}},
+      'specialty' => {'valid_codes'=>{'http://hl7.org/fhir/practitioner-specialty'=>['cardio', 'dent', 'dietary', 'midw', 'sysarch', 'cardio', 'dent', 'dietary', 'midw', 'sysarch']}, 'type'=>'CodeableConcept', 'path'=>'ReferralRequest.specialty', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/practitioner-specialty'}},
       'recipient' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'ReferralRequest.recipient', 'min'=>0, 'max'=>Float::INFINITY},
       'reason' => {'type'=>'CodeableConcept', 'path'=>'ReferralRequest.reason', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>nil}},
       'description' => {'type'=>'string', 'path'=>'ReferralRequest.description', 'min'=>0, 'max'=>1},
@@ -43,7 +43,7 @@ module FHIR
     attr_accessor :extension             # 0-* [ Extension ]
     attr_accessor :modifierExtension     # 0-* [ Extension ]
     attr_accessor :identifier            # 0-* [ Identifier ]
-    attr_accessor :basedOn               # 0-* [ Reference(ReferralRequest|CarePlan|DiagnosticOrder|ProcedureRequest) ]
+    attr_accessor :basedOn               # 0-* [ Reference(ReferralRequest|CarePlan|DiagnosticRequest|ProcedureRequest) ]
     attr_accessor :parent                # 0-1 Identifier
     attr_accessor :status                # 1-1 code
     attr_accessor :category              # 1-1 code

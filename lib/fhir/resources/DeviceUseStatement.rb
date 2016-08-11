@@ -13,7 +13,7 @@ module FHIR
       'id' => {'type'=>'id', 'path'=>'DeviceUseStatement.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'DeviceUseStatement.meta', 'min'=>0, 'max'=>1},
       'implicitRules' => {'type'=>'uri', 'path'=>'DeviceUseStatement.implicitRules', 'min'=>0, 'max'=>1},
-      'language' => {'type'=>'code', 'path'=>'DeviceUseStatement.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://tools.ietf.org/html/bcp47'}},
+      'language' => {'type'=>'code', 'path'=>'DeviceUseStatement.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}},
       'text' => {'type'=>'Narrative', 'path'=>'DeviceUseStatement.text', 'min'=>0, 'max'=>1},
       'contained' => {'type'=>'Resource', 'path'=>'DeviceUseStatement.contained', 'min'=>0, 'max'=>Float::INFINITY},
       'extension' => {'type'=>'Extension', 'path'=>'DeviceUseStatement.extension', 'min'=>0, 'max'=>Float::INFINITY},

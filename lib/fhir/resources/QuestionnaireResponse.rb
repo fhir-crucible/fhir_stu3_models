@@ -4,24 +4,26 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = ["author", "authored", "encounter", "patient", "questionnaire", "source", "status", "subject"]
+    SEARCH_PARAMS = ["author", "authored", "based-on", "context", "identifier", "parent", "patient", "questionnaire", "source", "status", "subject"]
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'QuestionnaireResponse.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'QuestionnaireResponse.meta', 'min'=>0, 'max'=>1},
       'implicitRules' => {'type'=>'uri', 'path'=>'QuestionnaireResponse.implicitRules', 'min'=>0, 'max'=>1},
-      'language' => {'type'=>'code', 'path'=>'QuestionnaireResponse.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://tools.ietf.org/html/bcp47'}},
+      'language' => {'type'=>'code', 'path'=>'QuestionnaireResponse.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}},
       'text' => {'type'=>'Narrative', 'path'=>'QuestionnaireResponse.text', 'min'=>0, 'max'=>1},
       'contained' => {'type'=>'Resource', 'path'=>'QuestionnaireResponse.contained', 'min'=>0, 'max'=>Float::INFINITY},
       'extension' => {'type'=>'Extension', 'path'=>'QuestionnaireResponse.extension', 'min'=>0, 'max'=>Float::INFINITY},
       'modifierExtension' => {'type'=>'Extension', 'path'=>'QuestionnaireResponse.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
       'identifier' => {'type'=>'Identifier', 'path'=>'QuestionnaireResponse.identifier', 'min'=>0, 'max'=>1},
+      'basedOn' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/DiagnosticRequest', 'http://hl7.org/fhir/StructureDefinition/ReferralRequest', 'http://hl7.org/fhir/StructureDefinition/CarePlan'], 'type'=>'Reference', 'path'=>'QuestionnaireResponse.basedOn', 'min'=>0, 'max'=>Float::INFINITY},
+      'parent' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Observation', 'http://hl7.org/fhir/StructureDefinition/Procedure'], 'type'=>'Reference', 'path'=>'QuestionnaireResponse.parent', 'min'=>0, 'max'=>Float::INFINITY},
       'questionnaire' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Questionnaire'], 'type'=>'Reference', 'path'=>'QuestionnaireResponse.questionnaire', 'min'=>0, 'max'=>1},
-      'status' => {'valid_codes'=>{'http://hl7.org/fhir/questionnaire-answers-status'=>['in-progress', 'completed', 'amended']}, 'type'=>'code', 'path'=>'QuestionnaireResponse.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/questionnaire-answers-status'}},
+      'status' => {'valid_codes'=>{'http://hl7.org/fhir/questionnaire-answers-status'=>['in-progress', 'completed', 'amended', 'in-progress', 'completed', 'amended']}, 'type'=>'code', 'path'=>'QuestionnaireResponse.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/questionnaire-answers-status'}},
       'subject' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'QuestionnaireResponse.subject', 'min'=>0, 'max'=>1},
+      'context' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Encounter', 'http://hl7.org/fhir/StructureDefinition/EpisodeOfCare'], 'type'=>'Reference', 'path'=>'QuestionnaireResponse.context', 'min'=>0, 'max'=>1},
       'author' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Device', 'http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson'], 'type'=>'Reference', 'path'=>'QuestionnaireResponse.author', 'min'=>0, 'max'=>1},
       'authored' => {'type'=>'dateTime', 'path'=>'QuestionnaireResponse.authored', 'min'=>0, 'max'=>1},
       'source' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson'], 'type'=>'Reference', 'path'=>'QuestionnaireResponse.source', 'min'=>0, 'max'=>1},
-      'encounter' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Encounter'], 'type'=>'Reference', 'path'=>'QuestionnaireResponse.encounter', 'min'=>0, 'max'=>1},
       'item' => {'type'=>'QuestionnaireResponse::Item', 'path'=>'QuestionnaireResponse.item', 'min'=>0, 'max'=>Float::INFINITY}
     }
 
@@ -31,7 +33,7 @@ module FHIR
       include FHIR::Xml
 
       METADATA = {
-        'id' => {'type'=>'id', 'path'=>'Item.id', 'min'=>0, 'max'=>1},
+        'id' => {'type'=>'string', 'path'=>'Item.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Item.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Item.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
         'linkId' => {'type'=>'string', 'path'=>'Item.linkId', 'min'=>0, 'max'=>1},
@@ -50,7 +52,7 @@ module FHIR
           'value' => ['boolean', 'decimal', 'integer', 'date', 'dateTime', 'instant', 'time', 'string', 'uri', 'Attachment', 'Coding', 'Quantity', 'Reference']
         }
         METADATA = {
-          'id' => {'type'=>'id', 'path'=>'Answer.id', 'min'=>0, 'max'=>1},
+          'id' => {'type'=>'string', 'path'=>'Answer.id', 'min'=>0, 'max'=>1},
           'extension' => {'type'=>'Extension', 'path'=>'Answer.extension', 'min'=>0, 'max'=>Float::INFINITY},
           'modifierExtension' => {'type'=>'Extension', 'path'=>'Answer.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
           'valueBoolean' => {'type'=>'boolean', 'path'=>'Answer.value[x]', 'min'=>0, 'max'=>1},
@@ -69,7 +71,7 @@ module FHIR
           'item' => {'type'=>'QuestionnaireResponse::Item', 'path'=>'Answer.item', 'min'=>0, 'max'=>Float::INFINITY}
         }
 
-        attr_accessor :id                # 0-1 id
+        attr_accessor :id                # 0-1 string
         attr_accessor :extension         # 0-* [ Extension ]
         attr_accessor :modifierExtension # 0-* [ Extension ]
         attr_accessor :valueBoolean      # 0-1 boolean
@@ -88,7 +90,7 @@ module FHIR
         attr_accessor :item              # 0-* [ QuestionnaireResponse::Item ]
       end
 
-      attr_accessor :id                # 0-1 id
+      attr_accessor :id                # 0-1 string
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
       attr_accessor :linkId            # 0-1 string
@@ -107,13 +109,15 @@ module FHIR
     attr_accessor :extension         # 0-* [ Extension ]
     attr_accessor :modifierExtension # 0-* [ Extension ]
     attr_accessor :identifier        # 0-1 Identifier
+    attr_accessor :basedOn           # 0-* [ Reference(DiagnosticRequest|ReferralRequest|CarePlan) ]
+    attr_accessor :parent            # 0-* [ Reference(Observation|Procedure) ]
     attr_accessor :questionnaire     # 0-1 Reference(Questionnaire)
     attr_accessor :status            # 1-1 code
     attr_accessor :subject           # 0-1 Reference(Resource)
+    attr_accessor :context           # 0-1 Reference(Encounter|EpisodeOfCare)
     attr_accessor :author            # 0-1 Reference(Device|Practitioner|Patient|RelatedPerson)
     attr_accessor :authored          # 0-1 dateTime
     attr_accessor :source            # 0-1 Reference(Patient|Practitioner|RelatedPerson)
-    attr_accessor :encounter         # 0-1 Reference(Encounter)
     attr_accessor :item              # 0-* [ QuestionnaireResponse::Item ]
 
     def resourceType

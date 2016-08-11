@@ -9,7 +9,7 @@ module FHIR
       'id' => {'type'=>'id', 'path'=>'DeviceComponent.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'DeviceComponent.meta', 'min'=>0, 'max'=>1},
       'implicitRules' => {'type'=>'uri', 'path'=>'DeviceComponent.implicitRules', 'min'=>0, 'max'=>1},
-      'language' => {'type'=>'code', 'path'=>'DeviceComponent.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://tools.ietf.org/html/bcp47'}},
+      'language' => {'type'=>'code', 'path'=>'DeviceComponent.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}},
       'text' => {'type'=>'Narrative', 'path'=>'DeviceComponent.text', 'min'=>0, 'max'=>1},
       'contained' => {'type'=>'Resource', 'path'=>'DeviceComponent.contained', 'min'=>0, 'max'=>Float::INFINITY},
       'extension' => {'type'=>'Extension', 'path'=>'DeviceComponent.extension', 'min'=>0, 'max'=>Float::INFINITY},
@@ -21,26 +21,26 @@ module FHIR
       'parent' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/DeviceComponent'], 'type'=>'Reference', 'path'=>'DeviceComponent.parent', 'min'=>0, 'max'=>1},
       'operationalStatus' => {'type'=>'CodeableConcept', 'path'=>'DeviceComponent.operationalStatus', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'example', 'uri'=>nil}},
       'parameterGroup' => {'type'=>'CodeableConcept', 'path'=>'DeviceComponent.parameterGroup', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>nil}},
-      'measurementPrinciple' => {'valid_codes'=>{'http://hl7.org/fhir/measurement-principle'=>['other', 'chemical', 'electrical', 'impedance', 'nuclear', 'optical', 'thermal', 'biological', 'mechanical', 'acoustical', 'manual']}, 'type'=>'code', 'path'=>'DeviceComponent.measurementPrinciple', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/measurement-principle'}},
-      'productionSpecification' => {'type'=>'DeviceComponent::Productionspecification', 'path'=>'DeviceComponent.productionSpecification', 'min'=>0, 'max'=>Float::INFINITY},
-      'languageCode' => {'type'=>'CodeableConcept', 'path'=>'DeviceComponent.languageCode', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://tools.ietf.org/html/bcp47'}}
+      'measurementPrinciple' => {'valid_codes'=>{'http://hl7.org/fhir/measurement-principle'=>['other', 'chemical', 'electrical', 'impedance', 'nuclear', 'optical', 'thermal', 'biological', 'mechanical', 'acoustical', 'manual', 'other', 'chemical', 'electrical', 'impedance', 'nuclear', 'optical', 'thermal', 'biological', 'mechanical', 'acoustical', 'manual']}, 'type'=>'code', 'path'=>'DeviceComponent.measurementPrinciple', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/measurement-principle'}},
+      'productionSpecification' => {'type'=>'DeviceComponent::ProductionSpecification', 'path'=>'DeviceComponent.productionSpecification', 'min'=>0, 'max'=>Float::INFINITY},
+      'languageCode' => {'type'=>'CodeableConcept', 'path'=>'DeviceComponent.languageCode', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}}
     }
 
-    class Productionspecification < FHIR::Model
+    class ProductionSpecification < FHIR::Model
       include FHIR::Hashable
       include FHIR::Json
       include FHIR::Xml
 
       METADATA = {
-        'id' => {'type'=>'id', 'path'=>'Productionspecification.id', 'min'=>0, 'max'=>1},
-        'extension' => {'type'=>'Extension', 'path'=>'Productionspecification.extension', 'min'=>0, 'max'=>Float::INFINITY},
-        'modifierExtension' => {'type'=>'Extension', 'path'=>'Productionspecification.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-        'specType' => {'type'=>'CodeableConcept', 'path'=>'Productionspecification.specType', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>nil}},
-        'componentId' => {'type'=>'Identifier', 'path'=>'Productionspecification.componentId', 'min'=>0, 'max'=>1},
-        'productionSpec' => {'type'=>'string', 'path'=>'Productionspecification.productionSpec', 'min'=>0, 'max'=>1}
+        'id' => {'type'=>'string', 'path'=>'ProductionSpecification.id', 'min'=>0, 'max'=>1},
+        'extension' => {'type'=>'Extension', 'path'=>'ProductionSpecification.extension', 'min'=>0, 'max'=>Float::INFINITY},
+        'modifierExtension' => {'type'=>'Extension', 'path'=>'ProductionSpecification.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
+        'specType' => {'type'=>'CodeableConcept', 'path'=>'ProductionSpecification.specType', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>nil}},
+        'componentId' => {'type'=>'Identifier', 'path'=>'ProductionSpecification.componentId', 'min'=>0, 'max'=>1},
+        'productionSpec' => {'type'=>'string', 'path'=>'ProductionSpecification.productionSpec', 'min'=>0, 'max'=>1}
       }
 
-      attr_accessor :id                # 0-1 id
+      attr_accessor :id                # 0-1 string
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
       attr_accessor :specType          # 0-1 CodeableConcept
@@ -64,7 +64,7 @@ module FHIR
     attr_accessor :operationalStatus       # 0-* [ CodeableConcept ]
     attr_accessor :parameterGroup          # 0-1 CodeableConcept
     attr_accessor :measurementPrinciple    # 0-1 code
-    attr_accessor :productionSpecification # 0-* [ DeviceComponent::Productionspecification ]
+    attr_accessor :productionSpecification # 0-* [ DeviceComponent::ProductionSpecification ]
     attr_accessor :languageCode            # 0-1 CodeableConcept
 
     def resourceType

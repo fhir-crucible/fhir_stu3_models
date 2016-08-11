@@ -10,23 +10,24 @@ module FHIR
       'requestProvider' => ['Identifier', 'Reference'],
       'requestOrganization' => ['Identifier', 'Reference']
     }
-    SEARCH_PARAMS = ["created", "disposition", "identifier", "organizationidentifier", "organizationreference", "outcome", "requestidentifier", "requestorganizationidentifier", "requestorganizationreference", "requestprovideridentifier", "requestproviderreference", "requestreference"]
+    SEARCH_PARAMS = ["created", "disposition", "identifier", "organization-identifier", "organization-reference", "outcome", "request-identifier", "request-organization-identifier", "request-organization-reference", "request-provider-identifier", "request-provider-reference", "request-reference"]
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'PaymentReconciliation.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'PaymentReconciliation.meta', 'min'=>0, 'max'=>1},
       'implicitRules' => {'type'=>'uri', 'path'=>'PaymentReconciliation.implicitRules', 'min'=>0, 'max'=>1},
-      'language' => {'type'=>'code', 'path'=>'PaymentReconciliation.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://tools.ietf.org/html/bcp47'}},
+      'language' => {'type'=>'code', 'path'=>'PaymentReconciliation.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}},
       'text' => {'type'=>'Narrative', 'path'=>'PaymentReconciliation.text', 'min'=>0, 'max'=>1},
       'contained' => {'type'=>'Resource', 'path'=>'PaymentReconciliation.contained', 'min'=>0, 'max'=>Float::INFINITY},
       'extension' => {'type'=>'Extension', 'path'=>'PaymentReconciliation.extension', 'min'=>0, 'max'=>Float::INFINITY},
       'modifierExtension' => {'type'=>'Extension', 'path'=>'PaymentReconciliation.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
       'identifier' => {'type'=>'Identifier', 'path'=>'PaymentReconciliation.identifier', 'min'=>0, 'max'=>Float::INFINITY},
+      'status' => {'valid_codes'=>{'http://hl7.org/fhir/paymentreconciliation-status'=>['active', 'cancelled', 'draft', 'entered-in-error', 'active', 'cancelled', 'draft', 'entered-in-error']}, 'type'=>'code', 'path'=>'PaymentReconciliation.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/paymentreconciliation-status'}},
       'requestIdentifier' => {'type'=>'Identifier', 'path'=>'PaymentReconciliation.request[x]', 'min'=>0, 'max'=>1},
       'requestReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/ProcessRequest'], 'type'=>'Reference', 'path'=>'PaymentReconciliation.request[x]', 'min'=>0, 'max'=>1},
-      'outcome' => {'valid_codes'=>{'http://hl7.org/fhir/remittance-outcome'=>['complete', 'error']}, 'type'=>'code', 'path'=>'PaymentReconciliation.outcome', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/remittance-outcome'}},
+      'outcome' => {'valid_codes'=>{'http://hl7.org/fhir/remittance-outcome'=>['complete', 'error', 'partial', 'complete', 'error', 'partial']}, 'type'=>'code', 'path'=>'PaymentReconciliation.outcome', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/remittance-outcome'}},
       'disposition' => {'type'=>'string', 'path'=>'PaymentReconciliation.disposition', 'min'=>0, 'max'=>1},
-      'ruleset' => {'valid_codes'=>{'http://hl7.org/fhir/ruleset'=>['x12-4010', 'x12-5010', 'x12-7010', 'cdanet-v2', 'cdanet-v4', 'cpha-3']}, 'type'=>'Coding', 'path'=>'PaymentReconciliation.ruleset', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/ruleset'}},
-      'originalRuleset' => {'valid_codes'=>{'http://hl7.org/fhir/ruleset'=>['x12-4010', 'x12-5010', 'x12-7010', 'cdanet-v2', 'cdanet-v4', 'cpha-3']}, 'type'=>'Coding', 'path'=>'PaymentReconciliation.originalRuleset', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/ruleset'}},
+      'ruleset' => {'valid_codes'=>{'http://hl7.org/fhir/ruleset'=>['x12-4010', 'x12-5010', 'x12-7010', 'cdanet-v2', 'cdanet-v4', 'cpha-3', 'x12-4010', 'x12-5010', 'x12-7010', 'cdanet-v2', 'cdanet-v4', 'cpha-3']}, 'type'=>'Coding', 'path'=>'PaymentReconciliation.ruleset', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/ruleset'}},
+      'originalRuleset' => {'valid_codes'=>{'http://hl7.org/fhir/ruleset'=>['x12-4010', 'x12-5010', 'x12-7010', 'cdanet-v2', 'cdanet-v4', 'cpha-3', 'x12-4010', 'x12-5010', 'x12-7010', 'cdanet-v2', 'cdanet-v4', 'cpha-3']}, 'type'=>'Coding', 'path'=>'PaymentReconciliation.originalRuleset', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/ruleset'}},
       'created' => {'type'=>'dateTime', 'path'=>'PaymentReconciliation.created', 'min'=>0, 'max'=>1},
       'period' => {'type'=>'Period', 'path'=>'PaymentReconciliation.period', 'min'=>0, 'max'=>1},
       'organizationIdentifier' => {'type'=>'Identifier', 'path'=>'PaymentReconciliation.organization[x]', 'min'=>0, 'max'=>1},
@@ -36,8 +37,8 @@ module FHIR
       'requestOrganizationIdentifier' => {'type'=>'Identifier', 'path'=>'PaymentReconciliation.requestOrganization[x]', 'min'=>0, 'max'=>1},
       'requestOrganizationReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'PaymentReconciliation.requestOrganization[x]', 'min'=>0, 'max'=>1},
       'detail' => {'type'=>'PaymentReconciliation::Detail', 'path'=>'PaymentReconciliation.detail', 'min'=>0, 'max'=>Float::INFINITY},
-      'form' => {'valid_codes'=>{'http://hl7.org/fhir/forms-codes'=>['1', '2']}, 'type'=>'Coding', 'path'=>'PaymentReconciliation.form', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/forms'}},
-      'total' => {'type'=>'Quantity', 'path'=>'PaymentReconciliation.total', 'min'=>1, 'max'=>1},
+      'form' => {'valid_codes'=>{'http://hl7.org/fhir/forms-codes'=>['1', '2', '1', '2']}, 'type'=>'Coding', 'path'=>'PaymentReconciliation.form', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/forms'}},
+      'total' => {'type'=>'Money', 'path'=>'PaymentReconciliation.total', 'min'=>1, 'max'=>1},
       'note' => {'type'=>'PaymentReconciliation::Note', 'path'=>'PaymentReconciliation.note', 'min'=>0, 'max'=>Float::INFINITY}
     }
 
@@ -48,41 +49,41 @@ module FHIR
 
       MULTIPLE_TYPES = {
         'request' => ['Identifier', 'Reference'],
-        'responce' => ['Identifier', 'Reference'],
+        'response' => ['Identifier', 'Reference'],
         'submitter' => ['Identifier', 'Reference'],
         'payee' => ['Identifier', 'Reference']
       }
       METADATA = {
-        'id' => {'type'=>'id', 'path'=>'Detail.id', 'min'=>0, 'max'=>1},
+        'id' => {'type'=>'string', 'path'=>'Detail.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Detail.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Detail.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-        'type' => {'valid_codes'=>{'http://hl7.org/fhir/payment-type'=>['payment', 'adjustment', 'advance']}, 'type'=>'Coding', 'path'=>'Detail.type', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/payment-type'}},
+        'type' => {'valid_codes'=>{'http://hl7.org/fhir/payment-type'=>['payment', 'adjustment', 'advance', 'payment', 'adjustment', 'advance']}, 'type'=>'Coding', 'path'=>'Detail.type', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/payment-type'}},
         'requestIdentifier' => {'type'=>'Identifier', 'path'=>'Detail.request[x]', 'min'=>0, 'max'=>1},
         'requestReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'Detail.request[x]', 'min'=>0, 'max'=>1},
-        'responceIdentifier' => {'type'=>'Identifier', 'path'=>'Detail.responce[x]', 'min'=>0, 'max'=>1},
-        'responceReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'Detail.responce[x]', 'min'=>0, 'max'=>1},
+        'responseIdentifier' => {'type'=>'Identifier', 'path'=>'Detail.response[x]', 'min'=>0, 'max'=>1},
+        'responseReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'Detail.response[x]', 'min'=>0, 'max'=>1},
         'submitterIdentifier' => {'type'=>'Identifier', 'path'=>'Detail.submitter[x]', 'min'=>0, 'max'=>1},
         'submitterReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Detail.submitter[x]', 'min'=>0, 'max'=>1},
         'payeeIdentifier' => {'type'=>'Identifier', 'path'=>'Detail.payee[x]', 'min'=>0, 'max'=>1},
         'payeeReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Detail.payee[x]', 'min'=>0, 'max'=>1},
         'date' => {'type'=>'date', 'path'=>'Detail.date', 'min'=>0, 'max'=>1},
-        'amount' => {'type'=>'Quantity', 'path'=>'Detail.amount', 'min'=>0, 'max'=>1}
+        'amount' => {'type'=>'Money', 'path'=>'Detail.amount', 'min'=>0, 'max'=>1}
       }
 
-      attr_accessor :id                  # 0-1 id
+      attr_accessor :id                  # 0-1 string
       attr_accessor :extension           # 0-* [ Extension ]
       attr_accessor :modifierExtension   # 0-* [ Extension ]
       attr_accessor :type                # 1-1 Coding
       attr_accessor :requestIdentifier   # 0-1 Identifier
       attr_accessor :requestReference    # 0-1 Reference(Resource)
-      attr_accessor :responceIdentifier  # 0-1 Identifier
-      attr_accessor :responceReference   # 0-1 Reference(Resource)
+      attr_accessor :responseIdentifier  # 0-1 Identifier
+      attr_accessor :responseReference   # 0-1 Reference(Resource)
       attr_accessor :submitterIdentifier # 0-1 Identifier
       attr_accessor :submitterReference  # 0-1 Reference(Organization)
       attr_accessor :payeeIdentifier     # 0-1 Identifier
       attr_accessor :payeeReference      # 0-1 Reference(Organization)
       attr_accessor :date                # 0-1 date
-      attr_accessor :amount              # 0-1 Quantity
+      attr_accessor :amount              # 0-1 Money
     end
 
     class Note < FHIR::Model
@@ -91,14 +92,14 @@ module FHIR
       include FHIR::Xml
 
       METADATA = {
-        'id' => {'type'=>'id', 'path'=>'Note.id', 'min'=>0, 'max'=>1},
+        'id' => {'type'=>'string', 'path'=>'Note.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Note.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Note.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-        'type' => {'valid_codes'=>{'http://hl7.org/fhir/note-type'=>['display', 'print', 'printoper']}, 'type'=>'Coding', 'path'=>'Note.type', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/note-type'}},
+        'type' => {'valid_codes'=>{'http://hl7.org/fhir/note-type'=>['display', 'print', 'printoper', 'display', 'print', 'printoper']}, 'type'=>'Coding', 'path'=>'Note.type', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/note-type'}},
         'text' => {'type'=>'string', 'path'=>'Note.text', 'min'=>0, 'max'=>1}
       }
 
-      attr_accessor :id                # 0-1 id
+      attr_accessor :id                # 0-1 string
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
       attr_accessor :type              # 0-1 Coding
@@ -114,6 +115,7 @@ module FHIR
     attr_accessor :extension                     # 0-* [ Extension ]
     attr_accessor :modifierExtension             # 0-* [ Extension ]
     attr_accessor :identifier                    # 0-* [ Identifier ]
+    attr_accessor :status                        # 1-1 code
     attr_accessor :requestIdentifier             # 0-1 Identifier
     attr_accessor :requestReference              # 0-1 Reference(ProcessRequest)
     attr_accessor :outcome                       # 0-1 code
@@ -130,7 +132,7 @@ module FHIR
     attr_accessor :requestOrganizationReference  # 0-1 Reference(Organization)
     attr_accessor :detail                        # 0-* [ PaymentReconciliation::Detail ]
     attr_accessor :form                          # 0-1 Coding
-    attr_accessor :total                         # 1-1 Quantity
+    attr_accessor :total                         # 1-1 Money
     attr_accessor :note                          # 0-* [ PaymentReconciliation::Note ]
 
     def resourceType

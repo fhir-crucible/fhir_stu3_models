@@ -12,7 +12,7 @@ module FHIR
       'id' => {'type'=>'id', 'path'=>'VisionPrescription.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'VisionPrescription.meta', 'min'=>0, 'max'=>1},
       'implicitRules' => {'type'=>'uri', 'path'=>'VisionPrescription.implicitRules', 'min'=>0, 'max'=>1},
-      'language' => {'type'=>'code', 'path'=>'VisionPrescription.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://tools.ietf.org/html/bcp47'}},
+      'language' => {'type'=>'code', 'path'=>'VisionPrescription.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}},
       'text' => {'type'=>'Narrative', 'path'=>'VisionPrescription.text', 'min'=>0, 'max'=>1},
       'contained' => {'type'=>'Resource', 'path'=>'VisionPrescription.contained', 'min'=>0, 'max'=>Float::INFINITY},
       'extension' => {'type'=>'Extension', 'path'=>'VisionPrescription.extension', 'min'=>0, 'max'=>Float::INFINITY},
@@ -33,16 +33,16 @@ module FHIR
       include FHIR::Xml
 
       METADATA = {
-        'id' => {'type'=>'id', 'path'=>'Dispense.id', 'min'=>0, 'max'=>1},
+        'id' => {'type'=>'string', 'path'=>'Dispense.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Dispense.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Dispense.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-        'product' => {'valid_codes'=>{'http://hl7.org/fhir/ex-visionprescriptionproduct'=>['lens', 'contact']}, 'type'=>'Coding', 'path'=>'Dispense.product', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/vision-product'}},
-        'eye' => {'valid_codes'=>{'http://hl7.org/fhir/vision-eye-codes'=>['right', 'left']}, 'type'=>'code', 'path'=>'Dispense.eye', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/vision-eye-codes'}},
+        'product' => {'valid_codes'=>{'http://hl7.org/fhir/ex-visionprescriptionproduct'=>['lens', 'contact', 'lens', 'contact']}, 'type'=>'Coding', 'path'=>'Dispense.product', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/vision-product'}},
+        'eye' => {'valid_codes'=>{'http://hl7.org/fhir/vision-eye-codes'=>['right', 'left', 'right', 'left']}, 'type'=>'code', 'path'=>'Dispense.eye', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/vision-eye-codes'}},
         'sphere' => {'type'=>'decimal', 'path'=>'Dispense.sphere', 'min'=>0, 'max'=>1},
         'cylinder' => {'type'=>'decimal', 'path'=>'Dispense.cylinder', 'min'=>0, 'max'=>1},
         'axis' => {'type'=>'integer', 'path'=>'Dispense.axis', 'min'=>0, 'max'=>1},
         'prism' => {'type'=>'decimal', 'path'=>'Dispense.prism', 'min'=>0, 'max'=>1},
-        'base' => {'valid_codes'=>{'http://hl7.org/fhir/vision-base-codes'=>['up', 'down', 'in', 'out']}, 'type'=>'code', 'path'=>'Dispense.base', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/vision-base-codes'}},
+        'base' => {'valid_codes'=>{'http://hl7.org/fhir/vision-base-codes'=>['up', 'down', 'in', 'out', 'up', 'down', 'in', 'out']}, 'type'=>'code', 'path'=>'Dispense.base', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/vision-base-codes'}},
         'add' => {'type'=>'decimal', 'path'=>'Dispense.add', 'min'=>0, 'max'=>1},
         'power' => {'type'=>'decimal', 'path'=>'Dispense.power', 'min'=>0, 'max'=>1},
         'backCurve' => {'type'=>'decimal', 'path'=>'Dispense.backCurve', 'min'=>0, 'max'=>1},
@@ -53,7 +53,7 @@ module FHIR
         'notes' => {'type'=>'string', 'path'=>'Dispense.notes', 'min'=>0, 'max'=>1}
       }
 
-      attr_accessor :id                # 0-1 id
+      attr_accessor :id                # 0-1 string
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
       attr_accessor :product           # 1-1 Coding
