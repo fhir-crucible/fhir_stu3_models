@@ -157,7 +157,7 @@
     }
   ],
   "content": {
-    "contentType": "text/cql",
+    "contentType": "text/plain",
     "url": "http://cqlrepository.org/CMS146.cql"
   }
 }

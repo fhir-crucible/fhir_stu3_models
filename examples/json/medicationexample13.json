@@ -19,7 +19,7 @@
   },
   "isBrand": true,
   "manufacturer": {
-    "reference": "http://www.novonordisk-us.com/fhirresource/1"
+    "reference": "http://www.novonordisk-us.com/Organization/1"
   },
   "product": {
     "form": {

@@ -15,7 +15,7 @@
   <status value="active"/>
 
   <requestReference>
-    <reference value="http://www.BenefitsInc.com/fhir/oralhealthclaim/15476332402"/>
+    <reference value="http://www.BenefitsInc.com/fhir/Claim/15476332402"/>
   </requestReference>
 
   <created value="2014-08-16"/>

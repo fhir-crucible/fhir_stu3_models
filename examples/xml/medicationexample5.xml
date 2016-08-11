@@ -17,7 +17,7 @@
   </code>  
   <isBrand value="true"/>
   <manufacturer>
-    <reference value="http://http://www.actavis.ca/default.htm/fhirresource/1"/>
+    <reference value="http://http://www.actavis.ca/default.htm/Organization/1"/>
   </manufacturer>
   <package>
     <container>

@@ -19,7 +19,7 @@
       }
     }
   ],
-  "status": "rejected",
+  "status": "completed",
   "device": {
     "reference": "Device/example"
   },

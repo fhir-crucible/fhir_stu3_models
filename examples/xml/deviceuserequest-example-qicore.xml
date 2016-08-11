@@ -15,7 +15,7 @@
     </valueCodeableConcept>
   </extension>
 
-  <status value="rejected"/>
+  <status value="completed"/>
 
   <device>
     <reference value="Device/example"/>

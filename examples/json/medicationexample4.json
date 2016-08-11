@@ -19,7 +19,7 @@
   },
   "isBrand": true,
   "manufacturer": {
-    "reference": "http://www.a-smeds.com/fhirresource/1"
+    "reference": "http://www.a-smeds.com/Organization/1"
   },
   "product": {
     "form": {

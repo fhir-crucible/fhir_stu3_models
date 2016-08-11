@@ -22,9 +22,13 @@
   </extension>
 
   <status value="finished"/>
-  <class value="inpatient"/>
+  <class>
+    <system value="http://hl7.org/fhir/v3/ActCode"/>
+    <code value="IMP"/>
+    <display value="inpatient"/>
+  </class>
   <patient>
-    <reference value="patient-example"/>
+    <reference value="Patient/patient-example"/>
   </patient>
   <period>
     <start value="2015-02-09T00:00:00Z"/>

@@ -33,9 +33,7 @@
   "sourceReference": {
     "reference": "http://hl7.org/fhir/ValueSet/v2-0487"
   },
-  "targetReference": {
-    "reference": "http://snomed.info/id"
-  },
+  "targetUri": "http://snomed.info/id",
   "group": [
     {
       "source": "http://hl7.org/fhir/v2/0487",

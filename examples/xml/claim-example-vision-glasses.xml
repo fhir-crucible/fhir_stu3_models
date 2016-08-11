@@ -35,7 +35,7 @@
  </priority>
 
  <prescriptionReference>
-   <reference value="http://www.optdocs.com/prescription/12345"/>
+   <reference value="http://www.optdocs.com/VisionPrescription/12345"/>
  </prescriptionReference>   
  
  <payee>

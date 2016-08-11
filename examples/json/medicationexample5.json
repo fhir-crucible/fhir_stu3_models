@@ -19,7 +19,7 @@
   },
   "isBrand": true,
   "manufacturer": {
-    "reference": "http://http://www.actavis.ca/default.htm/fhirresource/1"
+    "reference": "http://http://www.actavis.ca/default.htm/Organization/1"
   },
   "package": {
     "container": {

@@ -14,7 +14,7 @@
       "value": "49476534"
     }
   ],
-  "status": "confirmed",
+  "status": "active-confirmed",
   "_status": {
     "fhir_comments": [
       "   this individual has had several reactions   "

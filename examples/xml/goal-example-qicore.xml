@@ -53,7 +53,9 @@
       <display value="weight loss"/>
     </coding>
   </category>
-	<description value="Target weight is 160 to 180 lbs."/>
+	<description>
+		<text value="Target weight is 160 to 180 lbs."/>
+	</description>
 	<status value="rejected"/>
 	<addresses>
 		<reference value="Condition/12345"/>

@@ -136,7 +136,7 @@
   </dataRequirement>
 
   <content>
-    <contentType value="text/cql"/>
+    <contentType value="text/plain"/>
     <url value="http://cqlrepository.org/CMS146.cql"/>
   </content>
   

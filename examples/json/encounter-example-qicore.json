@@ -31,9 +31,13 @@
     }
   ],
   "status": "finished",
-  "class": "inpatient",
+  "class": {
+    "system": "http://hl7.org/fhir/v3/ActCode",
+    "code": "IMP",
+    "display": "inpatient"
+  },
   "patient": {
-    "reference": "patient-example"
+    "reference": "Patient/patient-example"
   },
   "period": {
     "start": "2015-02-09T00:00:00Z",

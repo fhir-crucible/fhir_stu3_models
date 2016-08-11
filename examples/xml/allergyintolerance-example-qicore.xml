@@ -8,7 +8,7 @@
   </identifier>
 
   <!--   this individual has had several reactions   -->
-  <status value="confirmed"/>
+  <status value="active-confirmed"/>
 
   <!--   note: it's often unknown whether an allergy is mediated by an immune response, and not as significant as once thought   -->
   <type value="allergy"/>
