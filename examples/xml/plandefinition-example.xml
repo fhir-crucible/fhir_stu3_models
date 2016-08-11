@@ -19,9 +19,9 @@
         </coding>
       </code>
       <timingTiming>
-        <extension url="http://hl7.org/fhir/StructureDefinition/cqif-basic-cqlExpression">
-          <valueString value="Now()"/>
-        </extension>
+          <extension url="http://hl7.org/fhir/StructureDefinition/cqif-basic-cqlExpression">
+            <valueString value="Now()"/>
+          </extension>
       </timingTiming>
       <participantType value="practitioner"/>
     </ActivityDefinition>
