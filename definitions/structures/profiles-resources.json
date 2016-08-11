@@ -2,7 +2,7 @@
   "resourceType": "Bundle",
   "id": "resources",
   "meta": {
-    "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+    "lastUpdated": "2016-08-11T09:23:49.667-04:00"
   },
   "type": "collection",
   "entry": [
@@ -12,7 +12,7 @@
         "resourceType": "StructureDefinition",
         "id": "CodeSystem",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -27,8 +27,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/CodeSystem",
         "name": "CodeSystem",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "CodeSystem",
@@ -1793,7 +1793,7 @@
         "resourceType": "StructureDefinition",
         "id": "ValueSet",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -1808,8 +1808,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/ValueSet",
         "name": "ValueSet",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "ValueSet",
@@ -3937,7 +3937,7 @@
         "resourceType": "StructureDefinition",
         "id": "DomainResource",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -3948,8 +3948,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/DomainResource",
         "name": "DomainResource",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": true,
         "type": "DomainResource",
@@ -4222,7 +4222,7 @@
         "resourceType": "StructureDefinition",
         "id": "Parameters",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -4233,8 +4233,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Parameters",
         "name": "Parameters",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Parameters",
@@ -4758,7 +4758,7 @@
         "resourceType": "StructureDefinition",
         "id": "Resource",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -4769,8 +4769,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Resource",
         "name": "Resource",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": true,
         "type": "Resource",
@@ -4928,7 +4928,7 @@
         "resourceType": "StructureDefinition",
         "id": "Account",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -4943,8 +4943,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Account",
         "name": "Account",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Account",
@@ -5527,7 +5527,7 @@
         "resourceType": "StructureDefinition",
         "id": "ActivityDefinition",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -5542,8 +5542,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/ActivityDefinition",
         "name": "ActivityDefinition",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "ActivityDefinition",
@@ -6673,7 +6673,7 @@
         "resourceType": "StructureDefinition",
         "id": "AllergyIntolerance",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -6688,8 +6688,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/AllergyIntolerance",
         "name": "AllergyIntolerance",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "AllergyIntolerance",
@@ -7649,7 +7649,7 @@
         "resourceType": "StructureDefinition",
         "id": "Appointment",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -7664,8 +7664,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Appointment",
         "name": "Appointment",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Appointment",
@@ -8609,7 +8609,7 @@
         "resourceType": "StructureDefinition",
         "id": "AppointmentResponse",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -8624,8 +8624,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/AppointmentResponse",
         "name": "AppointmentResponse",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "AppointmentResponse",
@@ -9116,7 +9116,7 @@
         "resourceType": "StructureDefinition",
         "id": "AuditEvent",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -9131,8 +9131,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/AuditEvent",
         "name": "AuditEvent",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "AuditEvent",
@@ -10740,7 +10740,7 @@
         "resourceType": "StructureDefinition",
         "id": "Basic",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -10755,8 +10755,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Basic",
         "name": "Basic",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Basic",
@@ -11127,7 +11127,7 @@
         "resourceType": "StructureDefinition",
         "id": "Binary",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -11142,8 +11142,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Binary",
         "name": "Binary",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Binary",
@@ -11316,7 +11316,7 @@
         "resourceType": "StructureDefinition",
         "id": "BodySite",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -11331,8 +11331,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/BodySite",
         "name": "BodySite",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "BodySite",
@@ -11717,7 +11717,7 @@
         "resourceType": "StructureDefinition",
         "id": "Bundle",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -11732,8 +11732,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Bundle",
         "name": "Bundle",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Bundle",
@@ -12917,7 +12917,7 @@
         "resourceType": "StructureDefinition",
         "id": "CarePlan",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -12932,8 +12932,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/CarePlan",
         "name": "CarePlan",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "CarePlan",
@@ -14569,7 +14569,7 @@
         "resourceType": "StructureDefinition",
         "id": "CareTeam",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -14584,8 +14584,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/CareTeam",
         "name": "CareTeam",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "CareTeam",
@@ -15167,7 +15167,7 @@
         "resourceType": "StructureDefinition",
         "id": "Claim",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -15182,8 +15182,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Claim",
         "name": "Claim",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Claim",
@@ -19549,7 +19549,7 @@
         "resourceType": "StructureDefinition",
         "id": "ClaimResponse",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -19564,8 +19564,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/ClaimResponse",
         "name": "ClaimResponse",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "ClaimResponse",
@@ -22396,7 +22396,7 @@
         "resourceType": "StructureDefinition",
         "id": "ClinicalImpression",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -22411,8 +22411,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/ClinicalImpression",
         "name": "ClinicalImpression",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "ClinicalImpression",
@@ -23595,7 +23595,7 @@
         "resourceType": "StructureDefinition",
         "id": "Communication",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -23610,8 +23610,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Communication",
         "name": "Communication",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Communication",
@@ -24455,7 +24455,7 @@
         "resourceType": "StructureDefinition",
         "id": "CommunicationRequest",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -24470,8 +24470,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/CommunicationRequest",
         "name": "CommunicationRequest",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "CommunicationRequest",
@@ -25291,7 +25291,7 @@
         "resourceType": "StructureDefinition",
         "id": "CompartmentDefinition",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -25306,8 +25306,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/CompartmentDefinition",
         "name": "CompartmentDefinition",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "CompartmentDefinition",
@@ -26076,7 +26076,7 @@
         "resourceType": "StructureDefinition",
         "id": "Composition",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -26091,8 +26091,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Composition",
         "name": "Composition",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Composition",
@@ -27382,7 +27382,7 @@
         "resourceType": "StructureDefinition",
         "id": "ConceptMap",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -27397,8 +27397,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/ConceptMap",
         "name": "ConceptMap",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "ConceptMap",
@@ -28768,7 +28768,7 @@
         "resourceType": "StructureDefinition",
         "id": "Condition",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -28783,8 +28783,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Condition",
         "name": "Condition",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Condition",
@@ -29865,7 +29865,7 @@
         "resourceType": "StructureDefinition",
         "id": "Conformance",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -29880,8 +29880,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Conformance",
         "name": "Conformance",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Conformance",
@@ -33423,7 +33423,7 @@
         "resourceType": "StructureDefinition",
         "id": "Consent",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -33438,8 +33438,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Consent",
         "name": "Consent",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Consent",
@@ -34789,7 +34789,7 @@
         "resourceType": "StructureDefinition",
         "id": "Contract",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -34804,8 +34804,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Contract",
         "name": "Contract",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Contract",
@@ -37295,7 +37295,7 @@
         "resourceType": "StructureDefinition",
         "id": "Coverage",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -37310,8 +37310,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Coverage",
         "name": "Coverage",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Coverage",
@@ -38072,7 +38072,7 @@
         "resourceType": "StructureDefinition",
         "id": "DataElement",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -38087,8 +38087,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/DataElement",
         "name": "DataElement",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "DataElement",
@@ -38953,7 +38953,7 @@
         "resourceType": "StructureDefinition",
         "id": "DecisionSupportServiceModule",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -38968,8 +38968,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/DecisionSupportServiceModule",
         "name": "DecisionSupportServiceModule",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "DecisionSupportServiceModule",
@@ -39722,7 +39722,7 @@
         "resourceType": "StructureDefinition",
         "id": "DetectedIssue",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -39737,8 +39737,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/DetectedIssue",
         "name": "DetectedIssue",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "DetectedIssue",
@@ -40364,7 +40364,7 @@
         "resourceType": "StructureDefinition",
         "id": "Device",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -40379,8 +40379,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Device",
         "name": "Device",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Device",
@@ -40985,7 +40985,7 @@
         "resourceType": "StructureDefinition",
         "id": "DeviceComponent",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -41000,8 +41000,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/DeviceComponent",
         "name": "DeviceComponent",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "DeviceComponent",
@@ -41663,7 +41663,7 @@
         "resourceType": "StructureDefinition",
         "id": "DeviceMetric",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -41678,8 +41678,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/DeviceMetric",
         "name": "DeviceMetric",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "DeviceMetric",
@@ -42353,7 +42353,7 @@
         "resourceType": "StructureDefinition",
         "id": "DeviceUseRequest",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -42368,8 +42368,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/DeviceUseRequest",
         "name": "DeviceUseRequest",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "DeviceUseRequest",
@@ -43252,7 +43252,7 @@
         "resourceType": "StructureDefinition",
         "id": "DeviceUseStatement",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -43267,8 +43267,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/DeviceUseStatement",
         "name": "DeviceUseStatement",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "DeviceUseStatement",
@@ -43723,7 +43723,7 @@
         "resourceType": "StructureDefinition",
         "id": "DiagnosticReport",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -43738,8 +43738,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/DiagnosticReport",
         "name": "DiagnosticReport",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "DiagnosticReport",
@@ -44583,7 +44583,7 @@
         "resourceType": "StructureDefinition",
         "id": "DiagnosticRequest",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -44598,8 +44598,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/DiagnosticRequest",
         "name": "DiagnosticRequest",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "DiagnosticRequest",
@@ -45448,7 +45448,7 @@
         "resourceType": "StructureDefinition",
         "id": "DocumentManifest",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -45463,8 +45463,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/DocumentManifest",
         "name": "DocumentManifest",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "DocumentManifest",
@@ -46271,7 +46271,7 @@
         "resourceType": "StructureDefinition",
         "id": "DocumentReference",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -46286,8 +46286,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/DocumentReference",
         "name": "DocumentReference",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "DocumentReference",
@@ -47658,7 +47658,7 @@
         "resourceType": "StructureDefinition",
         "id": "EligibilityRequest",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -47673,8 +47673,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/EligibilityRequest",
         "name": "EligibilityRequest",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "EligibilityRequest",
@@ -48413,7 +48413,7 @@
         "resourceType": "StructureDefinition",
         "id": "EligibilityResponse",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -48428,8 +48428,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/EligibilityResponse",
         "name": "EligibilityResponse",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "EligibilityResponse",
@@ -49679,7 +49679,7 @@
         "resourceType": "StructureDefinition",
         "id": "Encounter",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -49694,8 +49694,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Encounter",
         "name": "Encounter",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Encounter",
@@ -51244,7 +51244,7 @@
         "resourceType": "StructureDefinition",
         "id": "Endpoint",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -51259,8 +51259,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Endpoint",
         "name": "Endpoint",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Endpoint",
@@ -51835,7 +51835,7 @@
         "resourceType": "StructureDefinition",
         "id": "EnrollmentRequest",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -51850,8 +51850,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/EnrollmentRequest",
         "name": "EnrollmentRequest",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "EnrollmentRequest",
@@ -52366,7 +52366,7 @@
         "resourceType": "StructureDefinition",
         "id": "EnrollmentResponse",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -52381,8 +52381,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/EnrollmentResponse",
         "name": "EnrollmentResponse",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "EnrollmentResponse",
@@ -52931,7 +52931,7 @@
         "resourceType": "StructureDefinition",
         "id": "EpisodeOfCare",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -52946,8 +52946,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/EpisodeOfCare",
         "name": "EpisodeOfCare",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "EpisodeOfCare",
@@ -53585,7 +53585,7 @@
         "resourceType": "StructureDefinition",
         "id": "ExpansionProfile",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -53600,8 +53600,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/ExpansionProfile",
         "name": "ExpansionProfile",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "ExpansionProfile",
@@ -55613,7 +55613,7 @@
         "resourceType": "StructureDefinition",
         "id": "ExplanationOfBenefit",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -55628,8 +55628,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/ExplanationOfBenefit",
         "name": "ExplanationOfBenefit",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "ExplanationOfBenefit",
@@ -61882,7 +61882,7 @@
         "resourceType": "StructureDefinition",
         "id": "FamilyMemberHistory",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -61897,8 +61897,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory",
         "name": "FamilyMemberHistory",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "FamilyMemberHistory",
@@ -62750,7 +62750,7 @@
         "resourceType": "StructureDefinition",
         "id": "Flag",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -62765,8 +62765,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Flag",
         "name": "Flag",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Flag",
@@ -63303,7 +63303,7 @@
         "resourceType": "StructureDefinition",
         "id": "Goal",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -63318,8 +63318,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Goal",
         "name": "Goal",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Goal",
@@ -64121,7 +64121,7 @@
         "resourceType": "StructureDefinition",
         "id": "Group",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -64136,8 +64136,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Group",
         "name": "Group",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Group",
@@ -64950,7 +64950,7 @@
         "resourceType": "StructureDefinition",
         "id": "GuidanceResponse",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -64965,8 +64965,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/GuidanceResponse",
         "name": "GuidanceResponse",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "GuidanceResponse",
@@ -66295,7 +66295,7 @@
         "resourceType": "StructureDefinition",
         "id": "HealthcareService",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -66310,8 +66310,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/HealthcareService",
         "name": "HealthcareService",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "HealthcareService",
@@ -67422,7 +67422,7 @@
         "resourceType": "StructureDefinition",
         "id": "ImagingManifest",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -67437,8 +67437,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/ImagingManifest",
         "name": "ImagingManifest",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "ImagingManifest",
@@ -68526,7 +68526,7 @@
         "resourceType": "StructureDefinition",
         "id": "ImagingStudy",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -68541,8 +68541,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/ImagingStudy",
         "name": "ImagingStudy",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "ImagingStudy",
@@ -70087,7 +70087,7 @@
         "resourceType": "StructureDefinition",
         "id": "Immunization",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -70102,8 +70102,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Immunization",
         "name": "Immunization",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Immunization",
@@ -71409,7 +71409,7 @@
         "resourceType": "StructureDefinition",
         "id": "ImmunizationRecommendation",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -71424,8 +71424,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation",
         "name": "ImmunizationRecommendation",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "ImmunizationRecommendation",
@@ -72245,7 +72245,7 @@
         "resourceType": "StructureDefinition",
         "id": "ImplementationGuide",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -72260,8 +72260,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/ImplementationGuide",
         "name": "ImplementationGuide",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "ImplementationGuide",
@@ -73810,7 +73810,7 @@
         "resourceType": "StructureDefinition",
         "id": "Library",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -73825,8 +73825,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Library",
         "name": "Library",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Library",
@@ -74619,7 +74619,7 @@
         "resourceType": "StructureDefinition",
         "id": "Linkage",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -74634,8 +74634,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Linkage",
         "name": "Linkage",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Linkage",
@@ -75023,7 +75023,7 @@
         "resourceType": "StructureDefinition",
         "id": "List",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -75038,8 +75038,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/List",
         "name": "List",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "List",
@@ -75885,7 +75885,7 @@
         "resourceType": "StructureDefinition",
         "id": "Location",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -75900,8 +75900,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Location",
         "name": "Location",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Location",
@@ -76625,7 +76625,7 @@
         "resourceType": "StructureDefinition",
         "id": "Measure",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -76640,8 +76640,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Measure",
         "name": "Measure",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Measure",
@@ -78280,7 +78280,7 @@
         "resourceType": "StructureDefinition",
         "id": "MeasureReport",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -78295,8 +78295,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/MeasureReport",
         "name": "MeasureReport",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "MeasureReport",
@@ -79700,7 +79700,7 @@
         "resourceType": "StructureDefinition",
         "id": "Media",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -79715,8 +79715,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Media",
         "name": "Media",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Media",
@@ -80379,7 +80379,7 @@
         "resourceType": "StructureDefinition",
         "id": "Medication",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -80394,8 +80394,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Medication",
         "name": "Medication",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Medication",
@@ -81303,7 +81303,7 @@
         "resourceType": "StructureDefinition",
         "id": "MedicationAdministration",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -81318,8 +81318,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/MedicationAdministration",
         "name": "MedicationAdministration",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "MedicationAdministration",
@@ -82476,7 +82476,7 @@
         "resourceType": "StructureDefinition",
         "id": "MedicationDispense",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -82491,8 +82491,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/MedicationDispense",
         "name": "MedicationDispense",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "MedicationDispense",
@@ -83926,7 +83926,7 @@
         "resourceType": "StructureDefinition",
         "id": "MedicationOrder",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -83941,8 +83941,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/MedicationOrder",
         "name": "MedicationOrder",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "MedicationOrder",
@@ -85471,7 +85471,7 @@
         "resourceType": "StructureDefinition",
         "id": "MedicationStatement",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -85486,8 +85486,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/MedicationStatement",
         "name": "MedicationStatement",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "MedicationStatement",
@@ -86581,7 +86581,7 @@
         "resourceType": "StructureDefinition",
         "id": "MessageHeader",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -86596,8 +86596,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/MessageHeader",
         "name": "MessageHeader",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "MessageHeader",
@@ -87601,7 +87601,7 @@
         "resourceType": "StructureDefinition",
         "id": "NamingSystem",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -87616,8 +87616,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/NamingSystem",
         "name": "NamingSystem",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "NamingSystem",
@@ -88518,7 +88518,7 @@
         "resourceType": "StructureDefinition",
         "id": "NutritionRequest",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -88533,8 +88533,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/NutritionRequest",
         "name": "NutritionRequest",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "NutritionRequest",
@@ -90175,7 +90175,7 @@
         "resourceType": "StructureDefinition",
         "id": "Observation",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -90190,8 +90190,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Observation",
         "name": "Observation",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Observation",
@@ -91745,7 +91745,7 @@
         "resourceType": "StructureDefinition",
         "id": "OperationDefinition",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -91760,8 +91760,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/OperationDefinition",
         "name": "OperationDefinition",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "OperationDefinition",
@@ -93063,7 +93063,7 @@
         "resourceType": "StructureDefinition",
         "id": "OperationOutcome",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -93078,8 +93078,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/OperationOutcome",
         "name": "OperationOutcome",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "OperationOutcome",
@@ -93559,7 +93559,7 @@
         "resourceType": "StructureDefinition",
         "id": "Organization",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -93574,8 +93574,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Organization",
         "name": "Organization",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Organization",
@@ -94273,7 +94273,7 @@
         "resourceType": "StructureDefinition",
         "id": "Patient",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -94288,8 +94288,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Patient",
         "name": "Patient",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Patient",
@@ -95670,7 +95670,7 @@
         "resourceType": "StructureDefinition",
         "id": "PaymentNotice",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -95685,8 +95685,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/PaymentNotice",
         "name": "PaymentNotice",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "PaymentNotice",
@@ -96265,7 +96265,7 @@
         "resourceType": "StructureDefinition",
         "id": "PaymentReconciliation",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -96280,8 +96280,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/PaymentReconciliation",
         "name": "PaymentReconciliation",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "PaymentReconciliation",
@@ -97342,7 +97342,7 @@
         "resourceType": "StructureDefinition",
         "id": "Person",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -97357,8 +97357,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Person",
         "name": "Person",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Person",
@@ -97960,7 +97960,7 @@
         "resourceType": "StructureDefinition",
         "id": "PlanDefinition",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -97975,8 +97975,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/PlanDefinition",
         "name": "PlanDefinition",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "PlanDefinition",
@@ -99837,7 +99837,7 @@
         "resourceType": "StructureDefinition",
         "id": "Practitioner",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -99852,8 +99852,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Practitioner",
         "name": "Practitioner",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Practitioner",
@@ -100824,7 +100824,7 @@
         "resourceType": "StructureDefinition",
         "id": "PractitionerRole",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -100839,8 +100839,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/PractitionerRole",
         "name": "PractitionerRole",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "PractitionerRole",
@@ -101673,7 +101673,7 @@
         "resourceType": "StructureDefinition",
         "id": "Procedure",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -101688,8 +101688,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Procedure",
         "name": "Procedure",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Procedure",
@@ -102962,7 +102962,7 @@
         "resourceType": "StructureDefinition",
         "id": "ProcedureRequest",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -102977,8 +102977,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/ProcedureRequest",
         "name": "ProcedureRequest",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "ProcedureRequest",
@@ -103699,7 +103699,7 @@
         "resourceType": "StructureDefinition",
         "id": "ProcessRequest",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -103714,8 +103714,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/ProcessRequest",
         "name": "ProcessRequest",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "ProcessRequest",
@@ -104491,7 +104491,7 @@
         "resourceType": "StructureDefinition",
         "id": "ProcessResponse",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -104506,8 +104506,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/ProcessResponse",
         "name": "ProcessResponse",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "ProcessResponse",
@@ -105261,7 +105261,7 @@
         "resourceType": "StructureDefinition",
         "id": "Provenance",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -105276,8 +105276,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Provenance",
         "name": "Provenance",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Provenance",
@@ -106269,7 +106269,7 @@
         "resourceType": "StructureDefinition",
         "id": "Questionnaire",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -106284,8 +106284,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Questionnaire",
         "name": "Questionnaire",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Questionnaire",
@@ -107845,7 +107845,7 @@
         "resourceType": "StructureDefinition",
         "id": "QuestionnaireResponse",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -107860,8 +107860,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse",
         "name": "QuestionnaireResponse",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "QuestionnaireResponse",
@@ -108768,7 +108768,7 @@
         "resourceType": "StructureDefinition",
         "id": "ReferralRequest",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -108783,8 +108783,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/ReferralRequest",
         "name": "ReferralRequest",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "ReferralRequest",
@@ -109611,7 +109611,7 @@
         "resourceType": "StructureDefinition",
         "id": "RelatedPerson",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -109626,8 +109626,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
         "name": "RelatedPerson",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "RelatedPerson",
@@ -110136,7 +110136,7 @@
         "resourceType": "StructureDefinition",
         "id": "RiskAssessment",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -110151,8 +110151,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/RiskAssessment",
         "name": "RiskAssessment",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "RiskAssessment",
@@ -111048,7 +111048,7 @@
         "resourceType": "StructureDefinition",
         "id": "Schedule",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -111063,8 +111063,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Schedule",
         "name": "Schedule",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Schedule",
@@ -111553,7 +111553,7 @@
         "resourceType": "StructureDefinition",
         "id": "SearchParameter",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -111568,8 +111568,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/SearchParameter",
         "name": "SearchParameter",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "SearchParameter",
@@ -112427,7 +112427,7 @@
         "resourceType": "StructureDefinition",
         "id": "Sequence",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -112442,8 +112442,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Sequence",
         "name": "Sequence",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Sequence",
@@ -114403,7 +114403,7 @@
         "resourceType": "StructureDefinition",
         "id": "Slot",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -114418,8 +114418,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Slot",
         "name": "Slot",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Slot",
@@ -114962,7 +114962,7 @@
         "resourceType": "StructureDefinition",
         "id": "Specimen",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -114977,8 +114977,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Specimen",
         "name": "Specimen",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Specimen",
@@ -116132,7 +116132,7 @@
         "resourceType": "StructureDefinition",
         "id": "StructureDefinition",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -116147,8 +116147,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/StructureDefinition",
         "name": "StructureDefinition",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "StructureDefinition",
@@ -117801,7 +117801,7 @@
         "resourceType": "StructureDefinition",
         "id": "StructureMap",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -117816,8 +117816,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/StructureMap",
         "name": "StructureMap",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "StructureMap",
@@ -119963,7 +119963,7 @@
         "resourceType": "StructureDefinition",
         "id": "Subscription",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -119978,8 +119978,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Subscription",
         "name": "Subscription",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Subscription",
@@ -120579,7 +120579,7 @@
         "resourceType": "StructureDefinition",
         "id": "Substance",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -120594,8 +120594,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Substance",
         "name": "Substance",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Substance",
@@ -121234,7 +121234,7 @@
         "resourceType": "StructureDefinition",
         "id": "SupplyDelivery",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -121249,8 +121249,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/SupplyDelivery",
         "name": "SupplyDelivery",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "SupplyDelivery",
@@ -121807,7 +121807,7 @@
         "resourceType": "StructureDefinition",
         "id": "SupplyRequest",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -121822,8 +121822,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/SupplyRequest",
         "name": "SupplyRequest",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "SupplyRequest",
@@ -122505,7 +122505,7 @@
         "resourceType": "StructureDefinition",
         "id": "Task",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -122520,8 +122520,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/Task",
         "name": "Task",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "Task",
@@ -124325,7 +124325,7 @@
         "resourceType": "StructureDefinition",
         "id": "TestScript",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -124340,8 +124340,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/TestScript",
         "name": "TestScript",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "TestScript",
@@ -129107,7 +129107,7 @@
         "resourceType": "StructureDefinition",
         "id": "VisionPrescription",
         "meta": {
-          "lastUpdated": "2016-08-10T14:17:03.255-04:00"
+          "lastUpdated": "2016-08-11T09:23:49.667-04:00"
         },
         "extension": [
           {
@@ -129122,8 +129122,8 @@
         "url": "http://hl7.org/fhir/StructureDefinition/VisionPrescription",
         "name": "VisionPrescription",
         "status": "draft",
-        "date": "2016-08-10T14:17:03-04:00",
-        "fhirVersion": "1.5.0",
+        "date": "2016-08-11T09:23:49-04:00",
+        "fhirVersion": "1.6.0",
         "kind": "resource",
         "abstract": false,
         "type": "VisionPrescription",
