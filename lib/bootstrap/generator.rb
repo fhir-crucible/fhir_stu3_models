@@ -96,6 +96,12 @@ module FHIR
         end
       end
 
+      def capFirst(string)
+        t = String.new(string)
+        t[0] = t[0].upcase
+        t
+      end
+
       def generate_class(hierarchy,structureDef,top_level=false)
         typeName = structureDef['id']
         constrainedType = structureDef['constrainedType']
@@ -125,7 +131,7 @@ module FHIR
         end
         # now build the child templates...
         child_templates.each do |child_name|
-          child_fixed_name = child_name.gsub("#{typeName}.",'').capitalize
+          child_fixed_name = capFirst(child_name.gsub("#{typeName}.",''))
           next if child_fixed_name.include?('.')
           child_def = { 'id'=> child_fixed_name, 'snapshot'=>{'element'=>[]} }
           # Copy the element definitions for the child structure
@@ -175,9 +181,7 @@ module FHIR
 
             # generate a field for each valid datatype... this is for things like Resource.attribute[x]
             element['type'].map{|t|t['code']}.uniq.each do |dataType|
-              capitalized = String.new(dataType)
-              # capitalize first letter, cannot use capitalize method because of camel-cased names
-              capitalized[0] = capitalized[0].upcase
+              capitalized = capFirst(dataType)
               fieldname = field_base_name.gsub('[x]',capitalized)
               field = FHIR::Field.new(fieldname)
               field.path = element['path'].gsub(pathType,typeName)
@@ -197,13 +201,14 @@ module FHIR
                 field.binding.delete('valueSetUri')
                 field.binding.delete('valueSetReference')
                 field.binding.delete('description')
+                field.binding.delete('extension')
                 # set the actual code list
                 codes = @defn.get_codes( field.binding['uri'] )
                 field.valid_codes = codes if !codes.nil?
                 FHIR.logger.warn "  MISSING EXPANSION -- #{field.path} #{field.min}..#{field.max}: #{field.binding['uri']} (#{field.binding['strength']})" if field.valid_codes.empty? && field.binding['uri'] && !field.binding['uri'].end_with?('bcp47') && !field.binding['uri'].end_with?('bcp13.txt')
               elsif ['Element','BackboneElement'].include?(dataType)
                 # This is a nested structure or class
-                field.type = "#{hierarchy.join('::')}::#{field.name.capitalize}"
+                field.type = "#{hierarchy.join('::')}::#{capFirst(field.name)}"
               end
 
               template.fields << field
@@ -213,18 +218,18 @@ module FHIR
             field.path = element['path'].gsub(pathType,typeName)
             field.type = element['contentReference']
             field.type = field.type[1..-1] if field.type[0]=='#'
-            if (hierarchy.last.capitalize==field.type.capitalize)
+            if (hierarchy.last==field.type)
               # reference to self
-              field.type = "#{hierarchy.join('::')}" #::#{field.type.capitalize}" #field.type.capitalize
+              field.type = "#{hierarchy.join('::')}"
             else
               # reference to contained template
-              klass = @templates.select{|x|x.hierarchy.last.capitalize==field.type.capitalize}.first
+              klass = @templates.select{|x|x.hierarchy.last==field.type}.first
               if !klass.nil?
                 # the template/child class was declared somewhere else in this class hierarchy
-                field.type = klass.hierarchy.join('::') if !klass.nil?
+                field.type = klass.hierarchy.join('::')
               else
                 # the template/child is a direct ancester (it isn't in @templates yet because it is being defined now)
-                field.type = hierarchy[0..hierarchy.index(field.type.capitalize)].join('::')
+                field.type = field.type.split('.').map{|x| capFirst(x) }.join('::')
               end
             end
             field.min = element['min']
