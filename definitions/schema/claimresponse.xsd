@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -45,6 +45,9 @@
       <xs:extension base="DomainResource">
         <xs:sequence>
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
+            
+          </xs:element>
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="ClaimResponseStatus">
             
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1">
@@ -76,7 +79,7 @@
             <xs:element name="requestOrganizationIdentifier" type="Identifier"/>
             <xs:element name="requestOrganizationReference" type="Reference"/>
           </xs:choice>
-          <xs:element name="outcome" minOccurs="0" maxOccurs="1" type="RemittanceOutcome">
+          <xs:element name="outcome" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="disposition" minOccurs="0" maxOccurs="1" type="string">
@@ -103,19 +106,7 @@
           <xs:element name="totalBenefit" minOccurs="0" maxOccurs="1" type="Money">
             
           </xs:element>
-          <xs:element name="paymentAdjustment" minOccurs="0" maxOccurs="1" type="Money">
-            
-          </xs:element>
-          <xs:element name="paymentAdjustmentReason" minOccurs="0" maxOccurs="1" type="Coding">
-            
-          </xs:element>
-          <xs:element name="paymentDate" minOccurs="0" maxOccurs="1" type="date">
-            
-          </xs:element>
-          <xs:element name="paymentAmount" minOccurs="0" maxOccurs="1" type="Money">
-            
-          </xs:element>
-          <xs:element name="paymentRef" minOccurs="0" maxOccurs="1" type="Identifier">
+          <xs:element name="payment" type="ClaimResponse.Payment" minOccurs="0" maxOccurs="1">
             
           </xs:element>
           <xs:element name="reserved" minOccurs="0" maxOccurs="1" type="Coding">
@@ -184,31 +175,13 @@
           <xs:element name="sequenceLinkId" minOccurs="1" maxOccurs="1" type="positiveInt">
             
           </xs:element>
-          <xs:element name="adjudication" type="ClaimResponse.Adjudication1" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="noteNumber" minOccurs="0" maxOccurs="unbounded" type="positiveInt">
+            
+          </xs:element>
+          <xs:element name="adjudication" type="ClaimResponse.Adjudication" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
           <xs:element name="subDetail" type="ClaimResponse.SubDetail" minOccurs="0" maxOccurs="unbounded">
-            
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="ClaimResponse.Adjudication1">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="category" minOccurs="1" maxOccurs="1" type="Coding">
-            
-          </xs:element>
-          <xs:element name="reason" minOccurs="0" maxOccurs="1" type="Coding">
-            
-          </xs:element>
-          <xs:element name="amount" minOccurs="0" maxOccurs="1" type="Money">
-            
-          </xs:element>
-          <xs:element name="value" minOccurs="0" maxOccurs="1" type="decimal">
             
           </xs:element>
         </xs:sequence>
@@ -223,28 +196,10 @@
           <xs:element name="sequenceLinkId" minOccurs="1" maxOccurs="1" type="positiveInt">
             
           </xs:element>
-          <xs:element name="adjudication" type="ClaimResponse.Adjudication2" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="noteNumber" minOccurs="0" maxOccurs="unbounded" type="positiveInt">
             
           </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="ClaimResponse.Adjudication2">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="category" minOccurs="1" maxOccurs="1" type="Coding">
-            
-          </xs:element>
-          <xs:element name="reason" minOccurs="0" maxOccurs="1" type="Coding">
-            
-          </xs:element>
-          <xs:element name="amount" minOccurs="0" maxOccurs="1" type="Money">
-            
-          </xs:element>
-          <xs:element name="value" minOccurs="0" maxOccurs="1" type="decimal">
+          <xs:element name="adjudication" type="ClaimResponse.Adjudication" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
         </xs:sequence>
@@ -259,40 +214,28 @@
           <xs:element name="sequenceLinkId" minOccurs="0" maxOccurs="unbounded" type="positiveInt">
             
           </xs:element>
-          <xs:element name="service" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:element name="revenue" minOccurs="0" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="category" minOccurs="0" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="service" minOccurs="0" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="modifier" minOccurs="0" maxOccurs="unbounded" type="Coding">
             
           </xs:element>
           <xs:element name="fee" minOccurs="0" maxOccurs="1" type="Money">
             
           </xs:element>
-          <xs:element name="noteNumberLinkId" minOccurs="0" maxOccurs="unbounded" type="positiveInt">
+          <xs:element name="noteNumber" minOccurs="0" maxOccurs="unbounded" type="positiveInt">
             
           </xs:element>
-          <xs:element name="adjudication" type="ClaimResponse.Adjudication3" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="adjudication" type="ClaimResponse.Adjudication" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
           <xs:element name="detail" type="ClaimResponse.Detail1" minOccurs="0" maxOccurs="unbounded">
-            
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="ClaimResponse.Adjudication3">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="category" minOccurs="1" maxOccurs="1" type="Coding">
-            
-          </xs:element>
-          <xs:element name="reason" minOccurs="0" maxOccurs="1" type="Coding">
-            
-          </xs:element>
-          <xs:element name="amount" minOccurs="0" maxOccurs="1" type="Money">
-            
-          </xs:element>
-          <xs:element name="value" minOccurs="0" maxOccurs="1" type="decimal">
             
           </xs:element>
         </xs:sequence>
@@ -304,34 +247,25 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="service" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:element name="revenue" minOccurs="0" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="category" minOccurs="0" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="service" minOccurs="0" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="modifier" minOccurs="0" maxOccurs="unbounded" type="Coding">
             
           </xs:element>
           <xs:element name="fee" minOccurs="0" maxOccurs="1" type="Money">
             
           </xs:element>
-          <xs:element name="adjudication" type="ClaimResponse.Adjudication4" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="noteNumber" minOccurs="0" maxOccurs="unbounded" type="positiveInt">
             
           </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="ClaimResponse.Adjudication4">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="category" minOccurs="1" maxOccurs="1" type="Coding">
-            
-          </xs:element>
-          <xs:element name="reason" minOccurs="0" maxOccurs="1" type="Coding">
-            
-          </xs:element>
-          <xs:element name="amount" minOccurs="0" maxOccurs="1" type="Money">
-            
-          </xs:element>
-          <xs:element name="value" minOccurs="0" maxOccurs="1" type="decimal">
+          <xs:element name="adjudication" type="ClaimResponse.Adjudication" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
         </xs:sequence>
@@ -359,6 +293,33 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="ClaimResponse.Payment">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="type" minOccurs="0" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="adjustment" minOccurs="0" maxOccurs="1" type="Money">
+            
+          </xs:element>
+          <xs:element name="adjustmentReason" minOccurs="0" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="date" minOccurs="0" maxOccurs="1" type="date">
+            
+          </xs:element>
+          <xs:element name="amount" minOccurs="0" maxOccurs="1" type="Money">
+            
+          </xs:element>
+          <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="ClaimResponse.Note">
     
     <xs:complexContent>
@@ -371,6 +332,9 @@
             
           </xs:element>
           <xs:element name="text" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="language" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
         </xs:sequence>
@@ -403,6 +367,30 @@
             
           </xs:element>
         </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ClaimResponseStatus-list">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="active">
+        
+      </xs:enumeration>
+      <xs:enumeration value="cancelled">
+        
+      </xs:enumeration>
+      <xs:enumeration value="draft">
+        
+      </xs:enumeration>
+      <xs:enumeration value="entered-in-error">
+        
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ClaimResponseStatus">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="ClaimResponseStatus-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -118,7 +118,16 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="ParticipantRequired-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="required">
+        
+      </xs:enumeration>
+      <xs:enumeration value="optional">
+        
+      </xs:enumeration>
+      <xs:enumeration value="information-only">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ParticipantRequired">
@@ -130,7 +139,31 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="AppointmentStatus-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="proposed">
+        
+      </xs:enumeration>
+      <xs:enumeration value="pending">
+        
+      </xs:enumeration>
+      <xs:enumeration value="booked">
+        
+      </xs:enumeration>
+      <xs:enumeration value="arrived">
+        
+      </xs:enumeration>
+      <xs:enumeration value="fulfilled">
+        
+      </xs:enumeration>
+      <xs:enumeration value="cancelled">
+        
+      </xs:enumeration>
+      <xs:enumeration value="noshow">
+        
+      </xs:enumeration>
+      <xs:enumeration value="entered-in-error">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="AppointmentStatus">
@@ -142,7 +175,19 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="ParticipationStatus-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="accepted">
+        
+      </xs:enumeration>
+      <xs:enumeration value="declined">
+        
+      </xs:enumeration>
+      <xs:enumeration value="tentative">
+        
+      </xs:enumeration>
+      <xs:enumeration value="needs-action">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ParticipationStatus">

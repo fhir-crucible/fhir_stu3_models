@@ -18,19 +18,27 @@
   ],
   "date": "2014-01-31",
   "description": "An additional example value.",
-  "fhirVersion": "1.4.0",
-  "kind": "datatype",
+  "fhirVersion": "1.6.0",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "complex-type",
   "abstract": false,
   "contextType": "datatype",
   "context": [
     "ElementDefinition"
   ],
-  "baseType": "Extension",
+  "type": "Extension",
   "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
   "derivation": "constraint",
   "snapshot": {
     "element": [
       {
+        "id": "Extension:anadditionalexamplevalue",
         "path": "Extension",
         "short": "An additional example value",
         "definition": "An additional example value.",
@@ -41,19 +49,34 @@
           "min": 0,
           "max": "*"
         },
-        "type": [
+        "condition": [
+          "ele-1"
+        ],
+        "constraint": [
           {
-            "code": "Extension"
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "children().count() > id.count()",
+            "xpath": "@value|f:*|h:div"
+          },
+          {
+            "key": "ext-1",
+            "severity": "error",
+            "human": "Must have either extensions or value[x], not both",
+            "expression": "extension.exists() != value.exists()",
+            "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])"
           }
         ]
       },
       {
+        "id": "Extension:anadditionalexamplevalue.id",
         "path": "Extension.id",
         "representation": [
           "xmlAttr"
         ],
         "short": "xml:id (or equivalent in JSON)",
-        "definition": "unique id for the element within a resource (for internal references).",
+        "definition": "unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
         "min": 0,
         "max": "1",
         "base": {
@@ -63,7 +86,7 @@
         },
         "type": [
           {
-            "code": "id"
+            "code": "string"
           }
         ],
         "mapping": [
@@ -74,8 +97,10 @@
         ]
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension",
         "path": "Extension.extension",
         "slicing": {
+          "id": "77",
           "discriminator": [
             "url"
           ],
@@ -98,6 +123,7 @@
         ]
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension:index",
         "path": "Extension.extension",
         "name": "index",
         "short": "Key for this example",
@@ -116,12 +142,13 @@
         ]
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension:index.id",
         "path": "Extension.extension.id",
         "representation": [
           "xmlAttr"
         ],
         "short": "xml:id (or equivalent in JSON)",
-        "definition": "unique id for the element within a resource (for internal references).",
+        "definition": "unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
         "min": 0,
         "max": "1",
         "base": {
@@ -131,7 +158,7 @@
         },
         "type": [
           {
-            "code": "id"
+            "code": "string"
           }
         ],
         "mapping": [
@@ -142,6 +169,7 @@
         ]
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension:index.extension:extension",
         "path": "Extension.extension.extension",
         "name": "extension",
         "short": "Extension",
@@ -160,13 +188,14 @@
         ]
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension:index.url",
         "path": "Extension.extension.url",
         "representation": [
           "xmlAttr"
         ],
         "short": "identifies the meaning of the extension",
         "definition": "Source of the definition for the extension code - a logical name or a URL.",
-        "comments": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #.",
+        "comments": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
         "min": 1,
         "max": "1",
         "base": {
@@ -188,6 +217,7 @@
         ]
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension:index.valueString",
         "path": "Extension.extension.valueString",
         "short": "Value of extension",
         "definition": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
@@ -211,6 +241,7 @@
         ]
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension:exvalue",
         "path": "Extension.extension",
         "name": "exValue",
         "short": "Value of the example",
@@ -229,12 +260,13 @@
         ]
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension:exvalue.id",
         "path": "Extension.extension.id",
         "representation": [
           "xmlAttr"
         ],
         "short": "xml:id (or equivalent in JSON)",
-        "definition": "unique id for the element within a resource (for internal references).",
+        "definition": "unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
         "min": 0,
         "max": "1",
         "base": {
@@ -244,7 +276,7 @@
         },
         "type": [
           {
-            "code": "id"
+            "code": "string"
           }
         ],
         "mapping": [
@@ -255,6 +287,7 @@
         ]
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension:exvalue.extension:extension",
         "path": "Extension.extension.extension",
         "name": "extension",
         "short": "Extension",
@@ -273,13 +306,14 @@
         ]
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension:exvalue.url",
         "path": "Extension.extension.url",
         "representation": [
           "xmlAttr"
         ],
         "short": "identifies the meaning of the extension",
         "definition": "Source of the definition for the extension code - a logical name or a URL.",
-        "comments": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #.",
+        "comments": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
         "min": 1,
         "max": "1",
         "base": {
@@ -301,6 +335,7 @@
         ]
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension:exvalue.value[x]",
         "path": "Extension.extension.value[x]",
         "short": "Value of extension",
         "definition": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
@@ -313,25 +348,13 @@
         },
         "type": [
           {
-            "code": "boolean"
-          },
-          {
-            "code": "integer"
-          },
-          {
-            "code": "decimal"
-          },
-          {
             "code": "base64Binary"
           },
           {
-            "code": "instant"
+            "code": "boolean"
           },
           {
-            "code": "string"
-          },
-          {
-            "code": "uri"
+            "code": "code"
           },
           {
             "code": "date"
@@ -340,25 +363,43 @@
             "code": "dateTime"
           },
           {
-            "code": "time"
-          },
-          {
-            "code": "code"
-          },
-          {
-            "code": "oid"
+            "code": "decimal"
           },
           {
             "code": "id"
           },
           {
-            "code": "unsignedInt"
+            "code": "instant"
+          },
+          {
+            "code": "integer"
+          },
+          {
+            "code": "markdown"
+          },
+          {
+            "code": "oid"
           },
           {
             "code": "positiveInt"
           },
           {
-            "code": "markdown"
+            "code": "string"
+          },
+          {
+            "code": "time"
+          },
+          {
+            "code": "unsignedInt"
+          },
+          {
+            "code": "uri"
+          },
+          {
+            "code": "Address"
+          },
+          {
+            "code": "Age"
           },
           {
             "code": "Annotation"
@@ -367,13 +408,34 @@
             "code": "Attachment"
           },
           {
-            "code": "Identifier"
-          },
-          {
             "code": "CodeableConcept"
           },
           {
             "code": "Coding"
+          },
+          {
+            "code": "ContactPoint"
+          },
+          {
+            "code": "Count"
+          },
+          {
+            "code": "Distance"
+          },
+          {
+            "code": "Duration"
+          },
+          {
+            "code": "HumanName"
+          },
+          {
+            "code": "Identifier"
+          },
+          {
+            "code": "Money"
+          },
+          {
+            "code": "Period"
           },
           {
             "code": "Quantity"
@@ -382,10 +444,10 @@
             "code": "Range"
           },
           {
-            "code": "Period"
+            "code": "Ratio"
           },
           {
-            "code": "Ratio"
+            "code": "Reference"
           },
           {
             "code": "SampledData"
@@ -394,19 +456,7 @@
             "code": "Signature"
           },
           {
-            "code": "HumanName"
-          },
-          {
-            "code": "Address"
-          },
-          {
-            "code": "ContactPoint"
-          },
-          {
             "code": "Timing"
-          },
-          {
-            "code": "Reference"
           },
           {
             "code": "Meta"
@@ -420,13 +470,14 @@
         ]
       },
       {
+        "id": "Extension:anadditionalexamplevalue.url",
         "path": "Extension.url",
         "representation": [
           "xmlAttr"
         ],
         "short": "identifies the meaning of the extension",
         "definition": "Source of the definition for the extension code - a logical name or a URL.",
-        "comments": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #.",
+        "comments": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
         "min": 1,
         "max": "1",
         "base": {
@@ -448,6 +499,7 @@
         ]
       },
       {
+        "id": "Extension:anadditionalexamplevalue.valueString",
         "path": "Extension.valueString",
         "short": "Value of extension",
         "definition": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
@@ -475,18 +527,15 @@
   "differential": {
     "element": [
       {
+        "id": "Extension:anadditionalexamplevalue",
         "path": "Extension",
         "short": "An additional example value",
         "definition": "An additional example value.",
         "min": 0,
-        "max": "*",
-        "type": [
-          {
-            "code": "Extension"
-          }
-        ]
+        "max": "*"
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension:index",
         "path": "Extension.extension",
         "name": "index",
         "short": "Key for this example",
@@ -500,11 +549,13 @@
         ]
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension:index.extension:extension",
         "path": "Extension.extension.extension",
         "name": "extension",
         "max": "0"
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension:index.url",
         "path": "Extension.extension.url",
         "type": [
           {
@@ -514,6 +565,7 @@
         "fixedUri": "index"
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension:index.value[x]",
         "path": "Extension.extension.value[x]",
         "min": 1,
         "type": [
@@ -523,6 +575,7 @@
         ]
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension:exvalue",
         "path": "Extension.extension",
         "name": "exValue",
         "short": "Value of the example",
@@ -536,11 +589,13 @@
         ]
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension:exvalue.extension:extension",
         "path": "Extension.extension.extension",
         "name": "extension",
         "max": "0"
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension:exvalue.url",
         "path": "Extension.extension.url",
         "type": [
           {
@@ -550,29 +605,18 @@
         "fixedUri": "exValue"
       },
       {
+        "id": "Extension:anadditionalexamplevalue.extension:exvalue.value[x]",
         "path": "Extension.extension.value[x]",
         "min": 1,
         "type": [
           {
-            "code": "boolean"
-          },
-          {
-            "code": "integer"
-          },
-          {
-            "code": "decimal"
-          },
-          {
             "code": "base64Binary"
           },
           {
-            "code": "instant"
+            "code": "boolean"
           },
           {
-            "code": "string"
-          },
-          {
-            "code": "uri"
+            "code": "code"
           },
           {
             "code": "date"
@@ -581,25 +625,43 @@
             "code": "dateTime"
           },
           {
-            "code": "time"
-          },
-          {
-            "code": "code"
-          },
-          {
-            "code": "oid"
+            "code": "decimal"
           },
           {
             "code": "id"
           },
           {
-            "code": "unsignedInt"
+            "code": "instant"
+          },
+          {
+            "code": "integer"
+          },
+          {
+            "code": "markdown"
+          },
+          {
+            "code": "oid"
           },
           {
             "code": "positiveInt"
           },
           {
-            "code": "markdown"
+            "code": "string"
+          },
+          {
+            "code": "time"
+          },
+          {
+            "code": "unsignedInt"
+          },
+          {
+            "code": "uri"
+          },
+          {
+            "code": "Address"
+          },
+          {
+            "code": "Age"
           },
           {
             "code": "Annotation"
@@ -608,13 +670,34 @@
             "code": "Attachment"
           },
           {
-            "code": "Identifier"
-          },
-          {
             "code": "CodeableConcept"
           },
           {
             "code": "Coding"
+          },
+          {
+            "code": "ContactPoint"
+          },
+          {
+            "code": "Count"
+          },
+          {
+            "code": "Distance"
+          },
+          {
+            "code": "Duration"
+          },
+          {
+            "code": "HumanName"
+          },
+          {
+            "code": "Identifier"
+          },
+          {
+            "code": "Money"
+          },
+          {
+            "code": "Period"
           },
           {
             "code": "Quantity"
@@ -623,10 +706,10 @@
             "code": "Range"
           },
           {
-            "code": "Period"
+            "code": "Ratio"
           },
           {
-            "code": "Ratio"
+            "code": "Reference"
           },
           {
             "code": "SampledData"
@@ -635,19 +718,7 @@
             "code": "Signature"
           },
           {
-            "code": "HumanName"
-          },
-          {
-            "code": "Address"
-          },
-          {
-            "code": "ContactPoint"
-          },
-          {
             "code": "Timing"
-          },
-          {
-            "code": "Reference"
           },
           {
             "code": "Meta"
@@ -655,6 +726,7 @@
         ]
       },
       {
+        "id": "Extension:anadditionalexamplevalue.url",
         "path": "Extension.url",
         "type": [
           {
@@ -664,6 +736,7 @@
         "fixedUri": "http://hl7.org/fhir/StructureDefinition/structuredefinition-example"
       },
       {
+        "id": "Extension:anadditionalexamplevalue.value[x]",
         "path": "Extension.value[x]",
         "type": [
           {

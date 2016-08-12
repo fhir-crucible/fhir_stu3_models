@@ -78,27 +78,6 @@
 		</ValueSet>
 	</contained>
 	<contained>
-		<CodeSystem>
-			<id value="2179414-permitted-cs"/>
-      <url value="http://example.org/fhir/2179414"/>
-			<status value="active"/>
-      <caseSensitive value="true"/>
-      <content value="complete"/>
-      <concept>
-        <code value="0"/>
-      </concept>
-      <concept>
-        <code value="1"/>
-      </concept>
-      <concept>
-        <code value="2"/>
-      </concept>
-      <concept>
-        <code value="3"/>
-      </concept>
-		</CodeSystem>
-	</contained>
-	<contained>
 		<ValueSet>
 			<!--                 <definition value="Not specified"/>     -->
 			<id value="2179414-permitted"/>
@@ -120,34 +99,38 @@
 			<targetReference>
 				<reference value="#2179414-permitted"/>
 			</targetReference>
-			<element>
-				<code value="C17998"/>
-				<target>
-					<code value="0"/>
-					<equivalence value="equal"/>
-				</target>
-			</element>
-			<element>
-				<code value="C20197"/>
-				<target>
-					<code value="1"/>
-					<equivalence value="equal"/>
-				</target>
-			</element>
-			<element>
-				<code value="C16576"/>
-				<target>
-					<code value="2"/>
-					<equivalence value="equal"/>
-				</target>
-			</element>
-			<element>
-				<code value="C38046"/>
-				<target>
-					<code value="3"/>
-					<equivalence value="equal"/>
-				</target>
-			</element>
+      <group>
+        <source value="http://example.org/fhir/2179414"/>
+        <target value="http://example.org/fhir/2179414"/>
+        <element>
+          <code value="C17998"/>
+          <target>
+            <code value="0"/>
+            <equivalence value="equal"/>
+          </target>
+        </element>
+        <element>
+          <code value="C20197"/>
+          <target>
+            <code value="1"/>
+            <equivalence value="equal"/>
+          </target>
+        </element>
+        <element>
+          <code value="C16576"/>
+          <target>
+            <code value="2"/>
+            <equivalence value="equal"/>
+          </target>
+        </element>
+        <element>
+          <code value="C38046"/>
+          <target>
+            <code value="3"/>
+            <equivalence value="equal"/>
+          </target>
+        </element>
+      </group>
 		</ConceptMap>
 	</contained>
 	<identifier>

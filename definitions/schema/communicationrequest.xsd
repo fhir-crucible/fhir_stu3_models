@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -108,7 +108,37 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="CommunicationRequestStatus-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="proposed">
+        
+      </xs:enumeration>
+      <xs:enumeration value="planned">
+        
+      </xs:enumeration>
+      <xs:enumeration value="requested">
+        
+      </xs:enumeration>
+      <xs:enumeration value="received">
+        
+      </xs:enumeration>
+      <xs:enumeration value="accepted">
+        
+      </xs:enumeration>
+      <xs:enumeration value="in-progress">
+        
+      </xs:enumeration>
+      <xs:enumeration value="completed">
+        
+      </xs:enumeration>
+      <xs:enumeration value="suspended">
+        
+      </xs:enumeration>
+      <xs:enumeration value="rejected">
+        
+      </xs:enumeration>
+      <xs:enumeration value="failed">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="CommunicationRequestStatus">

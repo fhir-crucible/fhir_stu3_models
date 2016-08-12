@@ -1,14 +1,9 @@
 {
   "resourceType": "QuestionnaireResponse",
   "id": "bb",
-  "_id": {
-    "fhir_comments": [
-      "  Please not that in this questionnaire, the questions are mostly unnamed, that is, the questions are not identified using the <name> element. It will therefore\n    be hard to extract useful information in an automated way from this questionnaire. This is, however, quite often the case when modelling existing questionnaires  "
-    ]
-  },
   "text": {
     "status": "generated",
-    "div": "<div>\n      <pre>\n        Cathy Jones, female. Birth weight 3.25 kg at 44.3 cm. \n        Injection of Vitamin K given on 1972-11-30 (first dose) and 1972-12-11 (second dose)\n        Note: Was able to speak Chinese at birth.\n      </pre>\n    </div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <pre>\n        Cathy Jones, female. Birth weight 3.25 kg at 44.3 cm. \n        Injection of Vitamin K given on 1972-11-30 (first dose) and 1972-12-11 (second dose)\n        Note: Was able to speak Chinese at birth.\n      </pre>\n    </div>"
   },
   "status": "completed",
   "subject": {
@@ -20,9 +15,6 @@
   "authored": "2013-02-19T14:15:00+10:00",
   "item": [
     {
-      "fhir_comments": [
-        "  Many groups left out of this example  "
-      ],
       "linkId": "birthDetails",
       "text": "Birth details - To be completed by health professional",
       "item": [

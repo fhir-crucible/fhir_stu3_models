@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -71,13 +71,13 @@
           <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
             
           </xs:element>
           <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="requirements" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="requirements" minOccurs="0" maxOccurs="1" type="markdown">
             
           </xs:element>
           <xs:element name="copyright" minOccurs="0" maxOccurs="1" type="string">
@@ -93,7 +93,7 @@
             <xs:element name="targetUri" type="uri"/>
             <xs:element name="targetReference" type="Reference"/>
           </xs:choice>
-          <xs:element name="element" type="ConceptMap.Element" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="group" type="ConceptMap.Group" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
         </xs:sequence>
@@ -115,17 +115,35 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="ConceptMap.Group">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="source" minOccurs="1" maxOccurs="1" type="uri">
+            
+          </xs:element>
+          <xs:element name="sourceVersion" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="target" minOccurs="0" maxOccurs="1" type="uri">
+            
+          </xs:element>
+          <xs:element name="targetVersion" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="element" type="ConceptMap.Element" minOccurs="1" maxOccurs="unbounded">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="ConceptMap.Element">
     
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="system" minOccurs="0" maxOccurs="1" type="uri">
-            
-          </xs:element>
-          <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
           <xs:element name="code" minOccurs="0" maxOccurs="1" type="code">
             
           </xs:element>
@@ -141,16 +159,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="system" minOccurs="0" maxOccurs="1" type="uri">
-            
-          </xs:element>
-          <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
           <xs:element name="code" minOccurs="0" maxOccurs="1" type="code">
             
           </xs:element>
-          <xs:element name="equivalence" minOccurs="1" maxOccurs="1" type="ConceptMapEquivalence">
+          <xs:element name="equivalence" minOccurs="0" maxOccurs="1" type="ConceptMapEquivalence">
             
           </xs:element>
           <xs:element name="comments" minOccurs="0" maxOccurs="1" type="string">
@@ -171,10 +183,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="element" minOccurs="1" maxOccurs="1" type="uri">
+          <xs:element name="property" minOccurs="1" maxOccurs="1" type="uri">
             
           </xs:element>
-          <xs:element name="system" minOccurs="1" maxOccurs="1" type="uri">
+          <xs:element name="system" minOccurs="0" maxOccurs="1" type="uri">
             
           </xs:element>
           <xs:element name="code" minOccurs="1" maxOccurs="1" type="string">

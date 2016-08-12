@@ -1,12 +1,9 @@
 {
   "resourceType": "ProcessResponse",
-  "fhir_comments": [
-    " \n  <requestOrganizationReference>\n    <reference value=\"Organization/1\"/>\n  </requestOrganizationReference>\n  "
-  ],
   "id": "SR2500",
   "text": {
     "status": "generated",
-    "div": "<div>A human-readable rendering of the ProcessResponse</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the ProcessResponse</div>"
   },
   "identifier": [
     {
@@ -14,6 +11,7 @@
       "value": "881234"
     }
   ],
+  "status": "active",
   "requestReference": {
     "reference": "http://www.BenefitsInc.com/fhir/eligibility/225476332402"
   },

@@ -3,7 +3,7 @@
   "id": "52345",
   "text": {
     "status": "generated",
-    "div": "<div>A human-readable rendering of the EligibilityRequest</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the EligibilityRequest</div>"
   },
   "identifier": [
     {
@@ -11,8 +11,9 @@
       "value": "52345"
     }
   ],
+  "status": "active",
   "created": "2014-08-16",
-  "targetReference": {
+  "insurerReference": {
     "reference": "Organization/2"
   },
   "organizationReference": {

@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -44,16 +44,19 @@
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
-          <xs:element name="action" minOccurs="1" maxOccurs="1" type="ActionList">
+          <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             
           </xs:element>
-          <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="ProcessRequestStatus">
             
           </xs:element>
           <xs:element name="ruleset" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="originalRuleset" minOccurs="0" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="action" minOccurs="1" maxOccurs="1" type="ActionList">
             
           </xs:element>
           <xs:element name="created" minOccurs="0" maxOccurs="1" type="dateTime">
@@ -118,8 +121,44 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:simpleType name="ProcessRequestStatus-list">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="active">
+        
+      </xs:enumeration>
+      <xs:enumeration value="cancelled">
+        
+      </xs:enumeration>
+      <xs:enumeration value="draft">
+        
+      </xs:enumeration>
+      <xs:enumeration value="entered-in-error">
+        
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ProcessRequestStatus">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="ProcessRequestStatus-list" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:simpleType name="ActionList-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="cancel">
+        
+      </xs:enumeration>
+      <xs:enumeration value="poll">
+        
+      </xs:enumeration>
+      <xs:enumeration value="reprocess">
+        
+      </xs:enumeration>
+      <xs:enumeration value="status">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ActionList">

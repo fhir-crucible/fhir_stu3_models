@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -68,7 +68,7 @@
           <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
             
           </xs:element>
           <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
@@ -83,7 +83,7 @@
           <xs:element name="dependency" type="ImplementationGuide.Dependency" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="package" type="ImplementationGuide.Package" minOccurs="1" maxOccurs="unbounded">
+          <xs:element name="package" type="ImplementationGuide.Package" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
           <xs:element name="global" type="ImplementationGuide.Global" minOccurs="0" maxOccurs="unbounded">
@@ -92,7 +92,7 @@
           <xs:element name="binary" minOccurs="0" maxOccurs="unbounded" type="uri">
             
           </xs:element>
-          <xs:element name="page" type="ImplementationGuide.Page" minOccurs="1" maxOccurs="1">
+          <xs:element name="page" type="ImplementationGuide.Page" minOccurs="0" maxOccurs="1">
             
           </xs:element>
         </xs:sequence>
@@ -199,7 +199,7 @@
           <xs:element name="source" minOccurs="1" maxOccurs="1" type="uri">
             
           </xs:element>
-          <xs:element name="name" minOccurs="1" maxOccurs="1" type="string">
+          <xs:element name="title" minOccurs="1" maxOccurs="1" type="string">
             
           </xs:element>
           <xs:element name="kind" minOccurs="1" maxOccurs="1" type="GuidePageKind">
@@ -222,7 +222,13 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="GuideDependencyType-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="reference">
+        
+      </xs:enumeration>
+      <xs:enumeration value="inclusion">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="GuideDependencyType">
@@ -234,7 +240,31 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="GuidePageKind-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="page">
+        
+      </xs:enumeration>
+      <xs:enumeration value="example">
+        
+      </xs:enumeration>
+      <xs:enumeration value="list">
+        
+      </xs:enumeration>
+      <xs:enumeration value="include">
+        
+      </xs:enumeration>
+      <xs:enumeration value="directory">
+        
+      </xs:enumeration>
+      <xs:enumeration value="dictionary">
+        
+      </xs:enumeration>
+      <xs:enumeration value="toc">
+        
+      </xs:enumeration>
+      <xs:enumeration value="resource">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="GuidePageKind">

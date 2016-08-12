@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -62,9 +62,11 @@
           <xs:element name="kind" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="orderedItem" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
+            <xs:element name="orderedItemCodeableConcept" type="CodeableConcept"/>
+            <xs:element name="orderedItemReference" type="Reference"/>
+          </xs:choice>
           <xs:element name="supplier" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
@@ -96,7 +98,19 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="SupplyRequestStatus-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="requested">
+        
+      </xs:enumeration>
+      <xs:enumeration value="completed">
+        
+      </xs:enumeration>
+      <xs:enumeration value="failed">
+        
+      </xs:enumeration>
+      <xs:enumeration value="cancelled">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="SupplyRequestStatus">

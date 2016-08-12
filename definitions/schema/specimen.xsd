@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -65,6 +65,9 @@
           <xs:element name="parent" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
+          <xs:element name="request" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
           <xs:element name="collection" type="Specimen.Collection" minOccurs="0" maxOccurs="1">
             
           </xs:element>
@@ -72,6 +75,9 @@
             
           </xs:element>
           <xs:element name="container" type="Specimen.Container" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
             
           </xs:element>
         </xs:sequence>
@@ -86,15 +92,12 @@
           <xs:element name="collector" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="comment" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1">
             
             <xs:element name="collectedDateTime" type="dateTime"/>
             <xs:element name="collectedPeriod" type="Period"/>
           </xs:choice>
-          <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="SimpleQuantity">
+          <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="Quantity">
             
           </xs:element>
           <xs:element name="method" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -121,6 +124,11 @@
           <xs:element name="additive" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="timeDateTime" type="dateTime"/>
+            <xs:element name="timePeriod" type="Period"/>
+          </xs:choice>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -139,10 +147,10 @@
           <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="capacity" minOccurs="0" maxOccurs="1" type="SimpleQuantity">
+          <xs:element name="capacity" minOccurs="0" maxOccurs="1" type="Quantity">
             
           </xs:element>
-          <xs:element name="specimenQuantity" minOccurs="0" maxOccurs="1" type="SimpleQuantity">
+          <xs:element name="specimenQuantity" minOccurs="0" maxOccurs="1" type="Quantity">
             
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1">
@@ -155,7 +163,19 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="SpecimenStatus-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="available">
+        
+      </xs:enumeration>
+      <xs:enumeration value="unavailable">
+        
+      </xs:enumeration>
+      <xs:enumeration value="unsatisfactory">
+        
+      </xs:enumeration>
+      <xs:enumeration value="entered-in-error">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="SpecimenStatus">

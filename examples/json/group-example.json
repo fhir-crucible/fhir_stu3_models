@@ -3,7 +3,7 @@
   "id": "101",
   "text": {
     "status": "additional",
-    "div": "<div>\n      <p>Herd of 25 horses</p>\n      <p>Gender: mixed</p>\n      <p>Owner: John Smith</p>\n    </div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>Herd of 25 horses</p>\n      <p>Gender: mixed</p>\n      <p>Owner: John Smith</p>\n    </div>"
   },
   "type": "animal",
   "actual": true,

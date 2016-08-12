@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><ClaimResponse xmlns="http://hl7.org/fhir">
-
+ 
  <id value="R3500"/>
 
  <text>
@@ -12,13 +12,15 @@
     <value value="R3500"/>
   </identifier>
 
+  <status value="active"/>
+
   <requestReference>
     <reference value="http://www.BenefitsInc.com/fhir/Claim/15476332402"/>
   </requestReference>
 
   <created value="2014-08-16"/>
 
-<!--
+<!--  
   <OrganizationReference>
     <reference value="Organization/2"/>
   </OrganizationReference>
@@ -32,8 +34,11 @@
     <reference value="Organization/1"/>
   </requestOrganizationReference>
  -->
-  <outcome value="complete"/>
-
+  <outcome>
+    <system value="http://hl7.org/fhir/remittance-outcome"/>
+	<code value="complete"/>
+  </outcome>
+ 
   <disposition value="Claim settled as per contract."/>
 
   <payeeType>
@@ -42,10 +47,10 @@
   </payeeType>
 
  <!--  Adjudication details  -->
-
+ 
  <item>
 
-   <sequenceLinkId value="1"/>
+   <sequenceLinkId value="1"/> 
 
    <adjudication>
      <category>
@@ -66,7 +71,7 @@
 	    <value value="10.00"/>
 		<system value="urn:iso:std:iso:4217"/>
 		<code value="USD"/>
-	 </amount>
+	 </amount>  
    </adjudication>
 
    <adjudication>
@@ -84,17 +89,17 @@
   	    <value value="100.47"/>
 		<system value="urn:iso:std:iso:4217"/>
 		<code value="USD"/>
-	 </amount>
+	 </amount>	
    </adjudication>
-
+   
  </item>
 
  <totalCost>
 	<value value="135.57"/>
 	<system value="urn:iso:std:iso:4217"/>
 	<code value="USD"/>
- </totalCost>
-
+ </totalCost>	
+ 
  <totalBenefit>
 	<value value="100.47"/>
 	<system value="urn:iso:std:iso:4217"/>
@@ -102,18 +107,23 @@
  </totalBenefit>
 
  <!--  Payment details  -->
+ <payment>
+   <type>
+     <system value="http://hl7.org/fhir/ValueSet/ex-paymenttype"/>
+     <code value="complete"/>
+   </type>	
 
- <paymentDate value="2014-08-31"/>
-
- <paymentAmount>
-	<value value="100.47"/>
-	<system value="urn:iso:std:iso:4217"/>
-	<code value="USD"/>
- </paymentAmount>
-
- <paymentRef>
-    <system value="http://www.BenefitsInc.com/fhir/paymentRef"/>
-    <value value="201408-2-1569478"/>
- </paymentRef>
-
+   <date value="2014-08-31"/>
+ 
+   <amount>
+	 <value value="100.47"/>
+	 <system value="urn:iso:std:iso:4217"/>
+	 <code value="USD"/>
+   </amount>	
+ 
+   <identifier>
+     <system value="http://www.BenefitsInc.com/fhir/paymentidentifier"/>
+     <value value="201408-2-1569478"/>
+   </identifier>	
+ </payment>
 </ClaimResponse>

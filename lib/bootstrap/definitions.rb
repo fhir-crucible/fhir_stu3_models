@@ -7,6 +7,7 @@ module FHIR
     @@profiles = nil
     @@extensions = nil
     @@expansions = nil
+    @@valuesets = nil
     @@search_params = nil
 
     # ----------------------------------------------------------------
@@ -177,6 +178,12 @@ module FHIR
         raw = File.open(filename,'r:UTF-8',&:read)
         @@expansions = JSON.parse(raw)['entry'].map{|e|e['resource']}
       end
+      if @@valuesets.nil?
+        # load the valuesets
+        filename = File.join(@@defns,'valuesets','valuesets.json')
+        raw = File.open(filename,'r:UTF-8',&:read)
+        @@valuesets = JSON.parse(raw)['entry'].map{|e|e['resource']}
+      end
     end
 
     # Get codes (Array of Strings) for a given expansion.
@@ -187,9 +194,19 @@ module FHIR
       valueset = @@expansions.select{|x|x['url']==uri}.first
       if !valueset.nil?
         codes = {}
-        keys = valueset['expansion']['contains'].map{|x|x['system']}.uniq
-        keys.each{|x| codes[x]=[]}
-        valueset['expansion']['contains'].each{|x| codes[x['system']] << x['code']}
+        if !valueset['expansion'].nil? && !valueset['expansion']['contains'].nil?
+          keys = valueset['expansion']['contains'].map{|x|x['system']}.uniq
+          keys.each{|x| codes[x]=[]}
+          valueset['expansion']['contains'].each{|x| codes[x['system']] << x['code']}
+        end
+        if !valueset['compose'].nil? && !valueset['compose']['include'].nil?
+          included_systems = valueset['compose']['include'].map{|x|x['system']}.uniq
+          included_systems.each{|x| codes[x]=[] if !codes.keys.include?(x) }
+          systems = @@valuesets.select{|x|x['resourceType']=='CodeSystem' && included_systems.include?(x['url'])}
+          systems.each do |x| 
+            x['concept'].each{|y| codes[x['url']] << y['code']}
+          end
+        end
       end
       codes
     end

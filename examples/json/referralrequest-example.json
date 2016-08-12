@@ -3,7 +3,7 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div>Referral to Dr Dave for Beverly weaver to have grommets inserted in her r) ear</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Referral to Dr Dave for Beverly weaver to have grommets inserted in her r) ear</div>"
   },
   "identifier": [
     {
@@ -14,9 +14,6 @@
   "status": "active",
   "category": "request",
   "type": {
-    "fhir_comments": [
-      "  replace with a code from a recognized coding system "
-    ],
     "coding": [
       {
         "system": "http://orionhealth.com/fhir/apps/referraltypes",
@@ -26,10 +23,6 @@
     ]
   },
   "priority": {
-    "fhir_comments": [
-      "  replace with a code from a recognized coding system ",
-      "  replace with a code from a recognized coding system "
-    ],
     "coding": [
       {
         "system": "http://orionhealth.com/fhir/apps/prioritycodes",

@@ -3,13 +3,10 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div>Patient has very high serum potassium</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Patient has very high serum potassium</div>"
   },
   "identifier": [
     {
-      "fhir_comments": [
-        "  insert contents here  "
-      ],
       "type": {
         "text": "Paging System"
       },
@@ -17,6 +14,7 @@
       "value": "2345678901"
     }
   ],
+  "status": "completed",
   "category": {
     "coding": [
       {
@@ -26,6 +24,10 @@
     ],
     "text": "Alert"
   },
+  "subject": {
+    "reference": "Patient/1"
+  },
+  "sent": "2014-12-12T18:01:10-08:00",
   "sender": {
     "reference": "Device/f001"
   },
@@ -40,16 +42,8 @@
     },
     {
       "contentReference": {
-        "fhir_comments": [
-          " Reference to the lab result  "
-        ],
         "reference": "Observation/643666aa12f"
       }
     }
-  ],
-  "status": "completed",
-  "sent": "2014-12-12T18:01:10-08:00",
-  "subject": {
-    "reference": "Patient/1"
-  }
+  ]
 }

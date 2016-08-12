@@ -3,13 +3,10 @@
   "id": "animal",
   "text": {
     "status": "generated",
-    "div": "<div>\n      \n      <table>\n        \n        <tbody>\n          \n          <tr>\n            \n            <td>Id</td>\n            \n            <td>Kenzi (Dog: Golden Retriever)</td>\n          \n          </tr>\n          \n          <tr>\n            \n            <td>Owner</td>\n            \n            <td>Peter Chalmers, 534 Erewhon, Pleasantville, Vic, 3999</td>\n          \n          </tr>\n          \n          <tr>\n            \n            <td>Contacts</td>\n            \n            <td>Work: (03) 5555 6473</td>\n          \n          </tr>\n          \n          <tr>\n            \n            <td>Id</td>\n            \n            <td>Dog Tag: 1234123 (Maroondah City Council)</td>\n          \n          </tr>\n        \n        </tbody>\n      \n      </table>\n    \n    </div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      \n      <table>\n        \n        <tbody>\n          \n          <tr>\n            \n            <td>Id</td>\n            \n            <td>Kenzi (Dog: Golden Retriever)</td>\n          \n          </tr>\n          \n          <tr>\n            \n            <td>Owner</td>\n            \n            <td>Peter Chalmers, 534 Erewhon, Pleasantville, Vic, 3999</td>\n          \n          </tr>\n          \n          <tr>\n            \n            <td>Contacts</td>\n            \n            <td>Work: (03) 5555 6473</td>\n          \n          </tr>\n          \n          <tr>\n            \n            <td>Id</td>\n            \n            <td>Dog Tag: 1234123 (Maroondah City Council)</td>\n          \n          </tr>\n        \n        </tbody>\n      \n      </table>\n    \n    </div>"
   },
   "identifier": [
     {
-      "fhir_comments": [
-        "   Dog tag, under Maroondah City council   "
-      ],
       "type": {
         "text": "Dog Tag"
       },
@@ -26,9 +23,6 @@
   "active": true,
   "name": [
     {
-      "fhir_comments": [
-        "   Dog's name: Kenzi   "
-      ],
       "use": "usual",
       "given": [
         "Kenzi"

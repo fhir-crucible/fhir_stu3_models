@@ -3,43 +3,41 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div>Chlamydia Screening Common Library</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Chlamydia Screening Common Library</div>"
   },
-  "moduleMetadata": {
-    "identifier": [
+  "identifier": [
+    {
+      "use": "official",
+      "value": "ChalmydiaScreening_Common"
+    }
+  ],
+  "version": "2.0.0",
+  "title": "Chlamydia Screening Common Library",
+  "type": {
+    "coding": [
       {
-        "use": "official",
-        "value": "ChalmydiaScreening_Common"
-      }
-    ],
-    "version": "2.0.0",
-    "title": "Chlamydia Screening Common Library",
-    "type": "library",
-    "status": "draft",
-    "description": "Common Logic for adherence to Chlamydia Screening guidelines",
-    "publicationDate": "2015-07-22",
-    "topic": [
-      {
-        "text": "Chlamydia Screening"
+        "code": "logic-library"
       }
     ]
   },
-  "model": [
+  "status": "draft",
+  "description": "Common Logic for adherence to Chlamydia Screening guidelines",
+  "publicationDate": "2015-07-22",
+  "topic": [
     {
-      "identifier": "QUICK"
+      "text": "Chlamydia Screening"
     }
   ],
-  "valueSet": [
+  "relatedResource": [
     {
-      "name": "Female Administrative Sex",
-      "identifier": "2.16.840.1.113883.3.560.100.2"
+      "type": "depends-on",
+      "resource": {
+        "reference": "Library/library-quick-model-definition"
+      }
     }
   ],
   "dataRequirement": [
     {
-      "fhir_comments": [
-        "  ... other value sets as defined in the library  "
-      ],
       "type": "Condition",
       "codeFilter": [
         {
@@ -49,11 +47,8 @@
       ]
     }
   ],
-  "document": {
-    "fhir_comments": [
-      "  ... other data requirements as defined in the library  "
-    ],
-    "contentType": "application/cql+text",
+  "content": {
+    "contentType": "text/plain",
     "url": "http://cqlrepository.org/ChlamydiaScreening_Common.cql"
   }
 }

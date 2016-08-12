@@ -3,17 +3,21 @@
   "id": "100154",
   "text": {
     "status": "generated",
-    "div": "<div>This example assumes a national health care scheme where patients, providers and organizations have known business identifiers.</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">This example assumes a national health care scheme where patients, providers and organizations have known business identifiers.</div>"
   },
-  "type": "oral",
   "identifier": [
     {
       "system": "http://happyvalley.com/claim",
       "value": "12347"
     }
   ],
+  "status": "active",
+  "type": {
+    "system": "http://hl7.org/fhir/ex-claimtype",
+    "code": "oral"
+  },
   "created": "2014-08-16",
-  "targetIdentifier": {
+  "insurerIdentifier": {
     "system": "http://www.jurisdiction.com/insurers",
     "value": "123456"
   },
@@ -55,13 +59,14 @@
   "item": [
     {
       "sequence": 1,
-      "type": {
-        "code": "service"
-      },
-      "providerIdentifier": {
-        "system": "http://www.jurisdiction.com/providerId",
-        "value": "MD98765"
-      },
+      "careTeam": [
+        {
+          "providerIdentifier": {
+            "system": "http://www.jurisdiction.com/providerId",
+            "value": "MD98765"
+          }
+        }
+      ],
       "service": {
         "code": "1200"
       },

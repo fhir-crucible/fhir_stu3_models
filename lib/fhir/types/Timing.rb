@@ -6,11 +6,11 @@ module FHIR
 
     SEARCH_PARAMS = []
     METADATA = {
-      'id' => {'type'=>'id', 'path'=>'Timing.id', 'min'=>0, 'max'=>1},
+      'id' => {'type'=>'string', 'path'=>'Timing.id', 'min'=>0, 'max'=>1},
       'extension' => {'type'=>'Extension', 'path'=>'Timing.extension', 'min'=>0, 'max'=>Float::INFINITY},
       'event' => {'type'=>'dateTime', 'path'=>'Timing.event', 'min'=>0, 'max'=>Float::INFINITY},
       'repeat' => {'type'=>'Timing::Repeat', 'path'=>'Timing.repeat', 'min'=>0, 'max'=>1},
-      'code' => {'valid_codes'=>{'http://hl7.org/fhir/timing-abbreviation'=>['QD', 'QOD', 'Q4H', 'Q6H'], 'http://hl7.org/fhir/v3/GTSAbbreviation'=>['BID', 'TID', 'QID', 'AM', 'PM']}, 'type'=>'CodeableConcept', 'path'=>'Timing.code', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'preferred', 'uri'=>'http://hl7.org/fhir/ValueSet/timing-abbreviation'}}
+      'code' => {'valid_codes'=>{'http://hl7.org/fhir/v3/GTSAbbreviation'=>['BID', 'TID', 'QID', 'AM', 'PM', 'QD', 'QOD', 'Q4H', 'Q6H']}, 'type'=>'CodeableConcept', 'path'=>'Timing.code', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'preferred', 'uri'=>'http://hl7.org/fhir/ValueSet/timing-abbreviation'}}
     }
 
     class Repeat < FHIR::Model
@@ -19,12 +19,12 @@ module FHIR
       include FHIR::Xml
 
       MULTIPLE_TYPES = {
-        'bounds' => ['Quantity', 'Range', 'Period']
+        'bounds' => ['Duration', 'Range', 'Period']
       }
       METADATA = {
-        'id' => {'type'=>'id', 'path'=>'Repeat.id', 'min'=>0, 'max'=>1},
+        'id' => {'type'=>'string', 'path'=>'Repeat.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Repeat.extension', 'min'=>0, 'max'=>Float::INFINITY},
-        'boundsQuantity' => {'type'=>'Quantity', 'path'=>'Repeat.bounds[x]', 'min'=>0, 'max'=>1},
+        'boundsDuration' => {'type'=>'Duration', 'path'=>'Repeat.bounds[x]', 'min'=>0, 'max'=>1},
         'boundsRange' => {'type'=>'Range', 'path'=>'Repeat.bounds[x]', 'min'=>0, 'max'=>1},
         'boundsPeriod' => {'type'=>'Period', 'path'=>'Repeat.bounds[x]', 'min'=>0, 'max'=>1},
         'count' => {'type'=>'integer', 'path'=>'Repeat.count', 'min'=>0, 'max'=>1},
@@ -41,9 +41,9 @@ module FHIR
         'offset' => {'type'=>'unsignedInt', 'path'=>'Repeat.offset', 'min'=>0, 'max'=>1}
       }
 
-      attr_accessor :id             # 0-1 id
+      attr_accessor :id             # 0-1 string
       attr_accessor :extension      # 0-* [ Extension ]
-      attr_accessor :boundsQuantity # 0-1 Quantity
+      attr_accessor :boundsDuration # 0-1 Duration
       attr_accessor :boundsRange    # 0-1 Range
       attr_accessor :boundsPeriod   # 0-1 Period
       attr_accessor :count          # 0-1 integer
@@ -60,7 +60,7 @@ module FHIR
       attr_accessor :offset         # 0-1 unsignedInt
     end
 
-    attr_accessor :id        # 0-1 id
+    attr_accessor :id        # 0-1 string
     attr_accessor :extension # 0-* [ Extension ]
     attr_accessor :event     # 0-* [ dateTime ]
     attr_accessor :repeat    # 0-1 Timing::Repeat

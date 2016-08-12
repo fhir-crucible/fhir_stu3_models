@@ -4,24 +4,29 @@
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">Patient has very high serum potassium</div>
   </text>
-  
-  <!--  insert contents here  -->
-    <identifier>
-		<type><text value="Paging System"/></type>
-		<system value="urn:oid:1.3.4.5.6.7"/>
-		<value value="2345678901"/>
+  <identifier>
+    <type>
+      <text value="Paging System"/>
+    </type>
+    <system value="urn:oid:1.3.4.5.6.7"/>
+    <value value="2345678901"/>
   </identifier>
-   <category>
-      <coding>
-        <system value="http://acme.org/messagetypes"/>
-        <code value="Alert"/>
-      </coding>
-      <text value="Alert"/>
-   </category>
-   <sender>
-     <reference value="Device/f001"/>
-   </sender>
-   <recipient>
+  <status value="completed"/>
+  <category>
+    <coding>
+      <system value="http://acme.org/messagetypes"/>
+      <code value="Alert"/>
+    </coding>
+    <text value="Alert"/>
+  </category>
+  <subject>
+    <reference value="Patient/1"/>
+  </subject>
+  <sent value="2014-12-12T18:01:10-08:00"/>
+  <sender>
+    <reference value="Device/f001"/>
+  </sender>
+  <recipient>
     <reference value="Practitioner/21"/>
   </recipient>
   <payload>
@@ -33,9 +38,4 @@
       <reference value="Observation/643666aa12f"/>
     </contentReference>
   </payload>
-  <status value="completed"/>
-  <sent value="2014-12-12T18:01:10-08:00"/>
-  <subject>
-    <reference value="Patient/1"/>
-  </subject>
 </Communication>

@@ -3,7 +3,7 @@
   "id": "77654",
   "text": {
     "status": "generated",
-    "div": "<div>A human-readable rendering of the PaymentNotice</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the PaymentNotice</div>"
   },
   "identifier": [
     {
@@ -11,6 +11,7 @@
       "value": "776543"
     }
   ],
+  "status": "active",
   "created": "2014-08-16",
   "organizationReference": {
     "reference": "Organization/1"

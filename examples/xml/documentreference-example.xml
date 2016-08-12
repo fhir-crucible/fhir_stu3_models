@@ -9,17 +9,17 @@
 				<family value="Smitty"/>
 				<given value="Gerald"/>
 			</name>
-			<practitionerRole>
+			<role>
 				<organization>
 					<display value="Cleveland Clinic"/>
 				</organization>
-				<role>
+				<code>
 					<text value="Attending"/>
-				</role>
+				</code>
 				<specialty>
 					<text value="Orthopedic"/>
 				</specialty>
-			</practitionerRole>
+			</role>
 		</Practitioner>
 	</contained>
 	<masterIdentifier>

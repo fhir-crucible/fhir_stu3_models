@@ -3,7 +3,7 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div>\n      Burgers UMC, South Wing, second floor Physiotherapy Schedule\n    </div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      Burgers UMC, South Wing, second floor Physiotherapy Schedule\n    </div>"
   },
   "identifier": [
     {
@@ -12,6 +12,7 @@
       "value": "45"
     }
   ],
+  "active": true,
   "serviceCategory": {
     "coding": [
       {

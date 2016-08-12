@@ -6,7 +6,7 @@
   },
   "text": {
     "status": "generated",
-    "div": "<div>\n      <p>Henry Levin the 7th</p>\n      <p>MRN: 123456. Male, 24-Sept 1932</p>\n    </div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>Henry Levin the 7th</p>\n      <p>MRN: 123456. Male, 24-Sept 1932</p>\n    </div>"
   },
   "extension": [
     {
@@ -45,10 +45,14 @@
   ],
   "gender": "male",
   "birthDate": "1932-09-24",
-  "careProvider": [
+  "generalPractitioner": [
     {
-      "reference": "Organization/2",
-      "display": "Good Health Clinic"
+      "reference": "Practitioner/example",
+      "display": "Dr Adam Careful"
     }
-  ]
+  ],
+  "managingOrganization": {
+    "reference": "Organization/2",
+    "display": "Good Health Clinic"
+  }
 }

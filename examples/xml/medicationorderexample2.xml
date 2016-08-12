@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><MedicationOrder xmlns="http://hl7.org/fhir">
 	<id value="medrx002"/>
-	<text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: medrx002</p><p><b>identifier</b>: 12345 (OFFICIAL)</p><p><b>status</b>: active</p><p><b>medication</b>: <a>prescribed medication</a></p><p><b>patient</b>: <a>Eve Everywoman</a></p><p><b>encounter</b>: <a>encounter who leads to this prescription</a></p><p><b>dateWritten</b>: Mar 1, 2015</p><p><b>prescriber</b>: <a>Patricia Primary</a></p><p><b>reasonCode</b>: Osteoporosis <span>(Details : {SNOMED CT code &#39;64859006&#39; = &#39;Osteoporosis (disorder)&#39;, given as &#39;Osteoporosis&#39;})</span></p><h3>DosageInstructions</h3><table><tr><td>-</td><td><b>Text</b></td></tr><tr><td>*</td><td>Take one tablet daily as directed</td></tr></table></div></text><identifier>
+	<text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: medrx002</p><p><b>identifier</b>: 12345 (OFFICIAL)</p><p><b>status</b>: active</p><p><b>medication</b>: <a>prescribed medication</a></p><p><b>patient</b>: <a>Donald Duck</a></p><p><b>encounter</b>: <a>encounter that leads to this prescription</a></p><p><b>dateWritten</b>: Mar 1, 2015</p><p><b>prescriber</b>: <a>Patricia Primary</a></p><p><b>reasonCode</b>: Essential hypertension (disorder) <span>(Details : {SNOMED CT code &#39;59621000&#39; = &#39;Essential hypertension (disorder)&#39;, given as &#39;Essential hypertension (disorder)&#39;})</span></p><h3>DosageInstructions</h3><table><tr><td>-</td><td><b>Text</b></td></tr><tr><td>*</td><td>Take one tablet daily as directed</td></tr></table></div></text><identifier>
 		<use value="official"/>
 		<system value="http://www.bmc.nl/portal/prescriptions"/>
 		<value value="12345"/>
@@ -8,18 +8,18 @@
 	<status value="active"/>
 	<medicationReference>
 		<!--   Linked to a RESOURCE Medication   -->
-		<reference value="Medication/MedicationExample5"/>
+		<reference value="Medication/med0316"/>
 		<display value="prescribed medication"/>
 	</medicationReference>
 	<patient>
 		<!--   Linked to the resource patient who needs the medication   -->
-		<reference value="Patient/f001"/>
-		<display value="Eve Everywoman"/>
+		<reference value="Patient/pat1"/>
+		<display value="Donald Duck"/>   
 	</patient>
 	<encounter>
 		<!--   Linked to a resource Encounter between patient and practitioner  -->
-		<reference value="Encounter/f002"/>
-		<display value="encounter who leads to this prescription"/>
+		<reference value="Encounter/f001"/>
+		<display value="encounter that leads to this prescription"/>
 	</encounter>
 	<dateWritten value="2015-03-01"/>
 	<prescriber>
@@ -30,8 +30,8 @@
 	<reasonCode>
 		<coding>
 			<system value="http://snomed.info/sct"/>
-			<code value="64859006"/>
-			<display value="Osteoporosis"/>
+			<code value="59621000"/>
+			<display value="Essential hypertension (disorder)"/>
 		</coding>
 	</reasonCode>
 	<dosageInstruction>

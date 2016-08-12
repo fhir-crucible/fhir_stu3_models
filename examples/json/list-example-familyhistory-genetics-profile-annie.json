@@ -3,7 +3,7 @@
   "id": "prognosis",
   "text": {
     "status": "generated",
-    "div": "<div>\n      <img src=\"#image\" alt=\"Family history diagram for Annie Proband\"/>\n    </div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <img src=\"#image\" alt=\"Family history diagram for Annie Proband\"/>\n    </div>"
   },
   "contained": [
     {
@@ -17,6 +17,7 @@
       "id": "2",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -36,10 +37,10 @@
                 "reference": "#4"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         },
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -59,8 +60,7 @@
                 "reference": "#5"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -78,7 +78,7 @@
           }
         ]
       },
-      "deceasedQuantity": {
+      "deceasedAge": {
         "value": 50,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -95,7 +95,7 @@
               }
             ]
           },
-          "onsetQuantity": {
+          "onsetAge": {
             "value": 45,
             "unit": "years",
             "system": "http://unitsofmeasure.org",
@@ -109,6 +109,7 @@
       "id": "3",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -128,10 +129,10 @@
                 "reference": "#6"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         },
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -151,8 +152,7 @@
                 "reference": "#7"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -170,7 +170,7 @@
           }
         ]
       },
-      "ageQuantity": {
+      "ageAge": {
         "value": 72,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -196,7 +196,7 @@
           }
         ]
       },
-      "deceasedQuantity": {
+      "deceasedAge": {
         "value": 77,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -213,7 +213,7 @@
               }
             ]
           },
-          "onsetQuantity": {
+          "onsetAge": {
             "value": 55,
             "unit": "years",
             "system": "http://unitsofmeasure.org",
@@ -240,7 +240,7 @@
           }
         ]
       },
-      "deceasedQuantity": {
+      "deceasedAge": {
         "value": 76,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -265,7 +265,7 @@
           }
         ]
       },
-      "deceasedQuantity": {
+      "deceasedAge": {
         "value": 74,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -290,7 +290,7 @@
           }
         ]
       },
-      "deceasedQuantity": {
+      "deceasedAge": {
         "value": 73,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -307,7 +307,7 @@
               }
             ]
           },
-          "onsetQuantity": {
+          "onsetAge": {
             "value": 72,
             "unit": "years",
             "system": "http://unitsofmeasure.org",
@@ -321,6 +321,7 @@
       "id": "8",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -340,10 +341,10 @@
                 "reference": "#2"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         },
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -363,8 +364,7 @@
                 "reference": "#3"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -382,7 +382,7 @@
           }
         ]
       },
-      "ageQuantity": {
+      "ageAge": {
         "value": 32,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -400,7 +400,7 @@
               }
             ]
           },
-          "onsetQuantity": {
+          "onsetAge": {
             "value": 32,
             "unit": "years",
             "system": "http://unitsofmeasure.org",
@@ -414,6 +414,7 @@
       "id": "9",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -433,10 +434,10 @@
                 "reference": "#2"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         },
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -456,8 +457,7 @@
                 "reference": "#3"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -475,10 +475,7 @@
           }
         ]
       },
-      "ageQuantity": {
-        "fhir_comments": [
-          " Age was 31 in source, but 36 in diagram  "
-        ],
+      "ageAge": {
         "value": 36,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -496,7 +493,7 @@
               }
             ]
           },
-          "onsetQuantity": {
+          "onsetAge": {
             "value": 35,
             "unit": "years",
             "system": "http://unitsofmeasure.org",
@@ -522,7 +519,7 @@
           }
         ]
       },
-      "ageQuantity": {
+      "ageAge": {
         "value": 30,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -534,6 +531,7 @@
       "id": "11",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -553,10 +551,10 @@
                 "reference": "#9"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         },
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -576,8 +574,7 @@
                 "reference": "#10"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -595,7 +592,7 @@
           }
         ]
       },
-      "ageQuantity": {
+      "ageAge": {
         "value": 16,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -608,6 +605,7 @@
       "id": "12",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -627,10 +625,10 @@
                 "reference": "#9"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         },
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -650,8 +648,7 @@
                 "reference": "#10"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -669,7 +666,7 @@
           }
         ]
       },
-      "ageQuantity": {
+      "ageAge": {
         "value": 15,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -682,11 +679,6 @@
             "coding": [
               {
                 "code": "657",
-                "_code": {
-                  "fhir_comments": [
-                    " No system or OID for NCBI Entrez yet  "
-                  ]
-                },
                 "display": "BRCA2"
               },
               {
@@ -717,7 +709,7 @@
           }
         ]
       },
-      "ageQuantity": {
+      "ageAge": {
         "value": 35,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -729,6 +721,7 @@
       "id": "14",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -748,10 +741,10 @@
                 "reference": "#1"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         },
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -771,8 +764,7 @@
                 "reference": "#13"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -789,7 +781,7 @@
           }
         ]
       },
-      "ageQuantity": {
+      "ageAge": {
         "value": 17,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -801,6 +793,7 @@
       "id": "15",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -820,10 +813,10 @@
                 "reference": "#6"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         },
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -843,8 +836,7 @@
                 "reference": "#7"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -861,7 +853,7 @@
           }
         ]
       },
-      "ageQuantity": {
+      "ageAge": {
         "value": 56,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -873,6 +865,7 @@
       "id": "16",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -892,10 +885,10 @@
                 "reference": "#6"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         },
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -915,8 +908,7 @@
                 "reference": "#7"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -933,7 +925,7 @@
           }
         ]
       },
-      "ageQuantity": {
+      "ageAge": {
         "value": 57,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -958,6 +950,7 @@
       "id": "17",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -977,10 +970,10 @@
                 "reference": "#4"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         },
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -1000,8 +993,7 @@
                 "reference": "#5"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -1018,7 +1010,7 @@
           }
         ]
       },
-      "ageQuantity": {
+      "ageAge": {
         "value": 60,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -1030,6 +1022,7 @@
       "id": "18",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -1049,10 +1042,10 @@
                 "reference": "#4"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         },
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -1072,8 +1065,7 @@
                 "reference": "#5"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -1090,7 +1082,7 @@
           }
         ]
       },
-      "ageQuantity": {
+      "ageAge": {
         "value": 57,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -1120,6 +1112,7 @@
       "id": "20",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -1139,10 +1132,10 @@
                 "reference": "#18"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         },
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -1162,8 +1155,7 @@
                 "reference": "#19"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -1181,7 +1173,7 @@
         ]
       },
       "gender": "female",
-      "ageQuantity": {
+      "ageAge": {
         "value": 30,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -1198,7 +1190,7 @@
               }
             ]
           },
-          "onsetQuantity": {
+          "onsetAge": {
             "value": 30,
             "unit": "years",
             "system": "http://unitsofmeasure.org",
@@ -1212,6 +1204,7 @@
       "id": "21",
       "extension": [
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -1231,10 +1224,10 @@
                 "reference": "#18"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         },
         {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
               "url": "parent.type",
@@ -1254,8 +1247,7 @@
                 "reference": "#19"
               }
             }
-          ],
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
+          ]
         }
       ],
       "patient": {
@@ -1273,7 +1265,7 @@
         ]
       },
       "gender": "female",
-      "ageQuantity": {
+      "ageAge": {
         "value": 31,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -1293,13 +1285,15 @@
     ]
   },
   "subject": {
-    "fhir_comments": [
-      " Age said 33, but diagram shows 42, so adjusted DOB  "
-    ],
     "reference": "Patient/proband",
     "display": "Annie Proband, female, born 1966"
   },
   "entry": [
+    {
+      "item": {
+        "reference": "#image"
+      }
+    },
     {
       "item": {
         "reference": "#2"

@@ -3,7 +3,7 @@
   "id": "ER2500",
   "text": {
     "status": "generated",
-    "div": "<div>A human-readable rendering of the EnrollmentResponse</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the EnrollmentResponse</div>"
   },
   "identifier": [
     {
@@ -11,16 +11,14 @@
       "value": "781234"
     }
   ],
-  "request": {
+  "status": "active",
+  "requestReference": {
     "reference": "http://www.BenefitsInc.com/fhir/EnrollmentRequest/225476332402"
   },
   "outcome": "complete",
   "disposition": "Dependant added to policy.",
   "created": "2014-08-16",
-  "organization": {
+  "organizationReference": {
     "reference": "Organization/2"
-  },
-  "requestOrganization": {
-    "reference": "Organization/1"
   }
 }

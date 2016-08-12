@@ -6,18 +6,23 @@
     <div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Oral Health Claim</div>
   </text>
 
-  <type value="oral"/>
-  
   <identifier>
     <system value="http://happyvalley.com/claim"/>
     <value value="12355"/>
   </identifier>
  
+  <status value="active"/>
+
+  <type>
+    <system value="http://hl7.org/fhir/ex-claimtype"/>
+    <code value="oral"/>
+  </type>
+  
   <created value="2015-03-16"/>
 
-  <targetReference>
+  <insurerReference>
     <reference value="Organization/2"/>
-  </targetReference>
+  </insurerReference>
 
   <organizationReference>
     <reference value="Organization/1"/>
@@ -61,13 +66,15 @@
   
  <item>
    <sequence value="1"/>
-   <type>
+   <!-- type>
      <system value="http://hl7.org/fhir/v3/ActCode"/>
-     <code value="FRAMEING"/> <!--  was group changed by GG to be valid  -->
-   </type>
-   <providerReference>
-     <reference value="Practitioner/example"/>
-   </providerReference>
+     <code value="FRAMEING"/>
+   </type -->
+   <careTeam>
+     <providerReference>
+       <reference value="Practitioner/example"/>
+     </providerReference>
+   </careTeam>
    <diagnosisLinkId value="1"/>
    <service>
      <system value="http://hl7.org/fhir/oralservicecodes"/>
@@ -86,10 +93,10 @@
    </net> 
    <detail>
      <sequence value="1"/> <!--  Exam Fee  -->
-     <type>
+     <!-- type>
        <system value="http://hl7.org/fhir/v3/ActCode"/>
-       <code value="CSINV"/> <!--  was service, changed by GG to be valid  -->
-     </type>
+       <code value="CSINV"/> 
+     </type -->
      <service>
        <system value="http://hl7.org/fhir/oralservicecodes"/>
        <code value="ORTHOEXAM"/>
@@ -107,10 +114,10 @@
    </detail>
    <detail>
      <sequence value="2"/> <!--  Diagnostic Fee  -->
-     <type>
+     <!-- type>
        <system value="http://hl7.org/fhir/v3/ActCode"/>
-       <code value="CSINV"/> <!--  was service, changed by GG to be valid  -->
-     </type>
+       <code value="CSINV"/> 
+     </type -->
      <service>
        <system value="http://hl7.org/fhir/oralservicecodes"/>
        <code value="ORTHODIAG"/>
@@ -128,10 +135,10 @@
    </detail>
    <detail>
      <sequence value="3"/> <!--  Initial Payment  -->
-     <type>
+     <!-- type>
        <system value="http://hl7.org/fhir/v3/ActCode"/>
-       <code value="CSINV"/> <!--  was service, changed by GG to be valid  -->
-     </type>
+       <code value="CSINV"/> 
+     </type -->
      <service>
        <system value="http://hl7.org/fhir/oralservicecodes"/>
        <code value="ORTHOINITIAL"/>
@@ -149,10 +156,10 @@
    </detail>
    <detail>
      <sequence value="4"/> <!--  Duration in Months  -->
-     <type>
+     <!-- type>
        <system value="http://hl7.org/fhir/v3/ActCode"/>
-       <code value="CSINV"/> <!--  was service, changed by GG to be valid  -->
-     </type>
+       <code value="CSINV"/> 
+     </type -->
      <service>
        <system value="http://hl7.org/fhir/oralservicecodes"/>
        <code value="ORTHOMONTHS"/>
@@ -163,10 +170,10 @@
    </detail>
    <detail>
      <sequence value="5"/> <!--  Periodic Payments  -->
-     <type>
+     <!-- type>
        <system value="http://hl7.org/fhir/v3/ActCode"/>
-       <code value="CSINV"/> <!--  was service, changed by GG to be valid  -->
-     </type>
+       <code value="CSINV"/> 
+     </type -->
      <service>
        <system value="http://hl7.org/fhir/oralservicecodes"/>
        <code value="ORTHOPERIODIC"/>
@@ -189,12 +196,14 @@
 
   <item>
    <sequence value="2"/>
-   <type>
+   <!-- type>
      <code value="service"/>
-   </type>
-   <providerReference>
-     <reference value="Practitioner/example"/>
-   </providerReference>
+   </type -->
+   <careTeam>
+     <providerReference>
+       <reference value="Practitioner/example"/>
+     </providerReference>
+   </careTeam>
    <service>
      <system value="http://hl7.org/fhir/oralservicecodes"/>
      <code value="21211"/>
@@ -222,12 +231,14 @@
 
   <item>
    <sequence value="3"/>
-   <type>
+   <!-- type>
      <code value="group"/>
-   </type>
-   <providerReference>
-     <reference value="Practitioner/example"/>
-   </providerReference>
+   </type -->
+   <careTeam>
+     <providerReference>
+       <reference value="Practitioner/example"/>
+     </providerReference>
+   </careTeam>
    <service>
      <system value="http://hl7.org/fhir/oralservicecodes"/>
      <code value="27211"/>
@@ -249,9 +260,9 @@
    </bodySite>
    <detail>
      <sequence value="1"/>
-     <type>
+     <!-- type>
        <code value="service"/>
-     </type>
+     </type -->
      <service>
        <system value="http://hl7.org/fhir/oralservicecodes"/>
        <code value="27211"/>
@@ -269,9 +280,9 @@
    </detail>
    <detail>
      <sequence value="2"/>
-     <type>
+     <!-- type>
        <code value="service"/>
-     </type>
+     </type -->
      <service>
        <system value="http://hl7.org/fhir/oralservicecodes"/>
        <code value="lab"/>

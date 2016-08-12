@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -71,13 +71,13 @@
           <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
             
           </xs:element>
           <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="requirements" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="requirements" minOccurs="0" maxOccurs="1" type="markdown">
             
           </xs:element>
           <xs:element name="copyright" minOccurs="0" maxOccurs="1" type="string">
@@ -317,6 +317,9 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
+          <xs:element name="ruleId" minOccurs="1" maxOccurs="1" type="id">
+            
+          </xs:element>
           <xs:element name="param" type="TestScript.Param1" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
@@ -344,9 +347,6 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="metadata" type="TestScript.Metadata" minOccurs="0" maxOccurs="1">
-            
-          </xs:element>
           <xs:element name="action" type="TestScript.Action" minOccurs="1" maxOccurs="unbounded">
             
           </xs:element>
@@ -476,6 +476,9 @@
           <xs:element name="path" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
+          <xs:element name="requestURL" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
           <xs:element name="resource" minOccurs="0" maxOccurs="1" type="code">
             
           </xs:element>
@@ -512,6 +515,9 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
+          <xs:element name="ruleId" minOccurs="1" maxOccurs="1" type="id">
+            
+          </xs:element>
           <xs:element name="param" type="TestScript.Param2" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
@@ -539,7 +545,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="rule" type="TestScript.Rule3" minOccurs="1" maxOccurs="unbounded">
+          <xs:element name="rulesetId" minOccurs="1" maxOccurs="1" type="id">
+            
+          </xs:element>
+          <xs:element name="rule" type="TestScript.Rule3" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
         </xs:sequence>
@@ -551,6 +560,9 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
+          <xs:element name="ruleId" minOccurs="1" maxOccurs="1" type="id">
+            
+          </xs:element>
           <xs:element name="param" type="TestScript.Param3" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
@@ -582,9 +594,6 @@
             
           </xs:element>
           <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-          <xs:element name="metadata" type="TestScript.Metadata" minOccurs="0" maxOccurs="1">
             
           </xs:element>
           <xs:element name="action" type="TestScript.Action1" minOccurs="1" maxOccurs="unbounded">
@@ -634,7 +643,19 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="ContentType-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="xml">
+        
+      </xs:enumeration>
+      <xs:enumeration value="json">
+        
+      </xs:enumeration>
+      <xs:enumeration value="ttl">
+        
+      </xs:enumeration>
+      <xs:enumeration value="none">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ContentType">
@@ -646,7 +667,13 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="AssertionDirectionType-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="response">
+        
+      </xs:enumeration>
+      <xs:enumeration value="request">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="AssertionDirectionType">
@@ -658,7 +685,37 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="AssertionOperatorType-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="equals">
+        
+      </xs:enumeration>
+      <xs:enumeration value="notEquals">
+        
+      </xs:enumeration>
+      <xs:enumeration value="in">
+        
+      </xs:enumeration>
+      <xs:enumeration value="notIn">
+        
+      </xs:enumeration>
+      <xs:enumeration value="greaterThan">
+        
+      </xs:enumeration>
+      <xs:enumeration value="lessThan">
+        
+      </xs:enumeration>
+      <xs:enumeration value="empty">
+        
+      </xs:enumeration>
+      <xs:enumeration value="notEmpty">
+        
+      </xs:enumeration>
+      <xs:enumeration value="contains">
+        
+      </xs:enumeration>
+      <xs:enumeration value="notContains">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="AssertionOperatorType">
@@ -670,7 +727,43 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="AssertionResponseTypes-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="okay">
+        
+      </xs:enumeration>
+      <xs:enumeration value="created">
+        
+      </xs:enumeration>
+      <xs:enumeration value="noContent">
+        
+      </xs:enumeration>
+      <xs:enumeration value="notModified">
+        
+      </xs:enumeration>
+      <xs:enumeration value="bad">
+        
+      </xs:enumeration>
+      <xs:enumeration value="forbidden">
+        
+      </xs:enumeration>
+      <xs:enumeration value="notFound">
+        
+      </xs:enumeration>
+      <xs:enumeration value="methodNotAllowed">
+        
+      </xs:enumeration>
+      <xs:enumeration value="conflict">
+        
+      </xs:enumeration>
+      <xs:enumeration value="gone">
+        
+      </xs:enumeration>
+      <xs:enumeration value="preconditionFailed">
+        
+      </xs:enumeration>
+      <xs:enumeration value="unprocessable">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="AssertionResponseTypes">

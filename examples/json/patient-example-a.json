@@ -3,7 +3,7 @@
   "id": "pat1",
   "text": {
     "status": "generated",
-    "div": "<div>\n      \n      <p>Patient Donald DUCK @ Acme Healthcare, Inc. MR = 654321</p>\n    \n    </div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      \n      <p>Patient Donald DUCK @ Acme Healthcare, Inc. MR = 654321</p>\n    \n    </div>"
   },
   "identifier": [
     {

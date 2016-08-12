@@ -3,7 +3,7 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div>Large Dog warning for Peter Patient</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Large Dog warning for Peter Patient</div>"
   },
   "category": {
     "coding": [

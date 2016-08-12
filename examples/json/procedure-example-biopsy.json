@@ -3,7 +3,7 @@
   "id": "biopsy",
   "text": {
     "status": "generated",
-    "div": "<div>Biopsy of suspected melanoma L) arm</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Biopsy of suspected melanoma L) arm</div>"
   },
   "subject": {
     "reference": "Patient/example"
@@ -31,9 +31,11 @@
       "text": "Left forearm"
     }
   ],
-  "reasonCodeableConcept": {
-    "text": "Dark lesion l) forearm. getting darker last 3 months."
-  },
+  "reasonCode": [
+    {
+      "text": "Dark lesion l) forearm. getting darker last 3 months."
+    }
+  ],
   "performer": [
     {
       "actor": {

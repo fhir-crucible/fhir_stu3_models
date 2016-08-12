@@ -3,7 +3,7 @@
   "id": "example-id",
   "text": {
     "status": "generated",
-    "div": "<div>\n      <p>\n        <b>Australian IHI Number</b>\n      </p>\n      \n      <p> oid: 1.2.36.1.2001.1003.0</p>\n      \n      <p> uri: http://ns.electronichealth.net.au/id/hi/ihi/1.0</p>\n    \n    </div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>\n        <b>Australian IHI Number</b>\n      </p>\n      \n      <p> oid: 1.2.36.1.2001.1003.0</p>\n      \n      <p> uri: http://ns.electronichealth.net.au/id/hi/ihi/1.0</p>\n    \n    </div>"
   },
   "name": "Austalian Healthcare Identifier - Individual",
   "status": "active",
@@ -47,7 +47,8 @@
   "uniqueId": [
     {
       "type": "oid",
-      "value": "1.2.36.1.2001.1003.0"
+      "value": "1.2.36.1.2001.1003.0",
+      "comment": "This value is used in Australian CDA documents"
     },
     {
       "type": "uri",

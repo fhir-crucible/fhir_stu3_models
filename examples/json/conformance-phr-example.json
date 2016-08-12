@@ -3,7 +3,7 @@
   "id": "phr",
   "text": {
     "status": "generated",
-    "div": "<div>\n     \n      <p>Prototype Conformance Statement for September 2013 Connectathon</p>\n     \n      <p>The server offers read and search support on the following resource types:</p>\n     \n      <ul>\n      \n        <li>Patient</li>\n      \n        <li>DocumentReference</li>\n      \n        <li>Condition</li>\n      \n        <li>DiagnosticReport</li>\n    \n      </ul>\n    \n    </div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n     \n      <p>Prototype Conformance Statement for September 2013 Connectathon</p>\n     \n      <p>The server offers read and search support on the following resource types:</p>\n     \n      <ul>\n      \n        <li>Patient</li>\n      \n        <li>DocumentReference</li>\n      \n        <li>Condition</li>\n      \n        <li>DiagnosticReport</li>\n    \n      </ul>\n    \n    </div>"
   },
   "name": "PHR Template",
   "status": "draft",
@@ -25,28 +25,10 @@
     "name": "ACME PHR Server"
   },
   "fhirVersion": "1.0.0",
-  "_fhirVersion": {
-    "fhir_comments": [
-      "   while the FHIR infrastructure is turning over prior to development, a version is required. Note that this may be rescinded later   "
-    ]
-  },
   "acceptUnknown": "no",
-  "_acceptUnknown": {
-    "fhir_comments": [
-      "   this is not particularly important for this usage (server doesn't accept any content), but we have to provide it anyway   "
-    ]
-  },
   "format": [
     "json",
     "xml"
-  ],
-  "_format": [
-    {
-      "fhir_comments": [
-        "  \n    for the connectathon, servers should support both xml and json. Clients can use only one. \n    "
-      ]
-    },
-    null
   ],
   "rest": [
     {
@@ -63,11 +45,6 @@
       "resource": [
         {
           "type": "Patient",
-          "_type": {
-            "fhir_comments": [
-              "   patient resource: read and search for patients the authenticated user has access too   "
-            ]
-          },
           "interaction": [
             {
               "code": "read"
@@ -80,11 +57,6 @@
         },
         {
           "type": "DocumentReference",
-          "_type": {
-            "fhir_comments": [
-              "   document reference resource: read and search    "
-            ]
-          },
           "interaction": [
             {
               "code": "read"
@@ -102,15 +74,7 @@
           ]
         },
         {
-          "fhir_comments": [
-            "   for the purposes of the connectathon, servers can choose which additional resources to support. Here's a couple of examples   "
-          ],
           "type": "Condition",
-          "_type": {
-            "fhir_comments": [
-              "   Condition - let the patient see a list of their Conditions   "
-            ]
-          },
           "interaction": [
             {
               "code": "read"
@@ -129,11 +93,6 @@
         },
         {
           "type": "DiagnosticReport",
-          "_type": {
-            "fhir_comments": [
-              "   Diagnostic Reports - can be lots of these, so we'll suggest that at least service category should be supported as a search criteria   "
-            ]
-          },
           "interaction": [
             {
               "code": "read"

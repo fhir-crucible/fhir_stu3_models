@@ -3,7 +3,7 @@
   "id": "R3500",
   "text": {
     "status": "generated",
-    "div": "<div>A human-readable rendering of the ClaimResponse</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the ClaimResponse</div>"
   },
   "identifier": [
     {
@@ -11,22 +11,18 @@
       "value": "R3500"
     }
   ],
+  "status": "active",
   "requestReference": {
     "reference": "http://www.BenefitsInc.com/fhir/Claim/15476332402"
   },
   "created": "2014-08-16",
   "organizationIdentifier": {
-    "fhir_comments": [
-      "  \n  <OrganizationReference>\n    <reference value=\"Organization/2\"/>\n  </OrganizationReference>\n  "
-    ],
     "system": "http://www.jurisdiction.org/insurers",
     "value": "555123"
   },
-  "outcome": "complete",
-  "_outcome": {
-    "fhir_comments": [
-      "  <requestOrganizationReference>\n    <reference value=\"Organization/1\"/>\n  </requestOrganizationReference>\n "
-    ]
+  "outcome": {
+    "system": "http://hl7.org/fhir/remittance-outcome",
+    "code": "complete"
   },
   "disposition": "Claim settled as per contract.",
   "payeeType": {
@@ -35,9 +31,6 @@
   },
   "item": [
     {
-      "fhir_comments": [
-        "  Adjudication details  "
-      ],
       "sequenceLinkId": 1,
       "adjudication": [
         {
@@ -89,19 +82,20 @@
     "system": "urn:iso:std:iso:4217",
     "code": "USD"
   },
-  "paymentDate": "2014-08-31",
-  "_paymentDate": {
-    "fhir_comments": [
-      "  Payment details  "
-    ]
-  },
-  "paymentAmount": {
-    "value": 100.47,
-    "system": "urn:iso:std:iso:4217",
-    "code": "USD"
-  },
-  "paymentRef": {
-    "system": "http://www.BenefitsInc.com/fhir/paymentRef",
-    "value": "201408-2-1569478"
+  "payment": {
+    "type": {
+      "system": "http://hl7.org/fhir/ValueSet/ex-paymenttype",
+      "code": "complete"
+    },
+    "date": "2014-08-31",
+    "amount": {
+      "value": 100.47,
+      "system": "urn:iso:std:iso:4217",
+      "code": "USD"
+    },
+    "identifier": {
+      "system": "http://www.BenefitsInc.com/fhir/paymentidentifier",
+      "value": "201408-2-1569478"
+    }
   }
 }

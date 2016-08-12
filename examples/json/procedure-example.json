@@ -3,7 +3,7 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div>Routine Appendectomy</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Routine Appendectomy</div>"
   },
   "subject": {
     "reference": "Patient/example"
@@ -19,9 +19,11 @@
     ],
     "text": "Appendectomy"
   },
-  "reasonCodeableConcept": {
-    "text": "Generalized abdominal pain 24 hours. Localized in RIF with rebound and guarding"
-  },
+  "reasonCode": [
+    {
+      "text": "Generalized abdominal pain 24 hours. Localized in RIF with rebound and guarding"
+    }
+  ],
   "performer": [
     {
       "actor": {

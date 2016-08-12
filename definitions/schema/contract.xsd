@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -156,7 +156,7 @@
           <xs:element name="effectiveTime" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="SimpleQuantity">
+          <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="Quantity">
             
           </xs:element>
           <xs:element name="unitPrice" minOccurs="0" maxOccurs="1" type="Money">
@@ -251,7 +251,7 @@
           <xs:element name="effectiveTime" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="SimpleQuantity">
+          <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="Quantity">
             
           </xs:element>
           <xs:element name="unitPrice" minOccurs="0" maxOccurs="1" type="Money">

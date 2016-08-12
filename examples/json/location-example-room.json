@@ -3,7 +3,7 @@
   "id": "2",
   "text": {
     "status": "generated",
-    "div": "<div>Burgers UMC, South Wing, second floor, Neuro Radiology Operation Room 1</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Burgers UMC, South Wing, second floor, Neuro Radiology Operation Room 1</div>"
   },
   "identifier": [
     {
@@ -12,6 +12,10 @@
   ],
   "status": "suspended",
   "name": "South Wing Neuro OR 1",
+  "alias": [
+    "South Wing OR 5",
+    "Main Wing OR 2"
+  ],
   "description": "Old South Wing, Neuro Radiology Operation Room 1 on second floor",
   "mode": "instance",
   "type": {

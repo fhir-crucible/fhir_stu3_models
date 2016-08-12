@@ -6,10 +6,10 @@ module FHIR
 
     SEARCH_PARAMS = []
     METADATA = {
-      'id' => {'type'=>'id', 'path'=>'Attachment.id', 'min'=>0, 'max'=>1},
+      'id' => {'type'=>'string', 'path'=>'Attachment.id', 'min'=>0, 'max'=>1},
       'extension' => {'type'=>'Extension', 'path'=>'Attachment.extension', 'min'=>0, 'max'=>Float::INFINITY},
       'contentType' => {'type'=>'code', 'path'=>'Attachment.contentType', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://www.rfc-editor.org/bcp/bcp13.txt'}},
-      'language' => {'type'=>'code', 'path'=>'Attachment.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://tools.ietf.org/html/bcp47'}},
+      'language' => {'type'=>'code', 'path'=>'Attachment.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}},
       'data' => {'type'=>'base64Binary', 'path'=>'Attachment.data', 'min'=>0, 'max'=>1},
       'url' => {'type'=>'uri', 'path'=>'Attachment.url', 'min'=>0, 'max'=>1},
       'size' => {'type'=>'unsignedInt', 'path'=>'Attachment.size', 'min'=>0, 'max'=>1},
@@ -18,7 +18,7 @@ module FHIR
       'creation' => {'type'=>'dateTime', 'path'=>'Attachment.creation', 'min'=>0, 'max'=>1}
     }
 
-    attr_accessor :id          # 0-1 id
+    attr_accessor :id          # 0-1 string
     attr_accessor :extension   # 0-* [ Extension ]
     attr_accessor :contentType # 0-1 code
     attr_accessor :language    # 0-1 code

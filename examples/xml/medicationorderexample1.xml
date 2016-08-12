@@ -1,37 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?><MedicationOrder xmlns="http://hl7.org/fhir">
-  <id value="medrx001"/>
-    <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: medrx001</p><p><b>identifier</b>: 12345 (OFFICIAL)</p><p><b>status</b>: active</p><p><b>medication</b>: <a>prescribed medication</a></p><p><b>patient</b>: <a>Eve Everywoman</a></p><p><b>encounter</b>: <a>encounter who leads to this priscription</a></p><p><b>dateWritten</b>: Jan 15, 2015</p><p><b>prescriber</b>: <a>Patrick Pump</a></p><p><b>reasonCode</b>: Otitis Media <span>(Details : {SNOMED CT code &#39;65363002&#39; = &#39;Otitis media (disorder)&#39;, given as &#39;Otitis Media&#39;})</span></p><h3>DosageInstructions</h3><table><tr><td>-</td><td><b>Text</b></td><td><b>AdditionalInstructions</b></td><td><b>Timing</b></td><td><b>Site[x]</b></td><td><b>Route</b></td><td><b>Dose[x]</b></td></tr><tr><td>*</td><td>Take 5ml three times daily</td><td>With or after food <span>(Details : {SNOMED CT code &#39;311504000&#39; = &#39;With or after food (qualifier value)&#39;, given as &#39;With or after food&#39;})</span></td><td>Do 3 per 1 days</td><td>Entire oral cavity <span>(Details : {SNOMED CT code &#39;181220002&#39; = &#39;Entire oral cavity (body structure)&#39;, given as &#39;Entire oral cavity&#39;})</span></td><td>Oral Route <span>(Details : {SNOMED CT code &#39;26643006&#39; = &#39;Oral route (qualifier value)&#39;, given as &#39;Oral Route&#39;})</span></td><td>5 mL<span> (Details: http://unitsofmeasure.org code mL = &#39;mL&#39;)</span></td></tr></table><h3>DispenseRequests</h3><table><tr><td>-</td><td><b>Medication[x]</b></td><td><b>ValidityPeriod</b></td><td><b>NumberOfRepeatsAllowed</b></td><td><b>Quantity</b></td><td><b>ExpectedSupplyDuration</b></td></tr><tr><td>*</td><td><a>Medication/MedicationExample3</a></td><td>Jan 15, 2015 --&gt; Jan 15, 2016</td><td>2</td><td>100 mL<span> (Details: http://unitsofmeasure.org code mL = &#39;mL&#39;)</span></td><td>10 days<span> (Details: http://unitsofmeasure.org code d = &#39;d&#39;)</span></td></tr></table><h3>Substitutions</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Reason</b></td></tr><tr><td>*</td><td>Generic Composition <span>(Details : {http://hl7.org/fhir code &#39;G&#39; = &#39;??&#39;, given as &#39;Generic Composition&#39;})</span></td><td>formulary policy <span>(Details : {http://hl7.org/fhir code &#39;FP&#39; = &#39;??&#39;, given as &#39;formulary policy&#39;})</span></td></tr></table></div></text><identifier>
+    <id value="medrx0311"/>
+    <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: medrx0311</p><p><b>contained</b>: </p><p><b>identifier</b>: 12345689 (OFFICIAL)</p><p><b>status</b>: active</p><p><b>medication</b>: id: med0316; Chlorthalidone 50mg tablet (product) <span>(Details : {SNOMED CT code &#39;317935006&#39; = &#39;Chlorthalidone 50mg tablet (product)&#39;, given as &#39;Chlorthalidone 50mg tablet (product)&#39;})</span>; </p><p><b>patient</b>: <a>Donald Duck</a></p><p><b>encounter</b>: <a>encounter who leads to this prescription</a></p><p><b>dateWritten</b>: Jan 15, 2015</p><p><b>prescriber</b>: <a>Patrick Pump</a></p><p><b>reasonReference</b>: <a>condition for prescribing this medication</a></p><p><b>note</b>: Chlorthalidone increases urniation so take it in the morning</p><h3>DosageInstructions</h3><table><tr><td>-</td><td><b>Text</b></td><td><b>AdditionalInstructions</b></td><td><b>Timing</b></td><td><b>Route</b></td><td><b>Method</b></td><td><b>Dose[x]</b></td></tr><tr><td>*</td><td>One tablet daily</td><td>With or after food <span>(Details : {SNOMED CT code &#39;311504000&#39; = &#39;With or after food (qualifier value)&#39;, given as &#39;With or after food&#39;})</span></td><td>Do Once per 1 days</td><td>Oral Route <span>(Details : {SNOMED CT code &#39;26643006&#39; = &#39;Oral route (qualifier value)&#39;, given as &#39;Oral Route&#39;})</span></td><td>Swallow - dosing instruction imperative (qualifier value) <span>(Details : {SNOMED CT code &#39;421521009&#39; = &#39;Swallow - dosing instruction imperative (qualifier value)&#39;, given as &#39;Swallow - dosing instruction imperative (qualifier value)&#39;})</span></td><td>1 TAB<span> (Details: http://hl7.org/fhir/ValueSet/v3-orderableDrugForm code TAB = &#39;??&#39;)</span></td></tr></table><h3>DispenseRequests</h3><table><tr><td>-</td><td><b>ValidityPeriod</b></td><td><b>NumberOfRepeatsAllowed</b></td><td><b>Quantity</b></td><td><b>ExpectedSupplyDuration</b></td></tr><tr><td>*</td><td>Jan 15, 2015 --&gt; Jan 15, 2016</td><td>1</td><td>30 TAB<span> (Details: http://hl7.org/fhir/ValueSet/v3-orderableDrugForm code TAB = &#39;??&#39;)</span></td><td>30 days<span> (Details: http://unitsofmeasure.org code d = &#39;d&#39;)</span></td></tr></table><h3>Substitutions</h3><table><tr><td>-</td><td><b>Allowed</b></td><td><b>Reason</b></td></tr><tr><td>*</td><td>true</td><td>continuing therapy <span>(Details : {http://hl7.org/fhir code &#39;CT&#39; = &#39;??&#39;, given as &#39;continuing therapy&#39;})</span></td></tr></table><h3>EventHistories</h3><table><tr><td>-</td><td><b>Status</b></td><td><b>DateTime</b></td><td><b>Actor</b></td></tr><tr><td>*</td><td>stopped</td><td>Apr 1, 2016</td><td><a>Patrick Pump</a></td></tr></table></div></text><contained>
+      <Medication>
+          <id value="med0316"/>
+          <code>
+              <coding>
+                  <system value="http://snomed.info/sct"/>
+                  <code value="317935006"/>
+                  <display value="Chlorthalidone 50mg tablet (product)"/>
+              </coding>
+          </code>
+          <isBrand value="false"/>
+          <product>
+              <form>
+                  <coding>
+                      <system value="http://snomed.info/sct"/>
+                      <code value="385055001"/>
+                      <display value="Tablet dose form (qualifier value)"/>
+                  </coding>
+              </form>
+          </product>
+      </Medication>
+  </contained>
+    <identifier>
         <use value="official"/>
         <system value="http://www.bmc.nl/portal/prescriptions"/>
-        <value value="12345"/>
+        <value value="12345689"/>
     </identifier>
     <status value="active"/>
     <medicationReference> <!--   Linked to a RESOURCE Medication   -->
-        <reference value="Medication/MedicationExample2"/>
-        <display value="prescribed medication"/>
+           <reference value="#med0316"/>
     </medicationReference> 
     <patient> <!--   Linked to the resource patient who needs the medication   -->
-        <reference value="Patient/f001"/>
-        <display value="Eve Everywoman"/>         
+        <reference value="Patient/pat1"/>
+        <display value="Donald Duck"/>         
     </patient>
     <encounter> <!--   Linked to a resource Encounter between patient and practitioner  -->
-        <reference value="Encounter/f002"/>
-        <display value="encounter who leads to this priscription"/>
+        <reference value="Encounter/f001"/>
+        <display value="encounter who leads to this prescription"/>
     </encounter>
     <dateWritten value="2015-01-15"/>
     <prescriber> <!--   Linked to the practitioner who treats patient   -->
         <reference value="Practitioner/f007"/>
         <display value="Patrick Pump"/>
     </prescriber>
-    <reasonCode>
-        <coding>
-            <system value="http://snomed.info/sct"/>
-            <code value="65363002"/>
-            <display value="Otitis Media"/>
-        </coding>
-    </reasonCode>
+    <reasonReference>
+        <reference value="Condition/f201"/>
+        <display value="condition for prescribing this medication"/>
+    </reasonReference>
+    <note>
+        <text value="Chlorthalidone increases urniation so take it in the morning"/>
+    </note>
     <dosageInstruction>
-        <text value="Take 5ml three times daily"/>
+        <text value="One tablet daily"/>
         <additionalInstructions>
             <coding>
                 <system value="http://snomed.info/sct"/>
@@ -41,18 +62,11 @@
         </additionalInstructions>
         <timing>
             <repeat>
-                <frequency value="3"/>
+                <frequency value="1"/>
                 <period value="1"/>
                 <periodUnit value="d"/>
             </repeat>
         </timing>
-        <siteCodeableConcept>
-            <coding>
-                <system value="http://snomed.info/sct"/>
-                <code value="181220002"/>
-                <display value="Entire oral cavity"/>
-            </coding>
-        </siteCodeableConcept>
         <route>
             <coding>
                 <system value="http://snomed.info/sct"/>
@@ -60,49 +74,55 @@
                 <display value="Oral Route"/>
             </coding>
         </route>
+        <method>
+            <coding>
+                <system value="http://snomed.info/sct"/>
+                <code value="421521009"/>
+                <display value="Swallow - dosing instruction imperative (qualifier value)"/>
+            </coding>
+        </method>
         <doseQuantity>
-            <value value="5"/>
-            <unit value="mL"/>
-            <system value="http://unitsofmeasure.org"/>
-            <code value="mL"/>
+            <value value="1"/>
+            <unit value="TAB"/>
+            <system value="http://hl7.org/fhir/ValueSet/v3-orderableDrugForm"/>
+            <code value="TAB"/> 
         </doseQuantity>
-    </dosageInstruction>         
+    </dosageInstruction>
     <dispenseRequest>
-        <medicationReference>
-            <reference value="Medication/MedicationExample3"/>
-        </medicationReference>
         <validityPeriod>
             <start value="2015-01-15"/>
             <end value="2016-01-15"/>
         </validityPeriod>
-        <numberOfRepeatsAllowed value="2"/>
+        <numberOfRepeatsAllowed value="1"/>
         <quantity>
-            <value value="100"/>
-            <unit value="mL"/>
-            <system value="http://unitsofmeasure.org"/>
-            <code value="mL"/>    
+            <value value="30"/>
+            <unit value="TAB"/>
+            <system value="http://hl7.org/fhir/ValueSet/v3-orderableDrugForm"/>
+            <code value="TAB"/> 
         </quantity>
         <expectedSupplyDuration>
-            <value value="10"/>
+            <value value="30"/>
             <unit value="days"/>
             <system value="http://unitsofmeasure.org"/>
             <code value="d"/> 
         </expectedSupplyDuration>
     </dispenseRequest>   
     <substitution>
-        <type>
-            <coding>
-                <system value="http://hl7.org/fhir"/>
-                <code value="G"/>
-                <display value="Generic Composition"/>
-            </coding>
-        </type>
+        <allowed value="true"/>
         <reason>
             <coding>
                 <system value="http://hl7.org/fhir"/>
-                <code value="FP"/>
-                <display value="formulary policy"/>             
+                <code value="CT"/>
+                <display value="continuing therapy"/>             
             </coding>
         </reason>
     </substitution>
+    <eventHistory>
+        <status value="stopped"/>
+        <dateTime value="2016-04-01"/>
+        <actor>
+            <reference value="Practitioner/f007"/>
+            <display value="Patrick Pump"/>
+        </actor>
+    </eventHistory>
 </MedicationOrder>

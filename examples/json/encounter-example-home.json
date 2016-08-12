@@ -3,7 +3,7 @@
   "id": "home",
   "text": {
     "status": "generated",
-    "div": "<div>Encounter with patient @example who is at home</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Encounter with patient @example who is at home</div>"
   },
   "contained": [
     {
@@ -14,7 +14,11 @@
     }
   ],
   "status": "finished",
-  "class": "virtual",
+  "class": {
+    "system": "http://hl7.org/fhir/v3/ActCode",
+    "code": "HH",
+    "display": "home health"
+  },
   "patient": {
     "reference": "Patient/example"
   },

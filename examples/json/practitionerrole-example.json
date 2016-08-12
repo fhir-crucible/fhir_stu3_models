@@ -3,7 +3,7 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div>\n\t\t\t<p>\n\t\t\t\tDr Adam Careful is a Referring Practitioner for Acme Hospital from 1-Jan 2012 to 31-Mar\n\t\t\t\t2012\n\t\t\t</p>\n\t\t</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t<p>\n\t\t\t\tDr Adam Careful is a Referring Practitioner for Acme Hospital from 1-Jan 2012 to 31-Mar\n\t\t\t\t2012\n\t\t\t</p>\n\t\t</div>"
   },
   "identifier": [
     {
@@ -15,11 +15,8 @@
   "organization": {
     "reference": "Organization/f001"
   },
-  "role": [
+  "code": [
     {
-      "fhir_comments": [
-        "  Referring Practitioner for the first 3 months of 2012  "
-      ],
       "coding": [
         {
           "system": "http://hl7.org/fhir/v2/0286",
@@ -49,5 +46,10 @@
   "period": {
     "start": "2012-01-01",
     "end": "2012-03-31"
-  }
+  },
+  "endpoint": [
+    {
+      "reference": "Endpoint/example"
+    }
+  ]
 }

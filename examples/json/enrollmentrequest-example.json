@@ -3,7 +3,7 @@
   "id": "22345",
   "text": {
     "status": "generated",
-    "div": "<div>A human-readable rendering of the EnrollmentRequest.</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the EnrollmentRequest.</div>"
   },
   "identifier": [
     {
@@ -11,17 +11,15 @@
       "value": "EN22345"
     }
   ],
+  "status": "active",
   "created": "2014-08-16",
-  "organization": {
+  "organizationReference": {
     "reference": "Organization/1"
   },
-  "subject": {
+  "subjectReference": {
     "reference": "Patient/1"
   },
   "coverage": {
     "reference": "Coverage/9876B1"
-  },
-  "relationship": {
-    "code": "spouse"
   }
 }

@@ -3,14 +3,17 @@
 <ValueSet xmlns="http://hl7.org/fhir">
   <id value="list-example-codes"/>
   <meta>
-    <lastUpdated value="2016-03-31T08:59:41.431-04:00"/>
+    <lastUpdated value="2016-08-11T09:23:49.667-04:00"/>
     <profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"/>
   </meta>
   <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
       <h2>Example Use Codes for List</h2>
-      <p>Example use codes for the List resource - typical kinds of use.</p>
+      <div>
+        <p>Example use codes for the List resource - typical kinds of use.</p>
+
+      </div>
       <p>This value set includes codes from the following code systems:</p>
       <ul>
         <li>Include all codes defined in 
@@ -19,11 +22,12 @@
       </ul>
     </div>
   </text>
-  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-oid">
-    <valueUri value="urn:oid:2.16.840.1.113883.4.642.2.173"/>
-  </extension>
   <url value="http://hl7.org/fhir/ValueSet/list-example-codes"/>
-  <version value="1.4.0"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:oid:2.16.840.1.113883.4.642.2.173"/>
+  </identifier>
+  <version value="1.6.0"/>
   <name value="Example Use Codes for List"/>
   <status value="draft"/>
   <experimental value="true"/>
@@ -34,7 +38,7 @@
       <value value="http://hl7.org/fhir"/>
     </telecom>
   </contact>
-  <date value="2016-03-31T08:59:41-04:00"/>
+  <date value="2016-08-11T09:23:49-04:00"/>
   <description value="Example use codes for the List resource - typical kinds of use."/>
   <compose>
     <include>

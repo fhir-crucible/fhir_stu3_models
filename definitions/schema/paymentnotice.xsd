@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -45,6 +45,9 @@
       <xs:extension base="DomainResource">
         <xs:sequence>
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
+            
+          </xs:element>
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="PaymentNoticeStatus">
             
           </xs:element>
           <xs:element name="ruleset" minOccurs="0" maxOccurs="1" type="Coding">
@@ -88,6 +91,30 @@
             
           </xs:element>
         </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="PaymentNoticeStatus-list">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="active">
+        
+      </xs:enumeration>
+      <xs:enumeration value="cancelled">
+        
+      </xs:enumeration>
+      <xs:enumeration value="draft">
+        
+      </xs:enumeration>
+      <xs:enumeration value="entered-in-error">
+        
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="PaymentNoticeStatus">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="PaymentNoticeStatus-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

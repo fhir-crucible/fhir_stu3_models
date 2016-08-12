@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
+  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -51,6 +51,9 @@
             
           </xs:element>
           <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="alias" minOccurs="0" maxOccurs="unbounded" type="string">
             
           </xs:element>
           <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
@@ -80,6 +83,9 @@
           <xs:element name="partOf" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
+          <xs:element name="endpoint" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -103,7 +109,13 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="LocationMode-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="instance">
+        
+      </xs:enumeration>
+      <xs:enumeration value="kind">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="LocationMode">
@@ -115,7 +127,16 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="LocationStatus-list">
-    <xs:restriction base="xs:string">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="active">
+        
+      </xs:enumeration>
+      <xs:enumeration value="suspended">
+        
+      </xs:enumeration>
+      <xs:enumeration value="inactive">
+        
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="LocationStatus">

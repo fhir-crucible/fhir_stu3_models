@@ -6,9 +6,9 @@ module FHIR
 
     SEARCH_PARAMS = []
     METADATA = {
-      'id' => {'type'=>'id', 'path'=>'HumanName.id', 'min'=>0, 'max'=>1},
+      'id' => {'type'=>'string', 'path'=>'HumanName.id', 'min'=>0, 'max'=>1},
       'extension' => {'type'=>'Extension', 'path'=>'HumanName.extension', 'min'=>0, 'max'=>Float::INFINITY},
-      'use' => {'valid_codes'=>{'http://hl7.org/fhir/name-use'=>['usual', 'official', 'temp', 'nickname', 'anonymous', 'old', 'maiden']}, 'type'=>'code', 'path'=>'HumanName.use', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/name-use'}},
+      'use' => {'valid_codes'=>{'http://hl7.org/fhir/name-use'=>['usual', 'official', 'temp', 'nickname', 'anonymous', 'old', 'maiden', 'usual', 'official', 'temp', 'nickname', 'anonymous', 'old', 'maiden']}, 'type'=>'code', 'path'=>'HumanName.use', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/name-use'}},
       'text' => {'type'=>'string', 'path'=>'HumanName.text', 'min'=>0, 'max'=>1},
       'family' => {'type'=>'string', 'path'=>'HumanName.family', 'min'=>0, 'max'=>Float::INFINITY},
       'given' => {'type'=>'string', 'path'=>'HumanName.given', 'min'=>0, 'max'=>Float::INFINITY},
@@ -17,7 +17,7 @@ module FHIR
       'period' => {'type'=>'Period', 'path'=>'HumanName.period', 'min'=>0, 'max'=>1}
     }
 
-    attr_accessor :id        # 0-1 id
+    attr_accessor :id        # 0-1 string
     attr_accessor :extension # 0-* [ Extension ]
     attr_accessor :use       # 0-1 code
     attr_accessor :text      # 0-1 string

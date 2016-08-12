@@ -3,7 +3,7 @@
   "id": "example-encounter",
   "text": {
     "status": "generated",
-    "div": "<div>Follow Infection Control Level 3 Protocol</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Follow Infection Control Level 3 Protocol</div>"
   },
   "category": {
     "coding": [
