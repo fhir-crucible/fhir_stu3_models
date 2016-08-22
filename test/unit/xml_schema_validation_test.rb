@@ -1,12 +1,4 @@
-require_relative "../simplecov"
-require_relative '../../lib/fhir_models'
-
-require 'fileutils'
-require 'pry'
-require 'nokogiri/diff'
-require 'minitest/autorun'
-require 'bundler/setup'
-require 'test/unit'
+require_relative '../test_helper'
 
 class XmlSchemaValidationTest < Test::Unit::TestCase
  
