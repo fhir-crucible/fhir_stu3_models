@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.email = "jwalonoski@mitre.org"
   s.homepage = "https://github.com/fhir-crucible/fhir_models"
   s.authors = ["Jason Walonoski", "Andre Quina", "Michael O'Keefe"]
-  s.version = '1.6.0'
+  s.version = '1.6.1'
   s.files = s.files = `git ls-files`.split("\n")
   s.add_development_dependency 'pry'
   s.add_dependency 'rake', '>= 0.8.7'
