@@ -132,12 +132,21 @@ module FHIR
       multiple_types = self.class::MULTIPLE_TYPES rescue {}
       multiple_types.each do |prefix,suffixes|
         count = 0
+        present = []
         suffixes.each do |suffix|
-          count += 1 if errors["#{prefix}#{suffix}"]
-          # TODO check if multiple data types are actually present, not just errors
+          typename = "#{prefix}#{suffix[0].upcase}#{suffix[1..-1]}"
+          count += 1 if errors[typename]
+          # check which multiple data types are actually present, not just errors
           # actually, this might be allowed depending on cardinality
+          value = self.instance_variable_get("@#{typename}")
+          present << typename if !value.nil? || (value.is_a?(Array) && !value.empty?)          
         end
         errors[prefix] = ["#{prefix}[x]: more than one type present."] if(count > 1)
+        # remove errors for suffixes that are not present
+        suffixes.each do |suffix|
+          typename = "#{prefix}#{suffix[0].upcase}#{suffix[1..-1]}"
+          errors.delete(typename) if !present.include?(typename)
+        end
       end
       errors.keep_if{|k,v|(v && !v.empty?)}
     end
@@ -245,7 +254,7 @@ module FHIR
           end
         end
       end # value.each
-      errors.delete(field) if value.empty?
+      errors.delete(field) if errors[field].empty?
     end
 
     def is_primitive?(datatype,value)
