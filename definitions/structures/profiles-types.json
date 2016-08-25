@@ -2455,13 +2455,6 @@
               ],
               "constraint": [
                 {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                },
-                {
                   "key": "ref-1",
                   "severity": "error",
                   "human": "SHALL have a local reference if the resource is provided inline",
@@ -2611,13 +2604,6 @@
                 "ele-1"
               ],
               "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                },
                 {
                   "key": "qty-3",
                   "severity": "error",
@@ -2858,14 +2844,7 @@
                 "ele-1"
               ],
               "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                },
-                {
+               {
                   "key": "per-1",
                   "severity": "error",
                   "human": "If present, start SHALL have a lower value than end",
@@ -3023,14 +3002,7 @@
                 "ele-1"
               ],
               "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                },
-                {
+                 {
                   "key": "att-1",
                   "severity": "error",
                   "human": "It the Attachment has data, it SHALL have a contentType",
@@ -3758,14 +3730,7 @@
                 "ele-1"
               ],
               "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                },
-                {
+                 {
                   "key": "rng-2",
                   "severity": "error",
                   "human": "If present, low SHALL have a lower value than high",
@@ -3925,13 +3890,6 @@
                 "ele-1"
               ],
               "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
               ]
             },
             {
@@ -4302,15 +4260,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Identifier.id",
@@ -4569,15 +4519,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Coding.id",
@@ -4776,15 +4718,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Signature.id",
@@ -5109,15 +5043,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "SampledData.id",
@@ -5367,13 +5293,6 @@
                 "ele-1"
               ],
               "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                },
                 {
                   "key": "rat-1",
                   "severity": "error",
@@ -5911,15 +5830,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "CodeableConcept.id",
@@ -6047,13 +5958,6 @@
                 "ele-1"
               ],
               "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                },
                 {
                   "key": "ext-1",
                   "severity": "error",
@@ -6421,15 +6325,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "BackboneElement.id",
@@ -6534,15 +6430,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Narrative.id",
@@ -6717,15 +6605,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Element.id",
@@ -6764,15 +6644,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Element.id",
@@ -6831,15 +6703,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Meta.id",
@@ -7066,15 +6930,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "RelatedResource.id",
@@ -7313,15 +7169,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Address.id",
@@ -7692,15 +7540,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "TriggerDefinition.id",
@@ -7909,15 +7749,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Contributor.id",
@@ -8082,15 +7914,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "DataRequirement.id",
@@ -8563,15 +8387,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "ContactDetail.id",
@@ -8698,15 +8514,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "HumanName.id",
@@ -8971,13 +8779,6 @@
               ],
               "constraint": [
                 {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                },
-                {
                   "key": "cpt-2",
                   "severity": "error",
                   "human": "A system is required if a value is provided.",
@@ -9228,15 +9029,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "UsageContext.id",
@@ -9535,15 +9328,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Timing.id",
@@ -10242,13 +10027,6 @@
                 "ele-1"
               ],
               "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                },
                 {
                   "key": "eld-2",
                   "severity": "error",
@@ -13308,15 +13086,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                }
-              ]
+              "constraint": [              ]
             },
             {
               "id": "ParameterDefinition.id",
@@ -13600,13 +13370,6 @@
                 "ele-1"
               ],
               "constraint": [
-                {
-                  "key": "ele-1",
-                  "severity": "error",
-                  "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
-                  "xpath": "@value|f:*|h:div"
-                },
                 {
                   "key": "qty-3",
                   "severity": "error",
