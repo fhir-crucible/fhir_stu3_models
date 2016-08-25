@@ -423,7 +423,7 @@ module FHIR
         nodes = get_json_nodes(json,path)
 
         # special filtering on extension urls
-        extension_profile = element.type.find{|t|t.code=='Extension' && !t.profile.empty?}
+        extension_profile = element.type.find{|t|t.code=='Extension' && !t.profile.nil? && !t.profile.empty?}
         if extension_profile
           nodes.keep_if{|x| extension_profile.profile.include?(x['url']) }
         end
@@ -681,7 +681,7 @@ module FHIR
           matching_type-=1 if element.binding.strength=='required'            
         end
       elsif valueset.nil?
-        @errors << "#{element.path} has unknown ValueSet: '#{vsUri}'"
+        @warnings << "#{element.path} has unknown ValueSet: '#{vsUri}'"
         matching_type-=1 if element.binding.strength=='required'
       elsif !valueset.values.flatten.include?(value)
         message = "#{element.path} has invalid code '#{value}' from #{valueset}"
