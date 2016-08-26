@@ -24,7 +24,7 @@ module FHIR
       # if hash contains resourceType
       # create a child node with the name==resourceType
       # fill that, and place the child under the above `node`
-      if hash['resourceType']
+      if hash['resourceType'] && hash['resourceType'].is_a?(String)
         child_name = hash['resourceType']
         hash.delete('resourceType')
         child = hash_to_xml_node(child_name, hash, doc)
