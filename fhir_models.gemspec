@@ -7,9 +7,11 @@ Gem::Specification.new do |s|
   s.email = "jwalonoski@mitre.org"
   s.homepage = "https://github.com/fhir-crucible/fhir_models"
   s.authors = ["Jason Walonoski", "Andre Quina", "Michael O'Keefe"]
-  s.version = '1.6.2'
+  s.version = '1.6.3'
   s.files = s.files = `git ls-files`.split("\n")
   s.add_development_dependency 'pry'
+  s.add_development_dependency 'minitest'
+  s.add_development_dependency 'test-unit'
   s.add_dependency 'rake', '>= 0.8.7'
   s.add_dependency 'nokogiri', '>= 1.6'
   s.add_dependency 'date_time_precision', '>= 0.8'

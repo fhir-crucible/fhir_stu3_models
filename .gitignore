@@ -3,4 +3,7 @@ errors/**
 **/coverage/**
 fhir_models*log*
 invariants.txt
+Gemfile.lock
+.ruby-version
+.ruby-gemset
 
