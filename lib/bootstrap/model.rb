@@ -20,7 +20,7 @@ module FHIR
         return nil
       elsif (!@extension.nil? && !@extension.empty?)
         ext = @extension.select do |x|
-          name = x.url.gsub('-','_').split('/').last
+          name = x.url.tr('-','_').split('/').last
           anchor = name.split('#').last
           (method.to_s==name || method.to_s==anchor)
         end
@@ -33,7 +33,7 @@ module FHIR
         end
       elsif (!@modifierExtension.nil? && !@modifierExtension.empty?)
         ext = @modifierExtension.select do |x|
-          name = x.url.gsub('-','_').split('/').last
+          name = x.url.tr('-','_').split('/').last
           anchor = name.split('#').last
           (method.to_s==name || method.to_s==anchor)
         end
@@ -148,7 +148,7 @@ module FHIR
           errors.delete(typename) if !present.include?(typename)
         end
       end
-      errors.keep_if{|k,v|(v && !v.empty?)}
+      errors.keep_if{|_k,v|(v && !v.empty?)}
     end
 
     # ----- validate a field -----
@@ -196,7 +196,7 @@ module FHIR
                 # we need to look at the local contained resources
                 begin
                   r = contained_here.select{|x|x.id==v.reference[1..-1]}.first
-                rescue Exception => e
+                rescue
                   FHIR.logger.warn "Unable to resolve reference #{v.reference}"
                 end
                 if !r.nil?
@@ -240,7 +240,7 @@ module FHIR
             end
             has_valid_code = false
             if meta['valid_codes']
-              meta['valid_codes'].each do |key,codes|
+              meta['valid_codes'].each do |_key,codes|
                 has_valid_code = true if !(codes&the_codes).empty?
                 break if has_valid_code
               end
@@ -259,7 +259,7 @@ module FHIR
 
     def is_primitive?(datatype,value)
       # Remaining data types: handle special cases before checking type StructureDefinitions
-      return case datatype.downcase
+      case datatype.downcase
       when 'boolean'
         value==true || value==false || value.downcase=='true' || value.downcase=='false'
       when 'code'
@@ -285,6 +285,7 @@ module FHIR
         (!Float(value).nil? rescue false)
       else
         FHIR.logger.warn "Unable to check #{value} for datatype #{datatype}"
+        false
       end
     end
 

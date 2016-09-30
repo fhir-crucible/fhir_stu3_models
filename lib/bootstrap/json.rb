@@ -6,7 +6,6 @@ module FHIR
     #
 
     def to_json
-      hash = {}
       hash = self.to_hash
       JSON.pretty_unparse(hash)
     end
@@ -18,7 +17,7 @@ module FHIR
         resourceType = hash['resourceType']
         klass = Module.const_get("FHIR::#{resourceType}")
         resource = klass.new(hash)
-      rescue Exception => e
+      rescue => e
         FHIR.logger.error("Failed to deserialize JSON:\n#{json}\n#{e.backtrace}")
         resource = nil
       end

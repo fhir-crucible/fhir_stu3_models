@@ -9,7 +9,7 @@ module FluentPath
     @@parent = parent
     tree = FluentPath.parse(expression)
     FHIR.logger.debug "TREE: #{tree}"
-    eval(tree,hash)
+    compute(tree,hash)
   end
 
   # Get a value from a hash, with some special handling of
@@ -65,7 +65,7 @@ module FluentPath
   end
 
   # evaluate a parsed expression given some context data
-  def self.eval(tree,data)
+  def self.compute(tree,data)
     tree = tree.tree if tree.is_a?(FluentPath::Expression)
     # --------------- OPERATOR PRECEDENCE ------------------
     #01 . (path/function invocation)
@@ -113,7 +113,7 @@ module FluentPath
           end
           FHIR.logger.debug "V===> #{tree}"
         elsif node.is_a?(Symbol) && functions.include?(node)
-          previous_node = eval(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
+          previous_node = compute(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
           case node
           when :where
             # the previous node should be data (as Array or Hash)
@@ -127,13 +127,13 @@ module FluentPath
             previous_node = [] if previous_node==:null
             if previous_node.is_a?(Array)
               previous_node.keep_if do |item|
-                sub = eval(block.clone,item)
+                sub = compute(block.clone,item)
                 convertToBoolean(sub)
               end
               tree[index] = previous_node
               tree[previous_index] = nil if !previous_index.nil?
             elsif previous_node.is_a?(Hash)
-              sub = eval(block,previous_node)
+              sub = compute(block,previous_node)
               if convertToBoolean(sub)
                 tree[index] = previous_node
                 tree[previous_index] = nil if !previous_index.nil?
@@ -159,12 +159,12 @@ module FluentPath
             previous_node = [] if previous_node==:null
             if previous_node.is_a?(Array)
               previous_node.map! do |item|
-                eval(block.clone,item)
+                compute(block.clone,item)
               end
               tree[index] = previous_node
               tree[previous_index] = nil if !previous_index.nil?
             elsif previous_node.is_a?(Hash)
-              tree[index] = eval(block,previous_node)
+              tree[index] = compute(block,previous_node)
               tree[previous_index] = nil if !previous_index.nil?
             else
               raise "Select function not applicable to #{previous_node.class}: #{previous_node}"
@@ -261,7 +261,7 @@ module FluentPath
       size = tree.length
       tree.each_with_index do |node,index|
         if node.is_a?(Symbol) && functions.include?(node)
-          previous_node = eval(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
+          previous_node = compute(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
           case node
           when :all
             if previous_node.is_a?(Array)
@@ -301,7 +301,7 @@ module FluentPath
             end
             if previous_node.is_a?(String)
               FHIR.logger.debug "Evaling StartsWith Block...."
-              prefix = eval(block,data)
+              prefix = compute(block,data)
               tree[index] = previous_node.start_with?(prefix) rescue false
               tree[previous_index] = nil if !previous_index.nil?
             else
@@ -327,7 +327,7 @@ module FluentPath
                 length = args.last.to_i-1
               else
                 FHIR.logger.debug "Evaling Substring Block...."
-                start = eval(block,data)
+                start = compute(block,data)
                 length = previous_node.length - start
               end   
               tree[index] = previous_node[start..(start+length)]
@@ -347,7 +347,7 @@ module FluentPath
             end
             if previous_node.is_a?(String)
               FHIR.logger.debug "Evaling Contains Block...."
-              substring = eval(block,data)
+              substring = compute(block,data)
               tree[index] = previous_node.include?(substring) rescue false
               tree[previous_index] = nil if !previous_index.nil?
             else
@@ -360,7 +360,7 @@ module FluentPath
             block = tree[index+1]
             if block.is_a?(FluentPath::Expression)
               FHIR.logger.debug "Evaling In Block...."
-              tree[index+1] = eval(block,data)
+              tree[index+1] = compute(block,data)
             end
             array = tree[index+1]
             if array.is_a?(Array)
@@ -407,8 +407,8 @@ module FluentPath
       size = tree.length
       tree.each_with_index do |node,index|
         if node.is_a?(Symbol) && functions.include?(node)
-          previous_node = eval(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
-          tree[index+1] = eval(tree[index+1],data) if tree[index+1].is_a?(FluentPath::Expression)
+          previous_node = compute(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
+          tree[index+1] = compute(tree[index+1],data) if tree[index+1].is_a?(FluentPath::Expression)
           left = previous_node
           right = tree[index+1]
           case node
@@ -438,8 +438,8 @@ module FluentPath
       size = tree.length
       tree.each_with_index do |node,index|
         if node.is_a?(Symbol) && functions.include?(node)
-          previous_node = eval(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
-          tree[index+1] = eval(tree[index+1],data) if tree[index+1].is_a?(FluentPath::Expression)
+          previous_node = compute(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
+          tree[index+1] = compute(tree[index+1],data) if tree[index+1].is_a?(FluentPath::Expression)
           left = previous_node
           right = tree[index+1]
           case node
@@ -469,8 +469,8 @@ module FluentPath
       size = tree.length
       tree.each_with_index do |node,index|
         if node.is_a?(Symbol) && functions.include?(node)
-          previous_node = eval(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
-          tree[index+1] = eval(tree[index+1],data) if tree[index+1].is_a?(FluentPath::Expression)
+          previous_node = compute(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
+          tree[index+1] = compute(tree[index+1],data) if tree[index+1].is_a?(FluentPath::Expression)
           left = previous_node
           right = tree[index+1]
           case node
@@ -510,8 +510,8 @@ module FluentPath
       size = tree.length
       tree.each_with_index do |node,index|
         if node.is_a?(Symbol) && functions.include?(node)
-          previous_node = eval(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
-          tree[index+1] = eval(tree[index+1],data) if tree[index+1].is_a?(FluentPath::Expression)
+          previous_node = compute(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
+          tree[index+1] = compute(tree[index+1],data) if tree[index+1].is_a?(FluentPath::Expression)
           left = convertToBoolean(previous_node)
           right = convertToBoolean(tree[index+1])
           case node
@@ -544,8 +544,8 @@ module FluentPath
       size = tree.length
       tree.each_with_index do |node,index|
         if node.is_a?(Symbol) && functions.include?(node)
-          previous_node = eval(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
-          tree[index+1] = eval(tree[index+1],data) if tree[index+1].is_a?(FluentPath::Expression)
+          previous_node = compute(previous_node,data) if previous_node.is_a?(FluentPath::Expression)
+          tree[index+1] = compute(tree[index+1],data) if tree[index+1].is_a?(FluentPath::Expression)
           case node
           when :implies
             tree[index] = false
@@ -575,7 +575,7 @@ module FluentPath
 
     tree.map! do |out|
       while out.is_a?(FluentPath::Expression)
-        out = eval(out,data)
+        out = compute(out,data)
       end
       out
     end

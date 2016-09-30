@@ -77,7 +77,7 @@ module FHIR
               s << "#{space}  '#{k}' => #{v},"
               # Replace wildcard string with Infinity constant
               s[-1].gsub!('"max"=>"*"','"max"=>Float::INFINITY')
-              s[-1].gsub!('"','\'')
+              s[-1].tr!('"','\'')
             end
             s[-1] = s[-1][0..-2] # remove the trailing comma
             s << "#{space}}"

@@ -115,7 +115,6 @@ module FHIR
           checked_extensions << x.name
           compare_extension_definition(x,y,another_definition)
         end
-        y = nil
         y = get_extension(x.type[0].profile,right_extensions)
         if !y.nil? && x.name!=y.name
           # both profiles share the same extension definition but with a different name
@@ -132,7 +131,6 @@ module FHIR
           checked_extensions << y.name
           compare_extension_definition(x,y,another_definition)
         end
-        x = nil
         x = get_extension(y.type[0].profile,left_extensions)
         if !x.nil? && x.name!=y.name && !checked_extensions.include?(x.name)
           # both profiles share the same extension definition but with a different name
@@ -167,7 +165,7 @@ module FHIR
     # missing_paths -- list of paths that we're adding
     # elements -- list of elements currently defined in the profile
     # base_elements -- list of elements defined in the base resource the profile extends
-    def add_missing_elements(name,missing_paths,elements,base_elements)
+    def add_missing_elements(_name,missing_paths,elements,base_elements)
       variable_paths = elements.map{|e|e.path}.grep(/\[x\]/).map{|e|e[0..-4]}
       variable_paths << base_elements.map{|e|e.path}.grep(/\[x\]/).map{|e|e[0..-4]}
       variable_paths.flatten!.uniq!
@@ -206,12 +204,12 @@ module FHIR
           type_elements.each { |e| e.path.gsub!(type_root,root) }
           # finally, add the missing element definitions
           # one by one -- only if they are not already present (i.e. do not override)
-          type_elements.each do |x|
-            y = get_element_by_path(x.path,elements)
+          type_elements.each do |z|
+            y = get_element_by_path(z.path,elements)
             if y.nil?
-              elements << x
+              elements << z
             # else
-            #   @warnings << "StructureDefinition #{name} already contains #{x.path}"
+            #   @warnings << "StructureDefinition #{name} already contains #{z.path}"
             end
           end
           elements.uniq!
@@ -226,7 +224,6 @@ module FHIR
       x_profiles = x.type.map{|t|t.profile}
       y_profiles = y.type.map{|t|t.profile}
       x_only = x_profiles - y_profiles
-      y_only = y_profiles - x_profiles
       shared = x_profiles - x_only
 
       if !shared.nil? && shared.size==0
@@ -312,7 +309,7 @@ module FHIR
 
       # check meaning when missing
       if x.meaningWhenMissing != y.meaningWhenMissing
-        @errors << @finding.error("#{x.path}",'meaningWhenMissing','Inconsistent missing meaning',"#{x.meaningWhenMissing.gsub(',',';')}","#{y.meaningWhenMissing.gsub(',',';')}")
+        @errors << @finding.error("#{x.path}",'meaningWhenMissing','Inconsistent missing meaning',"#{x.meaningWhenMissing.tr(',',';')}","#{y.meaningWhenMissing.tr(',',';')}")
       end        
 
       # check fixed values
@@ -320,12 +317,10 @@ module FHIR
         @errors << @finding.error("#{x.path}",'fixed','Incompatible fixed type',"#{x.fixed.try(:type)}","#{y.fixed.try(:type)}")
       end
       if x.fixed != y.fixed
-        xfv = ''
-        yfv = ''
         xfv = x.fixed.try(:value) 
-        xfv = xfv.to_xml.gsub(/\n/,'') if x.fixed.try(:value).methods.include?(:to_xml)
+        xfv = xfv.to_xml.delete(/\n/) if x.fixed.try(:value).methods.include?(:to_xml)
         yfv = y.fixed.try(:value)
-        yfv = yfv.to_xml.gsub(/\n/,'') if y.fixed.try(:value).methods.include?(:to_xml)
+        yfv = yfv.to_xml.delete(/\n/) if y.fixed.try(:value).methods.include?(:to_xml)
         @errors << @finding.error("#{x.path}",'fixed','Incompatible fixed value',"#{xfv}","#{yfv}")
       end
 
@@ -366,13 +361,13 @@ module FHIR
       shared = x_constraints - x_only
 
       if !shared.nil? && shared.size==0 && x.constraint.size > 0 && y.constraint.size > 0
-        @errors << @finding.error("#{x.path}",'constraint.xpath','Incompatible constraints',"#{x_constraints.map{|x|x.gsub(',',';')}.join(' && ')}","#{y_constraints.map{|x|x.gsub(',',';')}.join(' && ')}")
+        @errors << @finding.error("#{x.path}",'constraint.xpath','Incompatible constraints',"#{x_constraints.map{|z|z.tr(',',';')}.join(' && ')}","#{y_constraints.map{|z|z.tr(',',';')}.join(' && ')}")
       end
       if !x_only.nil? && x_only.size > 0
-        @errors << @finding.error("#{x.path}",'constraint.xpath','Additional constraints',"#{x_constraints.map{|x|x.gsub(',',';')}.join(' && ')}",'')
+        @errors << @finding.error("#{x.path}",'constraint.xpath','Additional constraints',"#{x_constraints.map{|z|z.tr(',',';')}.join(' && ')}",'')
       end
       if !y_only.nil? && y_only.size > 0
-        @errors << @finding.error("#{x.path}",'constraint.xpath','Additional constraints','',"#{y_constraints.map{|x|x.gsub(',',';')}.join(' && ')}")
+        @errors << @finding.error("#{x.path}",'constraint.xpath','Additional constraints','',"#{y_constraints.map{|z|z.tr(',',';')}.join(' && ')}")
       end
 
       # mustSupports
@@ -408,7 +403,7 @@ module FHIR
       if json.is_a? String
         begin
           json = JSON.parse(json)
-        rescue Exception => e
+        rescue => e
           @errors << "Failed to parse JSON: #{e.message} %n #{h} %n #{e.backtrace.join("\n")}"
           return false
         end
@@ -474,7 +469,7 @@ module FHIR
             end
             if matching_type<=0
               @errors += temp_messages
-              @errors << "#{element.path} did not match one of the valid data types: #{element.type.map{|e|e.code}.to_s}"
+              @errors << "#{element.path} did not match one of the valid data types: #{element.type.map{|el|el.code}}"
             else
               @warnings += temp_messages
             end
@@ -499,7 +494,7 @@ module FHIR
                 if !result && constraint.severity=='error'
                   @errors << "#{element.path}: FluentPath expression evaluates to false for #{name} invariant rule #{constraint.key}: #{constraint.human}"
                 end
-              rescue Exception => e
+              rescue
                 @warnings << "#{element.path}: unable to evaluate FluentPath expression against JSON for #{name} invariant rule #{constraint.key}: #{constraint.human}"
               end
             end
@@ -557,7 +552,7 @@ module FHIR
               @errors += definition.errors 
               @warnings += definition.warnings
             end
-          rescue Exception => e
+          rescue
             @errors << "Unable to verify #{data_type_code} as a FHIR Resource." 
           end
           return retVal
@@ -565,7 +560,7 @@ module FHIR
       end
 
       # Remaining data types: handle special cases before checking type StructureDefinitions
-      return case data_type_code.downcase
+      case data_type_code.downcase
       when 'domainresource'
         true # we don't have to verify domain resource, because it will be included in the snapshot
       when 'boolean'
@@ -592,7 +587,7 @@ module FHIR
         is_valid_uri = false
         begin
           is_valid_uri = !URI.parse(value).nil?
-        rescue Exception
+        rescue
           is_valid_uri = false
         end
         is_valid_uri
@@ -626,7 +621,7 @@ module FHIR
               @errors += definition.errors 
               @warnings += definition.warnings
             end
-          rescue Exception => e
+          rescue
             @errors << "Unable to verify #{resource_type} as a FHIR Resource." 
           end
           retVal
@@ -649,7 +644,7 @@ module FHIR
               @errors += definition.errors 
               @warnings += definition.warnings
             end
-          rescue Exception => e
+          rescue
             @errors << "Unable to verify #{data_type_code} as a FHIR type."
           end
           retVal

@@ -26,7 +26,7 @@ module FHIR
         hash[v.to_s[1..-1]] = self.instance_variable_get(v)
       end
       hash.delete('name')
-      hash.keep_if do |key,value|
+      hash.keep_if do |_key,value|
         !value.nil? && (  (value.is_a?(Hash) && !value.empty?) || 
                           (value.is_a?(Array) && !value.empty?) || 
                           (!value.is_a?(Hash) && !value.is_a?(Array))

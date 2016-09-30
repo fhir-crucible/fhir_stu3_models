@@ -6,7 +6,6 @@ module FHIR
     #
 
     def to_xml
-      hash = {}
       hash = self.to_hash
       hash.delete('resourceType')
       doc = Nokogiri::XML::Document.new
@@ -78,7 +77,7 @@ module FHIR
         resourceType = doc.root.name
         klass = Module.const_get("FHIR::#{resourceType}")
         resource = klass.new(hash)
-      rescue Exception => e
+      rescue => e
         FHIR.logger.error("Failed to deserialize XML:\n#{xml}\n#{e.backtrace}")
         resource = nil
       end
@@ -106,7 +105,7 @@ module FHIR
             hash[key] = value
           end
         end
-       end
+      end
       hash['url'] = node.get_attribute('url') if ['extension','modifierExtension'].include?(node.name)
       hash['id'] = node.get_attribute('id') if node.get_attribute('id') # Testscript fixture ids (applies to any BackboneElement)
       hash['resourceType'] = node.name if FHIR::RESOURCES.include?(node.name)

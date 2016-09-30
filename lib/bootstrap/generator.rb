@@ -18,9 +18,9 @@ module FHIR
       def setup
         # make folders for generated content if they do not exist
         @lib = File.expand_path '..', File.dirname(File.absolute_path(__FILE__))
-        Dir.mkdir(File.join(@lib,'fhir')) if !Dir.exists?(File.join(@lib,'fhir'))
-        Dir.mkdir(File.join(@lib,'fhir','types')) if !Dir.exists?(File.join(@lib,'fhir','types'))
-        Dir.mkdir(File.join(@lib,'fhir','resources')) if !Dir.exists?(File.join(@lib,'fhir','resources'))
+        Dir.mkdir(File.join(@lib,'fhir')) if !Dir.exist?(File.join(@lib,'fhir'))
+        Dir.mkdir(File.join(@lib,'fhir','types')) if !Dir.exist?(File.join(@lib,'fhir','types'))
+        Dir.mkdir(File.join(@lib,'fhir','resources')) if !Dir.exist?(File.join(@lib,'fhir','resources'))
 
         # delete previously generated folder contents
         Dir.glob(File.join(@lib,'fhir','*')).each{|f|File.delete(f) if !File.directory?(f)}
@@ -40,19 +40,16 @@ module FHIR
           type = p['snapshot']['element'].select{|e| e['path'].end_with?('.value')}.first['type'].first
 
           # try to find the JSON data type
-          begin
-            ext = type['_code']['extension'].select{|e| e['url']=='http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type'}.first
+          ext = type['_code']['extension'].find{|e| e['url']=='http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type'}
+          if ext
             field.type = ext['valueString']
-          rescue 
+          else 
             field.type = 'string'
           end
 
           # try to find a regex
-          begin
-            ext = type['extension'].select{|e| e['url']=='http://hl7.org/fhir/StructureDefinition/structuredefinition-regex'}.first
-            field.regex = ext['valueString']
-          rescue 
-          end
+          ext = type['extension'].find{|e| e['url']=='http://hl7.org/fhir/StructureDefinition/structuredefinition-regex'}
+          field.regex = ext['valueString'] if ext
 
           hash[ p['id' ] ] = field.serialize
         end

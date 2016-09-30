@@ -31,7 +31,7 @@ module FluentPath
       # split arrays and replace with array
       elsif token.include?('|')
         array = []
-        token.split('|').each{|t|array << t.gsub('\'','')}
+        token.split('|').each{|t|array << t.delete('\'')}
         tokens << array
       else
         tokens << token
@@ -80,8 +80,8 @@ module FluentPath
       end
     end
     # post-processing
-    tree.each_with_index do |token,index|
-      if token==:extension # 'extension' can be a path or a function call (if followed by a block)
+    tree.each_with_index do |t,index|
+      if t==:extension # 'extension' can be a path or a function call (if followed by a block)
         next_token = tree[index+1]
         tree[index] = 'extension' if next_token.nil? || !next_token.is_a?(FluentPath::Expression)
       end

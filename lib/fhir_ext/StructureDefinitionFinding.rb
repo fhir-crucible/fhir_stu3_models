@@ -30,7 +30,7 @@ module FHIR
           hash.each do |key,value|
             obj.send("#{key}=".to_sym,value) if value
           end
-        rescue Exception => e
+        rescue => e
           FHIR.logger.error "Failed to parse JSON: #{e.message}"
           return nil
         end

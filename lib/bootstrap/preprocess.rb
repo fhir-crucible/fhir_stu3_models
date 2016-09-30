@@ -103,7 +103,7 @@ module FHIR
 
       def self.remove_fhir_comments(hash)
         hash.delete('fhir_comments')
-        hash.each do |key,value|
+        hash.each do |_key,value|
           if value.is_a?(Hash)
             remove_fhir_comments(value)
           elsif value.is_a?(Array)
@@ -112,7 +112,7 @@ module FHIR
             end
           end
         end
-        hash.keep_if do |key,value|
+        hash.keep_if do |_key,value|
           !value.is_a?(Hash) || !value.empty?
         end
       end

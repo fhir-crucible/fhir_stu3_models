@@ -16,7 +16,7 @@ module FHIR
           end
         end
       end
-      hash.keep_if do |key,value|
+      hash.keep_if do |_key,value|
         !value.nil? && (  (value.is_a?(Hash) && !value.empty?) || 
                           (value.is_a?(Array) && !value.empty?) || 
                           (!value.is_a?(Hash) && !value.is_a?(Array))
@@ -54,7 +54,7 @@ module FHIR
                   end
                   begin
                     obj = klass.new(child)
-                  rescue Exception => e
+                  rescue => e
                     FHIR.logger.error("Unable to inflate embedded class #{klass}\n#{e.backtrace}")
                   end
                 end
@@ -67,7 +67,7 @@ module FHIR
               begin
                 obj = klass.new(value)
                 value = obj
-              rescue Exception => e
+              rescue => e
                 FHIR.logger.error("Unable to inflate embedded class #{klass}\n#{e.backtrace}")
               end
               # if there is only one of these, but cardinality allows more, we need to wrap it in an array.              
