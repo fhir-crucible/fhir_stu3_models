@@ -48,9 +48,11 @@ module FHIR
           end
 
           # try to find a regex
-          ext = type['extension'].find{|e| e['url']=='http://hl7.org/fhir/StructureDefinition/structuredefinition-regex'}
-          field.regex = ext['valueString'] if ext
-
+          if type['extension']
+            ext = type['extension'].find{|e| e['url']=='http://hl7.org/fhir/StructureDefinition/structuredefinition-regex'}
+            field.regex = ext['valueString'] if ext
+          end
+          
           hash[ p['id' ] ] = field.serialize
         end
         template.constants['PRIMITIVES'] = hash
