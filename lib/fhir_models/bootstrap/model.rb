@@ -1,3 +1,6 @@
+require 'nokogiri'
+require 'mime/types'
+require 'bcp47'
 module FHIR
   class Model
 
@@ -20,26 +23,26 @@ module FHIR
         return nil
       elsif (!@extension.nil? && !@extension.empty?)
         ext = @extension.select do |x|
-          name = x.url.tr('-','_').split('/').last
+          name = x.url.tr('-', '_').split('/').last
           anchor = name.split('#').last
           (method.to_s==name || method.to_s==anchor)
         end
         if !ext.first.nil?
           if !ext.first.value.nil?
-            return ext.first.value 
+            return ext.first.value
           else
             return ext.first
           end
         end
       elsif (!@modifierExtension.nil? && !@modifierExtension.empty?)
         ext = @modifierExtension.select do |x|
-          name = x.url.tr('-','_').split('/').last
+          name = x.url.tr('-', '_').split('/').last
           anchor = name.split('#').last
           (method.to_s==name || method.to_s==anchor)
         end
         if !ext.first.nil?
           if !ext.first.value.nil?
-            return ext.first.value 
+            return ext.first.value
           else
             return ext.first
           end
@@ -96,15 +99,15 @@ module FHIR
     end
 
     def validate(contained=nil)
-      validate_profile(self.class::METADATA,contained)
+      validate_profile(self.class::METADATA, contained)
     end
 
-    def validate_profile(metadata,contained=nil)
-      contained_here = [ self.instance_variable_get("@contained".to_sym) ].flatten
+    def validate_profile(metadata, contained=nil)
+      contained_here = [ self.instance_variable_get('@contained'.to_sym) ].flatten
       contained_here << contained
       contained_here = contained_here.flatten.compact
       errors = {}
-      metadata.each do |field,meta|
+      metadata.each do |field, meta|
         if meta.is_a?(Array)
           # this field has been 'sliced'
           meta.each do |slice|
@@ -118,19 +121,19 @@ module FHIR
                 subset = value
               end
             else
-              FHIR.logger.warn "Validation not supported on slices (except for Extensions)"
+              FHIR.logger.warn 'Validation not supported on slices (except for Extensions)'
             end
-            validate_field(field,subset,contained_here,slice,errors)
+            validate_field(field, subset, contained_here, slice, errors)
           end
         else
           local_name = meta['local_name'] || field
           value = [ self.instance_variable_get("@#{local_name}".to_sym) ].flatten.compact
-          validate_field(field,value,contained_here,meta,errors)
+          validate_field(field, value, contained_here, meta, errors)
         end
       end # metadata.each
       # check multiple types
       multiple_types = self.class::MULTIPLE_TYPES rescue {}
-      multiple_types.each do |prefix,suffixes|
+      multiple_types.each do |prefix, suffixes|
         count = 0
         present = []
         suffixes.each do |suffix|
@@ -139,7 +142,7 @@ module FHIR
           # check which multiple data types are actually present, not just errors
           # actually, this might be allowed depending on cardinality
           value = self.instance_variable_get("@#{typename}")
-          present << typename if !value.nil? || (value.is_a?(Array) && !value.empty?)          
+          present << typename if !value.nil? || (value.is_a?(Array) && !value.empty?)
         end
         errors[prefix] = ["#{prefix}[x]: more than one type present."] if(count > 1)
         # remove errors for suffixes that are not present
@@ -148,7 +151,7 @@ module FHIR
           errors.delete(typename) if !present.include?(typename)
         end
       end
-      errors.keep_if{|_k,v|(v && !v.empty?)}
+      errors.keep_if{|_k, v|(v && !v.empty?)}
     end
 
     # ----- validate a field -----
@@ -157,7 +160,7 @@ module FHIR
     # contained_here: all contained resources to be considered
     # meta: the metadata definition for this field (or slice)
     # errors: the ongoing list of errors
-    def validate_field(field,value,contained_here,meta,errors)
+    def validate_field(field, value, contained_here, meta, errors)
       errors[field] = []
       # check cardinality
       count = value.length
@@ -167,7 +170,7 @@ module FHIR
       # check datatype
       datatype = meta['type']
       value.each do |v|
-        klassname = v.class.name.gsub('FHIR::','')
+        klassname = v.class.name.gsub('FHIR::', '')
         # if the data type is a generic Resource, validate it
         if datatype=='Resource'
           if FHIR::RESOURCES.include?(klassname)
@@ -226,7 +229,7 @@ module FHIR
             match = (v =~ Regexp.new(primitive_meta['regex']))
             errors[field] << "#{meta['path']}: #{v} does not match #{datatype} regex" if match.nil?
           else
-            errors[field] << "#{meta['path']}: #{v} is not a valid #{datatype}" if !is_primitive?(datatype,v)
+            errors[field] << "#{meta['path']}: #{v} is not a valid #{datatype}" if !is_primitive?(datatype, v)
           end
         end
         # check binding
@@ -240,13 +243,13 @@ module FHIR
             end
             has_valid_code = false
             if meta['valid_codes']
-              meta['valid_codes'].each do |_key,codes|
+              meta['valid_codes'].each do |_key, codes|
                 has_valid_code = true if !(codes&the_codes).empty?
                 break if has_valid_code
               end
             else
               the_codes.each do |code|
-                has_valid_code = true if check_binding(meta['binding']['uri'],code)
+                has_valid_code = true if check_binding(meta['binding']['uri'], code)
                 break if has_valid_code
               end
             end
@@ -257,7 +260,7 @@ module FHIR
       errors.delete(field) if errors[field].empty?
     end
 
-    def is_primitive?(datatype,value)
+    def is_primitive?(datatype, value)
       # Remaining data types: handle special cases before checking type StructureDefinitions
       case datatype.downcase
       when 'boolean'
@@ -277,7 +280,7 @@ module FHIR
       when 'instant'
         regex = /\A[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))))\Z/
         value.is_a?(String) && !(regex =~ value).nil?
-      when 'integer','unsignedint'
+      when 'integer', 'unsignedint'
         (!Integer(value).nil? rescue false)
       when 'positiveint'
         (!Integer(value).nil? rescue false) && (Integer(value) >= 0)
@@ -289,7 +292,7 @@ module FHIR
       end
     end
 
-    def check_binding(uri,value)
+    def check_binding(uri, value)
       valid = false
       if uri=='http://hl7.org/fhir/ValueSet/content-type' || uri=='http://www.rfc-editor.org/bcp/bcp13.txt'
         matches = MIME::Types[value]

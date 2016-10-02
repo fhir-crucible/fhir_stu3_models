@@ -14,8 +14,8 @@ module FHIR
       hash = JSON.parse(json)
       resource = nil
       begin
-        resourceType = hash['resourceType']
-        klass = Module.const_get("FHIR::#{resourceType}")
+        resource_type = hash['resourceType']
+        klass = Module.const_get("FHIR::#{resource_type}")
         resource = klass.new(hash)
       rescue => e
         FHIR.logger.error("Failed to deserialize JSON:\n#{json}\n#{e.backtrace}")

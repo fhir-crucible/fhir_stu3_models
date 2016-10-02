@@ -11,7 +11,7 @@ module FHIR
       attr_accessor :templates
       attr_accessor :top_level
 
-      def initialize(name=['Template'],top_level=false)
+      def initialize(name=['Template'], top_level=false)
         @name = name
         @hierarchy = []
         @kind = nil
@@ -50,16 +50,16 @@ module FHIR
         s << 'module FHIR' if @top_level
 
         @name.each_with_index do |name, index|
-          space = indent(index+1,offset)
+          space = indent(index+1, offset)
           type = 'module'
           type = 'class' if index==@name.length-1
           classdef = "#{space}#{type} #{name}"
-          classdef += " < FHIR::Model" if type == 'class'
+          classdef += ' < FHIR::Model' if type == 'class'
           s << classdef
         end
 
         # include modules
-        space = indent(@name.length+1,offset)
+        space = indent(@name.length+1, offset)
         s << "#{space}include FHIR::Hashable" if(@name.length > 0)
         s << "#{space}include FHIR::Json" if(@name.length > 0)
         s << "#{space}include FHIR::Xml" if(@name.length > 0)
@@ -70,14 +70,14 @@ module FHIR
         @constants['METADATA'] = metadata if !metadata.empty?
 
         # add constants
-        @constants.each do |constant,value|
+        @constants.each do |constant, value|
           if value.is_a?(Hash)
             s << "#{space}#{constant.upcase} = {"
-            value.each do |k,v|
+            value.each do |k, v|
               s << "#{space}  '#{k}' => #{v},"
               # Replace wildcard string with Infinity constant
-              s[-1].gsub!('"max"=>"*"','"max"=>Float::INFINITY')
-              s[-1].tr!('"','\'')
+              s[-1].gsub!('"max"=>"*"', '"max"=>Float::INFINITY')
+              s[-1].tr!('"', '\'')
             end
             s[-1] = s[-1][0..-2] # remove the trailing comma
             s << "#{space}}"
@@ -90,12 +90,12 @@ module FHIR
         # add internal nested classes
         @templates.each do |template|
           s << template.to_s(space.length-2)
-          s << ''          
+          s << ''
         end
 
         # calculate the longest field name for whitespace layout
         max_name_size = 0
-        @fields.each do |f| 
+        @fields.each do |f|
           name = f.local_name || f.name
           max_name_size=name.length if(name.length > max_name_size)
         end
@@ -108,12 +108,12 @@ module FHIR
           s[-1] << ("%-#{max_name_size}s" % "#{local_name}")
           # add comment after field declaration
           s[-1] << "# #{field.min}-#{field.max} "
-          s[-1] << "[ " if(field.max.to_i > 1 || field.max=='*')
+          s[-1] << '[ ' if(field.max.to_i > 1 || field.max=='*')
           s[-1] << field.type
           if field.type=='Reference'
             s[-1] << "(#{ field.type_profiles.map{|p|p.split('/').last}.join('|') })"
           end
-          s[-1] << " ]" if(field.max.to_i > 1 || field.max=='*')          
+          s[-1] << ' ]' if(field.max.to_i > 1 || field.max=='*')
         end
 
         if @top_level && @kind=='resource'
@@ -125,14 +125,14 @@ module FHIR
 
         # close all the class and module declarations
         (0..@name.length-1).reverse_each do |index|
-          space = indent(index+1,offset)
-          s << "#{space}end"          
+          space = indent(index+1, offset)
+          s << "#{space}end"
         end
         s << 'end' if @top_level
         s.join("\n")
       end
 
-      def indent(level=0,offset)
+      def indent(level=0, offset)
         ' '*(offset) + '  '*(level)
       end
 

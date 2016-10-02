@@ -1,6 +1,6 @@
 module FluentPath
   class Expression
-        
+
     attr_accessor :tree
 
     def initialize(tree)
@@ -16,9 +16,9 @@ module FluentPath
     end
 
     def clone
-      clone_tree = @tree.map{|x|x.clone rescue x}      
+      clone_tree = @tree.map{|x|x.clone rescue x}
       FluentPath::Expression.new(clone_tree)
     end
-    
+
   end
 end

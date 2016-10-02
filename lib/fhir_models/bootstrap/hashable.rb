@@ -1,9 +1,10 @@
+require 'bigdecimal'
 module FHIR
   module Hashable
 
     def to_hash
       hash = Hash.new
-      self.class::METADATA.each do |key,value|
+      self.class::METADATA.each do |key, value|
         local_name = key
         local_name = value['local_name'] if value['local_name']
         hash[key] = self.instance_variable_get("@#{local_name}")
@@ -11,14 +12,14 @@ module FHIR
           hash[key] = hash[key].to_hash
         elsif hash[key].is_a? Array
           hash[key] = Array.new(hash[key]) # copy the array
-          hash[key].each_with_index do |item,index|
+          hash[key].each_with_index do |item, index|
             hash[key][index] = item.to_hash if item.respond_to?(:to_hash)
           end
         end
       end
-      hash.keep_if do |_key,value|
-        !value.nil? && (  (value.is_a?(Hash) && !value.empty?) || 
-                          (value.is_a?(Array) && !value.empty?) || 
+      hash.keep_if do |_key, value|
+        !value.nil? && (  (value.is_a?(Hash) && !value.empty?) ||
+                          (value.is_a?(Array) && !value.empty?) ||
                           (!value.is_a?(Hash) && !value.is_a?(Array))
                        )
       end
@@ -28,19 +29,19 @@ module FHIR
 
     def from_hash(hash)
       # clear the existing variables
-      self.class::METADATA.each do |key,value|
+      self.class::METADATA.each do |key, value|
         local_name = key
         local_name = value['local_name'] if value['local_name']
-        self.instance_variable_set("@#{local_name}",nil)
+        self.instance_variable_set("@#{local_name}", nil)
       end
       # set the variables to the hash values
-      hash.each do |key,value|
+      hash.each do |key, value|
         key = key.to_s
         meta = self.class::METADATA[key]
         if !meta.nil?
           local_name = key
           local_name = meta['local_name'] if meta['local_name']
-          self.instance_variable_set("@#{local_name}",value) rescue nil
+          self.instance_variable_set("@#{local_name}", value) rescue nil
           # inflate the value if it isn't a primitive
           klass = Module.const_get("FHIR::#{meta['type']}") rescue nil
           if !klass.nil? && !value.nil?
@@ -48,7 +49,7 @@ module FHIR
             if value.is_a?(Array)
               value.map! do |child|
                 obj = child
-                unless [FHIR::RESOURCES, FHIR::TYPES].flatten.include? child.class.name.gsub('FHIR::','')
+                unless [FHIR::RESOURCES, FHIR::TYPES].flatten.include? child.class.name.gsub('FHIR::', '')
                   if child['resourceType']
                     klass = Module.const_get("FHIR::#{child['resourceType']}") rescue nil
                   end
@@ -70,24 +71,24 @@ module FHIR
               rescue => e
                 FHIR.logger.error("Unable to inflate embedded class #{klass}\n#{e.backtrace}")
               end
-              # if there is only one of these, but cardinality allows more, we need to wrap it in an array.              
+              # if there is only one of these, but cardinality allows more, we need to wrap it in an array.
               value = [ value ] if(value && (meta['max'] > 1))
             end
-            self.instance_variable_set("@#{local_name}",value)
+            self.instance_variable_set("@#{local_name}", value)
           elsif !FHIR::PRIMITIVES.include?(meta['type']) && meta['type']!='xhtml'
             FHIR.logger.error("Unhandled and unrecognized class/type: #{meta['type']}")
           else
             # primitive
             if value.is_a?(Array)
               # array of primitives
-              value.map!{|child| convert_primitive(child,meta)}
-              self.instance_variable_set("@#{local_name}",value)
+              value.map!{|child| convert_primitive(child, meta)}
+              self.instance_variable_set("@#{local_name}", value)
             else
               # single primitive
-              value = convert_primitive(value,meta)
-              # if there is only one of these, but cardinality allows more, we need to wrap it in an array.              
+              value = convert_primitive(value, meta)
+              # if there is only one of these, but cardinality allows more, we need to wrap it in an array.
               value = [ value ] if(value && (meta['max'] > 1))
-              self.instance_variable_set("@#{local_name}",value)
+              self.instance_variable_set("@#{local_name}", value)
             end
           end # !klass && !nil?
         end # !meta.nil?
@@ -95,7 +96,7 @@ module FHIR
       self
     end
 
-    def convert_primitive(value,meta)
+    def convert_primitive(value, meta)
       return value if !value.is_a?(String)
 
       rval = value

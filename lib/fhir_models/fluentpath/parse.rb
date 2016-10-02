@@ -1,6 +1,6 @@
 module FluentPath
 
-  @@reserved = ['all','not','empty','exists','where','select','extension','startsWith','contains','in','distinct','=','!=','<=','>=','<','>','and','or','xor','+','-','/','*','toInteger','implies','children','first','last','tail','count','substring']
+  @@reserved = ['all', 'not', 'empty', 'exists', 'where', 'select', 'extension', 'startsWith', 'contains', 'in', 'distinct', '=', '!=', '<=', '>=', '<', '>', 'and', 'or', 'xor', '+', '-', '/', '*', 'toInteger', 'implies', 'children', 'first', 'last', 'tail', 'count', 'substring']
 
   def self.parse(expression)
     build_tree( tokenize(expression) )
@@ -8,7 +8,7 @@ module FluentPath
 
   # This method tokenizes the expression into a flat array of tokens
   def self.tokenize(expression)
-    raw_tokens = expression.gsub('()','').split(/(\(|\)|\s|>=|<=|>|<|=|!=|\+|-|\/|\*)/)
+    raw_tokens = expression.gsub('()', '').split(/(\(|\)|\s|>=|<=|>|<|=|!=|\+|-|\/|\*)/)
     # recreate strings if they were split
     size = nil
     while(raw_tokens.include?("'") && size!=raw_tokens.length)
@@ -45,7 +45,7 @@ module FluentPath
   end
 
   def self.reassemble_strings(tokens)
-    tokens.each_with_index do |token,index|
+    tokens.each_with_index do |token, index|
       if token.is_a?(String)
         e_index = nil
         if token.start_with?('"') && !token.end_with?('"')
@@ -80,7 +80,7 @@ module FluentPath
       end
     end
     # post-processing
-    tree.each_with_index do |t,index|
+    tree.each_with_index do |t, index|
       if t==:extension # 'extension' can be a path or a function call (if followed by a block)
         next_token = tree[index+1]
         tree[index] = 'extension' if next_token.nil? || !next_token.is_a?(FluentPath::Expression)
@@ -101,7 +101,7 @@ module FluentPath
       value = token.to_sym if @@reserved.include?(token)
       value = true if token=='true'
       value = false if token=='false'
-    end      
+    end
     value
   end
 
