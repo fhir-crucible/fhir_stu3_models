@@ -1,12 +1,4 @@
-source "http://rubygems.org"
-gemspec
+source 'https://rubygems.org'
 
-group :test do
-  gem 'codeclimate-test-reporter', require: nil  
-  gem 'rubocop', '~> 0.43.0', require: false
-  gem 'simplecov'
-  gem 'minitest', "~> 4.0"
-  gem 'turn'
-  gem 'awesome_print', :require => 'ap'
-  gem 'nokogiri-diff'
-end
+# Specify your gem's dependencies in fhir_models.gemspec
+gemspec

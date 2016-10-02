@@ -1,20 +1,35 @@
-# -*- encoding: utf-8 -*-
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'fhir_models/version'
 
-Gem::Specification.new do |s|
-  s.name = "fhir_models"
-  s.summary = "A Gem for handling FHIR models in ruby"
-  s.description = "A Gem for handling FHIR models in ruby"
-  s.email = "jwalonoski@mitre.org"
-  s.homepage = "https://github.com/fhir-crucible/fhir_models"
-  s.authors = ["Jason Walonoski", "Andre Quina", "Michael O'Keefe"]
-  s.version = '1.6.3'
-  s.files = s.files = `git ls-files`.split("\n")
-  s.add_development_dependency 'pry'
-  s.add_development_dependency 'minitest'
-  s.add_development_dependency 'test-unit'
-  s.add_dependency 'rake', '>= 0.8.7'
-  s.add_dependency 'nokogiri', '>= 1.6'
-  s.add_dependency 'date_time_precision', '>= 0.8'
-  s.add_dependency 'bcp47', '>= 0.3'
-  s.add_dependency 'mime-types', '>= 1.16', '< 3'
+Gem::Specification.new do |spec|
+  spec.name          = "fhir_models"
+  spec.version       = FHIR::Models::VERSION
+  spec.authors       = ["Jason Walonoski", "Andre Quina", "Michael O'Keefe"]
+  spec.email         = ["jwalonoski@mitre.org"]
+
+  spec.summary       = %q{A Gem for handling FHIR models in ruby}
+  spec.description   = %q{A Gem for handling FHIR models in ruby}
+  spec.homepage      = "https://github.com/fhir-crucible/fhir_models"
+
+  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
+    f.match(%r{^(test|spec|features)/})
+  end
+  spec.bindir        = "exe"
+  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.require_paths = ["lib"]
+
+  spec.add_dependency 'nokogiri', '>= 1.6'
+  spec.add_dependency 'date_time_precision', ">= 0.8"
+  spec.add_dependency 'bcp47', '>= 0.3'
+  spec.add_dependency 'mime-types', '>= 1.16', '< 3'
+
+  spec.add_development_dependency "bundler", "~> 1.13"
+  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency 'pry'
+  spec.add_development_dependency "test-unit"
+  spec.add_development_dependency "simplecov"
+  spec.add_development_dependency "nokogiri-diff"
+  spec.add_development_dependency "rubocop", '~> 0.43.0'
 end
