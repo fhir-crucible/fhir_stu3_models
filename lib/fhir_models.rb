@@ -30,7 +30,3 @@ Dir.chdir('lib') do
     require_relative file
   end
 end
-
-module FhirModels
-  # Your code goes here...
-end

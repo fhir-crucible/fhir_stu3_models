@@ -2844,7 +2844,7 @@
                 "ele-1"
               ],
               "constraint": [
-                {
+               {
                   "key": "per-1",
                   "severity": "error",
                   "human": "If present, start SHALL have a lower value than end",
@@ -3002,7 +3002,7 @@
                 "ele-1"
               ],
               "constraint": [
-                {
+                 {
                   "key": "att-1",
                   "severity": "error",
                   "human": "It the Attachment has data, it SHALL have a contentType",
@@ -3730,7 +3730,7 @@
                 "ele-1"
               ],
               "constraint": [
-                {
+                 {
                   "key": "rng-2",
                   "severity": "error",
                   "human": "If present, low SHALL have a lower value than high",
@@ -3890,7 +3890,6 @@
                 "ele-1"
               ],
               "constraint": [
-
               ]
             },
             {
@@ -4261,9 +4260,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Identifier.id",
@@ -4522,9 +4519,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Coding.id",
@@ -4723,9 +4718,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Signature.id",
@@ -5050,9 +5043,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "SampledData.id",
@@ -5839,9 +5830,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "CodeableConcept.id",
@@ -6336,9 +6325,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "BackboneElement.id",
@@ -6443,9 +6430,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Narrative.id",
@@ -6620,9 +6605,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Element.id",
@@ -6661,9 +6644,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Element.id",
@@ -6722,9 +6703,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Meta.id",
@@ -6951,9 +6930,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "RelatedResource.id",
@@ -7192,9 +7169,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Address.id",
@@ -7565,9 +7540,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "TriggerDefinition.id",
@@ -7776,9 +7749,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Contributor.id",
@@ -7943,9 +7914,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "DataRequirement.id",
@@ -8418,9 +8387,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "ContactDetail.id",
@@ -8547,9 +8514,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "HumanName.id",
@@ -9064,9 +9029,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "UsageContext.id",
@@ -9365,9 +9328,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "Timing.id",
@@ -13125,9 +13086,7 @@
               "condition": [
                 "ele-1"
               ],
-              "constraint": [
-
-              ]
+              "constraint": [              ]
             },
             {
               "id": "ParameterDefinition.id",
