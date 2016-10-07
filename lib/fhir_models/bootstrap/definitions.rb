@@ -1,7 +1,8 @@
+require 'tempfile'
 module FHIR
   class Definitions
 
-    @@defns = File.expand_path '../../definitions',File.dirname(File.absolute_path(__FILE__))
+    @@defns = File.expand_path '../definitions', File.dirname(File.absolute_path(__FILE__))
     @@types = nil
     @@resources = nil
     @@profiles = nil
@@ -17,8 +18,8 @@ module FHIR
     def self.load_types
       if @@types.nil?
         # load the types
-        filename = File.join(@@defns,'structures','profiles-types.json')
-        raw = File.open(filename,'r:UTF-8',&:read)
+        filename = File.join(@@defns, 'structures', 'profiles-types.json')
+        raw = File.open(filename, 'r:UTF-8', &:read)
         @@types = JSON.parse(raw)['entry'].map{|e|e['resource']}
       end
     end
@@ -51,8 +52,8 @@ module FHIR
     def self.load_resources
       if @@resources.nil?
         # load the resources
-        filename = File.join(@@defns,'structures','profiles-resources.json')
-        raw = File.open(filename,'r:UTF-8',&:read)
+        filename = File.join(@@defns, 'structures', 'profiles-resources.json')
+        raw = File.open(filename, 'r:UTF-8', &:read)
         @@resources = JSON.parse(raw)['entry'].map{|e|e['resource']}
       end
     end
@@ -73,8 +74,8 @@ module FHIR
     def self.load_profiles
       if @@profiles.nil?
         # load the built-in profiles
-        filename = File.join(@@defns,'structures','profiles-others.json')
-        raw = File.open(filename,'r:UTF-8',&:read)
+        filename = File.join(@@defns, 'structures', 'profiles-others.json')
+        raw = File.open(filename, 'r:UTF-8', &:read)
         @@profiles = JSON.parse(raw)['entry'].map{|e|e['resource']}
       end
     end
@@ -82,8 +83,8 @@ module FHIR
     def self.load_extensions
       if @@extensions.nil?
         # load the built-in extensions
-        filename = File.join(@@defns,'structures','extension-definitions.json')
-        raw = File.open(filename,'r:UTF-8',&:read)
+        filename = File.join(@@defns, 'structures', 'extension-definitions.json')
+        raw = File.open(filename, 'r:UTF-8', &:read)
         @@extensions = JSON.parse(raw)['entry'].map{|e|e['resource']}
       end
     end
@@ -143,10 +144,10 @@ module FHIR
       if !defn.nil?
         generator = FHIR::Boot::Generator.new(false)
         type = defn['baseType']
-        id = defn['id'].gsub(/-|_/,'').capitalize
+        id = defn['id'].gsub(/-|_/, '').capitalize
         defn['id'] = type # override profile id with baseType name for generator
-        template = generator.generate_class([ type ],defn)
-        f = Tempfile.new(["profile-#{id}",'.rb'])
+        template = generator.generate_class([ type ], defn)
+        f = Tempfile.new(["profile-#{id}", '.rb'])
         f.write("module FHIR\n")
         f.write("module Profile\n")
         f.write("module #{id}\n")
@@ -174,14 +175,14 @@ module FHIR
     def self.load_expansions
       if @@expansions.nil?
         # load the expansions
-        filename = File.join(@@defns,'valuesets','expansions.json')
-        raw = File.open(filename,'r:UTF-8',&:read)
+        filename = File.join(@@defns, 'valuesets', 'expansions.json')
+        raw = File.open(filename, 'r:UTF-8', &:read)
         @@expansions = JSON.parse(raw)['entry'].map{|e|e['resource']}
       end
       if @@valuesets.nil?
         # load the valuesets
-        filename = File.join(@@defns,'valuesets','valuesets.json')
-        raw = File.open(filename,'r:UTF-8',&:read)
+        filename = File.join(@@defns, 'valuesets', 'valuesets.json')
+        raw = File.open(filename, 'r:UTF-8', &:read)
         @@valuesets = JSON.parse(raw)['entry'].map{|e|e['resource']}
       end
     end
@@ -203,7 +204,7 @@ module FHIR
           included_systems = valueset['compose']['include'].map{|x|x['system']}.uniq
           included_systems.each{|x| codes[x]=[] if !codes.keys.include?(x) }
           systems = @@valuesets.select{|x|x['resourceType']=='CodeSystem' && included_systems.include?(x['url'])}
-          systems.each do |x| 
+          systems.each do |x|
             x['concept'].each{|y| codes[x['url']] << y['code']}
           end
         end
@@ -218,16 +219,16 @@ module FHIR
     def self.load_search_params
       if @@search_params.nil?
         # load the search parameters
-        filename = File.join(@@defns,'structures','search-parameters.json')
-        raw = File.open(filename,'r:UTF-8',&:read)
-        @@search_params = JSON.parse(raw)['entry'].map{|e|e['resource']}        
+        filename = File.join(@@defns, 'structures', 'search-parameters.json')
+        raw = File.open(filename, 'r:UTF-8', &:read)
+        @@search_params = JSON.parse(raw)['entry'].map{|e|e['resource']}
       end
     end
 
-    def self.get_search_parameters(typeName)
-      return nil if typeName.nil?
+    def self.get_search_parameters(type_name)
+      return nil if type_name.nil?
       load_search_params
-      @@search_params.select{|p|p['base']==typeName && p['xpath'] && !p['xpath'].include?('extension')}.map{|p|p['code']}
+      @@search_params.select{|p|p['base']==type_name && p['xpath'] && !p['xpath'].include?('extension')}.map{|p|p['code']}
     end
 
     private_class_method :load_types, :load_extensions, :load_expansions, :load_profiles, :load_resources, :load_search_params

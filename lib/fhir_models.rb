@@ -1,44 +1,32 @@
-# Top level include file that brings in all the necessary code
-require 'bundler/setup'
+require 'fhir_models/version'
+
+# TODO what are these for?  Nothing seems to use them.
 require 'yaml'
-require 'nokogiri'
 require 'date_time_precision'
 require 'date_time_precision/format/iso8601'
-require 'mime/types'
-require 'bcp47'
-require 'bigdecimal'
-require 'logger'
-require 'tempfile'
 
-root = File.expand_path '..', File.dirname(File.absolute_path(__FILE__))
+Dir.chdir('lib') do
+  # Need to require Hashable first
+  require_relative 'fhir_models/bootstrap/hashable'
+  require_relative 'fhir_models/bootstrap/json'
+  Dir['fhir_models/bootstrap/*.rb'].each do |file|
+    require_relative file
+  end
 
-# Need to require Hashable first
-require File.join(root,'lib','bootstrap','hashable.rb')
-require File.join(root,'lib','bootstrap','json.rb')
+  require_relative 'fhir_models/fhir'
 
-Dir.glob(File.join(root, 'lib','bootstrap','*.rb')).each do |file|
-  require file
-end
-Dir.glob(File.join(root, 'lib','bootstrap','**','*.rb')).each do |file|
-  require file
-end
+  # require generated models
+  Dir['fhir_models/fhir/**/*.rb'].each do |file|
+    require_relative file
+  end
 
-require File.join(root, 'lib','fhir.rb')
+  # require fluentpath code
+  Dir['fhir_models/fluentpath/*.rb'].each do |file|
+    require_relative file
+  end
 
-# Require the generated code
-Dir.glob(File.join(root, 'lib','fhir','*.rb')).each do |file|
-  require file
-end
-Dir.glob(File.join(root, 'lib','fhir','**','*.rb')).each do |file|
-  require file
-end
-
-# Require the fluentpath code
-Dir.glob(File.join(root, 'lib','fluentpath','*.rb')).each do |file|
-  require file
-end
-
-# Require the fhir_ext code
-Dir.glob(File.join(root, 'lib','fhir_ext','*.rb')).each do |file|
-  require file
+  # require fhir_ext code
+  Dir['fhir_models/fhir_ext/*.rb'].each do |file|
+    require_relative file
+  end
 end

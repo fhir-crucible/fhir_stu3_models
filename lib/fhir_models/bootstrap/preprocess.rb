@@ -1,3 +1,4 @@
+require 'nokogiri'
 module FHIR
   module Boot
     class Preprocess
@@ -6,12 +7,12 @@ module FHIR
         # Read the file
         puts "Processing #{File.basename(filename)}..."
         start = File.size(filename)
-        json = File.open(filename,'r:UTF-8',&:read)
+        json = File.open(filename, 'r:UTF-8', &:read)
         hash = JSON.parse(json)
 
         # Remove entries that do not interest us: CompartmentDefinitions, OperationDefinitions, Conformance statements
         hash['entry'].select! do |entry|
-          ['StructureDefinition','ValueSet','CodeSystem','SearchParameter'].include? entry['resource']['resourceType']
+          ['StructureDefinition', 'ValueSet', 'CodeSystem', 'SearchParameter'].include? entry['resource']['resourceType']
         end
 
         # Remove unnecessary elements from the hash
@@ -26,7 +27,7 @@ module FHIR
         end
 
         # Output the post processed file
-        f = File.open(filename,'w:UTF-8')
+        f = File.open(filename, 'w:UTF-8')
         f.write(JSON.pretty_unparse(hash))
         f.close
         finish = File.size(filename)
@@ -35,32 +36,32 @@ module FHIR
 
       def self.pre_process_structuredefinition(hash)
         # Remove large HTML narratives and unused content
-        ['text','publisher','contact','description','requirements','mapping'].each{|key| hash.delete(key) }
-        
+        ['text', 'publisher', 'contact', 'description', 'requirements', 'mapping'].each{|key| hash.delete(key) }
+
         # Remove unused descriptions within the snapshot elements
         if(hash['snapshot'])
           hash['snapshot']['element'].each do |element|
-            ['short','definition','comments','requirements','alias','mapping'].each{|key| element.delete(key) }
+            ['short', 'definition', 'comments', 'requirements', 'alias', 'mapping'].each{|key| element.delete(key) }
           end
         end
         # Remove unused descriptions within the differential elements
         if(hash['differential'])
           hash['differential']['element'].each do |element|
-            ['short','definition','comments','requirements','alias','mapping'].each{|key| element.delete(key) }
+            ['short', 'definition', 'comments', 'requirements', 'alias', 'mapping'].each{|key| element.delete(key) }
           end
         end
       end
 
       def self.pre_process_valueset(hash)
         # Remove large HTML narratives and unused content
-        ['meta','text','publisher','contact','description','requirements'].each{|key| hash.delete(key) }
+        ['meta', 'text', 'publisher', 'contact', 'description', 'requirements'].each{|key| hash.delete(key) }
 
         if(hash['compose'] && hash['compose']['include'])
           hash['compose']['include'].each do |element|
             if(element['concept'])
               element['concept'].each do |concept|
                 concept.delete('designation')
-              end 
+              end
             end
           end
         end
@@ -70,7 +71,7 @@ module FHIR
             if(element['concept'])
               element['concept'].each do |concept|
                 concept.delete('designation')
-              end 
+              end
             end
           end
         end
@@ -78,7 +79,7 @@ module FHIR
 
       def self.pre_process_codesystem(hash)
         # Remove large HTML narratives and unused content
-        ['meta','text','publisher','contact','description','requirements'].each{|key| hash.delete(key) }
+        ['meta', 'text', 'publisher', 'contact', 'description', 'requirements'].each{|key| hash.delete(key) }
 
         if(hash['concept'])
           hash['concept'].each do |concept|
@@ -88,7 +89,7 @@ module FHIR
       end
 
       def self.pre_process_codesystem_concept(hash)
-        ['extension','definition','designation'].each{|key| hash.delete(key) }
+        ['extension', 'definition', 'designation'].each{|key| hash.delete(key) }
         if hash['concept']
           hash['concept'].each do |concept|
             pre_process_codesystem_concept(concept)
@@ -98,12 +99,12 @@ module FHIR
 
       def self.pre_process_searchparam(hash)
         # Remove large HTML narratives and unused content
-        ['id','url','name','date','publisher','contact','description','xpathUsage'].each{|key| hash.delete(key) }
+        ['id', 'url', 'name', 'date', 'publisher', 'contact', 'description', 'xpathUsage'].each{|key| hash.delete(key) }
       end
 
       def self.remove_fhir_comments(hash)
         hash.delete('fhir_comments')
-        hash.each do |_key,value|
+        hash.each do |_key, value|
           if value.is_a?(Hash)
             remove_fhir_comments(value)
           elsif value.is_a?(Array)
@@ -112,7 +113,7 @@ module FHIR
             end
           end
         end
-        hash.keep_if do |_key,value|
+        hash.keep_if do |_key, value|
           !value.is_a?(Hash) || !value.empty?
         end
       end
@@ -121,7 +122,7 @@ module FHIR
         # Read the file
         puts "Processing #{File.basename(filename)}..."
         start = File.size(filename)
-        raw = File.open(filename,'r:UTF-8',&:read)
+        raw = File.open(filename, 'r:UTF-8', &:read)
 
         # Remove annotations
         doc = Nokogiri::XML(raw)
@@ -129,7 +130,7 @@ module FHIR
         doc.search('//xs:annotation').each{ |e| e.remove }
 
         # Output the post processed file
-        f = File.open(filename,'w:UTF-8')
+        f = File.open(filename, 'w:UTF-8')
         f.write(doc.to_xml)
         f.close
         finish = File.size(filename)

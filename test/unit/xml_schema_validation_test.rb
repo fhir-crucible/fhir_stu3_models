@@ -1,25 +1,26 @@
 require_relative '../test_helper'
 
 class XmlSchemaValidationTest < Test::Unit::TestCase
- 
+
   # turn off the ridiculous warnings
   $VERBOSE=nil
 
-  ERROR_DIR = File.join('errors', 'XmlSchemaValidationTest')
-  EXAMPLE_ROOT = File.join('examples','xml')
+  ERROR_DIR = File.join('tmp', 'errors', 'XmlSchemaValidationTest')
+  EXAMPLE_ROOT = File.join('lib', 'fhir_models', 'examples', 'xml')
 
-  XSD_ROOT = File.join('definitions','schema')
-  XSD = Nokogiri::XML::Schema(File.new(File.join(XSD_ROOT, "fhir-single.xsd")))
+  XSD_ROOT = File.join('lib', 'fhir_models', 'definitions', 'schema')
+  XSD = Nokogiri::XML::Schema(File.new(File.join(XSD_ROOT, 'fhir-single.xsd')))
 
   # Automatically generate one test method per example file
   example_files = File.join(EXAMPLE_ROOT, '**', '*.xml')
+  raise 'No Example Files Found' if Dir[example_files].empty?
 
   # Create a blank folder for the errors
   FileUtils.rm_rf(ERROR_DIR) if File.directory?(ERROR_DIR)
   FileUtils.mkdir_p ERROR_DIR
-  
+
   Dir.glob(example_files).each do | example_file |
-    example_name = File.basename(example_file, ".xml")
+    example_name = File.basename(example_file, '.xml')
     define_method("test_xml_schema_validation_#{example_name}") do
       run_xml_schema_validation_test(example_file, example_name)
     end
@@ -54,7 +55,7 @@ class XmlSchemaValidationTest < Test::Unit::TestCase
         end
 
         if !errors_input.empty?
-          file.write("ORIGINAL ERRORS: ")
+          file.write('ORIGINAL ERRORS: ')
           errors_input.each do |error|
             file.write(sprintf("%-8d  %s\n", error.line, error.message))
           end

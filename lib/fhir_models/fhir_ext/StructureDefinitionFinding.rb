@@ -27,8 +27,8 @@ module FHIR
             json.gsub!("\xEF\xBB\xBF".force_encoding('UTF-8'), '') # remove UTF-8 BOM
           end
           hash = JSON.parse(json)
-          hash.each do |key,value|
-            obj.send("#{key}=".to_sym,value) if value
+          hash.each do |key, value|
+            obj.send("#{key}=".to_sym, value) if value
           end
         rescue => e
           FHIR.logger.error "Failed to parse JSON: #{e.message}"
@@ -42,7 +42,7 @@ module FHIR
       from_json(to_json)
     end
 
-    def warning(path,attribute,message,valueA,valueB)
+    def warning(path, attribute, message, valueA, valueB)
       obj = clone
       obj.status = 'WARNING'
       obj.path = path
@@ -53,7 +53,7 @@ module FHIR
       obj
     end
 
-    def error(path,attribute,message,valueA,valueB)
+    def error(path, attribute, message, valueA, valueB)
       obj = clone
       obj.status = 'ERROR'
       obj.path = path

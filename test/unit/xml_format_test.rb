@@ -1,16 +1,17 @@
 require_relative '../test_helper'
 
 class XmlFormatTest < Test::Unit::TestCase
- 
+
   # turn off the ridiculous warnings
   $VERBOSE=nil
 
-  ERROR_DIR = File.join('errors', 'XmlFormatTest')
-  ERROR_LOSSY_DIR = File.join('errors', 'XmlLossinessTest')
-  EXAMPLE_ROOT = File.join('examples','xml')
+  ERROR_DIR = File.join('tmp', 'errors', 'XmlFormatTest')
+  ERROR_LOSSY_DIR = File.join('tmp', 'errors', 'XmlLossinessTest')
+  EXAMPLE_ROOT = File.join('lib', 'fhir_models', 'examples', 'xml')
 
   # Automatically generate one test method per example file
   example_files = File.join(EXAMPLE_ROOT, '**', '*.xml')
+  raise 'No Examples Found' if Dir[example_files].empty?
 
   # Create a blank folder for the errors
   FileUtils.rm_rf(ERROR_DIR) if File.directory?(ERROR_DIR)
@@ -19,7 +20,7 @@ class XmlFormatTest < Test::Unit::TestCase
   FileUtils.mkdir_p ERROR_LOSSY_DIR
 
   Dir.glob(example_files).each do | example_file |
-    example_name = File.basename(example_file, ".xml")
+    example_name = File.basename(example_file, '.xml')
     define_method("test_xml_format_#{example_name}") do
       run_xml_roundtrip_test(example_file, example_name)
     end
@@ -39,14 +40,14 @@ class XmlFormatTest < Test::Unit::TestCase
     clean_nodes(input_nodes.root)
     clean_nodes(output_nodes.root)
 
-    errors = calculate_errors(input_nodes,output_nodes)
+    errors = calculate_errors(input_nodes, output_nodes)
     if !errors.empty?
       File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') {|file| file.write(errors.map{|x| "#{x.first} #{x.last.to_xml}"}.join("\n"))}
       File.open("#{ERROR_DIR}/#{example_name}_PRODUCED.xml", 'w:UTF-8') {|file| file.write(output_xml)}
       File.open("#{ERROR_DIR}/#{example_name}_ORIGINAL.xml", 'w:UTF-8') {|file| file.write(input_xml)}
     end
 
-    assert errors.empty?, "Differences in generated XML vs original"
+    assert errors.empty?, 'Differences in generated XML vs original'
   end
 
   def run_xml_json_xml_lossiness_test(example_file, example_name)
@@ -62,17 +63,17 @@ class XmlFormatTest < Test::Unit::TestCase
     clean_nodes(input_nodes.root)
     clean_nodes(output_nodes.root)
 
-    errors = calculate_errors(input_nodes,output_nodes)
+    errors = calculate_errors(input_nodes, output_nodes)
     if !errors.empty?
       File.open("#{ERROR_LOSSY_DIR}/#{example_name}.err", 'w:UTF-8') {|file| file.write(errors.map{|x| "#{x.first} #{x.last.to_xml}"}.join("\n"))}
       File.open("#{ERROR_LOSSY_DIR}/#{example_name}_PRODUCED.xml", 'w:UTF-8') {|file| file.write(output_xml)}
       File.open("#{ERROR_LOSSY_DIR}/#{example_name}_ORIGINAL.xml", 'w:UTF-8') {|file| file.write(input_xml)}
     end
 
-    assert errors.empty?, "Differences in generated XML vs original"
+    assert errors.empty?, 'Differences in generated XML vs original'
   end
 
-  def calculate_errors(input_nodes,output_nodes)
+  def calculate_errors(input_nodes, output_nodes)
     errors = input_nodes.diff(output_nodes, added: true, removed: true).to_a
     errors.keep_if do |error|
       # we do not support the preservation of comments, ignore them
@@ -93,7 +94,7 @@ class XmlFormatTest < Test::Unit::TestCase
       end
     end
     regex = /-?([0]|([1-9][0-9]*))(\\.[0-9]+)?/
-    left.each_with_index do |error,index|
+    left.each_with_index do |error, index|
       right_error = right[index]
       two_numerics = ( (error.last.value =~ regex) && (right_error.last.value =~regex) )
       if two_numerics && (error.last.value.to_f == right_error.last.value.to_f)

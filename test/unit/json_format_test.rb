@@ -1,16 +1,17 @@
 require_relative '../test_helper'
 
 class JsonFormatTest < Test::Unit::TestCase
- 
+
   # turn off the ridiculous warnings
   $VERBOSE=nil
 
-  ERROR_DIR = File.join('errors', 'JsonFormatTest')
-  ERROR_LOSSY_DIR = File.join('errors', 'JsonLossinessTest')
-  EXAMPLE_ROOT = File.join('examples','json')
+  ERROR_DIR = File.join('tmp', 'errors', 'JsonFormatTest')
+  ERROR_LOSSY_DIR = File.join('tmp', 'errors', 'JsonLossinessTest')
+  EXAMPLE_ROOT = File.join('lib', 'fhir_models', 'examples', 'json')
 
   # Automatically generate one test method per example file
   example_files = File.join(EXAMPLE_ROOT, '**', '*.json')
+  raise 'No Example Files Found' if Dir[example_files].empty?
 
   # Create a blank folder for the errors
   FileUtils.rm_rf(ERROR_DIR) if File.directory?(ERROR_DIR)
@@ -19,7 +20,7 @@ class JsonFormatTest < Test::Unit::TestCase
   FileUtils.mkdir_p ERROR_LOSSY_DIR
 
   Dir.glob(example_files).each do | example_file |
-    example_name = File.basename(example_file, ".json")
+    example_name = File.basename(example_file, '.json')
     define_method("test_json_format_#{example_name}") do
       run_json_roundtrip_test(example_file, example_name)
     end
@@ -36,15 +37,15 @@ class JsonFormatTest < Test::Unit::TestCase
     input_hash = JSON.parse(input_json)
     output_hash = JSON.parse(output_json)
 
-    errors = compare(input_hash,output_hash)
+    errors = compare(input_hash, output_hash)
 
     if !errors.empty?
       File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') {|file| file.write(errors.join("\n"))}
       File.open("#{ERROR_DIR}/#{example_name}_PRODUCED.json", 'w:UTF-8') {|file| file.write(output_json)}
-      File.open("#{ERROR_DIR}/#{example_name}_ORIGINAL.json", 'w:UTF-8') {|file| file.write(input_json)}      
+      File.open("#{ERROR_DIR}/#{example_name}_ORIGINAL.json", 'w:UTF-8') {|file| file.write(input_json)}
     end
 
-    assert errors.empty?, "Differences in generated JSON vs original"
+    assert errors.empty?, 'Differences in generated JSON vs original'
   end
 
   def run_json_xml_json_lossiness_test(example_file, example_name)
@@ -57,19 +58,19 @@ class JsonFormatTest < Test::Unit::TestCase
     input_hash = JSON.parse(input_json)
     output_hash = JSON.parse(output_json)
 
-    errors = compare(input_hash,output_hash)
+    errors = compare(input_hash, output_hash)
 
     if !errors.empty?
       File.open("#{ERROR_LOSSY_DIR}/#{example_name}.err", 'w:UTF-8') {|file| file.write(errors.join("\n"))}
       File.open("#{ERROR_LOSSY_DIR}/#{example_name}_PRODUCED.xml", 'w:UTF-8') {|file| file.write(output_xml)}
       File.open("#{ERROR_LOSSY_DIR}/#{example_name}_PRODUCED.json", 'w:UTF-8') {|file| file.write(output_json)}
-      File.open("#{ERROR_LOSSY_DIR}/#{example_name}_ORIGINAL.json", 'w:UTF-8') {|file| file.write(input_json)}      
+      File.open("#{ERROR_LOSSY_DIR}/#{example_name}_ORIGINAL.json", 'w:UTF-8') {|file| file.write(input_json)}
     end
 
-    assert errors.empty?, "Differences in generated JSON vs original"    
+    assert errors.empty?, 'Differences in generated JSON vs original'
   end
 
-  def compare(hash_input,hash_output)
+  def compare(hash_input, hash_output)
     return [hash_input] if hash_output.nil?
 
     # ignore fhir comments -- we don't support them.
@@ -91,23 +92,23 @@ class JsonFormatTest < Test::Unit::TestCase
       if input.is_a?(Array) && !output.is_a?(Array)
         errors << "#{key}:\n - INPUT:  #{input}\n - OUTPUT: #{output}"
         next
-      end 
+      end
       if output.is_a?(Array) && !input.is_a?(Array)
         errors << "#{key}:\n - INPUT:  #{input}\n - OUTPUT: #{output}"
         next
       end
       if input.is_a?(Array)
-        input.each_with_index do |item,index|
+        input.each_with_index do |item, index|
           itemB = output[index]
           if item.is_a?(Hash)
-            errors += compare(item,itemB)
+            errors += compare(item, itemB)
           elsif input!=output
             errors << "#{key}[#{index}]: #{input} != #{output}"
           end
         end
         errors << "#{key}:\n - INPUT:  #{input}\n - OUTPUT: #{output}" if input.size!=output.size
       elsif input.is_a?(Hash)
-        errors += compare(input,output)
+        errors += compare(input, output)
       elsif is_a_date_or_time(input) || is_a_date_or_time(output)
           # ignore date time formatting
       elsif input!=output
@@ -120,7 +121,7 @@ class JsonFormatTest < Test::Unit::TestCase
   # This method removes fhir_comments and primitive extensions
   # from the hash... we don't support them.
   def strip_out_unsupported!(hash)
-    hash.each do |key,value|
+    hash.each do |key, value|
       delete_key = false
       # delete fhir_comments and primitive extensions
       if key=='fhir_comments' || key.start_with?('_')
@@ -128,7 +129,7 @@ class JsonFormatTest < Test::Unit::TestCase
       elsif value.is_a?(Array)
         value.each do |thing|
           strip_out_unsupported!(thing) if thing.is_a?(Hash)
-        end 
+        end
       elsif value.is_a?(Hash)
         strip_out_unsupported!(value)
         delete_key = value.empty?
@@ -140,7 +141,7 @@ class JsonFormatTest < Test::Unit::TestCase
   def is_a_date_or_time(value)
     return false if !value.is_a?(String)
 
-    ['date','dateTime','time'].each do |type|
+    ['date', 'dateTime', 'time'].each do |type|
       meta = FHIR::PRIMITIVES[type]
       expression = meta['regex']
       regex = Regexp.new(expression)
@@ -158,7 +159,7 @@ class JsonFormatTest < Test::Unit::TestCase
     # return true if !(regex =~ value).nil?
     # # when 'date'
     # regex = /-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])))/
-    # return true if !(regex =~ value).nil?        
+    # return true if !(regex =~ value).nil?
     # # when 'datetime'
     # regex = /-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?)?)?)?/
     # return true if !(regex =~ value).nil?

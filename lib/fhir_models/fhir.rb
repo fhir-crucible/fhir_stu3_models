@@ -1,3 +1,5 @@
+require 'nokogiri'
+require 'logger'
 module FHIR
   def self.logger
     @logger || default_logger
@@ -8,7 +10,7 @@ module FHIR
   end
 
   def self.default_logger
-    @default_logger ||= Logger.new("fhir_models.log", 10, 1024000)
+    @default_logger ||= Logger.new(ENV['FHIR_LOGGER'] || STDOUT)
   end
 
   def self.from_contents(contents)
@@ -19,5 +21,4 @@ module FHIR
       FHIR::Json.from_json(contents)
     end
   end
-
 end
