@@ -15,6 +15,7 @@ Dir.chdir('lib') do
 
   require_relative 'fhir_models/fhir'
 
+  require_relative 'fhir_models/fhir/metadata'
   # require generated models
   Dir['fhir_models/fhir/**/*.rb'].each do |file|
     require_relative file
