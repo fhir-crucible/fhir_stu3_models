@@ -100,8 +100,8 @@ namespace :fhir do
     d = FHIR::Definitions
     defs =  d.get_complex_types + d.get_resource_definitions
     invariants = {}
-    defs.each do |structureDef|
-      structureDef['snapshot']['element'].each do |element|
+    defs.each do |structure_definition|
+      structure_definition['snapshot']['element'].each do |element|
         if element['constraint']
           element['constraint'].each do |constraint|
             if constraint['expression']

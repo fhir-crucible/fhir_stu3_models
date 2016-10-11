@@ -3,6 +3,8 @@ AllCops:
   Exclude:
     - 'test/**/*'
     - 'lib/fhir_models/fhir/**/*'
+    - 'lib/fhir_models/fluentpath/evaluate.rb'
+    - 'tmp/**/*'
 
 #################### Lint ################################
 

@@ -5,7 +5,7 @@ class EqualityTest < Test::Unit::TestCase
   # turn off the ridiculous warnings
   $VERBOSE=nil
 
-  EXAMPLE_ROOT = File.join('examples')
+  EXAMPLE_ROOT = File.join('lib', 'fhir_models', 'examples')
   ERROR_DIR = File.join('tmp', 'errors', 'EqualityTest')
 
   # Create a blank folder for the errors
@@ -49,6 +49,16 @@ class EqualityTest < Test::Unit::TestCase
     assert instanceB.equals?(instanceA), 'Instance B should be equal to instance A.'
   end
 
+  def run_json_mismatch_test(example_file, example_name)
+    input_json = File.read(example_file)
+    instanceA = FHIR::Json.from_json(input_json)
+    instanceB = FHIR::Json.from_json(input_json)
+    if !instanceA.mismatch(instanceB).empty?
+      File.open("#{ERROR_DIR}/#{example_name}.json", 'w:UTF-8') {|file| file.write(input_json)}
+    end
+    assert instanceA.mismatch(instanceB).empty?, 'Instance A should match instance B.'
+  end
+
   def run_xml_equality_test(example_file, example_name)
     input_xml = File.read(example_file)
     instanceA = FHIR::Xml.from_xml(input_xml)
@@ -74,6 +84,13 @@ class EqualityTest < Test::Unit::TestCase
     end
     assert instanceA.equals?(instanceB, exclude), 'Instance A should be equal to instance B.'
     assert instanceB.equals?(instanceA, exclude), 'Instance B should be equal to instance A.'
+  end
+
+  def test_mismatch
+    x = FHIR::Patient.new({'id'=>'foo','gender'=>'male'})
+    y = FHIR::Patient.new({'id'=>'foo','gender'=>'female'})
+    misses = x.mismatch(y)
+    assert misses.first=='FHIR::Patient::gender', 'Mismatch did not detect differences.'
   end
 
 end

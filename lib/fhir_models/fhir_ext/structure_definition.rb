@@ -412,10 +412,10 @@ module FHIR
       end
 
       resource_type = json['resourceType']
-      baseType = snapshot.element[0].path
+      base_type = snapshot.element[0].path
       snapshot.element.each do |element|
         path = element.path
-        path = path[(baseType.size+1)..-1] if path.start_with? baseType
+        path = path[(base_type.size+1)..-1] if path.start_with? base_type
 
         nodes = get_json_nodes(json, path)
 
@@ -546,18 +546,18 @@ module FHIR
       if FHIR::RESOURCES.include?(data_type_code)
         definition = FHIR::Definitions.get_resource_definition(data_type_code)
         if !definition.nil?
-          retVal = false
+          ret_val = false
           begin
             klass = Module.const_get("FHIR::#{data_type_code}")
-            retVal = definition.validates_resource?(klass.new(deep_copy(value)))
-            if !retVal
+            ret_val = definition.validates_resource?(klass.new(deep_copy(value)))
+            if !ret_val
               @errors += definition.errors
               @warnings += definition.warnings
             end
           rescue
             @errors << "Unable to verify #{data_type_code} as a FHIR Resource."
           end
-          return retVal
+          return ret_val
         end
       end
 
@@ -615,18 +615,18 @@ module FHIR
         resource_type = value['resourceType']
         definition = FHIR::Definitions.get_resource_definition(resource_type)
         if !definition.nil?
-          retVal = false
+          ret_val = false
           begin
             klass = Module.const_get("FHIR::#{resource_type}")
-            retVal = definition.validates_resource?(klass.new(deep_copy(value)))
-            if !retVal
+            ret_val = definition.validates_resource?(klass.new(deep_copy(value)))
+            if !ret_val
               @errors += definition.errors
               @warnings += definition.warnings
             end
           rescue
             @errors << "Unable to verify #{resource_type} as a FHIR Resource."
           end
-          retVal
+          ret_val
         else
           @errors << "Unable to find base Resource definition: #{resource_type}"
           false
@@ -638,18 +638,18 @@ module FHIR
         definition = FHIR::Definitions.get_type_definition(data_type_code)
         definition = FHIR::Definitions.get_resource_definition(data_type_code) if definition.nil?
         if !definition.nil?
-          retVal = false
+          ret_val = false
           begin
             klass = Module.const_get("FHIR::#{data_type_code}")
-            retVal = definition.validates_resource?(klass.new(deep_copy(value)))
-            if !retVal
+            ret_val = definition.validates_resource?(klass.new(deep_copy(value)))
+            if !ret_val
               @errors += definition.errors
               @warnings += definition.warnings
             end
           rescue
             @errors << "Unable to verify #{data_type_code} as a FHIR type."
           end
-          retVal
+          ret_val
         else
           @errors << "Unable to find base type definition: #{data_type_code}"
           false
@@ -659,26 +659,26 @@ module FHIR
 
     def check_binding(element, value)
 
-      vsUri = element.binding.valueSetUri || element.binding.valueSetReference.reference
-      valueset = FHIR::Definitions.get_codes(vsUri)
+      vs_uri = element.binding.valueSetUri || element.binding.valueSetReference.reference
+      valueset = FHIR::Definitions.get_codes(vs_uri)
 
       matching_type = 0
 
-      if vsUri=='http://hl7.org/fhir/ValueSet/content-type' || vsUri=='http://www.rfc-editor.org/bcp/bcp13.txt'
+      if vs_uri=='http://hl7.org/fhir/ValueSet/content-type' || vs_uri=='http://www.rfc-editor.org/bcp/bcp13.txt'
         matches = MIME::Types[value]
         if (matches.nil? || matches.size==0) && !is_some_type_of_xml_or_json(value)
           @errors << "#{element.path} has invalid mime-type: '#{value}'"
           matching_type-=1 if element.binding.strength=='required'
         end
-      elsif vsUri=='http://tools.ietf.org/html/bcp47'
-        hasRegion = (!(value =~ /-/).nil?)
-        valid = !BCP47::Language.identify(value.downcase).nil? && (!hasRegion || !BCP47::Region.identify(value.upcase).nil?)
+      elsif vs_uri=='http://hl7.org/fhir/ValueSet/languages' || vs_uri=='http://tools.ietf.org/html/bcp47'
+        has_region = (!(value =~ /-/).nil?)
+        valid = !BCP47::Language.identify(value.downcase).nil? && (!has_region || !BCP47::Region.identify(value.upcase).nil?)
         if !valid
           @errors << "#{element.path} has unrecognized language: '#{value}'"
           matching_type-=1 if element.binding.strength=='required'
         end
       elsif valueset.nil?
-        @warnings << "#{element.path} has unknown ValueSet: '#{vsUri}'"
+        @warnings << "#{element.path} has unknown ValueSet: '#{vs_uri}'"
         matching_type-=1 if element.binding.strength=='required'
       elsif !valueset.values.flatten.include?(value)
         message = "#{element.path} has invalid code '#{value}' from #{valueset}"

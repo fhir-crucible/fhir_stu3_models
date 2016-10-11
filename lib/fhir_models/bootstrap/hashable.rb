@@ -50,27 +50,12 @@ module FHIR
               value.map! do |child|
                 obj = child
                 unless [FHIR::RESOURCES, FHIR::TYPES].flatten.include? child.class.name.gsub('FHIR::', '')
-                  if child['resourceType']
-                    klass = Module.const_get("FHIR::#{child['resourceType']}") rescue nil
-                  end
-                  begin
-                    obj = klass.new(child)
-                  rescue => e
-                    FHIR.logger.error("Unable to inflate embedded class #{klass}\n#{e.backtrace}")
-                  end
+                  obj = make_child(child, klass)
                 end
                 obj
               end
             else # handle single object
-              if value['resourceType']
-                klass = Module.const_get("FHIR::#{value['resourceType']}") rescue nil
-              end
-              begin
-                obj = klass.new(value)
-                value = obj
-              rescue => e
-                FHIR.logger.error("Unable to inflate embedded class #{klass}\n#{e.backtrace}")
-              end
+              value = make_child(value, klass)
               # if there is only one of these, but cardinality allows more, we need to wrap it in an array.
               value = [ value ] if(value && (meta['max'] > 1))
             end
@@ -96,6 +81,18 @@ module FHIR
       self
     end
 
+    def make_child(child, klass)
+      if child['resourceType']
+        klass = Module.const_get("FHIR::#{child['resourceType']}") rescue nil
+      end
+      begin
+        obj = klass.new(child)
+      rescue => e
+        FHIR.logger.error("Unable to inflate embedded class #{klass}\n#{e.backtrace}")
+      end
+      obj
+    end
+
     def convert_primitive(value, meta)
       return value if !value.is_a?(String)
 
@@ -117,6 +114,6 @@ module FHIR
       rval
     end
 
-    private :convert_primitive
+    private :make_child, :convert_primitive
   end
 end

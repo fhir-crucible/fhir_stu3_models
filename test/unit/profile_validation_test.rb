@@ -37,4 +37,12 @@ class ProfileValidationTest < Test::Unit::TestCase
     assert errors.empty?, 'Resource failed to validate.'
   end
 
+  def test_language_binding_validation
+    binding_strength = FHIR::Resource::METADATA['language']['binding']['strength']
+    FHIR::Resource::METADATA['language']['binding']['strength'] = 'required'
+    model = FHIR::Resource.new({'language'=>'en-US'})
+    assert model.is_valid?, 'Language validation failed.'
+    FHIR::Resource::METADATA['language']['binding']['strength'] = binding_strength    
+  end
+
 end

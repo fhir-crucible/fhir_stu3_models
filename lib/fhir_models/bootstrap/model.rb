@@ -52,7 +52,7 @@ module FHIR
     end
 
     def to_reference
-      FHIR::Reference.new(reference: "#{self.class.name.demodulize}/#{self.id}")
+      FHIR::Reference.new(reference: "#{self.class.name.split('::').last}/#{self.id}")
     end
 
     def equals?(other, exclude=[])
@@ -185,32 +185,7 @@ module FHIR
           if klassname=='Reference'
             validation = v.validate(contained_here)
             errors[field] << validation if !validation.empty?
-            if v.reference && meta['type_profiles']
-              matches_one_profile = false
-              meta['type_profiles'].each do |p|
-                basetype = p.split('/').last
-                matches_one_profile = true if v.reference.include?(basetype)
-                # check profiled resources
-                profile_basetype = FHIR::Definitions.get_basetype(p)
-                matches_one_profile = true if profile_basetype && v.reference.include?(profile_basetype)
-              end
-              matches_one_profile = true if meta['type_profiles'].include?('http://hl7.org/fhir/StructureDefinition/Resource')
-              if !matches_one_profile && v.reference.start_with?('#')
-                # we need to look at the local contained resources
-                begin
-                  r = contained_here.select{|x|x.id==v.reference[1..-1]}.first
-                rescue
-                  FHIR.logger.warn "Unable to resolve reference #{v.reference}"
-                end
-                if !r.nil?
-                  meta['type_profiles'].each do |p|
-                    p = p.split('/').last
-                    matches_one_profile = true if r.resourceType==p
-                  end
-                end
-              end
-              errors[field] << "#{meta['path']}: incorrect Reference type, expected #{meta['type_profiles'].map{|x|x.split('/').last}.join('|')}" if !matches_one_profile
-            end
+            validate_reference_type(v, meta, contained_here, errors[field])
           else
             errors[field] << "#{meta['path']}: expected Reference, found #{klassname}"
           end
@@ -260,6 +235,33 @@ module FHIR
       errors.delete(field) if errors[field].empty?
     end
 
+    def validate_reference_type(ref, meta, contained_here, errors)
+      if ref.reference && meta['type_profiles']
+        matches_one_profile = false
+        meta['type_profiles'].each do |p|
+          basetype = p.split('/').last
+          matches_one_profile = true if ref.reference.include?(basetype)
+          # check profiled resources
+          profile_basetype = FHIR::Definitions.get_basetype(p)
+          matches_one_profile = true if profile_basetype && ref.reference.include?(profile_basetype)
+        end
+        matches_one_profile = true if meta['type_profiles'].include?('http://hl7.org/fhir/StructureDefinition/Resource')
+        if !matches_one_profile && ref.reference.start_with?('#')
+          # we need to look at the local contained resources
+          r = contained_here.find{|x|x.id==ref.reference[1..-1]}
+          if !r.nil?
+            meta['type_profiles'].each do |p|
+              p = p.split('/').last
+              matches_one_profile = true if r.resourceType==p
+            end
+          else
+            FHIR.logger.warn "Unable to resolve reference #{ref.reference}"
+          end
+        end
+        errors << "#{meta['path']}: incorrect Reference type, expected #{meta['type_profiles'].map{|x|x.split('/').last}.join('|')}" if !matches_one_profile
+      end
+    end
+
     def is_primitive?(datatype, value)
       # Remaining data types: handle special cases before checking type StructureDefinitions
       case datatype.downcase
@@ -299,16 +301,16 @@ module FHIR
         json_or_xml = value.downcase.include?('xml') || value.downcase.include?('json')
         known_weird = ['application/cql+text'].include?(value)
         valid = json_or_xml || known_weird || (!matches.nil? && !matches.empty?)
-      elsif uri=='http://tools.ietf.org/html/bcp47'
-        hasRegion = (!(value =~ /-/).nil?)
-        valid = !BCP47::Language.identify(value.downcase).nil? && (!hasRegion || !BCP47::Region.identify(value.upcase).nil?)
+      elsif uri=='http://hl7.org/fhir/ValueSet/languages' || uri=='http://tools.ietf.org/html/bcp47'
+        has_region = (!(value =~ /-/).nil?)
+        valid = !BCP47::Language.identify(value.downcase).nil? && (!has_region || !BCP47::Region.identify(value.upcase).nil?)
       else
         FHIR.logger.warn "Unable to check_binding on unknown ValueSet: #{uri}"
       end
       valid
     end
 
-    private :is_primitive?, :check_binding, :validate_field
+    private :validate_reference_type, :is_primitive?, :check_binding, :validate_field
 
   end
 end

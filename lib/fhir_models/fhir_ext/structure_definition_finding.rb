@@ -42,25 +42,25 @@ module FHIR
       from_json(to_json)
     end
 
-    def warning(path, attribute, message, valueA, valueB)
+    def warning(path, attribute, message, value_a, value_b)
       obj = clone
       obj.status = 'WARNING'
       obj.path = path
       obj.attribute = attribute
       obj.message = message
-      obj.valueA = valueA
-      obj.valueB = valueB
+      obj.valueA = value_a
+      obj.valueB = value_b
       obj
     end
 
-    def error(path, attribute, message, valueA, valueB)
+    def error(path, attribute, message, value_a, value_b)
       obj = clone
       obj.status = 'ERROR'
       obj.path = path
       obj.attribute = attribute
       obj.message = message
-      obj.valueA = valueA
-      obj.valueB = valueB
+      obj.valueA = value_a
+      obj.valueB = value_b
       obj
     end
 

@@ -22,6 +22,14 @@ class ContentsTest < Test::Unit::TestCase
     assert patient.id=='example', 'Patient did not deserialize correctly.'
   end
 
+  def test_to_reference
+    json = File.read(EXAMPLE_JSON)
+    patient = FHIR.from_contents(json)
+    reference = patient.to_reference
+    assert reference.is_a?(FHIR::Reference), 'Resource unable to create a self-reference.'
+    assert reference.reference=='Patient/example', 'Resource did not generate self-reference correctly.'
+  end
+
   def test_negative_json_contents
     nothing = FHIR.from_contents('{}')
     assert nothing.nil?, 'From contents should have returned nil.'

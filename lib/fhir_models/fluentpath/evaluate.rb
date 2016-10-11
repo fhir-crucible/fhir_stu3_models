@@ -64,6 +64,10 @@ module FluentPath
     return true
   end
 
+  def self.clean_index(tree, index)
+    tree[index] = nil if !index.nil?
+  end
+
   # evaluate a parsed expression given some context data
   def self.compute(tree, data)
     tree = tree.tree if tree.is_a?(FluentPath::Expression)
@@ -104,7 +108,7 @@ module FluentPath
           end
           if previous_node.is_a?(Hash) || previous_node.is_a?(Array)
             tree[index] = get(node, previous_node)
-            tree[previous_index] = nil if !previous_index.nil?
+            clean_index(tree, previous_index)
           elsif !previous_node.is_a?(FluentPath::Expression)
             tree[index] = get(node, data)
           end
@@ -131,16 +135,15 @@ module FluentPath
                 convert_to_boolean(sub)
               end
               tree[index] = previous_node
-              tree[previous_index] = nil if !previous_index.nil?
+              clean_index(tree, previous_index)
             elsif previous_node.is_a?(Hash)
               sub = compute(block, previous_node)
               if convert_to_boolean(sub)
                 tree[index] = previous_node
-                tree[previous_index] = nil if !previous_index.nil?
+                clean_index(tree, previous_index)
               else
                 tree[index] = {}
-                tree[previous_index] = nil if !previous_index.nil?
-
+                clean_index(tree, previous_index)
               end
             else
               raise "Where function not applicable to #{previous_node.class}: #{previous_node}"
@@ -162,10 +165,10 @@ module FluentPath
                 compute(block.clone, item)
               end
               tree[index] = previous_node
-              tree[previous_index] = nil if !previous_index.nil?
+              clean_index(tree, previous_index)
             elsif previous_node.is_a?(Hash)
               tree[index] = compute(block, previous_node)
-              tree[previous_index] = nil if !previous_index.nil?
+              clean_index(tree, previous_index)
             else
               raise "Select function not applicable to #{previous_node.class}: #{previous_node}"
             end
@@ -191,7 +194,7 @@ module FluentPath
                 end
                 ext = exts.select{|x|x['url']==url}.first
                 tree[index] = ext
-                tree[previous_index] = nil if !previous_index.nil?
+                clean_index(tree, previous_index)
               else
                 raise "Extension function not applicable to #{exts.class}: #{exts}"
               end
@@ -204,7 +207,7 @@ module FluentPath
             # otherwise, use the context as data
             if previous_node.is_a?(Hash)
               tree[index] = previous_node.values
-              tree[previous_index] = nil if !previous_index.nil?
+              clean_index(tree, previous_index)
               substitutions+=1
             elsif data.is_a?(Hash)
               tree[index] = data.values
@@ -217,7 +220,7 @@ module FluentPath
             # the previous node should be an Array of length > 1
             if previous_node.is_a?(Array)
               tree[index] = previous_node.first
-              tree[previous_index] = nil if !previous_index.nil?
+              clean_index(tree, previous_index)
             else
               raise "First function is not applicable to #{previous_node.class}: #{previous_node}"
             end
@@ -225,7 +228,7 @@ module FluentPath
             # the previous node should be an Array of length > 1
             if previous_node.is_a?(Array)
               tree[index] = previous_node.last
-              tree[previous_index] = nil if !previous_index.nil?
+              clean_index(tree, previous_index)
             else
               raise "Last function is not applicable to #{previous_node.class}: #{previous_node}"
             end
@@ -233,7 +236,7 @@ module FluentPath
             # the previous node should be an Array of length > 1
             if previous_node.is_a?(Array)
               tree[index] = previous_node.last(previous_node.length-1)
-              tree[previous_index] = nil if !previous_index.nil?
+              clean_index(tree, previous_index)
             else
               raise "Tail function is not applicable to #{previous_node.class}: #{previous_node}"
             end
@@ -268,28 +271,28 @@ module FluentPath
               result = true
               previous_node.each{|item| result = (result && convert_to_boolean(item))}
               tree[index] = result
-              tree[previous_index] = nil if !previous_index.nil?
+              clean_index(tree, previous_index)
             else
               tree[index] = convert_to_boolean(previous_node)
-              tree[previous_index] = nil if !previous_index.nil?
+              clean_index(tree, previous_index)
             end
           when :not
             tree[index] = !convert_to_boolean(previous_node)
-            tree[previous_index] = nil if !previous_index.nil?
+            clean_index(tree, previous_index)
           when :count
             tree[index] = 0
             tree[index] = 1 if !previous_node.nil?
             tree[index] = previous_node.length if previous_node.is_a?(Array)
-            tree[previous_index] = nil if !previous_index.nil?
+            clean_index(tree, previous_index)
           when :empty
             tree[index] = (previous_node==:null || previous_node.empty? rescue previous_node.nil?)
-            tree[previous_index] = nil if !previous_index.nil?
+            clean_index(tree, previous_index)
           when :exists
             tree[index] = !previous_node.nil? && previous_node!=:null
-            tree[previous_index] = nil if !previous_index.nil?
+            clean_index(tree, previous_index)
           when :distinct
             tree[index] = (previous_node.uniq rescue previous_node)
-            tree[previous_index] = nil if !previous_index.nil?
+            clean_index(tree, previous_index)
           when :startsWith
             # the previous node should be a data (as String)
             # the next node should be a block or subexpression (as FluentPath::Expression)
@@ -303,7 +306,7 @@ module FluentPath
               FHIR.logger.debug 'Evaling StartsWith Block....'
               prefix = compute(block, data)
               tree[index] = previous_node.start_with?(prefix) rescue false
-              tree[previous_index] = nil if !previous_index.nil?
+              clean_index(tree, previous_index)
             else
               raise "StartsWith function not applicable to #{previous_node.class}: #{previous_node}"
             end
@@ -331,7 +334,7 @@ module FluentPath
                 length = previous_node.length - start
               end
               tree[index] = previous_node[start..(start+length)]
-              tree[previous_index] = nil if !previous_index.nil?
+              clean_index(tree, previous_index)
             else
               raise "Substring function not applicable to #{previous_node.class}: #{previous_node}"
             end
@@ -349,7 +352,7 @@ module FluentPath
               FHIR.logger.debug 'Evaling Contains Block....'
               substring = compute(block, data)
               tree[index] = previous_node.include?(substring) rescue false
-              tree[previous_index] = nil if !previous_index.nil?
+              clean_index(tree, previous_index)
             else
               raise "Contains function not applicable to #{previous_node.class}: #{previous_node}"
             end
@@ -370,7 +373,7 @@ module FluentPath
             end
             if previous_node.is_a?(String) || previous_node==true || previous_node==false || previous_node.is_a?(Numeric)
               tree[index] = array.include?(previous_node) rescue false
-              tree[previous_index] = nil if !previous_index.nil?
+              clean_index(tree, previous_index)
             else
               raise "In function not applicable to #{previous_node.class}: #{previous_node}"
             end
@@ -385,7 +388,7 @@ module FluentPath
               tree[index] = 0
               tree[index] = 1 if convert_to_boolean(previous_node)
             end
-            tree[previous_index] = nil if !previous_index.nil?
+            clean_index(tree, previous_index)
             break
           else
             raise "Function not implemented: #{node}"
