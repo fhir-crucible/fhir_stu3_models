@@ -1,6 +1,8 @@
 require 'nokogiri'
 require 'mime/types'
+require 'yaml'
 require 'bcp47'
+
 module FHIR
   class Model
 
