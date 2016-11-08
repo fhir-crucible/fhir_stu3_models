@@ -1,10 +1,6 @@
 require_relative '../test_helper'
 
 class XmlFormatTest < Test::Unit::TestCase
-
-  # turn off the ridiculous warnings
-  $VERBOSE=nil
-
   ERROR_DIR = File.join('tmp', 'errors', 'XmlFormatTest')
   ERROR_LOSSY_DIR = File.join('tmp', 'errors', 'XmlLossinessTest')
   EXAMPLE_ROOT = File.join('lib', 'fhir_models', 'examples', 'xml')
@@ -19,7 +15,7 @@ class XmlFormatTest < Test::Unit::TestCase
   FileUtils.rm_rf(ERROR_LOSSY_DIR) if File.directory?(ERROR_LOSSY_DIR)
   FileUtils.mkdir_p ERROR_LOSSY_DIR
 
-  Dir.glob(example_files).each do | example_file |
+  Dir.glob(example_files).each do |example_file|
     example_name = File.basename(example_file, '.xml')
     define_method("test_xml_format_#{example_name}") do
       run_xml_roundtrip_test(example_file, example_name)
@@ -42,9 +38,9 @@ class XmlFormatTest < Test::Unit::TestCase
 
     errors = calculate_errors(input_nodes, output_nodes)
     if !errors.empty?
-      File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') {|file| file.write(errors.map{|x| "#{x.first} #{x.last.to_xml}"}.join("\n"))}
-      File.open("#{ERROR_DIR}/#{example_name}_PRODUCED.xml", 'w:UTF-8') {|file| file.write(output_xml)}
-      File.open("#{ERROR_DIR}/#{example_name}_ORIGINAL.xml", 'w:UTF-8') {|file| file.write(input_xml)}
+      File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') { |file| file.write(errors.map { |x| "#{x.first} #{x.last.to_xml}" }.join("\n")) }
+      File.open("#{ERROR_DIR}/#{example_name}_PRODUCED.xml", 'w:UTF-8') { |file| file.write(output_xml) }
+      File.open("#{ERROR_DIR}/#{example_name}_ORIGINAL.xml", 'w:UTF-8') { |file| file.write(input_xml) }
     end
 
     assert errors.empty?, 'Differences in generated XML vs original'
@@ -65,9 +61,9 @@ class XmlFormatTest < Test::Unit::TestCase
 
     errors = calculate_errors(input_nodes, output_nodes)
     if !errors.empty?
-      File.open("#{ERROR_LOSSY_DIR}/#{example_name}.err", 'w:UTF-8') {|file| file.write(errors.map{|x| "#{x.first} #{x.last.to_xml}"}.join("\n"))}
-      File.open("#{ERROR_LOSSY_DIR}/#{example_name}_PRODUCED.xml", 'w:UTF-8') {|file| file.write(output_xml)}
-      File.open("#{ERROR_LOSSY_DIR}/#{example_name}_ORIGINAL.xml", 'w:UTF-8') {|file| file.write(input_xml)}
+      File.open("#{ERROR_LOSSY_DIR}/#{example_name}.err", 'w:UTF-8') { |file| file.write(errors.map { |x| "#{x.first} #{x.last.to_xml}" }.join("\n")) }
+      File.open("#{ERROR_LOSSY_DIR}/#{example_name}_PRODUCED.xml", 'w:UTF-8') { |file| file.write(output_xml) }
+      File.open("#{ERROR_LOSSY_DIR}/#{example_name}_ORIGINAL.xml", 'w:UTF-8') { |file| file.write(input_xml) }
     end
 
     assert errors.empty?, 'Differences in generated XML vs original'
@@ -77,9 +73,9 @@ class XmlFormatTest < Test::Unit::TestCase
     errors = input_nodes.diff(output_nodes, added: true, removed: true).to_a
     errors.keep_if do |error|
       # we do not support the preservation of comments, ignore them
-      is_comment = (error.last.class==Nokogiri::XML::Comment)
+      is_comment = (error.last.class == Nokogiri::XML::Comment)
       # we do not care about empty whitespace
-      is_empty_text = (error.last.class==Nokogiri::XML::Text && error.last.text.strip=='')
+      is_empty_text = (error.last.class == Nokogiri::XML::Text && error.last.text.strip == '')
       !(is_comment || is_empty_text)
     end
     # we do not care about preservation of trailing zeros
@@ -87,7 +83,7 @@ class XmlFormatTest < Test::Unit::TestCase
     left = []
     right = []
     errors.each do |error|
-      if error.first=='-'
+      if error.first == '-'
         left << error
       else
         right << error
@@ -96,7 +92,7 @@ class XmlFormatTest < Test::Unit::TestCase
     regex = /-?([0]|([1-9][0-9]*))(\\.[0-9]+)?/
     left.each_with_index do |error, index|
       right_error = right[index]
-      two_numerics = ( (error.last.value =~ regex) && (right_error.last.value =~regex) )
+      two_numerics = ((error.last.value =~ regex) && (right_error.last.value =~ regex))
       if two_numerics && (error.last.value.to_f == right_error.last.value.to_f)
         errors.delete(error)
         errors.delete(right_error)
@@ -109,7 +105,7 @@ class XmlFormatTest < Test::Unit::TestCase
   # process input to remove leading and trailing newlines and whitespace around text
   def clean_nodes(node)
     node.children.each do |child|
-      child.content = child.content.strip if(child.is_a?(Nokogiri::XML::Text))
+      child.content = child.content.strip if child.is_a?(Nokogiri::XML::Text)
       if child.has_attribute?('value')
         # remove all the children -- these will be primitive extensions which we do not support.
         child.children = ''
@@ -117,5 +113,4 @@ class XmlFormatTest < Test::Unit::TestCase
       clean_nodes(child) if !child.children.empty?
     end
   end
-
 end

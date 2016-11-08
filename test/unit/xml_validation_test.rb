@@ -1,10 +1,6 @@
 require_relative '../test_helper'
 
 class XmlValidationTest < Test::Unit::TestCase
-
-  # turn off the ridiculous warnings
-  $VERBOSE=nil
-
   ERROR_DIR = File.join('tmp', 'errors', 'XmlValidationTest')
   EXAMPLE_ROOT = File.join('lib', 'fhir_models', 'examples', 'xml')
 
@@ -16,7 +12,7 @@ class XmlValidationTest < Test::Unit::TestCase
   FileUtils.rm_rf(ERROR_DIR) if File.directory?(ERROR_DIR)
   FileUtils.mkdir_p ERROR_DIR
 
-  Dir.glob(example_files).each do | example_file |
+  Dir.glob(example_files).each do |example_file|
     example_name = File.basename(example_file, '.xml')
     define_method("test_xml_validation_#{example_name}") do
       run_xml_validation_test(example_file, example_name)
@@ -28,8 +24,8 @@ class XmlValidationTest < Test::Unit::TestCase
     resource = FHIR::Xml.from_xml(input_xml)
     errors = resource.validate
     if !errors.empty?
-      File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') {|file| file.write(JSON.pretty_unparse(errors))}
-      File.open("#{ERROR_DIR}/#{example_name}.xml", 'w:UTF-8') {|file| file.write(input_xml)}
+      File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') { |file| file.write(JSON.pretty_unparse(errors)) }
+      File.open("#{ERROR_DIR}/#{example_name}.xml", 'w:UTF-8') { |file| file.write(input_xml) }
     end
     assert errors.empty?, 'Resource failed to validate.'
   end
@@ -46,5 +42,4 @@ class XmlValidationTest < Test::Unit::TestCase
     resource = FHIR::Xml.from_xml(xml)
     assert resource.is_valid?, 'Resource failed to validate.'
   end
-
 end

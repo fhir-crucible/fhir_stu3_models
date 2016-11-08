@@ -1,6 +1,5 @@
 module FHIR
   module Json
-
     #
     #  This module includes methods to serialize or deserialize FHIR resources to and from JSON.
     #
@@ -23,6 +22,5 @@ module FHIR
       end
       resource
     end
-
   end
 end

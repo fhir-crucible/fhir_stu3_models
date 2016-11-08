@@ -1,10 +1,6 @@
 require_relative '../test_helper'
 
 class JsonFormatTest < Test::Unit::TestCase
-
-  # turn off the ridiculous warnings
-  $VERBOSE=nil
-
   ERROR_DIR = File.join('tmp', 'errors', 'JsonFormatTest')
   ERROR_LOSSY_DIR = File.join('tmp', 'errors', 'JsonLossinessTest')
   EXAMPLE_ROOT = File.join('lib', 'fhir_models', 'examples', 'json')
@@ -19,7 +15,7 @@ class JsonFormatTest < Test::Unit::TestCase
   FileUtils.rm_rf(ERROR_LOSSY_DIR) if File.directory?(ERROR_LOSSY_DIR)
   FileUtils.mkdir_p ERROR_LOSSY_DIR
 
-  Dir.glob(example_files).each do | example_file |
+  Dir.glob(example_files).each do |example_file|
     example_name = File.basename(example_file, '.json')
     define_method("test_json_format_#{example_name}") do
       run_json_roundtrip_test(example_file, example_name)
@@ -40,9 +36,9 @@ class JsonFormatTest < Test::Unit::TestCase
     errors = compare(input_hash, output_hash)
 
     if !errors.empty?
-      File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') {|file| file.write(errors.join("\n"))}
-      File.open("#{ERROR_DIR}/#{example_name}_PRODUCED.json", 'w:UTF-8') {|file| file.write(output_json)}
-      File.open("#{ERROR_DIR}/#{example_name}_ORIGINAL.json", 'w:UTF-8') {|file| file.write(input_json)}
+      File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') { |file| file.write(errors.join("\n")) }
+      File.open("#{ERROR_DIR}/#{example_name}_PRODUCED.json", 'w:UTF-8') { |file| file.write(output_json) }
+      File.open("#{ERROR_DIR}/#{example_name}_ORIGINAL.json", 'w:UTF-8') { |file| file.write(input_json) }
     end
 
     assert errors.empty?, 'Differences in generated JSON vs original'
@@ -61,10 +57,10 @@ class JsonFormatTest < Test::Unit::TestCase
     errors = compare(input_hash, output_hash)
 
     if !errors.empty?
-      File.open("#{ERROR_LOSSY_DIR}/#{example_name}.err", 'w:UTF-8') {|file| file.write(errors.join("\n"))}
-      File.open("#{ERROR_LOSSY_DIR}/#{example_name}_PRODUCED.xml", 'w:UTF-8') {|file| file.write(output_xml)}
-      File.open("#{ERROR_LOSSY_DIR}/#{example_name}_PRODUCED.json", 'w:UTF-8') {|file| file.write(output_json)}
-      File.open("#{ERROR_LOSSY_DIR}/#{example_name}_ORIGINAL.json", 'w:UTF-8') {|file| file.write(input_json)}
+      File.open("#{ERROR_LOSSY_DIR}/#{example_name}.err", 'w:UTF-8') { |file| file.write(errors.join("\n")) }
+      File.open("#{ERROR_LOSSY_DIR}/#{example_name}_PRODUCED.xml", 'w:UTF-8') { |file| file.write(output_xml) }
+      File.open("#{ERROR_LOSSY_DIR}/#{example_name}_PRODUCED.json", 'w:UTF-8') { |file| file.write(output_json) }
+      File.open("#{ERROR_LOSSY_DIR}/#{example_name}_ORIGINAL.json", 'w:UTF-8') { |file| file.write(input_json) }
     end
 
     assert errors.empty?, 'Differences in generated JSON vs original'
@@ -99,19 +95,19 @@ class JsonFormatTest < Test::Unit::TestCase
       end
       if input.is_a?(Array)
         input.each_with_index do |item, index|
-          itemB = output[index]
+          item_b = output[index]
           if item.is_a?(Hash)
-            errors += compare(item, itemB)
-          elsif input!=output
+            errors += compare(item, item_b)
+          elsif input != output
             errors << "#{key}[#{index}]: #{input} != #{output}"
           end
         end
-        errors << "#{key}:\n - INPUT:  #{input}\n - OUTPUT: #{output}" if input.size!=output.size
+        errors << "#{key}:\n - INPUT:  #{input}\n - OUTPUT: #{output}" if input.size != output.size
       elsif input.is_a?(Hash)
         errors += compare(input, output)
       elsif is_a_date_or_time(input) || is_a_date_or_time(output)
-          # ignore date time formatting
-      elsif input!=output
+      # ignore date time formatting
+      elsif input != output
         errors << "#{key}:\n - INPUT:  #{input}\n - OUTPUT: #{output}"
       end
     end
@@ -124,7 +120,7 @@ class JsonFormatTest < Test::Unit::TestCase
     hash.each do |key, value|
       delete_key = false
       # delete fhir_comments and primitive extensions
-      if key=='fhir_comments' || key.start_with?('_')
+      if key == 'fhir_comments' || key.start_with?('_')
         delete_key = true
       elsif value.is_a?(Array)
         value.each do |thing|
@@ -168,5 +164,4 @@ class JsonFormatTest < Test::Unit::TestCase
     # return true if !(regex =~ value).nil?
     # false
   end
-
 end

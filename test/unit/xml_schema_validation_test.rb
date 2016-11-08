@@ -1,10 +1,6 @@
 require_relative '../test_helper'
 
 class XmlSchemaValidationTest < Test::Unit::TestCase
-
-  # turn off the ridiculous warnings
-  $VERBOSE=nil
-
   ERROR_DIR = File.join('tmp', 'errors', 'XmlSchemaValidationTest')
   EXAMPLE_ROOT = File.join('lib', 'fhir_models', 'examples', 'xml')
 
@@ -19,7 +15,7 @@ class XmlSchemaValidationTest < Test::Unit::TestCase
   FileUtils.rm_rf(ERROR_DIR) if File.directory?(ERROR_DIR)
   FileUtils.mkdir_p ERROR_DIR
 
-  Dir.glob(example_files).each do | example_file |
+  Dir.glob(example_files).each do |example_file|
     example_name = File.basename(example_file, '.xml')
     define_method("test_xml_schema_validation_#{example_name}") do
       run_xml_schema_validation_test(example_file, example_name)
@@ -38,17 +34,17 @@ class XmlSchemaValidationTest < Test::Unit::TestCase
     errors_output = XSD.validate(Nokogiri::XML(output_xml))
 
     original_errors = false
-    if (!errors_input.empty?)
+    if !errors_input.empty?
       puts "  WARNING: validation errors in example: #{example_name}"
-      if (errors_input.length == errors_output.length)
+      if errors_input.length == errors_output.length
         errors_match = true
-        (0...(errors_input.length)).each {|i| errors_match &&= (errors_output[i].message == errors_input[i].message)}
+        (0...(errors_input.length)).each { |i| errors_match &&= (errors_output[i].message == errors_input[i].message) }
         original_errors = errors_match
       end
     end
 
     if !errors_output.empty? && !original_errors
-      File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') do | file |
+      File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') do |file|
         file.write "#{example_name}: #{errors_output.length} errors\n\n"
         errors_output.each do |error|
           file.write(sprintf("%-8d  %s\n", error.line, error.message))
@@ -61,8 +57,8 @@ class XmlSchemaValidationTest < Test::Unit::TestCase
           end
         end
       end
-      File.open("#{ERROR_DIR}/#{example_name}_PRODUCED.xml", 'w:UTF-8') {|file| file.write(output_xml)}
-      File.open("#{ERROR_DIR}/#{example_name}_ORIGINAL.xml", 'w:UTF-8') {|file| file.write(input_xml)}
+      File.open("#{ERROR_DIR}/#{example_name}_PRODUCED.xml", 'w:UTF-8') { |file| file.write(output_xml) }
+      File.open("#{ERROR_DIR}/#{example_name}_ORIGINAL.xml", 'w:UTF-8') { |file| file.write(input_xml) }
     end
 
     assert errors_output.empty? || original_errors, "Schema Validation errors: \n #{errors_output.join('\n')}"

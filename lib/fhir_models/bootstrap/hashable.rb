@@ -1,9 +1,8 @@
 require 'bigdecimal'
 module FHIR
   module Hashable
-
     def to_hash
-      hash = Hash.new
+      hash = {}
       self.class::METADATA.each do |key, value|
         local_name = key
         local_name = value['local_name'] if value['local_name']
@@ -18,7 +17,7 @@ module FHIR
         end
       end
       hash.keep_if do |_key, value|
-        !value.nil? && (  (value.is_a?(Hash) && !value.empty?) ||
+        !value.nil? && ((value.is_a?(Hash) && !value.empty?) ||
                           (value.is_a?(Array) && !value.empty?) ||
                           (!value.is_a?(Hash) && !value.is_a?(Array))
                        )
@@ -57,22 +56,22 @@ module FHIR
             else # handle single object
               value = make_child(value, klass)
               # if there is only one of these, but cardinality allows more, we need to wrap it in an array.
-              value = [ value ] if(value && (meta['max'] > 1))
+              value = [value] if value && (meta['max'] > 1)
             end
             self.instance_variable_set("@#{local_name}", value)
-          elsif !FHIR::PRIMITIVES.include?(meta['type']) && meta['type']!='xhtml'
+          elsif !FHIR::PRIMITIVES.include?(meta['type']) && meta['type'] != 'xhtml'
             FHIR.logger.error("Unhandled and unrecognized class/type: #{meta['type']}")
           else
             # primitive
             if value.is_a?(Array)
               # array of primitives
-              value.map!{|child| convert_primitive(child, meta)}
+              value.map! { |child| convert_primitive(child, meta) }
               self.instance_variable_set("@#{local_name}", value)
             else
               # single primitive
               value = convert_primitive(value, meta)
               # if there is only one of these, but cardinality allows more, we need to wrap it in an array.
-              value = [ value ] if(value && (meta['max'] > 1))
+              value = [value] if value && (meta['max'] > 1)
               self.instance_variable_set("@#{local_name}", value)
             end
           end # !klass && !nil?
@@ -97,18 +96,13 @@ module FHIR
       return value if !value.is_a?(String)
 
       rval = value
-      if meta['type']=='boolean'
-        rval = false
-        rval = true if value.strip=='true'
+      if meta['type'] == 'boolean'
+        rval = value.strip == 'true'
       elsif FHIR::PRIMITIVES.include?(meta['type'])
-        primitive_meta = FHIR::PRIMITIVES[ meta['type'] ]
+        primitive_meta = FHIR::PRIMITIVES[meta['type']]
         if primitive_meta['type'] == 'number'
           rval = BigDecimal.new(value.to_s)
-          if rval.frac==0
-            rval = rval.to_i
-          else
-            rval = rval.to_f
-          end
+          rval = rval.frac == 0 ? rval.to_i : rval.to_f
         end # primitive is number
       end # boolean else
       rval

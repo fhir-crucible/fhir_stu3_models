@@ -1,6 +1,5 @@
 module FHIR
   class Field
-
     attr_accessor :name
     attr_accessor :local_name
     attr_accessor :path
@@ -13,7 +12,7 @@ module FHIR
     attr_accessor :regex
     attr_accessor :constraint
 
-    def initialize(name='')
+    def initialize(name = '')
       @name = name
       @local_name = fix_name(@name)
       @type_profiles = []
@@ -21,13 +20,13 @@ module FHIR
     end
 
     def serialize
-      hash = Hash.new
+      hash = {}
       self.instance_variables.each do |v|
         hash[v.to_s[1..-1]] = self.instance_variable_get(v)
       end
       hash.delete('name')
       hash.keep_if do |_key, value|
-        !value.nil? && (  (value.is_a?(Hash) && !value.empty?) ||
+        !value.nil? && ((value.is_a?(Hash) && !value.empty?) ||
                           (value.is_a?(Array) && !value.empty?) ||
                           (!value.is_a?(Hash) && !value.is_a?(Array))
                        )
@@ -40,6 +39,5 @@ module FHIR
       fix = "local_#{name}" if ['class', 'method', 'resourceType'].include?(name)
       fix
     end
-
   end
 end

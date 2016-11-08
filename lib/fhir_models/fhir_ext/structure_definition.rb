@@ -4,7 +4,6 @@ require 'bcp47'
 
 module FHIR
   class StructureDefinition
-
     attr_accessor :finding
     attr_accessor :errors
     attr_accessor :warnings
@@ -27,7 +26,7 @@ module FHIR
       if !(another_definition.is_a? FHIR::StructureDefinition)
         @errors << @finding.error('', '', 'Not a StructureDefinition', 'StructureDefinition', "#{another_definition.class.name}")
         return false
-      elsif another_definition.snapshot.element[0].path!=snapshot.element[0].path
+      elsif another_definition.snapshot.element[0].path != snapshot.element[0].path
         @errors << @finding.error('', '', 'Incompatible resourceType', @finding.resourceType, "#{another_definition.snapshot.element[0].path}")
         return false
       end
@@ -35,8 +34,8 @@ module FHIR
       left_elements = Array.new(snapshot.element)
       right_elements = Array.new(another_definition.snapshot.element)
 
-      left_paths = left_elements.map { |e| e.path }
-      right_paths = right_elements.map { |e| e.path }
+      left_paths = left_elements.map(&:path)
+      right_paths = right_elements.map(&:path)
 
       # StructureDefinitions don't always include all base attributes (for example, of a ContactPoint)
       # if nothing is modified from the base definition, so we have to add them in if they are missing.
@@ -52,8 +51,8 @@ module FHIR
       add_missing_elements(another_definition.id, right_missing, right_elements, base_elements)
 
       # update paths
-      left_paths = left_elements.map { |e| e.path }
-      right_paths = right_elements.map { |e| e.path }
+      left_paths = left_elements.map(&:path)
+      right_paths = right_elements.map(&:path)
 
       # recalculate the missing attributes
       left_missing = right_paths - left_paths
@@ -65,7 +64,7 @@ module FHIR
           elem = get_element_by_path(e, right_elements)
           if !elem.min.nil? && elem.min > 0
             @errors << @finding.error(e, 'min', 'Missing REQUIRED element', 'Missing', "#{elem.min}")
-          elsif elem.isModifier==true
+          elsif elem.isModifier == true
             @errors << @finding.error(e, 'isModifier', 'Missing MODIFIER element', 'Missing', "#{elem.isModifier}")
           else
             @warnings << @finding.warning(e, '', 'Missing element', 'Missing', 'Defined')
@@ -77,7 +76,7 @@ module FHIR
           elem = get_element_by_path(e, left_elements)
           if !elem.min.nil? && elem.min > 0
             @errors << @finding.error(e, 'min', 'Missing REQUIRED element', "#{elem.min}", 'Missing')
-          elsif elem.isModifier==true
+          elsif elem.isModifier == true
             @errors << @finding.error(e, 'isModifier', 'Missing MODIFIER element', "#{elem.isModifier}", 'Missing')
           else
             @warnings << @finding.warning(e, '', 'Missing element', 'Defined', 'Missing')
@@ -120,7 +119,7 @@ module FHIR
           compare_extension_definition(x, y, another_definition)
         end
         y = get_extension(x.type[0].profile, right_extensions)
-        if !y.nil? && x.name!=y.name
+        if !y.nil? && x.name != y.name
           # both profiles share the same extension definition but with a different name
           checked_extensions << x.name
           checked_extensions << y.name
@@ -136,7 +135,7 @@ module FHIR
           compare_extension_definition(x, y, another_definition)
         end
         x = get_extension(y.type[0].profile, left_extensions)
-        if !x.nil? && x.name!=y.name && !checked_extensions.include?(x.name)
+        if !x.nil? && x.name != y.name && !checked_extensions.include?(x.name)
           # both profiles share the same extension definition but with a different name
           checked_extensions << x.name
           checked_extensions << y.name
@@ -145,33 +144,33 @@ module FHIR
       end
       @errors.flatten!
       @warnings.flatten!
-      @errors.size==0
+      @errors.size == 0
     end
 
-    def get_element_by_path(path, elements=snapshot.element)
+    def get_element_by_path(path, elements = snapshot.element)
       elements.each do |element|
-        return element if element.path==path
+        return element if element.path == path
       end
       nil
     end
 
-    def get_extension(extension, elements=snapshot.element)
+    def get_extension(extension, elements = snapshot.element)
       elements.each do |element|
-        if element.path.include?('extension') || element.type.map{|t|t.code}.include?('Extension')
-          return element if element.name==extension || element.type.map{|t|t.profile}.include?(extension)
+        if element.path.include?('extension') || element.type.map(&:code).include?('Extension')
+          return element if element.name == extension || element.type.map(&:profile).include?(extension)
         end
       end
       nil
     end
 
-    #private
+    # private
     # name -- name of the profile we're fixing
     # missing_paths -- list of paths that we're adding
     # elements -- list of elements currently defined in the profile
     # base_elements -- list of elements defined in the base resource the profile extends
     def add_missing_elements(_name, missing_paths, elements, base_elements)
-      variable_paths = elements.map{|e|e.path}.grep(/\[x\]/).map{|e|e[0..-4]}
-      variable_paths << base_elements.map{|e|e.path}.grep(/\[x\]/).map{|e|e[0..-4]}
+      variable_paths = elements.map(&:path).grep(/\[x\]/).map { |e| e[0..-4] }
+      variable_paths << base_elements.map(&:path).grep(/\[x\]/).map { |e| e[0..-4] }
       variable_paths.flatten!.uniq!
 
       missing_paths.each do |path|
@@ -179,7 +178,7 @@ module FHIR
         next if path.include? 'extension'
 
         # Skip the variable paths that end with "[x]"
-        next if variable_paths.any?{|variable| path.starts_with?(variable)}
+        next if variable_paths.any? { |variable| path.starts_with?(variable) }
 
         elem = get_element_by_path(path, base_elements)
         if !elem.nil?
@@ -189,7 +188,7 @@ module FHIR
         end
 
         x = path.split('.')
-        root = x.first(x.size-1).join('.')
+        root = x.first(x.size - 1).join('.')
         if root.include? '.'
           # get the root element to fill in the details
           elem = get_element_by_path(root, elements)
@@ -200,7 +199,7 @@ module FHIR
           next if type_def.nil?
           type_elements = Array.new(type_def.snapshot.element)
           # _DEEP_ copy
-          type_elements.map! do |e| #{|e| FHIR::ElementDefinition.from_fhir_json(e.to_fhir_json) }
+          type_elements.map! do |e| # {|e| FHIR::ElementDefinition.from_fhir_json(e.to_fhir_json) }
             FHIR::ElementDefinition.from_fhir_json(e.to_fhir_json)
           end
           # Fix path names
@@ -212,25 +211,25 @@ module FHIR
             y = get_element_by_path(z.path, elements)
             if y.nil?
               elements << z
-            # else
-            #   @warnings << "StructureDefinition #{name} already contains #{z.path}"
+              # else
+              #   @warnings << "StructureDefinition #{name} already contains #{z.path}"
             end
           end
           elements.uniq!
-        # else
-        #   @warnings << "StructureDefinition #{name} missing -- #{path}"
+          # else
+          #   @warnings << "StructureDefinition #{name} missing -- #{path}"
         end
       end
     end
 
-    #private
+    # private
     def compare_extension_definition(x, y, another_definition)
-      x_profiles = x.type.map{|t|t.profile}
-      y_profiles = y.type.map{|t|t.profile}
+      x_profiles = x.type.map(&:profile)
+      y_profiles = y.type.map(&:profile)
       x_only = x_profiles - y_profiles
       shared = x_profiles - x_only
 
-      if !shared.nil? && shared.size==0
+      if !shared.nil? && shared.size == 0
         # same name, but different profiles
         # maybe the profiles are the same, just with different URLs...
         # ... so we have to compare them, if we can.
@@ -249,15 +248,15 @@ module FHIR
       end
     end
 
-    #private
+    # private
     def compare_element_definitions(x, y, another_definition)
       return if x.nil? || y.nil? || another_definition.nil?
 
       # check cardinality
       x_min = x.min || 0
-      x_max = (x.max == '*') ? Float::INFINITY : x.max.to_i
+      x_max = x.max == '*' ? Float::INFINITY : x.max.to_i
       y_min = y.min || 0
-      y_max = (y.max == '*') ? Float::INFINITY : y.max.to_i
+      y_max = y.max == '*' ? Float::INFINITY : y.max.to_i
 
       if x_min.nil? || x.max.nil? || y_min.nil? || y.max.nil?
         @errors << @finding.error("#{x.path}", 'min/max', 'Unknown cardinality', "#{x_min}..#{x.max}", "#{y_min}..#{y.max}")
@@ -268,13 +267,13 @@ module FHIR
       end
 
       # check data types
-      x_types = x.type.map {|t| t.code }
-      y_types = y.type.map {|t| t.code }
+      x_types = x.type.map(&:code)
+      y_types = y.type.map(&:code)
       x_only = x_types - y_types
       y_only = y_types - x_types
       shared = x_types - x_only
 
-      if !shared.nil? && shared.size==0 && x_types.size>0 && y_types.size>0 && x.constraint.size > 0 && y.constraint.size > 0
+      if !shared.nil? && shared.size == 0 && x_types.size > 0 && y_types.size > 0 && x.constraint.size > 0 && y.constraint.size > 0
         @errors << @finding.error("#{x.path}", 'type.code', 'Incompatible data types', "#{x_types}", "#{y_types}")
       end
       if !x_only.nil? && x_only.size > 0
@@ -295,7 +294,7 @@ module FHIR
         x_vs = x.binding.valueSetUri || x.binding.valueSetReference.try(:reference)
         y_vs = y.binding.valueSetUri || y.binding.valueSetReference.try(:reference)
         if x_vs != y_vs
-          if x.binding.strength=='required' || y.binding.strength=='required'
+          if x.binding.strength == 'required' || y.binding.strength == 'required'
             @errors << @finding.error("#{x.path}", 'binding.strength', 'Incompatible bindings', "#{x.binding.strength} #{x_vs}", "#{y.binding.strength} #{y_vs}")
           else
             @warnings << @finding.warning("#{x.path}", 'binding.strength', 'Inconsistent bindings', "#{x.binding.strength} #{x_vs}", "#{y.binding.strength} #{y_vs}")
@@ -358,20 +357,20 @@ module FHIR
       end
 
       # constraints
-      x_constraints = x.constraint.map {|t| t.xpath }
-      y_constraints = y.constraint.map {|t| t.xpath }
+      x_constraints = x.constraint.map(&:xpath)
+      y_constraints = y.constraint.map(&:xpath)
       x_only = x_constraints - y_constraints
       y_only = y_constraints - x_constraints
       shared = x_constraints - x_only
 
-      if !shared.nil? && shared.size==0 && x.constraint.size > 0 && y.constraint.size > 0
-        @errors << @finding.error("#{x.path}", 'constraint.xpath', 'Incompatible constraints', "#{x_constraints.map{|z|z.tr(',', ';')}.join(' && ')}", "#{y_constraints.map{|z|z.tr(',', ';')}.join(' && ')}")
+      if !shared.nil? && shared.size == 0 && x.constraint.size > 0 && y.constraint.size > 0
+        @errors << @finding.error("#{x.path}", 'constraint.xpath', 'Incompatible constraints', "#{x_constraints.map { |z| z.tr(',', ';') }.join(' && ')}", "#{y_constraints.map { |z| z.tr(',', ';') }.join(' && ')}")
       end
       if !x_only.nil? && x_only.size > 0
-        @errors << @finding.error("#{x.path}", 'constraint.xpath', 'Additional constraints', "#{x_constraints.map{|z|z.tr(',', ';')}.join(' && ')}", '')
+        @errors << @finding.error("#{x.path}", 'constraint.xpath', 'Additional constraints', "#{x_constraints.map { |z| z.tr(',', ';') }.join(' && ')}", '')
       end
       if !y_only.nil? && y_only.size > 0
-        @errors << @finding.error("#{x.path}", 'constraint.xpath', 'Additional constraints', '', "#{y_constraints.map{|z|z.tr(',', ';')}.join(' && ')}")
+        @errors << @finding.error("#{x.path}", 'constraint.xpath', 'Additional constraints', '', "#{y_constraints.map { |z| z.tr(',', ';') }.join(' && ')}")
       end
 
       # mustSupports
@@ -417,14 +416,14 @@ module FHIR
       base_type = snapshot.element[0].path
       snapshot.element.each do |element|
         path = element.path
-        path = path[(base_type.size+1)..-1] if path.start_with? base_type
+        path = path[(base_type.size + 1)..-1] if path.start_with? base_type
 
         nodes = get_json_nodes(json, path)
 
         # special filtering on extension urls
-        extension_profile = element.type.find{|t|t.code=='Extension' && !t.profile.nil? && !t.profile.empty?}
+        extension_profile = element.type.find { |t| t.code == 'Extension' && !t.profile.nil? && !t.profile.empty? }
         if extension_profile
-          nodes.keep_if{|x| extension_profile.profile.include?(x['url']) }
+          nodes.keep_if { |x| extension_profile.profile.include?(x['url']) }
         end
 
         # Check the cardinality
@@ -440,7 +439,7 @@ module FHIR
         end
 
         # Check the datatype for each node, only if the element has one declared, and it isn't the root element
-        if element.type.size > 0 && element.path!=id
+        if element.type.size > 0 && element.path != id
           nodes.each do |value|
             matching_type = 0
 
@@ -449,35 +448,35 @@ module FHIR
             element.type.each do |type|
               data_type_code = type.code
               verified_extension = false
-              if data_type_code=='Extension' && !type.profile.empty?
+              if data_type_code == 'Extension' && !type.profile.empty?
                 extension_def = FHIR::Definitions.get_extension_definition(value['url'])
                 if extension_def
                   verified_extension = extension_def.validates_resource?(FHIR::Extension.new(deep_copy(value)))
                 end
               end
               if verified_extension || is_data_type?(data_type_code, value)
-                matching_type+=1
+                matching_type += 1
                 if data_type_code == 'code' # then check the binding
-                  if(!element.binding.nil?)
-                    matching_type+=check_binding(element, value)
+                  if !element.binding.nil?
+                    matching_type += check_binding(element, value)
                   end
-                elsif data_type_code=='CodeableConcept' && !element.pattern.nil? && element.pattern.type=='CodeableConcept'
-                  # TODO check that the CodeableConcept matches the defined pattern
+                elsif data_type_code == 'CodeableConcept' && !element.pattern.nil? && element.pattern.type == 'CodeableConcept'
+                  # TODO: check that the CodeableConcept matches the defined pattern
                   @warnings << "Ignoring defined patterns on CodeableConcept #{element.path}"
-                elsif data_type_code=='String' && !element.maxLength.nil? && (value.size>element.maxLength)
+                elsif data_type_code == 'String' && !element.maxLength.nil? && (value.size > element.maxLength)
                   @errors << "#{element.path} exceed maximum length of #{element.maxLength}: #{value}"
                 end
               else
                 temp_messages << "#{element.path} is not a valid #{data_type_code}: '#{value}'"
               end
             end
-            if matching_type<=0
+            if matching_type <= 0
               @errors += temp_messages
-              @errors << "#{element.path} did not match one of the valid data types: #{element.type.map{|el|el.code}}"
+              @errors << "#{element.path} did not match one of the valid data types: #{element.type.map(&:code)}"
             else
               @warnings += temp_messages
             end
-            if !element.fixed.nil? && element.fixed!=value
+            if !element.fixed.nil? && element.fixed != value
               @errors << "#{element.path} value of '#{value}' did not match fixed value: #{element.fixed}"
             end
           end
@@ -495,7 +494,7 @@ module FHIR
             if constraint.expression && !nodes.empty?
               begin
                 result = FluentPath.evaluate(constraint.expression, json)
-                if !result && constraint.severity=='error'
+                if !result && constraint.severity == 'error'
                   @errors << "#{element.path}: FluentPath expression evaluates to false for #{name} invariant rule #{constraint.key}: #{constraint.human}"
                 end
               rescue
@@ -504,10 +503,9 @@ module FHIR
             end
           end
         end
-
       end
 
-      @errors.size==0
+      @errors.size == 0
     end
 
     def get_json_nodes(json, path)
@@ -568,9 +566,9 @@ module FHIR
       when 'domainresource'
         true # we don't have to verify domain resource, because it will be included in the snapshot
       when 'boolean'
-        value==true || value==false || value.downcase=='true' || value.downcase=='false'
+        value == true || value == false || value.downcase == 'true' || value.downcase == 'false'
       when 'code'
-        value.is_a?(String) && value.size>=1 && value.size==value.rstrip.size
+        value.is_a?(String) && value.size >= 1 && value.size == value.rstrip.size
       when 'string', 'markdown'
         value.is_a?(String)
       when 'xhtml'
@@ -635,7 +633,7 @@ module FHIR
         end
       else
         # Eliminate endless loop on Element is an Element
-        return true if (data_type_code=='Element' && id=='Element')
+        return true if data_type_code == 'Element' && id == 'Element'
 
         definition = FHIR::Definitions.get_type_definition(data_type_code)
         definition = FHIR::Definitions.get_resource_definition(data_type_code) if definition.nil?
@@ -660,33 +658,32 @@ module FHIR
     end
 
     def check_binding(element, value)
-
       vs_uri = element.binding.valueSetUri || element.binding.valueSetReference.reference
       valueset = FHIR::Definitions.get_codes(vs_uri)
 
       matching_type = 0
 
-      if vs_uri=='http://hl7.org/fhir/ValueSet/content-type' || vs_uri=='http://www.rfc-editor.org/bcp/bcp13.txt'
+      if vs_uri == 'http://hl7.org/fhir/ValueSet/content-type' || vs_uri == 'http://www.rfc-editor.org/bcp/bcp13.txt'
         matches = MIME::Types[value]
-        if (matches.nil? || matches.size==0) && !is_some_type_of_xml_or_json(value)
+        if (matches.nil? || matches.size == 0) && !is_some_type_of_xml_or_json(value)
           @errors << "#{element.path} has invalid mime-type: '#{value}'"
-          matching_type-=1 if element.binding.strength=='required'
+          matching_type -= 1 if element.binding.strength == 'required'
         end
-      elsif vs_uri=='http://hl7.org/fhir/ValueSet/languages' || vs_uri=='http://tools.ietf.org/html/bcp47'
-        has_region = (!(value =~ /-/).nil?)
+      elsif vs_uri == 'http://hl7.org/fhir/ValueSet/languages' || vs_uri == 'http://tools.ietf.org/html/bcp47'
+        has_region = !(value =~ /-/).nil?
         valid = !BCP47::Language.identify(value.downcase).nil? && (!has_region || !BCP47::Region.identify(value.upcase).nil?)
         if !valid
           @errors << "#{element.path} has unrecognized language: '#{value}'"
-          matching_type-=1 if element.binding.strength=='required'
+          matching_type -= 1 if element.binding.strength == 'required'
         end
       elsif valueset.nil?
         @warnings << "#{element.path} has unknown ValueSet: '#{vs_uri}'"
-        matching_type-=1 if element.binding.strength=='required'
+        matching_type -= 1 if element.binding.strength == 'required'
       elsif !valueset.values.flatten.include?(value)
         message = "#{element.path} has invalid code '#{value}' from #{valueset}"
-        if element.binding.strength=='required'
+        if element.binding.strength == 'required'
           @errors << message
-          matching_type-=1
+          matching_type -= 1
         else
           @warnings << message
         end
@@ -697,14 +694,13 @@ module FHIR
 
     def is_some_type_of_xml_or_json(code)
       m = code.downcase
-      return true if m=='xml' || m=='json'
+      return true if m == 'xml' || m == 'json'
       return true if (m.starts_with?('application/') || m.starts_with?('text/')) && (m.ends_with?('json') || m.ends_with?('xml'))
-      return true if (m.starts_with?('application/xml') || m.starts_with?('text/xml'))
-      return true if (m.starts_with?('application/json') || m.starts_with?('text/json'))
+      return true if m.starts_with?('application/xml') || m.starts_with?('text/xml')
+      return true if m.starts_with?('application/json') || m.starts_with?('text/json')
       false
     end
 
     private :is_valid_json?, :get_json_nodes, :is_data_type?, :check_binding, :add_missing_elements, :compare_element_definitions
-
   end
 end

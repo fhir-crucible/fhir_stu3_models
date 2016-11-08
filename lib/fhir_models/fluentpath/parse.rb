@@ -1,9 +1,8 @@
 module FluentPath
-
   @@reserved = ['all', 'not', 'empty', 'exists', 'where', 'select', 'extension', 'startsWith', 'contains', 'in', 'distinct', '=', '!=', '<=', '>=', '<', '>', 'and', 'or', 'xor', '+', '-', '/', '*', 'toInteger', 'implies', 'children', 'first', 'last', 'tail', 'count', 'substring']
 
   def self.parse(expression)
-    build_tree( tokenize(expression) )
+    build_tree(tokenize(expression))
   end
 
   # This method tokenizes the expression into a flat array of tokens
@@ -11,11 +10,11 @@ module FluentPath
     raw_tokens = expression.gsub('()', '').split(/(\(|\)|\s|>=|<=|>|<|=|!=|\+|-|\/|\*)/)
     # recreate strings if they were split
     size = nil
-    while(raw_tokens.include?("'") && size!=raw_tokens.length)
+    while raw_tokens.include?("'") && size != raw_tokens.length
       index = raw_tokens.index("'")
-      e_index = raw_tokens[(index+1)..raw_tokens.length].index("'")
-      raw_tokens[index] = raw_tokens[index..(index+e_index+1)].join
-      for i in (index+1)..(index+e_index+1)
+      e_index = raw_tokens[(index + 1)..raw_tokens.length].index("'")
+      raw_tokens[index] = raw_tokens[index..(index + e_index + 1)].join
+      for i in (index + 1)..(index + e_index + 1)
         raw_tokens[i] = nil
       end
       raw_tokens.compact!
@@ -27,11 +26,11 @@ module FluentPath
     raw_tokens.each do |token|
       # split a path unless it is quoted
       if token.include?('.') && !(token.start_with?("'") && token.end_with?("'"))
-        token.split('.').each{|t|tokens << t}
+        token.split('.').each { |t| tokens << t }
       # split arrays and replace with array
       elsif token.include?('|')
         array = []
-        token.split('|').each{|t|array << t.delete('\'')}
+        token.split('|').each { |t| array << t.delete('\'') }
         tokens << array
       else
         tokens << token
@@ -39,7 +38,7 @@ module FluentPath
     end
     # we may need to reassemble quoted strings again
     reassemble_strings(tokens)
-    tokens.delete_if { |token| (token.length==0 || (token.is_a?(String) && token.match(/\S/).nil?) ) }
+    tokens.delete_if { |token| (token.length == 0 || (token.is_a?(String) && token.match(/\S/).nil?)) }
     FHIR.logger.debug "TOKENS: #{tokens}"
     tokens
   end
@@ -49,16 +48,16 @@ module FluentPath
       if token.is_a?(String)
         e_index = nil
         if token.start_with?('"') && !token.end_with?('"')
-          e_index = tokens[index..-1].index{|t| t.end_with?('"')}
+          e_index = tokens[index..-1].index { |t| t.end_with?('"') }
         elsif token.start_with?("'") && !token.end_with?("'")
-          e_index = tokens[index..-1].index{|t| t.end_with?("'")}
+          e_index = tokens[index..-1].index { |t| t.end_with?("'") }
         end
         if e_index
-          i = index+1
-          while(i <= index+e_index)
+          i = index + 1
+          while i <= index + e_index
             tokens[index] += tokens[i]
             tokens[i] = ''
-            i+=1
+            i += 1
           end
         end
       end
@@ -81,8 +80,8 @@ module FluentPath
     end
     # post-processing
     tree.each_with_index do |t, index|
-      if t==:extension # 'extension' can be a path or a function call (if followed by a block)
-        next_token = tree[index+1]
+      if t == :extension # 'extension' can be a path or a function call (if followed by a block)
+        next_token = tree[index + 1]
         tree[index] = 'extension' if next_token.nil? || !next_token.is_a?(FluentPath::Expression)
       end
     end
@@ -99,10 +98,9 @@ module FluentPath
     rescue
       value = token
       value = token.to_sym if @@reserved.include?(token)
-      value = true if token=='true'
-      value = false if token=='false'
+      value = true if token == 'true'
+      value = false if token == 'false'
     end
     value
   end
-
 end

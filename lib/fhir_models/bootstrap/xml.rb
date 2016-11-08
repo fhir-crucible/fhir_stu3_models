@@ -1,7 +1,6 @@
 require 'nokogiri'
 module FHIR
   module Xml
-
     #
     #  This module includes methods to serialize or deserialize FHIR resources to and from XML.
     #
@@ -33,8 +32,8 @@ module FHIR
       end
 
       hash.each do |key, value|
-        next if(['extension', 'modifierExtension'].include?(name) && key=='url')
-        next if(key == 'id' && !FHIR::RESOURCES.include?(name))
+        next if ['extension', 'modifierExtension'].include?(name) && key == 'url'
+        next if key == 'id' && !FHIR::RESOURCES.include?(name)
         if value.is_a?(Hash)
           node.add_child(hash_to_xml_node(key, value, doc))
         elsif value.is_a?(Array)
@@ -49,11 +48,11 @@ module FHIR
           end
         else
           child = Nokogiri::XML::Node.new(key, doc)
-          if(name=='text' && key=='div')
+          if name == 'text' && key == 'div'
             child.set_attribute('xmlns', 'http://www.w3.org/1999/xhtml')
             html = value.strip
             if html.start_with?('<div') && html.end_with?('</div>')
-              html = html[html.index('>')+1..-7]
+              html = html[html.index('>') + 1..-7]
             end
             child.inner_html = html
           else
@@ -91,7 +90,7 @@ module FHIR
         next if [Nokogiri::XML::Text, Nokogiri::XML::Comment].include?(child.class)
 
         key = child.name
-        if node.name=='text' && key=='div'
+        if node.name == 'text' && key == 'div'
           hash[key] = child.to_xml
         else
           value = child.get_attribute('value')
@@ -100,7 +99,7 @@ module FHIR
           end
 
           if hash[key]
-            hash[key] = [ hash[key] ] unless hash[key].is_a?(Array)
+            hash[key] = [hash[key]] unless hash[key].is_a?(Array)
             hash[key] << value
           else
             hash[key] = value
@@ -111,13 +110,12 @@ module FHIR
       hash['id'] = node.get_attribute('id') if node.get_attribute('id') # Testscript fixture ids (applies to any BackboneElement)
       hash['resourceType'] = node.name if FHIR::RESOURCES.include?(node.name)
 
-      if( # If this hash contains nothing but an embedded resource, we should return that
-          # embedded resource without the wrapper
-          hash.keys.length==1 &&
-          FHIR::RESOURCES.include?(hash.keys.first) &&
-          hash.values.first.is_a?(Hash) &&
-          hash.values.first['resourceType']==hash.keys.first
-        )
+      # If this hash contains nothing but an embedded resource, we should return that
+      # embedded resource without the wrapper
+      if hash.keys.length == 1 &&
+         FHIR::RESOURCES.include?(hash.keys.first) &&
+         hash.values.first.is_a?(Hash) &&
+         hash.values.first['resourceType'] == hash.keys.first
         hash.values.first
       else
         hash
@@ -137,6 +135,5 @@ module FHIR
 
     private :hash_to_xml_node
     private_class_method :xml_node_to_hash
-
   end
 end
