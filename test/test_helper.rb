@@ -1,7 +1,6 @@
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
-
 require 'simplecov'
+SimpleCov.start
+
 require 'nokogiri/diff'
 require 'test/unit'
 require 'pry'
