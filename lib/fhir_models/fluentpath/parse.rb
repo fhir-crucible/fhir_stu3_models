@@ -14,9 +14,7 @@ module FluentPath
       index = raw_tokens.index("'")
       e_index = raw_tokens[(index + 1)..raw_tokens.length].index("'")
       raw_tokens[index] = raw_tokens[index..(index + e_index + 1)].join
-      for i in (index + 1)..(index + e_index + 1)
-        raw_tokens[i] = nil
-      end
+      ((index + 1)..(index + e_index + 1)).each { |i| raw_tokens[i] = nil }
       raw_tokens.compact!
       size = raw_tokens.length
     end

@@ -82,11 +82,11 @@ class InvariantsTest < Test::Unit::TestCase
       'resourceType' => 'NamingSystem',
       'uniqueId' => {
         'preferred' => true,
-        'type' => ['A', 'B', 'B']
+        'type' => %w(A B B)
       }
     }
     result = FluentPath.evaluate(expression, data)
-    assert result == ['A', 'B'], 'Failed nsd-2 test.'
+    assert result == %w(A B), 'Failed nsd-2 test.'
   end
 
   def test_obs7_false
@@ -203,7 +203,7 @@ class InvariantsTest < Test::Unit::TestCase
       'constraint' => [{ 'key' => 'A' }, { 'key' => 'B' }, { 'key' => 'A' }]
     }
     result = FluentPath.evaluate(expression, data)
-    assert result == ['A', 'B'], 'Failed eld-14 test.'
+    assert result == %w(A B), 'Failed eld-14 test.'
   end
 
   def test_eld2_true

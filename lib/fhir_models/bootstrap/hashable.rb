@@ -37,7 +37,7 @@ module FHIR
       hash.each do |key, value|
         key = key.to_s
         meta = self.class::METADATA[key]
-        if !meta.nil?
+        unless meta.nil?
           local_name = key
           local_name = meta['local_name'] if meta['local_name']
           self.instance_variable_set("@#{local_name}", value) rescue nil
@@ -93,7 +93,7 @@ module FHIR
     end
 
     def convert_primitive(value, meta)
-      return value if !value.is_a?(String)
+      return value unless value.is_a?(String)
 
       rval = value
       if meta['type'] == 'boolean'

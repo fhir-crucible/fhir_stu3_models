@@ -34,7 +34,7 @@ class XmlSchemaValidationTest < Test::Unit::TestCase
     errors_output = XSD.validate(Nokogiri::XML(output_xml))
 
     original_errors = false
-    if !errors_input.empty?
+    unless errors_input.empty?
       puts "  WARNING: validation errors in example: #{example_name}"
       if errors_input.length == errors_output.length
         errors_match = true
@@ -50,7 +50,7 @@ class XmlSchemaValidationTest < Test::Unit::TestCase
           file.write(sprintf("%-8d  %s\n", error.line, error.message))
         end
 
-        if !errors_input.empty?
+        unless errors_input.empty?
           file.write('ORIGINAL ERRORS: ')
           errors_input.each do |error|
             file.write(sprintf("%-8d  %s\n", error.line, error.message))

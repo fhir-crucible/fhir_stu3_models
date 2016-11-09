@@ -67,7 +67,7 @@ module FHIR
 
         # add mandatory METADATA constant
         metadata = get_metadata
-        @constants['METADATA'] = metadata if !metadata.empty?
+        @constants['METADATA'] = metadata unless metadata.empty?
 
         # add constants
         @constants.each do |constant, value|
@@ -105,7 +105,7 @@ module FHIR
         @fields.each do |field|
           s << "#{space}attr_accessor :"
           local_name = field.local_name || field.name
-          s[-1] << ("%-#{max_name_size}s" % "#{local_name}")
+          s[-1] << ("%-#{max_name_size}s" % local_name.to_s)
           # add comment after field declaration
           s[-1] << "# #{field.min}-#{field.max} "
           s[-1] << '[ ' if field.max.to_i > 1 || field.max == '*'
@@ -132,7 +132,7 @@ module FHIR
         s.join("\n")
       end
 
-      def indent(level = 0, offset)
+      def indent(level = 0, offset = 0)
         ' ' * offset + '  ' * level
       end
     end

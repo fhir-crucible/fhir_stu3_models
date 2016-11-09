@@ -26,7 +26,7 @@ class ProfileValidationTest < Test::Unit::TestCase
     profile = FHIR::Definitions.get_profile(profile_uri)
     assert profile.is_a?(FHIR::StructureDefinition), 'Profile is not a valid StructureDefinition.'
     errors = profile.validate_resource(resource)
-    if !errors.empty?
+    unless errors.empty?
       File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') { |file| errors.each { |e| file.write("#{e}\n") } }
       File.open("#{ERROR_DIR}/#{example_name}.json", 'w:UTF-8') { |file| file.write(input_json) }
     end

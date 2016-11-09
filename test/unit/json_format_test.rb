@@ -35,7 +35,7 @@ class JsonFormatTest < Test::Unit::TestCase
 
     errors = compare(input_hash, output_hash)
 
-    if !errors.empty?
+    unless errors.empty?
       File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') { |file| file.write(errors.join("\n")) }
       File.open("#{ERROR_DIR}/#{example_name}_PRODUCED.json", 'w:UTF-8') { |file| file.write(output_json) }
       File.open("#{ERROR_DIR}/#{example_name}_ORIGINAL.json", 'w:UTF-8') { |file| file.write(input_json) }
@@ -56,7 +56,7 @@ class JsonFormatTest < Test::Unit::TestCase
 
     errors = compare(input_hash, output_hash)
 
-    if !errors.empty?
+    unless errors.empty?
       File.open("#{ERROR_LOSSY_DIR}/#{example_name}.err", 'w:UTF-8') { |file| file.write(errors.join("\n")) }
       File.open("#{ERROR_LOSSY_DIR}/#{example_name}_PRODUCED.xml", 'w:UTF-8') { |file| file.write(output_xml) }
       File.open("#{ERROR_LOSSY_DIR}/#{example_name}_PRODUCED.json", 'w:UTF-8') { |file| file.write(output_json) }
@@ -76,10 +76,10 @@ class JsonFormatTest < Test::Unit::TestCase
     errors = []
 
     added = hash_output.keys - hash_input.keys
-    errors << "Added extra fields: #{added.join(', ')}" if !added.empty?
+    errors << "Added extra fields: #{added.join(', ')}" unless added.empty?
 
     dropped = hash_input.keys - hash_output.keys
-    errors << "Dropped fields: #{dropped.join(', ')}" if !dropped.empty?
+    errors << "Dropped fields: #{dropped.join(', ')}" unless dropped.empty?
 
     shared_keys = hash_input.keys - dropped
     shared_keys.each do |key|
@@ -135,18 +135,18 @@ class JsonFormatTest < Test::Unit::TestCase
   end
 
   def is_a_date_or_time(value)
-    return false if !value.is_a?(String)
+    return false unless value.is_a?(String)
 
-    ['date', 'dateTime', 'time'].each do |type|
+    %w(date dateTime time).each do |type|
       meta = FHIR::PRIMITIVES[type]
       expression = meta['regex']
       regex = Regexp.new(expression)
-      return true if !(regex =~ value).nil?
+      return true unless (regex =~ value).nil?
     end
 
     # when 'instant'
     regex = /-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))))/
-    return true if !(regex =~ value).nil?
+    return true unless (regex =~ value).nil?
 
     false
 

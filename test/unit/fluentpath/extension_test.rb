@@ -47,6 +47,6 @@ class ExtensionTest < Test::Unit::TestCase
 
   def test_extension_missing
     result = FluentPath.evaluate("Patient.extension('http://hl7.org/fhir/StructureDefinition/us-core-ethnicity')", PATIENT)
-    assert result == nil, 'Failed to resolve missing extension.'
+    assert result.nil?, 'Failed to resolve missing extension.'
   end
 end

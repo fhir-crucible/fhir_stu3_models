@@ -7,7 +7,7 @@ module FluentPath
     end
 
     def to_s
-      "#{@tree}"
+      @tree.to_s
     end
 
     def inspect

@@ -58,7 +58,7 @@ namespace :fhir do
     # delete the JSON examples
     dest = File.join(root, 'examples', 'json')
     puts '  Replacing JSON examples...'
-    Dir.glob(File.join(dest, '*')).each { |f| File.delete(f) if !File.directory?(f) }
+    Dir.glob(File.join(dest, '*')).each { |f| File.delete(f) unless File.directory?(f) }
     # copy the new JSON examples over
     files = Dir.glob(File.join(src, '*.json'))
     files.map! { |f| File.basename(f) }
@@ -74,7 +74,7 @@ namespace :fhir do
     # delete the XML examples
     dest = File.join(root, 'examples', 'xml')
     puts '  Replacing XML examples...'
-    Dir.glob(File.join(dest, '*')).each { |f| File.delete(f) if !File.directory?(f) }
+    Dir.glob(File.join(dest, '*')).each { |f| File.delete(f) unless File.directory?(f) }
     # copy the new XML examples over
     files = Dir.glob(File.join(src, '*.xml'))
     files.map! { |f| File.basename(f) }

@@ -36,7 +36,7 @@ module FHIR
 
     def fix_name(name)
       fix = nil
-      fix = "local_#{name}" if ['class', 'method', 'resourceType'].include?(name)
+      fix = "local_#{name}" if %w(class method resourceType).include?(name)
       fix
     end
   end

@@ -23,7 +23,7 @@ class XmlValidationTest < Test::Unit::TestCase
     input_xml = File.read(example_file)
     resource = FHIR::Xml.from_xml(input_xml)
     errors = resource.validate
-    if !errors.empty?
+    unless errors.empty?
       File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') { |file| file.write(JSON.pretty_unparse(errors)) }
       File.open("#{ERROR_DIR}/#{example_name}.xml", 'w:UTF-8') { |file| file.write(input_xml) }
     end

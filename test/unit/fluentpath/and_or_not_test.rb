@@ -4,7 +4,7 @@ class AndOrNotTest < Test::Unit::TestCase
   def test_and_or_not
     data = {
       'name' => {
-        'given' => ['Joe', 'John']
+        'given' => %w(Joe John)
       },
       'gender' => 'male',
       'deceased' => false

@@ -32,7 +32,7 @@ module FHIR
       end
 
       hash.each do |key, value|
-        next if ['extension', 'modifierExtension'].include?(name) && key == 'url'
+        next if %w(extension modifierExtension).include?(name) && key == 'url'
         next if key == 'id' && !FHIR::RESOURCES.include?(name)
         if value.is_a?(Hash)
           node.add_child(hash_to_xml_node(key, value, doc))
@@ -61,7 +61,7 @@ module FHIR
           node.add_child(child)
         end
       end
-      node.set_attribute('url', hash['url']) if ['extension', 'modifierExtension'].include?(name)
+      node.set_attribute('url', hash['url']) if %w(extension modifierExtension).include?(name)
       node.set_attribute('id', hash['id']) if hash['id'] && !FHIR::RESOURCES.include?(name)
       node
     end
@@ -106,7 +106,7 @@ module FHIR
           end
         end
       end
-      hash['url'] = node.get_attribute('url') if ['extension', 'modifierExtension'].include?(node.name)
+      hash['url'] = node.get_attribute('url') if %w(extension modifierExtension).include?(node.name)
       hash['id'] = node.get_attribute('id') if node.get_attribute('id') # Testscript fixture ids (applies to any BackboneElement)
       hash['resourceType'] = node.name if FHIR::RESOURCES.include?(node.name)
 

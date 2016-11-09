@@ -23,7 +23,7 @@ class JsonValidationTest < Test::Unit::TestCase
     input_json = File.read(example_file)
     resource = FHIR::Json.from_json(input_json)
     errors = resource.validate
-    if !errors.empty?
+    unless errors.empty?
       File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') { |file| file.write(JSON.pretty_unparse(errors)) }
       File.open("#{ERROR_DIR}/#{example_name}.json", 'w:UTF-8') { |file| file.write(input_json) }
     end

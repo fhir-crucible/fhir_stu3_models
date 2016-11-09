@@ -49,7 +49,7 @@ class EqualityTest < Test::Unit::TestCase
     input_json = File.read(example_file)
     instance_a = FHIR::Json.from_json(input_json)
     instance_b = FHIR::Json.from_json(input_json)
-    if !instance_a.mismatch(instance_b).empty?
+    unless instance_a.mismatch(instance_b).empty?
       File.open("#{ERROR_DIR}/#{example_name}.json", 'w:UTF-8') { |file| file.write(input_json) }
     end
     assert instance_a.mismatch(instance_b).empty?, 'Instance A should match instance B.'

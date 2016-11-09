@@ -19,7 +19,7 @@ module FHIR
         self.class::MULTIPLE_TYPES[method.to_s].each do |type|
           type[0] = type[0].upcase
           value = self.method("#{method}#{type}").call
-          return value if !value.nil?
+          return value unless value.nil?
         end
         return nil
       elsif !@extension.nil? && !@extension.empty?
@@ -28,12 +28,8 @@ module FHIR
           anchor = name.split('#').last
           (method.to_s == name || method.to_s == anchor)
         end
-        if !ext.first.nil?
-          if !ext.first.value.nil?
-            return ext.first.value
-          else
-            return ext.first
-          end
+        unless ext.first.nil?
+          return ext.first.value.nil? ? ext.first : ext.first.value
         end
       elsif !@modifierExtension.nil? && !@modifierExtension.empty?
         ext = @modifierExtension.select do |x|
@@ -41,12 +37,8 @@ module FHIR
           anchor = name.split('#').last
           (method.to_s == name || method.to_s == anchor)
         end
-        if !ext.first.nil?
-          if !ext.first.value.nil?
-            return ext.first.value
-          else
-            return ext.first
-          end
+        unless ext.first.nil?
+          return ext.first.value.nil? ? ext.first : ext.first.value
         end
       end
       super(method, *args, &block)
@@ -149,7 +141,7 @@ module FHIR
         # remove errors for suffixes that are not present
         suffixes.each do |suffix|
           typename = "#{prefix}#{suffix[0].upcase}#{suffix[1..-1]}"
-          errors.delete(typename) if !present.include?(typename)
+          errors.delete(typename) unless present.include?(typename)
         end
       end
       errors.keep_if { |_k, v| (v && !v.empty?) }
@@ -165,7 +157,7 @@ module FHIR
       errors[field] = []
       # check cardinality
       count = value.length
-      if !(count >= meta['min'] && count <= meta['max'])
+      unless count >= meta['min'] && count <= meta['max']
         errors[field] << "#{meta['path']}: invalid cardinality. Found #{count} expected #{meta['min']}..#{meta['max']}"
       end
       # check datatype
@@ -176,7 +168,7 @@ module FHIR
         if datatype == 'Resource'
           if FHIR::RESOURCES.include?(klassname)
             validation = v.validate(contained_here)
-            errors[field] << validation if !validation.empty?
+            errors[field] << validation unless validation.empty?
           else
             errors[field] << "#{meta['path']}: expected Resource, found #{klassname}"
           end
@@ -185,7 +177,7 @@ module FHIR
         elsif datatype == 'Reference'
           if klassname == 'Reference'
             validation = v.validate(contained_here)
-            errors[field] << validation if !validation.empty?
+            errors[field] << validation unless validation.empty?
             validate_reference_type(v, meta, contained_here, errors[field])
           else
             errors[field] << "#{meta['path']}: expected Reference, found #{klassname}"
@@ -194,7 +186,7 @@ module FHIR
         elsif FHIR::RESOURCES.include?(datatype) || FHIR::TYPES.include?(datatype)
           if datatype == klassname
             validation = v.validate(contained_here)
-            errors[field] << validation if !validation.empty?
+            errors[field] << validation unless validation.empty?
           else
             errors[field] << "#{meta['path']}: incorrect type. Found #{klassname} expected #{datatype}"
           end
@@ -205,7 +197,7 @@ module FHIR
             match = (v =~ Regexp.new(primitive_meta['regex']))
             errors[field] << "#{meta['path']}: #{v} does not match #{datatype} regex" if match.nil?
           else
-            errors[field] << "#{meta['path']}: #{v} is not a valid #{datatype}" if !is_primitive?(datatype, v)
+            errors[field] << "#{meta['path']}: #{v} is not a valid #{datatype}" unless is_primitive?(datatype, v)
           end
         end
         # check binding
@@ -220,7 +212,7 @@ module FHIR
             has_valid_code = false
             if meta['valid_codes']
               meta['valid_codes'].each do |_key, codes|
-                has_valid_code = true if !(codes & the_codes).empty?
+                has_valid_code = true unless (codes & the_codes).empty?
                 break if has_valid_code
               end
             else
@@ -229,7 +221,7 @@ module FHIR
                 break if has_valid_code
               end
             end
-            errors[field] << "#{meta['path']}: invalid codes #{the_codes}" if !has_valid_code
+            errors[field] << "#{meta['path']}: invalid codes #{the_codes}" unless has_valid_code
           end
         end
       end # value.each
@@ -259,7 +251,7 @@ module FHIR
             FHIR.logger.warn "Unable to resolve reference #{ref.reference}"
           end
         end
-        errors << "#{meta['path']}: incorrect Reference type, expected #{meta['type_profiles'].map { |x| x.split('/').last }.join('|')}" if !matches_one_profile
+        errors << "#{meta['path']}: incorrect Reference type, expected #{meta['type_profiles'].map { |x| x.split('/').last }.join('|')}" unless matches_one_profile
       end
     end
 

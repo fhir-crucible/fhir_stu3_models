@@ -35,14 +35,14 @@ module FluentPath
       end
       return response
     end
-    return :null if !hash.is_a?(Hash)
+    return :null unless hash.is_a?(Hash)
     return hash if hash['resourceType'] == key
     val = hash[key]
     if val.nil?
       # this block is a dangerous hack to get fields of multiple data types
       # e.g. 'value' instead of 'valueQuantity', or 'onset' instead of 'onsetDateTime' or 'onsetPeriod'
       nkey = hash.keys.select { |x| x.start_with?(key) }.first
-      if !nkey.nil?
+      unless nkey.nil?
         tail = nkey.gsub(key, '')
         val = hash[nkey] if tail[0] == tail[0].capitalize
       end
@@ -60,11 +60,11 @@ module FluentPath
     return false if value.is_a?(Hash) && value.empty?
     return false if value == :null
     return false if value == false
-    return true
+    true
   end
 
   def self.clean_index(tree, index)
-    tree[index] = nil if !index.nil?
+    tree[index] = nil unless index.nil?
   end
 
   # evaluate a parsed expression given some context data
@@ -137,13 +137,8 @@ module FluentPath
               clean_index(tree, previous_index)
             elsif previous_node.is_a?(Hash)
               sub = compute(block, previous_node)
-              if convert_to_boolean(sub)
-                tree[index] = previous_node
-                clean_index(tree, previous_index)
-              else
-                tree[index] = {}
-                clean_index(tree, previous_index)
-              end
+              tree[index] = convert_to_boolean(sub) ? previous_node : {}
+              clean_index(tree, previous_index)
             else
               raise "Where function not applicable to #{previous_node.class}: #{previous_node}"
             end
@@ -270,17 +265,16 @@ module FluentPath
               result = true
               previous_node.each { |item| result = (result && convert_to_boolean(item)) }
               tree[index] = result
-              clean_index(tree, previous_index)
             else
               tree[index] = convert_to_boolean(previous_node)
-              clean_index(tree, previous_index)
             end
+            clean_index(tree, previous_index)
           when :not
             tree[index] = !convert_to_boolean(previous_node)
             clean_index(tree, previous_index)
           when :count
             tree[index] = 0
-            tree[index] = 1 if !previous_node.nil?
+            tree[index] = 1 unless previous_node.nil?
             tree[index] = previous_node.length if previous_node.is_a?(Array)
             clean_index(tree, previous_index)
           when :empty

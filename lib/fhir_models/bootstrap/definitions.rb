@@ -40,7 +40,7 @@ module FHIR
       return nil if type_name.nil?
       load_types
       d = @@types.find { |x| x['xmlId'] == type_name || x['name'] == type_name || x['url'] == type_name }
-      d = FHIR::StructureDefinition.new(d) if !d.nil?
+      d = FHIR::StructureDefinition.new(d) unless d.nil?
       d
     end
 
@@ -66,7 +66,7 @@ module FHIR
       return nil if resource_name.nil?
       load_resources
       d = @@resources.find { |x| x['xmlId'] == resource_name || x['name'] == resource_name || x['url'] == resource_name }
-      d = FHIR::StructureDefinition.new(d) if !d.nil?
+      d = FHIR::StructureDefinition.new(d) unless d.nil?
       d
     end
 
@@ -92,7 +92,7 @@ module FHIR
       return nil if extension_name.nil?
       load_extensions
       d = @@extensions.find { |x| x['xmlId'] == extension_name || x['name'] == extension_name || x['url'] == extension_name }
-      d = FHIR::StructureDefinition.new(d) if !d.nil?
+      d = FHIR::StructureDefinition.new(d) unless d.nil?
       d
     end
 
@@ -106,7 +106,7 @@ module FHIR
       defn = @@extensions.select { |x| x['url'] == uri }.first if defn.nil?
 
       basetype = nil
-      basetype = defn['baseType'] if !defn.nil?
+      basetype = defn['baseType'] unless defn.nil?
       basetype
     end
 
@@ -120,7 +120,7 @@ module FHIR
       defn = @@extensions.select { |x| x['url'] == uri }.first if defn.nil?
 
       profile = nil
-      profile = FHIR::StructureDefinition.new(defn) if !defn.nil?
+      profile = FHIR::StructureDefinition.new(defn) unless defn.nil?
       profile
     end
 
@@ -140,7 +140,7 @@ module FHIR
       defn = @@extensions.select { |x| x['url'] == uri }.first if defn.nil?
 
       klass = nil
-      if !defn.nil?
+      unless defn.nil?
         generator = FHIR::Boot::Generator.new(false)
         type = defn['baseType']
         id = defn['id'].gsub(/-|_/, '').capitalize
@@ -192,7 +192,7 @@ module FHIR
       load_expansions
       codes = nil
       valueset = @@expansions.select { |x| x['url'] == uri }.first
-      if !valueset.nil?
+      unless valueset.nil?
         codes = {}
         if !valueset['expansion'].nil? && !valueset['expansion']['contains'].nil?
           keys = valueset['expansion']['contains'].map { |x| x['system'] }.uniq
@@ -201,7 +201,7 @@ module FHIR
         end
         if !valueset['compose'].nil? && !valueset['compose']['include'].nil?
           included_systems = valueset['compose']['include'].map { |x| x['system'] }.uniq
-          included_systems.each { |x| codes[x] = [] if !codes.keys.include?(x) }
+          included_systems.each { |x| codes[x] = [] unless codes.keys.include?(x) }
           systems = @@valuesets.select { |x| x['resourceType'] == 'CodeSystem' && included_systems.include?(x['url']) }
           systems.each do |x|
             x['concept'].each { |y| codes[x['url']] << y['code'] }

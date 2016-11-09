@@ -37,7 +37,7 @@ class XmlFormatTest < Test::Unit::TestCase
     clean_nodes(output_nodes.root)
 
     errors = calculate_errors(input_nodes, output_nodes)
-    if !errors.empty?
+    unless errors.empty?
       File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') { |file| file.write(errors.map { |x| "#{x.first} #{x.last.to_xml}" }.join("\n")) }
       File.open("#{ERROR_DIR}/#{example_name}_PRODUCED.xml", 'w:UTF-8') { |file| file.write(output_xml) }
       File.open("#{ERROR_DIR}/#{example_name}_ORIGINAL.xml", 'w:UTF-8') { |file| file.write(input_xml) }
@@ -60,7 +60,7 @@ class XmlFormatTest < Test::Unit::TestCase
     clean_nodes(output_nodes.root)
 
     errors = calculate_errors(input_nodes, output_nodes)
-    if !errors.empty?
+    unless errors.empty?
       File.open("#{ERROR_LOSSY_DIR}/#{example_name}.err", 'w:UTF-8') { |file| file.write(errors.map { |x| "#{x.first} #{x.last.to_xml}" }.join("\n")) }
       File.open("#{ERROR_LOSSY_DIR}/#{example_name}_PRODUCED.xml", 'w:UTF-8') { |file| file.write(output_xml) }
       File.open("#{ERROR_LOSSY_DIR}/#{example_name}_ORIGINAL.xml", 'w:UTF-8') { |file| file.write(input_xml) }
@@ -110,7 +110,7 @@ class XmlFormatTest < Test::Unit::TestCase
         # remove all the children -- these will be primitive extensions which we do not support.
         child.children = ''
       end
-      clean_nodes(child) if !child.children.empty?
+      clean_nodes(child) unless child.children.empty?
     end
   end
 end

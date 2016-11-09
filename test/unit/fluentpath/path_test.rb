@@ -1,8 +1,8 @@
 require_relative '../../test_helper'
 
 class PathTest < Test::Unit::TestCase
-  NAMES = ['Bob', 'Robert']
-  WTF = ['Bobert', 'Rob']
+  NAMES = %w(Bob Robert)
+  WTF = %w(Bobert Rob)
   PID1 = 99
   PATIENT = {
     'name' => [{
@@ -18,7 +18,7 @@ class PathTest < Test::Unit::TestCase
     }
   }
   ARRAY = {
-    'Array' => ['A', 'B'],
+    'Array' => %w(A B),
     'index' => 1
   }
   ITEM = { 'base' => 'Patient' }
@@ -36,12 +36,12 @@ class PathTest < Test::Unit::TestCase
 
   def test_path_conversion_2args
     result = FluentPath.evaluate('Patient.name.given.select(substring(0,3))', PATIENT)
-    assert result == ['Bob', 'Rob', 'Bob', 'Rob'], 'Failed to navigate path.'
+    assert result == %w(Bob Rob Bob Rob), 'Failed to navigate path.'
   end
 
   def test_path_conversion_1args
     result = FluentPath.evaluate('Patient.name.given.select(substring(1))', PATIENT)
-    assert result == ['ob', 'obert', 'obert', 'ob'], 'Failed to navigate path.'
+    assert result == %w(ob obert obert ob), 'Failed to navigate path.'
   end
 
   def test_path_with_quotes

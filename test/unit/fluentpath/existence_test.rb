@@ -1,7 +1,7 @@
 require_relative '../../test_helper'
 
 class ExistenceTest < Test::Unit::TestCase
-  NAMES = ['Bob', 'Robert']
+  NAMES = %w(Bob Robert)
   PATIENT = {
     'name' => {
       'given' => NAMES
@@ -10,7 +10,7 @@ class ExistenceTest < Test::Unit::TestCase
     'aliveBoolean' => true,
     'all_true' => [true, true, true],
     'some_true' => [false, true, false],
-    'codes' => ['A', 'A', 'B'],
+    'codes' => %w(A A B),
     'numbers' => [0.1, 0.1, 1, -2],
     'resourceType' => 'Patient'
   }
@@ -75,7 +75,7 @@ class ExistenceTest < Test::Unit::TestCase
   # ------------------------- distinct() -------------------------------------
   def test_distinct_strings
     result = FluentPath.evaluate('Patient.codes.distinct()', PATIENT)
-    assert result == ['A', 'B'], 'Failed distinct test.'
+    assert result == %w(A B), 'Failed distinct test.'
   end
 
   def test_distinct_numbers
@@ -102,7 +102,7 @@ class ExistenceTest < Test::Unit::TestCase
   def test_in_strings
     data = {
       'foo' => 'B',
-      'set' => ['A', 'B', 'C']
+      'set' => %w(A B C)
     }
     result = FluentPath.evaluate('foo in set', data)
     assert result == true, 'Failed in_strings test.'
@@ -129,7 +129,7 @@ class ExistenceTest < Test::Unit::TestCase
   def test_in_strings_false
     data = {
       'foo' => 'D',
-      'set' => ['A', 'B', 'C']
+      'set' => %w(A B C)
     }
     result = FluentPath.evaluate('foo in set', data)
     assert result == false, 'Failed in_strings_false test.'
@@ -148,6 +148,6 @@ class ExistenceTest < Test::Unit::TestCase
   def test_set_creation
     data = {}
     result = FluentPath.evaluate("('A'|'B'|'C')", data)
-    assert result == ['A', 'B', 'C'], 'Failed set creation.'
+    assert result == %w(A B C), 'Failed set creation.'
   end
 end

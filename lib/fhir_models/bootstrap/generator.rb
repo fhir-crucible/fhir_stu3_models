@@ -17,13 +17,13 @@ module FHIR
       def setup
         # make folders for generated content if they do not exist
         @lib = File.expand_path '..', File.dirname(File.absolute_path(__FILE__))
-        Dir.mkdir(File.join(@lib, 'fhir')) if !Dir.exist?(File.join(@lib, 'fhir'))
-        Dir.mkdir(File.join(@lib, 'fhir', 'types')) if !Dir.exist?(File.join(@lib, 'fhir', 'types'))
-        Dir.mkdir(File.join(@lib, 'fhir', 'resources')) if !Dir.exist?(File.join(@lib, 'fhir', 'resources'))
+        Dir.mkdir(File.join(@lib, 'fhir')) unless Dir.exist?(File.join(@lib, 'fhir'))
+        Dir.mkdir(File.join(@lib, 'fhir', 'types')) unless Dir.exist?(File.join(@lib, 'fhir', 'types'))
+        Dir.mkdir(File.join(@lib, 'fhir', 'resources')) unless Dir.exist?(File.join(@lib, 'fhir', 'resources'))
 
         # delete previously generated folder contents
-        Dir.glob(File.join(@lib, 'fhir', '*')).each { |f| File.delete(f) if !File.directory?(f) }
-        Dir.glob(File.join(@lib, 'fhir', '**', '*')).each { |f| File.delete(f) if !File.directory?(f) }
+        Dir.glob(File.join(@lib, 'fhir', '*')).each { |f| File.delete(f) unless File.directory?(f) }
+        Dir.glob(File.join(@lib, 'fhir', '**', '*')).each { |f| File.delete(f) unless File.directory?(f) }
       end
 
       def generate_metadata
@@ -76,13 +76,13 @@ module FHIR
         generate_class_files(folder, @defn.get_resource_definitions)
       end
 
-      def generate_class_files(folder = @lib, structure_defs)
+      def generate_class_files(folder = @lib, structure_defs = [])
         structure_defs.each do |structure_def|
           @templates.clear
           type_name = structure_def['id']
           template = generate_class([type_name], structure_def, true)
           params = @defn.get_search_parameters(type_name)
-          template.constants['SEARCH_PARAMS'] = params if !params.nil?
+          template.constants['SEARCH_PARAMS'] = params unless params.nil?
           filename = File.join(folder, "#{type_name}.rb")
           file = File.open(filename, 'w:UTF-8')
           file.write(template.to_s)
@@ -187,7 +187,7 @@ module FHIR
               field.max = field.max.to_i
               field.max = '*' if element['max'] == '*'
 
-              if ['code', 'Coding', 'CodeableConcept'].include?(data_type) && element['binding']
+              if %w(code Coding CodeableConcept).include?(data_type) && element['binding']
                 field.binding = element['binding']
                 field.binding['uri'] = field.binding['valueSetUri']
                 field.binding['uri'] = field.binding['valueSetReference'] if field.binding['uri'].nil?
@@ -198,9 +198,9 @@ module FHIR
                 field.binding.delete('extension')
                 # set the actual code list
                 codes = @defn.get_codes(field.binding['uri'])
-                field.valid_codes = codes if !codes.nil?
+                field.valid_codes = codes unless codes.nil?
                 FHIR.logger.warn "  MISSING EXPANSION -- #{field.path} #{field.min}..#{field.max}: #{field.binding['uri']} (#{field.binding['strength']})" if field.valid_codes.empty? && field.binding['uri'] && !field.binding['uri'].end_with?('bcp47') && !field.binding['uri'].end_with?('bcp13.txt')
-              elsif ['Element', 'BackboneElement'].include?(data_type)
+              elsif %w(Element BackboneElement).include?(data_type)
                 # This is a nested structure or class
                 field.type = "#{hierarchy.join('::')}::#{cap_first(field.name)}"
               end
@@ -214,7 +214,7 @@ module FHIR
             field.type = field.type[1..-1] if field.type[0] == '#'
             if hierarchy.last == field.type
               # reference to self
-              field.type = "#{hierarchy.join('::')}"
+              field.type = hierarchy.join('::').to_s
             else
               # reference to contained template
               klass = @templates.select { |x| x.hierarchy.last == field.type }.first
@@ -234,7 +234,7 @@ module FHIR
           end
         end
 
-        template.constants['MULTIPLE_TYPES'] = multiple_data_types if !multiple_data_types.empty?
+        template.constants['MULTIPLE_TYPES'] = multiple_data_types unless multiple_data_types.empty?
         template
       end
     end
