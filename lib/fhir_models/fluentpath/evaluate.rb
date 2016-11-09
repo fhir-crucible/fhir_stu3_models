@@ -24,13 +24,12 @@ module FluentPath
     if hash.is_a?(Array)
       response = []
       hash.each do |e|
-        if e.is_a?(Hash)
-          item = e[key]
-          if item.is_a?(Array)
-            item.each { |i| response << i }
-          else
-            response << item
-          end
+        next unless e.is_a?(Hash)
+        item = e[key]
+        if item.is_a?(Array)
+          item.each { |i| response << i }
+        else
+          response << item
         end
       end
       return response

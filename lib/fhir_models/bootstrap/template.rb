@@ -60,9 +60,9 @@ module FHIR
 
         # include modules
         space = indent(@name.length + 1, offset)
-        s << "#{space}include FHIR::Hashable" if @name.length > 0
-        s << "#{space}include FHIR::Json" if @name.length > 0
-        s << "#{space}include FHIR::Xml" if @name.length > 0
+        s << "#{space}include FHIR::Hashable" unless @name.empty?
+        s << "#{space}include FHIR::Json" unless @name.empty?
+        s << "#{space}include FHIR::Xml" unless @name.empty?
         s << ''
 
         # add mandatory METADATA constant

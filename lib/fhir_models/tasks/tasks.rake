@@ -100,16 +100,14 @@ namespace :fhir do
     invariants = {}
     defs.each do |structure_definition|
       structure_definition['snapshot']['element'].each do |element|
-        if element['constraint']
-          element['constraint'].each do |constraint|
-            if constraint['expression']
-              invariants[constraint['key']] = {
-                path: element['path'],
-                expression: constraint['expression'],
-                human: constraint['human']
-              }
-            end
-          end
+        next unless element['constraint']
+        element['constraint'].each do |constraint|
+          next unless constraint['expression']
+          invariants[constraint['key']] = {
+            path: element['path'],
+            expression: constraint['expression'],
+            human: constraint['human']
+          }
         end
       end
     end

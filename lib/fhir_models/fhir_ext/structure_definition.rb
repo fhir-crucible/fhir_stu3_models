@@ -60,27 +60,25 @@ module FHIR
 
       # generate warnings for missing fields (ignoring extensions)
       left_missing.each do |e|
-        unless e.include? 'extension'
-          elem = get_element_by_path(e, right_elements)
-          if !elem.min.nil? && elem.min > 0
-            @errors << @finding.error(e, 'min', 'Missing REQUIRED element', 'Missing', elem.min.to_s)
-          elsif elem.isModifier == true
-            @errors << @finding.error(e, 'isModifier', 'Missing MODIFIER element', 'Missing', elem.isModifier.to_s)
-          else
-            @warnings << @finding.warning(e, '', 'Missing element', 'Missing', 'Defined')
-          end
+        next if e.include? 'extension'
+        elem = get_element_by_path(e, right_elements)
+        if !elem.min.nil? && elem.min > 0
+          @errors << @finding.error(e, 'min', 'Missing REQUIRED element', 'Missing', elem.min.to_s)
+        elsif elem.isModifier == true
+          @errors << @finding.error(e, 'isModifier', 'Missing MODIFIER element', 'Missing', elem.isModifier.to_s)
+        else
+          @warnings << @finding.warning(e, '', 'Missing element', 'Missing', 'Defined')
         end
       end
       right_missing.each do |e|
-        unless e.include? 'extension'
-          elem = get_element_by_path(e, left_elements)
-          if !elem.min.nil? && elem.min > 0
-            @errors << @finding.error(e, 'min', 'Missing REQUIRED element', elem.min.to_s, 'Missing')
-          elsif elem.isModifier == true
-            @errors << @finding.error(e, 'isModifier', 'Missing MODIFIER element', elem.isModifier.to_s, 'Missing')
-          else
-            @warnings << @finding.warning(e, '', 'Missing element', 'Defined', 'Missing')
-          end
+        next if e.include? 'extension'
+        elem = get_element_by_path(e, left_elements)
+        if !elem.min.nil? && elem.min > 0
+          @errors << @finding.error(e, 'min', 'Missing REQUIRED element', elem.min.to_s, 'Missing')
+        elsif elem.isModifier == true
+          @errors << @finding.error(e, 'isModifier', 'Missing MODIFIER element', elem.isModifier.to_s, 'Missing')
+        else
+          @warnings << @finding.warning(e, '', 'Missing element', 'Defined', 'Missing')
         end
       end
 
@@ -144,14 +142,11 @@ module FHIR
       end
       @errors.flatten!
       @warnings.flatten!
-      @errors.size == 0
+      @errors.size.zero?
     end
 
     def get_element_by_path(path, elements = snapshot.element)
-      elements.each do |element|
-        return element if element.path == path
-      end
-      nil
+      elements.detect { |element| element.path == path }
     end
 
     def get_extension(extension, elements = snapshot.element)
@@ -189,36 +184,34 @@ module FHIR
 
         x = path.split('.')
         root = x.first(x.size - 1).join('.')
-        if root.include? '.'
-          # get the root element to fill in the details
-          elem = get_element_by_path(root, elements)
-          # get the data type definition to fill in the details
-          # assume missing elements are from first data type (gross)
-          next if elem.type.nil? || elem.type.empty?
-          type_def = FHIR::Definitions.get_type_definition(elem.type[0].code)
-          next if type_def.nil?
-          type_elements = Array.new(type_def.snapshot.element)
-          # _DEEP_ copy
-          type_elements.map! do |e| # {|e| FHIR::ElementDefinition.from_fhir_json(e.to_fhir_json) }
-            FHIR::ElementDefinition.from_fhir_json(e.to_fhir_json)
-          end
-          # Fix path names
-          type_root = String.new(type_elements[0].path)
-          type_elements.each { |e| e.path.gsub!(type_root, root) }
-          # finally, add the missing element definitions
-          # one by one -- only if they are not already present (i.e. do not override)
-          type_elements.each do |z|
-            y = get_element_by_path(z.path, elements)
-            if y.nil?
-              elements << z
-              # else
-              #   @warnings << "StructureDefinition #{name} already contains #{z.path}"
-            end
-          end
-          elements.uniq!
-          # else
-          #   @warnings << "StructureDefinition #{name} missing -- #{path}"
+        next unless root.include? '.'
+        # get the root element to fill in the details
+        elem = get_element_by_path(root, elements)
+        # get the data type definition to fill in the details
+        # assume missing elements are from first data type (gross)
+        next if elem.type.nil? || elem.type.empty?
+        type_def = FHIR::Definitions.get_type_definition(elem.type[0].code)
+        next if type_def.nil?
+        type_elements = Array.new(type_def.snapshot.element)
+        # _DEEP_ copy
+        type_elements.map! do |e| # {|e| FHIR::ElementDefinition.from_fhir_json(e.to_fhir_json) }
+          FHIR::ElementDefinition.from_fhir_json(e.to_fhir_json)
         end
+        # Fix path names
+        type_root = String.new(type_elements[0].path)
+        type_elements.each { |e| e.path.gsub!(type_root, root) }
+        # finally, add the missing element definitions
+        # one by one -- only if they are not already present (i.e. do not override)
+        type_elements.each do |z|
+          y = get_element_by_path(z.path, elements)
+          next unless y.nil?
+          elements << z
+          # else
+          #   @warnings << "StructureDefinition #{name} already contains #{z.path}"
+        end
+        elements.uniq!
+        # else
+        #   @warnings << "StructureDefinition #{name} missing -- #{path}"
       end
     end
 
@@ -229,7 +222,7 @@ module FHIR
       x_only = x_profiles - y_profiles
       shared = x_profiles - x_only
 
-      if !shared.nil? && shared.size == 0
+      if !shared.nil? && shared.size.zero?
         # same name, but different profiles
         # maybe the profiles are the same, just with different URLs...
         # ... so we have to compare them, if we can.
@@ -273,13 +266,13 @@ module FHIR
       y_only = y_types - x_types
       shared = x_types - x_only
 
-      if !shared.nil? && shared.size == 0 && x_types.size > 0 && y_types.size > 0 && x.constraint.size > 0 && y.constraint.size > 0
+      if !shared.nil? && shared.size.zero? && !x_types.empty? && !y_types.empty? && !x.constraint.empty? && !y.constraint.empty?
         @errors << @finding.error(x.path.to_s, 'type.code', 'Incompatible data types', x_types.to_s, y_types.to_s)
       end
-      if !x_only.nil? && x_only.size > 0
+      if !x_only.nil? && !x_only.empty?
         @warnings << @finding.warning(x.path.to_s, 'type.code', 'Allows additional data types', x_only.to_s, 'not allowed')
       end
-      if !y_only.nil? && y_only.size > 0
+      if !y_only.nil? && !y_only.empty?
         @warnings << @finding.warning(x.path.to_s, 'type.code', 'Allows additional data types', 'not allowed', y_only.to_s)
       end
 
@@ -363,13 +356,13 @@ module FHIR
       y_only = y_constraints - x_constraints
       shared = x_constraints - x_only
 
-      if !shared.nil? && shared.size == 0 && x.constraint.size > 0 && y.constraint.size > 0
+      if !shared.nil? && shared.size.zero? && !x.constraint.empty? && !y.constraint.empty?
         @errors << @finding.error(x.path.to_s, 'constraint.xpath', 'Incompatible constraints', x_constraints.map { |z| z.tr(',', ';') }.join(' && ').to_s, y_constraints.map { |z| z.tr(',', ';') }.join(' && ').to_s)
       end
-      if !x_only.nil? && x_only.size > 0
+      if !x_only.nil? && !x_only.empty?
         @errors << @finding.error(x.path.to_s, 'constraint.xpath', 'Additional constraints', x_constraints.map { |z| z.tr(',', ';') }.join(' && ').to_s, '')
       end
-      if !y_only.nil? && y_only.size > 0
+      if !y_only.nil? && !y_only.empty?
         @errors << @finding.error(x.path.to_s, 'constraint.xpath', 'Additional constraints', '', y_constraints.map { |z| z.tr(',', ';') }.join(' && ').to_s)
       end
 
@@ -439,7 +432,7 @@ module FHIR
         end
 
         # Check the datatype for each node, only if the element has one declared, and it isn't the root element
-        if element.type.size > 0 && element.path != id
+        if !element.type.empty? && element.path != id
           nodes.each do |value|
             matching_type = 0
 
@@ -505,7 +498,7 @@ module FHIR
         end
       end
 
-      @errors.size == 0
+      @errors.size.zero?
     end
 
     def get_json_nodes(json, path)
@@ -573,7 +566,7 @@ module FHIR
         value.is_a?(String)
       when 'xhtml'
         fragment = Nokogiri::HTML::DocumentFragment.parse(value)
-        value.is_a?(String) && fragment.errors.size == 0
+        value.is_a?(String) && fragment.errors.size.zero?
       when 'base64binary'
         regex = /[^0-9\+\/\=A-Za-z\r\n ]/
         value.is_a?(String) && (regex =~ value).nil?
@@ -665,7 +658,7 @@ module FHIR
 
       if vs_uri == 'http://hl7.org/fhir/ValueSet/content-type' || vs_uri == 'http://www.rfc-editor.org/bcp/bcp13.txt'
         matches = MIME::Types[value]
-        if (matches.nil? || matches.size == 0) && !is_some_type_of_xml_or_json(value)
+        if (matches.nil? || matches.size.zero?) && !is_some_type_of_xml_or_json(value)
           @errors << "#{element.path} has invalid mime-type: '#{value}'"
           matching_type -= 1 if element.binding.strength == 'required'
         end

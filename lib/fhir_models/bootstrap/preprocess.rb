@@ -16,13 +16,12 @@ module FHIR
 
         # Remove unnecessary elements from the hash
         hash['entry'].each do |entry|
-          if entry['resource']
-            pre_process_structuredefinition(entry['resource']) if 'StructureDefinition' == entry['resource']['resourceType']
-            pre_process_valueset(entry['resource']) if 'ValueSet' == entry['resource']['resourceType']
-            pre_process_codesystem(entry['resource']) if 'CodeSystem' == entry['resource']['resourceType']
-            pre_process_searchparam(entry['resource']) if 'SearchParameter' == entry['resource']['resourceType']
-            remove_fhir_comments(entry['resource'])
-          end
+          next unless entry['resource']
+          pre_process_structuredefinition(entry['resource']) if 'StructureDefinition' == entry['resource']['resourceType']
+          pre_process_valueset(entry['resource']) if 'ValueSet' == entry['resource']['resourceType']
+          pre_process_codesystem(entry['resource']) if 'CodeSystem' == entry['resource']['resourceType']
+          pre_process_searchparam(entry['resource']) if 'SearchParameter' == entry['resource']['resourceType']
+          remove_fhir_comments(entry['resource'])
         end
 
         # Output the post processed file
@@ -57,20 +56,18 @@ module FHIR
 
         if hash['compose'] && hash['compose']['include']
           hash['compose']['include'].each do |element|
-            if element['concept']
-              element['concept'].each do |concept|
-                concept.delete('designation')
-              end
+            next unless element['concept']
+            element['concept'].each do |concept|
+              concept.delete('designation')
             end
           end
         end
 
         if hash['compose'] && hash['compose']['exclude']
           hash['compose']['exclude'].each do |element|
-            if element['concept']
-              element['concept'].each do |concept|
-                concept.delete('designation')
-              end
+            next unless element['concept']
+            element['concept'].each do |concept|
+              concept.delete('designation')
             end
           end
         end

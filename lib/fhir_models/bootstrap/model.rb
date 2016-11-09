@@ -201,58 +201,55 @@ module FHIR
           end
         end
         # check binding
-        if meta['binding']
-          if meta['binding']['strength'] == 'required'
-            the_codes = [v]
-            if meta['type'] == 'Coding'
-              the_codes = [v.code]
-            elsif meta['type'] == 'CodeableConcept'
-              the_codes = v.coding.map(&:code).compact
-            end
-            has_valid_code = false
-            if meta['valid_codes']
-              meta['valid_codes'].each do |_key, codes|
-                has_valid_code = true unless (codes & the_codes).empty?
-                break if has_valid_code
-              end
-            else
-              the_codes.each do |code|
-                has_valid_code = true if check_binding(meta['binding']['uri'], code)
-                break if has_valid_code
-              end
-            end
-            errors[field] << "#{meta['path']}: invalid codes #{the_codes}" unless has_valid_code
+        next unless meta['binding']
+        next unless meta['binding']['strength'] == 'required'
+        the_codes = [v]
+        if meta['type'] == 'Coding'
+          the_codes = [v.code]
+        elsif meta['type'] == 'CodeableConcept'
+          the_codes = v.coding.map(&:code).compact
+        end
+        has_valid_code = false
+        if meta['valid_codes']
+          meta['valid_codes'].each do |_key, codes|
+            has_valid_code = true unless (codes & the_codes).empty?
+            break if has_valid_code
+          end
+        else
+          the_codes.each do |code|
+            has_valid_code = true if check_binding(meta['binding']['uri'], code)
+            break if has_valid_code
           end
         end
+        errors[field] << "#{meta['path']}: invalid codes #{the_codes}" unless has_valid_code
       end # value.each
       errors.delete(field) if errors[field].empty?
     end
 
     def validate_reference_type(ref, meta, contained_here, errors)
-      if ref.reference && meta['type_profiles']
-        matches_one_profile = false
-        meta['type_profiles'].each do |p|
-          basetype = p.split('/').last
-          matches_one_profile = true if ref.reference.include?(basetype)
-          # check profiled resources
-          profile_basetype = FHIR::Definitions.get_basetype(p)
-          matches_one_profile = true if profile_basetype && ref.reference.include?(profile_basetype)
-        end
-        matches_one_profile = true if meta['type_profiles'].include?('http://hl7.org/fhir/StructureDefinition/Resource')
-        if !matches_one_profile && ref.reference.start_with?('#')
-          # we need to look at the local contained resources
-          r = contained_here.find { |x| x.id == ref.reference[1..-1] }
-          if !r.nil?
-            meta['type_profiles'].each do |p|
-              p = p.split('/').last
-              matches_one_profile = true if r.resourceType == p
-            end
-          else
-            FHIR.logger.warn "Unable to resolve reference #{ref.reference}"
-          end
-        end
-        errors << "#{meta['path']}: incorrect Reference type, expected #{meta['type_profiles'].map { |x| x.split('/').last }.join('|')}" unless matches_one_profile
+      return unless ref.reference && meta['type_profiles']
+      matches_one_profile = false
+      meta['type_profiles'].each do |p|
+        basetype = p.split('/').last
+        matches_one_profile = true if ref.reference.include?(basetype)
+        # check profiled resources
+        profile_basetype = FHIR::Definitions.get_basetype(p)
+        matches_one_profile = true if profile_basetype && ref.reference.include?(profile_basetype)
       end
+      matches_one_profile = true if meta['type_profiles'].include?('http://hl7.org/fhir/StructureDefinition/Resource')
+      if !matches_one_profile && ref.reference.start_with?('#')
+        # we need to look at the local contained resources
+        r = contained_here.find { |x| x.id == ref.reference[1..-1] }
+        if !r.nil?
+          meta['type_profiles'].each do |p|
+            p = p.split('/').last
+            matches_one_profile = true if r.resourceType == p
+          end
+        else
+          FHIR.logger.warn "Unable to resolve reference #{ref.reference}"
+        end
+      end
+      errors << "#{meta['path']}: incorrect Reference type, expected #{meta['type_profiles'].map { |x| x.split('/').last }.join('|')}" unless matches_one_profile
     end
 
     def is_primitive?(datatype, value)
@@ -266,7 +263,7 @@ module FHIR
         value.is_a?(String)
       when 'xhtml'
         fragment = Nokogiri::HTML::DocumentFragment.parse(value)
-        value.is_a?(String) && fragment.errors.size == 0
+        value.is_a?(String) && fragment.errors.size.zero?
       when 'base64binary'
         regex = /[^0-9\+\/\=A-Za-z\r\n ]/
         value.is_a?(String) && (regex =~ value).nil?

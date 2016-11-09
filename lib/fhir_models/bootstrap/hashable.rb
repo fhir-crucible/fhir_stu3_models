@@ -37,45 +37,41 @@ module FHIR
       hash.each do |key, value|
         key = key.to_s
         meta = self.class::METADATA[key]
-        unless meta.nil?
-          local_name = key
-          local_name = meta['local_name'] if meta['local_name']
-          self.instance_variable_set("@#{local_name}", value) rescue nil
-          # inflate the value if it isn't a primitive
-          klass = Module.const_get("FHIR::#{meta['type']}") rescue nil
-          if !klass.nil? && !value.nil?
-            # handle array of objects
-            if value.is_a?(Array)
-              value.map! do |child|
-                obj = child
-                unless [FHIR::RESOURCES, FHIR::TYPES].flatten.include? child.class.name.gsub('FHIR::', '')
-                  obj = make_child(child, klass)
-                end
-                obj
+        next if meta.nil?
+        local_name = key
+        local_name = meta['local_name'] if meta['local_name']
+        self.instance_variable_set("@#{local_name}", value) rescue nil
+        # inflate the value if it isn't a primitive
+        klass = Module.const_get("FHIR::#{meta['type']}") rescue nil
+        if !klass.nil? && !value.nil?
+          # handle array of objects
+          if value.is_a?(Array)
+            value.map! do |child|
+              obj = child
+              unless [FHIR::RESOURCES, FHIR::TYPES].flatten.include? child.class.name.gsub('FHIR::', '')
+                obj = make_child(child, klass)
               end
-            else # handle single object
-              value = make_child(value, klass)
-              # if there is only one of these, but cardinality allows more, we need to wrap it in an array.
-              value = [value] if value && (meta['max'] > 1)
+              obj
             end
-            self.instance_variable_set("@#{local_name}", value)
-          elsif !FHIR::PRIMITIVES.include?(meta['type']) && meta['type'] != 'xhtml'
-            FHIR.logger.error("Unhandled and unrecognized class/type: #{meta['type']}")
-          else
-            # primitive
-            if value.is_a?(Array)
-              # array of primitives
-              value.map! { |child| convert_primitive(child, meta) }
-              self.instance_variable_set("@#{local_name}", value)
-            else
-              # single primitive
-              value = convert_primitive(value, meta)
-              # if there is only one of these, but cardinality allows more, we need to wrap it in an array.
-              value = [value] if value && (meta['max'] > 1)
-              self.instance_variable_set("@#{local_name}", value)
-            end
-          end # !klass && !nil?
-        end # !meta.nil?
+          else # handle single object
+            value = make_child(value, klass)
+            # if there is only one of these, but cardinality allows more, we need to wrap it in an array.
+            value = [value] if value && (meta['max'] > 1)
+          end
+          self.instance_variable_set("@#{local_name}", value)
+        elsif !FHIR::PRIMITIVES.include?(meta['type']) && meta['type'] != 'xhtml'
+          FHIR.logger.error("Unhandled and unrecognized class/type: #{meta['type']}")
+        elsif value.is_a?(Array)
+          # array of primitives
+          value.map! { |child| convert_primitive(child, meta) }
+          self.instance_variable_set("@#{local_name}", value)
+        else
+          # single primitive
+          value = convert_primitive(value, meta)
+          # if there is only one of these, but cardinality allows more, we need to wrap it in an array.
+          value = [value] if value && (meta['max'] > 1)
+          self.instance_variable_set("@#{local_name}", value)
+        end # !klass && !nil?
       end # hash loop
       self
     end
@@ -102,7 +98,7 @@ module FHIR
         primitive_meta = FHIR::PRIMITIVES[meta['type']]
         if primitive_meta['type'] == 'number'
           rval = BigDecimal.new(value.to_s)
-          rval = rval.frac == 0 ? rval.to_i : rval.to_f
+          rval = rval.frac.zero? ? rval.to_i : rval.to_f
         end # primitive is number
       end # boolean else
       rval

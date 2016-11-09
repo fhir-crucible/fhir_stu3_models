@@ -28,7 +28,7 @@ class XmlSchemaValidationTest < Test::Unit::TestCase
     assert !resource.nil?
 
     output_xml = resource.to_xml
-    assert output_xml.length > 0
+    assert !output_xml.empty?
 
     errors_input = XSD.validate(Nokogiri::XML(input_xml))
     errors_output = XSD.validate(Nokogiri::XML(output_xml))

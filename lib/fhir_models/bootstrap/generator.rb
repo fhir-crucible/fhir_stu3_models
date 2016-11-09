@@ -116,11 +116,10 @@ module FHIR
         structure_def['snapshot']['element'].each do |element|
           # skip the first element
           next if element['path'] == path_type
-          if element['type']
-            unique_types = element['type'].map { |t| t['code'] }.uniq
-            if unique_types.include?('Element') || unique_types.include?('BackboneElement')
-              child_templates << element['path']
-            end
+          next unless element['type']
+          unique_types = element['type'].map { |t| t['code'] }.uniq
+          if unique_types.include?('Element') || unique_types.include?('BackboneElement')
+            child_templates << element['path']
           end
         end
         # now build the child templates...

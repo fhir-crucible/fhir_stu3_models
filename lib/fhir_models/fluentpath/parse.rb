@@ -36,28 +36,26 @@ module FluentPath
     end
     # we may need to reassemble quoted strings again
     reassemble_strings(tokens)
-    tokens.delete_if { |token| (token.length == 0 || (token.is_a?(String) && token.match(/\S/).nil?)) }
+    tokens.delete_if { |token| (token.length.zero? || (token.is_a?(String) && token.match(/\S/).nil?)) }
     FHIR.logger.debug "TOKENS: #{tokens}"
     tokens
   end
 
   def self.reassemble_strings(tokens)
     tokens.each_with_index do |token, index|
-      if token.is_a?(String)
-        e_index = nil
-        if token.start_with?('"') && !token.end_with?('"')
-          e_index = tokens[index..-1].index { |t| t.end_with?('"') }
-        elsif token.start_with?("'") && !token.end_with?("'")
-          e_index = tokens[index..-1].index { |t| t.end_with?("'") }
-        end
-        if e_index
-          i = index + 1
-          while i <= index + e_index
-            tokens[index] += tokens[i]
-            tokens[i] = ''
-            i += 1
-          end
-        end
+      next unless token.is_a?(String)
+      e_index = nil
+      if token.start_with?('"') && !token.end_with?('"')
+        e_index = tokens[index..-1].index { |t| t.end_with?('"') }
+      elsif token.start_with?("'") && !token.end_with?("'")
+        e_index = tokens[index..-1].index { |t| t.end_with?("'") }
+      end
+      next unless e_index
+      i = index + 1
+      while i <= index + e_index
+        tokens[index] += tokens[i]
+        tokens[i] = ''
+        i += 1
       end
     end
   end
@@ -66,7 +64,7 @@ module FluentPath
   def self.build_tree(tokens)
     return if tokens.empty?
     tree = []
-    while tokens.length > 0
+    until tokens.empty?
       token = tokens.delete_at(0)
       if '(' == token # sub expression
         tree << FluentPath::Expression.new(build_tree(tokens))
