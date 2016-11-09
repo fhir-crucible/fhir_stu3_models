@@ -6,10 +6,10 @@ require 'bcp47'
 module FHIR
   class Model
     def initialize(hash = {})
-      self.from_hash(hash)
+      from_hash(hash)
       self.class::METADATA.each do |key, value|
-        if value['max'] > 1 && self.instance_variable_get("@#{key}").nil?
-          self.instance_variable_set("@#{key}".to_sym, [])
+        if value['max'] > 1 && instance_variable_get("@#{key}").nil?
+          instance_variable_set("@#{key}".to_sym, [])
         end
       end
     end
@@ -45,12 +45,12 @@ module FHIR
     end
 
     def to_reference
-      FHIR::Reference.new(reference: "#{self.class.name.split('::').last}/#{self.id}")
+      FHIR::Reference.new(reference: "#{self.class.name.split('::').last}/#{id}")
     end
 
     def equals?(other, exclude = [])
       (self.class::METADATA.keys - exclude).each do |attribute|
-        return false unless compare_attribute(self.instance_variable_get("@#{attribute}".to_sym), other.instance_variable_get("@#{attribute}".to_sym), exclude)
+        return false unless compare_attribute(instance_variable_get("@#{attribute}".to_sym), other.instance_variable_get("@#{attribute}".to_sym), exclude)
       end
       true
     end
@@ -58,7 +58,7 @@ module FHIR
     def mismatch(other, exclude = [])
       misses = []
       (self.class::METADATA.keys - exclude).each do |key|
-        these = attribute_mismatch(self.instance_variable_get("@#{key}".to_sym), other.instance_variable_get("@#{key}".to_sym), exclude)
+        these = attribute_mismatch(instance_variable_get("@#{key}".to_sym), other.instance_variable_get("@#{key}".to_sym), exclude)
         if !these || (these.is_a?(Array) && !these.empty?)
           misses << "#{self.class}::#{key}"
           misses.concat these if these.is_a?(Array)
@@ -96,7 +96,7 @@ module FHIR
     end
 
     def validate_profile(metadata, contained = nil)
-      contained_here = [self.instance_variable_get('@contained'.to_sym)].flatten
+      contained_here = [instance_variable_get('@contained'.to_sym)].flatten
       contained_here << contained
       contained_here = contained_here.flatten.compact
       errors = {}
@@ -105,7 +105,7 @@ module FHIR
           # this field has been 'sliced'
           meta.each do |slice|
             local_name = slice['local_name'] || field
-            value = [self.instance_variable_get("@#{local_name}".to_sym)].flatten.compact
+            value = [instance_variable_get("@#{local_name}".to_sym)].flatten.compact
             subset = [] # subset is the values associated with just this slice
             if slice['type'] == 'Extension'
               subset = if slice['type_profiles']
@@ -120,7 +120,7 @@ module FHIR
           end
         else
           local_name = meta['local_name'] || field
-          value = [self.instance_variable_get("@#{local_name}".to_sym)].flatten.compact
+          value = [instance_variable_get("@#{local_name}".to_sym)].flatten.compact
           validate_field(field, value, contained_here, meta, errors)
         end
       end # metadata.each
@@ -134,7 +134,7 @@ module FHIR
           count += 1 if errors[typename]
           # check which multiple data types are actually present, not just errors
           # actually, this might be allowed depending on cardinality
-          value = self.instance_variable_get("@#{typename}")
+          value = instance_variable_get("@#{typename}")
           present << typename if !value.nil? || (value.is_a?(Array) && !value.empty?)
         end
         errors[prefix] = ["#{prefix}[x]: more than one type present."] if count > 1

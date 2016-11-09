@@ -5,8 +5,7 @@ module FHIR
     #
 
     def to_json
-      hash = self.to_hash
-      JSON.pretty_unparse(hash)
+      JSON.pretty_unparse(to_hash)
     end
 
     def self.from_json(json)

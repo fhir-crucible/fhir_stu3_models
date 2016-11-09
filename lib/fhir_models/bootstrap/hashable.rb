@@ -6,7 +6,7 @@ module FHIR
       self.class::METADATA.each do |key, value|
         local_name = key
         local_name = value['local_name'] if value['local_name']
-        hash[key] = self.instance_variable_get("@#{local_name}")
+        hash[key] = instance_variable_get("@#{local_name}")
         if hash[key].respond_to?(:to_hash)
           hash[key] = hash[key].to_hash
         elsif hash[key].is_a? Array
@@ -22,7 +22,7 @@ module FHIR
                           (!value.is_a?(Hash) && !value.is_a?(Array))
                        )
       end
-      hash['resourceType'] = self.resourceType if self.respond_to?(:resourceType)
+      hash['resourceType'] = resourceType if respond_to?(:resourceType)
       hash
     end
 
@@ -31,7 +31,7 @@ module FHIR
       self.class::METADATA.each do |key, value|
         local_name = key
         local_name = value['local_name'] if value['local_name']
-        self.instance_variable_set("@#{local_name}", nil)
+        instance_variable_set("@#{local_name}", nil)
       end
       # set the variables to the hash values
       hash.each do |key, value|
@@ -40,7 +40,7 @@ module FHIR
         next if meta.nil?
         local_name = key
         local_name = meta['local_name'] if meta['local_name']
-        self.instance_variable_set("@#{local_name}", value) rescue nil
+        instance_variable_set("@#{local_name}", value) rescue nil
         # inflate the value if it isn't a primitive
         klass = Module.const_get("FHIR::#{meta['type']}") rescue nil
         if !klass.nil? && !value.nil?
@@ -58,19 +58,19 @@ module FHIR
             # if there is only one of these, but cardinality allows more, we need to wrap it in an array.
             value = [value] if value && (meta['max'] > 1)
           end
-          self.instance_variable_set("@#{local_name}", value)
+          instance_variable_set("@#{local_name}", value)
         elsif !FHIR::PRIMITIVES.include?(meta['type']) && meta['type'] != 'xhtml'
           FHIR.logger.error("Unhandled and unrecognized class/type: #{meta['type']}")
         elsif value.is_a?(Array)
           # array of primitives
           value.map! { |child| convert_primitive(child, meta) }
-          self.instance_variable_set("@#{local_name}", value)
+          instance_variable_set("@#{local_name}", value)
         else
           # single primitive
           value = convert_primitive(value, meta)
           # if there is only one of these, but cardinality allows more, we need to wrap it in an array.
           value = [value] if value && (meta['max'] > 1)
-          self.instance_variable_set("@#{local_name}", value)
+          instance_variable_set("@#{local_name}", value)
         end # !klass && !nil?
       end # hash loop
       self

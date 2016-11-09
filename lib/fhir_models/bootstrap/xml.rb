@@ -6,11 +6,11 @@ module FHIR
     #
 
     def to_xml
-      hash = self.to_hash
+      hash = to_hash
       hash.delete('resourceType')
       doc = Nokogiri::XML::Document.new
       doc.encoding = 'utf-8'
-      doc.root = hash_to_xml_node(self.resourceType, hash, doc)
+      doc.root = hash_to_xml_node(resourceType, hash, doc)
       doc.root.default_namespace = 'http://hl7.org/fhir'
       doc.to_xml
     end
