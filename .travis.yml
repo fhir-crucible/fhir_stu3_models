@@ -5,11 +5,12 @@ rvm:
   - "2.3.1"
 script:
   - bundle exec rake test
+  - bundle exec codeclimate-test-reporter
 notifications:
   email:
     recipients:
       - healthcare-ci@googlegroups.com
     on_failure: change
 addons:
-    code_climate:
-        repo_token: 0230b3379581b30743b7b4355d7394e427648e604d19a2aba987956201eee290
+  code_climate:
+    repo_token: 0230b3379581b30743b7b4355d7394e427648e604d19a2aba987956201eee290
