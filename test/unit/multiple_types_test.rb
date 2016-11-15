@@ -1,10 +1,6 @@
 require_relative '../test_helper'
 
 class MultipleTypesTest < Test::Unit::TestCase
-
-  # turn off the ridiculous warnings
-  $VERBOSE=nil
-
   # move this flag around multiple types and assert that it is found in the correct place
   FLAG = 123
 
@@ -60,7 +56,7 @@ class MultipleTypesTest < Test::Unit::TestCase
 
   def test_non_existing_multiple_types
     obs = FHIR::Observation.new
-    assert ((obs.foo rescue FLAG)==FLAG), 'Observation.foo should not exist'
+    assert ((obs.foo rescue FLAG) == FLAG), 'Observation.foo should not exist'
   end
 
   def test_multiple_cardinality
@@ -72,5 +68,4 @@ class MultipleTypesTest < Test::Unit::TestCase
       end
     end
   end
-
 end

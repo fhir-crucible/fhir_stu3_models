@@ -2,7 +2,6 @@ require 'nokogiri'
 module FHIR
   module Boot
     class Preprocess
-
       def self.pre_process_bundle(filename)
         # Read the file
         puts "Processing #{File.basename(filename)}..."
@@ -12,18 +11,17 @@ module FHIR
 
         # Remove entries that do not interest us: CompartmentDefinitions, OperationDefinitions, Conformance statements
         hash['entry'].select! do |entry|
-          ['StructureDefinition', 'ValueSet', 'CodeSystem', 'SearchParameter'].include? entry['resource']['resourceType']
+          %w(StructureDefinition ValueSet CodeSystem SearchParameter).include? entry['resource']['resourceType']
         end
 
         # Remove unnecessary elements from the hash
         hash['entry'].each do |entry|
-          if entry['resource']
-            pre_process_structuredefinition(entry['resource']) if 'StructureDefinition'==entry['resource']['resourceType']
-            pre_process_valueset(entry['resource']) if 'ValueSet'==entry['resource']['resourceType']
-            pre_process_codesystem(entry['resource']) if 'CodeSystem'==entry['resource']['resourceType']
-            pre_process_searchparam(entry['resource']) if 'SearchParameter'==entry['resource']['resourceType']
-            remove_fhir_comments(entry['resource'])
-          end
+          next unless entry['resource']
+          pre_process_structuredefinition(entry['resource']) if 'StructureDefinition' == entry['resource']['resourceType']
+          pre_process_valueset(entry['resource']) if 'ValueSet' == entry['resource']['resourceType']
+          pre_process_codesystem(entry['resource']) if 'CodeSystem' == entry['resource']['resourceType']
+          pre_process_searchparam(entry['resource']) if 'SearchParameter' == entry['resource']['resourceType']
+          remove_fhir_comments(entry['resource'])
         end
 
         # Output the post processed file
@@ -31,47 +29,45 @@ module FHIR
         f.write(JSON.pretty_unparse(hash))
         f.close
         finish = File.size(filename)
-        puts "  Removed #{(start-finish) / 1024} KB" if (start!=finish)
+        puts "  Removed #{(start - finish) / 1024} KB" if start != finish
       end
 
       def self.pre_process_structuredefinition(hash)
         # Remove large HTML narratives and unused content
-        ['text', 'publisher', 'contact', 'description', 'requirements', 'mapping'].each{|key| hash.delete(key) }
+        %w(text publisher contact description requirements mapping).each { |key| hash.delete(key) }
 
         # Remove unused descriptions within the snapshot elements
-        if(hash['snapshot'])
+        if hash['snapshot']
           hash['snapshot']['element'].each do |element|
-            ['short', 'definition', 'comments', 'requirements', 'alias', 'mapping'].each{|key| element.delete(key) }
+            %w(short definition comments requirements alias mapping).each { |key| element.delete(key) }
           end
         end
         # Remove unused descriptions within the differential elements
-        if(hash['differential'])
+        if hash['differential']
           hash['differential']['element'].each do |element|
-            ['short', 'definition', 'comments', 'requirements', 'alias', 'mapping'].each{|key| element.delete(key) }
+            %w(short definition comments requirements alias mapping).each { |key| element.delete(key) }
           end
         end
       end
 
       def self.pre_process_valueset(hash)
         # Remove large HTML narratives and unused content
-        ['meta', 'text', 'publisher', 'contact', 'description', 'requirements'].each{|key| hash.delete(key) }
+        %w(meta text publisher contact description requirements).each { |key| hash.delete(key) }
 
-        if(hash['compose'] && hash['compose']['include'])
+        if hash['compose'] && hash['compose']['include']
           hash['compose']['include'].each do |element|
-            if(element['concept'])
-              element['concept'].each do |concept|
-                concept.delete('designation')
-              end
+            next unless element['concept']
+            element['concept'].each do |concept|
+              concept.delete('designation')
             end
           end
         end
 
-        if(hash['compose'] && hash['compose']['exclude'])
+        if hash['compose'] && hash['compose']['exclude']
           hash['compose']['exclude'].each do |element|
-            if(element['concept'])
-              element['concept'].each do |concept|
-                concept.delete('designation')
-              end
+            next unless element['concept']
+            element['concept'].each do |concept|
+              concept.delete('designation')
             end
           end
         end
@@ -79,9 +75,9 @@ module FHIR
 
       def self.pre_process_codesystem(hash)
         # Remove large HTML narratives and unused content
-        ['meta', 'text', 'publisher', 'contact', 'description', 'requirements'].each{|key| hash.delete(key) }
+        %w(meta text publisher contact description requirements).each { |key| hash.delete(key) }
 
-        if(hash['concept'])
+        if hash['concept']
           hash['concept'].each do |concept|
             pre_process_codesystem_concept(concept)
           end
@@ -89,7 +85,7 @@ module FHIR
       end
 
       def self.pre_process_codesystem_concept(hash)
-        ['extension', 'definition', 'designation'].each{|key| hash.delete(key) }
+        %w(extension definition designation).each { |key| hash.delete(key) }
         if hash['concept']
           hash['concept'].each do |concept|
             pre_process_codesystem_concept(concept)
@@ -99,7 +95,7 @@ module FHIR
 
       def self.pre_process_searchparam(hash)
         # Remove large HTML narratives and unused content
-        ['id', 'url', 'name', 'date', 'publisher', 'contact', 'description', 'xpathUsage'].each{|key| hash.delete(key) }
+        %w(id url name date publisher contact description xpathUsage).each { |key| hash.delete(key) }
       end
 
       def self.remove_fhir_comments(hash)
@@ -127,16 +123,15 @@ module FHIR
         # Remove annotations
         doc = Nokogiri::XML(raw)
         doc.root.add_namespace_definition('xs', 'http://www.w3.org/2001/XMLSchema')
-        doc.search('//xs:annotation').each{ |e| e.remove }
+        doc.search('//xs:annotation').each(&:remove)
 
         # Output the post processed file
         f = File.open(filename, 'w:UTF-8')
         f.write(doc.to_xml)
         f.close
         finish = File.size(filename)
-        puts "  Removed #{(start-finish) / 1024} KB" if (start!=finish)
+        puts "  Removed #{(start - finish) / 1024} KB" if start != finish
       end
-
     end
   end
 end

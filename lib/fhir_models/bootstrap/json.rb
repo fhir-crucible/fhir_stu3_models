@@ -1,13 +1,11 @@
 module FHIR
   module Json
-
     #
     #  This module includes methods to serialize or deserialize FHIR resources to and from JSON.
     #
 
     def to_json
-      hash = self.to_hash
-      JSON.pretty_unparse(hash)
+      JSON.pretty_unparse(to_hash)
     end
 
     def self.from_json(json)
@@ -23,6 +21,5 @@ module FHIR
       end
       resource
     end
-
   end
 end

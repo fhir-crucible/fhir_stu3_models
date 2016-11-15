@@ -1,17 +1,16 @@
 require_relative '../../test_helper'
 
 class AndOrNotTest < Test::Unit::TestCase
-
   def test_and_or_not
     data = {
       'name' => {
-        'given' => [ 'Joe', 'John' ]
+        'given' => %w(Joe John)
       },
       'gender' => 'male',
       'deceased' => false
     }
-    result = FluentPath.evaluate('deceased.not() and ((name.given or name.family) and gender) and deceased.not()',data)
-    assert result==true, 'Failed and_or_not test.'
+    result = FluentPath.evaluate('deceased.not() and ((name.given or name.family) and gender) and deceased.not()', data)
+    assert result == true, 'Failed and_or_not test.'
   end
 
   def test_xor_tt
@@ -19,8 +18,8 @@ class AndOrNotTest < Test::Unit::TestCase
       'a' => true,
       'b' => true
     }
-    result = FluentPath.evaluate('a xor b',data)
-    assert result==false, 'Failed xor test.'    
+    result = FluentPath.evaluate('a xor b', data)
+    assert result == false, 'Failed xor test.'
   end
 
   def test_xor_tf
@@ -28,8 +27,8 @@ class AndOrNotTest < Test::Unit::TestCase
       'a' => true,
       'b' => false
     }
-    result = FluentPath.evaluate('a xor b',data)
-    assert result==true, 'Failed xor test.'    
+    result = FluentPath.evaluate('a xor b', data)
+    assert result == true, 'Failed xor test.'
   end
 
   def test_xor_ft
@@ -37,8 +36,8 @@ class AndOrNotTest < Test::Unit::TestCase
       'a' => false,
       'b' => true
     }
-    result = FluentPath.evaluate('a xor b',data)
-    assert result==true, 'Failed xor test.'    
+    result = FluentPath.evaluate('a xor b', data)
+    assert result == true, 'Failed xor test.'
   end
 
   def test_xor_ff
@@ -46,24 +45,23 @@ class AndOrNotTest < Test::Unit::TestCase
       'a' => false,
       'b' => false
     }
-    result = FluentPath.evaluate('a xor b',data)
-    assert result==false, 'Failed xor test.'    
+    result = FluentPath.evaluate('a xor b', data)
+    assert result == false, 'Failed xor test.'
   end
 
   def test_xor_tnil
     data = {
       'a' => true
     }
-    result = FluentPath.evaluate('a xor b',data)
-    assert result==true, 'Failed xor test.'    
+    result = FluentPath.evaluate('a xor b', data)
+    assert result == true, 'Failed xor test.'
   end
 
   def test_xor_nilstring
     data = {
       'b' => 'foo'
     }
-    result = FluentPath.evaluate('a xor b',data)
-    assert result==true, 'Failed xor test.'    
-  end  
-
+    result = FluentPath.evaluate('a xor b', data)
+    assert result == true, 'Failed xor test.'
+  end
 end

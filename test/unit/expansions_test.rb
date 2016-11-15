@@ -1,10 +1,6 @@
 require_relative '../test_helper'
 
 class ExpansionsTest < Test::Unit::TestCase
-
-  # turn off the ridiculous warnings
-  $VERBOSE=nil
-
   def test_expansion
     codes = FHIR::Definitions.get_codes('http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype')
     assert (!codes.nil? && !codes.empty?), 'Expansions did not return expected codes.'
@@ -14,5 +10,4 @@ class ExpansionsTest < Test::Unit::TestCase
     codes = FHIR::Definitions.get_codes('http://projectcrucible.org/nonexisting/valueset')
     assert (codes.nil? || codes.empty?), 'Expansions returned unexpected codes.'
   end
-
 end

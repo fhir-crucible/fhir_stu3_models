@@ -63,6 +63,5 @@ module FHIR
       obj.valueB = value_b
       obj
     end
-
   end
 end

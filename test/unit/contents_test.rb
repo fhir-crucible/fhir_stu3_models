@@ -1,10 +1,6 @@
 require_relative '../test_helper'
 
 class ContentsTest < Test::Unit::TestCase
-
-  # turn off the ridiculous warnings
-  $VERBOSE=nil
-
   EXAMPLE_JSON = File.join('lib', 'fhir_models', 'examples', 'json', 'patient-example.json')
   EXAMPLE_XML  = File.join('lib', 'fhir_models', 'examples', 'xml', 'patient-example.xml')
 
@@ -12,14 +8,14 @@ class ContentsTest < Test::Unit::TestCase
     xml = File.read(EXAMPLE_XML)
     patient = FHIR.from_contents(xml)
     assert !patient.nil?, 'From contents did not succeed with XML.'
-    assert patient.id=='example', 'Patient did not deserialize correctly.'
+    assert patient.id == 'example', 'Patient did not deserialize correctly.'
   end
 
   def test_json_from_contents
     json = File.read(EXAMPLE_JSON)
     patient = FHIR.from_contents(json)
     assert !patient.nil?, 'From contents did not succeed with JSON.'
-    assert patient.id=='example', 'Patient did not deserialize correctly.'
+    assert patient.id == 'example', 'Patient did not deserialize correctly.'
   end
 
   def test_to_reference
@@ -27,7 +23,7 @@ class ContentsTest < Test::Unit::TestCase
     patient = FHIR.from_contents(json)
     reference = patient.to_reference
     assert reference.is_a?(FHIR::Reference), 'Resource unable to create a self-reference.'
-    assert reference.reference=='Patient/example', 'Resource did not generate self-reference correctly.'
+    assert reference.reference == 'Patient/example', 'Resource did not generate self-reference correctly.'
   end
 
   def test_negative_json_contents
@@ -39,5 +35,4 @@ class ContentsTest < Test::Unit::TestCase
     nothing = FHIR.from_contents('<?xml version="1.0" encoding="UTF-8"?><Nothing/>')
     assert nothing.nil?, 'From contents should have returned nil.'
   end
-
 end

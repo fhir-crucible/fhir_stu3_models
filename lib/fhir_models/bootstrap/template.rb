@@ -11,7 +11,7 @@ module FHIR
       attr_accessor :templates
       attr_accessor :top_level
 
-      def initialize(name=['Template'], top_level=false)
+      def initialize(name = ['Template'], top_level = false)
         @name = name
         @hierarchy = []
         @kind = nil
@@ -32,7 +32,7 @@ module FHIR
             if metadata[field.name].is_a?(Array)
               metadata[field.name] << x
             else
-              metadata[field.name] = [ metadata[field.name], x ]
+              metadata[field.name] = [metadata[field.name], x]
             end
           else
             metadata[field.name] = field.serialize
@@ -42,32 +42,32 @@ module FHIR
         metadata
       end
 
-      def to_s(offset=0)
+      def to_s(offset = 0)
         # create an array of Strings, one per line
         s = []
-        # TODO insert copyright statement
+        # TODO: insert copyright statement
         # always declare the FHIR module
         s << 'module FHIR' if @top_level
 
         @name.each_with_index do |name, index|
-          space = indent(index+1, offset)
+          space = indent(index + 1, offset)
           type = 'module'
-          type = 'class' if index==@name.length-1
+          type = 'class' if index == @name.length - 1
           classdef = "#{space}#{type} #{name}"
           classdef += ' < FHIR::Model' if type == 'class'
           s << classdef
         end
 
         # include modules
-        space = indent(@name.length+1, offset)
-        s << "#{space}include FHIR::Hashable" if(@name.length > 0)
-        s << "#{space}include FHIR::Json" if(@name.length > 0)
-        s << "#{space}include FHIR::Xml" if(@name.length > 0)
+        space = indent(@name.length + 1, offset)
+        s << "#{space}include FHIR::Hashable" unless @name.empty?
+        s << "#{space}include FHIR::Json" unless @name.empty?
+        s << "#{space}include FHIR::Xml" unless @name.empty?
         s << ''
 
         # add mandatory METADATA constant
         metadata = get_metadata
-        @constants['METADATA'] = metadata if !metadata.empty?
+        @constants['METADATA'] = metadata unless metadata.empty?
 
         # add constants
         @constants.each do |constant, value|
@@ -89,7 +89,7 @@ module FHIR
 
         # add internal nested classes
         @templates.each do |template|
-          s << template.to_s(space.length-2)
+          s << template.to_s(space.length - 2)
           s << ''
         end
 
@@ -97,7 +97,7 @@ module FHIR
         max_name_size = 0
         @fields.each do |f|
           name = f.local_name || f.name
-          max_name_size=name.length if(name.length > max_name_size)
+          max_name_size = name.length if name.length > max_name_size
         end
         max_name_size += 1
 
@@ -105,18 +105,18 @@ module FHIR
         @fields.each do |field|
           s << "#{space}attr_accessor :"
           local_name = field.local_name || field.name
-          s[-1] << ("%-#{max_name_size}s" % "#{local_name}")
+          s[-1] << ("%-#{max_name_size}s" % local_name.to_s)
           # add comment after field declaration
           s[-1] << "# #{field.min}-#{field.max} "
-          s[-1] << '[ ' if(field.max.to_i > 1 || field.max=='*')
+          s[-1] << '[ ' if field.max.to_i > 1 || field.max == '*'
           s[-1] << field.type
-          if field.type=='Reference'
-            s[-1] << "(#{ field.type_profiles.map{|p|p.split('/').last}.join('|') })"
+          if field.type == 'Reference'
+            s[-1] << "(#{field.type_profiles.map { |p| p.split('/').last }.join('|')})"
           end
-          s[-1] << ' ]' if(field.max.to_i > 1 || field.max=='*')
+          s[-1] << ' ]' if field.max.to_i > 1 || field.max == '*'
         end
 
-        if @top_level && @kind=='resource'
+        if @top_level && @kind == 'resource'
           s << ''
           s << "#{space}def resourceType"
           s << "#{space}  '#{@name.first}'"
@@ -124,18 +124,17 @@ module FHIR
         end
 
         # close all the class and module declarations
-        (0..@name.length-1).reverse_each do |index|
-          space = indent(index+1, offset)
+        (0..@name.length - 1).reverse_each do |index|
+          space = indent(index + 1, offset)
           s << "#{space}end"
         end
         s << 'end' if @top_level
         s.join("\n")
       end
 
-      def indent(level=0, offset)
-        ' '*(offset) + '  '*(level)
+      def indent(level = 0, offset = 0)
+        ' ' * offset + '  ' * level
       end
-
     end
   end
 end
