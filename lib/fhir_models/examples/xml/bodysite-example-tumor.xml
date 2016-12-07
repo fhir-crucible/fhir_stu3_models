@@ -26,6 +26,6 @@
 	<description value="7 cm maximum diameter"/>
 	<image>
 		<contentType value="application/dicom"/>
-		<url value="http://10.1.2.3:1000/wado?requestType=WADO&amp;amp;wado_details…"/>
+		<url value="http://10.1.2.3:1000/wado?requestType=WADO&amp;amp;wado_details..."/>
 	</image>
 </BodySite>

@@ -19,18 +19,6 @@
           }
         ]
       },
-      "timingTiming": {
-        "_event": [
-          {
-            "extension": [
-              {
-                "url": "http://hl7.org/fhir/StructureDefinition/cqif-basic-cqlExpression",
-                "valueString": "Now()"
-              }
-            ]
-          }
-        ]
-      },
       "participantType": [
         "practitioner"
       ]

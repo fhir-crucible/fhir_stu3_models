@@ -18,13 +18,6 @@
           <code value="306206005"/>
         </coding>
       </code>
-      <timingTiming>
-        <event>
-          <extension url="http://hl7.org/fhir/StructureDefinition/cqif-basic-cqlExpression">
-            <valueString value="Now()"/>
-          </extension>
-        </event>
-      </timingTiming>
       <participantType value="practitioner"/>
     </ActivityDefinition>
   </contained>
