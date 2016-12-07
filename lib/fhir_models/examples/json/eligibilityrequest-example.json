@@ -12,20 +12,24 @@
     }
   ],
   "status": "active",
-  "created": "2014-08-16",
-  "insurerReference": {
-    "reference": "Organization/2"
-  },
-  "organizationReference": {
-    "reference": "Organization/1"
-  },
   "priority": {
-    "code": "normal"
+    "coding": [
+      {
+        "code": "normal"
+      }
+    ]
   },
-  "patientReference": {
+  "patient": {
     "reference": "Patient/pat1"
   },
-  "coverageReference": {
+  "created": "2014-08-16",
+  "organization": {
+    "reference": "Organization/1"
+  },
+  "insurer": {
+    "reference": "Organization/2"
+  },
+  "coverage": {
     "reference": "Coverage/9876B1"
   }
 }

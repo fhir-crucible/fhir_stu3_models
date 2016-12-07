@@ -12,43 +12,62 @@
     }
   ],
   "status": "active",
-  "claimReference": {
-    "reference": "Claim/100150"
-  },
   "type": {
-    "system": "http://hl7.org/fhir/ex-claimtype",
-    "code": "oral"
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/ex-claimtype",
+        "code": "oral"
+      }
+    ]
   },
-  "created": "2014-08-16",
-  "outcome": {
-    "system": "http://hl7.org/fhir/remittance-outcome",
-    "code": "complete"
-  },
-  "disposition": "Claim settled as per contract.",
-  "organizationReference": {
-    "reference": "Organization/2"
-  },
-  "patientReference": {
+  "patient": {
     "reference": "Patient/pat1"
   },
-  "coverage": {
-    "coverageReference": {
+  "created": "2014-08-16",
+  "organization": {
+    "reference": "Organization/2"
+  },
+  "claim": {
+    "reference": "Claim/100150"
+  },
+  "claimResponse": {
+    "reference": "ClaimResponse/R3500"
+  },
+  "outcome": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/remittance-outcome",
+        "code": "complete"
+      }
+    ]
+  },
+  "disposition": "Claim settled as per contract.",
+  "careTeam": [
+    {
+      "sequence": 1,
+      "provider": {
+        "reference": "Practitioner/example"
+      }
+    }
+  ],
+  "insurance": {
+    "coverage": {
       "reference": "Coverage/9876B1"
     }
   },
   "item": [
     {
       "sequence": 1,
-      "careTeam": [
-        {
-          "providerReference": {
-            "reference": "Practitioner/example"
-          }
-        }
+      "careTeamLinkId": [
+        1
       ],
       "service": {
-        "system": "http://hl7.org/fhir/service-uscls",
-        "code": "1200"
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/service-uscls",
+            "code": "1200"
+          }
+        ]
       },
       "servicedDate": "2014-08-16",
       "unitPrice": {
@@ -64,7 +83,11 @@
       "adjudication": [
         {
           "category": {
-            "code": "eligible"
+            "coding": [
+              {
+                "code": "eligible"
+              }
+            ]
           },
           "amount": {
             "value": 120.00,
@@ -74,13 +97,21 @@
         },
         {
           "category": {
-            "code": "eligpercent"
+            "coding": [
+              {
+                "code": "eligpercent"
+              }
+            ]
           },
           "value": 0.80
         },
         {
           "category": {
-            "code": "benefit"
+            "coding": [
+              {
+                "code": "benefit"
+              }
+            ]
           },
           "amount": {
             "value": 96.00,

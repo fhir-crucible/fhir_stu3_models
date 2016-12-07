@@ -40,7 +40,7 @@
       "value": "second wing admissions"
     },
     {
-      "system": "other",
+      "system": "url",
       "value": "http://sampleorg.com/southwing",
       "use": "work"
     }

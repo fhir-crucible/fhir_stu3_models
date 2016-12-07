@@ -44,9 +44,7 @@
         }
       ],
       "name": {
-        "family": [
-          "Chalmers"
-        ],
+        "family": "Chalmers",
         "given": [
           "Peter",
           "James"

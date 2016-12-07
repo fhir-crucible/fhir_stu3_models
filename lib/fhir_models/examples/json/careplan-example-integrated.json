@@ -9,6 +9,7 @@
     {
       "resourceType": "Condition",
       "id": "p1",
+      "clinicalStatus": "active",
       "verificationStatus": "confirmed",
       "code": {
         "text": "GERDS"
@@ -21,6 +22,7 @@
     {
       "resourceType": "Condition",
       "id": "p2",
+      "clinicalStatus": "active",
       "verificationStatus": "confirmed",
       "code": {
         "text": "Obesity"
@@ -33,6 +35,7 @@
     {
       "resourceType": "Condition",
       "id": "p3",
+      "clinicalStatus": "active",
       "verificationStatus": "confirmed",
       "code": {
         "text": "Psoriasis"
@@ -45,69 +48,69 @@
     {
       "resourceType": "Goal",
       "id": "g1",
-      "subject": {
-        "reference": "Patient/1",
-        "display": "Eve Everywoman"
-      },
+      "status": "in-progress",
       "description": {
         "text": "Eve will lose weight and reduce her GERDS symptoms by improving her diet"
       },
-      "status": "in-progress"
+      "subject": {
+        "reference": "Patient/1",
+        "display": "Eve Everywoman"
+      }
     },
     {
       "resourceType": "Goal",
       "id": "g2",
-      "subject": {
-        "reference": "Patient/1",
-        "display": "Eve Everywoman"
-      },
+      "status": "in-progress",
       "description": {
         "text": "Eve will improve her GERDS symptoms"
       },
-      "status": "in-progress"
+      "subject": {
+        "reference": "Patient/1",
+        "display": "Eve Everywoman"
+      }
     },
     {
       "resourceType": "Goal",
       "id": "g3",
-      "subject": {
-        "reference": "Patient/1",
-        "display": "Eve Everywoman"
-      },
+      "status": "in-progress",
       "description": {
         "text": "Eve will increase her energy by being more active"
       },
-      "status": "in-progress"
+      "subject": {
+        "reference": "Patient/1",
+        "display": "Eve Everywoman"
+      }
     },
     {
       "resourceType": "Goal",
       "id": "g4",
-      "subject": {
-        "reference": "Patient/1",
-        "display": "Eve Everywoman"
-      },
+      "status": "in-progress",
       "description": {
         "text": "Eve will set up her medications and take as prescribed"
       },
-      "status": "in-progress"
+      "subject": {
+        "reference": "Patient/1",
+        "display": "Eve Everywoman"
+      }
     },
     {
       "resourceType": "Goal",
       "id": "g5",
-      "subject": {
-        "reference": "Patient/1",
-        "display": "Eve Everywoman"
-      },
+      "status": "in-progress",
       "description": {
         "text": "Eve will restart her light treatments"
       },
-      "status": "in-progress"
+      "subject": {
+        "reference": "Patient/1",
+        "display": "Eve Everywoman"
+      }
     }
   ],
+  "status": "active",
   "subject": {
     "reference": "Patient/1",
     "display": "Eve Everywoman"
   },
-  "status": "active",
   "modified": "2012-09-10",
   "addresses": [
     {

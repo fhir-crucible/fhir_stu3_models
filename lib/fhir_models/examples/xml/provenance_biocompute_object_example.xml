@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><Provenance xmlns="http://hl7.org/fhir">
+  <id value="obj.1001"/>
+  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: obj.1001</p><p><b>target</b>: <a>Procedure/example/_history/1.2</a></p><p><b>period</b>: Jun 6, 2017 --&gt; (ongoing)</p><p><b>recorded</b>: Jun 9, 2016 8:12:14 AM</p><p><b>reason</b>: antiviral resistance detection (Details: [not stated] code null = &#39;null&#39;, stated as &#39;antiviral resistance detection&#39;)</p><p><b>policy</b>: <a>https://github.com/common-workflow-language/workflows/blob/master/workflows/lobSTR/lobSTR-workflow.cwl</a></p><blockquote><p><b>agent</b></p><p><b>role</b>: Author (Details: http://hl7.org/fhir/provenance-participant-role code author = &#39;Author&#39;, stated as &#39;null&#39;)</p><p><b>who</b>: <a>Practitioner/f204</a></p></blockquote><blockquote><p><b>agent</b></p><p><b>role</b>: Author (Details: http://hl7.org/fhir/provenance-participant-role code author = &#39;Author&#39;, stated as &#39;null&#39;)</p><p><b>who</b>: <a>Practitioner/f006</a></p></blockquote><blockquote><p><b>entity</b></p><p><b>role</b>: quotation</p><p><b>reference</b>: Identify baseline single nucleotide polymorphisms (SNPs[SO:0000694]), insertions[SO:0000667], and deletions[SO:0000045] that correlate with reduced ledipasvir[PubChem:67505836] antiviral drug efficacy in Hepatitis C virus subtype 1</p></blockquote><blockquote><p><b>entity</b></p><p><b>role</b>: quotation</p><p><b>reference</b>: Identify treatment emergent amino acid substitutions[SO:0000048] that correlate with antiviral drug treatment failure</p></blockquote><blockquote><p><b>entity</b></p><p><b>role</b>: quotation</p><p><b>reference</b>: Determine whether the treatment emergent amino acid    substitutions[SO:0000048] identified correlate with treatment failure    involving other drugs against the same virus</p></blockquote></div></text><target>
+    <reference value="Procedure/example/_history/1.2"/>
+  </target>
+  <period>
+    <start value="2017-06-06"/>
+  </period>
+  <recorded value="2016-06-09T08:12:14+10:00"/>
+  <reason>
+      <display value="antiviral resistance detection"/>
+  </reason>
+  <!--     reference to a patient consent to share inforamtion     -->
+  <policy value="https://github.com/common-workflow-language/workflows/blob/master/workflows/lobSTR/lobSTR-workflow.cwl"/>
+  
+  <!--     author = Harold Hippocrates     -->
+  <agent>
+    <role>
+      <system value="http://hl7.org/fhir/provenance-participant-role"/>
+      <code value="author"/>
+    </role>
+     <whoReference>
+    <reference value="Practitioner/f204"/>
+  </whoReference>
+    <!--     very often, the user won't have a known system - these aren't available 
+      for security system log ons. But where you can define it, you should     -->
+  </agent>
+
+  <agent>
+    <role>
+      <system value="http://hl7.org/fhir/provenance-participant-role"/>
+      <code value="author"/>
+    </role>
+    <whoReference>
+    <reference value="Practitioner/f006"/>
+    </whoReference>  
+    <!--     very often, the user won't have a known system - these aren't available 
+      for security system log ons. But where you can define it, you should     --> 
+  </agent>
+ 
+  
+  <entity>
+    <role value="quotation"/>
+    <reference>   
+      <display value="Identify baseline single nucleotide polymorphisms (SNPs[SO:0000694]), insertions[SO:0000667], and deletions[SO:0000045] that correlate with reduced ledipasvir[PubChem:67505836] antiviral drug efficacy in Hepatitis C virus subtype 1"/>     
+   </reference>   
+  </entity>
+
+<entity>
+  <role value="quotation"/>
+  <reference>
+    <display value="Identify treatment emergent amino acid substitutions[SO:0000048] that correlate with antiviral drug treatment failure"/>    
+  </reference>
+</entity>
+
+<entity>
+  <role value="quotation"/>
+  <reference>
+     <display value="Determine whether the treatment emergent amino acid    substitutions[SO:0000048] identified correlate with treatment failure    involving other drugs against the same virus"/>     
+  </reference>
+</entity>
+</Provenance>

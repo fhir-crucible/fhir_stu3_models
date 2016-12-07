@@ -23,9 +23,7 @@
   "active": true,
   "name": [
     {
-      "family": [
-        "Levin"
-      ],
+      "family": "Levin",
       "given": [
         "Henry"
       ]

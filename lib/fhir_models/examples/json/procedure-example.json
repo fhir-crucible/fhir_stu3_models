@@ -5,9 +5,6 @@
     "status": "generated",
     "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Routine Appendectomy</div>"
   },
-  "subject": {
-    "reference": "Patient/example"
-  },
   "status": "completed",
   "code": {
     "coding": [
@@ -19,11 +16,10 @@
     ],
     "text": "Appendectomy"
   },
-  "reasonCode": [
-    {
-      "text": "Generalized abdominal pain 24 hours. Localized in RIF with rebound and guarding"
-    }
-  ],
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "performedDateTime": "2013-04-05",
   "performer": [
     {
       "actor": {
@@ -32,7 +28,11 @@
       }
     }
   ],
-  "performedDateTime": "2013-04-05",
+  "reasonCode": [
+    {
+      "text": "Generalized abdominal pain 24 hours. Localized in RIF with rebound and guarding"
+    }
+  ],
   "followUp": [
     {
       "text": "ROS 5 days  - 2013-04-10"

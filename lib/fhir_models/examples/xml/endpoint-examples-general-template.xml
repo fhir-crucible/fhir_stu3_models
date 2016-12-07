@@ -21,21 +21,21 @@
           <display value="Telstra Health"/>
         </managingOrganization>
         <connectionType>
-          <!--  system value="http://hl7.org/fhir/ValueSet/http-verb" /> -->
-          <code value="rest-hook"/>
+           <system value="http://hl7.org/fhir/endpoint-connection-type"/>
+           <code value="hl7-fhir-rest"/>
         </connectionType>
-        <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb"/>
-          <code value="POST"/>
-        </method>
-        <address value="https://sqlonfhir-dstu2.azurewebsites.net/fhir"/>
-        <payloadFormat value="application/fhir+xml"/>
+        <!-- <method>
+          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <code value="POST" />
+        </method> -->
         <payloadType>
           <coding>
               <!-- <system value="http://hl7.org/fhir/resource-types" /> -->
             <code value="CarePlan"/>
           </coding>
         </payloadType>
+        <payloadMimeType value="application/fhir+xml"/>
+        <address value="https://sqlonfhir-dstu2.azurewebsites.net/fhir"/>
       </Endpoint>
     </resource>
   </entry> 
@@ -56,21 +56,21 @@
           <display value="Telstra Health"/>
         </managingOrganization>
         <connectionType>
-          <!--  system value="http://hl7.org/fhir/ValueSet/http-verb" /> -->
-          <code value="rest-hook"/>
+           <system value="http://hl7.org/fhir/endpoint-connection-type"/>
+           <code value="hl7-fhir-rest"/>
         </connectionType>
-        <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb"/>
-          <code value="POST"/>
-        </method>
-        <address value="https://sqlonfhir-dstu2.azurewebsites.net/fhir"/>
-        <payloadFormat value="application/fhir+xml"/>
+        <!-- <method>
+          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <code value="POST" />
+        </method> -->
         <payloadType>
           <coding>
               <!-- <system value="http://hl7.org/fhir/resource-types" /> -->
             <code value="QuestionnaireResponse"/>
           </coding>
         </payloadType>
+        <payloadMimeType value="application/fhir+xml"/>
+        <address value="https://sqlonfhir-dstu2.azurewebsites.net/fhir"/>
       </Endpoint>
     </resource>
   </entry> 
@@ -91,21 +91,21 @@
           <display value="Telstra Health"/>
         </managingOrganization>
         <connectionType>
-          <!--  system value="http://hl7.org/fhir/ValueSet/http-verb" /> -->
-          <code value="rest-hook"/>
+           <system value="http://hl7.org/fhir/endpoint-connection-type"/>
+           <code value="hl7-fhir-rest"/>
         </connectionType>
-        <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb"/>
-          <code value="POST"/>
-        </method>
-        <address value="https://sqlonfhir-dstu2.azurewebsites.net/fhir"/>
-        <payloadFormat value="application/fhir+xml"/>
+        <!-- <method>
+          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <code value="POST" />
+        </method> -->
         <payloadType>
           <coding>
               <!-- <system value="http://hl7.org/fhir/resource-types" /> -->
             <code value="ReferralRequest"/>
           </coding>
         </payloadType>
+        <payloadMimeType value="application/fhir+xml"/>
+        <address value="https://sqlonfhir-dstu2.azurewebsites.net/fhir"/>
       </Endpoint>
     </resource>
   </entry> 
@@ -126,21 +126,21 @@
           <display value="Epic demo organization"/>
         </managingOrganization>
         <connectionType>
-          <!--  system value="http://hl7.org/fhir/ValueSet/http-verb" /> -->
-          <code value="rest-hook"/>
+           <system value="http://hl7.org/fhir/endpoint-connection-type"/>
+           <code value="hl7-fhir-rest"/>
         </connectionType>
-        <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb"/>
-          <code value="POST"/>
-        </method>
-        <address value="https://open.epic.com/Interface/FHIR"/>
-        <payloadFormat value="application/fhir+json"/>
+        <!-- <method>
+          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <code value="POST" />
+        </method> -->
         <payloadType>
           <coding>
               <!-- <system value="http://hl7.org/fhir/resource-types" /> -->
             <code value="ReferralRequest QuestionnaireResponse"/>
           </coding>
         </payloadType>
+        <payloadMimeType value="application/fhir+json"/>
+        <address value="https://open.epic.com/Interface/FHIR"/>
       </Endpoint>
     </resource>
   </entry> 
@@ -153,7 +153,7 @@
           <status value="generated"/>
           <div xmlns="http://www.w3.org/1999/xhtml">
               Subscription receiver, ReferralRequest<br/>
-              Address: subscriptions@example.org</div>
+              Address: mailto:subscriptions@example.org</div>
         </text>
         <status value="active"/>
         <name value="Subscription receiver"/>
@@ -161,21 +161,21 @@
           <display value="Telstra Health"/>
         </managingOrganization>
         <connectionType>
-          <!--  system value="http://hl7.org/fhir/ValueSet/http-verb" /> -->
-          <code value="email"/>
+           <system value="http://hl7.org/fhir/endpoint-connection-type"/>
+           <code value="secure-email"/>
         </connectionType>
-        <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb"/>
-          <code value="POST PUT DELETE"/>
-        </method>
-        <address value="subscriptions@example.org"/>
-        <payloadFormat value="application/fhir+xml"/>
+        <!-- <method>
+          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <code value="POST PUT DELETE" />
+        </method> -->
         <payloadType>
           <coding>
               <!-- <system value="http://hl7.org/fhir/resource-types" /> -->
             <code value="ReferralRequest"/>
           </coding>
         </payloadType>
+        <payloadMimeType value="application/fhir+xml"/>
+        <address value="mailto:subscriptions@example.org"/>
       </Endpoint>
     </resource>
   </entry> 
@@ -196,21 +196,21 @@
           <display value="Telstra Health"/>
         </managingOrganization>
         <connectionType>
-          <!--  system value="http://hl7.org/fhir/ValueSet/http-verb" /> -->
-          <code value="message"/>
+           <system value="http://hl7.org/fhir/endpoint-connection-type"/>
+           <code value="hl7-fhir-msg"/>
         </connectionType>
-        <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb"/>
-          <code value="POST"/>
-        </method>
-        <address value="https://sqlonfhir-dstu2.azurewebsites.net/fhir"/>
-        <payloadFormat value="PDF"/>
+        <!-- <method>
+          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <code value="POST" />
+        </method> -->
         <payloadType>
           <coding>
               <!-- <system value="http://hl7.org/fhir/resource-types" /> -->
             <code value="CDA-EventSummary"/>
           </coding>
         </payloadType>
+        <payloadMimeType value="PDF"/>
+        <address value="https://sqlonfhir-dstu2.azurewebsites.net/fhir"/>
       </Endpoint>
     </resource>
   </entry> 
@@ -231,21 +231,21 @@
           <display value="Epic demo organization"/>
         </managingOrganization>
         <connectionType>
-          <!--  system value="http://hl7.org/fhir/ValueSet/http-verb" /> -->
-          <code value="MLLP"/>
+           <system value="http://hl7.org/fhir/endpoint-connection-type"/>
+           <code value="hl7v2-mllp"/>
         </connectionType>
-        <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb"/>
-          <code value="POST"/>
-        </method>
-        <address value="127.0.0.1"/>
-        <payloadFormat value="HL7v2"/>
+        <!-- <method>
+          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <code value="POST" />
+        </method> -->
         <payloadType>
           <coding>
               <!-- <system value="http://hl7.org/fhir/resource-types" /> -->
             <code value="REF-I12"/>
           </coding>
         </payloadType>
+        <payloadMimeType value="HL7v2"/>
+        <address value="127.0.0.1"/>
       </Endpoint>
     </resource>
   </entry> 
@@ -266,21 +266,21 @@
           <display value="Epic demo organization"/>
         </managingOrganization>
         <connectionType>
-          <!--  system value="http://hl7.org/fhir/ValueSet/http-verb" /> -->
-          <code value="SOAP"/>
+           <system value="http://hl7.org/fhir/endpoint-connection-type"/>
+           <code value="ihe-xds"/>
         </connectionType>
-        <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb"/>
-          <code value="POST"/>
-        </method>
-        <address value="https://open.epic.com/Interface/XDS.b"/>
-        <payloadFormat value="XDA/XDS"/>
+        <!-- <method>
+          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <code value="POST" />
+        </method> -->
         <payloadType>
           <coding>
               <!-- <system value="http://hl7.org/fhir/resource-types" /> -->
             <code value="CDA-EventSummary"/>
           </coding>
         </payloadType>
+        <payloadMimeType value="XDA/XDS"/>
+        <address value="https://open.epic.com/Interface/XDS.b"/>
       </Endpoint>
     </resource>
   </entry> 
@@ -301,21 +301,21 @@
           <display value="Multi-site Co."/>
         </managingOrganization>
         <connectionType>
-          <!--  system value="http://hl7.org/fhir/ValueSet/http-verb" /> -->
-          <code value="rest-hook"/>
+           <system value="http://hl7.org/fhir/endpoint-connection-type"/>
+           <code value="dicom-wado-rs"/>
         </connectionType>
-        <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb"/>
-          <code value="GET OPTIONS"/>
-        </method>
-        <address value="https://pacs.hospital.org/dicomweb"/>
-        <payloadFormat value="DICOM WADO-RS"/>
+        <!-- <method>
+          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <code value="GET OPTIONS" />
+        </method> -->
         <payloadType>
           <coding>
               <!-- <system value="http://hl7.org/fhir/resource-types" /> -->
             <code value="varies (application/dicom, application/dicom+xml, image/jpeg, and many more)"/>
           </coding>
         </payloadType>
+        <payloadMimeType value="DICOM WADO-RS"/>
+        <address value="https://pacs.hospital.org/dicomweb"/>
       </Endpoint>
     </resource>
   </entry> 
@@ -336,21 +336,21 @@
           <display value="Multi-site Co."/>
         </managingOrganization>
         <connectionType>
-          <!--  system value="http://hl7.org/fhir/ValueSet/http-verb" /> -->
-          <code value="rest-hook"/>
+           <system value="http://hl7.org/fhir/endpoint-connection-type"/>
+           <code value="dicom-qido-rs"/>
         </connectionType>
-        <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb"/>
-          <code value="GET OPTIONS"/>
-        </method>
-        <address value="https://pacs.hospital.org/dicomweb"/>
-        <payloadFormat value="DICOM QIDO-RS"/>
+        <!-- <method>
+          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <code value="GET OPTIONS" />
+        </method> -->
         <payloadType>
           <coding>
               <!-- <system value="http://hl7.org/fhir/resource-types" /> -->
             <code value="varies (application/dicom, application/dicom+xml, image/jpeg, and many more)"/>
           </coding>
         </payloadType>
+        <payloadMimeType value="DICOM QIDO-RS"/>
+        <address value="https://pacs.hospital.org/dicomweb"/>
       </Endpoint>
     </resource>
   </entry> 
@@ -371,21 +371,21 @@
           <display value="Multi-site Co."/>
         </managingOrganization>
         <connectionType>
-          <!--  system value="http://hl7.org/fhir/ValueSet/http-verb" /> -->
-          <code value="rest-hook"/>
+           <system value="http://hl7.org/fhir/endpoint-connection-type"/>
+           <code value="dicom-stow-rs"/>
         </connectionType>
-        <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb"/>
-          <code value="POST OPTIONS"/>
-        </method>
-        <address value="https://pacs.hospital.org/dicomweb"/>
-        <payloadFormat value="DICOM STOW-RS"/>
+        <!-- <method>
+          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <code value="POST OPTIONS" />
+        </method> -->
         <payloadType>
           <coding>
               <!-- <system value="http://hl7.org/fhir/resource-types" /> -->
             <code value="varies (application/dicom, application/dicom+xml, image/jpeg, and many more)"/>
           </coding>
         </payloadType>
+        <payloadMimeType value="DICOM STOW-RS"/>
+        <address value="https://pacs.hospital.org/dicomweb"/>
       </Endpoint>
     </resource>
   </entry> 
@@ -406,21 +406,21 @@
           <display value="Multi-site Co."/>
         </managingOrganization>
         <connectionType>
-          <!--  system value="http://hl7.org/fhir/ValueSet/http-verb" /> -->
-          <code value="rest-hook"/>
+           <system value="http://hl7.org/fhir/endpoint-connection-type"/>
+           <code value="dicom-stow-rs"/>
         </connectionType>
-        <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb"/>
-          <code value="GET PUT POST DELETE OPTIONS"/>
-        </method>
-        <address value="https://pacs.hospital.org/dicomweb"/>
-        <payloadFormat value="DICOM STOW-RS"/>
+        <!-- <method>
+          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <code value="GET PUT POST DELETE OPTIONS" />
+        </method> -->
         <payloadType>
           <coding>
               <!-- <system value="http://hl7.org/fhir/resource-types" /> -->
             <code value="varies (application/dicom, application/dicom+xml, image/jpeg, and many more)"/>
           </coding>
         </payloadType>
+        <payloadMimeType value="DICOM STOW-RS"/>
+        <address value="https://pacs.hospital.org/dicomweb"/>
       </Endpoint>
     </resource>
   </entry> 
@@ -441,21 +441,21 @@
           <display value="Multi-site Co."/>
         </managingOrganization>
         <connectionType>
-          <!--  system value="http://hl7.org/fhir/ValueSet/http-verb" /> -->
-          <code value="websocket"/>
+           <system value="http://hl7.org/fhir/endpoint-connection-type"/>
+           <code value="dicom-wado-uri"/>
         </connectionType>
-        <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb"/>
-          <code value="GET"/>
-        </method>
-        <address value="https://pacs.hospital.org/wadoUri"/>
-        <payloadFormat value="DICOM WADO-URI"/>
+        <!-- <method>
+          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <code value="GET" />
+        </method> -->
         <payloadType>
           <coding>
               <!-- <system value="http://hl7.org/fhir/resource-types" /> -->
             <code value="varies (application/dicom, application/dicom+xml, image/jpeg, and many more)"/>
           </coding>
         </payloadType>
+        <payloadMimeType value="DICOM WADO-URI"/>
+        <address value="https://pacs.hospital.org/wadoUri"/>
       </Endpoint>
     </resource>
   </entry> 
@@ -476,21 +476,21 @@
           <display value="Multi-site Co."/>
         </managingOrganization>
         <connectionType>
-          <!--  system value="http://hl7.org/fhir/ValueSet/http-verb" /> -->
-          <code value="websocket"/>
+           <system value="http://hl7.org/fhir/endpoint-connection-type"/>
+           <code value="ihe-iid"/>
         </connectionType>
-        <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb"/>
-          <code value="GET"/>
-        </method>
-        <address value="https://pacs.hospital.org/IHEInvokeImageDisplay"/>
-        <payloadFormat value="IHE IID"/>
+        <!-- <method>
+          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <code value="GET" />
+        </method> -->
         <payloadType>
           <coding>
               <!-- <system value="http://hl7.org/fhir/resource-types" /> -->
             <code value="varies (application/dicom, application/dicom+xml, image/jpeg, and many more)"/>
           </coding>
         </payloadType>
+        <payloadMimeType value="IHE IID"/>
+        <address value="https://pacs.hospital.org/IHEInvokeImageDisplay"/>
       </Endpoint>
     </resource>
   </entry>  

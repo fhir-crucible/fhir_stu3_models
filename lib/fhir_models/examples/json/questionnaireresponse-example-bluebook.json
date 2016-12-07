@@ -19,6 +19,7 @@
       "text": "Birth details - To be completed by health professional",
       "item": [
         {
+          "linkId": "group",
           "item": [
             {
               "linkId": "nameOfChild",
@@ -109,14 +110,10 @@
                   "item": [
                     {
                       "linkId": "hepBgivenDate",
-                      "item": [
+                      "text": "Date given",
+                      "answer": [
                         {
-                          "text": "Date given",
-                          "answer": [
-                            {
-                              "valueDate": "1972-12-04"
-                            }
-                          ]
+                          "valueDate": "1972-12-04"
                         }
                       ]
                     }

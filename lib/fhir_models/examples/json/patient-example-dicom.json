@@ -37,9 +37,7 @@
   "active": true,
   "name": [
     {
-      "family": [
-        "MINT_TEST"
-      ]
+      "family": "MINT_TEST"
     }
   ],
   "gender": "male",

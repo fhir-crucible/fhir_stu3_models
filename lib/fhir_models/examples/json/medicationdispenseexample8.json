@@ -3,7 +3,7 @@
   "id": "meddisp008",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: meddisp008</p><p><b>contained</b>: </p><p><b>status</b>: completed</p><p><b>medication</b>: id: medexample015; Capecitabine 500mg oral tablet (Xeloda) <span>(Details : {RxNorm code '213293' = '??', given as 'Capecitabine 500mg oral tablet (Xeloda)'})</span>; isBrand</p><p><b>patient</b>: <a>Donald Duck</a></p><p><b>dispenser</b>: <a>Rob van den Berk</a></p><p><b>authorizingPrescription</b>: <a>MedicationOrder/medrx0309</a></p><h3>DosageInstructions</h3><table><tr><td>-</td><td><b>Timing</b></td><td><b>Route</b></td><td><b>Dose[x]</b></td></tr><tr><td>*</td><td>Do 2 per 21 days</td><td>oral administration of treatment <span>(Details : {SNOMED CT code '394899003' = 'Oral administration of treatment (navigational concept)', given as 'oral administration of treatment'})</span></td><td>500 mg<span> (Details: http://unitsofmeasure.org code mg = 'mg')</span></td></tr></table></div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: meddisp008</p><p><b>contained</b>: </p><p><b>status</b>: completed</p><p><b>medication</b>: id: medexample015; Capecitabine 500mg oral tablet (Xeloda) <span>(Details : {RxNorm code '213293' = '213293', given as 'Capecitabine 500mg oral tablet (Xeloda)'})</span>; isBrand</p><p><b>patient</b>: <a>Donald Duck</a></p><p><b>dispenser</b>: <a>Rob van den Berk</a></p><p><b>authorizingPrescription</b>: <a>MedicationRequest/medrx0309</a></p><p><b>dosageInstruction</b>: </p></div>"
   },
   "contained": [
     {
@@ -35,11 +35,12 @@
   },
   "authorizingPrescription": [
     {
-      "reference": "MedicationOrder/medrx0309"
+      "reference": "MedicationRequest/medrx0309"
     }
   ],
   "dosageInstruction": [
     {
+      "sequence": 1,
       "timing": {
         "repeat": {
           "frequency": 2,

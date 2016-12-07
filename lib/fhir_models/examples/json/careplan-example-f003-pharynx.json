@@ -3,7 +3,7 @@
   "id": "f003",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f003</p><p><b>contained</b>: , </p><p><b>identifier</b>: CP3953 (OFFICIAL)</p><p><b>subject</b>: <a>P. van de Heuvel</a></p><p><b>status</b>: completed</p><p><b>period</b>: Mar 8, 2013 9:00:10 AM --&gt; Mar 8, 2013 9:30:10 AM</p><p><b>modified</b>: Jun 27, 2013 9:30:10 AM</p><p><b>addresses</b>: <a>?????</a></p><p><b>careTeam</b>: id: careteam</p><p><b>goal</b>: id: goal; P. van de Heuvel; Retropharyngeal abscess removal <span>(Details )</span>; status: achieved; Annotation: goal accomplished without complications</p><blockquote><p><b>activity</b></p><h3>Details</h3><table><tr><td>-</td><td><b>Category</b></td><td><b>Code</b></td><td><b>Status</b></td><td><b>Prohibited</b></td><td><b>Scheduled[x]</b></td><td><b>Performer</b></td></tr><tr><td>*</td><td>Procedure <span>(Details : {http://hl7.org/fhir/care-plan-activity-category code 'procedure' = 'Procedure)</span></td><td>Incision of retropharyngeal abscess <span>(Details : {SNOMED CT code '172960003' = 'Incision of retropharyngeal abscess (procedure)', given as 'Incision of retropharyngeal abscess'})</span></td><td>completed</td><td>true</td><td>2011-06-27T09:30:10+01:00</td><td><a>E.M. van den broek</a></td></tr></table></blockquote></div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f003</p><p><b>contained</b>: , </p><p><b>identifier</b>: CP3953 (OFFICIAL)</p><p><b>status</b>: completed</p><p><b>subject</b>: <a>P. van de Heuvel</a></p><p><b>period</b>: Mar 8, 2013 9:00:10 AM --&gt; Mar 8, 2013 9:30:10 AM</p><p><b>modified</b>: Jun 27, 2013 9:30:10 AM</p><p><b>careTeam</b>: id: careteam</p><p><b>addresses</b>: <a>?????</a></p><p><b>goal</b>: id: goal; status: achieved; Retropharyngeal abscess removal <span>(Details )</span>; P. van de Heuvel; Annotation: goal accomplished without complications</p><blockquote><p><b>activity</b></p><h3>Details</h3><table><tr><td>-</td><td><b>Category</b></td><td><b>Code</b></td><td><b>Status</b></td><td><b>Prohibited</b></td><td><b>Scheduled[x]</b></td><td><b>Performer</b></td></tr><tr><td>*</td><td>Procedure <span>(Details : {http://hl7.org/fhir/care-plan-activity-category code 'procedure' = 'Procedure)</span></td><td>Incision of retropharyngeal abscess <span>(Details : {SNOMED CT code '172960003' = 'Incision of retropharyngeal abscess (procedure)', given as 'Incision of retropharyngeal abscess'})</span></td><td>completed</td><td>true</td><td>2011-06-27T09:30:10+01:00</td><td><a>E.M. van den broek</a></td></tr></table></blockquote></div>"
   },
   "contained": [
     {
@@ -21,14 +21,14 @@
     {
       "resourceType": "Goal",
       "id": "goal",
+      "status": "achieved",
+      "description": {
+        "text": "Retropharyngeal abscess removal"
+      },
       "subject": {
         "reference": "Patient/f001",
         "display": "P. van de Heuvel"
       },
-      "description": {
-        "text": "Retropharyngeal abscess removal"
-      },
-      "status": "achieved",
       "note": [
         {
           "text": "goal accomplished without complications"
@@ -43,25 +43,25 @@
       "value": "CP3953"
     }
   ],
+  "status": "completed",
   "subject": {
     "reference": "Patient/f001",
     "display": "P. van de Heuvel"
   },
-  "status": "completed",
   "period": {
     "start": "2013-03-08T09:00:10+01:00",
     "end": "2013-03-08T09:30:10+01:00"
   },
   "modified": "2013-06-27T09:30:10+01:00",
+  "careTeam": [
+    {
+      "reference": "#careteam"
+    }
+  ],
   "addresses": [
     {
       "reference": "Condition/f201",
       "display": "?????"
-    }
-  ],
-  "careTeam": [
-    {
-      "reference": "#careteam"
     }
   ],
   "goal": [

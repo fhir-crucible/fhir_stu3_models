@@ -7,15 +7,17 @@
   },
   "clinicalStatus": "active",
   "verificationStatus": "confirmed",
-  "category": {
-    "coding": [
-      {
-        "system": "http://hl7.org/fhir/condition-category",
-        "code": "diagnosis",
-        "display": "Diagnosis"
-      }
-    ]
-  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        }
+      ]
+    }
+  ],
   "code": {
     "coding": [
       {

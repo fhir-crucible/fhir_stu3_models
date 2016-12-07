@@ -11,36 +11,69 @@
       "value": "15013"
     }
   ],
-  "dateWritten": "2014-06-15",
+  "status": "active",
   "patient": {
     "reference": "Patient/example"
   },
+  "dateWritten": "2014-06-15",
   "prescriber": {
     "reference": "Practitioner/example"
   },
   "dispense": [
     {
       "product": {
-        "system": "http://hl7.org/fhir/ex-visionprescriptionproduct",
-        "code": "lens"
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/ex-visionprescriptionproduct",
+            "code": "lens"
+          }
+        ]
       },
-      "eye": "right",
+      "eye": {
+        "coding": [
+          {
+            "code": "right"
+          }
+        ]
+      },
       "sphere": -2.00,
       "prism": 0.5,
-      "base": "down",
+      "base": {
+        "coding": [
+          {
+            "code": "down"
+          }
+        ]
+      },
       "add": 2.00
     },
     {
       "product": {
-        "system": "http://hl7.org/fhir/ex-visionprescriptionproduct",
-        "code": "lens"
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/ex-visionprescriptionproduct",
+            "code": "lens"
+          }
+        ]
       },
-      "eye": "left",
+      "eye": {
+        "coding": [
+          {
+            "code": "left"
+          }
+        ]
+      },
       "sphere": -1.00,
       "cylinder": -0.50,
       "axis": 180,
       "prism": 0.5,
-      "base": "up",
+      "base": {
+        "coding": [
+          {
+            "code": "up"
+          }
+        ]
+      },
       "add": 2.00
     }
   ]

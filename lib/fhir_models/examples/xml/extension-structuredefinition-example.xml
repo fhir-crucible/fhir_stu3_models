@@ -4,18 +4,18 @@
   <id value="structuredefinition-example"/>
   <url value="http://hl7.org/fhir/StructureDefinition/structuredefinition-example"/>
   <name value="An additional example value"/>
-  <display value="example"/>
+  <title value="example"/>
   <status value="draft"/>
   <publisher value="Health Level Seven, Inc. - [WG Name] WG"/>
   <contact>
     <telecom>
-      <system value="other"/>
+      <system value="url"/>
       <value value="http://hl7.org/special/committees/FHIR"/>
     </telecom>
   </contact>
   <date value="2014-01-31"/>
   <description value="An additional example value."/>
-  <fhirVersion value="1.6.0"/>
+  <fhirVersion value="1.8.0"/>
   <mapping>
     <identity value="rim"/>
     <uri value="http://hl7.org/v3"/>
@@ -47,6 +47,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="children().count() &gt; id.count()"/>
         <xpath value="@value|f:*|h:div"/>
+        <source value="Element"/>
       </constraint>
       <constraint>
         <key value="ext-1"/>
@@ -54,6 +55,7 @@
         <human value="Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])"/>
+        <source value="Extension"/>
       </constraint>
     </element>
     <element id="Extension:anadditionalexamplevalue.id">
@@ -66,7 +68,7 @@
       <base>
         <path value="Element.id"/>
         <min value="0"/>
-        <max value="*"/>
+        <max value="1"/>
       </base>
       <type>
         <code value="string"/>
@@ -78,7 +80,7 @@
     </element>
     <element id="Extension:anadditionalexamplevalue.extension">
       <path value="Extension.extension"/>
-      <slicing id="77">
+      <slicing id="83">
         <discriminator value="url"/>
         <ordered value="false"/>
         <rules value="open"/>
@@ -98,7 +100,7 @@
     </element>
     <element id="Extension:anadditionalexamplevalue.extension:index">
       <path value="Extension.extension"/>
-      <name value="index"/>
+      <sliceName value="index"/>
       <short value="Key for this example"/>
       <definition value="Key for this example."/>
       <min value="1"/>
@@ -122,7 +124,7 @@
       <base>
         <path value="Element.id"/>
         <min value="0"/>
-        <max value="*"/>
+        <max value="1"/>
       </base>
       <type>
         <code value="string"/>
@@ -134,7 +136,7 @@
     </element>
     <element id="Extension:anadditionalexamplevalue.extension:index.extension:extension">
       <path value="Extension.extension.extension"/>
-      <name value="extension"/>
+      <sliceName value="extension"/>
       <short value="Extension"/>
       <definition value="An Extension"/>
       <min value="0"/>
@@ -191,7 +193,7 @@
     </element>
     <element id="Extension:anadditionalexamplevalue.extension:exvalue">
       <path value="Extension.extension"/>
-      <name value="exValue"/>
+      <sliceName value="exValue"/>
       <short value="Value of the example"/>
       <definition value="Value of the example."/>
       <min value="0"/>
@@ -215,7 +217,7 @@
       <base>
         <path value="Element.id"/>
         <min value="0"/>
-        <max value="*"/>
+        <max value="1"/>
       </base>
       <type>
         <code value="string"/>
@@ -227,7 +229,7 @@
     </element>
     <element id="Extension:anadditionalexamplevalue.extension:exvalue.extension:extension">
       <path value="Extension.extension.extension"/>
-      <name value="extension"/>
+      <sliceName value="extension"/>
       <short value="Extension"/>
       <definition value="An Extension"/>
       <min value="0"/>
@@ -445,7 +447,7 @@
     </element>
     <element id="Extension:anadditionalexamplevalue.extension:index">
       <path value="Extension.extension"/>
-      <name value="index"/>
+      <sliceName value="index"/>
       <short value="Key for this example"/>
       <definition value="Key for this example."/>
       <min value="1"/>
@@ -456,7 +458,7 @@
     </element>
     <element id="Extension:anadditionalexamplevalue.extension:index.extension:extension">
       <path value="Extension.extension.extension"/>
-      <name value="extension"/>
+      <sliceName value="extension"/>
       <max value="0"/>
     </element>
     <element id="Extension:anadditionalexamplevalue.extension:index.url">
@@ -475,7 +477,7 @@
     </element>
     <element id="Extension:anadditionalexamplevalue.extension:exvalue">
       <path value="Extension.extension"/>
-      <name value="exValue"/>
+      <sliceName value="exValue"/>
       <short value="Value of the example"/>
       <definition value="Value of the example."/>
       <min value="0"/>
@@ -486,7 +488,7 @@
     </element>
     <element id="Extension:anadditionalexamplevalue.extension:exvalue.extension:extension">
       <path value="Extension.extension.extension"/>
-      <name value="extension"/>
+      <sliceName value="extension"/>
       <max value="0"/>
     </element>
     <element id="Extension:anadditionalexamplevalue.extension:exvalue.url">

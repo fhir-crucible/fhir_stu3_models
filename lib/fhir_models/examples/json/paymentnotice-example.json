@@ -12,15 +12,19 @@
     }
   ],
   "status": "active",
+  "request": {
+    "reference": "http://benefitsinc.com/fhir/claim/12345"
+  },
   "created": "2014-08-16",
-  "organizationReference": {
+  "organization": {
     "reference": "Organization/1"
   },
-  "requestReference": {
-    "reference": "http://benefitsinc.com/fhir/oralhealthclaim/12345"
-  },
   "paymentStatus": {
-    "system": "http://hl7.org/fhir/paymentstatus",
-    "code": "paid"
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/paymentstatus",
+        "code": "paid"
+      }
+    ]
   }
 }

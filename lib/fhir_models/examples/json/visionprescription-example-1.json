@@ -11,20 +11,31 @@
       "value": "15014"
     }
   ],
-  "dateWritten": "2014-06-15",
+  "status": "active",
   "patient": {
     "reference": "Patient/example"
   },
+  "dateWritten": "2014-06-15",
   "prescriber": {
     "reference": "Practitioner/example"
   },
   "dispense": [
     {
       "product": {
-        "system": "http://hl7.org/fhir/ex-visionprescriptionproduct",
-        "code": "contact"
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/ex-visionprescriptionproduct",
+            "code": "contact"
+          }
+        ]
       },
-      "eye": "right",
+      "eye": {
+        "coding": [
+          {
+            "code": "right"
+          }
+        ]
+      },
       "cylinder": -2.25,
       "axis": 160,
       "add": 1.75,
@@ -42,10 +53,20 @@
     },
     {
       "product": {
-        "system": "http://hl7.org/fhir/ex-visionprescriptionproduct",
-        "code": "contact"
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/ex-visionprescriptionproduct",
+            "code": "contact"
+          }
+        ]
       },
-      "eye": "left",
+      "eye": {
+        "coding": [
+          {
+            "code": "left"
+          }
+        ]
+      },
       "cylinder": -3.50,
       "axis": 160,
       "add": 1.75,

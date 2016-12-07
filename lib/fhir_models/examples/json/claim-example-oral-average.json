@@ -13,41 +13,65 @@
   ],
   "status": "active",
   "type": {
-    "system": "http://hl7.org/fhir/ex-claimtype",
-    "code": "oral"
-  },
-  "created": "2014-08-16",
-  "insurerReference": {
-    "reference": "Organization/2"
-  },
-  "organizationReference": {
-    "reference": "Organization/1"
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/ex-claimtype",
+        "code": "oral"
+      }
+    ]
   },
   "use": "complete",
+  "patient": {
+    "reference": "Patient/1"
+  },
+  "created": "2014-08-16",
+  "insurer": {
+    "reference": "Organization/2"
+  },
+  "organization": {
+    "reference": "Organization/1"
+  },
   "priority": {
-    "code": "normal"
+    "coding": [
+      {
+        "code": "normal"
+      }
+    ]
   },
   "payee": {
     "type": {
-      "code": "provider"
+      "coding": [
+        {
+          "code": "provider"
+        }
+      ]
     }
   },
-  "diagnosis": [
+  "careTeam": [
     {
       "sequence": 1,
-      "diagnosis": {
-        "code": "123456"
+      "provider": {
+        "reference": "Practitioner/example"
       }
     }
   ],
-  "patientReference": {
-    "reference": "Patient/1"
-  },
-  "coverage": [
+  "diagnosis": [
+    {
+      "sequence": 1,
+      "diagnosisCodeableConcept": {
+        "coding": [
+          {
+            "code": "123456"
+          }
+        ]
+      }
+    }
+  ],
+  "insurance": [
     {
       "sequence": 1,
       "focal": true,
-      "coverageReference": {
+      "coverage": {
         "reference": "Coverage/9876B1"
       }
     }
@@ -55,16 +79,16 @@
   "item": [
     {
       "sequence": 1,
-      "careTeam": [
-        {
-          "providerReference": {
-            "reference": "Practitioner/example"
-          }
-        }
+      "careTeamLinkId": [
+        1
       ],
       "service": {
-        "system": "http://hl7.org/fhir/oralservicecodes",
-        "code": "1200"
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/oralservicecodes",
+            "code": "1200"
+          }
+        ]
       },
       "servicedDate": "2014-08-16",
       "unitPrice": {
@@ -80,16 +104,16 @@
     },
     {
       "sequence": 2,
-      "careTeam": [
-        {
-          "providerReference": {
-            "reference": "Practitioner/example"
-          }
-        }
+      "careTeamLinkId": [
+        1
       ],
       "service": {
-        "system": "http://hl7.org/fhir/oralservicecodes",
-        "code": "21211"
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/oralservicecodes",
+            "code": "21211"
+          }
+        ]
       },
       "servicedDate": "2014-08-16",
       "unitPrice": {
@@ -103,28 +127,36 @@
         "code": "USD"
       },
       "bodySite": {
-        "system": "http://fdi.org/fhir/oraltoothcodes",
-        "code": "21"
+        "coding": [
+          {
+            "system": "http://fdi.org/fhir/oraltoothcodes",
+            "code": "21"
+          }
+        ]
       },
       "subSite": [
         {
-          "system": "http://fdi.org/fhir/oralsurfacecodes",
-          "code": "L"
+          "coding": [
+            {
+              "system": "http://fdi.org/fhir/oralsurfacecodes",
+              "code": "L"
+            }
+          ]
         }
       ]
     },
     {
       "sequence": 3,
-      "careTeam": [
-        {
-          "providerReference": {
-            "reference": "Practitioner/example"
-          }
-        }
+      "careTeamLinkId": [
+        1
       ],
       "service": {
-        "system": "http://hl7.org/fhir/oralservicecodes",
-        "code": "27211"
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/oralservicecodes",
+            "code": "27211"
+          }
+        ]
       },
       "servicedDate": "2014-08-16",
       "unitPrice": {
@@ -138,15 +170,23 @@
         "code": "USD"
       },
       "bodySite": {
-        "system": "http://fdi.org/fhir/oraltoothcodes",
-        "code": "36"
+        "coding": [
+          {
+            "system": "http://fdi.org/fhir/oraltoothcodes",
+            "code": "36"
+          }
+        ]
       },
       "detail": [
         {
           "sequence": 1,
           "service": {
-            "system": "http://hl7.org/fhir/oralservicecodes",
-            "code": "27211"
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/oralservicecodes",
+                "code": "27211"
+              }
+            ]
           },
           "unitPrice": {
             "value": 750.00,
@@ -162,8 +202,12 @@
         {
           "sequence": 2,
           "service": {
-            "system": "http://hl7.org/fhir/oralservicecodes",
-            "code": "lab"
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/oralservicecodes",
+                "code": "lab"
+              }
+            ]
           },
           "unitPrice": {
             "value": 350.00,

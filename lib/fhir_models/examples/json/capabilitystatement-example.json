@@ -7,7 +7,7 @@
   },
   "url": "68D043B5-9ECF-4559-A57A-396E0D452311",
   "version": "20130510",
-  "name": "ACME EHR CapabilityStatement statement",
+  "name": "ACME EHR capability statement",
   "status": "draft",
   "experimental": true,
   "date": "2012-01-04",
@@ -23,8 +23,8 @@
       ]
     }
   ],
-  "description": "This is the FHIR CapabilityStatement statement for the main EHR at ACME for the private interface - it does not describe the public interface",
-  "purpose": "Main EHR CapabilityStatement statement, published for contracting and operational support",
+  "description": "This is the FHIR capability statement for the main EHR at ACME for the private interface - it does not describe the public interface",
+  "purpose": "Main EHR capability statement, published for contracting and operational support",
   "copyright": "Copyright © Acme Healthcare and GoodCorp EHR Systems",
   "kind": "instance",
   "software": {
@@ -70,7 +70,7 @@
         {
           "type": "Patient",
           "profile": {
-            "reference": "http://fhir.hl7.org/base/Profile7896271d-57f6-4231-89dc-dcc91eab2416"
+            "reference": "http://fhir.hl7.org/base/StructureDefinition/7896271d-57f6-4231-89dc-dcc91eab2416"
           },
           "interaction": [
             {
@@ -110,25 +110,12 @@
               "name": "identifier",
               "definition": "http://hl7.org/fhir/SearchParameter/Patient-identifier",
               "type": "token",
-              "documentation": "Only supports search by institution MRN",
-              "modifier": [
-                "missing"
-              ]
+              "documentation": "Only supports search by institution MRN"
             },
             {
               "name": "careprovider",
               "definition": "http://hl7.org/fhir/SearchParameter/Patient-careprovider",
-              "type": "reference",
-              "target": [
-                "Organization"
-              ],
-              "modifier": [
-                "missing"
-              ],
-              "chain": [
-                "name",
-                "identifier"
-              ]
+              "type": "reference"
             }
           ]
         }

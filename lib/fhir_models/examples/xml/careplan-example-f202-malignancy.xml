@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><CarePlan xmlns="http://hl7.org/fhir">
   <id value="f202"/>
-  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f202</p><p><b>contained</b>: , , , , , </p><p><b>subject</b>: <a>Roel</a></p><p><b>status</b>: active</p><p><b>addresses</b>: <a>Roel&#39;s head-neck tumor</a></p><p><b>careTeam</b>: id: careteam</p><p><b>goal</b>: id: goal; Roel; Elimination of the spenoid bone tumor <span>(Details )</span>; status: in-progress</p><blockquote><p><b>activity</b></p><p><b>actionResulting</b>: <a>Roel&#39;s Chemotherapy</a></p><h3>Details</h3><table><tr><td>-</td><td><b>Category</b></td><td><b>Code</b></td><td><b>Status</b></td><td><b>Prohibited</b></td><td><b>Product[x]</b></td></tr><tr><td>*</td><td>Procedure <span>(Details : {http://hl7.org/fhir/care-plan-activity-category code &#39;procedure&#39; = &#39;Procedure)</span></td><td>Chemotherapy <span>(Details : {SNOMED CT code &#39;367336001&#39; = &#39;Chemotherapy (procedure)&#39;, given as &#39;Chemotherapy&#39;})</span></td><td>in-progress</td><td>false</td><td>id: tpf; TPF <span>(Details )</span></td></tr></table></blockquote></div></text><contained>
+  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f202</p><p><b>contained</b>: , , , , , </p><p><b>status</b>: active</p><p><b>subject</b>: <a>Roel</a></p><p><b>careTeam</b>: id: careteam</p><p><b>addresses</b>: <a>Roel&#39;s head-neck tumor</a></p><p><b>goal</b>: id: goal; status: in-progress; Elimination of the spenoid bone tumor <span>(Details )</span>; Roel</p><blockquote><p><b>activity</b></p><p><b>actionResulting</b>: <a>Roel&#39;s Chemotherapy</a></p><h3>Details</h3><table><tr><td>-</td><td><b>Category</b></td><td><b>Code</b></td><td><b>Status</b></td><td><b>Prohibited</b></td><td><b>Product[x]</b></td></tr><tr><td>*</td><td>Procedure <span>(Details : {http://hl7.org/fhir/care-plan-activity-category code &#39;procedure&#39; = &#39;Procedure)</span></td><td>Chemotherapy <span>(Details : {SNOMED CT code &#39;367336001&#39; = &#39;Chemotherapy (procedure)&#39;, given as &#39;Chemotherapy&#39;})</span></td><td>in-progress</td><td>false</td><td>id: tpf; TPF <span>(Details )</span></td></tr></table></blockquote></div></text><contained>
     <Medication>
       <id value="doce"/>
       <code>
@@ -83,29 +83,29 @@
   <contained>
     <Goal>
       <id value="goal"/>
-      <subject>
-        <reference value="Patient/f201"/>
-        <display value="Roel"/>
-      </subject>
+      <status value="in-progress"/>
       <description>
         <text value="Elimination of the spenoid bone tumor"/>
       </description>
-      <status value="in-progress"/>
+      <subject>
+        <reference value="Patient/f201"/>
+        <display value="Roel"/>
+      </subject>      
     </Goal>
   </contained>
+  <status value="active"/>
   <subject>
     <!--  It entails Roel's careplan  -->
     <reference value="Patient/f201"/>
     <display value="Roel"/>
   </subject>
-  <status value="active"/>
+  <careTeam>
+    <reference value="#careteam"/>
+  </careTeam>
   <addresses>
     <reference value="Condition/f202"/>
     <display value="Roel&#39;s head-neck tumor"/>
   </addresses>
-  <careTeam>
-    <reference value="#careteam"/>
-  </careTeam>
   <goal>
     <reference value="#goal"/>
   </goal>

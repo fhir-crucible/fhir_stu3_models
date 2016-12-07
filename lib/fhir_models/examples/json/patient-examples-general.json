@@ -36,9 +36,7 @@
         "name": [
           {
             "use": "official",
-            "family": [
-              "Everywoman"
-            ],
+            "family": "Everywoman",
             "given": [
               "Eve"
             ]
@@ -96,9 +94,7 @@
         "name": [
           {
             "use": "official",
-            "family": [
-              "Everyman"
-            ],
+            "family": "Everyman",
             "given": [
               "Adam"
             ]
@@ -155,9 +151,7 @@
         "name": [
           {
             "use": "official",
-            "family": [
-              "Kidd"
-            ],
+            "family": "Kidd",
             "given": [
               "Kari"
             ]
@@ -214,9 +208,7 @@
         "name": [
           {
             "use": "official",
-            "family": [
-              "Nuclear"
-            ],
+            "family": "Nuclear",
             "given": [
               "Nancy"
             ]
@@ -273,9 +265,7 @@
         "name": [
           {
             "use": "official",
-            "family": [
-              "Nuclear"
-            ],
+            "family": "Nuclear",
             "given": [
               "Neville"
             ]
@@ -332,9 +322,7 @@
         "name": [
           {
             "use": "official",
-            "family": [
-              "Nuclear"
-            ],
+            "family": "Nuclear",
             "given": [
               "Ned"
             ]
@@ -391,9 +379,7 @@
         "name": [
           {
             "use": "official",
-            "family": [
-              "Nuclear"
-            ],
+            "family": "Nuclear",
             "given": [
               "Nelda"
             ]
@@ -450,9 +436,7 @@
         "name": [
           {
             "use": "official",
-            "family": [
-              "Mum"
-            ],
+            "family": "Mum",
             "given": [
               "Martha"
             ]
@@ -509,9 +493,7 @@
         "name": [
           {
             "use": "official",
-            "family": [
-              "Sons"
-            ],
+            "family": "Sons",
             "given": [
               "Stuart"
             ]
@@ -585,9 +567,7 @@
         "name": [
           {
             "use": "official",
-            "family": [
-              "Betterhalf"
-            ],
+            "family": "Betterhalf",
             "given": [
               "Boris"
             ]
@@ -644,9 +624,7 @@
         "name": [
           {
             "use": "official",
-            "family": [
-              "Relative"
-            ],
+            "family": "Relative",
             "given": [
               "Ralph"
             ]
@@ -703,9 +681,7 @@
         "name": [
           {
             "use": "official",
-            "family": [
-              "Contact"
-            ],
+            "family": "Contact",
             "given": [
               "Carrie"
             ]

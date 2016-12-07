@@ -14,11 +14,11 @@
   "status": "active",
   "action": "poll",
   "created": "2014-08-16",
-  "organizationReference": {
+  "organization": {
     "reference": "Organization/1"
   },
   "include": [
-    "Reconciliation"
+    "PaymentReconciliation"
   ],
   "period": {
     "start": "2014-08-10",

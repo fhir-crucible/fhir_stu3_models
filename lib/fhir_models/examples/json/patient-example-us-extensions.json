@@ -3,39 +3,93 @@
   "id": "us01",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      \n      <table>\n        \n        <tbody>\n          \n          <tr>\n            \n            <td>Name</td>\n            \n            <td>Peter James \n              <b>Chalmers</b> (&quot;Jim&quot;)\n            </td>\n          \n          </tr>\n          \n          <tr>\n            \n            <td>Address</td>\n            \n            <td>534 Erewhon, Pleasantville, Orange County, 3999</td>\n          \n          </tr>\n          \n          <tr>\n            \n            <td>Contacts</td>\n            \n            <td>Home: unknown. Work: (03) 5555 6473</td>\n          \n          </tr>\n          \n          <tr>\n            \n            <td>Id</td>\n            \n            <td>MRN: 12345 (Acme Healthcare)</td>\n          \n          </tr>\n        \n        </tbody>\n      \n      </table>\n    \n    </div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t<p>\n\t\t\t\t<b>Generated Narrative with Details</b>\n\t\t\t</p>\n\t\t\t<p>\n\t\t\t\t<b>id</b>: us01</p>\n\t\t\t<p>\n\t\t\t\t<b>active</b>: true</p>\n\t\t\t\t<p>\n\t\t\t\t<b>birthsex</b>: Male</p>\n\t\t\t<p>\n\t\t\t\t<b>name</b>: Peter James Chalmers (OFFICIAL)</p>\n\t\t\t<p>\n\t\t\t\t<b>telecom</b>: ph: (03) 5555 6473(WORK), person@example.org(WORK)</p>\n\t\t\t<p>\n\t\t\t\t<b>address</b>: 534 Erewhon St PleasantVille Vic 3999 (HOME)</p>\n\t\t\t<p>\n\t\t\t\t<b>race</b>: White, American Indian or Alaska Native, Asian, Shoshone, Filipino</p>\n\t\t\t<p>\n\t\t\t\t<b>ethnicity</b>: Hispanic or Latino, Dominican, Mexican</p>\n\t\t</div>"
   },
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/us-core-race",
-      "valueCodeableConcept": {
-        "coding": [
-          {
+      "extension": [
+        {
+          "url": "ombCategory",
+          "valueCoding": {
             "system": "http://hl7.org/fhir/v3/Race",
-            "code": "1096-7"
+            "code": "2106-3",
+            "display": "White"
           }
-        ]
-      }
+        },
+        {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "http://hl7.org/fhir/v3/Race",
+            "code": "1002-5",
+            "display": "American Indian or Alaska Native"
+          }
+        },
+        {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "http://hl7.org/fhir/v3/Race",
+            "code": "2028-9",
+            "display": "Asian"
+          }
+        },
+        {
+          "url": "detailed",
+          "valueCoding": {
+            "system": "http://hl7.org/fhir/v3/Race",
+            "code": "1586-7",
+            "display": "Shoshone"
+          }
+        },
+        {
+          "url": "detailed",
+          "valueCoding": {
+            "system": "http://hl7.org/fhir/v3/Race",
+            "code": "2036-2",
+            "display": "Filipino"
+          }
+        }
+      ]
     },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/us-core-ethnicity",
-      "valueCodeableConcept": {
-        "coding": [
-          {
+      "extension": [
+        {
+          "url": "ombCategory",
+          "valueCoding": {
             "system": "http://hl7.org/fhir/v3/Ethnicity",
-            "code": "2162-6"
+            "code": "2135-2",
+            "display": "Hispanic or Latino"
           }
-        ]
-      }
+        },
+        {
+          "url": "detailed",
+          "valueCoding": {
+            "system": "http://hl7.org/fhir/v3/Ethnicity",
+            "code": "2184-0",
+            "display": "Dominican"
+          }
+        },
+        {
+          "url": "detailed",
+          "valueCoding": {
+            "system": "http://hl7.org/fhir/v3/Ethnicity",
+            "code": "2148-5",
+            "display": "Mexican"
+          }
+        }
+      ]
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/us-core-birthsex",
+      "valueCode": "M"
     }
   ],
   "active": true,
   "name": [
     {
       "use": "official",
-      "family": [
-        "Chalmers"
-      ],
+      "family": "Chalmers",
       "given": [
         "Peter",
         "James"

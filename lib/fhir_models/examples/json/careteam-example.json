@@ -11,9 +11,7 @@
       "id": "pr1",
       "name": [
         {
-          "family": [
-            "Dietician"
-          ],
+          "family": "Dietician",
           "given": [
             "Dorothy"
           ]

@@ -15,7 +15,7 @@
       "name": "FHIR project team",
       "telecom": [
         {
-          "system": "other",
+          "system": "url",
           "value": "http://hl7.org/fhir"
         }
       ]

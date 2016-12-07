@@ -9,6 +9,7 @@
     {
       "resourceType": "Condition",
       "id": "p1",
+      "clinicalStatus": "active",
       "verificationStatus": "confirmed",
       "code": {
         "text": "pregnancy"
@@ -23,9 +24,7 @@
       "id": "pr1",
       "name": [
         {
-          "family": [
-            "Midwife"
-          ],
+          "family": "Midwife",
           "given": [
             "Mavis"
           ]
@@ -46,9 +45,7 @@
       "id": "pr2",
       "name": [
         {
-          "family": [
-            "Obstetrician"
-          ],
+          "family": "Obstetrician",
           "given": [
             "Oscar"
           ]
@@ -103,14 +100,14 @@
     {
       "resourceType": "Goal",
       "id": "goal",
-      "subject": {
-        "reference": "Patient/1",
-        "display": "Eve Everywoman"
-      },
+      "status": "in-progress",
       "description": {
         "text": "Maintain patient's health throughout pregnancy and ensure a healthy child"
       },
-      "status": "in-progress"
+      "subject": {
+        "reference": "Patient/1",
+        "display": "Eve Everywoman"
+      }
     }
   ],
   "extension": [
@@ -119,24 +116,24 @@
       "valueDateTime": "2013-01-01"
     }
   ],
+  "status": "active",
   "subject": {
     "reference": "Patient/1",
     "display": "Eve Everywoman"
   },
-  "status": "active",
   "period": {
     "start": "2013-01-01",
     "end": "2013-10-01"
   },
+  "careTeam": [
+    {
+      "reference": "#careteam"
+    }
+  ],
   "addresses": [
     {
       "reference": "#p1",
       "display": "pregnancy"
-    }
-  ],
-  "careTeam": [
-    {
-      "reference": "#careteam"
     }
   ],
   "goal": [

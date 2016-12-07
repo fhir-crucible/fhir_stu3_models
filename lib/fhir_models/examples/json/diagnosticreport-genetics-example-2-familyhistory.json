@@ -13,7 +13,7 @@
         {
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-observation",
           "valueReference": {
-            "reference": "DiagnosticReport/dgf1"
+            "reference": "Observation/dgf1"
           }
         }
       ],

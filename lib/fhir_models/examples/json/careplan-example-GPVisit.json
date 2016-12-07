@@ -9,6 +9,7 @@
     {
       "resourceType": "Condition",
       "id": "p1",
+      "clinicalStatus": "active",
       "verificationStatus": "confirmed",
       "code": {
         "text": "Overseas encounter"
@@ -59,33 +60,33 @@
     {
       "resourceType": "Goal",
       "id": "goal",
-      "subject": {
-        "reference": "Patient/100",
-        "display": "Peter James Chalmers"
-      },
+      "status": "planned",
       "description": {
         "text": "Complete consultation"
       },
-      "status": "planned"
+      "subject": {
+        "reference": "Patient/100",
+        "display": "Peter James Chalmers"
+      }
     }
   ],
+  "status": "active",
   "subject": {
     "reference": "Patient/100",
     "display": "Peter James Chalmers"
   },
-  "status": "active",
   "period": {
     "start": "2013-01-01T10:30:00+00:00"
   },
+  "careTeam": [
+    {
+      "reference": "#careteam"
+    }
+  ],
   "addresses": [
     {
       "reference": "#p1",
       "display": "obesity"
-    }
-  ],
-  "careTeam": [
-    {
-      "reference": "#careteam"
     }
   ],
   "goal": [
