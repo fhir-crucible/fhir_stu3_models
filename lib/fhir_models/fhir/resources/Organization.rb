@@ -4,12 +4,12 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = ["active", "address", "address-city", "address-country", "address-postalcode", "address-state", "address-use", "identifier", "name", "partof", "phonetic", "type"]
+    SEARCH_PARAMS = []
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Organization.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Organization.meta', 'min'=>0, 'max'=>1},
       'implicitRules' => {'type'=>'uri', 'path'=>'Organization.implicitRules', 'min'=>0, 'max'=>1},
-      'language' => {'type'=>'code', 'path'=>'Organization.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}},
+      'language' => {'valid_codes'=>{'urn:ietf:bcp:47'=>['bn', 'cs', 'da', 'de', 'de-AT', 'de-CH', 'de-DE', 'el', 'en', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-NZ', 'en-SG', 'en-US', 'es', 'es-AR', 'es-ES', 'es-UY', 'fi', 'fr', 'fr-BE', 'fr-CH', 'fr-FR', 'fy', 'fy-NL', 'hr', 'it', 'it-CH', 'it-IT', 'ja', 'ko', 'nl', 'nl-BE', 'nl-NL', 'no', 'no-NO', 'pt', 'pt-BR', 'ru', 'ru-RU', 'sr', 'sr-SP', 'sv', 'sv-SE', 'te', 'zh', 'zh-CN', 'zh-HK', 'zh-SG', 'zh-TW']}, 'type'=>'code', 'path'=>'Organization.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}},
       'text' => {'type'=>'Narrative', 'path'=>'Organization.text', 'min'=>0, 'max'=>1},
       'contained' => {'type'=>'Resource', 'path'=>'Organization.contained', 'min'=>0, 'max'=>Float::INFINITY},
       'extension' => {'type'=>'Extension', 'path'=>'Organization.extension', 'min'=>0, 'max'=>Float::INFINITY},
@@ -21,9 +21,9 @@ module FHIR
       'alias' => {'type'=>'string', 'path'=>'Organization.alias', 'min'=>0, 'max'=>Float::INFINITY},
       'telecom' => {'type'=>'ContactPoint', 'path'=>'Organization.telecom', 'min'=>0, 'max'=>Float::INFINITY},
       'address' => {'type'=>'Address', 'path'=>'Organization.address', 'min'=>0, 'max'=>Float::INFINITY},
-      'partOf' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Organization.partOf', 'min'=>0, 'max'=>1},
+      'partOf' => {'type'=>'Reference', 'path'=>'Organization.partOf', 'min'=>0, 'max'=>1},
       'contact' => {'type'=>'Organization::Contact', 'path'=>'Organization.contact', 'min'=>0, 'max'=>Float::INFINITY},
-      'endpoint' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Endpoint'], 'type'=>'Reference', 'path'=>'Organization.endpoint', 'min'=>0, 'max'=>Float::INFINITY}
+      'endpoint' => {'type'=>'Reference', 'path'=>'Organization.endpoint', 'min'=>0, 'max'=>Float::INFINITY}
     }
 
     class Contact < FHIR::Model
@@ -65,9 +65,9 @@ module FHIR
     attr_accessor :alias             # 0-* [ string ]
     attr_accessor :telecom           # 0-* [ ContactPoint ]
     attr_accessor :address           # 0-* [ Address ]
-    attr_accessor :partOf            # 0-1 Reference(Organization)
+    attr_accessor :partOf            # 0-1 Reference()
     attr_accessor :contact           # 0-* [ Organization::Contact ]
-    attr_accessor :endpoint          # 0-* [ Reference(Endpoint) ]
+    attr_accessor :endpoint          # 0-* [ Reference() ]
 
     def resourceType
       'Organization'
