@@ -22,9 +22,13 @@
   "outcomeDesc": "Successful  Disclosure",
   "purposeOfEvent": [
     {
-      "system": "http://hl7.org/fhir/v3/ActReason",
-      "code": "HMARKT",
-      "display": "healthcare marketing"
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/v3/ActReason",
+          "code": "HMARKT",
+          "display": "healthcare marketing"
+        }
+      ]
     }
   ],
   "agent": [
@@ -82,9 +86,13 @@
       },
       "purposeOfUse": [
         {
-          "system": "http://hl7.org/fhir/v3/ActReason",
-          "code": "HMARKT",
-          "display": "healthcare marketing"
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v3/ActReason",
+              "code": "HMARKT",
+              "display": "healthcare marketing"
+            }
+          ]
         }
       ]
     }

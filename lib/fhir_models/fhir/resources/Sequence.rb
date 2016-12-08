@@ -4,22 +4,23 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = ["chromosome", "end", "patient", "start", "type"]
+    SEARCH_PARAMS = []
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Sequence.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Sequence.meta', 'min'=>0, 'max'=>1},
       'implicitRules' => {'type'=>'uri', 'path'=>'Sequence.implicitRules', 'min'=>0, 'max'=>1},
-      'language' => {'type'=>'code', 'path'=>'Sequence.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}},
+      'language' => {'valid_codes'=>{'urn:ietf:bcp:47'=>['bn', 'cs', 'da', 'de', 'de-AT', 'de-CH', 'de-DE', 'el', 'en', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-NZ', 'en-SG', 'en-US', 'es', 'es-AR', 'es-ES', 'es-UY', 'fi', 'fr', 'fr-BE', 'fr-CH', 'fr-FR', 'fy', 'fy-NL', 'hr', 'it', 'it-CH', 'it-IT', 'ja', 'ko', 'nl', 'nl-BE', 'nl-NL', 'no', 'no-NO', 'pt', 'pt-BR', 'ru', 'ru-RU', 'sr', 'sr-SP', 'sv', 'sv-SE', 'te', 'zh', 'zh-CN', 'zh-HK', 'zh-SG', 'zh-TW']}, 'type'=>'code', 'path'=>'Sequence.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}},
       'text' => {'type'=>'Narrative', 'path'=>'Sequence.text', 'min'=>0, 'max'=>1},
       'contained' => {'type'=>'Resource', 'path'=>'Sequence.contained', 'min'=>0, 'max'=>Float::INFINITY},
       'extension' => {'type'=>'Extension', 'path'=>'Sequence.extension', 'min'=>0, 'max'=>Float::INFINITY},
       'modifierExtension' => {'type'=>'Extension', 'path'=>'Sequence.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
       'identifier' => {'type'=>'Identifier', 'path'=>'Sequence.identifier', 'min'=>0, 'max'=>Float::INFINITY},
-      'type' => {'valid_codes'=>{'http://hl7.org/fhir/sequence-type'=>['AA', 'DNA', 'RNA', 'AA', 'DNA', 'RNA']}, 'type'=>'code', 'path'=>'Sequence.type', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/sequence-type'}},
+      'type' => {'valid_codes'=>{'http://hl7.org/fhir/sequence-type'=>['AA', 'DNA', 'RNA', 'AA', 'DNA', 'RNA']}, 'type'=>'code', 'path'=>'Sequence.type', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/sequence-type'}},
       'coordinateSystem' => {'type'=>'integer', 'path'=>'Sequence.coordinateSystem', 'min'=>1, 'max'=>1},
-      'patient' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient'], 'type'=>'Reference', 'path'=>'Sequence.patient', 'min'=>0, 'max'=>1},
-      'specimen' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Specimen'], 'type'=>'Reference', 'path'=>'Sequence.specimen', 'min'=>0, 'max'=>1},
-      'device' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Device'], 'type'=>'Reference', 'path'=>'Sequence.device', 'min'=>0, 'max'=>1},
+      'patient' => {'type'=>'Reference', 'path'=>'Sequence.patient', 'min'=>0, 'max'=>1},
+      'specimen' => {'type'=>'Reference', 'path'=>'Sequence.specimen', 'min'=>0, 'max'=>1},
+      'device' => {'type'=>'Reference', 'path'=>'Sequence.device', 'min'=>0, 'max'=>1},
+      'performer' => {'type'=>'Reference', 'path'=>'Sequence.performer', 'min'=>0, 'max'=>1},
       'quantity' => {'type'=>'Quantity', 'path'=>'Sequence.quantity', 'min'=>0, 'max'=>1},
       'referenceSeq' => {'type'=>'Sequence::ReferenceSeq', 'path'=>'Sequence.referenceSeq', 'min'=>0, 'max'=>1},
       'variant' => {'type'=>'Sequence::Variant', 'path'=>'Sequence.variant', 'min'=>0, 'max'=>Float::INFINITY},
@@ -27,7 +28,7 @@ module FHIR
       'quality' => {'type'=>'Sequence::Quality', 'path'=>'Sequence.quality', 'min'=>0, 'max'=>Float::INFINITY},
       'readCoverage' => {'type'=>'integer', 'path'=>'Sequence.readCoverage', 'min'=>0, 'max'=>1},
       'repository' => {'type'=>'Sequence::Repository', 'path'=>'Sequence.repository', 'min'=>0, 'max'=>Float::INFINITY},
-      'pointer' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Sequence'], 'type'=>'Reference', 'path'=>'Sequence.pointer', 'min'=>0, 'max'=>Float::INFINITY},
+      'pointer' => {'type'=>'Reference', 'path'=>'Sequence.pointer', 'min'=>0, 'max'=>Float::INFINITY},
       'structureVariant' => {'type'=>'Sequence::StructureVariant', 'path'=>'Sequence.structureVariant', 'min'=>0, 'max'=>Float::INFINITY}
     }
 
@@ -42,10 +43,10 @@ module FHIR
         'modifierExtension' => {'type'=>'Extension', 'path'=>'ReferenceSeq.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
         'chromosome' => {'valid_codes'=>{'http://hl7.org/fhir/chromosome-human'=>['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', 'X', 'Y', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', 'X', 'Y']}, 'type'=>'CodeableConcept', 'path'=>'ReferenceSeq.chromosome', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/chromosome-human'}},
         'genomeBuild' => {'type'=>'string', 'path'=>'ReferenceSeq.genomeBuild', 'min'=>0, 'max'=>1},
-        'referenceSeqId' => {'type'=>'CodeableConcept', 'path'=>'ReferenceSeq.referenceSeqId', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/sequence-referenceSeq'}},
-        'referenceSeqPointer' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Sequence'], 'type'=>'Reference', 'path'=>'ReferenceSeq.referenceSeqPointer', 'min'=>0, 'max'=>1},
+        'referenceSeqId' => {'type'=>'CodeableConcept', 'path'=>'ReferenceSeq.referenceSeqId', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/sequence-referenceSeq'}},
+        'referenceSeqPointer' => {'type'=>'Reference', 'path'=>'ReferenceSeq.referenceSeqPointer', 'min'=>0, 'max'=>1},
         'referenceSeqString' => {'type'=>'string', 'path'=>'ReferenceSeq.referenceSeqString', 'min'=>0, 'max'=>1},
-        'strand' => {'type'=>'integer', 'path'=>'ReferenceSeq.strand', 'min'=>1, 'max'=>1},
+        'strand' => {'type'=>'integer', 'path'=>'ReferenceSeq.strand', 'min'=>0, 'max'=>1},
         'windowStart' => {'type'=>'integer', 'path'=>'ReferenceSeq.windowStart', 'min'=>1, 'max'=>1},
         'windowEnd' => {'type'=>'integer', 'path'=>'ReferenceSeq.windowEnd', 'min'=>1, 'max'=>1}
       }
@@ -55,10 +56,10 @@ module FHIR
       attr_accessor :modifierExtension   # 0-* [ Extension ]
       attr_accessor :chromosome          # 0-1 CodeableConcept
       attr_accessor :genomeBuild         # 0-1 string
-      attr_accessor :referenceSeqId      # 1-1 CodeableConcept
-      attr_accessor :referenceSeqPointer # 0-1 Reference(Sequence)
+      attr_accessor :referenceSeqId      # 0-1 CodeableConcept
+      attr_accessor :referenceSeqPointer # 0-1 Reference()
       attr_accessor :referenceSeqString  # 0-1 string
-      attr_accessor :strand              # 1-1 integer
+      attr_accessor :strand              # 0-1 integer
       attr_accessor :windowStart         # 1-1 integer
       attr_accessor :windowEnd           # 1-1 integer
     end
@@ -77,7 +78,7 @@ module FHIR
         'observedAllele' => {'type'=>'string', 'path'=>'Variant.observedAllele', 'min'=>0, 'max'=>1},
         'referenceAllele' => {'type'=>'string', 'path'=>'Variant.referenceAllele', 'min'=>0, 'max'=>1},
         'cigar' => {'type'=>'string', 'path'=>'Variant.cigar', 'min'=>0, 'max'=>1},
-        'variantPointer' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Observation'], 'type'=>'Reference', 'path'=>'Variant.variantPointer', 'min'=>0, 'max'=>1}
+        'variantPointer' => {'type'=>'Reference', 'path'=>'Variant.variantPointer', 'min'=>0, 'max'=>1}
       }
 
       attr_accessor :id                # 0-1 string
@@ -88,7 +89,7 @@ module FHIR
       attr_accessor :observedAllele    # 0-1 string
       attr_accessor :referenceAllele   # 0-1 string
       attr_accessor :cigar             # 0-1 string
-      attr_accessor :variantPointer    # 0-1 Reference(Observation)
+      attr_accessor :variantPointer    # 0-1 Reference()
     end
 
     class Quality < FHIR::Model
@@ -100,6 +101,7 @@ module FHIR
         'id' => {'type'=>'string', 'path'=>'Quality.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Quality.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Quality.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
+        'type' => {'valid_codes'=>{'http://hl7.org/fhir/quality-type'=>['INDEL', 'SNP', 'UNKNOWN', 'INDEL', 'SNP', 'UNKNOWN']}, 'type'=>'code', 'path'=>'Quality.type', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/quality-type'}},
         'standardSequence' => {'type'=>'CodeableConcept', 'path'=>'Quality.standardSequence', 'min'=>0, 'max'=>1},
         'start' => {'type'=>'integer', 'path'=>'Quality.start', 'min'=>0, 'max'=>1},
         'end' => {'type'=>'integer', 'path'=>'Quality.end', 'min'=>0, 'max'=>1},
@@ -118,6 +120,7 @@ module FHIR
       attr_accessor :id                # 0-1 string
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
+      attr_accessor :type              # 1-1 code
       attr_accessor :standardSequence  # 0-1 CodeableConcept
       attr_accessor :start             # 0-1 integer
       attr_accessor :end               # 0-1 integer
@@ -142,19 +145,23 @@ module FHIR
         'id' => {'type'=>'string', 'path'=>'Repository.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Repository.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Repository.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
+        'type' => {'valid_codes'=>{'http://hl7.org/fhir/repository-type'=>['directlink', 'openapi', 'login', 'oauth', 'other', 'directlink', 'openapi', 'login', 'oauth', 'other']}, 'type'=>'code', 'path'=>'Repository.type', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/repository-type'}},
         'url' => {'type'=>'uri', 'path'=>'Repository.url', 'min'=>0, 'max'=>1},
         'name' => {'type'=>'string', 'path'=>'Repository.name', 'min'=>0, 'max'=>1},
-        'variantId' => {'type'=>'string', 'path'=>'Repository.variantId', 'min'=>0, 'max'=>1},
-        'readId' => {'type'=>'string', 'path'=>'Repository.readId', 'min'=>0, 'max'=>1}
+        'datasetId' => {'type'=>'string', 'path'=>'Repository.datasetId', 'min'=>0, 'max'=>1},
+        'variantsetId' => {'type'=>'string', 'path'=>'Repository.variantsetId', 'min'=>0, 'max'=>1},
+        'readsetId' => {'type'=>'string', 'path'=>'Repository.readsetId', 'min'=>0, 'max'=>1}
       }
 
       attr_accessor :id                # 0-1 string
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
+      attr_accessor :type              # 1-1 code
       attr_accessor :url               # 0-1 uri
       attr_accessor :name              # 0-1 string
-      attr_accessor :variantId         # 0-1 string
-      attr_accessor :readId            # 0-1 string
+      attr_accessor :datasetId         # 0-1 string
+      attr_accessor :variantsetId      # 0-1 string
+      attr_accessor :readsetId         # 0-1 string
     end
 
     class StructureVariant < FHIR::Model
@@ -232,11 +239,12 @@ module FHIR
     attr_accessor :extension         # 0-* [ Extension ]
     attr_accessor :modifierExtension # 0-* [ Extension ]
     attr_accessor :identifier        # 0-* [ Identifier ]
-    attr_accessor :type              # 1-1 code
+    attr_accessor :type              # 0-1 code
     attr_accessor :coordinateSystem  # 1-1 integer
-    attr_accessor :patient           # 0-1 Reference(Patient)
-    attr_accessor :specimen          # 0-1 Reference(Specimen)
-    attr_accessor :device            # 0-1 Reference(Device)
+    attr_accessor :patient           # 0-1 Reference()
+    attr_accessor :specimen          # 0-1 Reference()
+    attr_accessor :device            # 0-1 Reference()
+    attr_accessor :performer         # 0-1 Reference()
     attr_accessor :quantity          # 0-1 Quantity
     attr_accessor :referenceSeq      # 0-1 Sequence::ReferenceSeq
     attr_accessor :variant           # 0-* [ Sequence::Variant ]
@@ -244,7 +252,7 @@ module FHIR
     attr_accessor :quality           # 0-* [ Sequence::Quality ]
     attr_accessor :readCoverage      # 0-1 integer
     attr_accessor :repository        # 0-* [ Sequence::Repository ]
-    attr_accessor :pointer           # 0-* [ Reference(Sequence) ]
+    attr_accessor :pointer           # 0-* [ Reference() ]
     attr_accessor :structureVariant  # 0-* [ Sequence::StructureVariant ]
 
     def resourceType

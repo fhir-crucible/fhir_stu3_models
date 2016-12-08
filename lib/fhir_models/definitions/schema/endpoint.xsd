@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
+  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -59,22 +59,19 @@
           <xs:element name="contact" minOccurs="0" maxOccurs="unbounded" type="ContactPoint">
             
           </xs:element>
-          <xs:element name="connectionType" minOccurs="1" maxOccurs="1" type="Coding">
-            
-          </xs:element>
-          <xs:element name="method" minOccurs="0" maxOccurs="unbounded" type="Coding">
-            
-          </xs:element>
           <xs:element name="period" minOccurs="0" maxOccurs="1" type="Period">
             
           </xs:element>
-          <xs:element name="address" minOccurs="1" maxOccurs="1" type="uri">
-            
-          </xs:element>
-          <xs:element name="payloadFormat" minOccurs="1" maxOccurs="1" type="string">
+          <xs:element name="connectionType" minOccurs="1" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="payloadType" minOccurs="1" maxOccurs="unbounded" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="payloadMimeType" minOccurs="0" maxOccurs="unbounded" type="code">
+            
+          </xs:element>
+          <xs:element name="address" minOccurs="1" maxOccurs="1" type="uri">
             
           </xs:element>
           <xs:element name="header" minOccurs="0" maxOccurs="unbounded" type="string">
@@ -102,6 +99,9 @@
         
       </xs:enumeration>
       <xs:enumeration value="entered-in-error">
+        
+      </xs:enumeration>
+      <xs:enumeration value="test">
         
       </xs:enumeration>
     </xs:restriction>

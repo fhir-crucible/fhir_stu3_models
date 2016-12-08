@@ -3,7 +3,7 @@
   "id": "medadminexample03",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: medadminexample03</p><p><b>contained</b>: </p><p><b>status</b>: on-hold</p><p><b>medication</b>: id: med0303; Alemtuzumab 10mg/ml (Lemtrada) <span>(Details : {RxNorm code '1594660' = '??', given as 'Alemtuzumab 10mg/ml (Lemtrada)'})</span></p><p><b>patient</b>: <a>Donald Duck</a></p><p><b>encounter</b>: <a>Encounter/f001</a></p><p><b>effectiveTime</b>: Jan 15, 2015 2:30:00 PM --&gt; Jan 15, 2015 2:30:00 PM</p><p><b>prescription</b>: <a>MedicationOrder/medrx0317</a></p><p><b>wasNotGiven</b>: true</p><p><b>reasonNotGiven</b>: Medication not administered because contraindicated <span>(Details : {SNOMED CT code '373147003' = 'Medication not administered because contraindicated', given as 'Medication not administered because contraindicated'})</span></p><p><b>note</b>: Patient started Bupropion this morning - will administer in a reduced dose tomorrow</p></div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: medadminexample03</p><p><b>contained</b>: </p><p><b>status</b>: on-hold</p><p><b>medication</b>: id: med0303; Alemtuzumab 10mg/ml (Lemtrada) <span>(Details : {RxNorm code '1594660' = '1594660', given as 'Alemtuzumab 10mg/ml (Lemtrada)'})</span></p><p><b>patient</b>: <a>Donald Duck</a></p><p><b>encounter</b>: <a>Encounter/f001</a></p><p><b>supportingInformation</b>: <a>Condition/f204</a></p><p><b>effective</b>: Jan 15, 2015 2:30:00 PM --&gt; Jan 15, 2015 2:30:00 PM</p><p><b>prescription</b>: <a>MedicationRequest/medrx0317</a></p><p><b>notGiven</b>: true</p><p><b>reasonNotGiven</b>: Administration of medication not done due to a contraindication (situation) <span>(Details : {SNOMED CT code '373147003' = 'Medication not administered because contraindicated', given as 'Administration of medication not done due to a contraindication (situation)'})</span></p><p><b>note</b>: Patient started Bupropion this morning - will administer in a reduced dose tomorrow</p></div>"
   },
   "contained": [
     {
@@ -31,21 +31,26 @@
   "encounter": {
     "reference": "Encounter/f001"
   },
-  "effectiveTimePeriod": {
+  "supportingInformation": [
+    {
+      "reference": "Condition/f204"
+    }
+  ],
+  "effectivePeriod": {
     "start": "2015-01-15T14:30:00+01:00",
     "end": "2015-01-15T14:30:00+01:00"
   },
   "prescription": {
-    "reference": "MedicationOrder/medrx0317"
+    "reference": "MedicationRequest/medrx0317"
   },
-  "wasNotGiven": true,
+  "notGiven": true,
   "reasonNotGiven": [
     {
       "coding": [
         {
           "system": "http://snomed.info/sct",
           "code": "373147003",
-          "display": "Medication not administered because contraindicated"
+          "display": "Administration of medication not done due to a contraindication (situation)"
         }
       ]
     }

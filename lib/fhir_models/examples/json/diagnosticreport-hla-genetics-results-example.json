@@ -2,40 +2,97 @@
   "resourceType": "DiagnosticReport",
   "id": "hla-1",
   "text": {
-    "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: hla-1</p><p><b>status</b>: final</p><p><b>code</b>: HLA genotyping results <span>(Details )</span></p><p><b>subject</b>: <a>Molecular Lab Patient ID: HOSP-23456</a></p><p><b>effective</b>: May 26, 2015 3:30:10 PM</p><p><b>issued</b>: May 26, 2015 3:30:10 PM</p><p><b>performer</b>: <a>Molecular Diagnostic Laboratory</a></p><p><b>specimen</b>: <a>Molecular Specimen ID: MLD45-Z4-1234</a></p></div>"
+    "status": "extensions",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n        <h3>HLA-A,-B,-C Genotyping Report for Marry Chalmers (MRN: 12345) </h3>\n        <pre>\n        Gene      Allele 1          Allele 2\n        HLA-A     HLA-A*01:01:01:01     HLA-A*01:02\n        HLA-B     HLA-B*15:01:01:01     HLA-B*57:01:01\n        HLA-C     HLA-C*01:02:01        HLA-C*03:04:01:01\n        </pre>\n        <p>Allele assignments based on IMGT/HLA 3.23</p>\n        <p>Issued: 2015-05-26T15:30:10+01:00</p>\n        <p>Method: Next-Generation Sequencing of exons 2 and 3 of HLA Class I genes</p>\n        <p>Lab: ACME labs, Inc</p>\n        <p>Please refer the <a href=\"genomics.html#hla\">implementation guide </a> for this usage example.</p>\n      </div>"
   },
   "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/hla-genotyping-resultsAlleleDatabase",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://www.ebi.ac.uk/ipd/imgt/hla/",
+            "version": "3.23"
+          }
+        ],
+        "text": "IMGT/HLA 3.23"
+      }
+    },
     {
       "url": "http://hl7.org/fhir/StructureDefinition/hla-genotyping-resultsGlstring",
       "extension": [
         {
           "url": "text",
-          "valueString": "HLA-A*01:01:01+HLA-A*24:02:01"
+          "valueString": "HLA-A*01:01:01:01+HLA-A*01:02^HLA-B*15:01:01:01+HLA-B*57:01:01^HLA-C*01:02:01+HLA-C*03:04:01:01"
+        },
+        {
+          "url": "uri",
+          "valueUri": "https://gl.nmdp.org/imgt-hla/3.23.0/multilocus-unphased-genotype/i"
         }
       ]
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/hla-genotyping-resultsMethod",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://www.ncbi.nlm.nih.gov/gtr/",
+            "code": "GTR000000000.0"
+          }
+        ],
+        "text": "Next Generation Sequencing of exons 2 and 3 of HLA Class I genes"
+      }
     }
   ],
   "status": "final",
+  "category": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
+        "code": "GE",
+        "display": "Genetics"
+      }
+    ]
+  },
   "code": {
-    "text": "HLA genotyping results"
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "53767-0",
+        "display": "HLA-A+B+C SBT [Interpretation] by High resolution"
+      }
+    ]
   },
   "subject": {
-    "reference": "Patient/genetics-example2",
-    "display": "Molecular Lab Patient ID: HOSP-23456"
+    "reference": "Patient/123",
+    "display": "Mary Chalmers"
   },
   "effectiveDateTime": "2015-05-26T15:30:10+01:00",
-  "issued": "2015-05-26T15:30:10+01:00",
-  "performer": [
+  "issued": "2014-05-16T10:28:00+01:00",
+  "request": [
     {
-      "reference": "Practitioner/genetics-example2",
-      "display": "Molecular Diagnostic Laboratory"
+      "reference": "DiagnosticRequest/789",
+      "display": "Order for HLA-A,-B,-C genotyping"
     }
   ],
   "specimen": [
     {
-      "reference": "Specimen/genetics-example2",
-      "display": "Molecular Specimen ID: MLD45-Z4-1234"
+      "reference": "Specimen/456",
+      "display": "buccal swab"
+    }
+  ],
+  "result": [
+    {
+      "reference": "Observation/111",
+      "display": "Genotype Observation for for HLA-A"
+    },
+    {
+      "reference": "Observation/222",
+      "display": "Genotype Observation for for HLA-B"
+    },
+    {
+      "reference": "Observation/333",
+      "display": "Genotype Observation for for HLA-C"
     }
   ]
 }

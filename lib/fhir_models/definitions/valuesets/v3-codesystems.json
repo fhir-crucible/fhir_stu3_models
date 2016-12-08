@@ -2,7 +2,7 @@
   "resourceType": "Bundle",
   "id": "v3-valuesets",
   "meta": {
-    "lastUpdated": "2016-08-11T09:23:49.667-04:00"
+    "lastUpdated": "2016-12-07T09:17:27.548-05:00"
   },
   "type": "collection",
   "entry": [
@@ -18,11 +18,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10682"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System CalendarType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -44,11 +45,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.15992"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ManagedParticipationStatus",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -102,11 +104,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.11555"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System RoleClass",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -215,11 +218,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.208"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System QueryResponse",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -273,11 +277,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10981"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TableCellHorizontalAlign",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -395,11 +400,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10747"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ProbabilityDistributionType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -415,11 +421,12 @@
         "resourceType": "ValueSet",
         "id": "v3-ActPriority",
         "url": "http://hl7.org/fhir/ValueSet/v3-ActPriority",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActPriority",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -441,11 +448,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.16031"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System CommunicationFunctionType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -461,11 +469,12 @@
         "resourceType": "ValueSet",
         "id": "v3-ReligiousAffiliation",
         "url": "http://hl7.org/fhir/ValueSet/v3-ReligiousAffiliation",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ReligiousAffiliation",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -487,11 +496,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.19650"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ResponseMode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -513,11 +523,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10196"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActMood",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -607,11 +618,12 @@
         "resourceType": "ValueSet",
         "id": "v3-substanceAdminSubstitution",
         "url": "http://hl7.org/fhir/ValueSet/v3-substanceAdminSubstitution",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System substanceAdminSubstitution",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -627,11 +639,12 @@
         "resourceType": "ValueSet",
         "id": "v3-AmericanIndianAlaskaNativeLanguages",
         "url": "http://hl7.org/fhir/ValueSet/v3-AmericanIndianAlaskaNativeLanguages",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System AmericanIndianAlaskaNativeLanguages",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -653,11 +666,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.155"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System AcknowledgementCondition",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -673,11 +687,12 @@
         "resourceType": "ValueSet",
         "id": "v3-ParticipationMode",
         "url": "http://hl7.org/fhir/ValueSet/v3-ParticipationMode",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ParticipationMode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -731,11 +746,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10310"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TargetAwareness",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -757,11 +773,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.20321"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityNameUseR2",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -783,11 +800,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.1"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System AdministrativeGender",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -803,11 +821,12 @@
         "resourceType": "ValueSet",
         "id": "v3-EntityRisk",
         "url": "http://hl7.org/fhir/ValueSet/v3-EntityRisk",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityRisk",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -925,11 +944,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.15933"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActStatus",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -945,11 +965,12 @@
         "resourceType": "ValueSet",
         "id": "v3-DocumentStorage",
         "url": "http://hl7.org/fhir/ValueSet/v3-DocumentStorage",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System DocumentStorage",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -971,11 +992,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.91"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System QueryPriority",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -991,11 +1013,12 @@
         "resourceType": "ValueSet",
         "id": "v3-TribalEntityUS",
         "url": "http://hl7.org/fhir/ValueSet/v3-TribalEntityUS",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TribalEntityUS",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -1017,11 +1040,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.14761"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ResponseLevel",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -1043,11 +1067,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.17385"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System IntegrityCheckAlgorithm",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -1179,11 +1204,12 @@
         "resourceType": "ValueSet",
         "id": "v3-SpecimenType",
         "url": "http://hl7.org/fhir/ValueSet/v3-SpecimenType",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System SpecimenType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -1292,11 +1318,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.394"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ResponseModality",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -1392,11 +1419,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.16005"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityStatus",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -1412,11 +1440,12 @@
         "resourceType": "ValueSet",
         "id": "v3-DataOperation",
         "url": "http://hl7.org/fhir/ValueSet/v3-DataOperation",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System DataOperation",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -1432,11 +1461,12 @@
         "resourceType": "ValueSet",
         "id": "v3-Race",
         "url": "http://hl7.org/fhir/ValueSet/v3-Race",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System Race",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -1452,11 +1482,12 @@
         "resourceType": "ValueSet",
         "id": "v3-SubstitutionCondition",
         "url": "http://hl7.org/fhir/ValueSet/v3-SubstitutionCondition",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System SubstitutionCondition",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -1520,11 +1551,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.20312"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TelecommunicationCapabilities",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -1540,11 +1572,12 @@
         "resourceType": "ValueSet",
         "id": "v3-AcknowledgementDetailCode",
         "url": "http://hl7.org/fhir/ValueSet/v3-AcknowledgementDetailCode",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System AcknowledgementDetailCode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -1608,11 +1641,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.19613"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActRelationshipSubset",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -1676,11 +1710,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10355"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActRelationshipSplit",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -1734,11 +1769,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.20276"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System IdentifierScope",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -1786,11 +1822,12 @@
         "resourceType": "ValueSet",
         "id": "v3-QueryRequestLimit",
         "url": "http://hl7.org/fhir/ValueSet/v3-QueryRequestLimit",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System QueryRequestLimit",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -1812,11 +1849,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.16899"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActUncertainty",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -1838,11 +1876,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10018"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System HL7UpdateMode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -1864,11 +1903,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.16036"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EmployeeJobClass",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -1890,11 +1930,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.12234"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EncounterAdmissionSource",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2005,11 +2046,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.17704"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActInvoiceElementModifier",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2031,11 +2073,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.11002"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TableRules",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2051,11 +2094,12 @@
         "resourceType": "ValueSet",
         "id": "v3-ObservationValue",
         "url": "http://hl7.org/fhir/ValueSet/v3-ObservationValue",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ObservationValue",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2071,11 +2115,12 @@
         "resourceType": "ValueSet",
         "id": "v3-PersonDisabilityType",
         "url": "http://hl7.org/fhir/ValueSet/v3-PersonDisabilityType",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System PersonDisabilityType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2097,11 +2142,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.15880"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityNamePartType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2117,11 +2163,12 @@
         "resourceType": "ValueSet",
         "id": "v3-MessageWaitingPriority",
         "url": "http://hl7.org/fhir/ValueSet/v3-MessageWaitingPriority",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System MessageWaitingPriority",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2143,11 +2190,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10267"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ParticipationFunction",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2169,11 +2217,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10992"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TableFrame",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2227,11 +2276,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.17422"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System Calendar",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2311,11 +2361,12 @@
         "resourceType": "ValueSet",
         "id": "v3-hl7V3Conformance",
         "url": "http://hl7.org/fhir/ValueSet/v3-hl7V3Conformance",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System hl7V3Conformance",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2372,11 +2423,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.12199"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System LanguageAbilityProficiency",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2392,11 +2444,12 @@
         "resourceType": "ValueSet",
         "id": "v3-ActCode",
         "url": "http://hl7.org/fhir/ValueSet/v3-ActCode",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActCode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2469,11 +2522,12 @@
         "resourceType": "ValueSet",
         "id": "v3-EntityCode",
         "url": "http://hl7.org/fhir/ValueSet/v3-EntityCode",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityCode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2527,11 +2581,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10360"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActRelationshipJoin",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2585,11 +2640,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.12249"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System LanguageAbilityMode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2616,9 +2672,17 @@
         "status": "active",
         "experimental": false,
         "compose": {
-          "import": [
-            "http://hl7.org/fhir/ValueSet/v3-ProvenanceEventCurrentState-AS",
-            "http://hl7.org/fhir/ValueSet/v3-ProvenanceEventCurrentState-DC"
+          "include": [
+            {
+              "valueSet": [
+                "http://hl7.org/fhir/ValueSet/v3-ProvenanceEventCurrentState-AS"
+              ]
+            },
+            {
+              "valueSet": [
+                "http://hl7.org/fhir/ValueSet/v3-ProvenanceEventCurrentState-DC"
+              ]
+            }
           ]
         }
       }
@@ -2661,11 +2725,12 @@
         "resourceType": "ValueSet",
         "id": "v3-ActExposureLevelCode",
         "url": "http://hl7.org/fhir/ValueSet/v3-ActExposureLevelCode",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActExposureLevelCode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2687,11 +2752,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.103"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ProcessingID",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2707,11 +2773,12 @@
         "resourceType": "ValueSet",
         "id": "v3-ContainerCap",
         "url": "http://hl7.org/fhir/ValueSet/v3-ContainerCap",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ContainerCap",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2733,11 +2800,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.271"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System DocumentCompletion",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2759,11 +2827,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.11012"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TableCellScope",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2827,11 +2896,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.14066"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System DeviceAlertLevel",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2847,11 +2917,12 @@
         "resourceType": "ValueSet",
         "id": "v3-Confidentiality",
         "url": "http://hl7.org/fhir/ValueSet/v3-Confidentiality",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System Confidentiality",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2903,11 +2974,12 @@
         "resourceType": "ValueSet",
         "id": "v3-Ethnicity",
         "url": "http://hl7.org/fhir/ValueSet/v3-Ethnicity",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System Ethnicity",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -2923,11 +2995,12 @@
         "resourceType": "ValueSet",
         "id": "v3-RoleCode",
         "url": "http://hl7.org/fhir/ValueSet/v3-RoleCode",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System RoleCode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3013,11 +3086,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.8"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System AcknowledgementType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3039,11 +3113,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.20355"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System hl7Realm",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3133,11 +3208,12 @@
         "resourceType": "ValueSet",
         "id": "v3-ExposureMode",
         "url": "http://hl7.org/fhir/ValueSet/v3-ExposureMode",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ExposureMode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3159,11 +3235,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.12242"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EncounterSpecialCourtesy",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3185,11 +3262,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.18899"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System QueryStatusCode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3211,11 +3289,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.15999"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System RoleStatus",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3237,11 +3316,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.11527"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActClass",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3263,11 +3343,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.19265"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System PatientImportance",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3289,11 +3370,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10893"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System LocalRemoteControlState",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3320,12 +3402,32 @@
         "status": "active",
         "experimental": false,
         "compose": {
-          "import": [
-            "http://hl7.org/fhir/ValueSet/v3-SecurityPolicy",
-            "http://hl7.org/fhir/ValueSet/v3-ObligationPolicy",
-            "http://hl7.org/fhir/ValueSet/v3-RefrainPolicy",
-            "http://hl7.org/fhir/ValueSet/v3-PurposeOfUse",
-            "http://hl7.org/fhir/ValueSet/v3-GeneralPurposeOfUse"
+          "include": [
+            {
+              "valueSet": [
+                "http://hl7.org/fhir/ValueSet/v3-SecurityPolicy"
+              ]
+            },
+            {
+              "valueSet": [
+                "http://hl7.org/fhir/ValueSet/v3-ObligationPolicy"
+              ]
+            },
+            {
+              "valueSet": [
+                "http://hl7.org/fhir/ValueSet/v3-RefrainPolicy"
+              ]
+            },
+            {
+              "valueSet": [
+                "http://hl7.org/fhir/ValueSet/v3-PurposeOfUse"
+              ]
+            },
+            {
+              "valueSet": [
+                "http://hl7.org/fhir/ValueSet/v3-GeneralPurposeOfUse"
+              ]
+            }
           ]
         }
       }
@@ -3384,11 +3486,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.16478"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ContextControl",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3410,11 +3513,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.14908"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System PaymentTerms",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3436,11 +3540,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.17416"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System SetOperator",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3462,11 +3567,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.15888"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityNamePartQualifier",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3556,11 +3662,12 @@
         "resourceType": "ValueSet",
         "id": "v3-ActReason",
         "url": "http://hl7.org/fhir/ValueSet/v3-ActReason",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActReason",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3576,11 +3683,12 @@
         "resourceType": "ValueSet",
         "id": "v3-LivingArrangement",
         "url": "http://hl7.org/fhir/ValueSet/v3-LivingArrangement",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System LivingArrangement",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3634,11 +3742,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.19358"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System AcknowledgementDetailType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3654,11 +3763,12 @@
         "resourceType": "ValueSet",
         "id": "v3-ActSite",
         "url": "http://hl7.org/fhir/ValueSet/v3-ActSite",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActSite",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3680,11 +3790,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.227"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System VaccineManufacturer",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3738,11 +3849,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.20423"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ObservationMethod",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3806,11 +3918,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.190"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System AddressUse",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3826,11 +3939,12 @@
         "resourceType": "ValueSet",
         "id": "v3-CalendarCycle",
         "url": "http://hl7.org/fhir/ValueSet/v3-CalendarCycle",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System CalendarCycle",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3884,11 +3998,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.11523"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System GenderStatus",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3910,11 +4025,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10317"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActRelationshipType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3936,11 +4052,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.14853"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System Charset",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3962,11 +4079,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.11052"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System MapRelationship",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -3988,11 +4106,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.19250"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System CodingRationale",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4014,11 +4133,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10642"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System AddressPartType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4040,11 +4160,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.14054"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ContainerSeparator",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4108,11 +4229,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10896"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EquipmentAlertLevel",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4128,11 +4250,12 @@
         "resourceType": "ValueSet",
         "id": "v3-QueryParameterValue",
         "url": "http://hl7.org/fhir/ValueSet/v3-QueryParameterValue",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System QueryParameterValue",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4154,11 +4277,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10349"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActRelationshipCheckpoint",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4174,11 +4298,12 @@
         "resourceType": "ValueSet",
         "id": "v3-GTSAbbreviation",
         "url": "http://hl7.org/fhir/ValueSet/v3-GTSAbbreviation",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System GTSAbbreviation",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4200,11 +4325,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10609"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System NullFlavor",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4226,11 +4352,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.19823"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ContentProcessingMode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4252,11 +4379,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.15913"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityNameUse",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4320,11 +4448,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10365"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System RelationshipConjunction",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4372,11 +4501,12 @@
         "resourceType": "ValueSet",
         "id": "v3-RouteOfAdministration",
         "url": "http://hl7.org/fhir/ValueSet/v3-RouteOfAdministration",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System RouteOfAdministration",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4430,11 +4560,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.209"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System RelationalOperator",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4530,11 +4661,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10901"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ParticipationType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4556,11 +4688,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.20413"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System RoleLinkStatus",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4774,11 +4907,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.19175"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EducationLevel",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4832,11 +4966,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.78"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ObservationInterpretation",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4858,11 +4993,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.390"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System Sequencing",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4884,11 +5020,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10620"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System CompressionAlgorithm",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4946,11 +5083,12 @@
         "resourceType": "ValueSet",
         "id": "v3-MaritalStatus",
         "url": "http://hl7.org/fhir/ValueSet/v3-MaritalStatus",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System MaritalStatus",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4972,11 +5110,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10706"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TimingEvent",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -4998,11 +5137,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10882"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityClass",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -5024,11 +5164,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.395"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ModifyIndicator",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -5050,11 +5191,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.19833"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TransmissionRelationshipTypeCode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -5076,11 +5218,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.20323"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityNamePartQualifierR2",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -5096,11 +5239,12 @@
         "resourceType": "ValueSet",
         "id": "v3-orderableDrugForm",
         "url": "http://hl7.org/fhir/ValueSet/v3-orderableDrugForm",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System orderableDrugForm",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -5186,11 +5330,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10987"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TableCellVerticalAlign",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -5212,11 +5357,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10282"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ParticipationSignature",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -5238,11 +5384,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10878"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityDeterminer",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -5264,11 +5411,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.11017"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System HtmlLinkType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -5290,11 +5438,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.207"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ProcessingMode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -5316,11 +5465,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.20322"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityNamePartTypeR2",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -5342,11 +5492,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.13988"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityHandling",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -5442,11 +5593,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.10975"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System LocalMarkupIgnore",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -5468,11 +5620,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.11603"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System RoleLinkType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -5488,11 +5641,12 @@
         "resourceType": "ValueSet",
         "id": "v3-ActUSPrivacyLaw",
         "url": "http://hl7.org/fhir/ValueSet/v3-ActUSPrivacyLaw",
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActUSPrivacyLaw",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -5514,11 +5668,12 @@
             "value": "urn:oid:2.16.840.1.113883.1.11.20277"
           }
         ],
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System IdentifierReliability",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23",
+        "date": "2016-11-11",
+        "immutable": true,
         "compose": {
           "include": [
             {
@@ -5538,14 +5693,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.14"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActStatus",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ActStatus",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -5603,14 +5758,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.105"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System RelationalOperator",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-RelationalOperator",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -5658,14 +5813,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.81"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ModifyIndicator",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ModifyIndicator",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -5689,14 +5844,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1113"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ExposureMode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ExposureMode",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -5748,14 +5903,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.91"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System PaymentTerms",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-PaymentTerms",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -5787,14 +5942,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1110"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ContentProcessingMode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ContentProcessingMode",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -5818,14 +5973,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.21"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System Charset",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-Charset",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -5881,14 +6036,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.34"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System DocumentStorage",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-DocumentStorage",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -5922,14 +6077,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.85"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System orderableDrugForm",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-orderableDrugForm",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -6621,7 +6776,7 @@
                                     "display": "Extended Release Enteric Coated Capsule",
                                     "property": [
                                       {
-                                        "code": "notSelectable",
+                                        "code": "inactive",
                                         "valueBoolean": true
                                       }
                                     ]
@@ -6787,14 +6942,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.101"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ProcessingMode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ProcessingMode",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -6826,14 +6981,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1118"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TelecommunicationCapabilities",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-TelecommunicationCapabilities",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -6869,14 +7024,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.84"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ObservationMethod",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ObservationMethod",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -8148,7 +8303,7 @@
             "display": "Nucleic acid probe",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -8166,19 +8321,33 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.16"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System AddressPartType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-AddressPartType",
-        "hierarchyMeaning": "part-of",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
+        "property": [
+          {
+            "code": "partOf",
+            "uri": "http://hl7.org/fhir/codesystem-hierarchy-meaning#part-of",
+            "description": "This relationship indicates that the source concept is a component of the target concept",
+            "type": "code"
+          }
+        ],
         "concept": [
           {
             "code": "ADL",
-            "display": "additional locator"
+            "display": "additional locator",
+            "property": [
+              {
+                "code": "partOf",
+                "valueCode": "AL"
+              }
+            ]
           },
           {
             "code": "AL",
@@ -8196,15 +8365,33 @@
           },
           {
             "code": "BNN",
-            "display": "building number numeric"
+            "display": "building number numeric",
+            "property": [
+              {
+                "code": "partOf",
+                "valueCode": "BNR"
+              }
+            ]
           },
           {
             "code": "BNR",
-            "display": "building number"
+            "display": "building number",
+            "property": [
+              {
+                "code": "partOf",
+                "valueCode": "SAL"
+              }
+            ]
           },
           {
             "code": "BNS",
-            "display": "building number suffix"
+            "display": "building number suffix",
+            "property": [
+              {
+                "code": "partOf",
+                "valueCode": "BNR"
+              }
+            ]
           },
           {
             "code": "CAR",
@@ -8232,27 +8419,63 @@
           },
           {
             "code": "DINST",
-            "display": "delivery installation type"
+            "display": "delivery installation type",
+            "property": [
+              {
+                "code": "partOf",
+                "valueCode": "DAL"
+              }
+            ]
           },
           {
             "code": "DINSTA",
-            "display": "delivery installation area"
+            "display": "delivery installation area",
+            "property": [
+              {
+                "code": "partOf",
+                "valueCode": "DAL"
+              }
+            ]
           },
           {
             "code": "DINSTQ",
-            "display": "delivery installation qualifier"
+            "display": "delivery installation qualifier",
+            "property": [
+              {
+                "code": "partOf",
+                "valueCode": "DAL"
+              }
+            ]
           },
           {
             "code": "DIR",
-            "display": "direction"
+            "display": "direction",
+            "property": [
+              {
+                "code": "partOf",
+                "valueCode": "SAL"
+              }
+            ]
           },
           {
             "code": "DMOD",
-            "display": "delivery mode"
+            "display": "delivery mode",
+            "property": [
+              {
+                "code": "partOf",
+                "valueCode": "DAL"
+              }
+            ]
           },
           {
             "code": "DMODID",
-            "display": "delivery mode identifier"
+            "display": "delivery mode identifier",
+            "property": [
+              {
+                "code": "partOf",
+                "valueCode": "DAL"
+              }
+            ]
           },
           {
             "code": "DPID",
@@ -8260,11 +8483,23 @@
           },
           {
             "code": "INT",
-            "display": "intersection"
+            "display": "intersection",
+            "property": [
+              {
+                "code": "partOf",
+                "valueCode": "AL"
+              }
+            ]
           },
           {
             "code": "POB",
-            "display": "post box"
+            "display": "post box",
+            "property": [
+              {
+                "code": "partOf",
+                "valueCode": "DMODID"
+              }
+            ]
           },
           {
             "code": "PRE",
@@ -8276,23 +8511,53 @@
           },
           {
             "code": "STB",
-            "display": "street name base"
+            "display": "street name base",
+            "property": [
+              {
+                "code": "partOf",
+                "valueCode": "STR"
+              }
+            ]
           },
           {
             "code": "STR",
-            "display": "street name"
+            "display": "street name",
+            "property": [
+              {
+                "code": "partOf",
+                "valueCode": "SAL"
+              }
+            ]
           },
           {
             "code": "STTYP",
-            "display": "street type"
+            "display": "street type",
+            "property": [
+              {
+                "code": "partOf",
+                "valueCode": "STR"
+              }
+            ]
           },
           {
             "code": "UNID",
-            "display": "unit identifier"
+            "display": "unit identifier",
+            "property": [
+              {
+                "code": "partOf",
+                "valueCode": "ADL"
+              }
+            ]
           },
           {
             "code": "UNIT",
-            "display": "unit designator"
+            "display": "unit designator",
+            "property": [
+              {
+                "code": "partOf",
+                "valueCode": "ADL"
+              }
+            ]
           },
           {
             "code": "ZIP",
@@ -8311,14 +8576,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.110"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System RoleClass",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-RoleClass",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -8550,7 +8815,7 @@
                         "display": "self",
                         "property": [
                           {
-                            "code": "notSelectable",
+                            "code": "inactive",
                             "valueBoolean": true
                           }
                         ]
@@ -8730,7 +8995,7 @@
                     "display": "subsumer",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       },
                       {
@@ -8882,7 +9147,7 @@
             "display": "child",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -8892,7 +9157,7 @@
             "display": "credentialed entity",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -8902,7 +9167,7 @@
             "display": "nurse practitioner",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -8912,7 +9177,7 @@
             "display": "nurse",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -8922,7 +9187,7 @@
             "display": "physician assistant",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -8932,7 +9197,7 @@
             "display": "physician",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -8950,14 +9215,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.41"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityClass",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-EntityClass",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -9101,14 +9366,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1100"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System AcknowledgementDetailCode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-AcknowledgementDetailCode",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -9260,14 +9525,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1055"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System Calendar",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-Calendar",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -9287,14 +9552,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.51"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System GenderStatus",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-GenderStatus",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -9318,14 +9583,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1117"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System IdentifierReliability",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-IdentifierReliability",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -9353,14 +9618,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1096"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System QueryParameterValue",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-QueryParameterValue",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -9480,14 +9745,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.108"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ResponseLevel",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ResponseLevel",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -9531,14 +9796,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.63"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System LivingArrangement",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-LivingArrangement",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -9608,14 +9873,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.31"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System DeviceAlertLevel",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-DeviceAlertLevel",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -9647,14 +9912,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1054"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System AmericanIndianAlaskaNativeLanguages",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-AmericanIndianAlaskaNativeLanguages",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -11466,14 +11731,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.109"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ResponseModality",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ResponseModality",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -11501,14 +11766,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1076"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ReligiousAffiliation",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ReligiousAffiliation",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -11852,14 +12117,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1082"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System AcknowledgementDetailType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-AcknowledgementDetailType",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -11886,7 +12151,7 @@
             "code": "ERR",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -11895,7 +12160,7 @@
             "code": "INFO",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -11904,7 +12169,7 @@
             "code": "WARN",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -11922,14 +12187,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.133"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TableCellVerticalAlign",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-TableCellVerticalAlign",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -11961,14 +12226,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1020"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ProbabilityDistributionType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ProbabilityDistributionType",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -12020,14 +12285,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.2"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System MaritalStatus",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-MaritalStatus",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -12083,14 +12348,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1070"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System substanceAdminSubstitution",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-substanceAdminSubstitution",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -12168,14 +12433,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.144"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System VaccineManufacturer",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-VaccineManufacturer",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -12351,14 +12616,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.104"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System Race",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-Race",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -16250,14 +16515,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.137"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TargetAwareness",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-TargetAwareness",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -16297,14 +16562,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.140"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TribalEntityUS",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-TribalEntityUS",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -18616,14 +18881,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.67"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System MapRelationship",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-MapRelationship",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -18651,14 +18916,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.103"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System QueryStatusCode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-QueryStatusCode",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -18694,14 +18959,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1002"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActRelationshipType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ActRelationshipType",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -19539,7 +19804,7 @@
             "display": "curative indication",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -19549,7 +19814,7 @@
             "display": "adjunct curative indication",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -19559,7 +19824,7 @@
             "display": "adjunct mitigation",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -19568,7 +19833,7 @@
             "code": "RACT",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -19577,7 +19842,7 @@
             "code": "SUGG",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -19595,14 +19860,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.107"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System RoleLinkType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-RoleLinkType",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -19652,14 +19917,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1111"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TransmissionRelationshipTypeCode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-TransmissionRelationshipTypeCode",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -19679,14 +19944,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1069"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System SetOperator",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-SetOperator",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -19742,14 +20007,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.42"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityHandling",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-EntityHandling",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -19837,14 +20102,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.46"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityRisk",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-EntityRisk",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -19908,14 +20173,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.89"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ParticipationSignature",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ParticipationSignature",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -19943,14 +20208,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1001"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActMood",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ActMood",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -20110,7 +20375,7 @@
                     "display": "goal criterion",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -20120,7 +20385,7 @@
                     "display": "intent criterion",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ],
@@ -20130,7 +20395,7 @@
                         "display": "promise criterion",
                         "property": [
                           {
-                            "code": "notSelectable",
+                            "code": "inactive",
                             "valueBoolean": true
                           }
                         ]
@@ -20140,7 +20405,7 @@
                         "display": "request criterion",
                         "property": [
                           {
-                            "code": "notSelectable",
+                            "code": "inactive",
                             "valueBoolean": true
                           }
                         ]
@@ -20152,7 +20417,7 @@
                     "display": "risk criterion",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -20192,14 +20457,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1010"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System IntegrityCheckAlgorithm",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-IntegrityCheckAlgorithm",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -20223,14 +20488,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.57"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System HL7UpdateMode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-HL7UpdateMode",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -20288,7 +20553,7 @@
                 "valueBoolean": true
               },
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ],
@@ -20298,7 +20563,7 @@
                 "display": "Set Add",
                 "property": [
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   }
                 ]
@@ -20308,7 +20573,7 @@
                 "display": "Set Add or Change",
                 "property": [
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   }
                 ]
@@ -20318,7 +20583,7 @@
                 "display": "Set Change",
                 "property": [
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   }
                 ]
@@ -20328,7 +20593,7 @@
                 "display": "Set Delete",
                 "property": [
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   }
                 ]
@@ -20340,7 +20605,7 @@
             "display": "Add or Update",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -20350,7 +20615,7 @@
             "display": "Ignore",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -20360,7 +20625,7 @@
             "display": "Verify",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -20378,14 +20643,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.100"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ProcessingID",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ProcessingID",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -20413,14 +20678,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.111"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System RoleCode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-RoleCode",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -21714,7 +21979,7 @@
                     "display": "adopted child",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -21724,7 +21989,7 @@
                     "display": "grandchild",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -21734,7 +21999,7 @@
                     "display": "grandparent",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -21744,7 +22009,7 @@
                     "display": "natural child",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -21754,7 +22019,7 @@
                     "display": "niece/nephew",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -21764,7 +22029,7 @@
                     "display": "parent",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -21774,7 +22039,7 @@
                     "display": "spouse",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -21784,7 +22049,7 @@
                     "display": "step child",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -22735,7 +23000,7 @@
             "code": "DEP",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -22745,7 +23010,7 @@
             "display": "dependent",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -22755,7 +23020,7 @@
             "display": "Family Member",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -22765,7 +23030,7 @@
             "display": "individual",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -22775,7 +23040,7 @@
             "display": "named insured",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -22784,7 +23049,7 @@
             "code": "PSYCHCF",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -22794,7 +23059,7 @@
             "display": "subscriber",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -22812,14 +23077,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.10"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActRelationshipCheckpoint",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ActRelationshipCheckpoint",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -22855,14 +23120,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System AdministrativeGender",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-AdministrativeGender",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -22890,14 +23155,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.113"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System Sequencing",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-Sequencing",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -22925,14 +23190,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1124"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System hl7Realm",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-hl7Realm",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -23170,14 +23435,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.26"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ContainerCap",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ContainerCap",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -23237,14 +23502,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.9"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System CalendarCycle",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-CalendarCycle",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -23404,14 +23669,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1067"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System QueryResponse",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-QueryResponse",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -23443,14 +23708,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.25"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System Confidentiality",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-Confidentiality",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -23512,7 +23777,7 @@
                 "valueBoolean": true
               },
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               },
               {
@@ -23526,7 +23791,7 @@
                 "display": "business",
                 "property": [
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   },
                   {
@@ -23540,7 +23805,7 @@
                 "display": "clinician",
                 "property": [
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   },
                   {
@@ -23554,7 +23819,7 @@
                 "display": "individual",
                 "property": [
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   },
                   {
@@ -23574,7 +23839,7 @@
                 "valueBoolean": true
               },
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               },
               {
@@ -23588,7 +23853,7 @@
                 "display": "substance abuse related",
                 "property": [
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   },
                   {
@@ -23602,7 +23867,7 @@
                 "display": "HIV related",
                 "property": [
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   },
                   {
@@ -23616,7 +23881,7 @@
                 "display": "psychiatry relate",
                 "property": [
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   },
                   {
@@ -23630,7 +23895,7 @@
                 "display": "sexual and domestic violence related",
                 "property": [
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   },
                   {
@@ -23650,7 +23915,7 @@
                 "valueBoolean": true
               },
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               },
               {
@@ -23664,7 +23929,7 @@
                 "display": "celebrity",
                 "property": [
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   },
                   {
@@ -23678,7 +23943,7 @@
                 "display": "sensitive",
                 "property": [
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   },
                   {
@@ -23692,7 +23957,7 @@
                 "display": "taboo",
                 "property": [
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   },
                   {
@@ -23716,14 +23981,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1064"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ParticipationMode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ParticipationMode",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -23805,14 +24070,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.43"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityNamePartQualifier",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-EntityNamePartQualifier",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -23964,7 +24229,7 @@
                 "valueBoolean": true
               },
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ],
@@ -23996,7 +24261,7 @@
                     "valueBoolean": true
                   },
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   }
                 ]
@@ -24024,7 +24289,7 @@
                     "valueBoolean": true
                   },
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   }
                 ]
@@ -24044,7 +24309,7 @@
                     "valueBoolean": true
                   },
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   }
                 ]
@@ -24064,14 +24329,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.18"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System AcknowledgementType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-AcknowledgementType",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -24111,14 +24376,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.112"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System RouteOfAdministration",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-RouteOfAdministration",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -27750,14 +28015,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1126"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ResponseMode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ResponseMode",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -27785,14 +28050,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1057"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ContextControl",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ContextControl",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -27900,14 +28165,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1008"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System NullFlavor",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-NullFlavor",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -28003,7 +28268,7 @@
             "display": "not present",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -28021,14 +28286,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.49"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EquipmentAlertLevel",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-EquipmentAlertLevel",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -28060,14 +28325,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1050"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System AcknowledgementCondition",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-AcknowledgementCondition",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -28095,7 +28360,7 @@
             "display": "Successful only",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -28113,14 +28378,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.93"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System PersonDisabilityType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-PersonDisabilityType",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -28178,14 +28443,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1122"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityNamePartQualifierR2",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-EntityNamePartQualifierR2",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -28335,14 +28600,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.40"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EncounterSpecialCourtesy",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-EncounterSpecialCourtesy",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -28378,14 +28643,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.83"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ObservationInterpretation",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ObservationInterpretation",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -28476,7 +28741,13 @@
               },
               {
                 "code": "AC",
-                "display": "Anti-complementary substances present"
+                "display": "Anti-complementary substances present",
+                "property": [
+                  {
+                    "code": "deprecated",
+                    "valueDateTime": "2016-11-10"
+                  }
+                ]
               },
               {
                 "code": "IE",
@@ -28484,11 +28755,23 @@
               },
               {
                 "code": "QCF",
-                "display": "Quality control failure"
+                "display": "Quality control failure",
+                "property": [
+                  {
+                    "code": "deprecated",
+                    "valueDateTime": "2016-11-10"
+                  }
+                ]
               },
               {
                 "code": "TOX",
-                "display": "Cytotoxic substance present"
+                "display": "Cytotoxic substance present",
+                "property": [
+                  {
+                    "code": "deprecated",
+                    "valueDateTime": "2016-11-10"
+                  }
+                ]
               }
             ]
           },
@@ -28677,6 +28960,16 @@
             ]
           },
           {
+            "code": "HM",
+            "display": "Hold for Medical Review",
+            "property": [
+              {
+                "code": "deprecated",
+                "valueDateTime": "2016-11-10"
+              }
+            ]
+          },
+          {
             "code": "ObservationInterpretationDetection",
             "display": "ObservationInterpretationDetection",
             "property": [
@@ -28739,6 +29032,16 @@
             ]
           },
           {
+            "code": "OBX",
+            "display": "Interpretation qualifiers in separate OBX segments",
+            "property": [
+              {
+                "code": "deprecated",
+                "valueDateTime": "2016-11-10"
+              }
+            ]
+          },
+          {
             "code": "ReactivityObservationInterpretation",
             "display": "ReactivityObservationInterpretation",
             "property": [
@@ -28777,14 +29080,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.106"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System RelationshipConjunction",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-RelationshipConjunction",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -28812,14 +29115,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.12"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActRelationshipJoin",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ActRelationshipJoin",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -28851,14 +29154,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1068"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System RoleStatus",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-RoleStatus",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -28904,14 +29207,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.6"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActClass",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ActClass",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -29517,7 +29820,7 @@
                     "valueBoolean": true
                   },
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   }
                 ],
@@ -29527,7 +29830,7 @@
                     "display": "entry",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -29537,7 +29840,7 @@
                     "display": "organizer",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -29550,7 +29853,7 @@
             "code": "DOCCNTNT",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29559,7 +29862,7 @@
             "code": "DOCLIST",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29568,7 +29871,7 @@
             "code": "DOCLSTITM",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29577,7 +29880,7 @@
             "code": "DOCPARA",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29586,7 +29889,7 @@
             "code": "DOCTBL",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29595,7 +29898,7 @@
             "code": "LINKHTML",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29604,7 +29907,7 @@
             "code": "LOCALATTR",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29613,7 +29916,7 @@
             "code": "LOCALMRKP",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29622,7 +29925,7 @@
             "code": "ordered",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29631,7 +29934,7 @@
             "code": "REFR",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29640,7 +29943,7 @@
             "code": "TBLCOL",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29649,7 +29952,7 @@
             "code": "TBLCOLGP",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29658,7 +29961,7 @@
             "code": "TBLDATA",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29667,7 +29970,7 @@
             "code": "TBLHDR",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29676,7 +29979,7 @@
             "code": "TBLROW",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29685,7 +29988,7 @@
             "code": "tbody",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29694,7 +29997,7 @@
             "code": "tfoot",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29703,7 +30006,7 @@
             "code": "thead",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29712,7 +30015,7 @@
             "code": "unordered",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -29730,14 +30033,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1116"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System IdentifierScope",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-IdentifierScope",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -29769,14 +30072,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.50"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System Ethnicity",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-Ethnicity",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -29974,14 +30277,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.7"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActPriority",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ActPriority",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -30059,14 +30362,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.27"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ContainerSeparator",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ContainerSeparator",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -30090,14 +30393,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1114"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActExposureLevelCode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ActExposureLevelCode",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -30145,14 +30448,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1056"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System CommunicationFunctionType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-CommunicationFunctionType",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -30180,14 +30483,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1063"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ObservationValue",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ObservationValue",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -30527,6 +30830,34 @@
               {
                 "code": "A4",
                 "display": "severe reaction"
+              }
+            ]
+          },
+          {
+            "code": "_CompositeMeasureScoring",
+            "display": "CompositeMeasureScoring",
+            "property": [
+              {
+                "code": "notSelectable",
+                "valueBoolean": true
+              }
+            ],
+            "concept": [
+              {
+                "code": "ALLORNONESCR",
+                "display": "All-or-nothing Scoring"
+              },
+              {
+                "code": "LINEARSCR",
+                "display": "Linear Scoring"
+              },
+              {
+                "code": "OPPORSCR",
+                "display": "Opportunity Scoring"
+              },
+              {
+                "code": "WEIGHTSCR",
+                "display": "Weighted Scoring"
               }
             ]
           },
@@ -31439,7 +31770,7 @@
                 "valueBoolean": true
               },
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -31453,7 +31784,7 @@
                 "valueBoolean": true
               },
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -31467,7 +31798,7 @@
                 "valueBoolean": true
               },
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -31481,7 +31812,7 @@
                 "valueBoolean": true
               },
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -31499,14 +31830,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1077"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EducationLevel",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-EducationLevel",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -31558,14 +31889,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1061"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityStatus",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-EntityStatus",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -31593,7 +31924,7 @@
                 "display": "terminated",
                 "property": [
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   }
                 ]
@@ -31617,14 +31948,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1075"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System PatientImportance",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-PatientImportance",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -31676,14 +32007,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.30"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityDeterminer",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-EntityDeterminer",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -31723,7 +32054,7 @@
                 "display": "described quantified",
                 "property": [
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   },
                   {
@@ -31747,14 +32078,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.65"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System LocalMarkupIgnore",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-LocalMarkupIgnore",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -31778,14 +32109,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.60"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System LanguageAbilityMode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-LanguageAbilityMode",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -31825,14 +32156,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.90"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ParticipationType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ParticipationType",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -31956,7 +32287,7 @@
                         "display": "therapeutic agent",
                         "property": [
                           {
-                            "code": "notSelectable",
+                            "code": "inactive",
                             "valueBoolean": true
                           }
                         ]
@@ -32152,14 +32483,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1017"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System CalendarType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-CalendarType",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -32179,14 +32510,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1137"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System RoleLinkStatus",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-RoleLinkStatus",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -32228,14 +32559,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1119"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System AddressUse",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-AddressUse",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -32363,14 +32694,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.66"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System LocalRemoteControlState",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-LocalRemoteControlState",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -32394,14 +32725,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1022"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System GTSAbbreviation",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-GTSAbbreviation",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -32587,14 +32918,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.88"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ParticipationFunction",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ParticipationFunction",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -32878,14 +33209,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.131"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TableCellHorizontalAlign",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-TableCellHorizontalAlign",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -32921,14 +33252,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.129"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System SpecimenType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-SpecimenType",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -33456,14 +33787,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.58"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System HtmlLinkType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-HtmlLinkType",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -33539,14 +33870,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1120"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityNameUseR2",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-EntityNameUseR2",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -33660,14 +33991,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1052"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActSite",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ActSite",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -33923,14 +34254,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.44"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityNamePartType",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-EntityNamePartType",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -33966,14 +34297,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.139"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TimingEvent",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-TimingEvent",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -34063,14 +34394,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.13"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActRelationshipSplit",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ActRelationshipSplit",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -34102,14 +34433,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.45"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityNameUse",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-EntityNameUse",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -34207,14 +34538,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1051"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActInvoiceElementModifier",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ActInvoiceElementModifier",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -34246,14 +34577,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1123"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System DataOperation",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-DataOperation",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -34355,14 +34686,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1083"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System MessageWaitingPriority",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-MessageWaitingPriority",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -34390,14 +34721,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.61"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System LanguageAbilityProficiency",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-LanguageAbilityProficiency",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -34429,14 +34760,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1099"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActRelationshipSubset",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ActRelationshipSubset",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -34528,14 +34859,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.33"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System DocumentCompletion",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-DocumentCompletion",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -34587,14 +34918,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.102"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System QueryPriority",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-QueryPriority",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -34618,14 +34949,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1121"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityNamePartTypeR2",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-EntityNamePartTypeR2",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -34657,14 +34988,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.37"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EncounterAdmissionSource",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-EncounterAdmissionSource",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -34692,14 +35023,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1112"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System QueryRequestLimit",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-QueryRequestLimit",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -34739,14 +35070,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.8"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActReason",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ActReason",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -35526,7 +35857,7 @@
                     "display": "no user permission",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -36096,7 +36427,7 @@
                 "valueBoolean": true
               },
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ],
@@ -36110,7 +36441,7 @@
                     "valueBoolean": true
                   },
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   }
                 ]
@@ -36121,7 +36452,7 @@
             "code": "BONUS",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -36131,7 +36462,7 @@
             "display": "Children only",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -36141,7 +36472,7 @@
             "display": "Dependents only",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -36151,7 +36482,7 @@
             "display": "Employee and children",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -36160,7 +36491,7 @@
             "code": "EDU",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -36170,7 +36501,7 @@
             "display": "Employee only",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -36180,7 +36511,7 @@
             "display": "Employee and spouse",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -36190,7 +36521,7 @@
             "display": "Family",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -36200,7 +36531,7 @@
             "display": "Individual",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -36209,7 +36540,7 @@
             "code": "INVOICE",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -36218,7 +36549,7 @@
             "code": "PROA",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -36227,7 +36558,7 @@
             "code": "RECOV",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -36236,7 +36567,7 @@
             "code": "RETRO",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -36246,7 +36577,7 @@
             "display": "Spouse and children",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -36256,7 +36587,7 @@
             "display": "Spouse only",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -36265,7 +36596,7 @@
             "code": "TRAN",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -36283,14 +36614,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1009"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System CompressionAlgorithm",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-CompressionAlgorithm",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -36330,14 +36661,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1125"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System hl7V3Conformance",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-hl7V3Conformance",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -36377,14 +36708,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1062"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ManagedParticipationStatus",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ManagedParticipationStatus",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -36426,14 +36757,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1060"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EntityCode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-EntityCode",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -37019,7 +37350,7 @@
                     "valueBoolean": true
                   },
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   }
                 ],
@@ -37033,7 +37364,7 @@
                         "valueBoolean": true
                       },
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -37207,14 +37538,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1059"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System EmployeeJobClass",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-EmployeeJobClass",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -37238,14 +37569,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1053"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActUncertainty",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ActUncertainty",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -37269,14 +37600,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1071"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System SubstitutionCondition",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-SubstitutionCondition",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -37328,14 +37659,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.132"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TableCellScope",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-TableCellScope",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -37367,14 +37698,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1138"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActUSPrivacyLaw",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ActUSPrivacyLaw",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -37470,14 +37801,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.4"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System ActCode",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-ActCode",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -37703,7 +38034,7 @@
                 "display": "fee for service",
                 "property": [
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   }
                 ],
@@ -38425,7 +38756,7 @@
                     "valueBoolean": true
                   },
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   }
                 ],
@@ -38435,7 +38766,7 @@
                     "display": "Eligible",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -38445,7 +38776,7 @@
                     "display": "Not Eligible",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -38465,8 +38796,8 @@
             ],
             "concept": [
               {
-                "code": "_ActCoverageAgeLimitCode",
-                "display": "ActCoverageAgeLimitCode",
+                "code": "_ActCoverageQuantityLimitCode",
+                "display": "ActCoverageQuantityLimitCode",
                 "property": [
                   {
                     "code": "notSelectable",
@@ -38523,7 +38854,7 @@
                     "valueBoolean": true
                   },
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   }
                 ]
@@ -39527,7 +39858,7 @@
                             "display": "co-insurance",
                             "property": [
                               {
-                                "code": "notSelectable",
+                                "code": "inactive",
                                 "valueBoolean": true
                               }
                             ]
@@ -39713,7 +40044,7 @@
                         "valueBoolean": true
                       },
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -40731,12 +41062,12 @@
                             "display": "psychiatry information sensitivity"
                           },
                           {
-                            "code": "SOC",
-                            "display": "social services sensitivity"
-                          },
-                          {
                             "code": "SCA",
                             "display": "sickle cell anemia"
+                          },
+                          {
+                            "code": "SOC",
+                            "display": "social services sensitivity"
                           },
                           {
                             "code": "SDV",
@@ -40759,7 +41090,7 @@
                             "display": "sickle cell",
                             "property": [
                               {
-                                "code": "notSelectable",
+                                "code": "inactive",
                                 "valueBoolean": true
                               }
                             ]
@@ -41253,7 +41584,7 @@
                     "display": "Booster Immunization",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -41263,7 +41594,7 @@
                     "display": "Initial Immunization",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -41885,6 +42216,14 @@
                   {
                     "code": "AGGREGATE",
                     "display": "aggregate measure observation"
+                  },
+                  {
+                    "code": "CMPMSRMTH",
+                    "display": "composite measure method"
+                  },
+                  {
+                    "code": "CMPMSRSCRWGHT",
+                    "display": "component measure scoring weight"
                   },
                   {
                     "code": "COPY",
@@ -42693,7 +43032,7 @@
                                 "valueBoolean": true
                               },
                               {
-                                "code": "notSelectable",
+                                "code": "inactive",
                                 "valueBoolean": true
                               }
                             ],
@@ -42905,7 +43244,7 @@
                     "valueBoolean": true
                   },
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   }
                 ],
@@ -42915,7 +43254,7 @@
                     "display": "coating",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -42925,7 +43264,7 @@
                     "display": "color",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -42935,7 +43274,7 @@
                     "display": "imprint code",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -42945,7 +43284,7 @@
                     "display": "logo",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -42955,7 +43294,7 @@
                     "display": "scoring",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -42965,7 +43304,7 @@
                     "display": "shape",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -42975,7 +43314,7 @@
                     "display": "size",
                     "property": [
                       {
-                        "code": "notSelectable",
+                        "code": "inactive",
                         "valueBoolean": true
                       }
                     ]
@@ -43225,7 +43564,7 @@
                 "valueBoolean": true
               },
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ],
@@ -43239,7 +43578,7 @@
                     "valueBoolean": true
                   },
                   {
-                    "code": "notSelectable",
+                    "code": "inactive",
                     "valueBoolean": true
                   }
                 ]
@@ -43255,7 +43594,7 @@
                 "valueBoolean": true
               },
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -43264,7 +43603,7 @@
             "code": "COPAY",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -43273,7 +43612,7 @@
             "code": "DEDUCT",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -43282,7 +43621,7 @@
             "code": "DOSEIND",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -43291,7 +43630,7 @@
             "code": "PRA",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -43301,7 +43640,7 @@
             "display": "Storage",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               },
               {
@@ -43323,14 +43662,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.136"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TableRules",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-TableRules",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {
@@ -43366,14 +43705,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.1074"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System CodingRationale",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-CodingRationale",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "property": [
           {
@@ -43409,7 +43748,7 @@
             "display": "HL7 Specified or Mandated",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -43419,7 +43758,7 @@
             "display": "Both HL7 mandated and the original code",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -43429,7 +43768,7 @@
             "display": "Source (or original) code",
             "property": [
               {
-                "code": "notSelectable",
+                "code": "inactive",
                 "valueBoolean": true
               }
             ]
@@ -43447,14 +43786,14 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:2.16.840.1.113883.5.134"
         },
-        "version": "2016-03-23",
+        "version": "2016-11-11",
         "name": "v3 Code System TableFrame",
         "status": "active",
         "experimental": false,
-        "date": "2016-03-23T00:00:00-04:00",
+        "date": "2016-11-11T00:00:00-05:00",
         "caseSensitive": true,
         "valueSet": "http://hl7.org/fhir/ValueSet/v3-TableFrame",
-        "hierarchyMeaning": "subsumes",
+        "hierarchyMeaning": "is-a",
         "content": "complete",
         "concept": [
           {

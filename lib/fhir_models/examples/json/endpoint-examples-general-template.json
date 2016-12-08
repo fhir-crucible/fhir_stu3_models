@@ -21,16 +21,9 @@
           "display": "Telstra Health"
         },
         "connectionType": {
-          "code": "rest-hook"
+          "system": "http://hl7.org/fhir/endpoint-connection-type",
+          "code": "hl7-fhir-rest"
         },
-        "method": [
-          {
-            "system": "http://hl7.org/fhir/ValueSet/http-verb",
-            "code": "POST"
-          }
-        ],
-        "address": "https://sqlonfhir-dstu2.azurewebsites.net/fhir",
-        "payloadFormat": "application/fhir+xml",
         "payloadType": [
           {
             "coding": [
@@ -39,7 +32,11 @@
               }
             ]
           }
-        ]
+        ],
+        "payloadMimeType": [
+          "application/fhir+xml"
+        ],
+        "address": "https://sqlonfhir-dstu2.azurewebsites.net/fhir"
       }
     },
     {
@@ -57,16 +54,9 @@
           "display": "Telstra Health"
         },
         "connectionType": {
-          "code": "rest-hook"
+          "system": "http://hl7.org/fhir/endpoint-connection-type",
+          "code": "hl7-fhir-rest"
         },
-        "method": [
-          {
-            "system": "http://hl7.org/fhir/ValueSet/http-verb",
-            "code": "POST"
-          }
-        ],
-        "address": "https://sqlonfhir-dstu2.azurewebsites.net/fhir",
-        "payloadFormat": "application/fhir+xml",
         "payloadType": [
           {
             "coding": [
@@ -75,7 +65,11 @@
               }
             ]
           }
-        ]
+        ],
+        "payloadMimeType": [
+          "application/fhir+xml"
+        ],
+        "address": "https://sqlonfhir-dstu2.azurewebsites.net/fhir"
       }
     },
     {
@@ -93,16 +87,9 @@
           "display": "Telstra Health"
         },
         "connectionType": {
-          "code": "rest-hook"
+          "system": "http://hl7.org/fhir/endpoint-connection-type",
+          "code": "hl7-fhir-rest"
         },
-        "method": [
-          {
-            "system": "http://hl7.org/fhir/ValueSet/http-verb",
-            "code": "POST"
-          }
-        ],
-        "address": "https://sqlonfhir-dstu2.azurewebsites.net/fhir",
-        "payloadFormat": "application/fhir+xml",
         "payloadType": [
           {
             "coding": [
@@ -111,7 +98,11 @@
               }
             ]
           }
-        ]
+        ],
+        "payloadMimeType": [
+          "application/fhir+xml"
+        ],
+        "address": "https://sqlonfhir-dstu2.azurewebsites.net/fhir"
       }
     },
     {
@@ -129,16 +120,9 @@
           "display": "Epic demo organization"
         },
         "connectionType": {
-          "code": "rest-hook"
+          "system": "http://hl7.org/fhir/endpoint-connection-type",
+          "code": "hl7-fhir-rest"
         },
-        "method": [
-          {
-            "system": "http://hl7.org/fhir/ValueSet/http-verb",
-            "code": "POST"
-          }
-        ],
-        "address": "https://open.epic.com/Interface/FHIR",
-        "payloadFormat": "application/fhir+json",
         "payloadType": [
           {
             "coding": [
@@ -147,7 +131,11 @@
               }
             ]
           }
-        ]
+        ],
+        "payloadMimeType": [
+          "application/fhir+json"
+        ],
+        "address": "https://open.epic.com/Interface/FHIR"
       }
     },
     {
@@ -157,7 +145,7 @@
         "id": "75",
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n              Subscription receiver, ReferralRequest<br/>\n              Address: subscriptions@example.org</div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n              Subscription receiver, ReferralRequest<br/>\n              Address: mailto:subscriptions@example.org</div>"
         },
         "status": "active",
         "name": "Subscription receiver",
@@ -165,16 +153,9 @@
           "display": "Telstra Health"
         },
         "connectionType": {
-          "code": "email"
+          "system": "http://hl7.org/fhir/endpoint-connection-type",
+          "code": "secure-email"
         },
-        "method": [
-          {
-            "system": "http://hl7.org/fhir/ValueSet/http-verb",
-            "code": "POST PUT DELETE"
-          }
-        ],
-        "address": "subscriptions@example.org",
-        "payloadFormat": "application/fhir+xml",
         "payloadType": [
           {
             "coding": [
@@ -183,7 +164,11 @@
               }
             ]
           }
-        ]
+        ],
+        "payloadMimeType": [
+          "application/fhir+xml"
+        ],
+        "address": "mailto:subscriptions@example.org"
       }
     },
     {
@@ -201,16 +186,9 @@
           "display": "Telstra Health"
         },
         "connectionType": {
-          "code": "message"
+          "system": "http://hl7.org/fhir/endpoint-connection-type",
+          "code": "hl7-fhir-msg"
         },
-        "method": [
-          {
-            "system": "http://hl7.org/fhir/ValueSet/http-verb",
-            "code": "POST"
-          }
-        ],
-        "address": "https://sqlonfhir-dstu2.azurewebsites.net/fhir",
-        "payloadFormat": "PDF",
         "payloadType": [
           {
             "coding": [
@@ -219,7 +197,11 @@
               }
             ]
           }
-        ]
+        ],
+        "payloadMimeType": [
+          "PDF"
+        ],
+        "address": "https://sqlonfhir-dstu2.azurewebsites.net/fhir"
       }
     },
     {
@@ -237,16 +219,9 @@
           "display": "Epic demo organization"
         },
         "connectionType": {
-          "code": "MLLP"
+          "system": "http://hl7.org/fhir/endpoint-connection-type",
+          "code": "hl7v2-mllp"
         },
-        "method": [
-          {
-            "system": "http://hl7.org/fhir/ValueSet/http-verb",
-            "code": "POST"
-          }
-        ],
-        "address": "127.0.0.1",
-        "payloadFormat": "HL7v2",
         "payloadType": [
           {
             "coding": [
@@ -255,7 +230,11 @@
               }
             ]
           }
-        ]
+        ],
+        "payloadMimeType": [
+          "HL7v2"
+        ],
+        "address": "127.0.0.1"
       }
     },
     {
@@ -273,16 +252,9 @@
           "display": "Epic demo organization"
         },
         "connectionType": {
-          "code": "SOAP"
+          "system": "http://hl7.org/fhir/endpoint-connection-type",
+          "code": "ihe-xds"
         },
-        "method": [
-          {
-            "system": "http://hl7.org/fhir/ValueSet/http-verb",
-            "code": "POST"
-          }
-        ],
-        "address": "https://open.epic.com/Interface/XDS.b",
-        "payloadFormat": "XDA/XDS",
         "payloadType": [
           {
             "coding": [
@@ -291,7 +263,11 @@
               }
             ]
           }
-        ]
+        ],
+        "payloadMimeType": [
+          "XDA/XDS"
+        ],
+        "address": "https://open.epic.com/Interface/XDS.b"
       }
     },
     {
@@ -309,16 +285,9 @@
           "display": "Multi-site Co."
         },
         "connectionType": {
-          "code": "rest-hook"
+          "system": "http://hl7.org/fhir/endpoint-connection-type",
+          "code": "dicom-wado-rs"
         },
-        "method": [
-          {
-            "system": "http://hl7.org/fhir/ValueSet/http-verb",
-            "code": "GET OPTIONS"
-          }
-        ],
-        "address": "https://pacs.hospital.org/dicomweb",
-        "payloadFormat": "DICOM WADO-RS",
         "payloadType": [
           {
             "coding": [
@@ -327,7 +296,11 @@
               }
             ]
           }
-        ]
+        ],
+        "payloadMimeType": [
+          "DICOM WADO-RS"
+        ],
+        "address": "https://pacs.hospital.org/dicomweb"
       }
     },
     {
@@ -345,16 +318,9 @@
           "display": "Multi-site Co."
         },
         "connectionType": {
-          "code": "rest-hook"
+          "system": "http://hl7.org/fhir/endpoint-connection-type",
+          "code": "dicom-qido-rs"
         },
-        "method": [
-          {
-            "system": "http://hl7.org/fhir/ValueSet/http-verb",
-            "code": "GET OPTIONS"
-          }
-        ],
-        "address": "https://pacs.hospital.org/dicomweb",
-        "payloadFormat": "DICOM QIDO-RS",
         "payloadType": [
           {
             "coding": [
@@ -363,7 +329,11 @@
               }
             ]
           }
-        ]
+        ],
+        "payloadMimeType": [
+          "DICOM QIDO-RS"
+        ],
+        "address": "https://pacs.hospital.org/dicomweb"
       }
     },
     {
@@ -381,16 +351,9 @@
           "display": "Multi-site Co."
         },
         "connectionType": {
-          "code": "rest-hook"
+          "system": "http://hl7.org/fhir/endpoint-connection-type",
+          "code": "dicom-stow-rs"
         },
-        "method": [
-          {
-            "system": "http://hl7.org/fhir/ValueSet/http-verb",
-            "code": "POST OPTIONS"
-          }
-        ],
-        "address": "https://pacs.hospital.org/dicomweb",
-        "payloadFormat": "DICOM STOW-RS",
         "payloadType": [
           {
             "coding": [
@@ -399,7 +362,11 @@
               }
             ]
           }
-        ]
+        ],
+        "payloadMimeType": [
+          "DICOM STOW-RS"
+        ],
+        "address": "https://pacs.hospital.org/dicomweb"
       }
     },
     {
@@ -417,16 +384,9 @@
           "display": "Multi-site Co."
         },
         "connectionType": {
-          "code": "rest-hook"
+          "system": "http://hl7.org/fhir/endpoint-connection-type",
+          "code": "dicom-stow-rs"
         },
-        "method": [
-          {
-            "system": "http://hl7.org/fhir/ValueSet/http-verb",
-            "code": "GET PUT POST DELETE OPTIONS"
-          }
-        ],
-        "address": "https://pacs.hospital.org/dicomweb",
-        "payloadFormat": "DICOM STOW-RS",
         "payloadType": [
           {
             "coding": [
@@ -435,7 +395,11 @@
               }
             ]
           }
-        ]
+        ],
+        "payloadMimeType": [
+          "DICOM STOW-RS"
+        ],
+        "address": "https://pacs.hospital.org/dicomweb"
       }
     },
     {
@@ -453,16 +417,9 @@
           "display": "Multi-site Co."
         },
         "connectionType": {
-          "code": "websocket"
+          "system": "http://hl7.org/fhir/endpoint-connection-type",
+          "code": "dicom-wado-uri"
         },
-        "method": [
-          {
-            "system": "http://hl7.org/fhir/ValueSet/http-verb",
-            "code": "GET"
-          }
-        ],
-        "address": "https://pacs.hospital.org/wadoUri",
-        "payloadFormat": "DICOM WADO-URI",
         "payloadType": [
           {
             "coding": [
@@ -471,7 +428,11 @@
               }
             ]
           }
-        ]
+        ],
+        "payloadMimeType": [
+          "DICOM WADO-URI"
+        ],
+        "address": "https://pacs.hospital.org/wadoUri"
       }
     },
     {
@@ -489,16 +450,9 @@
           "display": "Multi-site Co."
         },
         "connectionType": {
-          "code": "websocket"
+          "system": "http://hl7.org/fhir/endpoint-connection-type",
+          "code": "ihe-iid"
         },
-        "method": [
-          {
-            "system": "http://hl7.org/fhir/ValueSet/http-verb",
-            "code": "GET"
-          }
-        ],
-        "address": "https://pacs.hospital.org/IHEInvokeImageDisplay",
-        "payloadFormat": "IHE IID",
         "payloadType": [
           {
             "coding": [
@@ -507,7 +461,11 @@
               }
             ]
           }
-        ]
+        ],
+        "payloadMimeType": [
+          "IHE IID"
+        ],
+        "address": "https://pacs.hospital.org/IHEInvokeImageDisplay"
       }
     }
   ]

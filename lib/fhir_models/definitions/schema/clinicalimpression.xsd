@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
+  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -79,7 +79,7 @@
           <xs:element name="problem" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
-          <xs:element name="investigations" type="ClinicalImpression.Investigations" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="investigation" type="ClinicalImpression.Investigation" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
           <xs:element name="protocol" minOccurs="0" maxOccurs="unbounded" type="uri">
@@ -97,9 +97,6 @@
           <xs:element name="prognosisReference" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
-          <xs:element name="plan" minOccurs="0" maxOccurs="unbounded" type="Reference">
-            
-          </xs:element>
           <xs:element name="action" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
@@ -110,7 +107,7 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="ClinicalImpression.Investigations">
+  <xs:complexType name="ClinicalImpression.Investigation">
     
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -135,7 +132,7 @@
             <xs:element name="itemCodeableConcept" type="CodeableConcept"/>
             <xs:element name="itemReference" type="Reference"/>
           </xs:choice>
-          <xs:element name="cause" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="basis" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
         </xs:sequence>

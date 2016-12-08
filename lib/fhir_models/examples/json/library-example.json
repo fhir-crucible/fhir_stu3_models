@@ -21,14 +21,14 @@
     ]
   },
   "status": "draft",
+  "date": "2015-07-22",
   "description": "Common Logic for adherence to Chlamydia Screening guidelines",
-  "publicationDate": "2015-07-22",
   "topic": [
     {
       "text": "Chlamydia Screening"
     }
   ],
-  "relatedResource": [
+  "relatedArtifact": [
     {
       "type": "depends-on",
       "resource": {
@@ -47,8 +47,10 @@
       ]
     }
   ],
-  "content": {
-    "contentType": "text/plain",
-    "url": "http://cqlrepository.org/ChlamydiaScreening_Common.cql"
-  }
+  "content": [
+    {
+      "contentType": "text/cql",
+      "url": "http://cqlrepository.org/ChlamydiaScreening_Common.cql"
+    }
+  ]
 }

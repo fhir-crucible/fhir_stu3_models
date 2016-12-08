@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
+  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -89,7 +89,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="linkId" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="linkId" minOccurs="1" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="definition" minOccurs="0" maxOccurs="1" type="uri">
             
           </xs:element>
           <xs:element name="concept" minOccurs="0" maxOccurs="unbounded" type="Coding">
@@ -101,7 +104,7 @@
           <xs:element name="text" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="QuestionnaireItemType">
+          <xs:element name="type" minOccurs="0" maxOccurs="1" type="QuestionnaireItemType">
             
           </xs:element>
           <xs:element name="enableWhen" type="Questionnaire.EnableWhen" minOccurs="0" maxOccurs="unbounded">
@@ -202,9 +205,6 @@
         
       </xs:enumeration>
       <xs:enumeration value="display">
-        
-      </xs:enumeration>
-      <xs:enumeration value="question">
         
       </xs:enumeration>
       <xs:enumeration value="boolean">

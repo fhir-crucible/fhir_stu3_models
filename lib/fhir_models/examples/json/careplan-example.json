@@ -9,6 +9,7 @@
     {
       "resourceType": "Condition",
       "id": "p1",
+      "clinicalStatus": "active",
       "verificationStatus": "confirmed",
       "code": {
         "text": "Obesity"
@@ -26,7 +27,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/goal-target",
           "extension": [
             {
-              "url": "goal-target.measure",
+              "url": "measure",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -38,7 +39,7 @@
               }
             },
             {
-              "url": "goal-target.detail",
+              "url": "detail",
               "valueQuantity": {
                 "value": 80,
                 "system": "http://units-of-measure.org",
@@ -48,33 +49,33 @@
           ]
         }
       ],
-      "subject": {
-        "reference": "Patient/example",
-        "display": "Peter James Chalmers"
-      },
+      "status": "planned",
       "description": {
         "text": "Target weight is 80 kg"
       },
-      "status": "planned"
+      "subject": {
+        "reference": "Patient/example",
+        "display": "Peter James Chalmers"
+      }
     }
   ],
+  "status": "active",
   "subject": {
     "reference": "Patient/example",
     "display": "Peter James Chalmers"
   },
-  "status": "active",
   "period": {
     "end": "2013-01-01"
   },
+  "careTeam": [
+    {
+      "reference": "CareTeam/example"
+    }
+  ],
   "addresses": [
     {
       "reference": "#p1",
       "display": "obesity"
-    }
-  ],
-  "careTeam": [
-    {
-      "reference": "CareTeam/example"
     }
   ],
   "goal": [
@@ -96,6 +97,7 @@
         "code": {
           "text": "a code for weight measurement"
         },
+        "status": "completed",
         "prohibited": false,
         "scheduledTiming": {
           "repeat": {

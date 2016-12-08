@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
+  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -47,85 +47,70 @@
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             
           </xs:element>
-          <xs:element name="status" minOccurs="1" maxOccurs="1" type="ExplanationOfBenefitStatus">
+          <xs:element name="status" minOccurs="0" maxOccurs="1" type="ExplanationOfBenefitStatus">
             
           </xs:element>
-          <xs:choice minOccurs="0" maxOccurs="1">
-            
-            <xs:element name="authorIdentifier" type="Identifier"/>
-            <xs:element name="authorReference" type="Reference"/>
-          </xs:choice>
-          <xs:choice minOccurs="0" maxOccurs="1">
-            
-            <xs:element name="claimIdentifier" type="Identifier"/>
-            <xs:element name="claimReference" type="Reference"/>
-          </xs:choice>
-          <xs:choice minOccurs="0" maxOccurs="1">
-            
-            <xs:element name="claimResponseIdentifier" type="Identifier"/>
-            <xs:element name="claimResponseReference" type="Reference"/>
-          </xs:choice>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="subType" minOccurs="0" maxOccurs="unbounded" type="Coding">
+          <xs:element name="subType" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="ruleset" minOccurs="0" maxOccurs="1" type="Coding">
-            
-          </xs:element>
-          <xs:element name="originalRuleset" minOccurs="0" maxOccurs="1" type="Coding">
-            
-          </xs:element>
-          <xs:element name="created" minOccurs="0" maxOccurs="1" type="dateTime">
+          <xs:element name="patient" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
           <xs:element name="billablePeriod" minOccurs="0" maxOccurs="1" type="Period">
             
           </xs:element>
-          <xs:element name="outcome" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="created" minOccurs="0" maxOccurs="1" type="dateTime">
+            
+          </xs:element>
+          <xs:element name="enterer" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="insurer" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="provider" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="organization" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="referral" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="facility" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="claim" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="claimResponse" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="outcome" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="disposition" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:choice minOccurs="0" maxOccurs="1">
-            
-            <xs:element name="providerIdentifier" type="Identifier"/>
-            <xs:element name="providerReference" type="Reference"/>
-          </xs:choice>
-          <xs:choice minOccurs="0" maxOccurs="1">
-            
-            <xs:element name="organizationIdentifier" type="Identifier"/>
-            <xs:element name="organizationReference" type="Reference"/>
-          </xs:choice>
-          <xs:choice minOccurs="0" maxOccurs="1">
-            
-            <xs:element name="facilityIdentifier" type="Identifier"/>
-            <xs:element name="facilityReference" type="Reference"/>
-          </xs:choice>
           <xs:element name="related" type="ExplanationOfBenefit.Related" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:choice minOccurs="0" maxOccurs="1">
+          <xs:element name="prescription" minOccurs="0" maxOccurs="1" type="Reference">
             
-            <xs:element name="prescriptionIdentifier" type="Identifier"/>
-            <xs:element name="prescriptionReference" type="Reference"/>
-          </xs:choice>
-          <xs:choice minOccurs="0" maxOccurs="1">
+          </xs:element>
+          <xs:element name="originalPrescription" minOccurs="0" maxOccurs="1" type="Reference">
             
-            <xs:element name="originalPrescriptionIdentifier" type="Identifier"/>
-            <xs:element name="originalPrescriptionReference" type="Reference"/>
-          </xs:choice>
+          </xs:element>
           <xs:element name="payee" type="ExplanationOfBenefit.Payee" minOccurs="0" maxOccurs="1">
             
           </xs:element>
-          <xs:choice minOccurs="0" maxOccurs="1">
-            
-            <xs:element name="referralIdentifier" type="Identifier"/>
-            <xs:element name="referralReference" type="Reference"/>
-          </xs:choice>
           <xs:element name="information" type="ExplanationOfBenefit.Information" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="careTeam" type="ExplanationOfBenefit.CareTeam" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
           <xs:element name="diagnosis" type="ExplanationOfBenefit.Diagnosis" minOccurs="0" maxOccurs="unbounded">
@@ -134,15 +119,10 @@
           <xs:element name="procedure" type="ExplanationOfBenefit.Procedure" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:choice minOccurs="1" maxOccurs="1">
-            
-            <xs:element name="patientIdentifier" type="Identifier"/>
-            <xs:element name="patientReference" type="Reference"/>
-          </xs:choice>
           <xs:element name="precedence" minOccurs="0" maxOccurs="1" type="positiveInt">
             
           </xs:element>
-          <xs:element name="coverage" type="ExplanationOfBenefit.Coverage" minOccurs="1" maxOccurs="1">
+          <xs:element name="insurance" type="ExplanationOfBenefit.Insurance" minOccurs="0" maxOccurs="1">
             
           </xs:element>
           <xs:element name="accident" type="ExplanationOfBenefit.Accident" minOccurs="0" maxOccurs="1">
@@ -160,9 +140,6 @@
           <xs:element name="addItem" type="ExplanationOfBenefit.AddItem" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="missingTeeth" type="ExplanationOfBenefit.MissingTeeth" minOccurs="0" maxOccurs="unbounded">
-            
-          </xs:element>
           <xs:element name="totalCost" minOccurs="0" maxOccurs="1" type="Money">
             
           </xs:element>
@@ -175,7 +152,7 @@
           <xs:element name="payment" type="ExplanationOfBenefit.Payment" minOccurs="0" maxOccurs="1">
             
           </xs:element>
-          <xs:element name="form" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="form" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="note" type="ExplanationOfBenefit.Note" minOccurs="0" maxOccurs="unbounded">
@@ -193,12 +170,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:choice minOccurs="0" maxOccurs="1">
+          <xs:element name="claim" minOccurs="0" maxOccurs="1" type="Reference">
             
-            <xs:element name="claimIdentifier" type="Identifier"/>
-            <xs:element name="claimReference" type="Reference"/>
-          </xs:choice>
-          <xs:element name="relationship" minOccurs="0" maxOccurs="1" type="Coding">
+          </xs:element>
+          <xs:element name="relationship" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="reference" minOccurs="0" maxOccurs="1" type="Identifier">
@@ -213,10 +188,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="resourceType" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="resourceType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1">
@@ -233,10 +208,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="category" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:element name="category" minOccurs="1" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="code" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="code" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1">
@@ -248,7 +223,36 @@
             
             <xs:element name="valueString" type="string"/>
             <xs:element name="valueQuantity" type="Quantity"/>
+            <xs:element name="valueAttachment" type="Attachment"/>
+            <xs:element name="valueReference" type="Reference"/>
           </xs:choice>
+          <xs:element name="reason" minOccurs="0" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ExplanationOfBenefit.CareTeam">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="sequence" minOccurs="1" maxOccurs="1" type="positiveInt">
+            
+          </xs:element>
+          <xs:element name="provider" minOccurs="1" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="responsible" minOccurs="0" maxOccurs="1" type="boolean">
+            
+          </xs:element>
+          <xs:element name="role" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="qualification" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -261,13 +265,15 @@
           <xs:element name="sequence" minOccurs="1" maxOccurs="1" type="positiveInt">
             
           </xs:element>
-          <xs:element name="diagnosis" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:choice minOccurs="1" maxOccurs="1">
+            
+            <xs:element name="diagnosisCodeableConcept" type="CodeableConcept"/>
+            <xs:element name="diagnosisReference" type="Reference"/>
+          </xs:choice>
+          <xs:element name="type" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="type" minOccurs="0" maxOccurs="unbounded" type="Coding">
-            
-          </xs:element>
-          <xs:element name="drg" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="packageCode" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
         </xs:sequence>
@@ -287,23 +293,21 @@
           </xs:element>
           <xs:choice minOccurs="1" maxOccurs="1">
             
-            <xs:element name="procedureCoding" type="Coding"/>
+            <xs:element name="procedureCodeableConcept" type="CodeableConcept"/>
             <xs:element name="procedureReference" type="Reference"/>
           </xs:choice>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="ExplanationOfBenefit.Coverage">
+  <xs:complexType name="ExplanationOfBenefit.Insurance">
     
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:choice minOccurs="0" maxOccurs="1">
+          <xs:element name="coverage" minOccurs="0" maxOccurs="1" type="Reference">
             
-            <xs:element name="coverageIdentifier" type="Identifier"/>
-            <xs:element name="coverageReference" type="Reference"/>
-          </xs:choice>
+          </xs:element>
           <xs:element name="preAuthRef" minOccurs="0" maxOccurs="unbounded" type="string">
             
           </xs:element>
@@ -319,7 +323,7 @@
           <xs:element name="date" minOccurs="0" maxOccurs="1" type="date">
             
           </xs:element>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1">
@@ -339,25 +343,31 @@
           <xs:element name="sequence" minOccurs="1" maxOccurs="1" type="positiveInt">
             
           </xs:element>
-          <xs:element name="careTeam" type="ExplanationOfBenefit.CareTeam" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="careTeamLinkId" minOccurs="0" maxOccurs="unbounded" type="positiveInt">
             
           </xs:element>
           <xs:element name="diagnosisLinkId" minOccurs="0" maxOccurs="unbounded" type="positiveInt">
             
           </xs:element>
-          <xs:element name="revenue" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="procedureLinkId" minOccurs="0" maxOccurs="unbounded" type="positiveInt">
             
           </xs:element>
-          <xs:element name="category" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="informationLinkId" minOccurs="0" maxOccurs="unbounded" type="positiveInt">
             
           </xs:element>
-          <xs:element name="service" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="revenue" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="modifier" minOccurs="0" maxOccurs="unbounded" type="Coding">
+          <xs:element name="category" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="programCode" minOccurs="0" maxOccurs="unbounded" type="Coding">
+          <xs:element name="service" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="modifier" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="programCode" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1">
@@ -367,7 +377,7 @@
           </xs:choice>
           <xs:choice minOccurs="0" maxOccurs="1">
             
-            <xs:element name="locationCoding" type="Coding"/>
+            <xs:element name="locationCodeableConcept" type="CodeableConcept"/>
             <xs:element name="locationAddress" type="Address"/>
             <xs:element name="locationReference" type="Reference"/>
           </xs:choice>
@@ -380,19 +390,16 @@
           <xs:element name="factor" minOccurs="0" maxOccurs="1" type="decimal">
             
           </xs:element>
-          <xs:element name="points" minOccurs="0" maxOccurs="1" type="decimal">
-            
-          </xs:element>
           <xs:element name="net" minOccurs="0" maxOccurs="1" type="Money">
             
           </xs:element>
           <xs:element name="udi" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
-          <xs:element name="bodySite" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="bodySite" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="subSite" minOccurs="0" maxOccurs="unbounded" type="Coding">
+          <xs:element name="subSite" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="noteNumber" minOccurs="0" maxOccurs="unbounded" type="positiveInt">
@@ -411,38 +418,15 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="ExplanationOfBenefit.CareTeam">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:choice minOccurs="1" maxOccurs="1">
-            
-            <xs:element name="providerIdentifier" type="Identifier"/>
-            <xs:element name="providerReference" type="Reference"/>
-          </xs:choice>
-          <xs:element name="responsible" minOccurs="0" maxOccurs="1" type="boolean">
-            
-          </xs:element>
-          <xs:element name="role" minOccurs="0" maxOccurs="1" type="Coding">
-            
-          </xs:element>
-          <xs:element name="qualification" minOccurs="0" maxOccurs="1" type="Coding">
-            
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="ExplanationOfBenefit.Adjudication">
     
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="category" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:element name="category" minOccurs="1" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="reason" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="reason" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="amount" minOccurs="0" maxOccurs="1" type="Money">
@@ -463,22 +447,22 @@
           <xs:element name="sequence" minOccurs="1" maxOccurs="1" type="positiveInt">
             
           </xs:element>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="revenue" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="revenue" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="category" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="category" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="service" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="service" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="modifier" minOccurs="0" maxOccurs="unbounded" type="Coding">
+          <xs:element name="modifier" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="programCode" minOccurs="0" maxOccurs="unbounded" type="Coding">
+          <xs:element name="programCode" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="Quantity">
@@ -488,9 +472,6 @@
             
           </xs:element>
           <xs:element name="factor" minOccurs="0" maxOccurs="1" type="decimal">
-            
-          </xs:element>
-          <xs:element name="points" minOccurs="0" maxOccurs="1" type="decimal">
             
           </xs:element>
           <xs:element name="net" minOccurs="0" maxOccurs="1" type="Money">
@@ -520,22 +501,22 @@
           <xs:element name="sequence" minOccurs="1" maxOccurs="1" type="positiveInt">
             
           </xs:element>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="revenue" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="revenue" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="category" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="category" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="service" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="service" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="modifier" minOccurs="0" maxOccurs="unbounded" type="Coding">
+          <xs:element name="modifier" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="programCode" minOccurs="0" maxOccurs="unbounded" type="Coding">
+          <xs:element name="programCode" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="Quantity">
@@ -545,9 +526,6 @@
             
           </xs:element>
           <xs:element name="factor" minOccurs="0" maxOccurs="1" type="decimal">
-            
-          </xs:element>
-          <xs:element name="points" minOccurs="0" maxOccurs="1" type="decimal">
             
           </xs:element>
           <xs:element name="net" minOccurs="0" maxOccurs="1" type="Money">
@@ -577,7 +555,7 @@
           <xs:element name="priorDate" minOccurs="0" maxOccurs="1" type="date">
             
           </xs:element>
-          <xs:element name="priorMaterial" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="priorMaterial" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
         </xs:sequence>
@@ -592,16 +570,16 @@
           <xs:element name="sequenceLinkId" minOccurs="0" maxOccurs="unbounded" type="positiveInt">
             
           </xs:element>
-          <xs:element name="revenue" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="revenue" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="category" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="category" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="service" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="service" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="modifier" minOccurs="0" maxOccurs="unbounded" type="Coding">
+          <xs:element name="modifier" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="fee" minOccurs="0" maxOccurs="1" type="Money">
@@ -625,16 +603,16 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="revenue" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="revenue" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="category" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="category" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="service" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="service" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="modifier" minOccurs="0" maxOccurs="unbounded" type="Coding">
+          <xs:element name="modifier" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="fee" minOccurs="0" maxOccurs="1" type="Money">
@@ -650,36 +628,18 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="ExplanationOfBenefit.MissingTeeth">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="tooth" minOccurs="1" maxOccurs="1" type="Coding">
-            
-          </xs:element>
-          <xs:element name="reason" minOccurs="0" maxOccurs="1" type="Coding">
-            
-          </xs:element>
-          <xs:element name="extractionDate" minOccurs="0" maxOccurs="1" type="date">
-            
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="ExplanationOfBenefit.Payment">
     
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="adjustment" minOccurs="0" maxOccurs="1" type="Money">
             
           </xs:element>
-          <xs:element name="adjustmentReason" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="adjustmentReason" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="date" minOccurs="0" maxOccurs="1" type="date">
@@ -703,13 +663,13 @@
           <xs:element name="number" minOccurs="0" maxOccurs="1" type="positiveInt">
             
           </xs:element>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="text" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="language" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="language" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
         </xs:sequence>
@@ -721,10 +681,13 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="category" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:element name="category" minOccurs="1" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="subCategory" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="subCategory" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="excluded" minOccurs="0" maxOccurs="1" type="boolean">
             
           </xs:element>
           <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
@@ -733,13 +696,13 @@
           <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="network" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="network" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="unit" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="unit" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="term" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="term" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="financial" type="ExplanationOfBenefit.Financial" minOccurs="0" maxOccurs="unbounded">
@@ -754,7 +717,7 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="Coding">
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1">

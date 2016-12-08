@@ -5,57 +5,6 @@
     "status": "generated",
     "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Attachment which is unsolicited</div>"
   },
-  "contained": [
-    {
-      "resourceType": "Organization",
-      "id": "provider",
-      "identifier": [
-        {
-          "system": "http://www.jurisdiction.com/provideroffices",
-          "value": "3456"
-        }
-      ]
-    },
-    {
-      "resourceType": "Organization",
-      "id": "payor",
-      "identifier": [
-        {
-          "system": "http://www.jurisdiction.com/insurer",
-          "value": "123456"
-        }
-      ]
-    },
-    {
-      "resourceType": "Claim",
-      "id": "claim",
-      "identifier": [
-        {
-          "system": "http://happyvalley.com/claim",
-          "value": "12345"
-        }
-      ],
-      "status": "draft",
-      "type": {
-        "system": "http://hl7.org/fhir/ex-claimtype",
-        "code": "oral"
-      },
-      "patientReference": {
-        "reference": "Patient/1"
-      }
-    },
-    {
-      "resourceType": "ClaimResponse",
-      "id": "claimresponse",
-      "identifier": [
-        {
-          "system": "http://www.BenefitsInc.com/fhir/claimresponse",
-          "value": "R3500"
-        }
-      ],
-      "status": "draft"
-    }
-  ],
   "identifier": [
     {
       "system": "http://www.providerco.com/communication",
@@ -76,19 +25,31 @@
   },
   "topic": [
     {
-      "reference": "#claim"
+      "identifier": {
+        "system": "http://happyvalley.com/claim",
+        "value": "12345"
+      }
     },
     {
-      "reference": "#claimresponse"
+      "identifier": {
+        "system": "http://www.BenefitsInc.com/fhir/claimresponse",
+        "value": "R3500"
+      }
     }
   ],
   "sent": "2016-06-12T18:01:10-08:00",
   "sender": {
-    "reference": "#provider"
+    "identifier": {
+      "system": "http://www.jurisdiction.com/provideroffices",
+      "value": "3456"
+    }
   },
   "recipient": [
     {
-      "reference": "#payor"
+      "identifier": {
+        "system": "http://www.jurisdiction.com/insurer",
+        "value": "123456"
+      }
     }
   ],
   "payload": [

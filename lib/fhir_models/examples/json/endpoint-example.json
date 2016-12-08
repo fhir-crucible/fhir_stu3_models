@@ -3,7 +3,7 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\tHACC Program for Peter James Chalmers at HL7 Healthcare 15 Sept 2014 - current<br/>\n\t\t\twas on leave from 22 Sept - 24 Sept while in respite care\n\t\t</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\tHealth Intersections CarePlan Hub<br/>\n\t\t\tCarePlans can be uploaded to/from this loccation\n\t\t</div>"
   },
   "identifier": [
     {
@@ -23,21 +23,13 @@
       "use": "work"
     }
   ],
-  "connectionType": {
-    "system": "http://hl7.org/fhir/ValueSet/subscription-channel-type",
-    "code": "rest-hook"
-  },
-  "method": [
-    {
-      "system": "http://hl7.org/fhir/ValueSet/http-verb",
-      "code": "PUT"
-    }
-  ],
   "period": {
     "start": "2014-09-01"
   },
-  "address": "http://fhir3.healthintersections.com.au/open/CarePlan",
-  "payloadFormat": "application/fhir+xml",
+  "connectionType": {
+    "system": "http://hl7.org/fhir/endpoint-connection-type",
+    "code": "hl7-fhir-rest"
+  },
   "payloadType": [
     {
       "coding": [
@@ -48,6 +40,10 @@
       ]
     }
   ],
+  "payloadMimeType": [
+    "application/fhir+xml"
+  ],
+  "address": "http://fhir3.healthintersections.com.au/open/CarePlan",
   "header": [
     "bearer-code BASGS534s4"
   ],

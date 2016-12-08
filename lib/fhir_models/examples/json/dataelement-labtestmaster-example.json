@@ -61,7 +61,12 @@
           "code": "decimal"
         }
       ],
-      "exampleDecimal": 10.0,
+      "example": [
+        {
+          "label": "Simple",
+          "valueDecimal": 10.0
+        }
+      ],
       "mapping": [
         {
           "identity": "loinc",

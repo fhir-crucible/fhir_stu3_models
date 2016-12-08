@@ -3,7 +3,7 @@
   "id": "example-udi3",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example-udi3</p><p><b>identifier</b>: Serial Number = XYZ4567890123 45678</p><p><b>udiCarrier</b>: Universal Device Identifier = +H123PARTNO1234567890120/$$420020216LOT123456789012345/SXYZ4567890123 45678/16D20130202C</p><p><b>status</b>: not-available</p><p><b>type</b>: DI =H123PARTNO1234567890120 <span>(Details : {http://hl7.org/fhir/NamingSystem/hibcc-di code 'H123PARTNO1234567890120' = '??)</span></p><p><b>lotNumber</b>: LOT123456789012345</p><p><b>manufacturer</b>: GlobalMed, Inc</p><p><b>manufactureDate</b>: Feb 2, 2013</p><p><b>expirationDate</b>: Feb 2, 2020</p><p><b>model</b>: Ultra Implantable</p><p><b>patient</b>: <a>Patient/example</a></p></div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example-udi3</p><p><b>identifier</b>: Serial Number = XYZ4567890123 45678</p><p><b>udiCarrier</b>: Universal Device Identifier = +H123PARTNO1234567890120/$$420020216LOT123456789012345/SXYZ4567890123 45678/16D20130202C</p><p><b>status</b>: not-available</p><p><b>type</b>: DI =H123PARTNO1234567890120 <span>(Details : {http://hl7.org/fhir/NamingSystem/hibcc-di code 'H123PARTNO1234567890120' = 'H123PARTNO1234567890120)</span></p><p><b>lotNumber</b>: LOT123456789012345</p><p><b>manufacturer</b>: GlobalMed, Inc</p><p><b>manufactureDate</b>: Feb 2, 2013</p><p><b>expirationDate</b>: Feb 2, 2020</p><p><b>model</b>: Ultra Implantable</p><p><b>patient</b>: <a>Patient/example</a></p></div>"
   },
   "identifier": [
     {

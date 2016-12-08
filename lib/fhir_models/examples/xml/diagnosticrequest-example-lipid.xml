@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><DiagnosticRequest xmlns="http://hl7.org/fhir">
 	<id value="lipid"/>
-	<text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: lipid</p><p><b>contained</b>: </p><p><b>identifier</b>: Placer = 2345234234234</p><p><b>status</b>: active</p><p><b>stage</b>: Original Order <span>(Details : {http://hl7.org/fhir/request-stage code &#39;original-order&#39; = &#39;Original Order)</span></p><p><b>code</b>: Lipid Panel <span>(Details : {http://acme.org/tests code &#39;LIPID&#39; = &#39;??)</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>context</b>: <a>Encounter/example</a></p><p><b>occurrence</b>: May 2, 2013 4:16:00 PM</p><p><b>requester</b>: <a>Practitioner/example</a></p><p><b>performer</b>: <a>Practitioner/example</a></p><p><b>reason</b>: Fam hx-ischem heart dis <span>(Details : {ICD-9 code &#39;V173&#39; = &#39;??&#39;, given as &#39;Fam hx-ischem heart dis&#39;})</span></p><p><b>supportingInformation</b>: id: fasting; status: final; Fasting status - Reported <span>(Details : {LOINC code &#39;49541-6&#39; = &#39;Fasting status - Reported&#39;, given as &#39;Fasting status - Reported&#39;})</span>; ????; Yes <span>(Details : {http://hl7.org/fhir/v2/0136 code &#39;Y&#39; = &#39;Yes&#39;, given as &#39;Yes&#39;})</span></p><p><b>note</b>: patient is afraid of needles</p></div></text><contained>
+	<text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: lipid</p><p><b>contained</b>: </p><p><b>identifier</b>: Placer = 2345234234234</p><p><b>status</b>: active</p><p><b>intent</b>: original-order</p><p><b>code</b>: Lipid Panel <span>(Details : {http://acme.org/tests code &#39;LIPID&#39; = &#39;LIPID)</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>context</b>: <a>Encounter/example</a></p><p><b>occurrence</b>: May 2, 2013 4:16:00 PM</p><p><b>requester</b>: <a>Practitioner/example</a></p><p><b>performer</b>: <a>Practitioner/example</a></p><p><b>reasonCode</b>: Fam hx-ischem heart dis <span>(Details : {ICD-9 code &#39;V173&#39; = &#39;V173&#39;, given as &#39;Fam hx-ischem heart dis&#39;})</span></p><p><b>supportingInformation</b>: id: fasting; status: final; Fasting status - Reported <span>(Details : {LOINC code &#39;49541-6&#39; = &#39;Fasting status - Reported&#39;, given as &#39;Fasting status - Reported&#39;})</span>; ????; Yes <span>(Details : {http://hl7.org/fhir/v2/0136 code &#39;Y&#39; = &#39;Yes&#39;, given as &#39;Yes&#39;})</span></p><p><b>note</b>: patient is afraid of needles</p></div></text><contained>
 		<Observation>
 			<id value="fasting"/>
 			<!--      the mandatory quality flag:      -->
@@ -36,12 +36,7 @@
 		<value value="2345234234234"/>
 	</identifier>
 	<status value="active"/>
-	<stage>
-		<coding>
-			<system value="http://hl7.org/fhir/request-stage"/>
-			<code value="original-order"/>
-		</coding>
-	</stage>
+	<intent value="original-order"/>
 	<code>
 		<coding>
 			<system value="http://acme.org/tests"/>
@@ -62,13 +57,13 @@
 	<performer>
 		<reference value="Practitioner/example"/>
 	</performer>
-	<reason>
+	<reasonCode>
 		<coding>
 			<system value="http://hl7.org/fhir/sid/icd-9"/>
 			<code value="V173"/>
 			<display value="Fam hx-ischem heart dis"/>
 		</coding>
-	</reason>
+	</reasonCode>
 	<supportingInformation>
 		<reference value="#fasting"/>
 	</supportingInformation>

@@ -33,21 +33,15 @@
   },
   "name": [
     {
-      "family": [
-        "du",
-        "Marché"
-      ],
-      "_family": [
-        {
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/StructureDefinitioniso-21090#qualifier",
-              "valueCode": "VV"
-            }
-          ]
-        },
-        null
-      ],
+      "family": "du Marché",
+      "_family": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix",
+            "valueString": "VV"
+          }
+        ]
+      },
       "given": [
         "Bénédicte"
       ]

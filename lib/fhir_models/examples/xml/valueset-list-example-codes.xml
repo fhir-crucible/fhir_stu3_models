@@ -3,7 +3,7 @@
 <ValueSet xmlns="http://hl7.org/fhir">
   <id value="list-example-codes"/>
   <meta>
-    <lastUpdated value="2016-08-11T09:23:49.667-04:00"/>
+    <lastUpdated value="2016-12-07T09:17:27.548-05:00"/>
     <profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"/>
   </meta>
   <text>
@@ -27,19 +27,20 @@
     <system value="urn:ietf:rfc:3986"/>
     <value value="urn:oid:2.16.840.1.113883.4.642.2.173"/>
   </identifier>
-  <version value="1.6.0"/>
+  <version value="1.8.0"/>
   <name value="Example Use Codes for List"/>
   <status value="draft"/>
   <experimental value="true"/>
   <publisher value="FHIR Project"/>
   <contact>
     <telecom>
-      <system value="other"/>
+      <system value="url"/>
       <value value="http://hl7.org/fhir"/>
     </telecom>
   </contact>
-  <date value="2016-08-11T09:23:49-04:00"/>
+  <date value="2016-12-07T09:17:27-05:00"/>
   <description value="Example use codes for the List resource - typical kinds of use."/>
+  <immutable value="true"/>
   <compose>
     <include>
       <system value="http://hl7.org/fhir/list-example-use-codes"/>

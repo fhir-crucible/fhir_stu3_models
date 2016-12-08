@@ -127,22 +127,20 @@ module FHIR
       # check multiple types
       multiple_types = self.class::MULTIPLE_TYPES rescue {}
       multiple_types.each do |prefix, suffixes|
-        count = 0
         present = []
         suffixes.each do |suffix|
           typename = "#{prefix}#{suffix[0].upcase}#{suffix[1..-1]}"
-          count += 1 if errors[typename]
           # check which multiple data types are actually present, not just errors
           # actually, this might be allowed depending on cardinality
           value = instance_variable_get("@#{typename}")
           present << typename if !value.nil? || (value.is_a?(Array) && !value.empty?)
         end
-        errors[prefix] = ["#{prefix}[x]: more than one type present."] if count > 1
+        errors[prefix] = ["#{prefix}[x]: more than one type present."] if present.length > 1
         # remove errors for suffixes that are not present
         suffixes.each do |suffix|
           typename = "#{prefix}#{suffix[0].upcase}#{suffix[1..-1]}"
           errors.delete(typename) unless present.include?(typename)
-        end
+        end if present.length==1
       end
       errors.keep_if { |_k, v| (v && !v.empty?) }
     end
@@ -289,7 +287,7 @@ module FHIR
       if uri == 'http://hl7.org/fhir/ValueSet/content-type' || uri == 'http://www.rfc-editor.org/bcp/bcp13.txt'
         matches = MIME::Types[value]
         json_or_xml = value.downcase.include?('xml') || value.downcase.include?('json')
-        known_weird = ['application/cql+text'].include?(value)
+        known_weird = ['text/cql', 'application/cql+text'].include?(value)
         valid = json_or_xml || known_weird || (!matches.nil? && !matches.empty?)
       elsif uri == 'http://hl7.org/fhir/ValueSet/languages' || uri == 'http://tools.ietf.org/html/bcp47'
         has_region = !(value =~ /-/).nil?

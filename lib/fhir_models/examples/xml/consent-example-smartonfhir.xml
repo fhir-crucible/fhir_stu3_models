@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><Consent xmlns="http://hl7.org/fhir"> 
   <id value="consent-example-smartonfhir"/>
-  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: consent-example-smartonfhir</p><p><b>status</b>: active</p><p><b>dateTime</b>: Jun 23, 2016 5:02:33 PM</p><p><b>period</b>: Jun 23, 2016 5:02:33 PM --&gt; Jun 23, 2016 5:32:33 PM</p><p><b>patient</b>: <a>Patient/xcda</a></p><p><b>consentor</b>: <a>RelatedPerson/peter</a></p><p><b>organization</b>: <a>Organization/example</a></p><p><b>policy</b>: <a>http://hl7.org/fhir/ConsentPolicy/opt-in</a></p><h3>Excepts</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Action</b></td><td><b>Class</b></td></tr><tr><td>*</td><td>permit</td><td>Access <span>(Details : {http://hl7.org/fhir/consentaction code &#39;access&#39; = &#39;Access)</span></td><td>MedicationOrder (Details: http://hl7.org/fhir/resource-types code MedicationOrder = &#39;MedicationOrder&#39;, stated as &#39;null&#39;)</td></tr></table></div></text><status value="active"/>
+  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: consent-example-smartonfhir</p><p><b>status</b>: active</p><p><b>dateTime</b>: Jun 23, 2016 5:02:33 PM</p><p><b>period</b>: Jun 23, 2016 5:02:33 PM --&gt; Jun 23, 2016 5:32:33 PM</p><p><b>patient</b>: <a>Patient/xcda</a></p><p><b>consentor</b>: <a>RelatedPerson/peter</a></p><p><b>organization</b>: <a>Organization/example</a></p><p><b>policy</b>: <a>http://hl7.org/fhir/ConsentPolicy/opt-in</a></p><h3>Excepts</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Action</b></td><td><b>Class</b></td></tr><tr><td>*</td><td>permit</td><td>Access <span>(Details : {http://hl7.org/fhir/consentaction code &#39;access&#39; = &#39;Access)</span></td><td>MedicationRequest (Details: http://hl7.org/fhir/resource-types code MedicationRequest = &#39;MedicationRequest&#39;, stated as &#39;null&#39;)</td></tr></table></div></text><status value="active"/>
   <dateTime value="2016-06-23T17:02:33+10:00"/>
   <period>
     <start value="2016-06-23T17:02:33+10:00"/>
@@ -34,7 +34,7 @@
 
   <!--   each scope that relates to FHIR resource access is represented as an exception   -->
   <except>  
-    <!--   this except corresponds to MedicationOrder/read   -->
+    <!--   this except corresponds to MedicationRequest/read   -->
     <type value="permit"/>
     <!--   no actors here, or anything, just read/write and the resource type   -->
     <action> 
@@ -45,7 +45,7 @@
     </action>
     <class>
       <system value="http://hl7.org/fhir/resource-types"/>
-      <code value="MedicationOrder"/>
+      <code value="MedicationRequest"/>
     </class>
   </except>
 </Consent>

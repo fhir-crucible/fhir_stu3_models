@@ -91,5 +91,11 @@
       "required": "required",
       "status": "accepted"
     }
+  ],
+  "requestedPeriod": [
+    {
+      "start": "2016-06-02",
+      "end": "2016-06-09"
+    }
   ]
 }

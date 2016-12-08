@@ -26,9 +26,7 @@
   "name": [
     {
       "use": "official",
-      "family": [
-        "Everywoman"
-      ],
+      "family": "Everywoman",
       "given": [
         "Eve"
       ]

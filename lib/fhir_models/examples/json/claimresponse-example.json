@@ -12,22 +12,35 @@
     }
   ],
   "status": "active",
-  "requestReference": {
-    "reference": "http://www.BenefitsInc.com/fhir/Claim/15476332402"
-  },
   "created": "2014-08-16",
-  "organizationIdentifier": {
-    "system": "http://www.jurisdiction.org/insurers",
-    "value": "555123"
+  "insurer": {
+    "identifier": {
+      "system": "http://www.jurisdiction.org/insurers",
+      "value": "555123"
+    }
+  },
+  "requestOrganization": {
+    "reference": "Organization/1"
+  },
+  "request": {
+    "reference": "http://www.BenefitsInc.com/fhir/oralhealthclaim/15476332402"
   },
   "outcome": {
-    "system": "http://hl7.org/fhir/remittance-outcome",
-    "code": "complete"
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/remittance-outcome",
+        "code": "complete"
+      }
+    ]
   },
   "disposition": "Claim settled as per contract.",
   "payeeType": {
-    "system": "http://hl7.org/fhir/payeetype",
-    "code": "provider"
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/payeetype",
+        "code": "provider"
+      }
+    ]
   },
   "item": [
     {
@@ -35,7 +48,11 @@
       "adjudication": [
         {
           "category": {
-            "code": "eligible"
+            "coding": [
+              {
+                "code": "eligible"
+              }
+            ]
           },
           "amount": {
             "value": 135.57,
@@ -45,7 +62,11 @@
         },
         {
           "category": {
-            "code": "copay"
+            "coding": [
+              {
+                "code": "copay"
+              }
+            ]
           },
           "amount": {
             "value": 10.00,
@@ -55,13 +76,21 @@
         },
         {
           "category": {
-            "code": "eligpercent"
+            "coding": [
+              {
+                "code": "eligpercent"
+              }
+            ]
           },
           "value": 80.00
         },
         {
           "category": {
-            "code": "benefit"
+            "coding": [
+              {
+                "code": "benefit"
+              }
+            ]
           },
           "amount": {
             "value": 100.47,
@@ -84,8 +113,12 @@
   },
   "payment": {
     "type": {
-      "system": "http://hl7.org/fhir/ValueSet/ex-paymenttype",
-      "code": "complete"
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/ValueSet/ex-paymenttype",
+          "code": "complete"
+        }
+      ]
     },
     "date": "2014-08-31",
     "amount": {

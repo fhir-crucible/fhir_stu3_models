@@ -4,13 +4,14 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = ["composition", "message", "type"]
+    SEARCH_PARAMS = []
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Bundle.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Bundle.meta', 'min'=>0, 'max'=>1},
       'implicitRules' => {'type'=>'uri', 'path'=>'Bundle.implicitRules', 'min'=>0, 'max'=>1},
-      'language' => {'type'=>'code', 'path'=>'Bundle.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}},
+      'language' => {'valid_codes'=>{'urn:ietf:bcp:47'=>['bn', 'cs', 'da', 'de', 'de-AT', 'de-CH', 'de-DE', 'el', 'en', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-NZ', 'en-SG', 'en-US', 'es', 'es-AR', 'es-ES', 'es-UY', 'fi', 'fr', 'fr-BE', 'fr-CH', 'fr-FR', 'fy', 'fy-NL', 'hr', 'it', 'it-CH', 'it-IT', 'ja', 'ko', 'nl', 'nl-BE', 'nl-NL', 'no', 'no-NO', 'pt', 'pt-BR', 'ru', 'ru-RU', 'sr', 'sr-SP', 'sv', 'sv-SE', 'te', 'zh', 'zh-CN', 'zh-HK', 'zh-SG', 'zh-TW']}, 'type'=>'code', 'path'=>'Bundle.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}},
       'type' => {'valid_codes'=>{'http://hl7.org/fhir/bundle-type'=>['document', 'message', 'transaction', 'transaction-response', 'batch', 'batch-response', 'history', 'searchset', 'collection', 'document', 'message', 'transaction', 'transaction-response', 'batch', 'batch-response', 'history', 'searchset', 'collection']}, 'type'=>'code', 'path'=>'Bundle.type', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/bundle-type'}},
+      'identifier' => {'type'=>'Identifier', 'path'=>'Bundle.identifier', 'min'=>0, 'max'=>1},
       'total' => {'type'=>'unsignedInt', 'path'=>'Bundle.total', 'min'=>0, 'max'=>1},
       'link' => {'type'=>'Bundle::Link', 'path'=>'Bundle.link', 'min'=>0, 'max'=>Float::INFINITY},
       'entry' => {'type'=>'Bundle::Entry', 'path'=>'Bundle.entry', 'min'=>0, 'max'=>Float::INFINITY},
@@ -144,6 +145,7 @@ module FHIR
     attr_accessor :implicitRules # 0-1 uri
     attr_accessor :language      # 0-1 code
     attr_accessor :type          # 1-1 code
+    attr_accessor :identifier    # 0-1 Identifier
     attr_accessor :total         # 0-1 unsignedInt
     attr_accessor :link          # 0-* [ Bundle::Link ]
     attr_accessor :entry         # 0-* [ Bundle::Entry ]

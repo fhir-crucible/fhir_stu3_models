@@ -3,19 +3,21 @@
   "id": "example2",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Mild Asthma (Date: 21-Nov 2012)</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Mild Asthma (Date: 12-Nov 2012)</div>"
   },
   "clinicalStatus": "active",
   "verificationStatus": "confirmed",
-  "category": {
-    "coding": [
-      {
-        "system": "http://hl7.org/fhir/condition-category",
-        "code": "finding",
-        "display": "Finding"
-      }
-    ]
-  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/condition-category",
+          "code": "problem-list-item",
+          "display": "Problem List Item"
+        }
+      ]
+    }
+  ],
   "severity": {
     "coding": [
       {

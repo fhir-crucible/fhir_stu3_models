@@ -13,10 +13,10 @@
   ],
   "status": "active",
   "created": "2014-08-16",
-  "organizationReference": {
+  "organization": {
     "reference": "Organization/1"
   },
-  "subjectReference": {
+  "subject": {
     "reference": "Patient/1"
   },
   "coverage": {

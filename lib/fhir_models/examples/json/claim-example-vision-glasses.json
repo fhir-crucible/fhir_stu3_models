@@ -13,44 +13,68 @@
   ],
   "status": "active",
   "type": {
-    "system": "http://hl7.org/fhir/ex-claimtype",
-    "code": "vision"
-  },
-  "created": "2014-08-16",
-  "insurerReference": {
-    "reference": "Organization/2"
-  },
-  "organizationReference": {
-    "reference": "Organization/1"
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/ex-claimtype",
+        "code": "vision"
+      }
+    ]
   },
   "use": "complete",
-  "priority": {
-    "code": "normal"
+  "patient": {
+    "reference": "Patient/1"
   },
-  "prescriptionReference": {
-    "reference": "http://www.optdocs.com/VisionPrescription/12345"
+  "created": "2014-08-16",
+  "insurer": {
+    "reference": "Organization/2"
+  },
+  "organization": {
+    "reference": "Organization/1"
+  },
+  "priority": {
+    "coding": [
+      {
+        "code": "normal"
+      }
+    ]
+  },
+  "prescription": {
+    "reference": "http://www.optdocs.com/prescription/12345"
   },
   "payee": {
     "type": {
-      "code": "provider"
+      "coding": [
+        {
+          "code": "provider"
+        }
+      ]
     }
   },
-  "diagnosis": [
+  "careTeam": [
     {
       "sequence": 1,
-      "diagnosis": {
-        "code": "654321"
+      "provider": {
+        "reference": "Practitioner/example"
       }
     }
   ],
-  "patientReference": {
-    "reference": "Patient/1"
-  },
-  "coverage": [
+  "diagnosis": [
+    {
+      "sequence": 1,
+      "diagnosisCodeableConcept": {
+        "coding": [
+          {
+            "code": "654321"
+          }
+        ]
+      }
+    }
+  ],
+  "insurance": [
     {
       "sequence": 1,
       "focal": true,
-      "coverageReference": {
+      "coverage": {
         "reference": "Coverage/9876B1"
       }
     }
@@ -58,16 +82,16 @@
   "item": [
     {
       "sequence": 1,
-      "careTeam": [
-        {
-          "providerReference": {
-            "reference": "Practitioner/example"
-          }
-        }
+      "careTeamLinkId": [
+        1
       ],
       "service": {
-        "system": "http://hl7.org/fhir/ex-visionservice",
-        "code": "glasses"
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/ex-visionservice",
+            "code": "glasses"
+          }
+        ]
       },
       "servicedDate": "2014-08-16",
       "unitPrice": {
@@ -84,8 +108,12 @@
         {
           "sequence": 1,
           "service": {
-            "system": "http://hl7.org/fhir/ex-visionservice",
-            "code": "frame"
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/ex-visionservice",
+                "code": "frame"
+              }
+            ]
           },
           "unitPrice": {
             "value": 100.00,
@@ -101,8 +129,12 @@
         {
           "sequence": 2,
           "service": {
-            "system": "http://hl7.org/fhir/ex-visionservice",
-            "code": "lens"
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/ex-visionservice",
+                "code": "lens"
+              }
+            ]
           },
           "quantity": {
             "value": 2
@@ -121,8 +153,12 @@
         {
           "sequence": 3,
           "service": {
-            "system": "http://hl7.org/fhir/ex-visionservice",
-            "code": "fst"
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/ex-visionservice",
+                "code": "fst"
+              }
+            ]
           },
           "unitPrice": {
             "value": 200.00,

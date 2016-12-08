@@ -3,14 +3,14 @@
   "id": "structuredefinition-example",
   "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-example",
   "name": "An additional example value",
-  "display": "example",
+  "title": "example",
   "status": "draft",
   "publisher": "Health Level Seven, Inc. - [WG Name] WG",
   "contact": [
     {
       "telecom": [
         {
-          "system": "other",
+          "system": "url",
           "value": "http://hl7.org/special/committees/FHIR"
         }
       ]
@@ -18,7 +18,7 @@
   ],
   "date": "2014-01-31",
   "description": "An additional example value.",
-  "fhirVersion": "1.6.0",
+  "fhirVersion": "1.8.0",
   "mapping": [
     {
       "identity": "rim",
@@ -58,14 +58,16 @@
             "severity": "error",
             "human": "All FHIR elements must have a @value or children",
             "expression": "children().count() > id.count()",
-            "xpath": "@value|f:*|h:div"
+            "xpath": "@value|f:*|h:div",
+            "source": "Element"
           },
           {
             "key": "ext-1",
             "severity": "error",
             "human": "Must have either extensions or value[x], not both",
             "expression": "extension.exists() != value.exists()",
-            "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])"
+            "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
+            "source": "Extension"
           }
         ]
       },
@@ -82,7 +84,7 @@
         "base": {
           "path": "Element.id",
           "min": 0,
-          "max": "*"
+          "max": "1"
         },
         "type": [
           {
@@ -100,7 +102,7 @@
         "id": "Extension:anadditionalexamplevalue.extension",
         "path": "Extension.extension",
         "slicing": {
-          "id": "77",
+          "id": "83",
           "discriminator": [
             "url"
           ],
@@ -125,7 +127,7 @@
       {
         "id": "Extension:anadditionalexamplevalue.extension:index",
         "path": "Extension.extension",
-        "name": "index",
+        "sliceName": "index",
         "short": "Key for this example",
         "definition": "Key for this example.",
         "min": 1,
@@ -154,7 +156,7 @@
         "base": {
           "path": "Element.id",
           "min": 0,
-          "max": "*"
+          "max": "1"
         },
         "type": [
           {
@@ -171,7 +173,7 @@
       {
         "id": "Extension:anadditionalexamplevalue.extension:index.extension:extension",
         "path": "Extension.extension.extension",
-        "name": "extension",
+        "sliceName": "extension",
         "short": "Extension",
         "definition": "An Extension",
         "min": 0,
@@ -243,7 +245,7 @@
       {
         "id": "Extension:anadditionalexamplevalue.extension:exvalue",
         "path": "Extension.extension",
-        "name": "exValue",
+        "sliceName": "exValue",
         "short": "Value of the example",
         "definition": "Value of the example.",
         "min": 0,
@@ -272,7 +274,7 @@
         "base": {
           "path": "Element.id",
           "min": 0,
-          "max": "*"
+          "max": "1"
         },
         "type": [
           {
@@ -289,7 +291,7 @@
       {
         "id": "Extension:anadditionalexamplevalue.extension:exvalue.extension:extension",
         "path": "Extension.extension.extension",
-        "name": "extension",
+        "sliceName": "extension",
         "short": "Extension",
         "definition": "An Extension",
         "min": 0,
@@ -537,7 +539,7 @@
       {
         "id": "Extension:anadditionalexamplevalue.extension:index",
         "path": "Extension.extension",
-        "name": "index",
+        "sliceName": "index",
         "short": "Key for this example",
         "definition": "Key for this example.",
         "min": 1,
@@ -551,7 +553,7 @@
       {
         "id": "Extension:anadditionalexamplevalue.extension:index.extension:extension",
         "path": "Extension.extension.extension",
-        "name": "extension",
+        "sliceName": "extension",
         "max": "0"
       },
       {
@@ -577,7 +579,7 @@
       {
         "id": "Extension:anadditionalexamplevalue.extension:exvalue",
         "path": "Extension.extension",
-        "name": "exValue",
+        "sliceName": "exValue",
         "short": "Value of the example",
         "definition": "Value of the example.",
         "min": 0,
@@ -591,7 +593,7 @@
       {
         "id": "Extension:anadditionalexamplevalue.extension:exvalue.extension:extension",
         "path": "Extension.extension.extension",
-        "name": "extension",
+        "sliceName": "extension",
         "max": "0"
       },
       {

@@ -4,29 +4,24 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
+    MULTIPLE_TYPES = {
+      'value' => ['CodeableConcept', 'Quantity', 'Range']
+    }
     SEARCH_PARAMS = []
     METADATA = {
       'id' => {'type'=>'string', 'path'=>'UsageContext.id', 'min'=>0, 'max'=>1},
       'extension' => {'type'=>'Extension', 'path'=>'UsageContext.extension', 'min'=>0, 'max'=>Float::INFINITY},
-      'patientGender' => {'valid_codes'=>{'http://hl7.org/fhir/v3/AdministrativeGender'=>['F', 'M', 'UN']}, 'type'=>'CodeableConcept', 'path'=>'UsageContext.patientGender', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'preferred', 'uri'=>'http://hl7.org/fhir/ValueSet/v3-AdministrativeGender'}},
-      'patientAgeGroup' => {'type'=>'CodeableConcept', 'path'=>'UsageContext.patientAgeGroup', 'min'=>0, 'max'=>Float::INFINITY},
-      'clinicalFocus' => {'type'=>'CodeableConcept', 'path'=>'UsageContext.clinicalFocus', 'min'=>0, 'max'=>Float::INFINITY},
-      'targetUser' => {'type'=>'CodeableConcept', 'path'=>'UsageContext.targetUser', 'min'=>0, 'max'=>Float::INFINITY},
-      'workflowSetting' => {'type'=>'CodeableConcept', 'path'=>'UsageContext.workflowSetting', 'min'=>0, 'max'=>Float::INFINITY},
-      'workflowTask' => {'type'=>'CodeableConcept', 'path'=>'UsageContext.workflowTask', 'min'=>0, 'max'=>Float::INFINITY},
-      'clinicalVenue' => {'valid_codes'=>{'http://hl7.org/fhir/v3/ActCode'=>['AMB', 'EMER', 'FLD', 'HH', 'IMP', 'ACUTE', 'NONAC', 'PRENC', 'SS', 'VR']}, 'type'=>'CodeableConcept', 'path'=>'UsageContext.clinicalVenue', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'preferred', 'uri'=>'http://hl7.org/fhir/ValueSet/v3-ActEncounterCode'}},
-      'jurisdiction' => {'type'=>'CodeableConcept', 'path'=>'UsageContext.jurisdiction', 'min'=>0, 'max'=>Float::INFINITY}
+      'code' => {'valid_codes'=>{'http://hl7.org/fhir/usage-context-type'=>['gender', 'age', 'focus', 'user', 'workflow', 'task', 'venue', 'gender', 'age', 'focus', 'user', 'workflow', 'task', 'venue']}, 'type'=>'Coding', 'path'=>'UsageContext.code', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/usage-context-type'}},
+      'valueCodeableConcept' => {'type'=>'CodeableConcept', 'path'=>'UsageContext.value[x]', 'min'=>1, 'max'=>1},
+      'valueQuantity' => {'type'=>'Quantity', 'path'=>'UsageContext.value[x]', 'min'=>1, 'max'=>1},
+      'valueRange' => {'type'=>'Range', 'path'=>'UsageContext.value[x]', 'min'=>1, 'max'=>1}
     }
 
-    attr_accessor :id              # 0-1 string
-    attr_accessor :extension       # 0-* [ Extension ]
-    attr_accessor :patientGender   # 0-* [ CodeableConcept ]
-    attr_accessor :patientAgeGroup # 0-* [ CodeableConcept ]
-    attr_accessor :clinicalFocus   # 0-* [ CodeableConcept ]
-    attr_accessor :targetUser      # 0-* [ CodeableConcept ]
-    attr_accessor :workflowSetting # 0-* [ CodeableConcept ]
-    attr_accessor :workflowTask    # 0-* [ CodeableConcept ]
-    attr_accessor :clinicalVenue   # 0-* [ CodeableConcept ]
-    attr_accessor :jurisdiction    # 0-* [ CodeableConcept ]
+    attr_accessor :id                   # 0-1 string
+    attr_accessor :extension            # 0-* [ Extension ]
+    attr_accessor :code                 # 1-1 Coding
+    attr_accessor :valueCodeableConcept # 1-1 CodeableConcept
+    attr_accessor :valueQuantity        # 1-1 Quantity
+    attr_accessor :valueRange           # 1-1 Range
   end
 end

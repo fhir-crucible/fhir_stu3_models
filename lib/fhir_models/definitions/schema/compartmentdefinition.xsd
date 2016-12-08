@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
+  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -50,7 +50,10 @@
           <xs:element name="name" minOccurs="1" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="status" minOccurs="0" maxOccurs="1" type="ConformanceResourceStatus">
+          <xs:element name="title" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="PublicationStatus">
             
           </xs:element>
           <xs:element name="experimental" minOccurs="0" maxOccurs="1" type="boolean">
@@ -59,7 +62,7 @@
           <xs:element name="publisher" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="contact" type="CompartmentDefinition.Contact" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="contact" minOccurs="0" maxOccurs="unbounded" type="ContactDetail">
             
           </xs:element>
           <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
@@ -68,7 +71,13 @@
           <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
             
           </xs:element>
-          <xs:element name="requirements" minOccurs="0" maxOccurs="1" type="markdown">
+          <xs:element name="purpose" minOccurs="0" maxOccurs="1" type="markdown">
+            
+          </xs:element>
+          <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="UsageContext">
+            
+          </xs:element>
+          <xs:element name="jurisdiction" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="code" minOccurs="1" maxOccurs="1" type="CompartmentType">
@@ -78,21 +87,6 @@
             
           </xs:element>
           <xs:element name="resource" type="CompartmentDefinition.Resource" minOccurs="0" maxOccurs="unbounded">
-            
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="CompartmentDefinition.Contact">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-          <xs:element name="telecom" minOccurs="0" maxOccurs="unbounded" type="ContactPoint">
             
           </xs:element>
         </xs:sequence>

@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
+  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -62,7 +62,7 @@
           <xs:element name="outcomeDesc" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="purposeOfEvent" minOccurs="0" maxOccurs="unbounded" type="Coding">
+          <xs:element name="purposeOfEvent" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="agent" type="AuditEvent.Agent" minOccurs="1" maxOccurs="unbounded">
@@ -113,7 +113,7 @@
           <xs:element name="network" type="AuditEvent.Network" minOccurs="0" maxOccurs="1">
             
           </xs:element>
-          <xs:element name="purposeOfUse" minOccurs="0" maxOccurs="unbounded" type="Coding">
+          <xs:element name="purposeOfUse" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
         </xs:sequence>

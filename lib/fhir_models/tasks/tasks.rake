@@ -37,7 +37,7 @@ namespace :fhir do
   task :update, [:fhir_build_path] do |_t, args|
     fhir_build_path = args[:fhir_build_path]
     root = File.expand_path '../..', File.dirname(File.absolute_path(__FILE__))
-    defns = File.join(root, 'definitions')
+    defns = File.join(root, 'fhir_models', 'definitions')
 
     # copy structure definitions and profiles...
     src = File.join(fhir_build_path, 'publish')
@@ -56,7 +56,7 @@ namespace :fhir do
     copy_artifacts(files, src, dest, false)
 
     # delete the JSON examples
-    dest = File.join(root, 'examples', 'json')
+    dest = File.join(root, 'fhir_models', 'examples', 'json')
     puts '  Replacing JSON examples...'
     Dir.glob(File.join(dest, '*')).each { |f| File.delete(f) unless File.directory?(f) }
     # copy the new JSON examples over
@@ -72,7 +72,7 @@ namespace :fhir do
     copy_artifacts(files, qicore, dest, false)
 
     # delete the XML examples
-    dest = File.join(root, 'examples', 'xml')
+    dest = File.join(root, 'fhir_models', 'examples', 'xml')
     puts '  Replacing XML examples...'
     Dir.glob(File.join(dest, '*')).each { |f| File.delete(f) unless File.directory?(f) }
     # copy the new XML examples over

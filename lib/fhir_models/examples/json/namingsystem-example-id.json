@@ -15,7 +15,7 @@
       "name": "HL7 Australia FHIR Team",
       "telecom": [
         {
-          "system": "other",
+          "system": "url",
           "value": "http://hl7-australia.wikispaces.com/FHIR+Australia"
         }
       ]
@@ -33,7 +33,7 @@
     "text": "IHI"
   },
   "description": "Australian HI Identifier as established by relevant regulations etc",
-  "useContext": [
+  "jurisdiction": [
     {
       "coding": [
         {

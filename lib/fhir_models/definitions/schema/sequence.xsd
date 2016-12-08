@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
+  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -47,7 +47,7 @@
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             
           </xs:element>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="sequenceType">
+          <xs:element name="type" minOccurs="0" maxOccurs="1" type="sequenceType">
             
           </xs:element>
           <xs:element name="coordinateSystem" minOccurs="1" maxOccurs="1" type="integer">
@@ -60,6 +60,9 @@
             
           </xs:element>
           <xs:element name="device" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="performer" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
           <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="Quantity">
@@ -104,7 +107,7 @@
           <xs:element name="genomeBuild" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="referenceSeqId" minOccurs="1" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="referenceSeqId" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="referenceSeqPointer" minOccurs="0" maxOccurs="1" type="Reference">
@@ -113,7 +116,7 @@
           <xs:element name="referenceSeqString" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="strand" minOccurs="1" maxOccurs="1" type="integer">
+          <xs:element name="strand" minOccurs="0" maxOccurs="1" type="integer">
             
           </xs:element>
           <xs:element name="windowStart" minOccurs="1" maxOccurs="1" type="integer">
@@ -158,6 +161,9 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="qualityType">
+            
+          </xs:element>
           <xs:element name="standardSequence" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
@@ -206,16 +212,22 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="repositoryType">
+            
+          </xs:element>
           <xs:element name="url" minOccurs="0" maxOccurs="1" type="uri">
             
           </xs:element>
           <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="variantId" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="datasetId" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="readId" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="variantsetId" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="readsetId" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
         </xs:sequence>
@@ -273,6 +285,54 @@
             
           </xs:element>
         </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="repositoryType-list">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="directlink">
+        
+      </xs:enumeration>
+      <xs:enumeration value="openapi">
+        
+      </xs:enumeration>
+      <xs:enumeration value="login">
+        
+      </xs:enumeration>
+      <xs:enumeration value="oauth">
+        
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="repositoryType">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="repositoryType-list" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="qualityType-list">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="INDEL">
+        
+      </xs:enumeration>
+      <xs:enumeration value="SNP">
+        
+      </xs:enumeration>
+      <xs:enumeration value="UNKNOWN">
+        
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="qualityType">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="qualityType-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

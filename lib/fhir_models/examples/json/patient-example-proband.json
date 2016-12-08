@@ -8,15 +8,16 @@
   "extension": [
     {
       "url": "http://hl7.org/fhir/StructureDefinition/us-core-race",
-      "valueCodeableConcept": {
-        "coding": [
-          {
-            "system": "urn:oid:2.16.840.1.113883.6.238",
+      "extension": [
+        {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "http://hl7.org/fhir/v3/Race",
             "code": "2106-3",
-            "display": "white"
+            "display": "White"
           }
-        ]
-      }
+        }
+      ]
     }
   ],
   "identifier": [

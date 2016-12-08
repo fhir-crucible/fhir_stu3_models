@@ -28,9 +28,7 @@
     {
       "use": "official",
       "text": "Luigi Maas",
-      "family": [
-        "Maas"
-      ],
+      "family": "Maas",
       "given": [
         "Luigi"
       ],

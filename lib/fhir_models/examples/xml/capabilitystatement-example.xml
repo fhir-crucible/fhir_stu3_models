@@ -15,16 +15,16 @@
     
     </div>
   </text>
-<!--    the identifier for this CapabilityStatement statement. 
+<!--    the identifier for this capability statement. 
     The identifier and version establish identifiers that other specifications etc.may use to 
-    refer to the CapabilityStatement statement that this resource represents in a logical manner 
+    refer to the capability statement that this resource represents in a logical manner 
     rather than in a literal (URL) fashion 
 
     The identifier should be globally unique - a UUID, an OID, or a URL/URI
      -->
   <url value="68D043B5-9ECF-4559-A57A-396E0D452311"/>
   <version value="20130510"/>
-  <name value="ACME EHR CapabilityStatement statement"/>
+  <name value="ACME EHR capability statement"/>
   <status value="draft"/>
   <experimental value="true"/>
   <date value="2012-01-04"/>
@@ -36,8 +36,8 @@
       <value value="wile@acme.org"/>
     </telecom>
   </contact>
-  <description value="This is the FHIR CapabilityStatement statement for the main EHR at ACME for the private interface - it does not describe the public interface"/>
-  <purpose value="Main EHR CapabilityStatement statement, published for contracting and operational support"/>
+  <description value="This is the FHIR capability statement for the main EHR at ACME for the private interface - it does not describe the public interface"/>
+  <purpose value="Main EHR capability statement, published for contracting and operational support"/>
   <copyright value="Copyright © Acme Healthcare and GoodCorp EHR Systems"/>
   <kind value="instance"/>
   <software>
@@ -58,11 +58,11 @@
   <!--   this system can do either xml or json. (Listing both implies full support for either, with interconversion)   -->
   <format value="xml"/>
   <format value="json"/>
-  <!--   in a real CapabilityStatement statement, it's unlikely that a single CapabilityStatement statement 
-    would declare CapabilityStatement for REST, messaging and documents, though it is legal. 
-    This example does so in order to show all the parts of a CapabilityStatement statement   -->
+  <!--   in a real capability statement, it's unlikely that a single capability statement 
+    would declare capability for REST, messaging and documents, though it is legal. 
+    This example does so in order to show all the parts of a capability statement   -->
   <rest>
-  <!--   this is a server CapabilityStatement statement. Note that servers are required to provide 
+  <!--   this is a server capability statement. Note that servers are required to provide 
       one of these. It can easily be edited by hand - copy this, replace the metadata above, 
       delete the messaging and document stuff below, and then replace the details appropriately.   -->
     <mode value="server"/>
@@ -93,7 +93,7 @@
         case of a FHIR REST Server, just delete this profile reference. Profile references do 
         not need to be a UUID, though a profile registry could insist that they are   -->
       <profile>
-        <reference value="http://fhir.hl7.org/base/Profile7896271d-57f6-4231-89dc-dcc91eab2416"/>
+        <reference value="http://fhir.hl7.org/base/StructureDefinition/7896271d-57f6-4231-89dc-dcc91eab2416"/>
       </profile>
       <interaction>
         <code value="read"/>
@@ -129,18 +129,11 @@
         <definition value="http://hl7.org/fhir/SearchParameter/Patient-identifier"/>
         <type value="token"/>
         <documentation value="Only supports search by institution MRN"/>
-        <modifier value="missing"/>
      </searchParam>
       <searchParam>  
         <name value="careprovider"/>
         <definition value="http://hl7.org/fhir/SearchParameter/Patient-careprovider"/>
         <type value="reference"/>
-        <!--  there's not a lot of value in saying this, since it's the only 
-          choice anyway. but in other cases it's pretty important  -->
-        <target value="Organization"/>
-        <modifier value="missing"/>
-        <chain value="name"/>
-        <chain value="identifier"/>
      </searchParam>
     </resource>
     <interaction>
@@ -152,7 +145,7 @@
    
     <compartment value="http://hl7.org/fhir/compartment/Patient"/>
   </rest>
-<!--   a messaging CapabilityStatement statement. Applications are not required to make a CapabilityStatement 
+<!--   a messaging capability statement. Applications are not required to make a capability 
     statement with regard to messaging, though there is active argument that they should.    -->
  
   <messaging>
@@ -188,7 +181,7 @@
     </event>
   </messaging>
   
-<!--   a document CapabilityStatement statement   -->
+<!--   a document capability statement   -->
   <document>
     <mode value="consumer"/>
     <documentation value="Basic rules for all documents in the EHR system"/>

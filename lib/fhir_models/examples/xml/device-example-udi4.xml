@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><Device xmlns="http://hl7.org/fhir">
 	<id value="example-udi4"/>
-	<text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example-udi4</p><p><b>udiCarrier</b>: Universal Device Identifier = =)1TE123456A&amp;)RZ12345678</p><p><b>status</b>: not-available</p><p><b>type</b>: DI = 1TE123456A <span>(Details : {http://hl7.org/fhir/NamingSystem/iccbba-blood-di code &#39;1TE123456A&#39; = &#39;??)</span></p><p><b>lotNumber</b>: RZ12345678</p><p><b>manufacturer</b>: GlobalMed, Inc</p><p><b>patient</b>: <a>Patient/example</a></p></div></text><udiCarrier>
+	<text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example-udi4</p><p><b>udiCarrier</b>: Universal Device Identifier = =)1TE123456A&amp;)RZ12345678</p><p><b>status</b>: not-available</p><p><b>type</b>: DI = 1TE123456A <span>(Details : {http://hl7.org/fhir/NamingSystem/iccbba-blood-di code &#39;1TE123456A&#39; = &#39;1TE123456A)</span></p><p><b>lotNumber</b>: RZ12345678</p><p><b>manufacturer</b>: GlobalMed, Inc</p><p><b>patient</b>: <a>Patient/example</a></p></div></text><udiCarrier>
 		<!--  The 'type' component should be set to “UDI” and the 'system' component to the the appropriate repository url.   -->
 		<type>
 			<coding>

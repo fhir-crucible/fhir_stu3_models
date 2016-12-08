@@ -14,13 +14,13 @@
   "status": "active",
   "action": "status",
   "created": "2014-08-16",
-  "organizationReference": {
+  "organization": {
     "reference": "Organization/1"
   },
-  "requestReference": {
-    "reference": "http://BenefitsInc.com/oralhealthclaim/12345"
+  "request": {
+    "reference": "http://happyvalley.com/claim/12345"
   },
-  "responseReference": {
+  "response": {
     "reference": "http://BenefitsInc.com/fhir/claimresponse/3500"
   }
 }

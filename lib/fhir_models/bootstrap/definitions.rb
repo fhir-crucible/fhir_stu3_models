@@ -204,7 +204,7 @@ module FHIR
           included_systems.each { |x| codes[x] = [] unless codes.keys.include?(x) }
           systems = @@valuesets.select { |x| x['resourceType'] == 'CodeSystem' && included_systems.include?(x['url']) }
           systems.each do |x|
-            x['concept'].each { |y| codes[x['url']] << y['code'] }
+            x['concept'].each { |y| codes[x['url']] << y['code'] } if x['concept']
           end
         end
       end

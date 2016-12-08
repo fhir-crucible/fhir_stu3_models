@@ -21,9 +21,9 @@
     ]
   },
   "status": "draft",
+  "date": "2015-07-22",
   "description": "Logic for CMS 146: Appropriate Testing for Children with Pharyngitis",
-  "publicationDate": "2015-07-22",
-  "relatedResource": [
+  "relatedArtifact": [
     {
       "type": "depends-on",
       "resource": {
@@ -126,7 +126,7 @@
       ]
     },
     {
-      "type": "MedicationOrder",
+      "type": "MedicationRequest",
       "codeFilter": [
         {
           "path": "status",
@@ -156,8 +156,10 @@
       ]
     }
   ],
-  "content": {
-    "contentType": "text/plain",
-    "url": "http://cqlrepository.org/CMS146.cql"
-  }
+  "content": [
+    {
+      "contentType": "text/cql",
+      "url": "http://cqlrepository.org/CMS146.cql"
+    }
+  ]
 }

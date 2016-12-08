@@ -10,23 +10,31 @@
     <system value="http://www.happysight.com/prescription"/>
 	<value value="15014"/>
   </identifier>
-  
-  <dateWritten value="2014-06-15"/>
-  
+ 
+  <status value="active"/>
+ 
   <patient>
     <reference value="Patient/example"/>
   </patient>
 
+  <dateWritten value="2014-06-15"/>
+  
   <prescriber>
     <reference value="Practitioner/example"/>
   </prescriber>
 
   <dispense>
     <product>
+	 <coding>
 	  <system value="http://hl7.org/fhir/ex-visionprescriptionproduct"/>
 	  <code value="contact"/>
+	 </coding>
 	</product>
-    <eye value="right"/>
+    <eye>
+      <coding>
+	    <code value="right"/>
+      </coding>
+	</eye>
     <cylinder value="-2.25"/>
     <axis value="160"/>
     <add value="1.75"/>
@@ -45,10 +53,16 @@
 
   <dispense>
     <product>
+	 <coding>
 	  <system value="http://hl7.org/fhir/ex-visionprescriptionproduct"/>
 	  <code value="contact"/>
-    </product>
-    <eye value="left"/>
+     </coding>
+	</product>
+    <eye>
+      <coding>
+	    <code value="left"/>
+      </coding>
+	</eye>
     <cylinder value="-3.50"/>
     <axis value="160"/>
     <add value="1.75"/>

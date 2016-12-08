@@ -19,14 +19,6 @@
           }
         ]
       },
-      "timingTiming": {
-            "extension": [
-              {
-                "url": "http://hl7.org/fhir/StructureDefinition/cqif-basic-cqlExpression",
-                "valueString": "Now()"
-              }
-            ]
-      },
       "participantType": [
         "practitioner"
       ]
@@ -39,31 +31,32 @@
       "productReference": {
         "reference": "#citalopramMedication"
       },
+      "dosageInstruction": [
+        {
+          "text": "1 tablet oral 1 time daily",
+          "timing": {
+            "repeat": {
+              "frequency": 1,
+              "period": 1,
+              "periodUnit": "d"
+            }
+          },
+          "route": {
+            "coding": [
+              {
+                "code": "26643006",
+                "display": "Oral route (qualifier value)"
+              }
+            ],
+            "text": "Oral route (qualifier value)"
+          },
+          "doseQuantity": {
+            "value": 1,
+            "unit": "{tbl}"
+          }
+        }
+      ],
       "dynamicValue": [
-        {
-          "path": "dosageInstruction.text",
-          "expression": "'1 tablet oral 1 time daily'"
-        },
-        {
-          "path": "dosageInstruction.timing.repeat.frequency",
-          "expression": "1"
-        },
-        {
-          "path": "dosageInstruction.timing.repeat.period",
-          "expression": "1"
-        },
-        {
-          "path": "dosageInstruction.timing.repeat.periodUnit",
-          "expression": "'d'"
-        },
-        {
-          "path": "dosageInstruction.route.coding",
-          "expression": "code '26643006' from \"http://snomed.info/sct\" display 'Oral route (qualifier value)'"
-        },
-        {
-          "path": "dosageInstruction.doseQuantity",
-          "expression": "1 '{tbl}'"
-        },
         {
           "path": "dispenseRequest.numberOfRepeatsAllowed",
           "expression": "3"
@@ -136,74 +129,113 @@
   "version": "1.0.0",
   "title": "Low Suicide Risk Order Set",
   "status": "draft",
+  "date": "2015-08-15",
   "description": "...",
-  "publicationDate": "2015-08-15",
-  "coverage": [
+  "useContext": [
     {
-      "patientAgeGroup": [
-        {
-          "coding": [
-            {
-              "code": "133936004",
-              "display": "Adult"
-            }
-          ]
-        }
-      ],
-      "clinicalFocus": [
-        {
-          "coding": [
-            {
-              "code": "87512008",
-              "display": "Mild major depression"
-            }
-          ]
-        },
-        {
-          "coding": [
-            {
-              "code": "40379007",
-              "display": "Major depression, recurrent, mild"
-            }
-          ]
-        },
-        {
-          "coding": [
-            {
-              "code": "394687007",
-              "display": "Low suicide risk"
-            }
-          ]
-        },
-        {
-          "coding": [
-            {
-              "code": "225337009",
-              "display": "Suicide risk assessment"
-            }
-          ]
-        }
-      ],
-      "targetUser": [
-        {
-          "coding": [
-            {
-              "code": "309343006",
-              "display": "Physician"
-            }
-          ]
-        }
-      ],
-      "clinicalVenue": [
-        {
-          "coding": [
-            {
-              "code": "440655000",
-              "display": "Outpatient environment"
-            }
-          ]
-        }
-      ]
+      "code": {
+        "system": "http://hl7.org/fhir/usage-context-type",
+        "code": "gender"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "133936004",
+            "display": "Adult"
+          }
+        ]
+      }
+    },
+    {
+      "code": {
+        "system": "http://hl7.org/fhir/usage-context-type",
+        "code": "focus"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "87512008",
+            "display": "Mild major depression"
+          }
+        ]
+      }
+    },
+    {
+      "code": {
+        "system": "http://hl7.org/fhir/usage-context-type",
+        "code": "focus"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "40379007",
+            "display": "Major depression, recurrent, mild"
+          }
+        ]
+      }
+    },
+    {
+      "code": {
+        "system": "http://hl7.org/fhir/usage-context-type",
+        "code": "focus"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "394687007",
+            "display": "Low suicide risk"
+          }
+        ]
+      }
+    },
+    {
+      "code": {
+        "system": "http://hl7.org/fhir/usage-context-type",
+        "code": "focus"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "225337009",
+            "display": "Suicide risk assessment"
+          }
+        ]
+      }
+    },
+    {
+      "code": {
+        "system": "http://hl7.org/fhir/usage-context-type",
+        "code": "user"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "309343006",
+            "display": "Physician"
+          }
+        ]
+      }
+    },
+    {
+      "code": {
+        "system": "http://hl7.org/fhir/usage-context-type",
+        "code": "venue"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "440655000",
+            "display": "Outpatient environment"
+          }
+        ]
+      }
     }
   ],
   "topic": [

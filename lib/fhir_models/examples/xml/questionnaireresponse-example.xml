@@ -88,8 +88,10 @@
     <!--    COMORBIDITY    -->
     <!--    First main section of the form, questions about comorbidity    -->
     <!--    section contains one question: whether there is comorbidity    -->
-    <item>
-      <answer>
+    <linkId value="1"/>
+	<item>
+      <linkId value="1.1"/>
+	  <answer>
         <valueCoding>
           <system value="http://cancer.questionnaire.org/system/code/yesno"/>
           <code value="1"/>
@@ -98,7 +100,9 @@
         <item>
           <!--    COMORBIDITY/CARDIAL    -->
           <!--    Subsection about specific comorbidity: cardial    -->
-          <item>
+          <linkId value="1.1.1"/>
+		  <item>
+		    <linkId value="1.1.1.1"/>
             <answer>
               <valueCoding>
                 <system value="http://cancer.questionnaire.org/system/code/yesno"/>
@@ -108,7 +112,8 @@
           </item>
           <item>
             <!--    This answer carries both the questionnaire-specific name and an equivalent SNOMED CT code    -->
-            <answer>
+            <linkId value="1.1.1.2"/>
+			<answer>
               <valueCoding>
                 <system value="http://cancer.questionnaire.org/system/code/yesno"/>
                 <code value="1"/>
@@ -116,7 +121,8 @@
             </answer>
           </item>
           <item>
-            <answer>
+            <linkId value="1.1.1.3"/>
+			<answer>
               <valueCoding>
                 <system value="http://cancer.questionnaire.org/system/code/yesno"/>
                 <code value="0"/>

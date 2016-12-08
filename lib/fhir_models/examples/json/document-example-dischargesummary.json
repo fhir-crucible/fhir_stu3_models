@@ -5,6 +5,10 @@
     "lastUpdated": "2013-05-28T22:12:21Z"
   },
   "type": "document",
+  "identifier": {
+    "system": "urn:ietf:rfc:3986",
+    "value": "urn:uuid:0c3151bd-1cbf-4d64-b04d-cd9187a4c6e0"
+  },
   "entry": [
     {
       "fullUrl": "http://fhir.healthintersections.com.au/open/Composition/180f219f-97a8-486d-99d9-ed631fe4fc57",
@@ -135,9 +139,7 @@
         ],
         "name": [
           {
-            "family": [
-              "Careful"
-            ],
+            "family": "Careful",
             "given": [
               "Adam"
             ],
@@ -180,9 +182,7 @@
         "name": [
           {
             "text": "Eve Everywoman",
-            "family": [
-              "Everywoman1"
-            ],
+            "family": "Everywoman1",
             "given": [
               "Eve"
             ]
@@ -276,13 +276,20 @@
     {
       "fullUrl": "urn:uuid:124a6916-5d84-4b8c-b250-10cefb8e6e86",
       "resource": {
-        "resourceType": "MedicationOrder",
+        "resourceType": "MedicationRequest",
         "meta": {
           "lastUpdated": "2013-05-05T16:13:03Z"
         },
         "text": {
           "status": "generated",
           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t\t\t\t\n            <p>Theophylline 200mg twice a day</p>\n\t\t\t\t\t\n          </div>"
+        },
+        "stage": {
+          "coding": [
+            {
+              "code": "original-order"
+            }
+          ]
         },
         "medicationCodeableConcept": {
           "coding": [
@@ -297,7 +304,7 @@
           "reference": "http://fhir.healthintersections.com.au/open/Patient/d1",
           "display": "Peter Patient"
         },
-        "prescriber": {
+        "requester": {
           "reference": "Practitioner/example",
           "display": "Peter Practitioner"
         },
@@ -351,12 +358,12 @@
         "medicationCodeableConcept": {
           "text": "Ventolin Inhaler"
         },
-        "patient": {
+        "subject": {
           "reference": "http://fhir.healthintersections.com.au/open/Patient/d1",
           "display": "Peter Patient"
         },
         "dateAsserted": "2013-05-05T16:13:03Z",
-        "notTaken": true,
+        "notTaken": "y",
         "reasonNotTaken": [
           {
             "text": "Management of Asthma"
@@ -375,7 +382,8 @@
           "status": "generated",
           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Sensitivity to Doxycycline :\n                        Hives</div>"
         },
-        "status": "active-confirmed",
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
         "type": "allergy",
         "criticality": "high",
         "code": {
@@ -385,7 +393,7 @@
           "reference": "http://fhir.healthintersections.com.au/open/Patient/d1",
           "display": "Eve Everywoman"
         },
-        "attestedDate": "2012-09-17",
+        "assertedDate": "2012-09-17",
         "reaction": [
           {
             "manifestation": [

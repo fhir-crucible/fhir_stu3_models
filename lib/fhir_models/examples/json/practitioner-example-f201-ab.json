@@ -20,9 +20,7 @@
     {
       "use": "official",
       "text": "Dokter Bronsig",
-      "family": [
-        "Bronsig"
-      ],
+      "family": "Bronsig",
       "given": [
         "Arend"
       ],

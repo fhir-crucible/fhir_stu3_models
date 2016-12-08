@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 11, 2016 09:23-0400 for FHIR v1.6.0 
+  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -50,10 +50,10 @@
           <xs:element name="clinicalStatus" minOccurs="0" maxOccurs="1" type="code">
             
           </xs:element>
-          <xs:element name="verificationStatus" minOccurs="1" maxOccurs="1" type="ConditionVerificationStatus">
+          <xs:element name="verificationStatus" minOccurs="0" maxOccurs="1" type="ConditionVerificationStatus">
             
           </xs:element>
-          <xs:element name="category" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="category" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="severity" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -88,7 +88,7 @@
             <xs:element name="abatementRange" type="Range"/>
             <xs:element name="abatementString" type="string"/>
           </xs:choice>
-          <xs:element name="dateRecorded" minOccurs="0" maxOccurs="1" type="date">
+          <xs:element name="assertedDate" minOccurs="0" maxOccurs="1" type="date">
             
           </xs:element>
           <xs:element name="asserter" minOccurs="0" maxOccurs="1" type="Reference">

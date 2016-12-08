@@ -14,13 +14,13 @@
     },
     {
       "resourceType": "FamilyMemberHistory",
-      "id": "2",
+      "id": "1",
       "extension": [
         {
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -32,9 +32,9 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
-                "reference": "#4"
+                "reference": "#2"
               }
             }
           ]
@@ -43,7 +43,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -55,7 +55,81 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
+              "valueReference": {
+                "reference": "#3"
+              }
+            }
+          ]
+        }
+      ],
+      "patient": {
+        "reference": "Patient/proband",
+        "display": "Annie Proband, female, born 1966"
+      },
+      "status": "completed",
+      "name": "Annie",
+      "relationship": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/v3/RoleCode",
+            "code": "ONESELF",
+            "display": "self"
+          }
+        ]
+      },
+      "ageAge": {
+        "value": 42,
+        "unit": "years",
+        "system": "http://unitsofmeasure.org",
+        "code": "a"
+      },
+      "deceasedBoolean": false
+    },
+    {
+      "resourceType": "FamilyMemberHistory",
+      "id": "2",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
+          "extension": [
+            {
+              "url": "type",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/v3/RoleCode",
+                    "code": "NMTH",
+                    "display": "natural mother"
+                  }
+                ]
+              }
+            },
+            {
+              "url": "reference",
+              "valueReference": {
+                "reference": "#4"
+              }
+            }
+          ]
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
+          "extension": [
+            {
+              "url": "type",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/v3/RoleCode",
+                    "code": "NFTH",
+                    "display": "natural father"
+                  }
+                ]
+              }
+            },
+            {
+              "url": "reference",
               "valueReference": {
                 "reference": "#5"
               }
@@ -112,7 +186,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -124,7 +198,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#6"
               }
@@ -135,7 +209,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -147,7 +221,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#7"
               }
@@ -324,7 +398,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -336,7 +410,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#2"
               }
@@ -347,7 +421,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -359,7 +433,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#3"
               }
@@ -417,7 +491,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -429,7 +503,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#2"
               }
@@ -440,7 +514,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -452,7 +526,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#3"
               }
@@ -534,7 +608,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -546,7 +620,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#9"
               }
@@ -557,7 +631,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -569,7 +643,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#10"
               }
@@ -608,7 +682,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -620,7 +694,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#9"
               }
@@ -631,7 +705,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -643,7 +717,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#10"
               }
@@ -724,7 +798,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -736,7 +810,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#1"
               }
@@ -747,7 +821,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -759,7 +833,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#13"
               }
@@ -772,6 +846,7 @@
         "display": "Annie Proband, female, born 1966"
       },
       "status": "completed",
+      "name": "Susan",
       "relationship": {
         "coding": [
           {
@@ -796,7 +871,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -808,7 +883,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#6"
               }
@@ -819,7 +894,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -831,7 +906,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#7"
               }
@@ -868,7 +943,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -880,7 +955,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#6"
               }
@@ -891,7 +966,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -903,7 +978,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#7"
               }
@@ -953,7 +1028,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -965,7 +1040,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#4"
               }
@@ -976,7 +1051,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -988,7 +1063,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#5"
               }
@@ -1025,7 +1100,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -1037,7 +1112,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#4"
               }
@@ -1048,7 +1123,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -1060,7 +1135,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#5"
               }
@@ -1115,7 +1190,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -1127,7 +1202,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#18"
               }
@@ -1138,7 +1213,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -1150,7 +1225,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#19"
               }
@@ -1207,7 +1282,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -1219,7 +1294,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#18"
               }
@@ -1230,7 +1305,7 @@
           "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "parent.type",
+              "url": "type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -1242,7 +1317,7 @@
               }
             },
             {
-              "url": "parent.reference",
+              "url": "reference",
               "valueReference": {
                 "reference": "#19"
               }

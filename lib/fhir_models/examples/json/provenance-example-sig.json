@@ -29,13 +29,7 @@
         "system": "http://hl7.org/fhir/provenance-participant-role",
         "code": "verifier"
       },
-      "actor": {
-        "reference": "Practitioner/xcda-author"
-      },
-      "userId": {
-        "system": "http://acme.com/fhir/users/sso",
-        "value": "hhd"
-      }
+      "whoUri": "mailto://hhd@ssa.gov"
     }
   ],
   "signature": [

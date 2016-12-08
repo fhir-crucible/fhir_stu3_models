@@ -12,22 +12,36 @@
     }
   ],
   "status": "active",
-  "requestReference": {
-    "reference": "http://www.BenefitsInc.com/fhir/ProcessRequest/225476332402"
-  },
-  "outcome": "complete",
-  "disposition": "2014 August mid-month settlement.",
   "created": "2014-08-16",
-  "organizationReference": {
+  "organization": {
     "reference": "Organization/2"
+  },
+  "request": {
+    "reference": "http://www.BenefitsInc.com/fhir/eligibility/225476332402"
+  },
+  "outcome": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/remittance-outcome",
+        "code": "complete"
+      }
+    ]
+  },
+  "disposition": "2014 August mid-month settlement.",
+  "requestOrganization": {
+    "reference": "Organization/1"
   },
   "detail": [
     {
       "type": {
-        "system": "http://hl7.org/fhir/paymenttype",
-        "code": "payment"
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/paymenttype",
+            "code": "payment"
+          }
+        ]
       },
-      "requestReference": {
+      "request": {
         "reference": "http://www.BenefitsInc.com/fhir/oralhealthclaim/225476332402"
       },
       "date": "2014-08-16",
@@ -39,10 +53,14 @@
     },
     {
       "type": {
-        "system": "http://hl7.org/fhir/paymenttype",
-        "code": "payment"
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/paymenttype",
+            "code": "payment"
+          }
+        ]
       },
-      "requestReference": {
+      "request": {
         "reference": "http://www.BenefitsInc.com/fhir/oralhealthclaim/225476332699"
       },
       "date": "2014-08-12",
@@ -54,8 +72,12 @@
     },
     {
       "type": {
-        "system": "http://hl7.org/fhir/paymenttype",
-        "code": "advance"
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/paymenttype",
+            "code": "advance"
+          }
+        ]
       },
       "date": "2014-08-16",
       "amount": {

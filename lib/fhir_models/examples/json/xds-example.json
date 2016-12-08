@@ -123,9 +123,7 @@
           {
             "use": "usual",
             "text": "DOE, John",
-            "family": [
-              "Doe"
-            ],
+            "family": "Doe",
             "given": [
               "John"
             ]
@@ -154,9 +152,7 @@
         "name": [
           {
             "use": "usual",
-            "family": [
-              "Smitty"
-            ],
+            "family": "Smitty",
             "given": [
               "Gerald"
             ]
@@ -211,9 +207,7 @@
         "name": [
           {
             "use": "usual",
-            "family": [
-              "Dopplemeyer"
-            ],
+            "family": "Dopplemeyer",
             "given": [
               "Sherry"
             ]

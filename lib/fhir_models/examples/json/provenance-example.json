@@ -3,7 +3,7 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">procedure record authored on 27-June 2015 by Harold Hippocrates, MD Content extracted from Referral received 26-June</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">procedure record authored on 27-June 2015 by Harold Hippocrates, MD Content extracted from XDS managed CDA Referral received 26-June</div>"
   },
   "target": [
     {
@@ -33,21 +33,13 @@
         "system": "http://hl7.org/fhir/provenance-participant-role",
         "code": "author"
       },
-      "actor": {
+      "whoReference": {
         "reference": "Practitioner/xcda-author"
       },
-      "userId": {
-        "system": "http://acme.com/fhir/users/sso",
-        "value": "hhd"
-      },
-      "relatedAgent": [
-        {
-          "type": {
-            "text": "used"
-          },
-          "target": "#a1"
-        }
-      ]
+      "onBehalfOfUri": "#a1",
+      "relatedAgentType": {
+        "text": "used"
+      }
     },
     {
       "id": "a1",
@@ -55,7 +47,7 @@
         "system": "http://hl7.org/fhir/v3/ParticipationType",
         "code": "DEV"
       },
-      "actor": {
+      "whoReference": {
         "reference": "Device/software"
       }
     }
@@ -63,13 +55,10 @@
   "entity": [
     {
       "role": "source",
-      "type": {
-        "system": "http://loinc.org",
-        "code": "57133-1",
-        "display": "Referral note"
-      },
-      "reference": "DocumentReference/90f55916-9d15-4b8f-87a9-2d7ade8670c8",
-      "display": "CDA Document in XDS repository"
+      "reference": {
+        "reference": "DocumentReference/90f55916-9d15-4b8f-87a9-2d7ade8670c8",
+        "display": "CDA Document in XDS repository"
+      }
     }
   ]
 }

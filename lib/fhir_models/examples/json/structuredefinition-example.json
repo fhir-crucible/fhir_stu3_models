@@ -3,7 +3,7 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p><p><b>url</b>: <a>http://hl7.org/fhir/StructureDefinition/example</a></p><p><b>identifier</b>: 1.2.36.90146595217.4.2</p><p><b>version</b>: 2</p><p><b>name</b>: Example Lipid Profile</p><p><b>display</b>: Example Lipid Profile</p><p><b>status</b>: draft</p><p><b>experimental</b>: true</p><p><b>publisher</b>: Health Intersections Pty Ltd</p><h3>Contacts</h3><table><tr><td>-</td><td><b>Name</b></td><td><b>Telecom</b></td></tr><tr><td>*</td><td>Grahame Grieve</td><td>grahame@healthintersections.com.au</td></tr></table><p><b>date</b>: May 12, 2012</p><p><b>description</b>: Describes how the lab report is used for a standard Lipid Profile - Cholesterol, Triglyceride and Cholesterol fractions. Uses LOINC codes</p><p><b>useContext</b>: ?? <span>(Details : {urn:iso:std:iso:3166 code 'AU' = '??)</span></p><p><b>requirements</b>: Provide an example to demonstrate how to use StructureDefinition</p><p><b>copyright</b>: Createive Commons 0, per FHIR specification</p><p><b>code</b>: 314079002 (Details: SNOMED CT code 314079002 = 'Hyperlipidemia screening test (procedure)', stated as '314079002')</p><p><b>fhirVersion</b>: 1.0.0</p><h3>Mappings</h3><table><tr><td>-</td><td><b>Identity</b></td><td><b>Uri</b></td><td><b>Name</b></td><td><b>Comments</b></td></tr><tr><td>*</td><td>m1</td><td><a>https://www.rcpa.edu.au/getattachment/0961c6d1-ec80-4500-8dc0-de516500e05b/Lipid-and-lipoprotein-testing.aspx</a></td><td>RCPA Lipid Report recommendations</td><td>Actual mappings haven't yet been filled out</td></tr></table><p><b>kind</b>: resource</p><p><b>abstract</b>: false</p><p><b>type</b>: DiagnosticReport</p><p><b>baseDefinition</b>: <a>http://hl7.org/fhir/StructureDefinition/DiagnosticReport</a></p><p><b>derivation</b>: constraint</p><h3>Snapshots</h3><table><tr><td>-</td><td><b>Element</b></td></tr><tr><td>*</td><td>todo-bundle</td></tr></table></div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p><p><b>url</b>: <a>http://hl7.org/fhir/StructureDefinition/example</a></p><p><b>identifier</b>: 1.2.36.90146595217.4.2</p><p><b>version</b>: 2</p><p><b>name</b>: LipidProfileExample</p><p><b>title</b>: Example Lipid Profile</p><p><b>status</b>: draft</p><p><b>experimental</b>: true</p><p><b>publisher</b>: Health Intersections Pty Ltd</p><p><b>contact</b>: </p><p><b>date</b>: May 12, 2012</p><p><b>description</b>: Describes how the lab report is used for a standard Lipid Profile - Cholesterol, Triglyceride and Cholesterol fractions. Uses LOINC codes</p><p><b>jurisdiction</b>: AU <span>(Details : {urn:iso:std:iso:3166 code 'AU' = 'AU)</span></p><p><b>purpose</b>: Provide an example to demonstrate how to use StructureDefinition</p><p><b>copyright</b>: Createive Commons 0, per FHIR specification</p><p><b>keyword</b>: 314079002 (Details: SNOMED CT code 314079002 = 'Hyperlipidemia screening test (procedure)', stated as '314079002')</p><p><b>fhirVersion</b>: 1.0.0</p><h3>Mappings</h3><table><tr><td>-</td><td><b>Identity</b></td><td><b>Uri</b></td><td><b>Name</b></td><td><b>Comments</b></td></tr><tr><td>*</td><td>m1</td><td><a>https://www.rcpa.edu.au/getattachment/0961c6d1-ec80-4500-8dc0-de516500e05b/Lipid-and-lipoprotein-testing.aspx</a></td><td>RCPA Lipid Report recommendations</td><td>Actual mappings haven't yet been filled out</td></tr></table><p><b>kind</b>: resource</p><p><b>abstract</b>: false</p><p><b>type</b>: DiagnosticReport</p><p><b>baseDefinition</b>: <a>http://hl7.org/fhir/StructureDefinition/DiagnosticReport</a></p><p><b>derivation</b>: constraint</p><h3>Snapshots</h3><table><tr><td>-</td><td><b>Element</b></td></tr><tr><td>*</td><td>todo-bundle</td></tr></table></div>"
   },
   "url": "http://hl7.org/fhir/StructureDefinition/example",
   "identifier": [
@@ -13,8 +13,8 @@
     }
   ],
   "version": "2",
-  "name": "Example Lipid Profile",
-  "display": "Example Lipid Profile",
+  "name": "LipidProfileExample",
+  "title": "Example Lipid Profile",
   "status": "draft",
   "experimental": true,
   "publisher": "Health Intersections Pty Ltd",
@@ -31,7 +31,7 @@
   ],
   "date": "2012-05-12",
   "description": "Describes how the lab report is used for a standard Lipid Profile - Cholesterol, Triglyceride and Cholesterol fractions. Uses LOINC codes",
-  "useContext": [
+  "jurisdiction": [
     {
       "coding": [
         {
@@ -41,9 +41,9 @@
       ]
     }
   ],
-  "requirements": "Provide an example to demonstrate how to use StructureDefinition",
+  "purpose": "Provide an example to demonstrate how to use StructureDefinition",
   "copyright": "Createive Commons 0, per FHIR specification",
-  "code": [
+  "keyword": [
     {
       "system": "http://snomed.info/sct",
       "code": "314079002",
@@ -69,7 +69,6 @@
       {
         "id": "DiagnosticReport",
         "path": "DiagnosticReport",
-        "name": "LipidProfile",
         "short": "Lipid Lab Report",
         "definition": "The findings and interpretation of a general lipd lab profile.",
         "comments": "In this profile, mustSupport means that authoring systems must include the ability to report these elements, and processing systems must cater for them by either displaying them to the user or considering them appropriately in decision support systems.",
@@ -221,15 +220,15 @@
         "type": [
           {
             "code": "Reference",
-            "profile": "http://hl7.org/fhir/StructureDefinition/Patient"
+            "targetProfile": "http://hl7.org/fhir/StructureDefinition/Patient"
           },
           {
             "code": "Reference",
-            "profile": "http://hl7.org/fhir/StructureDefinition/Group"
+            "targetProfile": "http://hl7.org/fhir/StructureDefinition/Group"
           },
           {
             "code": "Reference",
-            "profile": "http://hl7.org/fhir/StructureDefinition/Device"
+            "targetProfile": "http://hl7.org/fhir/StructureDefinition/Device"
           }
         ],
         "isModifier": false
@@ -250,7 +249,7 @@
         "type": [
           {
             "code": "Reference",
-            "profile": "http://hl7.org/fhir/StructureDefinition/Observation"
+            "targetProfile": "http://hl7.org/fhir/StructureDefinition/Observation"
           }
         ],
         "isModifier": false
@@ -290,7 +289,7 @@
         "type": [
           {
             "code": "Reference",
-            "profile": "http://hl7.org/fhir/StructureDefinition/DiagnosticRequest"
+            "targetProfile": "http://hl7.org/fhir/StructureDefinition/DiagnosticRequest"
           }
         ],
         "isModifier": false
@@ -362,7 +361,7 @@
         "type": [
           {
             "code": "Reference",
-            "profile": "http://hl7.org/fhir/StructureDefinition/Observation"
+            "targetProfile": "http://hl7.org/fhir/StructureDefinition/Observation"
           }
         ],
         "isModifier": false
@@ -370,7 +369,7 @@
       {
         "id": "DiagnosticReport.result.Cholesterol",
         "path": "DiagnosticReport.result",
-        "name": "Cholesterol",
+        "sliceName": "Cholesterol",
         "short": "Cholesterol Result",
         "definition": "Reference to Cholesterol Result.",
         "min": 1,
@@ -383,7 +382,7 @@
         "type": [
           {
             "code": "Reference",
-            "profile": "http://hl7.org/fhir/StructureDefinition/cholesterol"
+            "targetProfile": "http://hl7.org/fhir/StructureDefinition/cholesterol"
           }
         ],
         "isModifier": false
@@ -391,7 +390,7 @@
       {
         "id": "DiagnosticReport.result.Triglyceride",
         "path": "DiagnosticReport.result",
-        "name": "Triglyceride",
+        "sliceName": "Triglyceride",
         "short": "Triglyceride Result",
         "definition": "Group of elements for Triglyceride result.",
         "min": 1,
@@ -404,7 +403,7 @@
         "type": [
           {
             "code": "Reference",
-            "profile": "http://hl7.org/fhir/StructureDefinition/triglyceride"
+            "targetProfile": "http://hl7.org/fhir/StructureDefinition/triglyceride"
           }
         ],
         "isModifier": false
@@ -412,7 +411,7 @@
       {
         "id": "DiagnosticReport.result.HDLCholesterol",
         "path": "DiagnosticReport.result",
-        "name": "HDLCholesterol",
+        "sliceName": "HDLCholesterol",
         "short": "HDL Cholesterol Result",
         "definition": "Group of elements for HDL Cholesterol result.",
         "min": 1,
@@ -425,7 +424,7 @@
         "type": [
           {
             "code": "Reference",
-            "profile": "http://hl7.org/fhir/StructureDefinition/hdlcholesterol"
+            "targetProfile": "http://hl7.org/fhir/StructureDefinition/hdlcholesterol"
           }
         ],
         "isModifier": false
@@ -433,7 +432,7 @@
       {
         "id": "DiagnosticReport.result.LDLCholesterol",
         "path": "DiagnosticReport.result",
-        "name": "LDLCholesterol",
+        "sliceName": "LDLCholesterol",
         "short": "LDL Cholesterol result, if reported",
         "definition": "LDL Cholesterol result, if reported.",
         "min": 0,
@@ -446,7 +445,7 @@
         "type": [
           {
             "code": "Reference",
-            "profile": "http://hl7.org/fhir/StructureDefinition/ldlcholesterol"
+            "targetProfile": "http://hl7.org/fhir/StructureDefinition/ldlcholesterol"
           }
         ],
         "isModifier": false

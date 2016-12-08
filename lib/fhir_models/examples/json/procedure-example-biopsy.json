@@ -5,9 +5,6 @@
     "status": "generated",
     "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Biopsy of suspected melanoma L) arm</div>"
   },
-  "subject": {
-    "reference": "Patient/example"
-  },
   "status": "completed",
   "code": {
     "coding": [
@@ -19,6 +16,23 @@
     ],
     "text": "Biopsy of suspected melanoma L) arm"
   },
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "performedDateTime": "2014-02-03",
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/example",
+        "display": "Dr Bert Biopser"
+      }
+    }
+  ],
+  "reasonCode": [
+    {
+      "text": "Dark lesion l) forearm. getting darker last 3 months."
+    }
+  ],
   "bodySite": [
     {
       "coding": [
@@ -31,20 +45,6 @@
       "text": "Left forearm"
     }
   ],
-  "reasonCode": [
-    {
-      "text": "Dark lesion l) forearm. getting darker last 3 months."
-    }
-  ],
-  "performer": [
-    {
-      "actor": {
-        "reference": "Practitioner/example",
-        "display": "Dr Bert Biopser"
-      }
-    }
-  ],
-  "performedDateTime": "2014-02-03",
   "followUp": [
     {
       "text": "Review in clinic"
