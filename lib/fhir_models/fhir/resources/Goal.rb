@@ -8,7 +8,7 @@ module FHIR
       'start' => ['date', 'CodeableConcept'],
       'target' => ['date', 'Duration']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['identifier', 'patient', 'category', 'status', 'subject', 'targetdate']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Goal.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Goal.meta', 'min'=>0, 'max'=>1},

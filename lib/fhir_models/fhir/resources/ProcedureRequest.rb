@@ -9,7 +9,7 @@ module FHIR
       'scheduled' => ['dateTime', 'Period', 'Timing'],
       'asNeeded' => ['boolean', 'CodeableConcept']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['identifier', 'patient', 'encounter', 'body-site', 'code', 'orderer', 'performer', 'status', 'subject']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'ProcedureRequest.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'ProcedureRequest.meta', 'min'=>0, 'max'=>1},

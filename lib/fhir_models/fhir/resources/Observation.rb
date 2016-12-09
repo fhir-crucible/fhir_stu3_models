@@ -8,7 +8,7 @@ module FHIR
       'effective' => ['dateTime', 'Period'],
       'value' => ['Quantity', 'CodeableConcept', 'string', 'Range', 'Ratio', 'SampledData', 'Attachment', 'time', 'dateTime', 'Period']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['code', 'date', 'identifier', 'patient', 'encounter', 'category', 'data-absent-reason', 'device', 'method', 'performer', 'related-target', 'related-type', 'specimen', 'status', 'subject', 'value-concept', 'value-date', 'value-quantity', 'value-string']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Observation.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Observation.meta', 'min'=>0, 'max'=>1},

@@ -8,7 +8,7 @@ module FHIR
       'medication' => ['CodeableConcept', 'Reference'],
       'effective' => ['dateTime', 'Period']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['code', 'device', 'effective-time', 'encounter', 'identifier', 'medication', 'not-given', 'patient', 'performer', 'prescription', 'reason-given', 'reason-not-given', 'status']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'MedicationAdministration.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'MedicationAdministration.meta', 'min'=>0, 'max'=>1},

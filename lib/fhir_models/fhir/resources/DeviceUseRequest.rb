@@ -8,7 +8,7 @@ module FHIR
       'device' => ['Reference', 'CodeableConcept'],
       'occurrence' => ['dateTime', 'Period', 'Timing']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['code', 'identifier', 'patient', 'encounter', 'author-date', 'based-on', 'definition', 'device', 'event-date', 'filler', 'replaces', 'requester', 'requisition', 'stage', 'status', 'subject']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'DeviceUseRequest.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'DeviceUseRequest.meta', 'min'=>0, 'max'=>1},

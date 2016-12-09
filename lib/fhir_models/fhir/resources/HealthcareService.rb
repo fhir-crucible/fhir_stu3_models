@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['active', 'characteristic', 'endpoint', 'identifier', 'location', 'name', 'organization', 'programname', 'servicecategory', 'servicetype']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'HealthcareService.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'HealthcareService.meta', 'min'=>0, 'max'=>1},

@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['patient', 'author', 'authoring-time', 'identifier', 'selected-study', 'title']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'ImagingManifest.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'ImagingManifest.meta', 'min'=>0, 'max'=>1},

@@ -9,7 +9,7 @@ module FHIR
       'age' => ['Age', 'Range', 'string'],
       'deceased' => ['boolean', 'Age', 'Range', 'date', 'string']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['code', 'date', 'identifier', 'patient', 'gender', 'relationship']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'FamilyMemberHistory.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'FamilyMemberHistory.meta', 'min'=>0, 'max'=>1},

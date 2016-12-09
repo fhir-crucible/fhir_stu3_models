@@ -7,7 +7,7 @@ module FHIR
     MULTIPLE_TYPES = {
       'medication' => ['CodeableConcept', 'Reference']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['code', 'identifier', 'medication', 'patient', 'prescription', 'status', 'destination', 'dispenser', 'receiver', 'responsibleparty', 'type', 'whenhandedover', 'whenprepared']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'MedicationDispense.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'MedicationDispense.meta', 'min'=>0, 'max'=>1},

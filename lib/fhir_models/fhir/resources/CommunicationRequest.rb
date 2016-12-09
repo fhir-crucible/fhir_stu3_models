@@ -7,7 +7,7 @@ module FHIR
     MULTIPLE_TYPES = {
       'scheduled' => ['dateTime', 'Period']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['category', 'context', 'identifier', 'medium', 'patient', 'priority', 'recipient', 'requested', 'requester', 'sender', 'status', 'subject', 'time']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'CommunicationRequest.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'CommunicationRequest.meta', 'min'=>0, 'max'=>1},

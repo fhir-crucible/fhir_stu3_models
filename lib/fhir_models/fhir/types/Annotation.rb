@@ -7,7 +7,7 @@ module FHIR
     MULTIPLE_TYPES = {
       'author' => ['Reference', 'string']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = 
     METADATA = {
       'id' => {'type'=>'string', 'path'=>'Annotation.id', 'min'=>0, 'max'=>1},
       'extension' => {'type'=>'Extension', 'path'=>'Annotation.extension', 'min'=>0, 'max'=>Float::INFINITY},

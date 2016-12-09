@@ -8,7 +8,7 @@ module FHIR
       'timing' => ['CodeableConcept', 'Timing'],
       'product' => ['Reference', 'CodeableConcept']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['date', 'description', 'effective', 'identifier', 'jurisdiction', 'name', 'publisher', 'status', 'title', 'topic', 'url', 'version']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'ActivityDefinition.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'ActivityDefinition.meta', 'min'=>0, 'max'=>1},

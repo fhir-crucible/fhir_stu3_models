@@ -8,7 +8,7 @@ module FHIR
       'onset' => ['dateTime', 'Age', 'Period', 'Range', 'string'],
       'abatement' => ['dateTime', 'Age', 'boolean', 'Period', 'Range', 'string']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['code', 'identifier', 'patient', 'abatement-age', 'abatement-boolean', 'abatement-date', 'abatement-string', 'asserted-date', 'asserter', 'body-site', 'category', 'clinicalstatus', 'context', 'evidence', 'onset-age', 'onset-date', 'onset-info', 'severity', 'stage', 'subject']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Condition.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Condition.meta', 'min'=>0, 'max'=>1},

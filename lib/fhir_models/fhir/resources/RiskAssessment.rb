@@ -8,7 +8,7 @@ module FHIR
       'occurrence' => ['dateTime', 'Period'],
       'reason' => ['CodeableConcept', 'Reference']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['date', 'identifier', 'patient', 'encounter', 'condition', 'method', 'performer', 'subject']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'RiskAssessment.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'RiskAssessment.meta', 'min'=>0, 'max'=>1},

@@ -7,7 +7,7 @@ module FHIR
     MULTIPLE_TYPES = {
       'definition' => ['uri', 'Reference']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['authored-on', 'based-on', 'business-status', 'code', 'context', 'definition-ref', 'focus', 'group-identifier', 'identifier', 'intent', 'modified', 'organization', 'owner', 'part-of', 'patient', 'performer', 'period', 'priority', 'requester', 'status', 'statusreason', 'subject']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Task.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Task.meta', 'min'=>0, 'max'=>1},

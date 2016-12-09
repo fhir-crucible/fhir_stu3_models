@@ -7,7 +7,7 @@ module FHIR
     MULTIPLE_TYPES = {
       'effective' => ['dateTime', 'Period']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['code', 'date', 'identifier', 'patient', 'encounter', 'category', 'diagnosis', 'image', 'issued', 'performer', 'request', 'result', 'specimen', 'status', 'subject']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'DiagnosticReport.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'DiagnosticReport.meta', 'min'=>0, 'max'=>1},

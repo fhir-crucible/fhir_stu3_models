@@ -7,7 +7,7 @@ module FHIR
     MULTIPLE_TYPES = {
       'reason' => ['CodeableConcept', 'Reference']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['identifier', 'patient', 'encounter', 'datewritten', 'prescriber']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'VisionPrescription.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'VisionPrescription.meta', 'min'=>0, 'max'=>1},

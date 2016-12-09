@@ -8,7 +8,7 @@ module FHIR
       'source' => ['uri', 'Reference'],
       'target' => ['uri', 'Reference']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['date', 'dependson', 'description', 'identifier', 'jurisdiction', 'name', 'product', 'publisher', 'source', 'source-code', 'source-system', 'source-uri', 'status', 'target', 'target-code', 'target-system', 'target-uri', 'title', 'url', 'version']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'ConceptMap.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'ConceptMap.meta', 'min'=>0, 'max'=>1},

@@ -7,7 +7,7 @@ module FHIR
     MULTIPLE_TYPES = {
       'binding' => ['Attachment', 'Reference']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['agent', 'authority', 'domain', 'identifier', 'issued', 'patient', 'signer', 'subject', 'topic', 'ttopic']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Contract.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Contract.meta', 'min'=>0, 'max'=>1},

@@ -7,7 +7,7 @@ module FHIR
     MULTIPLE_TYPES = {
       'eventTiming' => ['Timing', 'Reference', 'date', 'dateTime']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = 
     METADATA = {
       'id' => {'type'=>'string', 'path'=>'TriggerDefinition.id', 'min'=>0, 'max'=>1},
       'extension' => {'type'=>'Extension', 'path'=>'TriggerDefinition.extension', 'min'=>0, 'max'=>Float::INFINITY},

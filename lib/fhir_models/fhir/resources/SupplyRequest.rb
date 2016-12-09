@@ -8,7 +8,7 @@ module FHIR
       'orderedItem' => ['CodeableConcept', 'Reference'],
       'reason' => ['CodeableConcept', 'Reference']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['date', 'identifier', 'patient', 'kind', 'source', 'status', 'supplier']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'SupplyRequest.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'SupplyRequest.meta', 'min'=>0, 'max'=>1},

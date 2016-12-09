@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['address', 'address-city', 'address-country', 'address-postalcode', 'address-state', 'address-use', 'birthdate', 'email', 'gender', 'phone', 'phonetic', 'telecom', 'identifier', 'link', 'name', 'organization', 'patient', 'practitioner', 'relatedperson']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Person.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Person.meta', 'min'=>0, 'max'=>1},
