@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['identifier', 'organization', 'request']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'EnrollmentResponse.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'EnrollmentResponse.meta', 'min'=>0, 'max'=>1},
@@ -16,13 +16,13 @@ module FHIR
       'modifierExtension' => {'type'=>'Extension', 'path'=>'EnrollmentResponse.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
       'identifier' => {'type'=>'Identifier', 'path'=>'EnrollmentResponse.identifier', 'min'=>0, 'max'=>Float::INFINITY},
       'status' => {'valid_codes'=>{'http://hl7.org/fhir/fm-status'=>['active', 'cancelled', 'draft', 'entered-in-error', 'active', 'cancelled', 'draft', 'entered-in-error']}, 'type'=>'code', 'path'=>'EnrollmentResponse.status', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/fm-status'}},
-      'request' => {'type'=>'Reference', 'path'=>'EnrollmentResponse.request', 'min'=>0, 'max'=>1},
+      'request' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/EnrollmentRequest'], 'type'=>'Reference', 'path'=>'EnrollmentResponse.request', 'min'=>0, 'max'=>1},
       'outcome' => {'valid_codes'=>{'http://hl7.org/fhir/remittance-outcome'=>['complete', 'error', 'partial', 'complete', 'error', 'partial']}, 'type'=>'CodeableConcept', 'path'=>'EnrollmentResponse.outcome', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/remittance-outcome'}},
       'disposition' => {'type'=>'string', 'path'=>'EnrollmentResponse.disposition', 'min'=>0, 'max'=>1},
       'created' => {'type'=>'dateTime', 'path'=>'EnrollmentResponse.created', 'min'=>0, 'max'=>1},
-      'organization' => {'type'=>'Reference', 'path'=>'EnrollmentResponse.organization', 'min'=>0, 'max'=>1},
-      'requestProvider' => {'type'=>'Reference', 'path'=>'EnrollmentResponse.requestProvider', 'min'=>0, 'max'=>1},
-      'requestOrganization' => {'type'=>'Reference', 'path'=>'EnrollmentResponse.requestOrganization', 'min'=>0, 'max'=>1}
+      'organization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'EnrollmentResponse.organization', 'min'=>0, 'max'=>1},
+      'requestProvider' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner'], 'type'=>'Reference', 'path'=>'EnrollmentResponse.requestProvider', 'min'=>0, 'max'=>1},
+      'requestOrganization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'EnrollmentResponse.requestOrganization', 'min'=>0, 'max'=>1}
     }
 
     attr_accessor :id                  # 0-1 id
@@ -35,13 +35,13 @@ module FHIR
     attr_accessor :modifierExtension   # 0-* [ Extension ]
     attr_accessor :identifier          # 0-* [ Identifier ]
     attr_accessor :status              # 0-1 code
-    attr_accessor :request             # 0-1 Reference()
+    attr_accessor :request             # 0-1 Reference(EnrollmentRequest)
     attr_accessor :outcome             # 0-1 CodeableConcept
     attr_accessor :disposition         # 0-1 string
     attr_accessor :created             # 0-1 dateTime
-    attr_accessor :organization        # 0-1 Reference()
-    attr_accessor :requestProvider     # 0-1 Reference()
-    attr_accessor :requestOrganization # 0-1 Reference()
+    attr_accessor :organization        # 0-1 Reference(Organization)
+    attr_accessor :requestProvider     # 0-1 Reference(Practitioner)
+    attr_accessor :requestOrganization # 0-1 Reference(Organization)
 
     def resourceType
       'EnrollmentResponse'

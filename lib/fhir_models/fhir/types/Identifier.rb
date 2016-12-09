@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = 
     METADATA = {
       'id' => {'type'=>'string', 'path'=>'Identifier.id', 'min'=>0, 'max'=>1},
       'extension' => {'type'=>'Extension', 'path'=>'Identifier.extension', 'min'=>0, 'max'=>Float::INFINITY},
@@ -13,7 +13,7 @@ module FHIR
       'system' => {'type'=>'uri', 'path'=>'Identifier.system', 'min'=>0, 'max'=>1},
       'value' => {'type'=>'string', 'path'=>'Identifier.value', 'min'=>0, 'max'=>1},
       'period' => {'type'=>'Period', 'path'=>'Identifier.period', 'min'=>0, 'max'=>1},
-      'assigner' => {'type'=>'Reference', 'path'=>'Identifier.assigner', 'min'=>0, 'max'=>1}
+      'assigner' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Identifier.assigner', 'min'=>0, 'max'=>1}
     }
 
     attr_accessor :id        # 0-1 string
@@ -23,6 +23,6 @@ module FHIR
     attr_accessor :system    # 0-1 uri
     attr_accessor :value     # 0-1 string
     attr_accessor :period    # 0-1 Period
-    attr_accessor :assigner  # 0-1 Reference()
+    attr_accessor :assigner  # 0-1 Reference(Organization)
   end
 end

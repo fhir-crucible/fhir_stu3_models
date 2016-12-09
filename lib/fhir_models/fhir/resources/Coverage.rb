@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['beneficiary', 'class', 'dependent', 'group', 'identifier', 'payor', 'plan', 'policyholder', 'sequence', 'subclass', 'subgroup', 'subplan', 'subscriber', 'type']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Coverage.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Coverage.meta', 'min'=>0, 'max'=>1},
@@ -17,19 +17,19 @@ module FHIR
       'identifier' => {'type'=>'Identifier', 'path'=>'Coverage.identifier', 'min'=>0, 'max'=>Float::INFINITY},
       'status' => {'valid_codes'=>{'http://hl7.org/fhir/fm-status'=>['active', 'cancelled', 'draft', 'entered-in-error', 'active', 'cancelled', 'draft', 'entered-in-error']}, 'type'=>'code', 'path'=>'Coverage.status', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/fm-status'}},
       'type' => {'type'=>'CodeableConcept', 'path'=>'Coverage.type', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'preferred', 'uri'=>'http://hl7.org/fhir/ValueSet/coverage-type'}},
-      'policyHolder' => {'type'=>'Reference', 'path'=>'Coverage.policyHolder', 'min'=>0, 'max'=>1},
-      'subscriber' => {'type'=>'Reference', 'path'=>'Coverage.subscriber', 'min'=>0, 'max'=>1},
+      'policyHolder' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson', 'http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Coverage.policyHolder', 'min'=>0, 'max'=>1},
+      'subscriber' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson'], 'type'=>'Reference', 'path'=>'Coverage.subscriber', 'min'=>0, 'max'=>1},
       'subscriberId' => {'type'=>'string', 'path'=>'Coverage.subscriberId', 'min'=>0, 'max'=>1},
-      'beneficiary' => {'type'=>'Reference', 'path'=>'Coverage.beneficiary', 'min'=>0, 'max'=>1},
+      'beneficiary' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient'], 'type'=>'Reference', 'path'=>'Coverage.beneficiary', 'min'=>0, 'max'=>1},
       'relationship' => {'valid_codes'=>{'http://hl7.org/fhir/policyholder-relationship'=>['child', 'parent', 'spouse', 'common', 'other', 'self', 'child', 'parent', 'spouse', 'common', 'other', 'self']}, 'type'=>'CodeableConcept', 'path'=>'Coverage.relationship', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/policyholder-relationship'}},
       'period' => {'type'=>'Period', 'path'=>'Coverage.period', 'min'=>0, 'max'=>1},
-      'payor' => {'type'=>'Reference', 'path'=>'Coverage.payor', 'min'=>0, 'max'=>Float::INFINITY},
+      'payor' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization', 'http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson'], 'type'=>'Reference', 'path'=>'Coverage.payor', 'min'=>0, 'max'=>Float::INFINITY},
       'group' => {'type'=>'Coverage::Group', 'path'=>'Coverage.group', 'min'=>0, 'max'=>1},
       'dependent' => {'type'=>'string', 'path'=>'Coverage.dependent', 'min'=>0, 'max'=>1},
       'sequence' => {'type'=>'string', 'path'=>'Coverage.sequence', 'min'=>0, 'max'=>1},
       'order' => {'type'=>'positiveInt', 'path'=>'Coverage.order', 'min'=>0, 'max'=>1},
       'network' => {'type'=>'string', 'path'=>'Coverage.network', 'min'=>0, 'max'=>1},
-      'contract' => {'type'=>'Reference', 'path'=>'Coverage.contract', 'min'=>0, 'max'=>Float::INFINITY}
+      'contract' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Contract'], 'type'=>'Reference', 'path'=>'Coverage.contract', 'min'=>0, 'max'=>Float::INFINITY}
     }
 
     class Group < FHIR::Model
@@ -83,19 +83,19 @@ module FHIR
     attr_accessor :identifier        # 0-* [ Identifier ]
     attr_accessor :status            # 0-1 code
     attr_accessor :type              # 0-1 CodeableConcept
-    attr_accessor :policyHolder      # 0-1 Reference()
-    attr_accessor :subscriber        # 0-1 Reference()
+    attr_accessor :policyHolder      # 0-1 Reference(Patient|RelatedPerson|Organization)
+    attr_accessor :subscriber        # 0-1 Reference(Patient|RelatedPerson)
     attr_accessor :subscriberId      # 0-1 string
-    attr_accessor :beneficiary       # 0-1 Reference()
+    attr_accessor :beneficiary       # 0-1 Reference(Patient)
     attr_accessor :relationship      # 0-1 CodeableConcept
     attr_accessor :period            # 0-1 Period
-    attr_accessor :payor             # 0-* [ Reference() ]
+    attr_accessor :payor             # 0-* [ Reference(Organization|Patient|RelatedPerson) ]
     attr_accessor :group             # 0-1 Coverage::Group
     attr_accessor :dependent         # 0-1 string
     attr_accessor :sequence          # 0-1 string
     attr_accessor :order             # 0-1 positiveInt
     attr_accessor :network           # 0-1 string
-    attr_accessor :contract          # 0-* [ Reference() ]
+    attr_accessor :contract          # 0-* [ Reference(Contract) ]
 
     def resourceType
       'Coverage'

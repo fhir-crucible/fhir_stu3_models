@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['code', 'context', 'date', 'identifier', 'publisher', 'status', 'title', 'version']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Questionnaire.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Questionnaire.meta', 'min'=>0, 'max'=>1},
@@ -51,7 +51,7 @@ module FHIR
         'repeats' => {'type'=>'boolean', 'path'=>'Item.repeats', 'min'=>0, 'max'=>1},
         'readOnly' => {'type'=>'boolean', 'path'=>'Item.readOnly', 'min'=>0, 'max'=>1},
         'maxLength' => {'type'=>'integer', 'path'=>'Item.maxLength', 'min'=>0, 'max'=>1},
-        'options' => {'type'=>'Reference', 'path'=>'Item.options', 'min'=>0, 'max'=>1},
+        'options' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/ValueSet'], 'type'=>'Reference', 'path'=>'Item.options', 'min'=>0, 'max'=>1},
         'option' => {'type'=>'Questionnaire::Item::Option', 'path'=>'Item.option', 'min'=>0, 'max'=>Float::INFINITY},
         'initialBoolean' => {'type'=>'boolean', 'path'=>'Item.initial[x]', 'min'=>0, 'max'=>1},
         'initialDecimal' => {'type'=>'decimal', 'path'=>'Item.initial[x]', 'min'=>0, 'max'=>1},
@@ -65,7 +65,7 @@ module FHIR
         'initialAttachment' => {'type'=>'Attachment', 'path'=>'Item.initial[x]', 'min'=>0, 'max'=>1},
         'initialCoding' => {'type'=>'Coding', 'path'=>'Item.initial[x]', 'min'=>0, 'max'=>1},
         'initialQuantity' => {'type'=>'Quantity', 'path'=>'Item.initial[x]', 'min'=>0, 'max'=>1},
-        'initialReference' => {'type'=>'Reference', 'path'=>'Item.initial[x]', 'min'=>0, 'max'=>1},
+        'initialReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'Item.initial[x]', 'min'=>0, 'max'=>1},
         'item' => {'type'=>'Questionnaire::Item', 'path'=>'Item.item', 'min'=>0, 'max'=>Float::INFINITY}
       }
 
@@ -95,7 +95,7 @@ module FHIR
           'answerAttachment' => {'type'=>'Attachment', 'path'=>'EnableWhen.answer[x]', 'min'=>0, 'max'=>1},
           'answerCoding' => {'type'=>'Coding', 'path'=>'EnableWhen.answer[x]', 'min'=>0, 'max'=>1},
           'answerQuantity' => {'type'=>'Quantity', 'path'=>'EnableWhen.answer[x]', 'min'=>0, 'max'=>1},
-          'answerReference' => {'type'=>'Reference', 'path'=>'EnableWhen.answer[x]', 'min'=>0, 'max'=>1}
+          'answerReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'EnableWhen.answer[x]', 'min'=>0, 'max'=>1}
         }
 
         attr_accessor :id                # 0-1 string
@@ -115,7 +115,7 @@ module FHIR
         attr_accessor :answerAttachment  # 0-1 Attachment
         attr_accessor :answerCoding      # 0-1 Coding
         attr_accessor :answerQuantity    # 0-1 Quantity
-        attr_accessor :answerReference   # 0-1 Reference()
+        attr_accessor :answerReference   # 0-1 Reference(Resource)
       end
 
       class Option < FHIR::Model
@@ -161,7 +161,7 @@ module FHIR
       attr_accessor :repeats           # 0-1 boolean
       attr_accessor :readOnly          # 0-1 boolean
       attr_accessor :maxLength         # 0-1 integer
-      attr_accessor :options           # 0-1 Reference()
+      attr_accessor :options           # 0-1 Reference(ValueSet)
       attr_accessor :option            # 0-* [ Questionnaire::Item::Option ]
       attr_accessor :initialBoolean    # 0-1 boolean
       attr_accessor :initialDecimal    # 0-1 decimal
@@ -175,7 +175,7 @@ module FHIR
       attr_accessor :initialAttachment # 0-1 Attachment
       attr_accessor :initialCoding     # 0-1 Coding
       attr_accessor :initialQuantity   # 0-1 Quantity
-      attr_accessor :initialReference  # 0-1 Reference()
+      attr_accessor :initialReference  # 0-1 Reference(Resource)
       attr_accessor :item              # 0-* [ Questionnaire::Item ]
     end
 

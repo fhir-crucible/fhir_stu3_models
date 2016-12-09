@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['date', 'dose-number', 'dose-sequence', 'identifier', 'information', 'patient', 'status', 'support', 'vaccine-type']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'ImmunizationRecommendation.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'ImmunizationRecommendation.meta', 'min'=>0, 'max'=>1},
@@ -15,7 +15,7 @@ module FHIR
       'extension' => {'type'=>'Extension', 'path'=>'ImmunizationRecommendation.extension', 'min'=>0, 'max'=>Float::INFINITY},
       'modifierExtension' => {'type'=>'Extension', 'path'=>'ImmunizationRecommendation.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
       'identifier' => {'type'=>'Identifier', 'path'=>'ImmunizationRecommendation.identifier', 'min'=>0, 'max'=>Float::INFINITY},
-      'patient' => {'type'=>'Reference', 'path'=>'ImmunizationRecommendation.patient', 'min'=>1, 'max'=>1},
+      'patient' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient'], 'type'=>'Reference', 'path'=>'ImmunizationRecommendation.patient', 'min'=>1, 'max'=>1},
       'recommendation' => {'type'=>'ImmunizationRecommendation::Recommendation', 'path'=>'ImmunizationRecommendation.recommendation', 'min'=>1, 'max'=>Float::INFINITY}
     }
 
@@ -34,8 +34,8 @@ module FHIR
         'forecastStatus' => {'valid_codes'=>{'http://hl7.org/fhir/immunization-recommendation-status'=>['due', 'overdue', 'due', 'overdue']}, 'type'=>'CodeableConcept', 'path'=>'Recommendation.forecastStatus', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/immunization-recommendation-status'}},
         'dateCriterion' => {'type'=>'ImmunizationRecommendation::Recommendation::DateCriterion', 'path'=>'Recommendation.dateCriterion', 'min'=>0, 'max'=>Float::INFINITY},
         'protocol' => {'type'=>'ImmunizationRecommendation::Recommendation::Protocol', 'path'=>'Recommendation.protocol', 'min'=>0, 'max'=>1},
-        'supportingImmunization' => {'type'=>'Reference', 'path'=>'Recommendation.supportingImmunization', 'min'=>0, 'max'=>Float::INFINITY},
-        'supportingPatientInformation' => {'type'=>'Reference', 'path'=>'Recommendation.supportingPatientInformation', 'min'=>0, 'max'=>Float::INFINITY}
+        'supportingImmunization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Immunization'], 'type'=>'Reference', 'path'=>'Recommendation.supportingImmunization', 'min'=>0, 'max'=>Float::INFINITY},
+        'supportingPatientInformation' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Observation', 'http://hl7.org/fhir/StructureDefinition/AllergyIntolerance'], 'type'=>'Reference', 'path'=>'Recommendation.supportingPatientInformation', 'min'=>0, 'max'=>Float::INFINITY}
       }
 
       class DateCriterion < FHIR::Model
@@ -69,7 +69,7 @@ module FHIR
           'modifierExtension' => {'type'=>'Extension', 'path'=>'Protocol.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
           'doseSequence' => {'type'=>'positiveInt', 'path'=>'Protocol.doseSequence', 'min'=>0, 'max'=>1},
           'description' => {'type'=>'string', 'path'=>'Protocol.description', 'min'=>0, 'max'=>1},
-          'authority' => {'type'=>'Reference', 'path'=>'Protocol.authority', 'min'=>0, 'max'=>1},
+          'authority' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Protocol.authority', 'min'=>0, 'max'=>1},
           'series' => {'type'=>'string', 'path'=>'Protocol.series', 'min'=>0, 'max'=>1}
         }
 
@@ -78,7 +78,7 @@ module FHIR
         attr_accessor :modifierExtension # 0-* [ Extension ]
         attr_accessor :doseSequence      # 0-1 positiveInt
         attr_accessor :description       # 0-1 string
-        attr_accessor :authority         # 0-1 Reference()
+        attr_accessor :authority         # 0-1 Reference(Organization)
         attr_accessor :series            # 0-1 string
       end
 
@@ -91,8 +91,8 @@ module FHIR
       attr_accessor :forecastStatus               # 1-1 CodeableConcept
       attr_accessor :dateCriterion                # 0-* [ ImmunizationRecommendation::Recommendation::DateCriterion ]
       attr_accessor :protocol                     # 0-1 ImmunizationRecommendation::Recommendation::Protocol
-      attr_accessor :supportingImmunization       # 0-* [ Reference() ]
-      attr_accessor :supportingPatientInformation # 0-* [ Reference() ]
+      attr_accessor :supportingImmunization       # 0-* [ Reference(Immunization) ]
+      attr_accessor :supportingPatientInformation # 0-* [ Reference(Observation|AllergyIntolerance) ]
     end
 
     attr_accessor :id                # 0-1 id
@@ -104,7 +104,7 @@ module FHIR
     attr_accessor :extension         # 0-* [ Extension ]
     attr_accessor :modifierExtension # 0-* [ Extension ]
     attr_accessor :identifier        # 0-* [ Identifier ]
-    attr_accessor :patient           # 1-1 Reference()
+    attr_accessor :patient           # 1-1 Reference(Patient)
     attr_accessor :recommendation    # 1-* [ ImmunizationRecommendation::Recommendation ]
 
     def resourceType

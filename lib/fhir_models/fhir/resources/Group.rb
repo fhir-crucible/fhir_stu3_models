@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['actual', 'characteristic', 'code', 'exclude', 'identifier', 'member', 'type', 'value']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Group.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Group.meta', 'min'=>0, 'max'=>1},
@@ -67,7 +67,7 @@ module FHIR
         'id' => {'type'=>'string', 'path'=>'Member.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Member.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Member.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-        'entity' => {'type'=>'Reference', 'path'=>'Member.entity', 'min'=>1, 'max'=>1},
+        'entity' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/Device', 'http://hl7.org/fhir/StructureDefinition/Medication', 'http://hl7.org/fhir/StructureDefinition/Substance'], 'type'=>'Reference', 'path'=>'Member.entity', 'min'=>1, 'max'=>1},
         'period' => {'type'=>'Period', 'path'=>'Member.period', 'min'=>0, 'max'=>1},
         'inactive' => {'type'=>'boolean', 'path'=>'Member.inactive', 'min'=>0, 'max'=>1}
       }
@@ -75,7 +75,7 @@ module FHIR
       attr_accessor :id                # 0-1 string
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
-      attr_accessor :entity            # 1-1 Reference()
+      attr_accessor :entity            # 1-1 Reference(Patient|Practitioner|Device|Medication|Substance)
       attr_accessor :period            # 0-1 Period
       attr_accessor :inactive          # 0-1 boolean
     end

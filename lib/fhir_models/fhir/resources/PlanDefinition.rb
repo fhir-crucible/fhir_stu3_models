@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['date', 'description', 'effective', 'identifier', 'jurisdiction', 'name', 'publisher', 'status', 'title', 'topic', 'url', 'version']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'PlanDefinition.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'PlanDefinition.meta', 'min'=>0, 'max'=>1},
@@ -37,7 +37,7 @@ module FHIR
       'contact' => {'type'=>'ContactDetail', 'path'=>'PlanDefinition.contact', 'min'=>0, 'max'=>Float::INFINITY},
       'copyright' => {'type'=>'markdown', 'path'=>'PlanDefinition.copyright', 'min'=>0, 'max'=>1},
       'relatedArtifact' => {'type'=>'RelatedArtifact', 'path'=>'PlanDefinition.relatedArtifact', 'min'=>0, 'max'=>Float::INFINITY},
-      'library' => {'type'=>'Reference', 'path'=>'PlanDefinition.library', 'min'=>0, 'max'=>Float::INFINITY},
+      'library' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Library'], 'type'=>'Reference', 'path'=>'PlanDefinition.library', 'min'=>0, 'max'=>Float::INFINITY},
       'actionDefinition' => {'type'=>'PlanDefinition::ActionDefinition', 'path'=>'PlanDefinition.actionDefinition', 'min'=>0, 'max'=>Float::INFINITY}
     }
 
@@ -77,8 +77,8 @@ module FHIR
         'requiredBehavior' => {'valid_codes'=>{'http://hl7.org/fhir/action-required-behavior'=>['must', 'could', 'must-unless-documented', 'must', 'could', 'must-unless-documented']}, 'type'=>'code', 'path'=>'ActionDefinition.requiredBehavior', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/action-required-behavior'}},
         'precheckBehavior' => {'valid_codes'=>{'http://hl7.org/fhir/action-precheck-behavior'=>['yes', 'no', 'yes', 'no']}, 'type'=>'code', 'path'=>'ActionDefinition.precheckBehavior', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/action-precheck-behavior'}},
         'cardinalityBehavior' => {'valid_codes'=>{'http://hl7.org/fhir/action-cardinality-behavior'=>['single', 'multiple', 'single', 'multiple']}, 'type'=>'code', 'path'=>'ActionDefinition.cardinalityBehavior', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/action-cardinality-behavior'}},
-        'activityDefinition' => {'type'=>'Reference', 'path'=>'ActionDefinition.activityDefinition', 'min'=>0, 'max'=>1},
-        'transform' => {'type'=>'Reference', 'path'=>'ActionDefinition.transform', 'min'=>0, 'max'=>1},
+        'activityDefinition' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/ActivityDefinition'], 'type'=>'Reference', 'path'=>'ActionDefinition.activityDefinition', 'min'=>0, 'max'=>1},
+        'transform' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/StructureMap'], 'type'=>'Reference', 'path'=>'ActionDefinition.transform', 'min'=>0, 'max'=>1},
         'dynamicValue' => {'type'=>'PlanDefinition::ActionDefinition::DynamicValue', 'path'=>'ActionDefinition.dynamicValue', 'min'=>0, 'max'=>Float::INFINITY},
         'actionDefinition' => {'type'=>'PlanDefinition::ActionDefinition', 'path'=>'ActionDefinition.actionDefinition', 'min'=>0, 'max'=>Float::INFINITY}
       }
@@ -185,8 +185,8 @@ module FHIR
       attr_accessor :requiredBehavior    # 0-1 code
       attr_accessor :precheckBehavior    # 0-1 code
       attr_accessor :cardinalityBehavior # 0-1 code
-      attr_accessor :activityDefinition  # 0-1 Reference()
-      attr_accessor :transform           # 0-1 Reference()
+      attr_accessor :activityDefinition  # 0-1 Reference(ActivityDefinition)
+      attr_accessor :transform           # 0-1 Reference(StructureMap)
       attr_accessor :dynamicValue        # 0-* [ PlanDefinition::ActionDefinition::DynamicValue ]
       attr_accessor :actionDefinition    # 0-* [ PlanDefinition::ActionDefinition ]
     end
@@ -222,7 +222,7 @@ module FHIR
     attr_accessor :contact           # 0-* [ ContactDetail ]
     attr_accessor :copyright         # 0-1 markdown
     attr_accessor :relatedArtifact   # 0-* [ RelatedArtifact ]
-    attr_accessor :library           # 0-* [ Reference() ]
+    attr_accessor :library           # 0-* [ Reference(Library) ]
     attr_accessor :actionDefinition  # 0-* [ PlanDefinition::ActionDefinition ]
 
     def resourceType

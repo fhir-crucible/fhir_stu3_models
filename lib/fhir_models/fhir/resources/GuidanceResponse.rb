@@ -7,7 +7,7 @@ module FHIR
     MULTIPLE_TYPES = {
       'reason' => ['CodeableConcept', 'Reference']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['patient', 'subject']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'GuidanceResponse.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'GuidanceResponse.meta', 'min'=>0, 'max'=>1},
@@ -19,18 +19,18 @@ module FHIR
       'modifierExtension' => {'type'=>'Extension', 'path'=>'GuidanceResponse.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
       'requestId' => {'type'=>'id', 'path'=>'GuidanceResponse.requestId', 'min'=>0, 'max'=>1},
       'identifier' => {'type'=>'Identifier', 'path'=>'GuidanceResponse.identifier', 'min'=>0, 'max'=>1},
-      'module' => {'type'=>'Reference', 'path'=>'GuidanceResponse.module', 'min'=>1, 'max'=>1},
+      'module' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/ServiceDefinition'], 'type'=>'Reference', 'path'=>'GuidanceResponse.module', 'min'=>1, 'max'=>1},
       'status' => {'valid_codes'=>{'http://hl7.org/fhir/guidance-response-status'=>['success', 'data-requested', 'data-required', 'in-progress', 'failure', 'success', 'data-requested', 'data-required', 'in-progress', 'failure']}, 'type'=>'code', 'path'=>'GuidanceResponse.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/guidance-response-status'}},
-      'subject' => {'type'=>'Reference', 'path'=>'GuidanceResponse.subject', 'min'=>0, 'max'=>1},
-      'context' => {'type'=>'Reference', 'path'=>'GuidanceResponse.context', 'min'=>0, 'max'=>1},
+      'subject' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Group'], 'type'=>'Reference', 'path'=>'GuidanceResponse.subject', 'min'=>0, 'max'=>1},
+      'context' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Encounter', 'http://hl7.org/fhir/StructureDefinition/EpisodeOfCare'], 'type'=>'Reference', 'path'=>'GuidanceResponse.context', 'min'=>0, 'max'=>1},
       'occurrenceDateTime' => {'type'=>'dateTime', 'path'=>'GuidanceResponse.occurrenceDateTime', 'min'=>0, 'max'=>1},
-      'performer' => {'type'=>'Reference', 'path'=>'GuidanceResponse.performer', 'min'=>0, 'max'=>1},
+      'performer' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Device'], 'type'=>'Reference', 'path'=>'GuidanceResponse.performer', 'min'=>0, 'max'=>1},
       'reasonCodeableConcept' => {'type'=>'CodeableConcept', 'path'=>'GuidanceResponse.reason[x]', 'min'=>0, 'max'=>1},
-      'reasonReference' => {'type'=>'Reference', 'path'=>'GuidanceResponse.reason[x]', 'min'=>0, 'max'=>1},
+      'reasonReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'GuidanceResponse.reason[x]', 'min'=>0, 'max'=>1},
       'note' => {'type'=>'Annotation', 'path'=>'GuidanceResponse.note', 'min'=>0, 'max'=>Float::INFINITY},
-      'evaluationMessage' => {'type'=>'Reference', 'path'=>'GuidanceResponse.evaluationMessage', 'min'=>0, 'max'=>Float::INFINITY},
-      'outputParameters' => {'type'=>'Reference', 'path'=>'GuidanceResponse.outputParameters', 'min'=>0, 'max'=>1},
-      'result' => {'type'=>'Reference', 'path'=>'GuidanceResponse.result', 'min'=>0, 'max'=>1},
+      'evaluationMessage' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/OperationOutcome'], 'type'=>'Reference', 'path'=>'GuidanceResponse.evaluationMessage', 'min'=>0, 'max'=>Float::INFINITY},
+      'outputParameters' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Parameters'], 'type'=>'Reference', 'path'=>'GuidanceResponse.outputParameters', 'min'=>0, 'max'=>1},
+      'result' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/CarePlan', 'http://hl7.org/fhir/StructureDefinition/RequestGroup'], 'type'=>'Reference', 'path'=>'GuidanceResponse.result', 'min'=>0, 'max'=>1},
       'dataRequirement' => {'type'=>'DataRequirement', 'path'=>'GuidanceResponse.dataRequirement', 'min'=>0, 'max'=>Float::INFINITY}
     }
 
@@ -44,18 +44,18 @@ module FHIR
     attr_accessor :modifierExtension     # 0-* [ Extension ]
     attr_accessor :requestId             # 0-1 id
     attr_accessor :identifier            # 0-1 Identifier
-    attr_accessor :module                # 1-1 Reference()
+    attr_accessor :module                # 1-1 Reference(ServiceDefinition)
     attr_accessor :status                # 1-1 code
-    attr_accessor :subject               # 0-1 Reference()
-    attr_accessor :context               # 0-1 Reference()
+    attr_accessor :subject               # 0-1 Reference(Patient|Group)
+    attr_accessor :context               # 0-1 Reference(Encounter|EpisodeOfCare)
     attr_accessor :occurrenceDateTime    # 0-1 dateTime
-    attr_accessor :performer             # 0-1 Reference()
+    attr_accessor :performer             # 0-1 Reference(Device)
     attr_accessor :reasonCodeableConcept # 0-1 CodeableConcept
-    attr_accessor :reasonReference       # 0-1 Reference()
+    attr_accessor :reasonReference       # 0-1 Reference(Resource)
     attr_accessor :note                  # 0-* [ Annotation ]
-    attr_accessor :evaluationMessage     # 0-* [ Reference() ]
-    attr_accessor :outputParameters      # 0-1 Reference()
-    attr_accessor :result                # 0-1 Reference()
+    attr_accessor :evaluationMessage     # 0-* [ Reference(OperationOutcome) ]
+    attr_accessor :outputParameters      # 0-1 Reference(Parameters)
+    attr_accessor :result                # 0-1 Reference(CarePlan|RequestGroup)
     attr_accessor :dataRequirement       # 0-* [ DataRequirement ]
 
     def resourceType

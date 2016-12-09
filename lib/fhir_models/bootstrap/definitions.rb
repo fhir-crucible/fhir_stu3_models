@@ -227,7 +227,7 @@ module FHIR
     def self.get_search_parameters(type_name)
       return nil if type_name.nil?
       load_search_params
-      @@search_params.select { |p| p['base'] == type_name && p['xpath'] && !p['xpath'].include?('extension') }.map { |p| p['code'] }
+      @@search_params.select { |p| p['base'].include?(type_name) && p['xpath'] && !p['xpath'].include?('extension') }.map { |p| p['code'] }
     end
 
     private_class_method :load_types, :load_extensions, :load_expansions, :load_profiles, :load_resources, :load_search_params

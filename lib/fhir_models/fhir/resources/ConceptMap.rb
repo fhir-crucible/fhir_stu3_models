@@ -8,7 +8,7 @@ module FHIR
       'source' => ['uri', 'Reference'],
       'target' => ['uri', 'Reference']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['date', 'dependson', 'description', 'identifier', 'jurisdiction', 'name', 'product', 'publisher', 'source', 'source-code', 'source-system', 'source-uri', 'status', 'target', 'target-code', 'target-system', 'target-uri', 'title', 'url', 'version']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'ConceptMap.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'ConceptMap.meta', 'min'=>0, 'max'=>1},
@@ -34,9 +34,9 @@ module FHIR
       'purpose' => {'type'=>'markdown', 'path'=>'ConceptMap.purpose', 'min'=>0, 'max'=>1},
       'copyright' => {'type'=>'markdown', 'path'=>'ConceptMap.copyright', 'min'=>0, 'max'=>1},
       'sourceUri' => {'type'=>'uri', 'path'=>'ConceptMap.source[x]', 'min'=>0, 'max'=>1},
-      'sourceReference' => {'type'=>'Reference', 'path'=>'ConceptMap.source[x]', 'min'=>0, 'max'=>1},
+      'sourceReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/ValueSet'], 'type'=>'Reference', 'path'=>'ConceptMap.source[x]', 'min'=>0, 'max'=>1},
       'targetUri' => {'type'=>'uri', 'path'=>'ConceptMap.target[x]', 'min'=>0, 'max'=>1},
-      'targetReference' => {'type'=>'Reference', 'path'=>'ConceptMap.target[x]', 'min'=>0, 'max'=>1},
+      'targetReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/ValueSet'], 'type'=>'Reference', 'path'=>'ConceptMap.target[x]', 'min'=>0, 'max'=>1},
       'group' => {'type'=>'ConceptMap::Group', 'path'=>'ConceptMap.group', 'min'=>0, 'max'=>Float::INFINITY}
     }
 
@@ -158,9 +158,9 @@ module FHIR
     attr_accessor :purpose           # 0-1 markdown
     attr_accessor :copyright         # 0-1 markdown
     attr_accessor :sourceUri         # 0-1 uri
-    attr_accessor :sourceReference   # 0-1 Reference()
+    attr_accessor :sourceReference   # 0-1 Reference(ValueSet)
     attr_accessor :targetUri         # 0-1 uri
-    attr_accessor :targetReference   # 0-1 Reference()
+    attr_accessor :targetReference   # 0-1 Reference(ValueSet)
     attr_accessor :group             # 0-* [ ConceptMap::Group ]
 
     def resourceType

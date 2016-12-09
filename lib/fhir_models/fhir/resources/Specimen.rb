@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['accession', 'bodysite', 'collected', 'collector', 'container', 'container-id', 'identifier', 'parent', 'patient', 'subject', 'type']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Specimen.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Specimen.meta', 'min'=>0, 'max'=>1},
@@ -18,10 +18,10 @@ module FHIR
       'accessionIdentifier' => {'type'=>'Identifier', 'path'=>'Specimen.accessionIdentifier', 'min'=>0, 'max'=>1},
       'status' => {'valid_codes'=>{'http://hl7.org/fhir/specimen-status'=>['available', 'unavailable', 'unsatisfactory', 'entered-in-error', 'available', 'unavailable', 'unsatisfactory', 'entered-in-error']}, 'type'=>'code', 'path'=>'Specimen.status', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/specimen-status'}},
       'type' => {'valid_codes'=>{'http://hl7.org/fhir/v2/0487'=>['...', 'ABS', 'ACNE', 'ACNFLD', 'AIRS', 'ALL', 'AMN', 'AMP', 'ANGI', 'ARTC', 'ASERU', 'ASP', 'ATTE', 'AUTOA', 'AUTOC', 'AUTP', 'BBL', 'BCYST', 'BDY', 'BIFL', 'BITE', 'BLD', 'BLDA', 'BLDCO', 'BLDV', 'BLEB', 'BLIST', 'BOIL', 'BON', 'BONE', 'BOWL', 'BPH', 'BPU', 'BRN', 'BRSH', 'BRTH', 'BRUS', 'BUB', 'BULLA', 'BX', 'CALC', 'CARBU', 'CAT', 'CBITE', 'CDM', 'CLIPP', 'CNJT', 'CNL', 'COL', 'CONE', 'CSCR', 'CSERU', 'CSF', 'CSITE', 'CSMY', 'CST', 'CSVR', 'CTP', 'CUR', 'CVM', 'CVPS', 'CVPT', 'CYN', 'CYST', 'DBITE', 'DCS', 'DEC', 'DEION', 'DIA', 'DIAF', 'DISCHG', 'DIV', 'DRN', 'DRNG', 'DRNGP', 'DUFL', 'EARW', 'EBRUSH', 'EEYE', 'EFF', 'EFFUS', 'EFOD', 'EISO', 'ELT', 'ENVIR', 'EOS', 'EOTH', 'ESOI', 'ESOS', 'ETA', 'ETTP', 'ETTUB', 'EWHI', 'EXG', 'EXS', 'EXUDTE', 'FAW', 'FBLOOD', 'FGA', 'FIB', 'FIST', 'FLD', 'FLT', 'FLU', 'FLUID', 'FOLEY', 'FRS', 'FSCLP', 'FUR', 'GAS', 'GASA', 'GASAN', 'GASBR', 'GASD', 'GAST', 'GENL', 'GENV', 'GRAFT', 'GRAFTS', 'GRANU', 'GROSH', 'GSOL', 'GSPEC', 'GT', 'GTUBE', 'HAR', 'HBITE', 'HBLUD', 'HEMAQ', 'HEMO', 'HERNI', 'HEV', 'HIC', 'HYDC', 'IBITE', 'ICYST', 'IDC', 'IHG', 'ILEO', 'ILLEG', 'IMP', 'INCI', 'INFIL', 'INS', 'INTRD', 'ISLT', 'IT', 'IUD', 'IVCAT', 'IVFLD', 'IVTIP', 'JEJU', 'JNTFLD', 'JP', 'KELOI', 'KIDFLD', 'LAVG', 'LAVGG', 'LAVGP', 'LAVPG', 'LENS1', 'LENS2', 'LESN', 'LIQ', 'LIQO', 'LNA', 'LNV', 'LSAC', 'LYM', 'MAC', 'MAHUR', 'MAR', 'MASS', 'MBLD', 'MEC', 'MILK', 'MLK', 'MUCOS', 'MUCUS', 'NAIL', 'NASDR', 'NEDL', 'NEPH', 'NGASP', 'NGAST', 'NGS', 'NODUL', 'NSECR', 'ORH', 'ORL', 'OTH', 'PACEM', 'PAFL', 'PCFL', 'PDSIT', 'PDTS', 'PELVA', 'PENIL', 'PERIA', 'PILOC', 'PINS', 'PIS', 'PLAN', 'PLAS', 'PLB', 'PLC', 'PLEVS', 'PLR', 'PMN', 'PND', 'POL', 'POPGS', 'POPLG', 'POPLV', 'PORTA', 'PPP', 'PROST', 'PRP', 'PSC', 'PUNCT', 'PUS', 'PUSFR', 'PUST', 'QC3', 'RANDU', 'RBC', 'RBITE', 'RECT', 'RECTA', 'RENALC', 'RENC', 'RES', 'SAL', 'SCAR', 'SCLV', 'SCROA', 'SECRE', 'SER', 'SHU', 'SHUNF', 'SHUNT', 'SITE', 'SKBP', 'SKN', 'SMM', 'SMN', 'SNV', 'SPRM', 'SPRP', 'SPRPB', 'SPS', 'SPT', 'SPTC', 'SPTT', 'SPUT1', 'SPUTIN', 'SPUTSP', 'STER', 'STL', 'STONE', 'SUBMA', 'SUBMX', 'SUMP', 'SUP', 'SUTUR', 'SWGZ', 'SWT', 'TASP', 'TEAR', 'THRB', 'TISS', 'TISU', 'TLC', 'TRAC', 'TRANS', 'TSERU', 'TSTES', 'TTRA', 'TUBES', 'TUMOR', 'TZANC', 'UDENT', 'UMED', 'UR', 'URC', 'URINB', 'URINC', 'URINM', 'URINN', 'URINP', 'URNS', 'URT', 'USCOP', 'USPEC', 'USUB', 'VASTIP', 'VENT', 'VITF', 'VOM', 'WASH', 'WASI', 'WAT', 'WB', 'WBC', 'WEN', 'WICK', 'WND', 'WNDA', 'WNDD', 'WNDE', 'WORM', 'WRT', 'WWA', 'WWO', 'WWT']}, 'type'=>'CodeableConcept', 'path'=>'Specimen.type', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/v2-0487'}},
-      'subject' => {'type'=>'Reference', 'path'=>'Specimen.subject', 'min'=>1, 'max'=>1},
+      'subject' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Group', 'http://hl7.org/fhir/StructureDefinition/Device', 'http://hl7.org/fhir/StructureDefinition/Substance'], 'type'=>'Reference', 'path'=>'Specimen.subject', 'min'=>1, 'max'=>1},
       'receivedTime' => {'type'=>'dateTime', 'path'=>'Specimen.receivedTime', 'min'=>0, 'max'=>1},
-      'parent' => {'type'=>'Reference', 'path'=>'Specimen.parent', 'min'=>0, 'max'=>Float::INFINITY},
-      'request' => {'type'=>'Reference', 'path'=>'Specimen.request', 'min'=>0, 'max'=>Float::INFINITY},
+      'parent' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Specimen'], 'type'=>'Reference', 'path'=>'Specimen.parent', 'min'=>0, 'max'=>Float::INFINITY},
+      'request' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/DiagnosticRequest', 'http://hl7.org/fhir/StructureDefinition/ProcedureRequest'], 'type'=>'Reference', 'path'=>'Specimen.request', 'min'=>0, 'max'=>Float::INFINITY},
       'collection' => {'type'=>'Specimen::Collection', 'path'=>'Specimen.collection', 'min'=>0, 'max'=>1},
       'treatment' => {'type'=>'Specimen::Treatment', 'path'=>'Specimen.treatment', 'min'=>0, 'max'=>Float::INFINITY},
       'container' => {'type'=>'Specimen::Container', 'path'=>'Specimen.container', 'min'=>0, 'max'=>Float::INFINITY},
@@ -40,7 +40,7 @@ module FHIR
         'id' => {'type'=>'string', 'path'=>'Collection.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Collection.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Collection.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-        'collector' => {'type'=>'Reference', 'path'=>'Collection.collector', 'min'=>0, 'max'=>1},
+        'collector' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner'], 'type'=>'Reference', 'path'=>'Collection.collector', 'min'=>0, 'max'=>1},
         'collectedDateTime' => {'type'=>'dateTime', 'path'=>'Collection.collected[x]', 'min'=>0, 'max'=>1},
         'collectedPeriod' => {'type'=>'Period', 'path'=>'Collection.collected[x]', 'min'=>0, 'max'=>1},
         'quantity' => {'type'=>'Quantity', 'path'=>'Collection.quantity', 'min'=>0, 'max'=>1},
@@ -51,7 +51,7 @@ module FHIR
       attr_accessor :id                # 0-1 string
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
-      attr_accessor :collector         # 0-1 Reference()
+      attr_accessor :collector         # 0-1 Reference(Practitioner)
       attr_accessor :collectedDateTime # 0-1 dateTime
       attr_accessor :collectedPeriod   # 0-1 Period
       attr_accessor :quantity          # 0-1 Quantity
@@ -73,7 +73,7 @@ module FHIR
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Treatment.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
         'description' => {'type'=>'string', 'path'=>'Treatment.description', 'min'=>0, 'max'=>1},
         'procedure' => {'valid_codes'=>{'http://hl7.org/fhir/v2/0373'=>['ACID', 'ALK', 'DEFB', 'FILT', 'LDLP', 'NEUT', 'RECA', 'UFIL']}, 'type'=>'CodeableConcept', 'path'=>'Treatment.procedure', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/specimen-treatment-procedure'}},
-        'additive' => {'type'=>'Reference', 'path'=>'Treatment.additive', 'min'=>0, 'max'=>Float::INFINITY},
+        'additive' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Substance'], 'type'=>'Reference', 'path'=>'Treatment.additive', 'min'=>0, 'max'=>Float::INFINITY},
         'timeDateTime' => {'type'=>'dateTime', 'path'=>'Treatment.time[x]', 'min'=>0, 'max'=>1},
         'timePeriod' => {'type'=>'Period', 'path'=>'Treatment.time[x]', 'min'=>0, 'max'=>1}
       }
@@ -83,7 +83,7 @@ module FHIR
       attr_accessor :modifierExtension # 0-* [ Extension ]
       attr_accessor :description       # 0-1 string
       attr_accessor :procedure         # 0-1 CodeableConcept
-      attr_accessor :additive          # 0-* [ Reference() ]
+      attr_accessor :additive          # 0-* [ Reference(Substance) ]
       attr_accessor :timeDateTime      # 0-1 dateTime
       attr_accessor :timePeriod        # 0-1 Period
     end
@@ -106,7 +106,7 @@ module FHIR
         'capacity' => {'type'=>'Quantity', 'path'=>'Container.capacity', 'min'=>0, 'max'=>1},
         'specimenQuantity' => {'type'=>'Quantity', 'path'=>'Container.specimenQuantity', 'min'=>0, 'max'=>1},
         'additiveCodeableConcept' => {'valid_codes'=>{'http://hl7.org/fhir/v2/0371'=>['ACDA', 'ACDB', 'ACET', 'AMIES', 'BACTM', 'BF10', 'BOR', 'BOUIN', 'BSKM', 'C32', 'C38', 'CARS', 'CARY', 'CHLTM', 'CTAD', 'EDTK', 'EDTK15', 'EDTK75', 'EDTN', 'ENT', 'ENT+', 'F10', 'FDP', 'FL10', 'FL100', 'HCL6', 'HEPA', 'HEPL', 'HEPN', 'HNO3', 'JKM', 'KARN', 'KOX', 'LIA', 'M4', 'M4RT', 'M5', 'MICHTM', 'MMDTM', 'NAF', 'NAPS', 'NONE', 'PAGE', 'PHENOL', 'PVA', 'RLM', 'SILICA', 'SPS', 'SST', 'STUTM', 'THROM', 'THYMOL', 'THYO', 'TOLU', 'URETM', 'VIRTM', 'WEST']}, 'type'=>'CodeableConcept', 'path'=>'Container.additive[x]', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/v2-0371'}},
-        'additiveReference' => {'type'=>'Reference', 'path'=>'Container.additive[x]', 'min'=>0, 'max'=>1}
+        'additiveReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Substance'], 'type'=>'Reference', 'path'=>'Container.additive[x]', 'min'=>0, 'max'=>1}
       }
 
       attr_accessor :id                      # 0-1 string
@@ -118,7 +118,7 @@ module FHIR
       attr_accessor :capacity                # 0-1 Quantity
       attr_accessor :specimenQuantity        # 0-1 Quantity
       attr_accessor :additiveCodeableConcept # 0-1 CodeableConcept
-      attr_accessor :additiveReference       # 0-1 Reference()
+      attr_accessor :additiveReference       # 0-1 Reference(Substance)
     end
 
     attr_accessor :id                  # 0-1 id
@@ -133,10 +133,10 @@ module FHIR
     attr_accessor :accessionIdentifier # 0-1 Identifier
     attr_accessor :status              # 0-1 code
     attr_accessor :type                # 0-1 CodeableConcept
-    attr_accessor :subject             # 1-1 Reference()
+    attr_accessor :subject             # 1-1 Reference(Patient|Group|Device|Substance)
     attr_accessor :receivedTime        # 0-1 dateTime
-    attr_accessor :parent              # 0-* [ Reference() ]
-    attr_accessor :request             # 0-* [ Reference() ]
+    attr_accessor :parent              # 0-* [ Reference(Specimen) ]
+    attr_accessor :request             # 0-* [ Reference(DiagnosticRequest|ProcedureRequest) ]
     attr_accessor :collection          # 0-1 Specimen::Collection
     attr_accessor :treatment           # 0-* [ Specimen::Treatment ]
     attr_accessor :container           # 0-* [ Specimen::Container ]

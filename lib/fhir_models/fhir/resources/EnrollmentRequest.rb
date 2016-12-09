@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['identifier', 'organization', 'patient', 'subject']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'EnrollmentRequest.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'EnrollmentRequest.meta', 'min'=>0, 'max'=>1},
@@ -17,11 +17,11 @@ module FHIR
       'identifier' => {'type'=>'Identifier', 'path'=>'EnrollmentRequest.identifier', 'min'=>0, 'max'=>Float::INFINITY},
       'status' => {'valid_codes'=>{'http://hl7.org/fhir/fm-status'=>['active', 'cancelled', 'draft', 'entered-in-error', 'active', 'cancelled', 'draft', 'entered-in-error']}, 'type'=>'code', 'path'=>'EnrollmentRequest.status', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/fm-status'}},
       'created' => {'type'=>'dateTime', 'path'=>'EnrollmentRequest.created', 'min'=>0, 'max'=>1},
-      'insurer' => {'type'=>'Reference', 'path'=>'EnrollmentRequest.insurer', 'min'=>0, 'max'=>1},
-      'provider' => {'type'=>'Reference', 'path'=>'EnrollmentRequest.provider', 'min'=>0, 'max'=>1},
-      'organization' => {'type'=>'Reference', 'path'=>'EnrollmentRequest.organization', 'min'=>0, 'max'=>1},
-      'subject' => {'type'=>'Reference', 'path'=>'EnrollmentRequest.subject', 'min'=>0, 'max'=>1},
-      'coverage' => {'type'=>'Reference', 'path'=>'EnrollmentRequest.coverage', 'min'=>0, 'max'=>1}
+      'insurer' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'EnrollmentRequest.insurer', 'min'=>0, 'max'=>1},
+      'provider' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner'], 'type'=>'Reference', 'path'=>'EnrollmentRequest.provider', 'min'=>0, 'max'=>1},
+      'organization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'EnrollmentRequest.organization', 'min'=>0, 'max'=>1},
+      'subject' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient'], 'type'=>'Reference', 'path'=>'EnrollmentRequest.subject', 'min'=>0, 'max'=>1},
+      'coverage' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Coverage'], 'type'=>'Reference', 'path'=>'EnrollmentRequest.coverage', 'min'=>0, 'max'=>1}
     }
 
     attr_accessor :id                # 0-1 id
@@ -35,11 +35,11 @@ module FHIR
     attr_accessor :identifier        # 0-* [ Identifier ]
     attr_accessor :status            # 0-1 code
     attr_accessor :created           # 0-1 dateTime
-    attr_accessor :insurer           # 0-1 Reference()
-    attr_accessor :provider          # 0-1 Reference()
-    attr_accessor :organization      # 0-1 Reference()
-    attr_accessor :subject           # 0-1 Reference()
-    attr_accessor :coverage          # 0-1 Reference()
+    attr_accessor :insurer           # 0-1 Reference(Organization)
+    attr_accessor :provider          # 0-1 Reference(Practitioner)
+    attr_accessor :organization      # 0-1 Reference(Organization)
+    attr_accessor :subject           # 0-1 Reference(Patient)
+    attr_accessor :coverage          # 0-1 Reference(Coverage)
 
     def resourceType
       'EnrollmentRequest'

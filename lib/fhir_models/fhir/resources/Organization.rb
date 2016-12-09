@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['active', 'address', 'address-city', 'address-country', 'address-postalcode', 'address-state', 'address-use', 'endpoint', 'identifier', 'name', 'partof', 'phonetic', 'type']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Organization.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Organization.meta', 'min'=>0, 'max'=>1},
@@ -21,9 +21,9 @@ module FHIR
       'alias' => {'type'=>'string', 'path'=>'Organization.alias', 'min'=>0, 'max'=>Float::INFINITY},
       'telecom' => {'type'=>'ContactPoint', 'path'=>'Organization.telecom', 'min'=>0, 'max'=>Float::INFINITY},
       'address' => {'type'=>'Address', 'path'=>'Organization.address', 'min'=>0, 'max'=>Float::INFINITY},
-      'partOf' => {'type'=>'Reference', 'path'=>'Organization.partOf', 'min'=>0, 'max'=>1},
+      'partOf' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Organization.partOf', 'min'=>0, 'max'=>1},
       'contact' => {'type'=>'Organization::Contact', 'path'=>'Organization.contact', 'min'=>0, 'max'=>Float::INFINITY},
-      'endpoint' => {'type'=>'Reference', 'path'=>'Organization.endpoint', 'min'=>0, 'max'=>Float::INFINITY}
+      'endpoint' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Endpoint'], 'type'=>'Reference', 'path'=>'Organization.endpoint', 'min'=>0, 'max'=>Float::INFINITY}
     }
 
     class Contact < FHIR::Model
@@ -65,9 +65,9 @@ module FHIR
     attr_accessor :alias             # 0-* [ string ]
     attr_accessor :telecom           # 0-* [ ContactPoint ]
     attr_accessor :address           # 0-* [ Address ]
-    attr_accessor :partOf            # 0-1 Reference()
+    attr_accessor :partOf            # 0-1 Reference(Organization)
     attr_accessor :contact           # 0-* [ Organization::Contact ]
-    attr_accessor :endpoint          # 0-* [ Reference() ]
+    attr_accessor :endpoint          # 0-* [ Reference(Endpoint) ]
 
     def resourceType
       'Organization'

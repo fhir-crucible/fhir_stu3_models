@@ -7,7 +7,7 @@ module FHIR
     MULTIPLE_TYPES = {
       'reason' => ['CodeableConcept', 'Reference']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['author', 'context', 'encounter', 'participant', 'patient', 'subject']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'RequestGroup.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'RequestGroup.meta', 'min'=>0, 'max'=>1},
@@ -18,12 +18,12 @@ module FHIR
       'extension' => {'type'=>'Extension', 'path'=>'RequestGroup.extension', 'min'=>0, 'max'=>Float::INFINITY},
       'modifierExtension' => {'type'=>'Extension', 'path'=>'RequestGroup.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
       'identifier' => {'type'=>'Identifier', 'path'=>'RequestGroup.identifier', 'min'=>0, 'max'=>1},
-      'subject' => {'type'=>'Reference', 'path'=>'RequestGroup.subject', 'min'=>0, 'max'=>1},
-      'context' => {'type'=>'Reference', 'path'=>'RequestGroup.context', 'min'=>0, 'max'=>1},
+      'subject' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Group'], 'type'=>'Reference', 'path'=>'RequestGroup.subject', 'min'=>0, 'max'=>1},
+      'context' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Encounter', 'http://hl7.org/fhir/StructureDefinition/EpisodeOfCare'], 'type'=>'Reference', 'path'=>'RequestGroup.context', 'min'=>0, 'max'=>1},
       'occurrenceDateTime' => {'type'=>'dateTime', 'path'=>'RequestGroup.occurrenceDateTime', 'min'=>0, 'max'=>1},
-      'author' => {'type'=>'Reference', 'path'=>'RequestGroup.author', 'min'=>0, 'max'=>1},
+      'author' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Device', 'http://hl7.org/fhir/StructureDefinition/Practitioner'], 'type'=>'Reference', 'path'=>'RequestGroup.author', 'min'=>0, 'max'=>1},
       'reasonCodeableConcept' => {'type'=>'CodeableConcept', 'path'=>'RequestGroup.reason[x]', 'min'=>0, 'max'=>1},
-      'reasonReference' => {'type'=>'Reference', 'path'=>'RequestGroup.reason[x]', 'min'=>0, 'max'=>1},
+      'reasonReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'RequestGroup.reason[x]', 'min'=>0, 'max'=>1},
       'note' => {'type'=>'Annotation', 'path'=>'RequestGroup.note', 'min'=>0, 'max'=>Float::INFINITY},
       'action' => {'type'=>'RequestGroup::Action', 'path'=>'RequestGroup.action', 'min'=>0, 'max'=>Float::INFINITY}
     }
@@ -54,14 +54,14 @@ module FHIR
         'timingDuration' => {'type'=>'Duration', 'path'=>'Action.timing[x]', 'min'=>0, 'max'=>1},
         'timingRange' => {'type'=>'Range', 'path'=>'Action.timing[x]', 'min'=>0, 'max'=>1},
         'timingTiming' => {'type'=>'Timing', 'path'=>'Action.timing[x]', 'min'=>0, 'max'=>1},
-        'participant' => {'type'=>'Reference', 'path'=>'Action.participant', 'min'=>0, 'max'=>Float::INFINITY},
+        'participant' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Person', 'http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson'], 'type'=>'Reference', 'path'=>'Action.participant', 'min'=>0, 'max'=>Float::INFINITY},
         'type' => {'valid_codes'=>{'http://hl7.org/fhir/action-type'=>['create', 'update', 'remove', 'fire-event', 'create', 'update', 'remove', 'fire-event']}, 'type'=>'Coding', 'path'=>'Action.type', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/action-type'}},
         'groupingBehavior' => {'valid_codes'=>{'http://hl7.org/fhir/action-grouping-behavior'=>['visual-group', 'logical-group', 'sentence-group', 'visual-group', 'logical-group', 'sentence-group']}, 'type'=>'code', 'path'=>'Action.groupingBehavior', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/action-grouping-behavior'}},
         'selectionBehavior' => {'valid_codes'=>{'http://hl7.org/fhir/action-selection-behavior'=>['any', 'all', 'all-or-none', 'exactly-one', 'at-most-one', 'one-or-more', 'any', 'all', 'all-or-none', 'exactly-one', 'at-most-one', 'one-or-more']}, 'type'=>'code', 'path'=>'Action.selectionBehavior', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/action-selection-behavior'}},
         'requiredBehavior' => {'valid_codes'=>{'http://hl7.org/fhir/action-required-behavior'=>['must', 'could', 'must-unless-documented', 'must', 'could', 'must-unless-documented']}, 'type'=>'code', 'path'=>'Action.requiredBehavior', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/action-required-behavior'}},
         'precheckBehavior' => {'valid_codes'=>{'http://hl7.org/fhir/action-precheck-behavior'=>['yes', 'no', 'yes', 'no']}, 'type'=>'code', 'path'=>'Action.precheckBehavior', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/action-precheck-behavior'}},
         'cardinalityBehavior' => {'valid_codes'=>{'http://hl7.org/fhir/action-cardinality-behavior'=>['single', 'multiple', 'single', 'multiple']}, 'type'=>'code', 'path'=>'Action.cardinalityBehavior', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/action-cardinality-behavior'}},
-        'resource' => {'type'=>'Reference', 'path'=>'Action.resource', 'min'=>0, 'max'=>1},
+        'resource' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'Action.resource', 'min'=>0, 'max'=>1},
         'action' => {'type'=>'RequestGroup::Action', 'path'=>'Action.action', 'min'=>0, 'max'=>Float::INFINITY}
       }
 
@@ -133,14 +133,14 @@ module FHIR
       attr_accessor :timingDuration      # 0-1 Duration
       attr_accessor :timingRange         # 0-1 Range
       attr_accessor :timingTiming        # 0-1 Timing
-      attr_accessor :participant         # 0-* [ Reference() ]
+      attr_accessor :participant         # 0-* [ Reference(Patient|Person|Practitioner|RelatedPerson) ]
       attr_accessor :type                # 0-1 Coding
       attr_accessor :groupingBehavior    # 0-1 code
       attr_accessor :selectionBehavior   # 0-1 code
       attr_accessor :requiredBehavior    # 0-1 code
       attr_accessor :precheckBehavior    # 0-1 code
       attr_accessor :cardinalityBehavior # 0-1 code
-      attr_accessor :resource            # 0-1 Reference()
+      attr_accessor :resource            # 0-1 Reference(Resource)
       attr_accessor :action              # 0-* [ RequestGroup::Action ]
     end
 
@@ -153,12 +153,12 @@ module FHIR
     attr_accessor :extension             # 0-* [ Extension ]
     attr_accessor :modifierExtension     # 0-* [ Extension ]
     attr_accessor :identifier            # 0-1 Identifier
-    attr_accessor :subject               # 0-1 Reference()
-    attr_accessor :context               # 0-1 Reference()
+    attr_accessor :subject               # 0-1 Reference(Patient|Group)
+    attr_accessor :context               # 0-1 Reference(Encounter|EpisodeOfCare)
     attr_accessor :occurrenceDateTime    # 0-1 dateTime
-    attr_accessor :author                # 0-1 Reference()
+    attr_accessor :author                # 0-1 Reference(Device|Practitioner)
     attr_accessor :reasonCodeableConcept # 0-1 CodeableConcept
-    attr_accessor :reasonReference       # 0-1 Reference()
+    attr_accessor :reasonReference       # 0-1 Reference(Resource)
     attr_accessor :note                  # 0-* [ Annotation ]
     attr_accessor :action                # 0-* [ RequestGroup::Action ]
 

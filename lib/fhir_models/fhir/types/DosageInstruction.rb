@@ -9,7 +9,7 @@ module FHIR
       'dose' => ['Range', 'Quantity'],
       'rate' => ['Ratio', 'Range', 'Quantity']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = 
     METADATA = {
       'id' => {'type'=>'string', 'path'=>'DosageInstruction.id', 'min'=>0, 'max'=>1},
       'extension' => {'type'=>'Extension', 'path'=>'DosageInstruction.extension', 'min'=>0, 'max'=>Float::INFINITY},

@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['identifier', 'location', 'manufacturer', 'model', 'organization', 'patient', 'type', 'udicarrier', 'url']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Device.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Device.meta', 'min'=>0, 'max'=>1},
@@ -24,10 +24,10 @@ module FHIR
       'expirationDate' => {'type'=>'dateTime', 'path'=>'Device.expirationDate', 'min'=>0, 'max'=>1},
       'model' => {'type'=>'string', 'path'=>'Device.model', 'min'=>0, 'max'=>1},
       'version' => {'type'=>'string', 'path'=>'Device.version', 'min'=>0, 'max'=>1},
-      'patient' => {'type'=>'Reference', 'path'=>'Device.patient', 'min'=>0, 'max'=>1},
-      'owner' => {'type'=>'Reference', 'path'=>'Device.owner', 'min'=>0, 'max'=>1},
+      'patient' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient'], 'type'=>'Reference', 'path'=>'Device.patient', 'min'=>0, 'max'=>1},
+      'owner' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Device.owner', 'min'=>0, 'max'=>1},
       'contact' => {'type'=>'ContactPoint', 'path'=>'Device.contact', 'min'=>0, 'max'=>Float::INFINITY},
-      'location' => {'type'=>'Reference', 'path'=>'Device.location', 'min'=>0, 'max'=>1},
+      'location' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Location'], 'type'=>'Reference', 'path'=>'Device.location', 'min'=>0, 'max'=>1},
       'url' => {'type'=>'uri', 'path'=>'Device.url', 'min'=>0, 'max'=>1},
       'note' => {'type'=>'Annotation', 'path'=>'Device.note', 'min'=>0, 'max'=>Float::INFINITY}
     }
@@ -50,10 +50,10 @@ module FHIR
     attr_accessor :expirationDate    # 0-1 dateTime
     attr_accessor :model             # 0-1 string
     attr_accessor :version           # 0-1 string
-    attr_accessor :patient           # 0-1 Reference()
-    attr_accessor :owner             # 0-1 Reference()
+    attr_accessor :patient           # 0-1 Reference(Patient)
+    attr_accessor :owner             # 0-1 Reference(Organization)
     attr_accessor :contact           # 0-* [ ContactPoint ]
-    attr_accessor :location          # 0-1 Reference()
+    attr_accessor :location          # 0-1 Reference(Location)
     attr_accessor :url               # 0-1 uri
     attr_accessor :note              # 0-* [ Annotation ]
 

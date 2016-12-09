@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['base', 'code', 'component', 'date', 'derived-from', 'description', 'jurisdiction', 'name', 'publisher', 'status', 'target', 'type', 'url', 'version']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'SearchParameter.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'SearchParameter.meta', 'min'=>0, 'max'=>1},
@@ -49,14 +49,14 @@ module FHIR
         'id' => {'type'=>'string', 'path'=>'Component.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Component.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Component.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-        'definition' => {'type'=>'Reference', 'path'=>'Component.definition', 'min'=>1, 'max'=>1},
+        'definition' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/SearchParameter'], 'type'=>'Reference', 'path'=>'Component.definition', 'min'=>1, 'max'=>1},
         'expression' => {'type'=>'string', 'path'=>'Component.expression', 'min'=>1, 'max'=>1}
       }
 
       attr_accessor :id                # 0-1 string
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
-      attr_accessor :definition        # 1-1 Reference()
+      attr_accessor :definition        # 1-1 Reference(SearchParameter)
       attr_accessor :expression        # 1-1 string
     end
 

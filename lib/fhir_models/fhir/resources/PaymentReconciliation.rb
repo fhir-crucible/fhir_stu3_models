@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['created', 'disposition', 'identifier', 'organization', 'outcome', 'request', 'request-organization', 'request-provider']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'PaymentReconciliation.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'PaymentReconciliation.meta', 'min'=>0, 'max'=>1},
@@ -18,12 +18,12 @@ module FHIR
       'status' => {'valid_codes'=>{'http://hl7.org/fhir/fm-status'=>['active', 'cancelled', 'draft', 'entered-in-error', 'active', 'cancelled', 'draft', 'entered-in-error']}, 'type'=>'code', 'path'=>'PaymentReconciliation.status', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/fm-status'}},
       'period' => {'type'=>'Period', 'path'=>'PaymentReconciliation.period', 'min'=>0, 'max'=>1},
       'created' => {'type'=>'dateTime', 'path'=>'PaymentReconciliation.created', 'min'=>0, 'max'=>1},
-      'organization' => {'type'=>'Reference', 'path'=>'PaymentReconciliation.organization', 'min'=>0, 'max'=>1},
-      'request' => {'type'=>'Reference', 'path'=>'PaymentReconciliation.request', 'min'=>0, 'max'=>1},
+      'organization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'PaymentReconciliation.organization', 'min'=>0, 'max'=>1},
+      'request' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/ProcessRequest'], 'type'=>'Reference', 'path'=>'PaymentReconciliation.request', 'min'=>0, 'max'=>1},
       'outcome' => {'valid_codes'=>{'http://hl7.org/fhir/remittance-outcome'=>['complete', 'error', 'partial', 'complete', 'error', 'partial']}, 'type'=>'CodeableConcept', 'path'=>'PaymentReconciliation.outcome', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/remittance-outcome'}},
       'disposition' => {'type'=>'string', 'path'=>'PaymentReconciliation.disposition', 'min'=>0, 'max'=>1},
-      'requestProvider' => {'type'=>'Reference', 'path'=>'PaymentReconciliation.requestProvider', 'min'=>0, 'max'=>1},
-      'requestOrganization' => {'type'=>'Reference', 'path'=>'PaymentReconciliation.requestOrganization', 'min'=>0, 'max'=>1},
+      'requestProvider' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner'], 'type'=>'Reference', 'path'=>'PaymentReconciliation.requestProvider', 'min'=>0, 'max'=>1},
+      'requestOrganization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'PaymentReconciliation.requestOrganization', 'min'=>0, 'max'=>1},
       'detail' => {'type'=>'PaymentReconciliation::Detail', 'path'=>'PaymentReconciliation.detail', 'min'=>0, 'max'=>Float::INFINITY},
       'form' => {'valid_codes'=>{'http://hl7.org/fhir/forms-codes'=>['1', '2', '1', '2']}, 'type'=>'CodeableConcept', 'path'=>'PaymentReconciliation.form', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/forms'}},
       'total' => {'type'=>'Money', 'path'=>'PaymentReconciliation.total', 'min'=>0, 'max'=>1},
@@ -40,10 +40,10 @@ module FHIR
         'extension' => {'type'=>'Extension', 'path'=>'Detail.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Detail.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
         'type' => {'valid_codes'=>{'http://hl7.org/fhir/payment-type'=>['payment', 'adjustment', 'advance', 'payment', 'adjustment', 'advance']}, 'type'=>'CodeableConcept', 'path'=>'Detail.type', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/payment-type'}},
-        'request' => {'type'=>'Reference', 'path'=>'Detail.request', 'min'=>0, 'max'=>1},
-        'response' => {'type'=>'Reference', 'path'=>'Detail.response', 'min'=>0, 'max'=>1},
-        'submitter' => {'type'=>'Reference', 'path'=>'Detail.submitter', 'min'=>0, 'max'=>1},
-        'payee' => {'type'=>'Reference', 'path'=>'Detail.payee', 'min'=>0, 'max'=>1},
+        'request' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'Detail.request', 'min'=>0, 'max'=>1},
+        'response' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'Detail.response', 'min'=>0, 'max'=>1},
+        'submitter' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Detail.submitter', 'min'=>0, 'max'=>1},
+        'payee' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Detail.payee', 'min'=>0, 'max'=>1},
         'date' => {'type'=>'date', 'path'=>'Detail.date', 'min'=>0, 'max'=>1},
         'amount' => {'type'=>'Money', 'path'=>'Detail.amount', 'min'=>0, 'max'=>1}
       }
@@ -52,10 +52,10 @@ module FHIR
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
       attr_accessor :type              # 1-1 CodeableConcept
-      attr_accessor :request           # 0-1 Reference()
-      attr_accessor :response          # 0-1 Reference()
-      attr_accessor :submitter         # 0-1 Reference()
-      attr_accessor :payee             # 0-1 Reference()
+      attr_accessor :request           # 0-1 Reference(Resource)
+      attr_accessor :response          # 0-1 Reference(Resource)
+      attr_accessor :submitter         # 0-1 Reference(Organization)
+      attr_accessor :payee             # 0-1 Reference(Organization)
       attr_accessor :date              # 0-1 date
       attr_accessor :amount            # 0-1 Money
     end
@@ -92,12 +92,12 @@ module FHIR
     attr_accessor :status              # 0-1 code
     attr_accessor :period              # 0-1 Period
     attr_accessor :created             # 0-1 dateTime
-    attr_accessor :organization        # 0-1 Reference()
-    attr_accessor :request             # 0-1 Reference()
+    attr_accessor :organization        # 0-1 Reference(Organization)
+    attr_accessor :request             # 0-1 Reference(ProcessRequest)
     attr_accessor :outcome             # 0-1 CodeableConcept
     attr_accessor :disposition         # 0-1 string
-    attr_accessor :requestProvider     # 0-1 Reference()
-    attr_accessor :requestOrganization # 0-1 Reference()
+    attr_accessor :requestProvider     # 0-1 Reference(Practitioner)
+    attr_accessor :requestOrganization # 0-1 Reference(Organization)
     attr_accessor :detail              # 0-* [ PaymentReconciliation::Detail ]
     attr_accessor :form                # 0-1 CodeableConcept
     attr_accessor :total               # 0-1 Money

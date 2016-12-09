@@ -8,7 +8,7 @@ module FHIR
       'start' => ['date', 'CodeableConcept'],
       'target' => ['date', 'Duration']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['identifier', 'patient', 'category', 'status', 'subject', 'targetdate']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Goal.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Goal.meta', 'min'=>0, 'max'=>1},
@@ -23,15 +23,15 @@ module FHIR
       'category' => {'valid_codes'=>{'http://hl7.org/fhir/goal-category'=>['dietary', 'safety', 'behavioral', 'nursing', 'physiotherapy', 'dietary', 'safety', 'behavioral', 'nursing', 'physiotherapy']}, 'type'=>'CodeableConcept', 'path'=>'Goal.category', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/goal-category'}},
       'priority' => {'valid_codes'=>{'http://hl7.org/fhir/goal-priority'=>['high', 'medium', 'low', 'high', 'medium', 'low']}, 'type'=>'CodeableConcept', 'path'=>'Goal.priority', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'preferred', 'uri'=>'http://hl7.org/fhir/ValueSet/goal-priority'}},
       'description' => {'type'=>'CodeableConcept', 'path'=>'Goal.description', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>nil}},
-      'subject' => {'type'=>'Reference', 'path'=>'Goal.subject', 'min'=>0, 'max'=>1},
+      'subject' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Group', 'http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Goal.subject', 'min'=>0, 'max'=>1},
       'startDate' => {'type'=>'date', 'path'=>'Goal.start[x]', 'min'=>0, 'max'=>1},
       'startCodeableConcept' => {'valid_codes'=>{'http://snomed.info/sct'=>['32485007', '308283009', '442137000', '386216000']}, 'type'=>'CodeableConcept', 'path'=>'Goal.start[x]', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/goal-start-event'}},
       'targetDate' => {'type'=>'date', 'path'=>'Goal.target[x]', 'min'=>0, 'max'=>1},
       'targetDuration' => {'type'=>'Duration', 'path'=>'Goal.target[x]', 'min'=>0, 'max'=>1},
       'statusDate' => {'type'=>'date', 'path'=>'Goal.statusDate', 'min'=>0, 'max'=>1},
       'statusReason' => {'valid_codes'=>{'http://hl7.org/fhir/goal-status-reason'=>['surgery', 'life-event', 'replaced', 'patient-request', 'temp-not-attainable', 'permanent-not-attainable', 'financial-barrier', 'lack-of-transportation', 'lack-of-social-support', 'surgery', 'life-event', 'replaced', 'patient-request', 'temp-not-attainable', 'permanent-not-attainable', 'financial-barrier', 'lack-of-transportation', 'lack-of-social-support']}, 'type'=>'CodeableConcept', 'path'=>'Goal.statusReason', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/goal-status-reason'}},
-      'expressedBy' => {'type'=>'Reference', 'path'=>'Goal.expressedBy', 'min'=>0, 'max'=>1},
-      'addresses' => {'type'=>'Reference', 'path'=>'Goal.addresses', 'min'=>0, 'max'=>Float::INFINITY},
+      'expressedBy' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson'], 'type'=>'Reference', 'path'=>'Goal.expressedBy', 'min'=>0, 'max'=>1},
+      'addresses' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Condition', 'http://hl7.org/fhir/StructureDefinition/Observation', 'http://hl7.org/fhir/StructureDefinition/MedicationStatement', 'http://hl7.org/fhir/StructureDefinition/NutritionRequest', 'http://hl7.org/fhir/StructureDefinition/ProcedureRequest', 'http://hl7.org/fhir/StructureDefinition/RiskAssessment'], 'type'=>'Reference', 'path'=>'Goal.addresses', 'min'=>0, 'max'=>Float::INFINITY},
       'note' => {'type'=>'Annotation', 'path'=>'Goal.note', 'min'=>0, 'max'=>Float::INFINITY},
       'outcome' => {'type'=>'Goal::Outcome', 'path'=>'Goal.outcome', 'min'=>0, 'max'=>Float::INFINITY}
     }
@@ -49,14 +49,14 @@ module FHIR
         'extension' => {'type'=>'Extension', 'path'=>'Outcome.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Outcome.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
         'resultCodeableConcept' => {'type'=>'CodeableConcept', 'path'=>'Outcome.result[x]', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>nil}},
-        'resultReference' => {'type'=>'Reference', 'path'=>'Outcome.result[x]', 'min'=>0, 'max'=>1}
+        'resultReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Observation'], 'type'=>'Reference', 'path'=>'Outcome.result[x]', 'min'=>0, 'max'=>1}
       }
 
       attr_accessor :id                    # 0-1 string
       attr_accessor :extension             # 0-* [ Extension ]
       attr_accessor :modifierExtension     # 0-* [ Extension ]
       attr_accessor :resultCodeableConcept # 0-1 CodeableConcept
-      attr_accessor :resultReference       # 0-1 Reference()
+      attr_accessor :resultReference       # 0-1 Reference(Observation)
     end
 
     attr_accessor :id                   # 0-1 id
@@ -72,15 +72,15 @@ module FHIR
     attr_accessor :category             # 0-* [ CodeableConcept ]
     attr_accessor :priority             # 0-1 CodeableConcept
     attr_accessor :description          # 1-1 CodeableConcept
-    attr_accessor :subject              # 0-1 Reference()
+    attr_accessor :subject              # 0-1 Reference(Patient|Group|Organization)
     attr_accessor :startDate            # 0-1 date
     attr_accessor :startCodeableConcept # 0-1 CodeableConcept
     attr_accessor :targetDate           # 0-1 date
     attr_accessor :targetDuration       # 0-1 Duration
     attr_accessor :statusDate           # 0-1 date
     attr_accessor :statusReason         # 0-* [ CodeableConcept ]
-    attr_accessor :expressedBy          # 0-1 Reference()
-    attr_accessor :addresses            # 0-* [ Reference() ]
+    attr_accessor :expressedBy          # 0-1 Reference(Patient|Practitioner|RelatedPerson)
+    attr_accessor :addresses            # 0-* [ Reference(Condition|Observation|MedicationStatement|NutritionRequest|ProcedureRequest|RiskAssessment) ]
     attr_accessor :note                 # 0-* [ Annotation ]
     attr_accessor :outcome              # 0-* [ Goal::Outcome ]
 

@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['date', 'description', 'effective', 'identifier', 'jurisdiction', 'name', 'publisher', 'status', 'title', 'topic', 'url', 'version']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'ServiceDefinition.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'ServiceDefinition.meta', 'min'=>0, 'max'=>1},
@@ -38,7 +38,7 @@ module FHIR
       'relatedArtifact' => {'type'=>'RelatedArtifact', 'path'=>'ServiceDefinition.relatedArtifact', 'min'=>0, 'max'=>Float::INFINITY},
       'trigger' => {'type'=>'TriggerDefinition', 'path'=>'ServiceDefinition.trigger', 'min'=>0, 'max'=>Float::INFINITY},
       'dataRequirement' => {'type'=>'DataRequirement', 'path'=>'ServiceDefinition.dataRequirement', 'min'=>0, 'max'=>Float::INFINITY},
-      'operationDefinition' => {'type'=>'Reference', 'path'=>'ServiceDefinition.operationDefinition', 'min'=>0, 'max'=>1}
+      'operationDefinition' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/OperationDefinition'], 'type'=>'Reference', 'path'=>'ServiceDefinition.operationDefinition', 'min'=>0, 'max'=>1}
     }
 
     attr_accessor :id                  # 0-1 id
@@ -73,7 +73,7 @@ module FHIR
     attr_accessor :relatedArtifact     # 0-* [ RelatedArtifact ]
     attr_accessor :trigger             # 0-* [ TriggerDefinition ]
     attr_accessor :dataRequirement     # 0-* [ DataRequirement ]
-    attr_accessor :operationDefinition # 0-1 Reference()
+    attr_accessor :operationDefinition # 0-1 Reference(OperationDefinition)
 
     def resourceType
       'ServiceDefinition'

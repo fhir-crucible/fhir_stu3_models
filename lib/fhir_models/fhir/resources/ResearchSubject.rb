@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['date', 'identifier', 'individual', 'patient', 'status']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'ResearchSubject.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'ResearchSubject.meta', 'min'=>0, 'max'=>1},
@@ -17,11 +17,11 @@ module FHIR
       'identifier' => {'type'=>'Identifier', 'path'=>'ResearchSubject.identifier', 'min'=>0, 'max'=>1},
       'status' => {'valid_codes'=>{'http://hl7.org/fhir/research-subject-status'=>['candidate', 'enrolled', 'active', 'suspended', 'withdrawn', 'completed', 'candidate', 'enrolled', 'active', 'suspended', 'withdrawn', 'completed']}, 'type'=>'code', 'path'=>'ResearchSubject.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/research-subject-status'}},
       'period' => {'type'=>'Period', 'path'=>'ResearchSubject.period', 'min'=>0, 'max'=>1},
-      'study' => {'type'=>'Reference', 'path'=>'ResearchSubject.study', 'min'=>1, 'max'=>1},
-      'individual' => {'type'=>'Reference', 'path'=>'ResearchSubject.individual', 'min'=>1, 'max'=>1},
+      'study' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/ResearchStudy'], 'type'=>'Reference', 'path'=>'ResearchSubject.study', 'min'=>1, 'max'=>1},
+      'individual' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient'], 'type'=>'Reference', 'path'=>'ResearchSubject.individual', 'min'=>1, 'max'=>1},
       'assignedArm' => {'type'=>'string', 'path'=>'ResearchSubject.assignedArm', 'min'=>0, 'max'=>1},
       'actualArm' => {'type'=>'string', 'path'=>'ResearchSubject.actualArm', 'min'=>0, 'max'=>1},
-      'consent' => {'type'=>'Reference', 'path'=>'ResearchSubject.consent', 'min'=>0, 'max'=>1}
+      'consent' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Consent'], 'type'=>'Reference', 'path'=>'ResearchSubject.consent', 'min'=>0, 'max'=>1}
     }
 
     attr_accessor :id                # 0-1 id
@@ -35,11 +35,11 @@ module FHIR
     attr_accessor :identifier        # 0-1 Identifier
     attr_accessor :status            # 1-1 code
     attr_accessor :period            # 0-1 Period
-    attr_accessor :study             # 1-1 Reference()
-    attr_accessor :individual        # 1-1 Reference()
+    attr_accessor :study             # 1-1 Reference(ResearchStudy)
+    attr_accessor :individual        # 1-1 Reference(Patient)
     attr_accessor :assignedArm       # 0-1 string
     attr_accessor :actualArm         # 0-1 string
-    attr_accessor :consent           # 0-1 Reference()
+    attr_accessor :consent           # 0-1 Reference(Consent)
 
     def resourceType
       'ResearchSubject'

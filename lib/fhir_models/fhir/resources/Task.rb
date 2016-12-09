@@ -7,7 +7,7 @@ module FHIR
     MULTIPLE_TYPES = {
       'definition' => ['uri', 'Reference']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['authored-on', 'based-on', 'business-status', 'code', 'context', 'definition-ref', 'focus', 'group-identifier', 'identifier', 'intent', 'modified', 'organization', 'owner', 'part-of', 'patient', 'performer', 'period', 'priority', 'requester', 'status', 'statusreason', 'subject']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Task.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Task.meta', 'min'=>0, 'max'=>1},
@@ -19,10 +19,10 @@ module FHIR
       'modifierExtension' => {'type'=>'Extension', 'path'=>'Task.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
       'identifier' => {'type'=>'Identifier', 'path'=>'Task.identifier', 'min'=>0, 'max'=>Float::INFINITY},
       'definitionUri' => {'type'=>'uri', 'path'=>'Task.definition[x]', 'min'=>0, 'max'=>1},
-      'definitionReference' => {'type'=>'Reference', 'path'=>'Task.definition[x]', 'min'=>0, 'max'=>1},
-      'basedOn' => {'type'=>'Reference', 'path'=>'Task.basedOn', 'min'=>0, 'max'=>Float::INFINITY},
+      'definitionReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/ActivityDefinition'], 'type'=>'Reference', 'path'=>'Task.definition[x]', 'min'=>0, 'max'=>1},
+      'basedOn' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'Task.basedOn', 'min'=>0, 'max'=>Float::INFINITY},
       'groupIdentifier' => {'type'=>'Identifier', 'path'=>'Task.groupIdentifier', 'min'=>0, 'max'=>1},
-      'partOf' => {'type'=>'Reference', 'path'=>'Task.partOf', 'min'=>0, 'max'=>Float::INFINITY},
+      'partOf' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Task'], 'type'=>'Reference', 'path'=>'Task.partOf', 'min'=>0, 'max'=>Float::INFINITY},
       'status' => {'valid_codes'=>{'http://hl7.org/fhir/task-status'=>['draft', 'requested', 'received', 'accepted', 'rejected', 'ready', 'cancelled', 'in-progress', 'on-hold', 'failed', 'completed', 'entered-in-error', 'draft', 'requested', 'received', 'accepted', 'rejected', 'ready', 'cancelled', 'in-progress', 'on-hold', 'failed', 'completed', 'entered-in-error']}, 'type'=>'code', 'path'=>'Task.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/task-status'}},
       'statusReason' => {'type'=>'CodeableConcept', 'path'=>'Task.statusReason', 'min'=>0, 'max'=>1},
       'businessStatus' => {'type'=>'CodeableConcept', 'path'=>'Task.businessStatus', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>nil}},
@@ -30,18 +30,18 @@ module FHIR
       'priority' => {'valid_codes'=>{'http://hl7.org/fhir/request-priority'=>['routine', 'urgent', 'stat', 'asap', 'routine', 'urgent', 'stat', 'asap']}, 'type'=>'code', 'path'=>'Task.priority', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/request-priority'}},
       'code' => {'type'=>'CodeableConcept', 'path'=>'Task.code', 'min'=>0, 'max'=>1},
       'description' => {'type'=>'string', 'path'=>'Task.description', 'min'=>0, 'max'=>1},
-      'focus' => {'type'=>'Reference', 'path'=>'Task.focus', 'min'=>0, 'max'=>1},
-      'for' => {'type'=>'Reference', 'path'=>'Task.for', 'min'=>0, 'max'=>1},
-      'context' => {'type'=>'Reference', 'path'=>'Task.context', 'min'=>0, 'max'=>1},
+      'focus' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'Task.focus', 'min'=>0, 'max'=>1},
+      'for' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'Task.for', 'min'=>0, 'max'=>1},
+      'context' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Encounter', 'http://hl7.org/fhir/StructureDefinition/EpisodeOfCare'], 'type'=>'Reference', 'path'=>'Task.context', 'min'=>0, 'max'=>1},
       'executionPeriod' => {'type'=>'Period', 'path'=>'Task.executionPeriod', 'min'=>0, 'max'=>1},
       'authoredOn' => {'type'=>'dateTime', 'path'=>'Task.authoredOn', 'min'=>0, 'max'=>1},
       'lastModified' => {'type'=>'dateTime', 'path'=>'Task.lastModified', 'min'=>0, 'max'=>1},
       'requester' => {'type'=>'Task::Requester', 'path'=>'Task.requester', 'min'=>0, 'max'=>1},
       'performerType' => {'valid_codes'=>{'http://hl7.org/fhir/task-performer-type'=>['requester', 'dispatcher', 'scheduler', 'performer', 'monitor', 'manager', 'acquirer', 'reviewer', 'requester', 'dispatcher', 'performer', 'monitor', 'manager', 'acquirer', 'reviewer']}, 'type'=>'CodeableConcept', 'path'=>'Task.performerType', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'preferred', 'uri'=>'http://hl7.org/fhir/ValueSet/task-performer-type'}},
-      'owner' => {'type'=>'Reference', 'path'=>'Task.owner', 'min'=>0, 'max'=>1},
+      'owner' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Device', 'http://hl7.org/fhir/StructureDefinition/Organization', 'http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson'], 'type'=>'Reference', 'path'=>'Task.owner', 'min'=>0, 'max'=>1},
       'reason' => {'type'=>'CodeableConcept', 'path'=>'Task.reason', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>nil}},
       'note' => {'type'=>'Annotation', 'path'=>'Task.note', 'min'=>0, 'max'=>Float::INFINITY},
-      'relevantHistory' => {'type'=>'Reference', 'path'=>'Task.relevantHistory', 'min'=>0, 'max'=>Float::INFINITY},
+      'relevantHistory' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Provenance'], 'type'=>'Reference', 'path'=>'Task.relevantHistory', 'min'=>0, 'max'=>Float::INFINITY},
       'restriction' => {'type'=>'Task::Restriction', 'path'=>'Task.restriction', 'min'=>0, 'max'=>1},
       'input' => {'type'=>'Task::Input', 'path'=>'Task.input', 'min'=>0, 'max'=>Float::INFINITY},
       'output' => {'type'=>'Task::Output', 'path'=>'Task.output', 'min'=>0, 'max'=>Float::INFINITY}
@@ -56,15 +56,15 @@ module FHIR
         'id' => {'type'=>'string', 'path'=>'Requester.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Requester.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Requester.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-        'agent' => {'type'=>'Reference', 'path'=>'Requester.agent', 'min'=>1, 'max'=>1},
-        'onBehalfOf' => {'type'=>'Reference', 'path'=>'Requester.onBehalfOf', 'min'=>0, 'max'=>1}
+        'agent' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Device', 'http://hl7.org/fhir/StructureDefinition/Organization', 'http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson'], 'type'=>'Reference', 'path'=>'Requester.agent', 'min'=>1, 'max'=>1},
+        'onBehalfOf' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Requester.onBehalfOf', 'min'=>0, 'max'=>1}
       }
 
       attr_accessor :id                # 0-1 string
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
-      attr_accessor :agent             # 1-1 Reference()
-      attr_accessor :onBehalfOf        # 0-1 Reference()
+      attr_accessor :agent             # 1-1 Reference(Device|Organization|Patient|Practitioner|RelatedPerson)
+      attr_accessor :onBehalfOf        # 0-1 Reference(Organization)
     end
 
     class Restriction < FHIR::Model
@@ -78,7 +78,7 @@ module FHIR
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Restriction.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
         'repetitions' => {'type'=>'positiveInt', 'path'=>'Restriction.repetitions', 'min'=>0, 'max'=>1},
         'period' => {'type'=>'Period', 'path'=>'Restriction.period', 'min'=>0, 'max'=>1},
-        'recipient' => {'type'=>'Reference', 'path'=>'Restriction.recipient', 'min'=>0, 'max'=>Float::INFINITY}
+        'recipient' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson', 'http://hl7.org/fhir/StructureDefinition/Group', 'http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Restriction.recipient', 'min'=>0, 'max'=>Float::INFINITY}
       }
 
       attr_accessor :id                # 0-1 string
@@ -86,7 +86,7 @@ module FHIR
       attr_accessor :modifierExtension # 0-* [ Extension ]
       attr_accessor :repetitions       # 0-1 positiveInt
       attr_accessor :period            # 0-1 Period
-      attr_accessor :recipient         # 0-* [ Reference() ]
+      attr_accessor :recipient         # 0-* [ Reference(Patient|Practitioner|RelatedPerson|Group|Organization) ]
     end
 
     class Input < FHIR::Model
@@ -293,10 +293,10 @@ module FHIR
     attr_accessor :modifierExtension   # 0-* [ Extension ]
     attr_accessor :identifier          # 0-* [ Identifier ]
     attr_accessor :definitionUri       # 0-1 uri
-    attr_accessor :definitionReference # 0-1 Reference()
-    attr_accessor :basedOn             # 0-* [ Reference() ]
+    attr_accessor :definitionReference # 0-1 Reference(ActivityDefinition)
+    attr_accessor :basedOn             # 0-* [ Reference(Resource) ]
     attr_accessor :groupIdentifier     # 0-1 Identifier
-    attr_accessor :partOf              # 0-* [ Reference() ]
+    attr_accessor :partOf              # 0-* [ Reference(Task) ]
     attr_accessor :status              # 1-1 code
     attr_accessor :statusReason        # 0-1 CodeableConcept
     attr_accessor :businessStatus      # 0-1 CodeableConcept
@@ -304,18 +304,18 @@ module FHIR
     attr_accessor :priority            # 0-1 code
     attr_accessor :code                # 0-1 CodeableConcept
     attr_accessor :description         # 0-1 string
-    attr_accessor :focus               # 0-1 Reference()
-    attr_accessor :for                 # 0-1 Reference()
-    attr_accessor :context             # 0-1 Reference()
+    attr_accessor :focus               # 0-1 Reference(Resource)
+    attr_accessor :for                 # 0-1 Reference(Resource)
+    attr_accessor :context             # 0-1 Reference(Encounter|EpisodeOfCare)
     attr_accessor :executionPeriod     # 0-1 Period
     attr_accessor :authoredOn          # 0-1 dateTime
     attr_accessor :lastModified        # 0-1 dateTime
     attr_accessor :requester           # 0-1 Task::Requester
     attr_accessor :performerType       # 0-* [ CodeableConcept ]
-    attr_accessor :owner               # 0-1 Reference()
+    attr_accessor :owner               # 0-1 Reference(Device|Organization|Patient|Practitioner|RelatedPerson)
     attr_accessor :reason              # 0-1 CodeableConcept
     attr_accessor :note                # 0-* [ Annotation ]
-    attr_accessor :relevantHistory     # 0-* [ Reference() ]
+    attr_accessor :relevantHistory     # 0-* [ Reference(Provenance) ]
     attr_accessor :restriction         # 0-1 Task::Restriction
     attr_accessor :input               # 0-* [ Task::Input ]
     attr_accessor :output              # 0-* [ Task::Output ]

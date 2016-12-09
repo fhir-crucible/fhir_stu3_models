@@ -8,7 +8,7 @@ module FHIR
       'deceased' => ['boolean', 'dateTime'],
       'multipleBirth' => ['boolean', 'integer']
     }
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['active', 'address', 'address-city', 'address-country', 'address-postalcode', 'address-state', 'address-use', 'animal-breed', 'animal-species', 'birthdate', 'death-date', 'deceased', 'email', 'family', 'gender', 'general-practitioner', 'given', 'identifier', 'language', 'link', 'name', 'organization', 'phone', 'phonetic', 'telecom']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Patient.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Patient.meta', 'min'=>0, 'max'=>1},
@@ -34,8 +34,8 @@ module FHIR
       'contact' => {'type'=>'Patient::Contact', 'path'=>'Patient.contact', 'min'=>0, 'max'=>Float::INFINITY},
       'animal' => {'type'=>'Patient::Animal', 'path'=>'Patient.animal', 'min'=>0, 'max'=>1},
       'communication' => {'type'=>'Patient::Communication', 'path'=>'Patient.communication', 'min'=>0, 'max'=>Float::INFINITY},
-      'generalPractitioner' => {'type'=>'Reference', 'path'=>'Patient.generalPractitioner', 'min'=>0, 'max'=>Float::INFINITY},
-      'managingOrganization' => {'type'=>'Reference', 'path'=>'Patient.managingOrganization', 'min'=>0, 'max'=>1},
+      'generalPractitioner' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization', 'http://hl7.org/fhir/StructureDefinition/Practitioner'], 'type'=>'Reference', 'path'=>'Patient.generalPractitioner', 'min'=>0, 'max'=>Float::INFINITY},
+      'managingOrganization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Patient.managingOrganization', 'min'=>0, 'max'=>1},
       'link' => {'type'=>'Patient::Link', 'path'=>'Patient.link', 'min'=>0, 'max'=>Float::INFINITY}
     }
 
@@ -53,7 +53,7 @@ module FHIR
         'telecom' => {'type'=>'ContactPoint', 'path'=>'Contact.telecom', 'min'=>0, 'max'=>Float::INFINITY},
         'address' => {'type'=>'Address', 'path'=>'Contact.address', 'min'=>0, 'max'=>1},
         'gender' => {'valid_codes'=>{'http://hl7.org/fhir/administrative-gender'=>['male', 'female', 'other', 'unknown', 'male', 'female', 'other', 'unknown']}, 'type'=>'code', 'path'=>'Contact.gender', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/administrative-gender'}},
-        'organization' => {'type'=>'Reference', 'path'=>'Contact.organization', 'min'=>0, 'max'=>1},
+        'organization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Contact.organization', 'min'=>0, 'max'=>1},
         'period' => {'type'=>'Period', 'path'=>'Contact.period', 'min'=>0, 'max'=>1}
       }
 
@@ -65,7 +65,7 @@ module FHIR
       attr_accessor :telecom           # 0-* [ ContactPoint ]
       attr_accessor :address           # 0-1 Address
       attr_accessor :gender            # 0-1 code
-      attr_accessor :organization      # 0-1 Reference()
+      attr_accessor :organization      # 0-1 Reference(Organization)
       attr_accessor :period            # 0-1 Period
     end
 
@@ -120,14 +120,14 @@ module FHIR
         'id' => {'type'=>'string', 'path'=>'Link.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Link.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Link.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-        'other' => {'type'=>'Reference', 'path'=>'Link.other', 'min'=>1, 'max'=>1},
+        'other' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson'], 'type'=>'Reference', 'path'=>'Link.other', 'min'=>1, 'max'=>1},
         'type' => {'valid_codes'=>{'http://hl7.org/fhir/link-type'=>['replace', 'refer', 'seealso', 'replace', 'refer', 'seealso']}, 'type'=>'code', 'path'=>'Link.type', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/link-type'}}
       }
 
       attr_accessor :id                # 0-1 string
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
-      attr_accessor :other             # 1-1 Reference()
+      attr_accessor :other             # 1-1 Reference(Patient|RelatedPerson)
       attr_accessor :type              # 1-1 code
     end
 
@@ -155,8 +155,8 @@ module FHIR
     attr_accessor :contact              # 0-* [ Patient::Contact ]
     attr_accessor :animal               # 0-1 Patient::Animal
     attr_accessor :communication        # 0-* [ Patient::Communication ]
-    attr_accessor :generalPractitioner  # 0-* [ Reference() ]
-    attr_accessor :managingOrganization # 0-1 Reference()
+    attr_accessor :generalPractitioner  # 0-* [ Reference(Organization|Practitioner) ]
+    attr_accessor :managingOrganization # 0-1 Reference(Organization)
     attr_accessor :link                 # 0-* [ Patient::Link ]
 
     def resourceType

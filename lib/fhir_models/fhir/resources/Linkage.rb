@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['author', 'item', 'source']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'Linkage.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'Linkage.meta', 'min'=>0, 'max'=>1},
@@ -14,7 +14,7 @@ module FHIR
       'contained' => {'type'=>'Resource', 'path'=>'Linkage.contained', 'min'=>0, 'max'=>Float::INFINITY},
       'extension' => {'type'=>'Extension', 'path'=>'Linkage.extension', 'min'=>0, 'max'=>Float::INFINITY},
       'modifierExtension' => {'type'=>'Extension', 'path'=>'Linkage.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-      'author' => {'type'=>'Reference', 'path'=>'Linkage.author', 'min'=>0, 'max'=>1},
+      'author' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Linkage.author', 'min'=>0, 'max'=>1},
       'item' => {'type'=>'Linkage::Item', 'path'=>'Linkage.item', 'min'=>1, 'max'=>Float::INFINITY}
     }
 
@@ -46,7 +46,7 @@ module FHIR
     attr_accessor :contained         # 0-* [ Resource ]
     attr_accessor :extension         # 0-* [ Extension ]
     attr_accessor :modifierExtension # 0-* [ Extension ]
-    attr_accessor :author            # 0-1 Reference()
+    attr_accessor :author            # 0-1 Reference(Practitioner|Organization)
     attr_accessor :item              # 1-* [ Linkage::Item ]
 
     def resourceType

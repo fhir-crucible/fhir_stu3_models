@@ -160,7 +160,7 @@ module FHIR
             # profiles contains a list of profiles if the datatype is Reference or Extension
             profiles = []
             element['type'].select { |t| t['code'] == 'Reference' || t['code'] == 'Extension' }.each do |data_type|
-              profiles << data_type['profile']
+              profiles << data_type['targetProfile']
             end
             profiles.select! { |p| !p.nil? }
             profiles.flatten!

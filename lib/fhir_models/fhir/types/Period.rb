@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = 
     METADATA = {
       'id' => {'type'=>'string', 'path'=>'Period.id', 'min'=>0, 'max'=>1},
       'extension' => {'type'=>'Extension', 'path'=>'Period.extension', 'min'=>0, 'max'=>Float::INFINITY},

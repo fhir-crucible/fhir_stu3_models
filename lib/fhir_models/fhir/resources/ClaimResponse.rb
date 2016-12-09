@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = ['created', 'disposition', 'identifier', 'insurer', 'outcome', 'payment-date', 'request']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'ClaimResponse.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'ClaimResponse.meta', 'min'=>0, 'max'=>1},
@@ -17,10 +17,10 @@ module FHIR
       'identifier' => {'type'=>'Identifier', 'path'=>'ClaimResponse.identifier', 'min'=>0, 'max'=>Float::INFINITY},
       'status' => {'valid_codes'=>{'http://hl7.org/fhir/fm-status'=>['active', 'cancelled', 'draft', 'entered-in-error', 'active', 'cancelled', 'draft', 'entered-in-error']}, 'type'=>'code', 'path'=>'ClaimResponse.status', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/fm-status'}},
       'created' => {'type'=>'dateTime', 'path'=>'ClaimResponse.created', 'min'=>0, 'max'=>1},
-      'insurer' => {'type'=>'Reference', 'path'=>'ClaimResponse.insurer', 'min'=>0, 'max'=>1},
-      'requestProvider' => {'type'=>'Reference', 'path'=>'ClaimResponse.requestProvider', 'min'=>0, 'max'=>1},
-      'requestOrganization' => {'type'=>'Reference', 'path'=>'ClaimResponse.requestOrganization', 'min'=>0, 'max'=>1},
-      'request' => {'type'=>'Reference', 'path'=>'ClaimResponse.request', 'min'=>0, 'max'=>1},
+      'insurer' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'ClaimResponse.insurer', 'min'=>0, 'max'=>1},
+      'requestProvider' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner'], 'type'=>'Reference', 'path'=>'ClaimResponse.requestProvider', 'min'=>0, 'max'=>1},
+      'requestOrganization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'ClaimResponse.requestOrganization', 'min'=>0, 'max'=>1},
+      'request' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Claim'], 'type'=>'Reference', 'path'=>'ClaimResponse.request', 'min'=>0, 'max'=>1},
       'outcome' => {'valid_codes'=>{'http://hl7.org/fhir/remittance-outcome'=>['complete', 'error', 'partial', 'complete', 'error', 'partial']}, 'type'=>'CodeableConcept', 'path'=>'ClaimResponse.outcome', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/remittance-outcome'}},
       'disposition' => {'type'=>'string', 'path'=>'ClaimResponse.disposition', 'min'=>0, 'max'=>1},
       'payeeType' => {'valid_codes'=>{'http://hl7.org/fhir/payeetype'=>['subscriber', 'provider', 'other', 'subscriber', 'provider', 'other']}, 'type'=>'CodeableConcept', 'path'=>'ClaimResponse.payeeType', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/payeetype'}},
@@ -34,7 +34,7 @@ module FHIR
       'reserved' => {'valid_codes'=>{'http://hl7.org/fhir/fundsreserve'=>['patient', 'provider', 'none', 'patient', 'provider', 'none']}, 'type'=>'Coding', 'path'=>'ClaimResponse.reserved', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/fundsreserve'}},
       'form' => {'valid_codes'=>{'http://hl7.org/fhir/forms-codes'=>['1', '2', '1', '2']}, 'type'=>'CodeableConcept', 'path'=>'ClaimResponse.form', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/forms'}},
       'note' => {'type'=>'ClaimResponse::Note', 'path'=>'ClaimResponse.note', 'min'=>0, 'max'=>Float::INFINITY},
-      'communicationRequest' => {'type'=>'Reference', 'path'=>'ClaimResponse.communicationRequest', 'min'=>0, 'max'=>Float::INFINITY},
+      'communicationRequest' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/CommunicationRequest'], 'type'=>'Reference', 'path'=>'ClaimResponse.communicationRequest', 'min'=>0, 'max'=>Float::INFINITY},
       'insurance' => {'type'=>'ClaimResponse::Insurance', 'path'=>'ClaimResponse.insurance', 'min'=>0, 'max'=>Float::INFINITY}
     }
 
@@ -283,10 +283,10 @@ module FHIR
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Insurance.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
         'sequence' => {'type'=>'positiveInt', 'path'=>'Insurance.sequence', 'min'=>1, 'max'=>1},
         'focal' => {'type'=>'boolean', 'path'=>'Insurance.focal', 'min'=>1, 'max'=>1},
-        'coverage' => {'type'=>'Reference', 'path'=>'Insurance.coverage', 'min'=>1, 'max'=>1},
+        'coverage' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Coverage'], 'type'=>'Reference', 'path'=>'Insurance.coverage', 'min'=>1, 'max'=>1},
         'businessArrangement' => {'type'=>'string', 'path'=>'Insurance.businessArrangement', 'min'=>0, 'max'=>1},
         'preAuthRef' => {'type'=>'string', 'path'=>'Insurance.preAuthRef', 'min'=>0, 'max'=>Float::INFINITY},
-        'claimResponse' => {'type'=>'Reference', 'path'=>'Insurance.claimResponse', 'min'=>0, 'max'=>1}
+        'claimResponse' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/ClaimResponse'], 'type'=>'Reference', 'path'=>'Insurance.claimResponse', 'min'=>0, 'max'=>1}
       }
 
       attr_accessor :id                  # 0-1 string
@@ -294,10 +294,10 @@ module FHIR
       attr_accessor :modifierExtension   # 0-* [ Extension ]
       attr_accessor :sequence            # 1-1 positiveInt
       attr_accessor :focal               # 1-1 boolean
-      attr_accessor :coverage            # 1-1 Reference()
+      attr_accessor :coverage            # 1-1 Reference(Coverage)
       attr_accessor :businessArrangement # 0-1 string
       attr_accessor :preAuthRef          # 0-* [ string ]
-      attr_accessor :claimResponse       # 0-1 Reference()
+      attr_accessor :claimResponse       # 0-1 Reference(ClaimResponse)
     end
 
     attr_accessor :id                   # 0-1 id
@@ -311,10 +311,10 @@ module FHIR
     attr_accessor :identifier           # 0-* [ Identifier ]
     attr_accessor :status               # 0-1 code
     attr_accessor :created              # 0-1 dateTime
-    attr_accessor :insurer              # 0-1 Reference()
-    attr_accessor :requestProvider      # 0-1 Reference()
-    attr_accessor :requestOrganization  # 0-1 Reference()
-    attr_accessor :request              # 0-1 Reference()
+    attr_accessor :insurer              # 0-1 Reference(Organization)
+    attr_accessor :requestProvider      # 0-1 Reference(Practitioner)
+    attr_accessor :requestOrganization  # 0-1 Reference(Organization)
+    attr_accessor :request              # 0-1 Reference(Claim)
     attr_accessor :outcome              # 0-1 CodeableConcept
     attr_accessor :disposition          # 0-1 string
     attr_accessor :payeeType            # 0-1 CodeableConcept
@@ -328,7 +328,7 @@ module FHIR
     attr_accessor :reserved             # 0-1 Coding
     attr_accessor :form                 # 0-1 CodeableConcept
     attr_accessor :note                 # 0-* [ ClaimResponse::Note ]
-    attr_accessor :communicationRequest # 0-* [ Reference() ]
+    attr_accessor :communicationRequest # 0-* [ Reference(CommunicationRequest) ]
     attr_accessor :insurance            # 0-* [ ClaimResponse::Insurance ]
 
     def resourceType

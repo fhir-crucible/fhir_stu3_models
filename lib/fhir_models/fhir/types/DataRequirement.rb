@@ -4,7 +4,7 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = []
+    SEARCH_PARAMS = 
     METADATA = {
       'id' => {'type'=>'string', 'path'=>'DataRequirement.id', 'min'=>0, 'max'=>1},
       'extension' => {'type'=>'Extension', 'path'=>'DataRequirement.extension', 'min'=>0, 'max'=>Float::INFINITY},
@@ -28,7 +28,7 @@ module FHIR
         'extension' => {'type'=>'Extension', 'path'=>'CodeFilter.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'path' => {'type'=>'string', 'path'=>'CodeFilter.path', 'min'=>1, 'max'=>1},
         'valueSetString' => {'type'=>'string', 'path'=>'CodeFilter.valueSet[x]', 'min'=>0, 'max'=>1},
-        'valueSetReference' => {'type'=>'Reference', 'path'=>'CodeFilter.valueSet[x]', 'min'=>0, 'max'=>1},
+        'valueSetReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/ValueSet'], 'type'=>'Reference', 'path'=>'CodeFilter.valueSet[x]', 'min'=>0, 'max'=>1},
         'valueCode' => {'type'=>'code', 'path'=>'CodeFilter.valueCode', 'min'=>0, 'max'=>Float::INFINITY},
         'valueCoding' => {'type'=>'Coding', 'path'=>'CodeFilter.valueCoding', 'min'=>0, 'max'=>Float::INFINITY},
         'valueCodeableConcept' => {'type'=>'CodeableConcept', 'path'=>'CodeFilter.valueCodeableConcept', 'min'=>0, 'max'=>Float::INFINITY}
@@ -38,7 +38,7 @@ module FHIR
       attr_accessor :extension            # 0-* [ Extension ]
       attr_accessor :path                 # 1-1 string
       attr_accessor :valueSetString       # 0-1 string
-      attr_accessor :valueSetReference    # 0-1 Reference()
+      attr_accessor :valueSetReference    # 0-1 Reference(ValueSet)
       attr_accessor :valueCode            # 0-* [ code ]
       attr_accessor :valueCoding          # 0-* [ Coding ]
       attr_accessor :valueCodeableConcept # 0-* [ CodeableConcept ]
