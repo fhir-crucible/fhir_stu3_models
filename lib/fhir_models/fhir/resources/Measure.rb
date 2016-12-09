@@ -36,7 +36,7 @@ module FHIR
       'contact' => {'type'=>'ContactDetail', 'path'=>'Measure.contact', 'min'=>0, 'max'=>Float::INFINITY},
       'copyright' => {'type'=>'markdown', 'path'=>'Measure.copyright', 'min'=>0, 'max'=>1},
       'relatedArtifact' => {'type'=>'RelatedArtifact', 'path'=>'Measure.relatedArtifact', 'min'=>0, 'max'=>Float::INFINITY},
-      'library' => {'type'=>'Reference', 'path'=>'Measure.library', 'min'=>0, 'max'=>Float::INFINITY},
+      'library' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Library'], 'type'=>'Reference', 'path'=>'Measure.library', 'min'=>0, 'max'=>Float::INFINITY},
       'disclaimer' => {'type'=>'markdown', 'path'=>'Measure.disclaimer', 'min'=>0, 'max'=>1},
       'scoring' => {'valid_codes'=>{'http://hl7.org/fhir/measure-scoring'=>['proportion', 'ratio', 'continuous-variable', 'cohort', 'proportion', 'ratio', 'continuous-variable', 'cohort']}, 'type'=>'code', 'path'=>'Measure.scoring', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/measure-scoring'}},
       'compositeScoring' => {'valid_codes'=>{'http://hl7.org/fhir/composite-measure-scoring'=>['opportunity', 'all-or-nothing', 'linear', 'weighted', 'opportunity', 'all-or-nothing', 'linear', 'weighted']}, 'type'=>'code', 'path'=>'Measure.compositeScoring', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/composite-measure-scoring'}},
@@ -181,7 +181,7 @@ module FHIR
     attr_accessor :contact                         # 0-* [ ContactDetail ]
     attr_accessor :copyright                       # 0-1 markdown
     attr_accessor :relatedArtifact                 # 0-* [ RelatedArtifact ]
-    attr_accessor :library                         # 0-* [ Reference() ]
+    attr_accessor :library                         # 0-* [ Reference(Library) ]
     attr_accessor :disclaimer                      # 0-1 markdown
     attr_accessor :scoring                         # 0-1 code
     attr_accessor :compositeScoring                # 0-1 code

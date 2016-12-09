@@ -16,9 +16,9 @@ module FHIR
       'modifierExtension' => {'type'=>'Extension', 'path'=>'Basic.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
       'identifier' => {'type'=>'Identifier', 'path'=>'Basic.identifier', 'min'=>0, 'max'=>Float::INFINITY},
       'code' => {'valid_codes'=>{'http://hl7.org/fhir/basic-resource-type'=>['consent', 'referral', 'advevent', 'aptmtreq', 'transfer', 'diet', 'adminact', 'exposure', 'investigation', 'account', 'invoice', 'adjudicat', 'predetreq', 'predetermine', 'study', 'protocol', 'consent', 'referral', 'advevent', 'aptmtreq', 'transfer', 'diet', 'adminact', 'exposure', 'investigation', 'account', 'invoice', 'adjudicat', 'predetreq', 'predetermine', 'study', 'protocol']}, 'type'=>'CodeableConcept', 'path'=>'Basic.code', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/basic-resource-type'}},
-      'subject' => {'type'=>'Reference', 'path'=>'Basic.subject', 'min'=>0, 'max'=>1},
+      'subject' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'Basic.subject', 'min'=>0, 'max'=>1},
       'created' => {'type'=>'date', 'path'=>'Basic.created', 'min'=>0, 'max'=>1},
-      'author' => {'type'=>'Reference', 'path'=>'Basic.author', 'min'=>0, 'max'=>1}
+      'author' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson'], 'type'=>'Reference', 'path'=>'Basic.author', 'min'=>0, 'max'=>1}
     }
 
     attr_accessor :id                # 0-1 id
@@ -31,9 +31,9 @@ module FHIR
     attr_accessor :modifierExtension # 0-* [ Extension ]
     attr_accessor :identifier        # 0-* [ Identifier ]
     attr_accessor :code              # 1-1 CodeableConcept
-    attr_accessor :subject           # 0-1 Reference()
+    attr_accessor :subject           # 0-1 Reference(Resource)
     attr_accessor :created           # 0-1 date
-    attr_accessor :author            # 0-1 Reference()
+    attr_accessor :author            # 0-1 Reference(Practitioner|Patient|RelatedPerson)
 
     def resourceType
       'Basic'

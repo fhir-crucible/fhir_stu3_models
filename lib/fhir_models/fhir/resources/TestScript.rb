@@ -33,7 +33,7 @@ module FHIR
       'destination' => {'type'=>'TestScript::Destination', 'path'=>'TestScript.destination', 'min'=>0, 'max'=>Float::INFINITY},
       'metadata' => {'type'=>'TestScript::Metadata', 'path'=>'TestScript.metadata', 'min'=>0, 'max'=>1},
       'fixture' => {'type'=>'TestScript::Fixture', 'path'=>'TestScript.fixture', 'min'=>0, 'max'=>Float::INFINITY},
-      'profile' => {'type'=>'Reference', 'path'=>'TestScript.profile', 'min'=>0, 'max'=>Float::INFINITY},
+      'profile' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'TestScript.profile', 'min'=>0, 'max'=>Float::INFINITY},
       'variable' => {'type'=>'TestScript::Variable', 'path'=>'TestScript.variable', 'min'=>0, 'max'=>Float::INFINITY},
       'rule' => {'type'=>'TestScript::Rule', 'path'=>'TestScript.rule', 'min'=>0, 'max'=>Float::INFINITY},
       'ruleset' => {'type'=>'TestScript::Ruleset', 'path'=>'TestScript.ruleset', 'min'=>0, 'max'=>Float::INFINITY},
@@ -130,7 +130,7 @@ module FHIR
           'origin' => {'type'=>'integer', 'path'=>'Capability.origin', 'min'=>0, 'max'=>Float::INFINITY},
           'destination' => {'type'=>'integer', 'path'=>'Capability.destination', 'min'=>0, 'max'=>1},
           'link' => {'type'=>'uri', 'path'=>'Capability.link', 'min'=>0, 'max'=>Float::INFINITY},
-          'capabilities' => {'type'=>'Reference', 'path'=>'Capability.capabilities', 'min'=>1, 'max'=>1}
+          'capabilities' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/CapabilityStatement'], 'type'=>'Reference', 'path'=>'Capability.capabilities', 'min'=>1, 'max'=>1}
         }
 
         attr_accessor :id                # 0-1 string
@@ -142,7 +142,7 @@ module FHIR
         attr_accessor :origin            # 0-* [ integer ]
         attr_accessor :destination       # 0-1 integer
         attr_accessor :link              # 0-* [ uri ]
-        attr_accessor :capabilities      # 1-1 Reference()
+        attr_accessor :capabilities      # 1-1 Reference(CapabilityStatement)
       end
 
       attr_accessor :id                # 0-1 string
@@ -163,7 +163,7 @@ module FHIR
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Fixture.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
         'autocreate' => {'type'=>'boolean', 'path'=>'Fixture.autocreate', 'min'=>0, 'max'=>1},
         'autodelete' => {'type'=>'boolean', 'path'=>'Fixture.autodelete', 'min'=>0, 'max'=>1},
-        'resource' => {'type'=>'Reference', 'path'=>'Fixture.resource', 'min'=>0, 'max'=>1}
+        'resource' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'Fixture.resource', 'min'=>0, 'max'=>1}
       }
 
       attr_accessor :id                # 0-1 string
@@ -171,7 +171,7 @@ module FHIR
       attr_accessor :modifierExtension # 0-* [ Extension ]
       attr_accessor :autocreate        # 0-1 boolean
       attr_accessor :autodelete        # 0-1 boolean
-      attr_accessor :resource          # 0-1 Reference()
+      attr_accessor :resource          # 0-1 Reference(Resource)
     end
 
     class Variable < FHIR::Model
@@ -215,7 +215,7 @@ module FHIR
         'id' => {'type'=>'string', 'path'=>'Rule.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Rule.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Rule.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-        'resource' => {'type'=>'Reference', 'path'=>'Rule.resource', 'min'=>1, 'max'=>1},
+        'resource' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'Rule.resource', 'min'=>1, 'max'=>1},
         'param' => {'type'=>'TestScript::Rule::Param', 'path'=>'Rule.param', 'min'=>0, 'max'=>Float::INFINITY}
       }
 
@@ -242,7 +242,7 @@ module FHIR
       attr_accessor :id                # 0-1 string
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
-      attr_accessor :resource          # 1-1 Reference()
+      attr_accessor :resource          # 1-1 Reference(Resource)
       attr_accessor :param             # 0-* [ TestScript::Rule::Param ]
     end
 
@@ -255,7 +255,7 @@ module FHIR
         'id' => {'type'=>'string', 'path'=>'Ruleset.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Ruleset.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Ruleset.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-        'resource' => {'type'=>'Reference', 'path'=>'Ruleset.resource', 'min'=>1, 'max'=>1},
+        'resource' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'Ruleset.resource', 'min'=>1, 'max'=>1},
         'rule' => {'type'=>'TestScript::Ruleset::Rule', 'path'=>'Ruleset.rule', 'min'=>1, 'max'=>Float::INFINITY}
       }
 
@@ -302,7 +302,7 @@ module FHIR
       attr_accessor :id                # 0-1 string
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
-      attr_accessor :resource          # 1-1 Reference()
+      attr_accessor :resource          # 1-1 Reference(Resource)
       attr_accessor :rule              # 1-* [ TestScript::Ruleset::Rule ]
     end
 
@@ -679,7 +679,7 @@ module FHIR
     attr_accessor :destination       # 0-* [ TestScript::Destination ]
     attr_accessor :metadata          # 0-1 TestScript::Metadata
     attr_accessor :fixture           # 0-* [ TestScript::Fixture ]
-    attr_accessor :profile           # 0-* [ Reference() ]
+    attr_accessor :profile           # 0-* [ Reference(Resource) ]
     attr_accessor :variable          # 0-* [ TestScript::Variable ]
     attr_accessor :rule              # 0-* [ TestScript::Rule ]
     attr_accessor :ruleset           # 0-* [ TestScript::Ruleset ]

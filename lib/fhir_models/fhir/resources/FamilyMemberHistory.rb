@@ -20,7 +20,7 @@ module FHIR
       'extension' => {'type'=>'Extension', 'path'=>'FamilyMemberHistory.extension', 'min'=>0, 'max'=>Float::INFINITY},
       'modifierExtension' => {'type'=>'Extension', 'path'=>'FamilyMemberHistory.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
       'identifier' => {'type'=>'Identifier', 'path'=>'FamilyMemberHistory.identifier', 'min'=>0, 'max'=>Float::INFINITY},
-      'patient' => {'type'=>'Reference', 'path'=>'FamilyMemberHistory.patient', 'min'=>1, 'max'=>1},
+      'patient' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient'], 'type'=>'Reference', 'path'=>'FamilyMemberHistory.patient', 'min'=>1, 'max'=>1},
       'date' => {'type'=>'dateTime', 'path'=>'FamilyMemberHistory.date', 'min'=>0, 'max'=>1},
       'status' => {'valid_codes'=>{'http://hl7.org/fhir/history-status'=>['partial', 'completed', 'entered-in-error', 'health-unknown', 'partial', 'completed', 'entered-in-error', 'health-unknown']}, 'type'=>'code', 'path'=>'FamilyMemberHistory.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/history-status'}},
       'name' => {'type'=>'string', 'path'=>'FamilyMemberHistory.name', 'min'=>0, 'max'=>1},
@@ -84,7 +84,7 @@ module FHIR
     attr_accessor :extension         # 0-* [ Extension ]
     attr_accessor :modifierExtension # 0-* [ Extension ]
     attr_accessor :identifier        # 0-* [ Identifier ]
-    attr_accessor :patient           # 1-1 Reference()
+    attr_accessor :patient           # 1-1 Reference(Patient)
     attr_accessor :date              # 0-1 dateTime
     attr_accessor :status            # 1-1 code
     attr_accessor :name              # 0-1 string

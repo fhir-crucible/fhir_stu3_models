@@ -15,15 +15,15 @@ module FHIR
       'extension' => {'type'=>'Extension', 'path'=>'QuestionnaireResponse.extension', 'min'=>0, 'max'=>Float::INFINITY},
       'modifierExtension' => {'type'=>'Extension', 'path'=>'QuestionnaireResponse.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
       'identifier' => {'type'=>'Identifier', 'path'=>'QuestionnaireResponse.identifier', 'min'=>0, 'max'=>1},
-      'basedOn' => {'type'=>'Reference', 'path'=>'QuestionnaireResponse.basedOn', 'min'=>0, 'max'=>Float::INFINITY},
-      'parent' => {'type'=>'Reference', 'path'=>'QuestionnaireResponse.parent', 'min'=>0, 'max'=>Float::INFINITY},
-      'questionnaire' => {'type'=>'Reference', 'path'=>'QuestionnaireResponse.questionnaire', 'min'=>0, 'max'=>1},
+      'basedOn' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/DiagnosticRequest', 'http://hl7.org/fhir/StructureDefinition/ReferralRequest', 'http://hl7.org/fhir/StructureDefinition/CarePlan'], 'type'=>'Reference', 'path'=>'QuestionnaireResponse.basedOn', 'min'=>0, 'max'=>Float::INFINITY},
+      'parent' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Observation', 'http://hl7.org/fhir/StructureDefinition/Procedure'], 'type'=>'Reference', 'path'=>'QuestionnaireResponse.parent', 'min'=>0, 'max'=>Float::INFINITY},
+      'questionnaire' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Questionnaire'], 'type'=>'Reference', 'path'=>'QuestionnaireResponse.questionnaire', 'min'=>0, 'max'=>1},
       'status' => {'valid_codes'=>{'http://hl7.org/fhir/questionnaire-answers-status'=>['in-progress', 'completed', 'amended', 'entered-in-error', 'in-progress', 'completed', 'amended', 'entered-in-error']}, 'type'=>'code', 'path'=>'QuestionnaireResponse.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/questionnaire-answers-status'}},
-      'subject' => {'type'=>'Reference', 'path'=>'QuestionnaireResponse.subject', 'min'=>0, 'max'=>1},
-      'context' => {'type'=>'Reference', 'path'=>'QuestionnaireResponse.context', 'min'=>0, 'max'=>1},
-      'author' => {'type'=>'Reference', 'path'=>'QuestionnaireResponse.author', 'min'=>0, 'max'=>1},
+      'subject' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'QuestionnaireResponse.subject', 'min'=>0, 'max'=>1},
+      'context' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Encounter', 'http://hl7.org/fhir/StructureDefinition/EpisodeOfCare'], 'type'=>'Reference', 'path'=>'QuestionnaireResponse.context', 'min'=>0, 'max'=>1},
+      'author' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Device', 'http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson'], 'type'=>'Reference', 'path'=>'QuestionnaireResponse.author', 'min'=>0, 'max'=>1},
       'authored' => {'type'=>'dateTime', 'path'=>'QuestionnaireResponse.authored', 'min'=>0, 'max'=>1},
-      'source' => {'type'=>'Reference', 'path'=>'QuestionnaireResponse.source', 'min'=>0, 'max'=>1},
+      'source' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson'], 'type'=>'Reference', 'path'=>'QuestionnaireResponse.source', 'min'=>0, 'max'=>1},
       'item' => {'type'=>'QuestionnaireResponse::Item', 'path'=>'QuestionnaireResponse.item', 'min'=>0, 'max'=>Float::INFINITY}
     }
 
@@ -39,7 +39,7 @@ module FHIR
         'linkId' => {'type'=>'string', 'path'=>'Item.linkId', 'min'=>1, 'max'=>1},
         'definition' => {'type'=>'uri', 'path'=>'Item.definition', 'min'=>0, 'max'=>1},
         'text' => {'type'=>'string', 'path'=>'Item.text', 'min'=>0, 'max'=>1},
-        'subject' => {'type'=>'Reference', 'path'=>'Item.subject', 'min'=>0, 'max'=>1},
+        'subject' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'Item.subject', 'min'=>0, 'max'=>1},
         'answer' => {'type'=>'QuestionnaireResponse::Item::Answer', 'path'=>'Item.answer', 'min'=>0, 'max'=>Float::INFINITY},
         'item' => {'type'=>'QuestionnaireResponse::Item', 'path'=>'Item.item', 'min'=>0, 'max'=>Float::INFINITY}
       }
@@ -68,7 +68,7 @@ module FHIR
           'valueAttachment' => {'type'=>'Attachment', 'path'=>'Answer.value[x]', 'min'=>0, 'max'=>1},
           'valueCoding' => {'type'=>'Coding', 'path'=>'Answer.value[x]', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>nil}},
           'valueQuantity' => {'type'=>'Quantity', 'path'=>'Answer.value[x]', 'min'=>0, 'max'=>1},
-          'valueReference' => {'type'=>'Reference', 'path'=>'Answer.value[x]', 'min'=>0, 'max'=>1},
+          'valueReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'Answer.value[x]', 'min'=>0, 'max'=>1},
           'item' => {'type'=>'QuestionnaireResponse::Item', 'path'=>'Answer.item', 'min'=>0, 'max'=>Float::INFINITY}
         }
 
@@ -87,7 +87,7 @@ module FHIR
         attr_accessor :valueAttachment   # 0-1 Attachment
         attr_accessor :valueCoding       # 0-1 Coding
         attr_accessor :valueQuantity     # 0-1 Quantity
-        attr_accessor :valueReference    # 0-1 Reference()
+        attr_accessor :valueReference    # 0-1 Reference(Resource)
         attr_accessor :item              # 0-* [ QuestionnaireResponse::Item ]
       end
 
@@ -97,7 +97,7 @@ module FHIR
       attr_accessor :linkId            # 1-1 string
       attr_accessor :definition        # 0-1 uri
       attr_accessor :text              # 0-1 string
-      attr_accessor :subject           # 0-1 Reference()
+      attr_accessor :subject           # 0-1 Reference(Resource)
       attr_accessor :answer            # 0-* [ QuestionnaireResponse::Item::Answer ]
       attr_accessor :item              # 0-* [ QuestionnaireResponse::Item ]
     end
@@ -111,15 +111,15 @@ module FHIR
     attr_accessor :extension         # 0-* [ Extension ]
     attr_accessor :modifierExtension # 0-* [ Extension ]
     attr_accessor :identifier        # 0-1 Identifier
-    attr_accessor :basedOn           # 0-* [ Reference() ]
-    attr_accessor :parent            # 0-* [ Reference() ]
-    attr_accessor :questionnaire     # 0-1 Reference()
+    attr_accessor :basedOn           # 0-* [ Reference(DiagnosticRequest|ReferralRequest|CarePlan) ]
+    attr_accessor :parent            # 0-* [ Reference(Observation|Procedure) ]
+    attr_accessor :questionnaire     # 0-1 Reference(Questionnaire)
     attr_accessor :status            # 1-1 code
-    attr_accessor :subject           # 0-1 Reference()
-    attr_accessor :context           # 0-1 Reference()
-    attr_accessor :author            # 0-1 Reference()
+    attr_accessor :subject           # 0-1 Reference(Resource)
+    attr_accessor :context           # 0-1 Reference(Encounter|EpisodeOfCare)
+    attr_accessor :author            # 0-1 Reference(Device|Practitioner|Patient|RelatedPerson)
     attr_accessor :authored          # 0-1 dateTime
-    attr_accessor :source            # 0-1 Reference()
+    attr_accessor :source            # 0-1 Reference(Patient|Practitioner|RelatedPerson)
     attr_accessor :item              # 0-* [ QuestionnaireResponse::Item ]
 
     def resourceType

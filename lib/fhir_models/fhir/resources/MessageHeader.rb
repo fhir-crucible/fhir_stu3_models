@@ -19,12 +19,12 @@ module FHIR
       'response' => {'type'=>'MessageHeader::Response', 'path'=>'MessageHeader.response', 'min'=>0, 'max'=>1},
       'source' => {'type'=>'MessageHeader::Source', 'path'=>'MessageHeader.source', 'min'=>1, 'max'=>1},
       'destination' => {'type'=>'MessageHeader::Destination', 'path'=>'MessageHeader.destination', 'min'=>0, 'max'=>Float::INFINITY},
-      'enterer' => {'type'=>'Reference', 'path'=>'MessageHeader.enterer', 'min'=>0, 'max'=>1},
-      'author' => {'type'=>'Reference', 'path'=>'MessageHeader.author', 'min'=>0, 'max'=>1},
-      'receiver' => {'type'=>'Reference', 'path'=>'MessageHeader.receiver', 'min'=>0, 'max'=>1},
-      'responsible' => {'type'=>'Reference', 'path'=>'MessageHeader.responsible', 'min'=>0, 'max'=>1},
+      'enterer' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner'], 'type'=>'Reference', 'path'=>'MessageHeader.enterer', 'min'=>0, 'max'=>1},
+      'author' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner'], 'type'=>'Reference', 'path'=>'MessageHeader.author', 'min'=>0, 'max'=>1},
+      'receiver' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'MessageHeader.receiver', 'min'=>0, 'max'=>1},
+      'responsible' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'MessageHeader.responsible', 'min'=>0, 'max'=>1},
       'reason' => {'valid_codes'=>{'http://hl7.org/fhir/message-reasons-encounter'=>['admit', 'discharge', 'absent', 'return', 'moved', 'edit', 'admit', 'discharge', 'absent', 'return', 'moved', 'edit']}, 'type'=>'CodeableConcept', 'path'=>'MessageHeader.reason', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/message-reason-encounter'}},
-      'data' => {'type'=>'Reference', 'path'=>'MessageHeader.data', 'min'=>0, 'max'=>Float::INFINITY}
+      'data' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'MessageHeader.data', 'min'=>0, 'max'=>Float::INFINITY}
     }
 
     class Response < FHIR::Model
@@ -38,7 +38,7 @@ module FHIR
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Response.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
         'identifier' => {'type'=>'id', 'path'=>'Response.identifier', 'min'=>1, 'max'=>1},
         'code' => {'valid_codes'=>{'http://hl7.org/fhir/response-code'=>['ok', 'transient-error', 'fatal-error', 'ok', 'transient-error', 'fatal-error']}, 'type'=>'code', 'path'=>'Response.code', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/response-code'}},
-        'details' => {'type'=>'Reference', 'path'=>'Response.details', 'min'=>0, 'max'=>1}
+        'details' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/OperationOutcome'], 'type'=>'Reference', 'path'=>'Response.details', 'min'=>0, 'max'=>1}
       }
 
       attr_accessor :id                # 0-1 string
@@ -46,7 +46,7 @@ module FHIR
       attr_accessor :modifierExtension # 0-* [ Extension ]
       attr_accessor :identifier        # 1-1 id
       attr_accessor :code              # 1-1 code
-      attr_accessor :details           # 0-1 Reference()
+      attr_accessor :details           # 0-1 Reference(OperationOutcome)
     end
 
     class Source < FHIR::Model
@@ -85,7 +85,7 @@ module FHIR
         'extension' => {'type'=>'Extension', 'path'=>'Destination.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Destination.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
         'name' => {'type'=>'string', 'path'=>'Destination.name', 'min'=>0, 'max'=>1},
-        'target' => {'type'=>'Reference', 'path'=>'Destination.target', 'min'=>0, 'max'=>1},
+        'target' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Device'], 'type'=>'Reference', 'path'=>'Destination.target', 'min'=>0, 'max'=>1},
         'endpoint' => {'type'=>'uri', 'path'=>'Destination.endpoint', 'min'=>1, 'max'=>1}
       }
 
@@ -93,7 +93,7 @@ module FHIR
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
       attr_accessor :name              # 0-1 string
-      attr_accessor :target            # 0-1 Reference()
+      attr_accessor :target            # 0-1 Reference(Device)
       attr_accessor :endpoint          # 1-1 uri
     end
 
@@ -110,12 +110,12 @@ module FHIR
     attr_accessor :response          # 0-1 MessageHeader::Response
     attr_accessor :source            # 1-1 MessageHeader::Source
     attr_accessor :destination       # 0-* [ MessageHeader::Destination ]
-    attr_accessor :enterer           # 0-1 Reference()
-    attr_accessor :author            # 0-1 Reference()
-    attr_accessor :receiver          # 0-1 Reference()
-    attr_accessor :responsible       # 0-1 Reference()
+    attr_accessor :enterer           # 0-1 Reference(Practitioner)
+    attr_accessor :author            # 0-1 Reference(Practitioner)
+    attr_accessor :receiver          # 0-1 Reference(Practitioner|Organization)
+    attr_accessor :responsible       # 0-1 Reference(Practitioner|Organization)
     attr_accessor :reason            # 0-1 CodeableConcept
-    attr_accessor :data              # 0-* [ Reference() ]
+    attr_accessor :data              # 0-* [ Reference(Resource) ]
 
     def resourceType
       'MessageHeader'

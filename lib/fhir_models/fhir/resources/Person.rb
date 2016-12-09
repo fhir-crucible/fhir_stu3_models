@@ -21,7 +21,7 @@ module FHIR
       'birthDate' => {'type'=>'date', 'path'=>'Person.birthDate', 'min'=>0, 'max'=>1},
       'address' => {'type'=>'Address', 'path'=>'Person.address', 'min'=>0, 'max'=>Float::INFINITY},
       'photo' => {'type'=>'Attachment', 'path'=>'Person.photo', 'min'=>0, 'max'=>1},
-      'managingOrganization' => {'type'=>'Reference', 'path'=>'Person.managingOrganization', 'min'=>0, 'max'=>1},
+      'managingOrganization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Person.managingOrganization', 'min'=>0, 'max'=>1},
       'active' => {'type'=>'boolean', 'path'=>'Person.active', 'min'=>0, 'max'=>1},
       'link' => {'type'=>'Person::Link', 'path'=>'Person.link', 'min'=>0, 'max'=>Float::INFINITY}
     }
@@ -35,14 +35,14 @@ module FHIR
         'id' => {'type'=>'string', 'path'=>'Link.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Link.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Link.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-        'target' => {'type'=>'Reference', 'path'=>'Link.target', 'min'=>1, 'max'=>1},
+        'target' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson', 'http://hl7.org/fhir/StructureDefinition/Person'], 'type'=>'Reference', 'path'=>'Link.target', 'min'=>1, 'max'=>1},
         'assurance' => {'valid_codes'=>{'http://hl7.org/fhir/identity-assuranceLevel'=>['level1', 'level2', 'level3', 'level4', 'level1', 'level2', 'level3', 'level4']}, 'type'=>'code', 'path'=>'Link.assurance', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/identity-assuranceLevel'}}
       }
 
       attr_accessor :id                # 0-1 string
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
-      attr_accessor :target            # 1-1 Reference()
+      attr_accessor :target            # 1-1 Reference(Patient|Practitioner|RelatedPerson|Person)
       attr_accessor :assurance         # 0-1 code
     end
 
@@ -61,7 +61,7 @@ module FHIR
     attr_accessor :birthDate            # 0-1 date
     attr_accessor :address              # 0-* [ Address ]
     attr_accessor :photo                # 0-1 Attachment
-    attr_accessor :managingOrganization # 0-1 Reference()
+    attr_accessor :managingOrganization # 0-1 Reference(Organization)
     attr_accessor :active               # 0-1 boolean
     attr_accessor :link                 # 0-* [ Person::Link ]
 

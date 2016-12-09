@@ -17,8 +17,8 @@ module FHIR
       'type' => {'type'=>'CodeableConcept', 'path'=>'DeviceMetric.type', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'preferred', 'uri'=>'https://rtmms.nist.gov/rtmms/index.htm#!hrosetta'}},
       'identifier' => {'type'=>'Identifier', 'path'=>'DeviceMetric.identifier', 'min'=>1, 'max'=>1},
       'unit' => {'type'=>'CodeableConcept', 'path'=>'DeviceMetric.unit', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'preferred', 'uri'=>'https://rtmms.nist.gov/rtmms/index.htm#!units'}},
-      'source' => {'type'=>'Reference', 'path'=>'DeviceMetric.source', 'min'=>0, 'max'=>1},
-      'parent' => {'type'=>'Reference', 'path'=>'DeviceMetric.parent', 'min'=>0, 'max'=>1},
+      'source' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Device'], 'type'=>'Reference', 'path'=>'DeviceMetric.source', 'min'=>0, 'max'=>1},
+      'parent' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/DeviceComponent'], 'type'=>'Reference', 'path'=>'DeviceMetric.parent', 'min'=>0, 'max'=>1},
       'operationalStatus' => {'valid_codes'=>{'http://hl7.org/fhir/metric-operational-status'=>['on', 'off', 'standby', 'on', 'off', 'standby']}, 'type'=>'code', 'path'=>'DeviceMetric.operationalStatus', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/metric-operational-status'}},
       'color' => {'valid_codes'=>{'http://hl7.org/fhir/metric-color'=>['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white', 'black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']}, 'type'=>'code', 'path'=>'DeviceMetric.color', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/metric-color'}},
       'category' => {'valid_codes'=>{'http://hl7.org/fhir/metric-category'=>['measurement', 'setting', 'calculation', 'unspecified', 'measurement', 'setting', 'calculation', 'unspecified']}, 'type'=>'code', 'path'=>'DeviceMetric.category', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/metric-category'}},
@@ -59,8 +59,8 @@ module FHIR
     attr_accessor :type              # 1-1 CodeableConcept
     attr_accessor :identifier        # 1-1 Identifier
     attr_accessor :unit              # 0-1 CodeableConcept
-    attr_accessor :source            # 0-1 Reference()
-    attr_accessor :parent            # 0-1 Reference()
+    attr_accessor :source            # 0-1 Reference(Device)
+    attr_accessor :parent            # 0-1 Reference(DeviceComponent)
     attr_accessor :operationalStatus # 0-1 code
     attr_accessor :color             # 0-1 code
     attr_accessor :category          # 1-1 code

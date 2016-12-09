@@ -18,14 +18,14 @@ module FHIR
       'status' => {'valid_codes'=>{'http://hl7.org/fhir/episode-of-care-status'=>['planned', 'waitlist', 'active', 'onhold', 'finished', 'cancelled', 'entered-in-error', 'planned', 'waitlist', 'active', 'onhold', 'finished', 'cancelled', 'entered-in-error']}, 'type'=>'code', 'path'=>'EpisodeOfCare.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/episode-of-care-status'}},
       'statusHistory' => {'type'=>'EpisodeOfCare::StatusHistory', 'path'=>'EpisodeOfCare.statusHistory', 'min'=>0, 'max'=>Float::INFINITY},
       'type' => {'type'=>'CodeableConcept', 'path'=>'EpisodeOfCare.type', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'example', 'uri'=>nil}},
-      'condition' => {'type'=>'Reference', 'path'=>'EpisodeOfCare.condition', 'min'=>0, 'max'=>Float::INFINITY},
-      'patient' => {'type'=>'Reference', 'path'=>'EpisodeOfCare.patient', 'min'=>1, 'max'=>1},
-      'managingOrganization' => {'type'=>'Reference', 'path'=>'EpisodeOfCare.managingOrganization', 'min'=>0, 'max'=>1},
+      'condition' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Condition'], 'type'=>'Reference', 'path'=>'EpisodeOfCare.condition', 'min'=>0, 'max'=>Float::INFINITY},
+      'patient' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient'], 'type'=>'Reference', 'path'=>'EpisodeOfCare.patient', 'min'=>1, 'max'=>1},
+      'managingOrganization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'EpisodeOfCare.managingOrganization', 'min'=>0, 'max'=>1},
       'period' => {'type'=>'Period', 'path'=>'EpisodeOfCare.period', 'min'=>0, 'max'=>1},
-      'referralRequest' => {'type'=>'Reference', 'path'=>'EpisodeOfCare.referralRequest', 'min'=>0, 'max'=>Float::INFINITY},
-      'careManager' => {'type'=>'Reference', 'path'=>'EpisodeOfCare.careManager', 'min'=>0, 'max'=>1},
-      'team' => {'type'=>'Reference', 'path'=>'EpisodeOfCare.team', 'min'=>0, 'max'=>Float::INFINITY},
-      'account' => {'type'=>'Reference', 'path'=>'EpisodeOfCare.account', 'min'=>0, 'max'=>Float::INFINITY}
+      'referralRequest' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/ReferralRequest'], 'type'=>'Reference', 'path'=>'EpisodeOfCare.referralRequest', 'min'=>0, 'max'=>Float::INFINITY},
+      'careManager' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner'], 'type'=>'Reference', 'path'=>'EpisodeOfCare.careManager', 'min'=>0, 'max'=>1},
+      'team' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/CareTeam'], 'type'=>'Reference', 'path'=>'EpisodeOfCare.team', 'min'=>0, 'max'=>Float::INFINITY},
+      'account' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Account'], 'type'=>'Reference', 'path'=>'EpisodeOfCare.account', 'min'=>0, 'max'=>Float::INFINITY}
     }
 
     class StatusHistory < FHIR::Model
@@ -60,14 +60,14 @@ module FHIR
     attr_accessor :status               # 1-1 code
     attr_accessor :statusHistory        # 0-* [ EpisodeOfCare::StatusHistory ]
     attr_accessor :type                 # 0-* [ CodeableConcept ]
-    attr_accessor :condition            # 0-* [ Reference() ]
-    attr_accessor :patient              # 1-1 Reference()
-    attr_accessor :managingOrganization # 0-1 Reference()
+    attr_accessor :condition            # 0-* [ Reference(Condition) ]
+    attr_accessor :patient              # 1-1 Reference(Patient)
+    attr_accessor :managingOrganization # 0-1 Reference(Organization)
     attr_accessor :period               # 0-1 Period
-    attr_accessor :referralRequest      # 0-* [ Reference() ]
-    attr_accessor :careManager          # 0-1 Reference()
-    attr_accessor :team                 # 0-* [ Reference() ]
-    attr_accessor :account              # 0-* [ Reference() ]
+    attr_accessor :referralRequest      # 0-* [ Reference(ReferralRequest) ]
+    attr_accessor :careManager          # 0-1 Reference(Practitioner)
+    attr_accessor :team                 # 0-* [ Reference(CareTeam) ]
+    attr_accessor :account              # 0-* [ Reference(Account) ]
 
     def resourceType
       'EpisodeOfCare'

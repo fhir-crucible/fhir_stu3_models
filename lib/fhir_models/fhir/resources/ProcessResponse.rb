@@ -17,16 +17,16 @@ module FHIR
       'identifier' => {'type'=>'Identifier', 'path'=>'ProcessResponse.identifier', 'min'=>0, 'max'=>Float::INFINITY},
       'status' => {'valid_codes'=>{'http://hl7.org/fhir/fm-status'=>['active', 'cancelled', 'draft', 'entered-in-error', 'active', 'cancelled', 'draft', 'entered-in-error']}, 'type'=>'code', 'path'=>'ProcessResponse.status', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/fm-status'}},
       'created' => {'type'=>'dateTime', 'path'=>'ProcessResponse.created', 'min'=>0, 'max'=>1},
-      'organization' => {'type'=>'Reference', 'path'=>'ProcessResponse.organization', 'min'=>0, 'max'=>1},
-      'request' => {'type'=>'Reference', 'path'=>'ProcessResponse.request', 'min'=>0, 'max'=>1},
+      'organization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'ProcessResponse.organization', 'min'=>0, 'max'=>1},
+      'request' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'ProcessResponse.request', 'min'=>0, 'max'=>1},
       'outcome' => {'valid_codes'=>{'http://hl7.org/fhir/processoutcomecodes'=>['complete', 'pended', 'error', 'complete', 'pended', 'error']}, 'type'=>'CodeableConcept', 'path'=>'ProcessResponse.outcome', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/process-outcome'}},
       'disposition' => {'type'=>'string', 'path'=>'ProcessResponse.disposition', 'min'=>0, 'max'=>1},
-      'requestProvider' => {'type'=>'Reference', 'path'=>'ProcessResponse.requestProvider', 'min'=>0, 'max'=>1},
-      'requestOrganization' => {'type'=>'Reference', 'path'=>'ProcessResponse.requestOrganization', 'min'=>0, 'max'=>1},
+      'requestProvider' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner'], 'type'=>'Reference', 'path'=>'ProcessResponse.requestProvider', 'min'=>0, 'max'=>1},
+      'requestOrganization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'ProcessResponse.requestOrganization', 'min'=>0, 'max'=>1},
       'form' => {'valid_codes'=>{'http://hl7.org/fhir/forms-codes'=>['1', '2', '1', '2']}, 'type'=>'CodeableConcept', 'path'=>'ProcessResponse.form', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/forms'}},
       'note' => {'type'=>'ProcessResponse::Note', 'path'=>'ProcessResponse.note', 'min'=>0, 'max'=>Float::INFINITY},
       'error' => {'valid_codes'=>{'http://hl7.org/fhir/adjudication-error'=>['a001', 'a002', 'a001', 'a002']}, 'type'=>'CodeableConcept', 'path'=>'ProcessResponse.error', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/adjudication-error'}},
-      'communicationRequest' => {'type'=>'Reference', 'path'=>'ProcessResponse.communicationRequest', 'min'=>0, 'max'=>Float::INFINITY}
+      'communicationRequest' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/CommunicationRequest'], 'type'=>'Reference', 'path'=>'ProcessResponse.communicationRequest', 'min'=>0, 'max'=>Float::INFINITY}
     }
 
     class Note < FHIR::Model
@@ -60,16 +60,16 @@ module FHIR
     attr_accessor :identifier           # 0-* [ Identifier ]
     attr_accessor :status               # 0-1 code
     attr_accessor :created              # 0-1 dateTime
-    attr_accessor :organization         # 0-1 Reference()
-    attr_accessor :request              # 0-1 Reference()
+    attr_accessor :organization         # 0-1 Reference(Organization)
+    attr_accessor :request              # 0-1 Reference(Resource)
     attr_accessor :outcome              # 0-1 CodeableConcept
     attr_accessor :disposition          # 0-1 string
-    attr_accessor :requestProvider      # 0-1 Reference()
-    attr_accessor :requestOrganization  # 0-1 Reference()
+    attr_accessor :requestProvider      # 0-1 Reference(Practitioner)
+    attr_accessor :requestOrganization  # 0-1 Reference(Organization)
     attr_accessor :form                 # 0-1 CodeableConcept
     attr_accessor :note                 # 0-* [ ProcessResponse::Note ]
     attr_accessor :error                # 0-* [ CodeableConcept ]
-    attr_accessor :communicationRequest # 0-* [ Reference() ]
+    attr_accessor :communicationRequest # 0-* [ Reference(CommunicationRequest) ]
 
     def resourceType
       'ProcessResponse'

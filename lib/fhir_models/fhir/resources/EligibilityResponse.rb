@@ -17,12 +17,12 @@ module FHIR
       'identifier' => {'type'=>'Identifier', 'path'=>'EligibilityResponse.identifier', 'min'=>0, 'max'=>Float::INFINITY},
       'status' => {'valid_codes'=>{'http://hl7.org/fhir/fm-status'=>['active', 'cancelled', 'draft', 'entered-in-error', 'active', 'cancelled', 'draft', 'entered-in-error']}, 'type'=>'code', 'path'=>'EligibilityResponse.status', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/fm-status'}},
       'created' => {'type'=>'dateTime', 'path'=>'EligibilityResponse.created', 'min'=>0, 'max'=>1},
-      'requestProvider' => {'type'=>'Reference', 'path'=>'EligibilityResponse.requestProvider', 'min'=>0, 'max'=>1},
-      'requestOrganization' => {'type'=>'Reference', 'path'=>'EligibilityResponse.requestOrganization', 'min'=>0, 'max'=>1},
-      'request' => {'type'=>'Reference', 'path'=>'EligibilityResponse.request', 'min'=>0, 'max'=>1},
+      'requestProvider' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner'], 'type'=>'Reference', 'path'=>'EligibilityResponse.requestProvider', 'min'=>0, 'max'=>1},
+      'requestOrganization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'EligibilityResponse.requestOrganization', 'min'=>0, 'max'=>1},
+      'request' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/EligibilityRequest'], 'type'=>'Reference', 'path'=>'EligibilityResponse.request', 'min'=>0, 'max'=>1},
       'outcome' => {'valid_codes'=>{'http://hl7.org/fhir/remittance-outcome'=>['complete', 'error', 'partial', 'complete', 'error', 'partial']}, 'type'=>'CodeableConcept', 'path'=>'EligibilityResponse.outcome', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/remittance-outcome'}},
       'disposition' => {'type'=>'string', 'path'=>'EligibilityResponse.disposition', 'min'=>0, 'max'=>1},
-      'insurer' => {'type'=>'Reference', 'path'=>'EligibilityResponse.insurer', 'min'=>0, 'max'=>1},
+      'insurer' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'EligibilityResponse.insurer', 'min'=>0, 'max'=>1},
       'inforce' => {'type'=>'boolean', 'path'=>'EligibilityResponse.inforce', 'min'=>0, 'max'=>1},
       'insurance' => {'type'=>'EligibilityResponse::Insurance', 'path'=>'EligibilityResponse.insurance', 'min'=>0, 'max'=>Float::INFINITY},
       'form' => {'valid_codes'=>{'http://hl7.org/fhir/forms-codes'=>['1', '2', '1', '2']}, 'type'=>'CodeableConcept', 'path'=>'EligibilityResponse.form', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/forms'}},
@@ -38,8 +38,8 @@ module FHIR
         'id' => {'type'=>'string', 'path'=>'Insurance.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Insurance.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Insurance.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-        'coverage' => {'type'=>'Reference', 'path'=>'Insurance.coverage', 'min'=>0, 'max'=>1},
-        'contract' => {'type'=>'Reference', 'path'=>'Insurance.contract', 'min'=>0, 'max'=>1},
+        'coverage' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Coverage'], 'type'=>'Reference', 'path'=>'Insurance.coverage', 'min'=>0, 'max'=>1},
+        'contract' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Contract'], 'type'=>'Reference', 'path'=>'Insurance.contract', 'min'=>0, 'max'=>1},
         'benefitBalance' => {'type'=>'EligibilityResponse::Insurance::BenefitBalance', 'path'=>'Insurance.benefitBalance', 'min'=>0, 'max'=>Float::INFINITY}
       }
 
@@ -112,8 +112,8 @@ module FHIR
       attr_accessor :id                # 0-1 string
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
-      attr_accessor :coverage          # 0-1 Reference()
-      attr_accessor :contract          # 0-1 Reference()
+      attr_accessor :coverage          # 0-1 Reference(Coverage)
+      attr_accessor :contract          # 0-1 Reference(Contract)
       attr_accessor :benefitBalance    # 0-* [ EligibilityResponse::Insurance::BenefitBalance ]
     end
 
@@ -146,12 +146,12 @@ module FHIR
     attr_accessor :identifier          # 0-* [ Identifier ]
     attr_accessor :status              # 0-1 code
     attr_accessor :created             # 0-1 dateTime
-    attr_accessor :requestProvider     # 0-1 Reference()
-    attr_accessor :requestOrganization # 0-1 Reference()
-    attr_accessor :request             # 0-1 Reference()
+    attr_accessor :requestProvider     # 0-1 Reference(Practitioner)
+    attr_accessor :requestOrganization # 0-1 Reference(Organization)
+    attr_accessor :request             # 0-1 Reference(EligibilityRequest)
     attr_accessor :outcome             # 0-1 CodeableConcept
     attr_accessor :disposition         # 0-1 string
-    attr_accessor :insurer             # 0-1 Reference()
+    attr_accessor :insurer             # 0-1 Reference(Organization)
     attr_accessor :inforce             # 0-1 boolean
     attr_accessor :insurance           # 0-* [ EligibilityResponse::Insurance ]
     attr_accessor :form                # 0-1 CodeableConcept

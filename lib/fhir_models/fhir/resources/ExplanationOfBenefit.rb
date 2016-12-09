@@ -18,22 +18,22 @@ module FHIR
       'status' => {'valid_codes'=>{'http://hl7.org/fhir/explanationofbenefit-status'=>['active', 'cancelled', 'draft', 'entered-in-error', 'active', 'cancelled', 'draft', 'entered-in-error']}, 'type'=>'code', 'path'=>'ExplanationOfBenefit.status', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/explanationofbenefit-status'}},
       'type' => {'valid_codes'=>{'http://hl7.org/fhir/ex-claimtype'=>['institutional', 'oral', 'pharmacy', 'professional', 'vision', 'institutional', 'oral', 'pharmacy', 'professional', 'vision']}, 'type'=>'CodeableConcept', 'path'=>'ExplanationOfBenefit.type', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/claim-type'}},
       'subType' => {'valid_codes'=>{'http://hl7.org/fhir/ex-claimsubtype'=>['ortho', 'emergency', 'ortho', 'emergency']}, 'type'=>'CodeableConcept', 'path'=>'ExplanationOfBenefit.subType', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/claim-subtype'}},
-      'patient' => {'type'=>'Reference', 'path'=>'ExplanationOfBenefit.patient', 'min'=>0, 'max'=>1},
+      'patient' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient'], 'type'=>'Reference', 'path'=>'ExplanationOfBenefit.patient', 'min'=>0, 'max'=>1},
       'billablePeriod' => {'type'=>'Period', 'path'=>'ExplanationOfBenefit.billablePeriod', 'min'=>0, 'max'=>1},
       'created' => {'type'=>'dateTime', 'path'=>'ExplanationOfBenefit.created', 'min'=>0, 'max'=>1},
-      'enterer' => {'type'=>'Reference', 'path'=>'ExplanationOfBenefit.enterer', 'min'=>0, 'max'=>1},
-      'insurer' => {'type'=>'Reference', 'path'=>'ExplanationOfBenefit.insurer', 'min'=>0, 'max'=>1},
-      'provider' => {'type'=>'Reference', 'path'=>'ExplanationOfBenefit.provider', 'min'=>0, 'max'=>1},
-      'organization' => {'type'=>'Reference', 'path'=>'ExplanationOfBenefit.organization', 'min'=>0, 'max'=>1},
-      'referral' => {'type'=>'Reference', 'path'=>'ExplanationOfBenefit.referral', 'min'=>0, 'max'=>1},
-      'facility' => {'type'=>'Reference', 'path'=>'ExplanationOfBenefit.facility', 'min'=>0, 'max'=>1},
-      'claim' => {'type'=>'Reference', 'path'=>'ExplanationOfBenefit.claim', 'min'=>0, 'max'=>1},
-      'claimResponse' => {'type'=>'Reference', 'path'=>'ExplanationOfBenefit.claimResponse', 'min'=>0, 'max'=>1},
+      'enterer' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner'], 'type'=>'Reference', 'path'=>'ExplanationOfBenefit.enterer', 'min'=>0, 'max'=>1},
+      'insurer' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'ExplanationOfBenefit.insurer', 'min'=>0, 'max'=>1},
+      'provider' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner'], 'type'=>'Reference', 'path'=>'ExplanationOfBenefit.provider', 'min'=>0, 'max'=>1},
+      'organization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'ExplanationOfBenefit.organization', 'min'=>0, 'max'=>1},
+      'referral' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/ReferralRequest'], 'type'=>'Reference', 'path'=>'ExplanationOfBenefit.referral', 'min'=>0, 'max'=>1},
+      'facility' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Location'], 'type'=>'Reference', 'path'=>'ExplanationOfBenefit.facility', 'min'=>0, 'max'=>1},
+      'claim' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Claim'], 'type'=>'Reference', 'path'=>'ExplanationOfBenefit.claim', 'min'=>0, 'max'=>1},
+      'claimResponse' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/ClaimResponse'], 'type'=>'Reference', 'path'=>'ExplanationOfBenefit.claimResponse', 'min'=>0, 'max'=>1},
       'outcome' => {'valid_codes'=>{'http://hl7.org/fhir/remittance-outcome'=>['complete', 'error', 'partial', 'complete', 'error', 'partial']}, 'type'=>'CodeableConcept', 'path'=>'ExplanationOfBenefit.outcome', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/remittance-outcome'}},
       'disposition' => {'type'=>'string', 'path'=>'ExplanationOfBenefit.disposition', 'min'=>0, 'max'=>1},
       'related' => {'type'=>'ExplanationOfBenefit::Related', 'path'=>'ExplanationOfBenefit.related', 'min'=>0, 'max'=>Float::INFINITY},
-      'prescription' => {'type'=>'Reference', 'path'=>'ExplanationOfBenefit.prescription', 'min'=>0, 'max'=>1},
-      'originalPrescription' => {'type'=>'Reference', 'path'=>'ExplanationOfBenefit.originalPrescription', 'min'=>0, 'max'=>1},
+      'prescription' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/MedicationRequest', 'http://hl7.org/fhir/StructureDefinition/VisionPrescription'], 'type'=>'Reference', 'path'=>'ExplanationOfBenefit.prescription', 'min'=>0, 'max'=>1},
+      'originalPrescription' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/MedicationRequest'], 'type'=>'Reference', 'path'=>'ExplanationOfBenefit.originalPrescription', 'min'=>0, 'max'=>1},
       'payee' => {'type'=>'ExplanationOfBenefit::Payee', 'path'=>'ExplanationOfBenefit.payee', 'min'=>0, 'max'=>1},
       'information' => {'type'=>'ExplanationOfBenefit::Information', 'path'=>'ExplanationOfBenefit.information', 'min'=>0, 'max'=>Float::INFINITY},
       'careTeam' => {'type'=>'ExplanationOfBenefit::CareTeam', 'path'=>'ExplanationOfBenefit.careTeam', 'min'=>0, 'max'=>Float::INFINITY},
@@ -64,7 +64,7 @@ module FHIR
         'id' => {'type'=>'string', 'path'=>'Related.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Related.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Related.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-        'claim' => {'type'=>'Reference', 'path'=>'Related.claim', 'min'=>0, 'max'=>1},
+        'claim' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Claim'], 'type'=>'Reference', 'path'=>'Related.claim', 'min'=>0, 'max'=>1},
         'relationship' => {'valid_codes'=>{'http://hl7.org/fhir/ex-relatedclaimrelationship'=>['prior', 'associated', 'prior', 'associated']}, 'type'=>'CodeableConcept', 'path'=>'Related.relationship', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/related-claim-relationship'}},
         'reference' => {'type'=>'Identifier', 'path'=>'Related.reference', 'min'=>0, 'max'=>1}
       }
@@ -72,7 +72,7 @@ module FHIR
       attr_accessor :id                # 0-1 string
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
-      attr_accessor :claim             # 0-1 Reference()
+      attr_accessor :claim             # 0-1 Reference(Claim)
       attr_accessor :relationship      # 0-1 CodeableConcept
       attr_accessor :reference         # 0-1 Identifier
     end
@@ -92,7 +92,7 @@ module FHIR
         'type' => {'valid_codes'=>{'http://hl7.org/fhir/payeetype'=>['subscriber', 'provider', 'other', 'subscriber', 'provider', 'other']}, 'type'=>'CodeableConcept', 'path'=>'Payee.type', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/payeetype'}},
         'resourceType' => {'local_name'=>'local_resourceType', 'valid_codes'=>{'http://hl7.org/fhir/resource-type-link'=>['organization', 'patient', 'practitioner', 'relatedperson', 'organization', 'patient', 'practitioner', 'relatedperson']}, 'type'=>'CodeableConcept', 'path'=>'Payee.resourceType', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/resource-type-link'}},
         'partyIdentifier' => {'type'=>'Identifier', 'path'=>'Payee.party[x]', 'min'=>0, 'max'=>1},
-        'partyReference' => {'type'=>'Reference', 'path'=>'Payee.party[x]', 'min'=>0, 'max'=>1}
+        'partyReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/Organization', 'http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson'], 'type'=>'Reference', 'path'=>'Payee.party[x]', 'min'=>0, 'max'=>1}
       }
 
       attr_accessor :id                 # 0-1 string
@@ -101,7 +101,7 @@ module FHIR
       attr_accessor :type               # 0-1 CodeableConcept
       attr_accessor :local_resourceType # 0-1 CodeableConcept
       attr_accessor :partyIdentifier    # 0-1 Identifier
-      attr_accessor :partyReference     # 0-1 Reference()
+      attr_accessor :partyReference     # 0-1 Reference(Practitioner|Organization|Patient|RelatedPerson)
     end
 
     class Information < FHIR::Model
@@ -124,7 +124,7 @@ module FHIR
         'valueString' => {'type'=>'string', 'path'=>'Information.value[x]', 'min'=>0, 'max'=>1},
         'valueQuantity' => {'type'=>'Quantity', 'path'=>'Information.value[x]', 'min'=>0, 'max'=>1},
         'valueAttachment' => {'type'=>'Attachment', 'path'=>'Information.value[x]', 'min'=>0, 'max'=>1},
-        'valueReference' => {'type'=>'Reference', 'path'=>'Information.value[x]', 'min'=>0, 'max'=>1},
+        'valueReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'Information.value[x]', 'min'=>0, 'max'=>1},
         'reason' => {'valid_codes'=>{'http://hl7.org/fhir/missingtoothreason'=>['e', 'c', 'u', 'o', 'e', 'c', 'u', 'o']}, 'type'=>'Coding', 'path'=>'Information.reason', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/missing-tooth-reason'}}
       }
 
@@ -138,7 +138,7 @@ module FHIR
       attr_accessor :valueString       # 0-1 string
       attr_accessor :valueQuantity     # 0-1 Quantity
       attr_accessor :valueAttachment   # 0-1 Attachment
-      attr_accessor :valueReference    # 0-1 Reference()
+      attr_accessor :valueReference    # 0-1 Reference(Resource)
       attr_accessor :reason            # 0-1 Coding
     end
 
@@ -152,7 +152,7 @@ module FHIR
         'extension' => {'type'=>'Extension', 'path'=>'CareTeam.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'CareTeam.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
         'sequence' => {'type'=>'positiveInt', 'path'=>'CareTeam.sequence', 'min'=>1, 'max'=>1},
-        'provider' => {'type'=>'Reference', 'path'=>'CareTeam.provider', 'min'=>1, 'max'=>1},
+        'provider' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'CareTeam.provider', 'min'=>1, 'max'=>1},
         'responsible' => {'type'=>'boolean', 'path'=>'CareTeam.responsible', 'min'=>0, 'max'=>1},
         'role' => {'valid_codes'=>{'http://hl7.org/fhir/claimcareteamrole'=>['primary', 'assist', 'supervisor', 'other', 'primary', 'assist', 'supervisor', 'other']}, 'type'=>'CodeableConcept', 'path'=>'CareTeam.role', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/claim-careteamrole'}},
         'qualification' => {'valid_codes'=>{'http://hl7.org/fhir/ex-providerqualification'=>['311405', '604215', '604210', '311405', '604215', '604210']}, 'type'=>'CodeableConcept', 'path'=>'CareTeam.qualification', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/provider-qualification'}}
@@ -162,7 +162,7 @@ module FHIR
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
       attr_accessor :sequence          # 1-1 positiveInt
-      attr_accessor :provider          # 1-1 Reference()
+      attr_accessor :provider          # 1-1 Reference(Practitioner|Organization)
       attr_accessor :responsible       # 0-1 boolean
       attr_accessor :role              # 0-1 CodeableConcept
       attr_accessor :qualification     # 0-1 CodeableConcept
@@ -182,7 +182,7 @@ module FHIR
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Diagnosis.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
         'sequence' => {'type'=>'positiveInt', 'path'=>'Diagnosis.sequence', 'min'=>1, 'max'=>1},
         'diagnosisCodeableConcept' => {'type'=>'CodeableConcept', 'path'=>'Diagnosis.diagnosis[x]', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/icd-10'}},
-        'diagnosisReference' => {'type'=>'Reference', 'path'=>'Diagnosis.diagnosis[x]', 'min'=>1, 'max'=>1},
+        'diagnosisReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Condition'], 'type'=>'Reference', 'path'=>'Diagnosis.diagnosis[x]', 'min'=>1, 'max'=>1},
         'type' => {'valid_codes'=>{'http://hl7.org/fhir/ex-diagnosistype'=>['admitting', 'clinical', 'differential', 'discharge', 'laboratory', 'nursing', 'prenatal', 'principal', 'radiology', 'remote', 'retrospective', 'self', 'admitting', 'clinical', 'differential', 'discharge', 'laboratory', 'nursing', 'prenatal', 'principal', 'radiology', 'remote', 'retrospective', 'self']}, 'type'=>'CodeableConcept', 'path'=>'Diagnosis.type', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/ex-diagnosistype'}},
         'packageCode' => {'valid_codes'=>{'http://hl7.org/fhir/ex-diagnosisrelatedgroup'=>['100', '101', '300', '100', '101', '300']}, 'type'=>'CodeableConcept', 'path'=>'Diagnosis.packageCode', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/ex-diagnosisrelatedgroup'}}
       }
@@ -192,7 +192,7 @@ module FHIR
       attr_accessor :modifierExtension        # 0-* [ Extension ]
       attr_accessor :sequence                 # 1-1 positiveInt
       attr_accessor :diagnosisCodeableConcept # 1-1 CodeableConcept
-      attr_accessor :diagnosisReference       # 1-1 Reference()
+      attr_accessor :diagnosisReference       # 1-1 Reference(Condition)
       attr_accessor :type                     # 0-* [ CodeableConcept ]
       attr_accessor :packageCode              # 0-1 CodeableConcept
     end
@@ -212,7 +212,7 @@ module FHIR
         'sequence' => {'type'=>'positiveInt', 'path'=>'Procedure.sequence', 'min'=>1, 'max'=>1},
         'date' => {'type'=>'dateTime', 'path'=>'Procedure.date', 'min'=>0, 'max'=>1},
         'procedureCodeableConcept' => {'valid_codes'=>{'http://hl7.org/fhir/sid/ex-icd-10-procedures'=>['123001', '123002', '123003', '123001', '123002', '123003']}, 'type'=>'CodeableConcept', 'path'=>'Procedure.procedure[x]', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/icd-10-procedures'}},
-        'procedureReference' => {'type'=>'Reference', 'path'=>'Procedure.procedure[x]', 'min'=>1, 'max'=>1}
+        'procedureReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Procedure'], 'type'=>'Reference', 'path'=>'Procedure.procedure[x]', 'min'=>1, 'max'=>1}
       }
 
       attr_accessor :id                       # 0-1 string
@@ -221,7 +221,7 @@ module FHIR
       attr_accessor :sequence                 # 1-1 positiveInt
       attr_accessor :date                     # 0-1 dateTime
       attr_accessor :procedureCodeableConcept # 1-1 CodeableConcept
-      attr_accessor :procedureReference       # 1-1 Reference()
+      attr_accessor :procedureReference       # 1-1 Reference(Procedure)
     end
 
     class Insurance < FHIR::Model
@@ -233,14 +233,14 @@ module FHIR
         'id' => {'type'=>'string', 'path'=>'Insurance.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Insurance.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Insurance.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-        'coverage' => {'type'=>'Reference', 'path'=>'Insurance.coverage', 'min'=>0, 'max'=>1},
+        'coverage' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Coverage'], 'type'=>'Reference', 'path'=>'Insurance.coverage', 'min'=>0, 'max'=>1},
         'preAuthRef' => {'type'=>'string', 'path'=>'Insurance.preAuthRef', 'min'=>0, 'max'=>Float::INFINITY}
       }
 
       attr_accessor :id                # 0-1 string
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
-      attr_accessor :coverage          # 0-1 Reference()
+      attr_accessor :coverage          # 0-1 Reference(Coverage)
       attr_accessor :preAuthRef        # 0-* [ string ]
     end
 
@@ -259,7 +259,7 @@ module FHIR
         'date' => {'type'=>'date', 'path'=>'Accident.date', 'min'=>0, 'max'=>1},
         'type' => {'valid_codes'=>{'http://hl7.org/fhir/v3/ActCode'=>['MVA', 'SCHOOL', 'SPT', 'WPA']}, 'type'=>'CodeableConcept', 'path'=>'Accident.type', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/v3-ActIncidentCode'}},
         'locationAddress' => {'type'=>'Address', 'path'=>'Accident.location[x]', 'min'=>0, 'max'=>1},
-        'locationReference' => {'type'=>'Reference', 'path'=>'Accident.location[x]', 'min'=>0, 'max'=>1}
+        'locationReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Location'], 'type'=>'Reference', 'path'=>'Accident.location[x]', 'min'=>0, 'max'=>1}
       }
 
       attr_accessor :id                # 0-1 string
@@ -268,7 +268,7 @@ module FHIR
       attr_accessor :date              # 0-1 date
       attr_accessor :type              # 0-1 CodeableConcept
       attr_accessor :locationAddress   # 0-1 Address
-      attr_accessor :locationReference # 0-1 Reference()
+      attr_accessor :locationReference # 0-1 Reference(Location)
     end
 
     class Item < FHIR::Model
@@ -298,12 +298,12 @@ module FHIR
         'servicedPeriod' => {'type'=>'Period', 'path'=>'Item.serviced[x]', 'min'=>0, 'max'=>1},
         'locationCodeableConcept' => {'valid_codes'=>{'http://hl7.org/fhir/ex-serviceplace'=>['01', '03', '04', '05', '06', '07', '08', '09', '11', '12', '13', '14', '15', '19', '20', '21', '41', '01', '03', '04', '05', '06', '07', '08', '09', '11', '12', '13', '14', '15', '19', '20', '21', '41']}, 'type'=>'CodeableConcept', 'path'=>'Item.location[x]', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/service-place'}},
         'locationAddress' => {'type'=>'Address', 'path'=>'Item.location[x]', 'min'=>0, 'max'=>1},
-        'locationReference' => {'type'=>'Reference', 'path'=>'Item.location[x]', 'min'=>0, 'max'=>1},
+        'locationReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Location'], 'type'=>'Reference', 'path'=>'Item.location[x]', 'min'=>0, 'max'=>1},
         'quantity' => {'type'=>'Quantity', 'path'=>'Item.quantity', 'min'=>0, 'max'=>1},
         'unitPrice' => {'type'=>'Money', 'path'=>'Item.unitPrice', 'min'=>0, 'max'=>1},
         'factor' => {'type'=>'decimal', 'path'=>'Item.factor', 'min'=>0, 'max'=>1},
         'net' => {'type'=>'Money', 'path'=>'Item.net', 'min'=>0, 'max'=>1},
-        'udi' => {'type'=>'Reference', 'path'=>'Item.udi', 'min'=>0, 'max'=>Float::INFINITY},
+        'udi' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Device'], 'type'=>'Reference', 'path'=>'Item.udi', 'min'=>0, 'max'=>Float::INFINITY},
         'bodySite' => {'valid_codes'=>{'http://hl7.org/fhir/ex-tooth'=>['0', '1', '2', '3', '4', '5', '6', '7', '8', '11', '12', '13', '14', '15', '16', '17', '18', '21', '22', '23', '24', '25', '26', '27', '28', '31', '32', '33', '34', '35', '36', '37', '38', '41', '42', '43', '44', '45', '46', '47', '48', '0', '1', '2', '3', '4', '5', '6', '7', '8', '11', '12', '13', '14', '15', '16', '17', '18', '21', '22', '23', '24', '25', '26', '27', '28', '31', '32', '33', '34', '35', '36', '37', '38', '41', '42', '43', '44', '45', '46', '47', '48']}, 'type'=>'CodeableConcept', 'path'=>'Item.bodySite', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/tooth'}},
         'subSite' => {'valid_codes'=>{'http://hl7.org/fhir/FDI-surface'=>['M', 'O', 'I', 'D', 'B', 'V', 'L', 'MO', 'DO', 'DI', 'MOD', 'M', 'O', 'I', 'D', 'B', 'V', 'L', 'MO', 'DO', 'DI', 'MOD']}, 'type'=>'CodeableConcept', 'path'=>'Item.subSite', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/surface'}},
         'noteNumber' => {'type'=>'positiveInt', 'path'=>'Item.noteNumber', 'min'=>0, 'max'=>Float::INFINITY},
@@ -356,7 +356,7 @@ module FHIR
           'unitPrice' => {'type'=>'Money', 'path'=>'Detail.unitPrice', 'min'=>0, 'max'=>1},
           'factor' => {'type'=>'decimal', 'path'=>'Detail.factor', 'min'=>0, 'max'=>1},
           'net' => {'type'=>'Money', 'path'=>'Detail.net', 'min'=>0, 'max'=>1},
-          'udi' => {'type'=>'Reference', 'path'=>'Detail.udi', 'min'=>0, 'max'=>Float::INFINITY},
+          'udi' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Device'], 'type'=>'Reference', 'path'=>'Detail.udi', 'min'=>0, 'max'=>Float::INFINITY},
           'noteNumber' => {'type'=>'positiveInt', 'path'=>'Detail.noteNumber', 'min'=>0, 'max'=>Float::INFINITY},
           'adjudication' => {'type'=>'ExplanationOfBenefit::Item::Adjudication', 'path'=>'Detail.adjudication', 'min'=>0, 'max'=>Float::INFINITY},
           'subDetail' => {'type'=>'ExplanationOfBenefit::Item::Detail::SubDetail', 'path'=>'Detail.subDetail', 'min'=>0, 'max'=>Float::INFINITY}
@@ -382,7 +382,7 @@ module FHIR
             'unitPrice' => {'type'=>'Money', 'path'=>'SubDetail.unitPrice', 'min'=>0, 'max'=>1},
             'factor' => {'type'=>'decimal', 'path'=>'SubDetail.factor', 'min'=>0, 'max'=>1},
             'net' => {'type'=>'Money', 'path'=>'SubDetail.net', 'min'=>0, 'max'=>1},
-            'udi' => {'type'=>'Reference', 'path'=>'SubDetail.udi', 'min'=>0, 'max'=>Float::INFINITY},
+            'udi' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Device'], 'type'=>'Reference', 'path'=>'SubDetail.udi', 'min'=>0, 'max'=>Float::INFINITY},
             'noteNumber' => {'type'=>'positiveInt', 'path'=>'SubDetail.noteNumber', 'min'=>0, 'max'=>Float::INFINITY},
             'adjudication' => {'type'=>'ExplanationOfBenefit::Item::Adjudication', 'path'=>'SubDetail.adjudication', 'min'=>0, 'max'=>Float::INFINITY}
           }
@@ -401,7 +401,7 @@ module FHIR
           attr_accessor :unitPrice         # 0-1 Money
           attr_accessor :factor            # 0-1 decimal
           attr_accessor :net               # 0-1 Money
-          attr_accessor :udi               # 0-* [ Reference() ]
+          attr_accessor :udi               # 0-* [ Reference(Device) ]
           attr_accessor :noteNumber        # 0-* [ positiveInt ]
           attr_accessor :adjudication      # 0-* [ ExplanationOfBenefit::Item::Adjudication ]
         end
@@ -420,7 +420,7 @@ module FHIR
         attr_accessor :unitPrice         # 0-1 Money
         attr_accessor :factor            # 0-1 decimal
         attr_accessor :net               # 0-1 Money
-        attr_accessor :udi               # 0-* [ Reference() ]
+        attr_accessor :udi               # 0-* [ Reference(Device) ]
         attr_accessor :noteNumber        # 0-* [ positiveInt ]
         attr_accessor :adjudication      # 0-* [ ExplanationOfBenefit::Item::Adjudication ]
         attr_accessor :subDetail         # 0-* [ ExplanationOfBenefit::Item::Detail::SubDetail ]
@@ -465,12 +465,12 @@ module FHIR
       attr_accessor :servicedPeriod          # 0-1 Period
       attr_accessor :locationCodeableConcept # 0-1 CodeableConcept
       attr_accessor :locationAddress         # 0-1 Address
-      attr_accessor :locationReference       # 0-1 Reference()
+      attr_accessor :locationReference       # 0-1 Reference(Location)
       attr_accessor :quantity                # 0-1 Quantity
       attr_accessor :unitPrice               # 0-1 Money
       attr_accessor :factor                  # 0-1 decimal
       attr_accessor :net                     # 0-1 Money
-      attr_accessor :udi                     # 0-* [ Reference() ]
+      attr_accessor :udi                     # 0-* [ Reference(Device) ]
       attr_accessor :bodySite                # 0-1 CodeableConcept
       attr_accessor :subSite                 # 0-* [ CodeableConcept ]
       attr_accessor :noteNumber              # 0-* [ positiveInt ]
@@ -673,22 +673,22 @@ module FHIR
     attr_accessor :status               # 0-1 code
     attr_accessor :type                 # 0-1 CodeableConcept
     attr_accessor :subType              # 0-* [ CodeableConcept ]
-    attr_accessor :patient              # 0-1 Reference()
+    attr_accessor :patient              # 0-1 Reference(Patient)
     attr_accessor :billablePeriod       # 0-1 Period
     attr_accessor :created              # 0-1 dateTime
-    attr_accessor :enterer              # 0-1 Reference()
-    attr_accessor :insurer              # 0-1 Reference()
-    attr_accessor :provider             # 0-1 Reference()
-    attr_accessor :organization         # 0-1 Reference()
-    attr_accessor :referral             # 0-1 Reference()
-    attr_accessor :facility             # 0-1 Reference()
-    attr_accessor :claim                # 0-1 Reference()
-    attr_accessor :claimResponse        # 0-1 Reference()
+    attr_accessor :enterer              # 0-1 Reference(Practitioner)
+    attr_accessor :insurer              # 0-1 Reference(Organization)
+    attr_accessor :provider             # 0-1 Reference(Practitioner)
+    attr_accessor :organization         # 0-1 Reference(Organization)
+    attr_accessor :referral             # 0-1 Reference(ReferralRequest)
+    attr_accessor :facility             # 0-1 Reference(Location)
+    attr_accessor :claim                # 0-1 Reference(Claim)
+    attr_accessor :claimResponse        # 0-1 Reference(ClaimResponse)
     attr_accessor :outcome              # 0-1 CodeableConcept
     attr_accessor :disposition          # 0-1 string
     attr_accessor :related              # 0-* [ ExplanationOfBenefit::Related ]
-    attr_accessor :prescription         # 0-1 Reference()
-    attr_accessor :originalPrescription # 0-1 Reference()
+    attr_accessor :prescription         # 0-1 Reference(MedicationRequest|VisionPrescription)
+    attr_accessor :originalPrescription # 0-1 Reference(MedicationRequest)
     attr_accessor :payee                # 0-1 ExplanationOfBenefit::Payee
     attr_accessor :information          # 0-* [ ExplanationOfBenefit::Information ]
     attr_accessor :careTeam             # 0-* [ ExplanationOfBenefit::CareTeam ]

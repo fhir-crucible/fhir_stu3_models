@@ -378,7 +378,7 @@ module FHIR
         'strength' => {'valid_codes'=>{'http://hl7.org/fhir/binding-strength'=>['required', 'extensible', 'preferred', 'example', 'required', 'extensible', 'preferred', 'example']}, 'type'=>'code', 'path'=>'Binding.strength', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/binding-strength'}},
         'description' => {'type'=>'string', 'path'=>'Binding.description', 'min'=>0, 'max'=>1},
         'valueSetUri' => {'type'=>'uri', 'path'=>'Binding.valueSet[x]', 'min'=>0, 'max'=>1},
-        'valueSetReference' => {'type'=>'Reference', 'path'=>'Binding.valueSet[x]', 'min'=>0, 'max'=>1}
+        'valueSetReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/ValueSet'], 'type'=>'Reference', 'path'=>'Binding.valueSet[x]', 'min'=>0, 'max'=>1}
       }
 
       attr_accessor :id                # 0-1 string
@@ -386,7 +386,7 @@ module FHIR
       attr_accessor :strength          # 1-1 code
       attr_accessor :description       # 0-1 string
       attr_accessor :valueSetUri       # 0-1 uri
-      attr_accessor :valueSetReference # 0-1 Reference()
+      attr_accessor :valueSetReference # 0-1 Reference(ValueSet)
     end
 
     class Mapping < FHIR::Model

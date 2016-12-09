@@ -25,9 +25,9 @@ module FHIR
       'address' => {'type'=>'Address', 'path'=>'Location.address', 'min'=>0, 'max'=>1},
       'physicalType' => {'valid_codes'=>{'http://hl7.org/fhir/location-physical-type'=>['si', 'bu', 'wi', 'wa', 'lvl', 'co', 'ro', 'bd', 've', 'ho', 'ca', 'rd', 'area', 'jdn', 'si', 'bu', 'wi', 'wa', 'lvl', 'co', 'ro', 'bd', 've', 'ho', 'ca', 'rd', 'area', 'jdn']}, 'type'=>'CodeableConcept', 'path'=>'Location.physicalType', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/location-physical-type'}},
       'position' => {'type'=>'Location::Position', 'path'=>'Location.position', 'min'=>0, 'max'=>1},
-      'managingOrganization' => {'type'=>'Reference', 'path'=>'Location.managingOrganization', 'min'=>0, 'max'=>1},
-      'partOf' => {'type'=>'Reference', 'path'=>'Location.partOf', 'min'=>0, 'max'=>1},
-      'endpoint' => {'type'=>'Reference', 'path'=>'Location.endpoint', 'min'=>0, 'max'=>Float::INFINITY}
+      'managingOrganization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Location.managingOrganization', 'min'=>0, 'max'=>1},
+      'partOf' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Location'], 'type'=>'Reference', 'path'=>'Location.partOf', 'min'=>0, 'max'=>1},
+      'endpoint' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Endpoint'], 'type'=>'Reference', 'path'=>'Location.endpoint', 'min'=>0, 'max'=>Float::INFINITY}
     }
 
     class Position < FHIR::Model
@@ -71,9 +71,9 @@ module FHIR
     attr_accessor :address              # 0-1 Address
     attr_accessor :physicalType         # 0-1 CodeableConcept
     attr_accessor :position             # 0-1 Location::Position
-    attr_accessor :managingOrganization # 0-1 Reference()
-    attr_accessor :partOf               # 0-1 Reference()
-    attr_accessor :endpoint             # 0-* [ Reference() ]
+    attr_accessor :managingOrganization # 0-1 Reference(Organization)
+    attr_accessor :partOf               # 0-1 Reference(Location)
+    attr_accessor :endpoint             # 0-* [ Reference(Endpoint) ]
 
     def resourceType
       'Location'

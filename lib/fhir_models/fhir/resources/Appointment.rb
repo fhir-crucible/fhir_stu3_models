@@ -26,7 +26,7 @@ module FHIR
       'start' => {'type'=>'instant', 'path'=>'Appointment.start', 'min'=>0, 'max'=>1},
       'end' => {'type'=>'instant', 'path'=>'Appointment.end', 'min'=>0, 'max'=>1},
       'minutesDuration' => {'type'=>'positiveInt', 'path'=>'Appointment.minutesDuration', 'min'=>0, 'max'=>1},
-      'slot' => {'type'=>'Reference', 'path'=>'Appointment.slot', 'min'=>0, 'max'=>Float::INFINITY},
+      'slot' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Slot'], 'type'=>'Reference', 'path'=>'Appointment.slot', 'min'=>0, 'max'=>Float::INFINITY},
       'created' => {'type'=>'dateTime', 'path'=>'Appointment.created', 'min'=>0, 'max'=>1},
       'comment' => {'type'=>'string', 'path'=>'Appointment.comment', 'min'=>0, 'max'=>1},
       'participant' => {'type'=>'Appointment::Participant', 'path'=>'Appointment.participant', 'min'=>1, 'max'=>Float::INFINITY},
@@ -43,7 +43,7 @@ module FHIR
         'extension' => {'type'=>'Extension', 'path'=>'Participant.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Participant.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
         'type' => {'valid_codes'=>{'http://hl7.org/fhir/v3/ParticipationType'=>['ADM', 'ATND', 'CALLBCK', 'CON', 'DIS', 'ESC', 'REF', 'SPRF', 'PPRF', 'PART'], 'http://hl7.org/fhir/participant-type'=>['translator', 'emergency', 'translator', 'emergency']}, 'type'=>'CodeableConcept', 'path'=>'Participant.type', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-participant-type'}},
-        'actor' => {'type'=>'Reference', 'path'=>'Participant.actor', 'min'=>0, 'max'=>1},
+        'actor' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson', 'http://hl7.org/fhir/StructureDefinition/Device', 'http://hl7.org/fhir/StructureDefinition/HealthcareService', 'http://hl7.org/fhir/StructureDefinition/Location'], 'type'=>'Reference', 'path'=>'Participant.actor', 'min'=>0, 'max'=>1},
         'required' => {'valid_codes'=>{'http://hl7.org/fhir/participantrequired'=>['required', 'optional', 'information-only', 'required', 'optional', 'information-only']}, 'type'=>'code', 'path'=>'Participant.required', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/participantrequired'}},
         'status' => {'valid_codes'=>{'http://hl7.org/fhir/participationstatus'=>['accepted', 'declined', 'tentative', 'needs-action', 'accepted', 'declined', 'tentative', 'needs-action']}, 'type'=>'code', 'path'=>'Participant.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/participationstatus'}}
       }
@@ -52,7 +52,7 @@ module FHIR
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
       attr_accessor :type              # 0-* [ CodeableConcept ]
-      attr_accessor :actor             # 0-1 Reference()
+      attr_accessor :actor             # 0-1 Reference(Patient|Practitioner|RelatedPerson|Device|HealthcareService|Location)
       attr_accessor :required          # 0-1 code
       attr_accessor :status            # 1-1 code
     end
@@ -77,7 +77,7 @@ module FHIR
     attr_accessor :start             # 0-1 instant
     attr_accessor :end               # 0-1 instant
     attr_accessor :minutesDuration   # 0-1 positiveInt
-    attr_accessor :slot              # 0-* [ Reference() ]
+    attr_accessor :slot              # 0-* [ Reference(Slot) ]
     attr_accessor :created           # 0-1 dateTime
     attr_accessor :comment           # 0-1 string
     attr_accessor :participant       # 1-* [ Appointment::Participant ]

@@ -19,7 +19,7 @@ module FHIR
       'status' => {'valid_codes'=>{'http://hl7.org/fhir/report-status-codes'=>['complete', 'pending', 'error', 'complete', 'pending', 'error']}, 'type'=>'code', 'path'=>'TestReport.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/report-status-codes'}},
       'score' => {'type'=>'decimal', 'path'=>'TestReport.score', 'min'=>0, 'max'=>1},
       'tester' => {'type'=>'string', 'path'=>'TestReport.tester', 'min'=>0, 'max'=>1},
-      'testScript' => {'type'=>'Reference', 'path'=>'TestReport.testScript', 'min'=>1, 'max'=>1},
+      'testScript' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/TestScript'], 'type'=>'Reference', 'path'=>'TestReport.testScript', 'min'=>1, 'max'=>1},
       'issued' => {'type'=>'dateTime', 'path'=>'TestReport.issued', 'min'=>0, 'max'=>1},
       'participant' => {'type'=>'TestReport::Participant', 'path'=>'TestReport.participant', 'min'=>0, 'max'=>Float::INFINITY},
       'setup' => {'type'=>'TestReport::Setup', 'path'=>'TestReport.setup', 'min'=>0, 'max'=>1},
@@ -222,7 +222,7 @@ module FHIR
     attr_accessor :status            # 1-1 code
     attr_accessor :score             # 0-1 decimal
     attr_accessor :tester            # 0-1 string
-    attr_accessor :testScript        # 1-1 Reference()
+    attr_accessor :testScript        # 1-1 Reference(TestScript)
     attr_accessor :issued            # 0-1 dateTime
     attr_accessor :participant       # 0-* [ TestReport::Participant ]
     attr_accessor :setup             # 0-1 TestReport::Setup

@@ -19,12 +19,12 @@ module FHIR
       'modifierExtension' => {'type'=>'Extension', 'path'=>'VisionPrescription.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
       'identifier' => {'type'=>'Identifier', 'path'=>'VisionPrescription.identifier', 'min'=>0, 'max'=>Float::INFINITY},
       'status' => {'valid_codes'=>{'http://hl7.org/fhir/fm-status'=>['active', 'cancelled', 'draft', 'entered-in-error', 'active', 'cancelled', 'draft', 'entered-in-error']}, 'type'=>'code', 'path'=>'VisionPrescription.status', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/fm-status'}},
-      'patient' => {'type'=>'Reference', 'path'=>'VisionPrescription.patient', 'min'=>0, 'max'=>1},
-      'encounter' => {'type'=>'Reference', 'path'=>'VisionPrescription.encounter', 'min'=>0, 'max'=>1},
+      'patient' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient'], 'type'=>'Reference', 'path'=>'VisionPrescription.patient', 'min'=>0, 'max'=>1},
+      'encounter' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Encounter'], 'type'=>'Reference', 'path'=>'VisionPrescription.encounter', 'min'=>0, 'max'=>1},
       'dateWritten' => {'type'=>'dateTime', 'path'=>'VisionPrescription.dateWritten', 'min'=>0, 'max'=>1},
-      'prescriber' => {'type'=>'Reference', 'path'=>'VisionPrescription.prescriber', 'min'=>0, 'max'=>1},
+      'prescriber' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner'], 'type'=>'Reference', 'path'=>'VisionPrescription.prescriber', 'min'=>0, 'max'=>1},
       'reasonCodeableConcept' => {'type'=>'CodeableConcept', 'path'=>'VisionPrescription.reason[x]', 'min'=>0, 'max'=>1},
-      'reasonReference' => {'type'=>'Reference', 'path'=>'VisionPrescription.reason[x]', 'min'=>0, 'max'=>1},
+      'reasonReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Condition'], 'type'=>'Reference', 'path'=>'VisionPrescription.reason[x]', 'min'=>0, 'max'=>1},
       'dispense' => {'type'=>'VisionPrescription::Dispense', 'path'=>'VisionPrescription.dispense', 'min'=>0, 'max'=>Float::INFINITY}
     }
 
@@ -84,12 +84,12 @@ module FHIR
     attr_accessor :modifierExtension     # 0-* [ Extension ]
     attr_accessor :identifier            # 0-* [ Identifier ]
     attr_accessor :status                # 0-1 code
-    attr_accessor :patient               # 0-1 Reference()
-    attr_accessor :encounter             # 0-1 Reference()
+    attr_accessor :patient               # 0-1 Reference(Patient)
+    attr_accessor :encounter             # 0-1 Reference(Encounter)
     attr_accessor :dateWritten           # 0-1 dateTime
-    attr_accessor :prescriber            # 0-1 Reference()
+    attr_accessor :prescriber            # 0-1 Reference(Practitioner)
     attr_accessor :reasonCodeableConcept # 0-1 CodeableConcept
-    attr_accessor :reasonReference       # 0-1 Reference()
+    attr_accessor :reasonReference       # 0-1 Reference(Condition)
     attr_accessor :dispense              # 0-* [ VisionPrescription::Dispense ]
 
     def resourceType

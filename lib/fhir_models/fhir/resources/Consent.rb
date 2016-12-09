@@ -22,14 +22,14 @@ module FHIR
       'category' => {'valid_codes'=>{'http://hl7.org/fhir/consentcategorycodes'=>['advance-directive', 'medical-consent', 'hipaa', 'SSA-827', 'DCH-3927', 'squaxin', 'nl-lsp', 'at-elga', 'nih-hipaa', 'nci', 'nih-grdr', 'va-10-10116', 'nih-527', 'ga4gh', 'cat1', 'cat2', 'cat3', 'cat4', 'cat5', 'cat6']}, 'type'=>'CodeableConcept', 'path'=>'Consent.category', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/consent-category'}},
       'dateTime' => {'type'=>'dateTime', 'path'=>'Consent.dateTime', 'min'=>0, 'max'=>1},
       'period' => {'type'=>'Period', 'path'=>'Consent.period', 'min'=>0, 'max'=>1},
-      'patient' => {'type'=>'Reference', 'path'=>'Consent.patient', 'min'=>1, 'max'=>1},
-      'consentor' => {'type'=>'Reference', 'path'=>'Consent.consentor', 'min'=>0, 'max'=>Float::INFINITY},
-      'organization' => {'type'=>'Reference', 'path'=>'Consent.organization', 'min'=>0, 'max'=>1},
+      'patient' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient'], 'type'=>'Reference', 'path'=>'Consent.patient', 'min'=>1, 'max'=>1},
+      'consentor' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization', 'http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson'], 'type'=>'Reference', 'path'=>'Consent.consentor', 'min'=>0, 'max'=>Float::INFINITY},
+      'organization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Consent.organization', 'min'=>0, 'max'=>1},
       'sourceAttachment' => {'type'=>'Attachment', 'path'=>'Consent.source[x]', 'min'=>0, 'max'=>1},
       'sourceIdentifier' => {'type'=>'Identifier', 'path'=>'Consent.source[x]', 'min'=>0, 'max'=>1},
-      'sourceReference' => {'type'=>'Reference', 'path'=>'Consent.source[x]', 'min'=>0, 'max'=>1},
+      'sourceReference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Consent', 'http://hl7.org/fhir/StructureDefinition/DocumentReference', 'http://hl7.org/fhir/StructureDefinition/Contract', 'http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse'], 'type'=>'Reference', 'path'=>'Consent.source[x]', 'min'=>0, 'max'=>1},
       'policy' => {'type'=>'uri', 'path'=>'Consent.policy', 'min'=>1, 'max'=>1},
-      'recipient' => {'type'=>'Reference', 'path'=>'Consent.recipient', 'min'=>0, 'max'=>Float::INFINITY},
+      'recipient' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Device', 'http://hl7.org/fhir/StructureDefinition/Group', 'http://hl7.org/fhir/StructureDefinition/Organization', 'http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson', 'http://hl7.org/fhir/StructureDefinition/CareTeam'], 'type'=>'Reference', 'path'=>'Consent.recipient', 'min'=>0, 'max'=>Float::INFINITY},
       'purpose' => {'valid_codes'=>{'http://hl7.org/fhir/v3/ActReason'=>['PurposeOfUse', 'HMARKT', 'HOPERAT', 'DONAT', 'FRAUD', 'GOV', 'HACCRED', 'HCOMPL', 'HDECD', 'HDIRECT', 'HLEGAL', 'HOUTCOMS', 'HPRGRP', 'HQUALIMP', 'HSYSADMIN', 'MEMADMIN', 'PATADMIN', 'PATSFTY', 'PERFMSR', 'RECORDMGT', 'TRAIN', 'HPAYMT', 'CLMATTCH', 'COVAUTH', 'COVERAGE', 'ELIGDTRM', 'ELIGVER', 'ENROLLM', 'REMITADV', 'HRESCH', 'CLINTRCH', 'PATRQT', 'FAMRQT', 'PWATRNY', 'SUPNWK', 'PUBHLTH', 'DISASTER', 'THREAT', 'TREAT', 'CAREMGT', 'CLINTRL', 'ETREAT', 'POPHLTH']}, 'type'=>'Coding', 'path'=>'Consent.purpose', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/v3-PurposeOfUse'}},
       'except' => {'type'=>'Consent::Except', 'path'=>'Consent.except', 'min'=>0, 'max'=>Float::INFINITY}
     }
@@ -64,14 +64,14 @@ module FHIR
           'extension' => {'type'=>'Extension', 'path'=>'Actor.extension', 'min'=>0, 'max'=>Float::INFINITY},
           'modifierExtension' => {'type'=>'Extension', 'path'=>'Actor.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
           'role' => {'valid_codes'=>{'http://hl7.org/fhir/v3/ParticipationType'=>['REF', 'AUT', 'INF', 'SBJ', 'PRCP', 'CST']}, 'type'=>'CodeableConcept', 'path'=>'Actor.role', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/consent-actor-role'}},
-          'reference' => {'type'=>'Reference', 'path'=>'Actor.reference', 'min'=>1, 'max'=>1}
+          'reference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Device', 'http://hl7.org/fhir/StructureDefinition/Group', 'http://hl7.org/fhir/StructureDefinition/CareTeam', 'http://hl7.org/fhir/StructureDefinition/Organization', 'http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson'], 'type'=>'Reference', 'path'=>'Actor.reference', 'min'=>1, 'max'=>1}
         }
 
         attr_accessor :id                # 0-1 string
         attr_accessor :extension         # 0-* [ Extension ]
         attr_accessor :modifierExtension # 0-* [ Extension ]
         attr_accessor :role              # 1-1 CodeableConcept
-        attr_accessor :reference         # 1-1 Reference()
+        attr_accessor :reference         # 1-1 Reference(Device|Group|CareTeam|Organization|Patient|Practitioner|RelatedPerson)
       end
 
       class Data < FHIR::Model
@@ -84,14 +84,14 @@ module FHIR
           'extension' => {'type'=>'Extension', 'path'=>'Data.extension', 'min'=>0, 'max'=>Float::INFINITY},
           'modifierExtension' => {'type'=>'Extension', 'path'=>'Data.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
           'meaning' => {'valid_codes'=>{'http://hl7.org/fhir/consent-data-meaning'=>['instance', 'related', 'dependents', 'instance', 'related', 'dependents']}, 'type'=>'code', 'path'=>'Data.meaning', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/consent-data-meaning'}},
-          'reference' => {'type'=>'Reference', 'path'=>'Data.reference', 'min'=>1, 'max'=>1}
+          'reference' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'Data.reference', 'min'=>1, 'max'=>1}
         }
 
         attr_accessor :id                # 0-1 string
         attr_accessor :extension         # 0-* [ Extension ]
         attr_accessor :modifierExtension # 0-* [ Extension ]
         attr_accessor :meaning           # 1-1 code
-        attr_accessor :reference         # 1-1 Reference()
+        attr_accessor :reference         # 1-1 Reference(Resource)
       end
 
       attr_accessor :id                # 0-1 string
@@ -121,14 +121,14 @@ module FHIR
     attr_accessor :category          # 0-* [ CodeableConcept ]
     attr_accessor :dateTime          # 0-1 dateTime
     attr_accessor :period            # 0-1 Period
-    attr_accessor :patient           # 1-1 Reference()
-    attr_accessor :consentor         # 0-* [ Reference() ]
-    attr_accessor :organization      # 0-1 Reference()
+    attr_accessor :patient           # 1-1 Reference(Patient)
+    attr_accessor :consentor         # 0-* [ Reference(Organization|Patient|Practitioner|RelatedPerson) ]
+    attr_accessor :organization      # 0-1 Reference(Organization)
     attr_accessor :sourceAttachment  # 0-1 Attachment
     attr_accessor :sourceIdentifier  # 0-1 Identifier
-    attr_accessor :sourceReference   # 0-1 Reference()
+    attr_accessor :sourceReference   # 0-1 Reference(Consent|DocumentReference|Contract|QuestionnaireResponse)
     attr_accessor :policy            # 1-1 uri
-    attr_accessor :recipient         # 0-* [ Reference() ]
+    attr_accessor :recipient         # 0-* [ Reference(Device|Group|Organization|Patient|Practitioner|RelatedPerson|CareTeam) ]
     attr_accessor :purpose           # 0-* [ Coding ]
     attr_accessor :except            # 0-* [ Consent::Except ]
 

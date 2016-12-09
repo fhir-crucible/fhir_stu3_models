@@ -17,12 +17,12 @@ module FHIR
       'identifier' => {'type'=>'Identifier', 'path'=>'ProcessRequest.identifier', 'min'=>0, 'max'=>Float::INFINITY},
       'status' => {'valid_codes'=>{'http://hl7.org/fhir/fm-status'=>['active', 'cancelled', 'draft', 'entered-in-error', 'active', 'cancelled', 'draft', 'entered-in-error']}, 'type'=>'code', 'path'=>'ProcessRequest.status', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/fm-status'}},
       'action' => {'valid_codes'=>{'http://hl7.org/fhir/actionlist'=>['cancel', 'poll', 'reprocess', 'status', 'cancel', 'poll', 'reprocess', 'status']}, 'type'=>'code', 'path'=>'ProcessRequest.action', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/actionlist'}},
-      'target' => {'type'=>'Reference', 'path'=>'ProcessRequest.target', 'min'=>0, 'max'=>1},
+      'target' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'ProcessRequest.target', 'min'=>0, 'max'=>1},
       'created' => {'type'=>'dateTime', 'path'=>'ProcessRequest.created', 'min'=>0, 'max'=>1},
-      'provider' => {'type'=>'Reference', 'path'=>'ProcessRequest.provider', 'min'=>0, 'max'=>1},
-      'organization' => {'type'=>'Reference', 'path'=>'ProcessRequest.organization', 'min'=>0, 'max'=>1},
-      'request' => {'type'=>'Reference', 'path'=>'ProcessRequest.request', 'min'=>0, 'max'=>1},
-      'response' => {'type'=>'Reference', 'path'=>'ProcessRequest.response', 'min'=>0, 'max'=>1},
+      'provider' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner'], 'type'=>'Reference', 'path'=>'ProcessRequest.provider', 'min'=>0, 'max'=>1},
+      'organization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'ProcessRequest.organization', 'min'=>0, 'max'=>1},
+      'request' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'ProcessRequest.request', 'min'=>0, 'max'=>1},
+      'response' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Resource'], 'type'=>'Reference', 'path'=>'ProcessRequest.response', 'min'=>0, 'max'=>1},
       'nullify' => {'type'=>'boolean', 'path'=>'ProcessRequest.nullify', 'min'=>0, 'max'=>1},
       'reference' => {'type'=>'string', 'path'=>'ProcessRequest.reference', 'min'=>0, 'max'=>1},
       'item' => {'type'=>'ProcessRequest::Item', 'path'=>'ProcessRequest.item', 'min'=>0, 'max'=>Float::INFINITY},
@@ -60,12 +60,12 @@ module FHIR
     attr_accessor :identifier        # 0-* [ Identifier ]
     attr_accessor :status            # 0-1 code
     attr_accessor :action            # 0-1 code
-    attr_accessor :target            # 0-1 Reference()
+    attr_accessor :target            # 0-1 Reference(Organization)
     attr_accessor :created           # 0-1 dateTime
-    attr_accessor :provider          # 0-1 Reference()
-    attr_accessor :organization      # 0-1 Reference()
-    attr_accessor :request           # 0-1 Reference()
-    attr_accessor :response          # 0-1 Reference()
+    attr_accessor :provider          # 0-1 Reference(Practitioner)
+    attr_accessor :organization      # 0-1 Reference(Organization)
+    attr_accessor :request           # 0-1 Reference(Resource)
+    attr_accessor :response          # 0-1 Reference(Resource)
     attr_accessor :nullify           # 0-1 boolean
     attr_accessor :reference         # 0-1 string
     attr_accessor :item              # 0-* [ ProcessRequest::Item ]

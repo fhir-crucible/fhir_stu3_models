@@ -21,10 +21,10 @@ module FHIR
       'active' => {'type'=>'Period', 'path'=>'Account.active', 'min'=>0, 'max'=>1},
       'currency' => {'type'=>'Coding', 'path'=>'Account.currency', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://www.iso.org/iso/home/standards/currency_codes'}},
       'balance' => {'type'=>'Money', 'path'=>'Account.balance', 'min'=>0, 'max'=>1},
-      'coverage' => {'type'=>'Reference', 'path'=>'Account.coverage', 'min'=>0, 'max'=>Float::INFINITY},
+      'coverage' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Coverage'], 'type'=>'Reference', 'path'=>'Account.coverage', 'min'=>0, 'max'=>Float::INFINITY},
       'coveragePeriod' => {'type'=>'Period', 'path'=>'Account.coveragePeriod', 'min'=>0, 'max'=>1},
-      'subject' => {'type'=>'Reference', 'path'=>'Account.subject', 'min'=>0, 'max'=>1},
-      'owner' => {'type'=>'Reference', 'path'=>'Account.owner', 'min'=>0, 'max'=>1},
+      'subject' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Device', 'http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/Location', 'http://hl7.org/fhir/StructureDefinition/HealthcareService', 'http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Account.subject', 'min'=>0, 'max'=>1},
+      'owner' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Account.owner', 'min'=>0, 'max'=>1},
       'description' => {'type'=>'string', 'path'=>'Account.description', 'min'=>0, 'max'=>1},
       'guarantor' => {'type'=>'Account::Guarantor', 'path'=>'Account.guarantor', 'min'=>0, 'max'=>Float::INFINITY}
     }
@@ -38,7 +38,7 @@ module FHIR
         'id' => {'type'=>'string', 'path'=>'Guarantor.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Guarantor.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Guarantor.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-        'party' => {'type'=>'Reference', 'path'=>'Guarantor.party', 'min'=>1, 'max'=>1},
+        'party' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson', 'http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'Guarantor.party', 'min'=>1, 'max'=>1},
         'onHold' => {'type'=>'boolean', 'path'=>'Guarantor.onHold', 'min'=>0, 'max'=>1},
         'period' => {'type'=>'Period', 'path'=>'Guarantor.period', 'min'=>0, 'max'=>1}
       }
@@ -46,7 +46,7 @@ module FHIR
       attr_accessor :id                # 0-1 string
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
-      attr_accessor :party             # 1-1 Reference()
+      attr_accessor :party             # 1-1 Reference(Patient|RelatedPerson|Organization)
       attr_accessor :onHold            # 0-1 boolean
       attr_accessor :period            # 0-1 Period
     end
@@ -66,10 +66,10 @@ module FHIR
     attr_accessor :active            # 0-1 Period
     attr_accessor :currency          # 0-1 Coding
     attr_accessor :balance           # 0-1 Money
-    attr_accessor :coverage          # 0-* [ Reference() ]
+    attr_accessor :coverage          # 0-* [ Reference(Coverage) ]
     attr_accessor :coveragePeriod    # 0-1 Period
-    attr_accessor :subject           # 0-1 Reference()
-    attr_accessor :owner             # 0-1 Reference()
+    attr_accessor :subject           # 0-1 Reference(Patient|Device|Practitioner|Location|HealthcareService|Organization)
+    attr_accessor :owner             # 0-1 Reference(Organization)
     attr_accessor :description       # 0-1 string
     attr_accessor :guarantor         # 0-* [ Account::Guarantor ]
 
