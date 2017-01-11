@@ -211,6 +211,32 @@ module FHIR
       codes
     end
 
+    # Get the "display" (human-readable title) for a given code in a code system (uri)
+    # If one can't be found, return nil
+    def self.get_display(uri, code)
+      return nil if uri.nil? || code.nil?
+      load_expansions
+      valuesets = @@expansions.select { |x| !x['compose']['include'].select {|i| i['system'] == uri }.empty? }
+      valuesets += @@valuesets.select { |x| x['url'] == uri }
+      c = nil
+      valuesets.each do |valueset|
+        if !valueset['expansion'].nil? && !valueset['expansion']['contains'].nil?
+          c = valueset['expansion']['contains'].select { |x| x['system'] == uri && x['code'] == code}.first
+        elsif !valueset['compose'].nil? && !valueset['compose']['include'].nil?
+          included_systems = valueset['compose']['include'].map { |x| x['system'] }.uniq
+          systems = @@valuesets.select { |x| x['resourceType'] == 'CodeSystem' && included_systems.include?(x['url']) }
+          systems.each do |x|
+            c = x['concept'].select { |con| con['url'] == uri && con['code'] == code }.first if x['concept']
+            break if c
+          end
+        elsif valueset['concept']
+          c = valueset['concept'].select { |v| v['code'] == code }.first
+        end
+        break if c
+      end
+      c['display'] if c
+    end
+
     # ----------------------------------------------------------------
     #  Search Params
     # ----------------------------------------------------------------
