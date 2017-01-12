@@ -216,25 +216,25 @@ module FHIR
     def self.get_display(uri, code)
       return nil if uri.nil? || code.nil?
       load_expansions
-      valuesets = @@expansions.select { |x| !x['compose']['include'].select {|i| i['system'] == uri }.empty? }
+      valuesets = @@expansions.select { |x| x['compose']['include'].detect {|i| i['system'] == uri } }
       valuesets += @@valuesets.select { |x| x['url'] == uri }
-      c = nil
+      code_hash = nil
       valuesets.each do |valueset|
         if !valueset['expansion'].nil? && !valueset['expansion']['contains'].nil?
-          c = valueset['expansion']['contains'].select { |x| x['system'] == uri && x['code'] == code}.first
+          code_hash = valueset['expansion']['contains'].select { |x| x['system'] == uri && x['code'] == code}.first
         elsif !valueset['compose'].nil? && !valueset['compose']['include'].nil?
           included_systems = valueset['compose']['include'].map { |x| x['system'] }.uniq
           systems = @@valuesets.select { |x| x['resourceType'] == 'CodeSystem' && included_systems.include?(x['url']) }
           systems.each do |x|
-            c = x['concept'].select { |con| con['url'] == uri && con['code'] == code }.first if x['concept']
-            break if c
+            code_hash = x['concept'].select { |con| con['url'] == uri && con['code'] == code }.first if x['concept']
+            break if code_hash
           end
         elsif valueset['concept']
-          c = valueset['concept'].select { |v| v['code'] == code }.first
+          code_hash = valueset['concept'].select { |v| v['code'] == code }.first
         end
-        break if c
+        break if code_hash
       end
-      c['display'] if c
+      code_hash['display'] if code_hash
     end
 
     # ----------------------------------------------------------------
