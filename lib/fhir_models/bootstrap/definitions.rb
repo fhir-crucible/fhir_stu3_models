@@ -22,6 +22,7 @@ module FHIR
         @@types = JSON.parse(raw)['entry'].map { |e| e['resource'] }
       end
     end
+    private_class_method :load_types
 
     def self.get_primitive_types
       load_types
@@ -56,6 +57,7 @@ module FHIR
         @@resources = JSON.parse(raw)['entry'].map { |e| e['resource'] }
       end
     end
+    private_class_method :load_resources
 
     def self.get_resource_definitions
       load_resources
@@ -78,6 +80,7 @@ module FHIR
         @@profiles = JSON.parse(raw)['entry'].map { |e| e['resource'] }
       end
     end
+    private_class_method :load_profiles
 
     def self.load_extensions
       if @@extensions.nil?
@@ -87,6 +90,7 @@ module FHIR
         @@extensions = JSON.parse(raw)['entry'].map { |e| e['resource'] }
       end
     end
+    private_class_method :load_extensions
 
     def self.get_extension_definition(extension_name)
       return nil if extension_name.nil?
@@ -185,6 +189,7 @@ module FHIR
         @@valuesets = JSON.parse(raw)['entry'].map { |e| e['resource'] }
       end
     end
+    private_class_method :load_expansions
 
     # Get codes (Array of Strings) for a given expansion.
     def self.get_codes(uri)
@@ -249,13 +254,12 @@ module FHIR
         @@search_params = JSON.parse(raw)['entry'].map { |e| e['resource'] }
       end
     end
+    private_class_method :load_search_params
 
     def self.get_search_parameters(type_name)
       return nil if type_name.nil?
       load_search_params
       @@search_params.select { |p| p['base'].include?(type_name) && p['xpath'] && !p['xpath'].include?('extension') }.map { |p| p['code'] }
     end
-
-    private_class_method :load_types, :load_extensions, :load_expansions, :load_profiles, :load_resources, :load_search_params
   end
 end
