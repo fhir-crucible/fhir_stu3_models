@@ -95,18 +95,13 @@ module FHIR
         end
 
         # calculate the longest field name for whitespace layout
-        max_name_size = 0
-        @fields.each do |f|
-          name = f.local_name || f.name
-          max_name_size = name.length if name.length > max_name_size
-        end
-        max_name_size += 1
+        max_name_size = (@fields.map { |field| field.local_name || field.name }.map(&:length).max || 0) + 1
 
         # declare attributes
         @fields.each do |field|
           s << "#{space}attr_accessor :"
           local_name = field.local_name || field.name
-          s[-1] << ("%-#{max_name_size}s" % local_name.to_s)
+          s[-1] << format("%-#{max_name_size}s", local_name)
           # add comment after field declaration
           s[-1] << "# #{field.min}-#{field.max} "
           s[-1] << '[ ' if field.max.to_i > 1 || field.max == '*'

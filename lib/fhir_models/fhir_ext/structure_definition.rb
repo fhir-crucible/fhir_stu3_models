@@ -370,9 +370,8 @@ module FHIR
       end
 
       # isModifier
-      if x.isModifier != y.isModifier
-        @errors << @finding.error(x.path.to_s, 'isModifier', 'Incompatible isModifier', (x.isModifier || false).to_s, (y.isModifier || false).to_s)
-      end
+      return unless x.isModifier != y.isModifier
+      @errors << @finding.error(x.path.to_s, 'isModifier', 'Incompatible isModifier', (x.isModifier || false).to_s, (y.isModifier || false).to_s)
     end
 
     # -------------------------------------------------------------------------
