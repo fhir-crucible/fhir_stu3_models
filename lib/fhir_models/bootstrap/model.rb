@@ -125,7 +125,11 @@ module FHIR
         end
       end # metadata.each
       # check multiple types
-      multiple_types = self.class::MULTIPLE_TYPES rescue {}
+      multiple_types = begin
+                         self.class::MULTIPLE_TYPES
+                       rescue
+                         {}
+                       end
       multiple_types.each do |prefix, suffixes|
         present = []
         suffixes.each do |suffix|
@@ -137,10 +141,11 @@ module FHIR
         end
         errors[prefix] = ["#{prefix}[x]: more than one type present."] if present.length > 1
         # remove errors for suffixes that are not present
+        next unless present.length == 1
         suffixes.each do |suffix|
           typename = "#{prefix}#{suffix[0].upcase}#{suffix[1..-1]}"
           errors.delete(typename) unless present.include?(typename)
-        end if present.length==1
+        end
       end
       errors.keep_if { |_k, v| (v && !v.empty?) }
     end
@@ -254,7 +259,7 @@ module FHIR
       # Remaining data types: handle special cases before checking type StructureDefinitions
       case datatype.downcase
       when 'boolean'
-        value == true || value == false || value.downcase == 'true' || value.downcase == 'false'
+        value == true || value == false || value.casecmp('true').zero? || value.casecmp('false').zero?
       when 'code'
         value.is_a?(String) && value.size >= 1 && value.size == value.rstrip.size
       when 'string', 'markdown'
@@ -266,16 +271,32 @@ module FHIR
         regex = /[^0-9\+\/\=A-Za-z\r\n ]/
         value.is_a?(String) && (regex =~ value).nil?
       when 'uri'
-        !URI.parse(value).nil? rescue false
+        begin
+          !URI.parse(value).nil?
+        rescue
+          false
+        end
       when 'instant'
         regex = /\A[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))))\Z/
         value.is_a?(String) && !(regex =~ value).nil?
       when 'integer', 'unsignedint'
-        (!Integer(value).nil? rescue false)
+        (begin
+           !Integer(value).nil?
+         rescue
+           false
+         end)
       when 'positiveint'
-        (!Integer(value).nil? rescue false) && (Integer(value) >= 0)
+        (begin
+           !Integer(value).nil?
+         rescue
+           false
+         end) && (Integer(value) >= 0)
       when 'decimal'
-        (!Float(value).nil? rescue false)
+        (begin
+           !Float(value).nil?
+         rescue
+           false
+         end)
       else
         FHIR.logger.warn "Unable to check #{value} for datatype #{datatype}"
         false
