@@ -2,6 +2,7 @@ module FHIR
   module Boot
     class Template
       include FHIR::Hashable
+      extend FHIR::Deprecate
 
       attr_accessor :name
       attr_accessor :hierarchy
@@ -21,7 +22,7 @@ module FHIR
         @top_level = top_level
       end
 
-      def get_metadata
+      def metadata
         metadata = {}
         @fields.each do |field|
           if metadata.keys.include?(field.name)
@@ -41,6 +42,7 @@ module FHIR
         end
         metadata
       end
+      deprecate :get_metadata, :metadata
 
       def to_s(offset = 0)
         # create an array of Strings, one per line
@@ -66,7 +68,6 @@ module FHIR
         s << ''
 
         # add mandatory METADATA constant
-        metadata = get_metadata
         @constants['METADATA'] = metadata unless metadata.empty?
 
         # add constants

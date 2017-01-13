@@ -1,6 +1,7 @@
 require 'tempfile'
 module FHIR
   class Definitions
+    extend FHIR::Deprecate
     @@defns = File.expand_path '../definitions', File.dirname(File.absolute_path(__FILE__))
     @@types = nil
     @@resources = nil
@@ -14,125 +15,119 @@ module FHIR
     #  Types
     # ----------------------------------------------------------------
 
-    def self.load_types
-      if @@types.nil?
+    def self.types
+      @@types ||= begin
         # load the types
         filename = File.join(@@defns, 'structures', 'profiles-types.json')
         raw = File.open(filename, 'r:UTF-8', &:read)
-        @@types = JSON.parse(raw)['entry'].map { |e| e['resource'] }
+        JSON.parse(raw)['entry'].map { |e| e['resource'] }
       end
     end
-    private_class_method :load_types
+    deprecate :load_types, :types
+    private_class_method :types
 
-    def self.get_primitive_types
-      load_types
+    def self.primitive_types
       # primitive data types start with a lowercase letter
-      @@types.select { |t| t['id'][0] == t['id'][0].downcase }
+      @primitive_types ||= types.select { |t| t['id'][0] =~ /[a-z]/ }
     end
+    deprecate :get_primitive_types, :primitive_types
 
-    def self.get_complex_types
-      load_types
+    def self.complex_types
       # complex data types start with an uppercase letter
       # and we'll filter out profiles on types (for example, Age is a profile on Quantity)
-      @@types.select { |t| (t['id'][0] == t['id'][0].upcase) && (t['id'] == t['snapshot']['element'].first['path']) }
+      @complex_types ||= types.select { |t| (t['id'][0] =~ /[A-Z]/) && (t['id'] == t['snapshot']['element'].first['path']) }
     end
+    deprecate :get_complex_types, :complex_types
 
-    def self.get_type_definition(type_name)
+    def self.type_definition(type_name)
       return nil if type_name.nil?
-      load_types
-      d = @@types.find { |x| x['xmlId'] == type_name || x['name'] == type_name || x['url'] == type_name }
-      d = FHIR::StructureDefinition.new(d) unless d.nil?
-      d
+      definition = types.find { |x| x['xmlId'] == type_name || x['name'] == type_name || x['url'] == type_name }
+      return nil if definition.nil?
+      FHIR::StructureDefinition.new(definition)
     end
+    deprecate :get_type_definition, :type_definition
 
     # ----------------------------------------------------------------
     #  Resources, Profiles, Extensions
     # ----------------------------------------------------------------
 
-    def self.load_resources
-      if @@resources.nil?
+    def self.resources
+      @@resources ||= begin
         # load the resources
         filename = File.join(@@defns, 'structures', 'profiles-resources.json')
         raw = File.open(filename, 'r:UTF-8', &:read)
-        @@resources = JSON.parse(raw)['entry'].map { |e| e['resource'] }
+        JSON.parse(raw)['entry'].map { |e| e['resource'] }
       end
     end
-    private_class_method :load_resources
+    deprecate :load_resources, :resources
+    private_class_method :resources
 
-    def self.get_resource_definitions
-      load_resources
-      @@resources
+    def self.resource_definitions
+      resources
     end
+    deprecate :get_resource_definitions, :resource_definitions
 
-    def self.get_resource_definition(resource_name)
+    def self.resource_definition(resource_name)
       return nil if resource_name.nil?
-      load_resources
-      d = @@resources.find { |x| x['xmlId'] == resource_name || x['name'] == resource_name || x['url'] == resource_name }
-      d = FHIR::StructureDefinition.new(d) unless d.nil?
-      d
+      d = resources.find { |x| x['xmlId'] == resource_name || x['name'] == resource_name || x['url'] == resource_name }
+      return nil if d.nil?
+      FHIR::StructureDefinition.new(d)
     end
+    deprecate :get_resource_definition, :resource_definition
 
-    def self.load_profiles
-      if @@profiles.nil?
+    def self.profiles
+      @@profiles ||= begin
         # load the built-in profiles
         filename = File.join(@@defns, 'structures', 'profiles-others.json')
         raw = File.open(filename, 'r:UTF-8', &:read)
-        @@profiles = JSON.parse(raw)['entry'].map { |e| e['resource'] }
+        JSON.parse(raw)['entry'].map { |e| e['resource'] }
       end
     end
-    private_class_method :load_profiles
+    deprecate :load_profiles, :profiles
+    private_class_method :profiles
 
-    def self.load_extensions
-      if @@extensions.nil?
+    def self.extensions
+      @@extensions ||= begin
         # load the built-in extensions
         filename = File.join(@@defns, 'structures', 'extension-definitions.json')
         raw = File.open(filename, 'r:UTF-8', &:read)
-        @@extensions = JSON.parse(raw)['entry'].map { |e| e['resource'] }
+        JSON.parse(raw)['entry'].map { |e| e['resource'] }
       end
     end
-    private_class_method :load_extensions
+    deprecate :load_extensions, :extensions
+    private_class_method :extensions
 
-    def self.get_extension_definition(extension_name)
+    def self.extension_definition(extension_name)
       return nil if extension_name.nil?
-      load_extensions
-      d = @@extensions.find { |x| x['xmlId'] == extension_name || x['name'] == extension_name || x['url'] == extension_name }
-      d = FHIR::StructureDefinition.new(d) unless d.nil?
-      d
+      extension = extensions.find { |x| x['xmlId'] == extension_name || x['name'] == extension_name || x['url'] == extension_name }
+      return nil if extension.nil?
+      FHIR::StructureDefinition.new(extension)
     end
+    deprecate :get_extension_definition, :extension_definition
 
     # Get the basetype (String) for a given profile or extension.
-    def self.get_basetype(uri)
+    def self.basetype(uri)
       return nil if uri.nil?
-      load_profiles
-      load_extensions
-
-      defn = @@profiles.select { |x| x['url'] == uri }.first
-      defn = @@extensions.select { |x| x['url'] == uri }.first if defn.nil?
-
-      basetype = nil
-      basetype = defn['baseType'] unless defn.nil?
-      basetype
+      defn = profiles.detect { |x| x['url'] == uri } || extensions.detect { |x| x['url'] == uri }
+      return nil if defn.nil?
+      defn['baseType']
     end
+    deprecate :get_basetype, :basetype
 
     # Get the StructureDefinition for a given profile.
-    def self.get_profile(uri)
+    def self.profile(uri)
       return nil if uri.nil?
-      load_profiles
-      load_extensions
-
-      defn = @@profiles.select { |x| x['url'] == uri }.first
-      defn = @@extensions.select { |x| x['url'] == uri }.first if defn.nil?
-
-      profile = nil
-      profile = FHIR::StructureDefinition.new(defn) unless defn.nil?
-      profile
+      defn = profiles.detect { |x| x['url'] == uri } || extensions.detect { |x| x['url'] == uri }
+      return nil if defn.nil?
+      FHIR::StructureDefinition.new(defn)
     end
+    deprecate :get_profile, :profile
 
-    def self.get_profiles_for_resource(resource_name)
+    def self.profiles_for_resource(resource_name)
       return nil if resource_name.nil?
-      load_profiles
-      @@profiles.select { |x| x['baseType'] == resource_name }.map { |x| FHIR::StructureDefinition.new(x) }
+      profiles.select { |x| x['baseType'] == resource_name }.map { |x| FHIR::StructureDefinition.new(x) }
     end
+    deprecate :get_profiles_for_resource, :profile_for_resource
 
     # Get a dynamically generated class for a given profile.
     def self.get_profile_class(uri)
@@ -175,28 +170,30 @@ module FHIR
     #  ValueSet Code Expansions
     # ----------------------------------------------------------------
 
-    def self.load_expansions
-      if @@expansions.nil?
+    def self.expansions
+      @@expansions ||= begin
         # load the expansions
         filename = File.join(@@defns, 'valuesets', 'expansions.json')
         raw = File.open(filename, 'r:UTF-8', &:read)
-        @@expansions = JSON.parse(raw)['entry'].map { |e| e['resource'] }
+        JSON.parse(raw)['entry'].map { |e| e['resource'] }
       end
-      if @@valuesets.nil?
+    end
+    deprecate :load_expansions, :expansions
+
+    def self.valuesets
+      @@valuesets ||= begin
         # load the valuesets
         filename = File.join(@@defns, 'valuesets', 'valuesets.json')
         raw = File.open(filename, 'r:UTF-8', &:read)
-        @@valuesets = JSON.parse(raw)['entry'].map { |e| e['resource'] }
+        JSON.parse(raw)['entry'].map { |e| e['resource'] }
       end
     end
-    private_class_method :load_expansions
 
     # Get codes (Array of Strings) for a given expansion.
     def self.get_codes(uri)
       return nil if uri.nil?
-      load_expansions
       codes = nil
-      valueset = @@expansions.select { |x| x['url'] == uri }.first
+      valueset = expansions.select { |x| x['url'] == uri }.first
       unless valueset.nil?
         codes = {}
         if !valueset['expansion'].nil? && !valueset['expansion']['contains'].nil?
@@ -207,7 +204,7 @@ module FHIR
         if !valueset['compose'].nil? && !valueset['compose']['include'].nil?
           included_systems = valueset['compose']['include'].map { |x| x['system'] }.uniq
           included_systems.each { |x| codes[x] = [] unless codes.keys.include?(x) }
-          systems = @@valuesets.select { |x| x['resourceType'] == 'CodeSystem' && included_systems.include?(x['url']) }
+          systems = valuesets.select { |x| x['resourceType'] == 'CodeSystem' && included_systems.include?(x['url']) }
           systems.each do |x|
             x['concept'].each { |y| codes[x['url']] << y['code'] } if x['concept']
           end
@@ -246,20 +243,21 @@ module FHIR
     #  Search Params
     # ----------------------------------------------------------------
 
-    def self.load_search_params
-      if @@search_params.nil?
+    def self.search_params
+      @@search_params ||= begin
         # load the search parameters
         filename = File.join(@@defns, 'structures', 'search-parameters.json')
         raw = File.open(filename, 'r:UTF-8', &:read)
-        @@search_params = JSON.parse(raw)['entry'].map { |e| e['resource'] }
+        JSON.parse(raw)['entry'].map { |e| e['resource'] }
       end
     end
-    private_class_method :load_search_params
+    deprecate :load_search_params, :search_params
+    private_class_method :search_params
 
-    def self.get_search_parameters(type_name)
+    def self.search_parameters(type_name)
       return nil if type_name.nil?
-      load_search_params
-      @@search_params.select { |p| p['base'].include?(type_name) && p['xpath'] && !p['xpath'].include?('extension') }.map { |p| p['code'] }
+      search_params.select { |p| p['base'].include?(type_name) && p['xpath'] && !p['xpath'].include?('extension') }.map { |p| p['code'] }
     end
+    deprecate :get_search_parameters, :search_parameters
   end
 end

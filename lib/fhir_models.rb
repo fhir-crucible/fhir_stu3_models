@@ -1,6 +1,7 @@
 root = File.expand_path '..', File.dirname(File.absolute_path(__FILE__))
 
-require File.join(root, 'lib', 'fhir_models', 'version.rb')
+require File.join(root, 'lib', 'fhir_models', 'version')
+require File.join(root, 'lib', 'fhir_models', 'deprecate')
 
 # Need to require Hashable first
 require File.join(root, 'lib', 'fhir_models', 'bootstrap', 'hashable.rb')

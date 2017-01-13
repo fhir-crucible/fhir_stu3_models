@@ -236,7 +236,7 @@ module FHIR
         basetype = p.split('/').last
         matches_one_profile = true if ref.reference.include?(basetype)
         # check profiled resources
-        profile_basetype = FHIR::Definitions.get_basetype(p)
+        profile_basetype = FHIR::Definitions.basetype(p)
         matches_one_profile = true if profile_basetype && ref.reference.include?(profile_basetype)
       end
       matches_one_profile = true if meta['type_profiles'].include?('http://hl7.org/fhir/StructureDefinition/Resource')
