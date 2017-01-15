@@ -225,13 +225,19 @@ module FHIR
         if !valueset['expansion'].nil? && !valueset['expansion']['contains'].nil?
           code_hash = valueset['expansion']['contains'].select { |x| x['system'] == uri && x['code'] == code}.first
         elsif !valueset['compose'].nil? && !valueset['compose']['include'].nil?
+          # This currently only matches 'expansions', not 'valuesets'
+          # I'm not sure this branch ever matches, see comment below.
           included_systems = valueset['compose']['include'].map { |x| x['system'] }.uniq
           systems = @@valuesets.select { |x| x['resourceType'] == 'CodeSystem' && included_systems.include?(x['url']) }
           systems.each do |x|
+            # CodeSystem.concept doesn't have a 'url' attribute, so it should
+            # never match on this line.
+            # See http://build.fhir.org/codesystem.html
             code_hash = x['concept'].select { |con| con['url'] == uri && con['code'] == code }.first if x['concept']
             break if code_hash
           end
         elsif valueset['concept']
+          # This currently only matches 'valuesets', not 'expansions'
           code_hash = valueset['concept'].select { |v| v['code'] == code }.first
         end
         break if code_hash
