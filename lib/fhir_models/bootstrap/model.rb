@@ -255,6 +255,9 @@ module FHIR
       errors << "#{meta['path']}: incorrect Reference type, expected #{meta['type_profiles'].map { |x| x.split('/').last }.join('|')}" unless matches_one_profile
     end
 
+    # TODO: this should be a class method
+    # TODO: this should be named `primitive?`
+    # TODO: perhaps this should validate against regexes if they are present
     def is_primitive?(datatype, value)
       # Remaining data types: handle special cases before checking type StructureDefinitions
       case datatype.downcase
