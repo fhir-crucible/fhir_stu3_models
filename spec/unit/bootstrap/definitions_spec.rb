@@ -18,11 +18,16 @@ describe FHIR::Definitions do
     end
 
     context 'matching valuesets' do
-      let(:uri) { 'http://healthit.gov/nhin/purposeofuse' }
-      let(:code) { 'TREATMENT' }
-
       it 'returns a matching concept.code value' do
+        uri = 'http://healthit.gov/nhin/purposeofuse'
+        code = 'TREATMENT'
         expect(FHIR::Definitions.get_display(uri, code)).to eq 'Treatment'
+      end
+
+      it 'returns a matching compose.include value' do
+        uri = 'http://hl7.org/fhir/ValueSet/example-extensional'
+        code = '14647-2'
+        expect(FHIR::Definitions.get_display(uri, code)).to eq 'Cholesterol [Moles/Volume]'
       end
     end
   end
