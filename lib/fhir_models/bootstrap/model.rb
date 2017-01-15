@@ -282,24 +282,48 @@ module FHIR
       when 'instant'
         regex = /\A[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))))\Z/
         value.is_a?(String) && !(regex =~ value).nil?
-      when 'integer', 'unsignedint'
-        (begin
-           !Integer(value).nil?
-         rescue
-           false
-         end)
+      when 'integer'
+        if value.is_a?(Integer)
+          true
+        elsif value.is_a?(String)
+          begin
+            Integer(value).is_a?(Integer)
+          rescue StandardError
+            false
+          end
+        else
+          false
+        end
+      when 'unsignedint'
+        if value.is_a?(Integer) && value >= 0
+          true
+        elsif value.is_a?(String)
+          begin
+            Integer(value) >= 0
+          rescue StandardError
+            false
+          end
+        else
+          false
+        end
       when 'positiveint'
-        (begin
-           !Integer(value).nil?
-         rescue
-           false
-         end) && (Integer(value) >= 0)
+        if value.is_a?(Integer) && value > 0
+          true
+        elsif value.is_a?(String)
+          begin
+            Integer(value) > 0
+          rescue StandardError
+            false
+          end
+        else
+          false
+        end
       when 'decimal'
-        (begin
-           !Float(value).nil?
-         rescue
-           false
-         end)
+        begin
+          Float(value).is_a?(Float)
+        rescue StandardError
+          false
+        end
       else
         FHIR.logger.warn "Unable to check #{value} for datatype #{datatype}"
         false
@@ -322,6 +346,6 @@ module FHIR
       valid
     end
 
-    private :validate_reference_type, :is_primitive?, :check_binding, :validate_field
+    private :validate_reference_type, :check_binding, :validate_field
   end
 end
