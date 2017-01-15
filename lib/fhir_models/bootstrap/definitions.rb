@@ -218,27 +218,27 @@ module FHIR
     def self.get_display(uri, code)
       return nil if uri.nil? || code.nil?
       load_expansions
-      valuesets = @@expansions.select { |x| x['compose']['include'].detect {|i| i['system'] == uri } }
-      valuesets += @@valuesets.select { |x| x['url'] == uri }
+      valuesets = @@expansions.select { |ex| ex['compose']['include'].detect { |i| i['system'] == uri } }
+      valuesets += @@valuesets.select { |vs| vs['url'] == uri }
       code_hash = nil
       valuesets.each do |valueset|
-        if !valueset['expansion'].nil? && !valueset['expansion']['contains'].nil?
-          code_hash = valueset['expansion']['contains'].select { |x| x['system'] == uri && x['code'] == code}.first
-        elsif !valueset['compose'].nil? && !valueset['compose']['include'].nil?
+        if valueset['expansion'] && valueset['expansion']['contains']
           # This currently only matches 'expansions', not 'valuesets'
+          code_hash = valueset['expansion']['contains'].detect { |contained| contained['system'] == uri && contained['code'] == code }
+        elsif valueset['compose'] && valueset['compose']['include']
           # I'm not sure this branch ever matches, see comment below.
-          included_systems = valueset['compose']['include'].map { |x| x['system'] }.uniq
-          systems = @@valuesets.select { |x| x['resourceType'] == 'CodeSystem' && included_systems.include?(x['url']) }
-          systems.each do |x|
+          included_systems = valueset['compose']['include'].map { |inc| inc['system'] }.uniq
+          code_systems = @@valuesets.select { |vs| vs['resourceType'] == 'CodeSystem' && included_systems.include?(vs['url']) }
+          code_systems.each do |code_system|
             # CodeSystem.concept doesn't have a 'url' attribute, so it should
             # never match on this line.
             # See http://build.fhir.org/codesystem.html
-            code_hash = x['concept'].select { |con| con['url'] == uri && con['code'] == code }.first if x['concept']
+            code_hash = code_system['concept'].detect { |con| con['url'] == uri && con['code'] == code } if code_system['concept']
             break if code_hash
           end
         elsif valueset['concept']
           # This currently only matches 'valuesets', not 'expansions'
-          code_hash = valueset['concept'].select { |v| v['code'] == code }.first
+          code_hash = valueset['concept'].detect { |vs| vs['code'] == code }
         end
         break if code_hash
       end
