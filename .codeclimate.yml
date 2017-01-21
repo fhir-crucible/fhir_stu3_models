@@ -20,6 +20,7 @@ ratings:
   - "**.rb"
 exclude_paths:
 - test/
+- spec/
 - lib/fhir_models/fhir/
 - lib/fhir_models/definitions/
 - lib/fhir_models/examples/
