@@ -479,7 +479,6 @@ module FHIR
         # consistent with the current context (element.path). For example, sometimes expressions appear to be
         # written to be evaluated within the element, other times at the resource level, or perhaps
         # elsewhere. There is no good way to determine "where" you should evaluate the expression.
-        next if element.constraint.empty?
         element.constraint.each do |constraint|
           next unless constraint.expression && !nodes.empty?
           begin
@@ -593,24 +592,48 @@ module FHIR
       when 'time'
         regex = /\A([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?\Z/
         value.is_a?(String) && !(regex =~ value).nil?
-      when 'integer', 'unsignedint'
-        (begin
-           !Integer(value).nil?
-         rescue
-           false
-         end)
+      when 'integer'
+        if value.is_a?(Integer)
+          true
+        elsif value.is_a?(String)
+          begin
+            Integer(value).is_a?(Integer)
+          rescue StandardError
+            false
+          end
+        else
+          false
+        end
+      when 'unsignedint'
+        if value.is_a?(Integer) && value >= 0
+          true
+        elsif value.is_a?(String)
+          begin
+            Integer(value) >= 0
+          rescue StandardError
+            false
+          end
+        else
+          false
+        end
       when 'positiveint'
-        (begin
-           !Integer(value).nil?
-         rescue
-           false
-         end) && (Integer(value) >= 0)
+        if value.is_a?(Integer) && value > 0
+          true
+        elsif value.is_a?(String)
+          begin
+            Integer(value) > 0
+          rescue StandardError
+            false
+          end
+        else
+          false
+        end
       when 'decimal'
-        (begin
-           !Float(value).nil?
-         rescue
-           false
-         end)
+        begin
+          Float(value).is_a?(Float)
+        rescue StandardError
+          false
+        end
       when 'resource'
         resource_type = value['resourceType']
         definition = FHIR::Definitions.get_resource_definition(resource_type)
@@ -701,6 +724,6 @@ module FHIR
       false
     end
 
-    private :is_valid_json?, :get_json_nodes, :is_data_type?, :check_binding, :add_missing_elements, :compare_element_definitions
+    private :is_valid_json?, :get_json_nodes, :check_binding, :add_missing_elements, :compare_element_definitions
   end
 end
