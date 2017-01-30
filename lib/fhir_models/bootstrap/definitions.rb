@@ -227,13 +227,8 @@ module FHIR
           code_hash = valueset['expansion']['contains'].detect { |contained| contained['system'] == uri && contained['code'] == code }
         elsif valueset['compose'] && valueset['compose']['include']
           # I'm not sure this branch ever matches, see comment below.
-          included_systems = valueset['compose']['include'].map { |inc| inc['system'] }.uniq
-          code_systems = @@valuesets.select { |vs| vs['resourceType'] == 'CodeSystem' && included_systems.include?(vs['url']) }
-          code_systems.each do |code_system|
-            # CodeSystem.concept doesn't have a 'url' attribute, so it should
-            # never match on this line.
-            # See http://build.fhir.org/codesystem.html
-            code_hash = code_system['concept'].detect { |con| con['url'] == uri && con['code'] == code } if code_system['concept']
+          valueset['compose']['include'].each do |code_system|
+            code_hash = code_system['concept'].detect { |con| con['code'] == code } if code_system['concept']
             break if code_hash
           end
         elsif valueset['concept']
