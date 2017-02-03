@@ -36,16 +36,11 @@ module FHIR
         # Remove large HTML narratives and unused content
         %w(text publisher contact description requirements mapping).each { |key| hash.delete(key) }
 
-        # Remove unused descriptions within the snapshot elements
-        if hash['snapshot']
-          hash['snapshot']['element'].each do |element|
-            %w(short definition comments requirements alias mapping).each { |key| element.delete(key) }
-          end
-        end
-        # Remove unused descriptions within the differential elements
-        if hash['differential']
-          hash['differential']['element'].each do |element|
-            %w(short definition comments requirements alias mapping).each { |key| element.delete(key) }
+        # Remove unused descriptions within the snapshot and differential elements
+        %w(snapshot differential).each do |key|
+          next unless hash[key]
+          hash[key]['element'].each do |element|
+            %w(short definition comments requirements alias mapping).each { |subkey| element.delete(subkey) }
           end
         end
       end
@@ -54,17 +49,10 @@ module FHIR
         # Remove large HTML narratives and unused content
         %w(meta text publisher contact description requirements).each { |key| hash.delete(key) }
 
-        if hash['compose'] && hash['compose']['include']
-          hash['compose']['include'].each do |element|
-            next unless element['concept']
-            element['concept'].each do |concept|
-              concept.delete('designation')
-            end
-          end
-        end
-
-        if hash['compose'] && hash['compose']['exclude']
-          hash['compose']['exclude'].each do |element|
+        return unless hash['compose']
+        %w(include exclude).each do |key|
+          next unless hash['compose'][key]
+          hash['compose'][key].each do |element|
             next unless element['concept']
             element['concept'].each do |concept|
               concept.delete('designation')
@@ -76,20 +64,17 @@ module FHIR
       def self.pre_process_codesystem(hash)
         # Remove large HTML narratives and unused content
         %w(meta text publisher contact description requirements).each { |key| hash.delete(key) }
-
-        if hash['concept']
-          hash['concept'].each do |concept|
-            pre_process_codesystem_concept(concept)
-          end
+        return unless hash['concept']
+        hash['concept'].each do |concept|
+          pre_process_codesystem_concept(concept)
         end
       end
 
       def self.pre_process_codesystem_concept(hash)
         %w(extension definition designation).each { |key| hash.delete(key) }
-        if hash['concept']
-          hash['concept'].each do |concept|
-            pre_process_codesystem_concept(concept)
-          end
+        return unless hash['concept']
+        hash['concept'].each do |concept|
+          pre_process_codesystem_concept(concept)
         end
       end
 

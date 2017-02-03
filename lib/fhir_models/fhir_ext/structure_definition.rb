@@ -117,12 +117,11 @@ module FHIR
           compare_extension_definition(x, y, another_definition)
         end
         y = get_extension(x.type[0].profile, right_extensions)
-        if !y.nil? && x.name != y.name
-          # both profiles share the same extension definition but with a different name
-          checked_extensions << x.name
-          checked_extensions << y.name
-          compare_element_definitions(x, y, another_definition)
-        end
+        next unless !y.nil? && x.name != y.name
+        # both profiles share the same extension definition but with a different name
+        checked_extensions << x.name
+        checked_extensions << y.name
+        compare_element_definitions(x, y, another_definition)
       end
       right_extensions.each do |y|
         next if checked_extensions.include?(y.name)
@@ -133,12 +132,11 @@ module FHIR
           compare_extension_definition(x, y, another_definition)
         end
         x = get_extension(y.type[0].profile, left_extensions)
-        if !x.nil? && x.name != y.name && !checked_extensions.include?(x.name)
-          # both profiles share the same extension definition but with a different name
-          checked_extensions << x.name
-          checked_extensions << y.name
-          compare_element_definitions(x, y, another_definition)
-        end
+        next unless !x.nil? && x.name != y.name && !checked_extensions.include?(x.name)
+        # both profiles share the same extension definition but with a different name
+        checked_extensions << x.name
+        checked_extensions << y.name
+        compare_element_definitions(x, y, another_definition)
       end
       @errors.flatten!
       @warnings.flatten!
@@ -372,9 +370,8 @@ module FHIR
       end
 
       # isModifier
-      if x.isModifier != y.isModifier
-        @errors << @finding.error(x.path.to_s, 'isModifier', 'Incompatible isModifier', (x.isModifier || false).to_s, (y.isModifier || false).to_s)
-      end
+      return unless x.isModifier != y.isModifier
+      @errors << @finding.error(x.path.to_s, 'isModifier', 'Incompatible isModifier', (x.isModifier || false).to_s, (y.isModifier || false).to_s)
     end
 
     # -------------------------------------------------------------------------
@@ -482,18 +479,15 @@ module FHIR
         # consistent with the current context (element.path). For example, sometimes expressions appear to be
         # written to be evaluated within the element, other times at the resource level, or perhaps
         # elsewhere. There is no good way to determine "where" you should evaluate the expression.
-        unless element.constraint.empty?
-          element.constraint.each do |constraint|
-            if constraint.expression && !nodes.empty?
-              begin
-                result = FluentPath.evaluate(constraint.expression, json)
-                if !result && constraint.severity == 'error'
-                  @errors << "#{element.path}: FluentPath expression evaluates to false for #{name} invariant rule #{constraint.key}: #{constraint.human}"
-                end
-              rescue
-                @warnings << "#{element.path}: unable to evaluate FluentPath expression against JSON for #{name} invariant rule #{constraint.key}: #{constraint.human}"
-              end
+        element.constraint.each do |constraint|
+          next unless constraint.expression && !nodes.empty?
+          begin
+            result = FluentPath.evaluate(constraint.expression, json)
+            if !result && constraint.severity == 'error'
+              @errors << "#{element.path}: FluentPath expression evaluates to false for #{name} invariant rule #{constraint.key}: #{constraint.human}"
             end
+          rescue
+            @warnings << "#{element.path}: unable to evaluate FluentPath expression against JSON for #{name} invariant rule #{constraint.key}: #{constraint.human}"
           end
         end
       end
@@ -559,7 +553,7 @@ module FHIR
       when 'domainresource'
         true # we don't have to verify domain resource, because it will be included in the snapshot
       when 'boolean'
-        value == true || value == false || value.downcase == 'true' || value.downcase == 'false'
+        value == true || value == false || value.casecmp('true').zero? || value.casecmp('false').zero?
       when 'code'
         value.is_a?(String) && value.size >= 1 && value.size == value.rstrip.size
       when 'string', 'markdown'
@@ -598,12 +592,48 @@ module FHIR
       when 'time'
         regex = /\A([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?\Z/
         value.is_a?(String) && !(regex =~ value).nil?
-      when 'integer', 'unsignedint'
-        (!Integer(value).nil? rescue false)
+      when 'integer'
+        if value.is_a?(Integer)
+          true
+        elsif value.is_a?(String)
+          begin
+            Integer(value).is_a?(Integer)
+          rescue StandardError
+            false
+          end
+        else
+          false
+        end
+      when 'unsignedint'
+        if value.is_a?(Integer) && value >= 0
+          true
+        elsif value.is_a?(String)
+          begin
+            Integer(value) >= 0
+          rescue StandardError
+            false
+          end
+        else
+          false
+        end
       when 'positiveint'
-        (!Integer(value).nil? rescue false) && (Integer(value) >= 0)
+        if value.is_a?(Integer) && value > 0
+          true
+        elsif value.is_a?(String)
+          begin
+            Integer(value) > 0
+          rescue StandardError
+            false
+          end
+        else
+          false
+        end
       when 'decimal'
-        (!Float(value).nil? rescue false)
+        begin
+          Float(value).is_a?(Float)
+        rescue StandardError
+          false
+        end
       when 'resource'
         resource_type = value['resourceType']
         definition = FHIR::Definitions.get_resource_definition(resource_type)
@@ -694,6 +724,6 @@ module FHIR
       false
     end
 
-    private :is_valid_json?, :get_json_nodes, :is_data_type?, :check_binding, :add_missing_elements, :compare_element_definitions
+    private :is_valid_json?, :get_json_nodes, :check_binding, :add_missing_elements, :compare_element_definitions
   end
 end

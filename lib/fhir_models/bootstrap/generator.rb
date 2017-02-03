@@ -6,7 +6,7 @@ module FHIR
       # templates keeps track of all the templates in context within a given StructureDefinition
       attr_accessor :templates
 
-      def initialize(auto_setup = true)
+      def initialize(auto_setup: true)
         # load the valueset expansions
         @defn = FHIR::Definitions
         # templates is an array
@@ -29,7 +29,7 @@ module FHIR
       def generate_metadata
         template = FHIR::Boot::Template.new([], true)
 
-        primitives = @defn.get_primitive_types
+        primitives = @defn.primitive_types
         hash = {}
         primitives.each do |p|
           field = FHIR::Field.new
@@ -52,10 +52,10 @@ module FHIR
         end
         template.constants['PRIMITIVES'] = hash
 
-        template.constants['TYPES'] = @defn.get_complex_types.map { |t| t['id'] }
+        template.constants['TYPES'] = @defn.complex_types.map { |t| t['id'] }
 
         # resources
-        template.constants['RESOURCES'] = @defn.get_resource_definitions.map { |r| r['id'] }
+        template.constants['RESOURCES'] = @defn.resource_definitions.map { |r| r['id'] }
 
         filename = File.join(@lib, 'fhir', 'metadata.rb')
         file = File.open(filename, 'w:UTF-8')
@@ -67,13 +67,13 @@ module FHIR
         folder = File.join @lib, 'fhir', 'types'
         # complex data types start with an uppercase letter
         # and we'll filter out profiles on types (for example, Age is a profile on Quantity)
-        complex_types = @defn.get_complex_types
+        complex_types = @defn.complex_types
         generate_class_files(folder, complex_types)
       end
 
       def generate_resources
         folder = File.join @lib, 'fhir', 'resources'
-        generate_class_files(folder, @defn.get_resource_definitions)
+        generate_class_files(folder, @defn.resource_definitions)
       end
 
       def generate_class_files(folder = @lib, structure_defs = [])
@@ -81,7 +81,7 @@ module FHIR
           @templates.clear
           type_name = structure_def['id']
           template = generate_class([type_name], structure_def, true)
-          params = @defn.get_search_parameters(type_name)
+          params = @defn.search_parameters(type_name)
           template.constants['SEARCH_PARAMS'] = params unless params.nil?
           filename = File.join(folder, "#{type_name}.rb")
           file = File.open(filename, 'w:UTF-8')
