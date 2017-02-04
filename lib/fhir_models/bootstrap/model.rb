@@ -5,6 +5,7 @@ require 'bcp47'
 
 module FHIR
   class Model
+    extend FHIR::Deprecate
     def initialize(hash = {})
       from_hash(hash)
       self.class::METADATA.each do |key, value|
@@ -87,9 +88,10 @@ module FHIR
       end
     end
 
-    def is_valid?
+    def valid?
       validate.empty?
     end
+    deprecate :is_valid?, :valid?
 
     def validate(contained = nil)
       validate_profile(self.class::METADATA, contained)
@@ -200,7 +202,7 @@ module FHIR
             match = (v =~ Regexp.new(primitive_meta['regex']))
             errors[field] << "#{meta['path']}: #{v} does not match #{datatype} regex" if match.nil?
           else
-            errors[field] << "#{meta['path']}: #{v} is not a valid #{datatype}" unless is_primitive?(datatype, v)
+            errors[field] << "#{meta['path']}: #{v} is not a valid #{datatype}" unless primitive?(datatype, v)
           end
         end
         # check binding
@@ -258,7 +260,7 @@ module FHIR
     # TODO: this should be a class method
     # TODO: this should be named `primitive?`
     # TODO: perhaps this should validate against regexes if they are present
-    def is_primitive?(datatype, value)
+    def primitive?(datatype, value)
       # Remaining data types: handle special cases before checking type StructureDefinitions
       case datatype.downcase
       when 'boolean'
@@ -329,6 +331,7 @@ module FHIR
         false
       end
     end
+    deprecate :is_primitive?, :primitive?
 
     def check_binding(uri, value)
       valid = false

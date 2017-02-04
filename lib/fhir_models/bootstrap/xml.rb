@@ -1,6 +1,7 @@
 require 'nokogiri'
 module FHIR
   module Xml
+    extend FHIR::Deprecate
     #
     #  This module includes methods to serialize or deserialize FHIR resources to and from XML.
     #
@@ -122,9 +123,10 @@ module FHIR
       end
     end
 
-    def self.is_valid?(xml)
+    def self.valid?(xml)
       validate(xml).empty?
     end
+    deprecate :is_valid?, :valid?
 
     def self.validate(xml)
       defns = File.expand_path '../definitions/schema', File.dirname(File.absolute_path(__FILE__))
