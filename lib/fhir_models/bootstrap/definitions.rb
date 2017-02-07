@@ -217,22 +217,22 @@ module FHIR
     # If one can't be found, return nil
     def self.get_display(uri, code)
       return nil if uri.nil? || code.nil?
-      load_expansions
-      valuesets = @@expansions.select { |x| x['compose']['include'].detect {|i| i['system'] == uri } }
-      valuesets += @@valuesets.select { |x| x['url'] == uri }
+      valuesets_and_expansions = expansions.select { |ex| ex['compose']['include'].detect { |i| i['system'] == uri } }
+      valuesets_and_expansions += valuesets.select { |vs| vs['url'] == uri }
       code_hash = nil
-      valuesets.each do |valueset|
-        if !valueset['expansion'].nil? && !valueset['expansion']['contains'].nil?
-          code_hash = valueset['expansion']['contains'].select { |x| x['system'] == uri && x['code'] == code}.first
-        elsif !valueset['compose'].nil? && !valueset['compose']['include'].nil?
-          included_systems = valueset['compose']['include'].map { |x| x['system'] }.uniq
-          systems = @@valuesets.select { |x| x['resourceType'] == 'CodeSystem' && included_systems.include?(x['url']) }
-          systems.each do |x|
-            code_hash = x['concept'].select { |con| con['url'] == uri && con['code'] == code }.first if x['concept']
+      valuesets_and_expansions.each do |valueset|
+        if valueset['expansion'] && valueset['expansion']['contains']
+          # This currently only matches 'expansions', not 'valuesets'
+          code_hash = valueset['expansion']['contains'].detect { |contained| contained['system'] == uri && contained['code'] == code }
+        elsif valueset['compose'] && valueset['compose']['include']
+          # This seems to only match 'valuesets'
+          valueset['compose']['include'].each do |code_system|
+            code_hash = code_system['concept'].detect { |con| con['code'] == code } if code_system['concept']
             break if code_hash
           end
         elsif valueset['concept']
-          code_hash = valueset['concept'].select { |v| v['code'] == code }.first
+          # This currently only matches 'valuesets', not 'expansions'
+          code_hash = valueset['concept'].detect { |vs| vs['code'] == code }
         end
         break if code_hash
       end
