@@ -33,13 +33,13 @@ class XmlValidationTest < Test::Unit::TestCase
   def test_xml_is_valid
     filename = File.join(EXAMPLE_ROOT, 'patient-example.xml')
     xml = File.read(filename)
-    assert FHIR::Xml.is_valid?(xml), 'XML failed to schema validate.'
+    assert FHIR::Xml.valid?(xml), 'XML failed to schema validate.'
   end
 
   def test_resource_is_valid
     filename = File.join(EXAMPLE_ROOT, 'patient-example.xml')
     xml = File.read(filename)
     resource = FHIR::Xml.from_xml(xml)
-    assert resource.is_valid?, 'Resource failed to validate.'
+    assert resource.valid?, 'Resource failed to validate.'
   end
 end

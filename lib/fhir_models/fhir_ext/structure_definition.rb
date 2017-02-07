@@ -4,6 +4,7 @@ require 'bcp47'
 
 module FHIR
   class StructureDefinition
+    extend FHIR::Deprecate
     attr_accessor :finding
     attr_accessor :errors
     attr_accessor :warnings
@@ -14,7 +15,7 @@ module FHIR
 
     # Checks whether or not "another_definition" is compatible with this definition.
     # If they have conflicting elements, restrictions, bindings, modifying extensions, etc.
-    def is_compatible?(another_definition)
+    def compatible?(another_definition)
       @errors = []
       @warnings = []
 
@@ -142,6 +143,7 @@ module FHIR
       @warnings.flatten!
       @errors.size.zero?
     end
+    deprecate :is_compatible?, :compatible?
 
     def get_element_by_path(path, elements = snapshot.element)
       elements.detect { |element| element.path == path }
@@ -228,7 +230,7 @@ module FHIR
         x_extension = FHIR::Definitions.get_extension_definition(x.type[0].profile)
         y_extension = FHIR::Definitions.get_extension_definition(y.type[0].profile)
         if !x_extension.nil? && !y_extension.nil?
-          x_extension.is_compatible?(y_extension)
+          x_extension.compatible?(y_extension)
           @errors << x_extension.errors
           @warnings << x_extension.warnings
         else
@@ -386,13 +388,13 @@ module FHIR
       @errors = []
       @warnings = []
       @errors << "#{resource.class} is not a resource." unless resource.is_a?(FHIR::Model)
-      is_valid_json?(resource.to_json) if resource
+      valid_json?(resource.to_json) if resource
       @errors
     end
 
     # Checks whether or not the "json" is valid according to this definition.
     # json == the raw json for a FHIR resource
-    def is_valid_json?(json)
+    def valid_json?(json)
       if json.is_a? String
         begin
           json = JSON.parse(json)
@@ -444,7 +446,7 @@ module FHIR
                   verified_extension = extension_def.validates_resource?(FHIR::Extension.new(deep_copy(value)))
                 end
               end
-              if verified_extension || is_data_type?(data_type_code, value)
+              if verified_extension || data_type?(data_type_code, value)
                 matching_type += 1
                 if data_type_code == 'code' # then check the binding
                   unless element.binding.nil?
@@ -494,6 +496,7 @@ module FHIR
 
       @errors.size.zero?
     end
+    deprecate :is_valid_json?, :valid_json?
 
     def get_json_nodes(json, path)
       results = []
@@ -528,7 +531,7 @@ module FHIR
 
     # data_type_code == a FHIR DataType code (see http://hl7.org/fhir/2015May/datatypes.html)
     # value == the representation of the value
-    def is_data_type?(data_type_code, value)
+    def data_type?(data_type_code, value)
       # FHIR models covers any base Resources
       if FHIR::RESOURCES.include?(data_type_code)
         definition = FHIR::Definitions.get_resource_definition(data_type_code)
@@ -679,6 +682,7 @@ module FHIR
         end
       end
     end
+    deprecate :is_data_type?, :data_type?
 
     def check_binding(element, value)
       vs_uri = element.binding.valueSetUri || element.binding.valueSetReference.reference
@@ -688,7 +692,7 @@ module FHIR
 
       if vs_uri == 'http://hl7.org/fhir/ValueSet/content-type' || vs_uri == 'http://www.rfc-editor.org/bcp/bcp13.txt'
         matches = MIME::Types[value]
-        if (matches.nil? || matches.size.zero?) && !is_some_type_of_xml_or_json(value)
+        if (matches.nil? || matches.size.zero?) && !some_type_of_xml_or_json?(value)
           @errors << "#{element.path} has invalid mime-type: '#{value}'"
           matching_type -= 1 if element.binding.strength == 'required'
         end
@@ -715,7 +719,7 @@ module FHIR
       matching_type
     end
 
-    def is_some_type_of_xml_or_json(code)
+    def some_type_of_xml_or_json?(code)
       m = code.downcase
       return true if m == 'xml' || m == 'json'
       return true if (m.starts_with?('application/') || m.starts_with?('text/')) && (m.ends_with?('json') || m.ends_with?('xml'))
@@ -723,7 +727,8 @@ module FHIR
       return true if m.starts_with?('application/json') || m.starts_with?('text/json')
       false
     end
+    deprecate :is_some_type_of_xml_or_json, :some_type_of_xml_or_json?
 
-    private :is_valid_json?, :get_json_nodes, :check_binding, :add_missing_elements, :compare_element_definitions
+    private :valid_json?, :get_json_nodes, :check_binding, :add_missing_elements, :compare_element_definitions
   end
 end
