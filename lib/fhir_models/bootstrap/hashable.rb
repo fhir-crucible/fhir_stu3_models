@@ -40,9 +40,14 @@ module FHIR
         next if meta.nil?
         local_name = key
         local_name = meta['local_name'] if meta['local_name']
-        instance_variable_set("@#{local_name}", value) rescue nil
+        begin
+          instance_variable_set("@#{local_name}", value)
+        rescue
+          # TODO: this appears to be a dead code branch
+          nil
+        end
         # inflate the value if it isn't a primitive
-        klass = Module.const_get("FHIR::#{meta['type']}") rescue nil
+        klass = FHIR::PRIMITIVES.key?(meta['type']) ? nil : FHIR.const_get(meta['type'])
         if !klass.nil? && !value.nil?
           # handle array of objects
           if value.is_a?(Array)
@@ -78,12 +83,20 @@ module FHIR
 
     def make_child(child, klass)
       if child['resourceType']
-        klass = Module.const_get("FHIR::#{child['resourceType']}") rescue nil
+        klass = begin
+          FHIR.const_get(child['resourceType'])
+        rescue => _exception
+          # TODO: this appears to be a dead code branch
+          # TODO: should this log / re-raise the exception if encountered instead of silently swallowing it?
+          nil
+        end
       end
       begin
         obj = klass.new(child)
-      rescue => e
-        FHIR.logger.error("Unable to inflate embedded class #{klass}\n#{e.backtrace}")
+      rescue => exception
+        # TODO: this appears to be a dead code branch
+        # TODO: should this re-raise the exception if encountered instead of silently swallowing it?
+        FHIR.logger.error("Unable to inflate embedded class #{klass}\n#{exception.backtrace}")
       end
       obj
     end
