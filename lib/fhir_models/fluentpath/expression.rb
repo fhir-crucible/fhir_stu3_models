@@ -15,7 +15,14 @@ module FluentPath
     end
 
     def clone
-      clone_tree = @tree.map { |x| x.clone rescue x }
+      clone_tree = @tree.map do |x|
+        begin
+          x.clone
+        rescue
+          # TODO: This appears to be dead code
+          x
+        end
+      end
       FluentPath::Expression.new(clone_tree)
     end
   end
