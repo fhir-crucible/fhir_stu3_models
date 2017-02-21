@@ -426,7 +426,7 @@ module FHIR
           else
             element.max.to_i
           end
-        if (nodes.size < min) && (nodes.size > max)
+        if (nodes.size < min) || (nodes.size > max)
           @errors << "#{element.path} failed cardinality test (#{min}..#{max}) -- found #{nodes.size}"
         end
 
