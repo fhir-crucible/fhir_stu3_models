@@ -28,14 +28,14 @@ module FHIR
 
     def self.primitive_types
       # primitive data types start with a lowercase letter
-      @primitive_types ||= types.select { |t| t['id'][0] =~ /[a-z]/ }
+      @primitive_types ||= types.select { |t| t['id'].start_with?(*('a'..'z').to_a) }
     end
     deprecate :get_primitive_types, :primitive_types
 
     def self.complex_types
       # complex data types start with an uppercase letter
       # and we'll filter out profiles on types (for example, Age is a profile on Quantity)
-      @complex_types ||= types.select { |t| (t['id'][0] =~ /[A-Z]/) && (t['id'] == t['snapshot']['element'].first['path']) }
+      @complex_types ||= types.select { |t| t['id'].start_with?(*('A'..'Z').to_a) && (t['id'] == t['snapshot']['element'].first['path']) }
     end
     deprecate :get_complex_types, :complex_types
 
