@@ -41,7 +41,7 @@ module FHIR
       # whitespace is not significant so we strip it out before doing the regex so that we can be sure that
       # the number of characters is a multiple of 4.
       # https://tools.ietf.org/html/rfc4648
-      value == '' || value.is_a?(String) && value.gsub(/\s/, '').match?(%r{\A[0-9a-zA-Z\+=\s/]{4}+\Z})
+      value == '' || value.is_a?(String) && !(value.gsub(/\s/, '') =~ %r{\A[0-9a-zA-Z\+=\s/]{4}+\Z}).nil?
     when 'uri'
       begin
         !URI.parse(value).nil?
