@@ -202,7 +202,7 @@ module FHIR
             match = (v =~ Regexp.new(primitive_meta['regex']))
             errors[field] << "#{meta['path']}: #{v} does not match #{datatype} regex" if match.nil?
           else
-            errors[field] << "#{meta['path']}: #{v} is not a valid #{datatype}" unless primitive?(datatype, v)
+            errors[field] << "#{meta['path']}: #{v} is not a valid #{datatype}" unless FHIR.primitive?(datatype: datatype, value: v)
           end
         end
         # check binding
@@ -257,79 +257,9 @@ module FHIR
       errors << "#{meta['path']}: incorrect Reference type, expected #{meta['type_profiles'].map { |x| x.split('/').last }.join('|')}" unless matches_one_profile
     end
 
-    # TODO: this should be a class method
-    # TODO: this should be named `primitive?`
-    # TODO: perhaps this should validate against regexes if they are present
     def primitive?(datatype, value)
-      # Remaining data types: handle special cases before checking type StructureDefinitions
-      case datatype.downcase
-      when 'boolean'
-        value == true || value == false || value.casecmp('true').zero? || value.casecmp('false').zero?
-      when 'code'
-        value.is_a?(String) && value.size >= 1 && value.size == value.rstrip.size
-      when 'string', 'markdown'
-        value.is_a?(String)
-      when 'xhtml'
-        fragment = Nokogiri::HTML::DocumentFragment.parse(value)
-        value.is_a?(String) && fragment.errors.size.zero?
-      when 'base64binary'
-        regex = /[^0-9\+\/\=A-Za-z\r\n ]/
-        value.is_a?(String) && (regex =~ value).nil?
-      when 'uri'
-        begin
-          !URI.parse(value).nil?
-        rescue
-          false
-        end
-      when 'instant'
-        regex = /\A[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))))\Z/
-        value.is_a?(String) && !(regex =~ value).nil?
-      when 'integer'
-        if value.is_a?(Integer)
-          true
-        elsif value.is_a?(String)
-          begin
-            Integer(value).is_a?(Integer)
-          rescue StandardError
-            false
-          end
-        else
-          false
-        end
-      when 'unsignedint'
-        if value.is_a?(Integer) && value >= 0
-          true
-        elsif value.is_a?(String)
-          begin
-            Integer(value) >= 0
-          rescue StandardError
-            false
-          end
-        else
-          false
-        end
-      when 'positiveint'
-        if value.is_a?(Integer) && value > 0
-          true
-        elsif value.is_a?(String)
-          begin
-            Integer(value) > 0
-          rescue StandardError
-            false
-          end
-        else
-          false
-        end
-      when 'decimal'
-        begin
-          Float(value).is_a?(Float)
-        rescue StandardError
-          false
-        end
-      else
-        FHIR.logger.warn "Unable to check #{value} for datatype #{datatype}"
-        false
-      end
+      FHIR.logger.warn("prefer using FHIR.primitive? Called from #{caller.first}")
+      FHIR.primitive?(datatype: datatype, value: value)
     end
     deprecate :is_primitive?, :primitive?
 
