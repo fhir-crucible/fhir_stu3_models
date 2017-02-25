@@ -555,88 +555,6 @@ module FHIR
       case data_type_code.downcase
       when 'domainresource'
         true # we don't have to verify domain resource, because it will be included in the snapshot
-      when 'boolean'
-        value == true || value == false || value.casecmp('true').zero? || value.casecmp('false').zero?
-      when 'code'
-        value.is_a?(String) && value.size >= 1 && value.size == value.rstrip.size
-      when 'string', 'markdown'
-        value.is_a?(String)
-      when 'xhtml'
-        fragment = Nokogiri::HTML::DocumentFragment.parse(value)
-        value.is_a?(String) && fragment.errors.size.zero?
-      when 'base64binary'
-        regex = /[^0-9\+\/\=A-Za-z\r\n ]/
-        value.is_a?(String) && (regex =~ value).nil?
-      when 'id'
-        regex = /[^\d\w\-\.]/
-        # the FHIR spec says IDs have a length limit of 36 characters. But it also says that OIDs
-        # are valid IDs, and ISO OIDs have no length limitations.
-        value.is_a?(String) && (regex =~ value).nil? # && value.size<=36
-      when 'oid'
-        regex = /[^(urn:oid:)[\d\.]]/
-        value.is_a?(String) && (regex =~ value).nil?
-      when 'uri'
-        is_valid_uri = false
-        begin
-          is_valid_uri = !URI.parse(value).nil?
-        rescue
-          is_valid_uri = false
-        end
-        is_valid_uri
-      when 'instant'
-        regex = /\A[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))))\Z/
-        value.is_a?(String) && !(regex =~ value).nil?
-      when 'date'
-        regex = /\A[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1]))?)?\Z/
-        value.is_a?(String) && !(regex =~ value).nil?
-      when 'datetime'
-        regex = /\A[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?)?)?)?\Z/
-        value.is_a?(String) && !(regex =~ value).nil?
-      when 'time'
-        regex = /\A([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?\Z/
-        value.is_a?(String) && !(regex =~ value).nil?
-      when 'integer'
-        if value.is_a?(Integer)
-          true
-        elsif value.is_a?(String)
-          begin
-            Integer(value).is_a?(Integer)
-          rescue StandardError
-            false
-          end
-        else
-          false
-        end
-      when 'unsignedint'
-        if value.is_a?(Integer) && value >= 0
-          true
-        elsif value.is_a?(String)
-          begin
-            Integer(value) >= 0
-          rescue StandardError
-            false
-          end
-        else
-          false
-        end
-      when 'positiveint'
-        if value.is_a?(Integer) && value > 0
-          true
-        elsif value.is_a?(String)
-          begin
-            Integer(value) > 0
-          rescue StandardError
-            false
-          end
-        else
-          false
-        end
-      when 'decimal'
-        begin
-          Float(value).is_a?(Float)
-        rescue StandardError
-          false
-        end
       when 'resource'
         resource_type = value['resourceType']
         definition = FHIR::Definitions.get_resource_definition(resource_type)
@@ -657,6 +575,8 @@ module FHIR
           @errors << "Unable to find base Resource definition: #{resource_type}"
           false
         end
+      when *FHIR::PRIMITIVES.keys.map(&:downcase)
+        FHIR.primitive?(datatype: data_type_code, value: value)
       else
         # Eliminate endless loop on Element is an Element
         return true if data_type_code == 'Element' && id == 'Element'

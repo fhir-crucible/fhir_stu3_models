@@ -3,6 +3,7 @@ AllCops:
   TargetRubyVersion: 2.2
   Exclude:
     - 'test/**/*'
+    - 'spec/**/*'
     - 'lib/fhir_models/fhir/**/*'
     - 'lib/fhir_models/fluentpath/evaluate.rb'
     - 'tmp/**/*'
