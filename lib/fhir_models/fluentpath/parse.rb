@@ -7,7 +7,7 @@ module FluentPath
 
   # This method tokenizes the expression into a flat array of tokens
   def self.tokenize(expression)
-    raw_tokens = expression.gsub('()', '').split(/(\(|\)|\s|>=|<=|>|<|=|!=|\+|-|\/|\*)/)
+    raw_tokens = expression.gsub('()', '').split(%r{(\(|\)|\s|>=|<=|>|<|=|!=|\+|-|\/|\*)})
     # recreate strings if they were split
     size = nil
     while raw_tokens.include?("'") && size != raw_tokens.length

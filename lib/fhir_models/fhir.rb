@@ -37,10 +37,11 @@ module FHIR
       value.is_a?(String) && fragment.errors.size.zero?
     when 'base64binary'
       # According to RFC-4648 base64binary encoding includes digits 0-9, a-z, A-Z, =, +, /, and whitespace
-      # valid strings will also be a multiple of 4 characters long
-      # an emptry string is considered valid
+      # an empty string is considered valid
+      # whitespace is not significant so we strip it out before doing the regex so that we can be sure that
+      # the number of characters is a multiple of 4.
       # https://tools.ietf.org/html/rfc4648
-      value == '' || value.is_a?(String) && value.match?(%r{\A[0-9a-zA-Z\+=\s/]{4}+\Z})
+      value == '' || value.is_a?(String) && value.gsub(/\s/, '').match?(%r{\A[0-9a-zA-Z\+=\s/]{4}+\Z})
     when 'uri'
       begin
         !URI.parse(value).nil?
