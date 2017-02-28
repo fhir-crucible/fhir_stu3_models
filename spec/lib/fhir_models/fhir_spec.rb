@@ -263,5 +263,110 @@ RSpec.describe 'FHIR' do
         end
       end
     end
+
+    describe 'datatype: date' do
+      let(:datatype) { 'date' }
+
+      context 'returns true when' do
+        let(:result) { true }
+        specify "value='2017-02-28'" do
+          expect(subject.primitive?(datatype: datatype, value: '2017-02-28')).to be result
+        end
+        specify "value='2017-02'" do
+          expect(subject.primitive?(datatype: datatype, value: '2017-02')).to be result
+        end
+        specify "value='2017'" do
+          expect(subject.primitive?(datatype: datatype, value: '2017')).to be result
+        end
+        specify "value=Date.new(2017,2,28)" do
+          expect(subject.primitive?(datatype: datatype, value: Date.new(2017,2,28))).to be result
+        end
+      end
+
+      context 'returns false when' do
+        let(:result) { false }
+        specify "value='2017-02-29'" do
+          pending("dates are not validated because we don't support partial dates")
+          expect(subject.primitive?(datatype: datatype, value: '2017-02-29')).to be result
+        end
+        specify "value='02-29'" do
+          expect(subject.primitive?(datatype: datatype, value: '02-29')).to be result
+        end
+      end
+    end
+
+    describe 'datatype: datetime' do
+      let(:datatype) { 'datetime' }
+
+      context 'returns true when' do
+        let(:result) { true }
+        specify "value='2017-02-28'" do
+          expect(subject.primitive?(datatype: datatype, value: '2017-02-28')).to be result
+        end
+        specify "value='2017-02'" do
+          expect(subject.primitive?(datatype: datatype, value: '2017-02')).to be result
+        end
+        specify "value='2017'" do
+          expect(subject.primitive?(datatype: datatype, value: '2017')).to be result
+        end
+        specify "value='2017-02-28T05:00:00Z'" do
+          expect(subject.primitive?(datatype: datatype, value: '2017-02-28T05:00:00Z')).to be result
+        end
+        specify "value=DateTime.new(2017,2,28,12)" do
+          expect(subject.primitive?(datatype: datatype, value: DateTime.new(2017,2,28,12))).to be result
+        end
+      end
+
+      context 'returns false when' do
+        let(:result) { false }
+        specify "value='2017-02-29'" do
+          pending("datetimes are not validated because we don't support partial dates")
+          expect(subject.primitive?(datatype: datatype, value: '2017-02-29')).to be result
+        end
+        specify "value='02-29'" do
+          expect(subject.primitive?(datatype: datatype, value: '02-29')).to be result
+        end
+        specify "value='2017-01-01 24:00'" do
+          expect(subject.primitive?(datatype: datatype, value: '2017-01-01 24:00')).to be result
+        end
+        specify "value='2017-01-01T24:00Z'" do
+          expect(subject.primitive?(datatype: datatype, value: '2017-01-01T24:00Z')).to be result
+        end
+      end
+    end
+
+    describe 'datatype: time' do
+      let(:datatype) { 'time' }
+
+      context 'returns true when' do
+        let(:result) { true }
+        specify "value='05:00:00'" do
+          expect(subject.primitive?(datatype: datatype, value: '05:00:00')).to be result
+        end
+      end
+
+      context 'returns false when' do
+        let(:result) { false }
+        specify "value='2017-02-29'" do
+          expect(subject.primitive?(datatype: datatype, value: '2017-02-29')).to be result
+        end
+        specify "value='02-29'" do
+          expect(subject.primitive?(datatype: datatype, value: '02-29')).to be result
+        end
+        specify "value='2017-01-01 24:00'" do
+          expect(subject.primitive?(datatype: datatype, value: '2017-01-01 24:00')).to be result
+        end
+        specify "value='2017-01-01T24:00Z'" do
+          expect(subject.primitive?(datatype: datatype, value: '2017-01-01T24:00Z')).to be result
+        end
+        specify "value='5:00'" do
+          expect(subject.primitive?(datatype: datatype, value: '5:00')).to be result
+        end
+        specify "value='24:00'" do
+          expect(subject.primitive?(datatype: datatype, value: '24:00')).to be result
+        end
+      end
+    end
+
   end
 end
