@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'logger'
+
 module FHIR
   def self.logger
     @logger || default_logger
@@ -27,7 +28,7 @@ module FHIR
     # Remaining data types: handle special cases before checking type StructureDefinitions
     case datatype.downcase
     when 'boolean'
-      !(value.to_s =~ /\A(true|false)\Z/)
+      !(value.to_s =~ /\A(true|false)\Z/).nil?
     when 'integer'
       !(value.to_s =~ /\A(0|[-+]?[1-9][0-9]*)\Z/).nil?
     when 'string', 'markdown'
@@ -70,7 +71,7 @@ module FHIR
       fragment = Nokogiri::HTML::DocumentFragment.parse(value)
       value.is_a?(String) && fragment.errors.size.zero?
     when 'unsignedint'
-      !(value.to_s =~ /\A\+?([0]|([1-9][0-9]*))\Z/).nil?
+      !(value.to_s =~ /\A([0]|([1-9][0-9]*))\Z/).nil?
     when 'positiveint'
       !(value.to_s =~ /\A+?[1-9][0-9]*\Z/).nil?
     else

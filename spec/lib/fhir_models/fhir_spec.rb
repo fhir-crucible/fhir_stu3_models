@@ -2,6 +2,49 @@ RSpec.describe 'FHIR' do
   describe '#primitive?(datatype: datatype, value: value)' do
     subject { FHIR }
 
+    describe "datatype: 'boolean'" do
+      let(:datatype) { 'boolean' }
+      context 'return true when' do
+        let(:result) { true }
+        specify 'value = true' do
+          expect(subject.primitive?(datatype: datatype, value: true)).to be result
+        end
+        specify "value = 'true'" do
+          expect(subject.primitive?(datatype: datatype, value: 'true')).to be result
+        end
+        specify 'value = false' do
+          expect(subject.primitive?(datatype: datatype, value: false)).to be result
+        end
+        specify "value = 'false'" do
+          expect(subject.primitive?(datatype: datatype, value: 'false')).to be result
+        end
+      end
+      context 'return false when' do
+        let(:result) { false }
+        specify 'value = "a random string"' do
+          expect(subject.primitive?(datatype: datatype, value: 'a random string')).to be result
+        end
+        specify 'value = 0' do
+          expect(subject.primitive?(datatype: datatype, value: 0)).to be result
+        end
+        specify 'value = 1' do
+          expect(subject.primitive?(datatype: datatype, value: 1)).to be result
+        end
+        specify 'value = y' do
+          expect(subject.primitive?(datatype: datatype, value: 'y')).to be result
+        end
+        specify 'value = n' do
+          expect(subject.primitive?(datatype: datatype, value: 'n')).to be result
+        end
+        specify 'value = T' do
+          expect(subject.primitive?(datatype: datatype, value: 'T')).to be result
+        end
+        specify 'value = F' do
+          expect(subject.primitive?(datatype: datatype, value: 'F')).to be result
+        end
+      end
+    end
+
     describe "datatype 'integer'" do
       let(:datatype) { 'integer' }
 
@@ -25,16 +68,15 @@ RSpec.describe 'FHIR' do
         specify "value= '1'" do
           expect(subject.primitive?(datatype: datatype, value: '1')).to be result
         end
+        specify "value= '+1'" do
+          expect(subject.primitive?(datatype: datatype, value: '+1')).to be result
+        end
       end
 
       context 'returns false when' do
         let(:result) { false }
         specify "value= '1.0'" do
           expect(subject.primitive?(datatype: datatype, value: '1.0')).to be result
-        end
-        specify "value= '+1'" do
-          pending('+1 does not match the specification regex for FHIR <= 1.8.0, but is a valid ruby integer')
-          expect(subject.primitive?(datatype: datatype, value: '+1')).to be result
         end
         specify "value= 'non-numeric-string'" do
           expect(subject.primitive?(datatype: datatype, value: 'non-numeric-string')).to be result
@@ -80,7 +122,6 @@ RSpec.describe 'FHIR' do
           expect(subject.primitive?(datatype: datatype, value: '1.0')).to be result
         end
         specify "value= '+1'" do
-          pending('+1 does not match the specification regex for FHIR <= 1.8.0, but is a valid ruby integer')
           expect(subject.primitive?(datatype: datatype, value: '+1')).to be result
         end
         specify 'value= -1' do
@@ -431,9 +472,37 @@ RSpec.describe 'FHIR' do
         specify "value='' (empty string)" do
           expect(subject.primitive?(datatype: datatype, value: '')).to be result
         end
-
       end
     end
 
+    describe 'datatype: uri' do
+      let(:datatype) { 'uri' }
+
+      context 'returns true when' do
+        let(:result) { true }
+        specify "value='http://www.google.com'" do
+          expect(subject.primitive?(datatype: datatype, value: 'http://www.google.com')).to be result
+        end
+        specify "value='urn:uuid:53fefa32-fcbb-4ff8-8a92-55ee120877b7'" do
+          expect(subject.primitive?(datatype: datatype, value: 'urn:uuid:53fefa32-fcbb-4ff8-8a92-55ee120877b7')).to be result
+        end
+        specify "value='urn:oid:1.2.3.4'" do
+          expect(subject.primitive?(datatype: datatype, value: 'urn:oid:1.2.3.4')).to be result
+        end
+      end
+
+      context 'returns false when' do
+        let(:result) { false }
+        specify "value='http:' (scheme with nothing else)" do
+          expect(subject.primitive?(datatype: datatype, value: 'http:')).to be result
+        end
+        specify "value='http://local\"host/' (quote in hostname)" do
+          expect(subject.primitive?(datatype: datatype, value: 'http://local\"host/')).to be result
+        end
+        specify "value='http://local\nhost/' (newline in hostname)" do
+          expect(subject.primitive?(datatype: datatype, value: 'http://local\nhost')).to be result
+        end
+      end
+    end
   end
 end
