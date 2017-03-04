@@ -133,7 +133,6 @@ RSpec.describe 'FHIR' do
           expect(subject.primitive?(datatype: datatype, value: '1.0')).to be result
         end
         specify "value= '+1'" do
-          pending('+1 does not match the specification regex for FHIR <= 1.8.0, but is a valid ruby integer')
           expect(subject.primitive?(datatype: datatype, value: '+1')).to be result
         end
         specify 'value= -1' do
@@ -213,11 +212,9 @@ RSpec.describe 'FHIR' do
           expect(subject.primitive?(datatype: datatype, value: nil)).to be result
         end
         specify "value= '001'" do
-          pending('FHIR standard forbids leading zeros (<=1.8.0)')
           expect(subject.primitive?(datatype: datatype, value: '001')).to be result
         end
         specify "value= '1E3'" do
-          pending('FHIR standard forbids exponents (<=1.8.0)')
           expect(subject.primitive?(datatype: datatype, value: '1E3')).to be result
         end
       end
@@ -278,8 +275,8 @@ RSpec.describe 'FHIR' do
         specify "value='2017'" do
           expect(subject.primitive?(datatype: datatype, value: '2017')).to be result
         end
-        specify "value=Date.new(2017,2,28)" do
-          expect(subject.primitive?(datatype: datatype, value: Date.new(2017,2,28))).to be result
+        specify 'value=Date.new(2017,2,28)' do
+          expect(subject.primitive?(datatype: datatype, value: Date.new(2017, 2, 28))).to be result
         end
       end
 
@@ -312,8 +309,8 @@ RSpec.describe 'FHIR' do
         specify "value='2017-02-28T05:00:00Z'" do
           expect(subject.primitive?(datatype: datatype, value: '2017-02-28T05:00:00Z')).to be result
         end
-        specify "value=DateTime.new(2017,2,28,12)" do
-          expect(subject.primitive?(datatype: datatype, value: DateTime.new(2017,2,28,12))).to be result
+        specify 'value=DateTime.new(2017,2,28,12)' do
+          expect(subject.primitive?(datatype: datatype, value: DateTime.new(2017, 2, 28, 12))).to be result
         end
       end
 
@@ -365,6 +362,76 @@ RSpec.describe 'FHIR' do
         specify "value='24:00'" do
           expect(subject.primitive?(datatype: datatype, value: '24:00')).to be result
         end
+      end
+    end
+
+    describe 'datatype: oid' do
+      let(:datatype) { 'oid' }
+
+      context 'returns true when' do
+        let(:result) { true }
+        specify "value='urn:oid:1.2.3.4'" do
+          expect(subject.primitive?(datatype: datatype, value: 'urn:oid:1.2.3.4')).to be result
+        end
+      end
+
+      context 'returns false when' do
+        let(:result) { false }
+        specify "value='1.2.3.4'" do
+          expect(subject.primitive?(datatype: datatype, value: '1.2.3.4')).to be result
+        end
+      end
+    end
+
+    describe 'datatype: id' do
+      let(:datatype) { 'id' }
+
+      context 'returns true when' do
+        let(:result) { true }
+        specify "value='1234567890-abcdefghijklmnopqrstuvwxyz.ABCDEFGHIJKLMNOPQRSTUVWXYZ'" do
+          expect(subject.primitive?(datatype: datatype, value: '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')).to be result
+        end
+      end
+
+      context 'returns false when' do
+        let(:result) { false }
+        specify "value='the quick brown fox jumped over the lazy dog' (whitespace not allowed)" do
+          expect(subject.primitive?(datatype: datatype, value: 'the quick brown fox jumped over the lazy dog')).to be result
+        end
+        specify 'value=65 characters (too long)' do
+          expect(subject.primitive?(datatype: datatype, value: 'A' * 65)).to be result
+        end
+      end
+    end
+
+    describe 'datatype: code' do
+      let(:datatype) { 'code' }
+
+      context 'returns true when' do
+        let(:result) { true }
+        specify "value='a string with only single spaces'" do
+          expect(subject.primitive?(datatype: datatype, value: 'a string with only single spaces')).to be result
+        end
+        specify "value='a' (single character)" do
+          expect(subject.primitive?(datatype: datatype, value: 'a')).to be result
+        end
+      end
+
+      context 'returns false when' do
+        let(:result) { false }
+        specify "value=' leading whitespace'" do
+          expect(subject.primitive?(datatype: datatype, value: ' leading whitespace')).to be result
+        end
+        specify "value='trailing whitespace '" do
+          expect(subject.primitive?(datatype: datatype, value: 'trailing whitespace ')).to be result
+        end
+        specify "value='multiple  spaces'" do
+          expect(subject.primitive?(datatype: datatype, value: 'multiple  whitespace')).to be result
+        end
+        specify "value='' (empty string)" do
+          expect(subject.primitive?(datatype: datatype, value: '')).to be result
+        end
+
       end
     end
 
