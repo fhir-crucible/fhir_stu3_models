@@ -522,9 +522,6 @@ RSpec.describe 'FHIR' do
 
       context 'returns false when' do
         let(:result) { false }
-        specify "value='http:' (scheme with nothing else)" do
-          expect(subject.primitive?(datatype: datatype, value: 'http:')).to be result
-        end
         specify "value='http://local\"host/' (quote in hostname)" do
           expect(subject.primitive?(datatype: datatype, value: 'http://local\"host/')).to be result
         end
