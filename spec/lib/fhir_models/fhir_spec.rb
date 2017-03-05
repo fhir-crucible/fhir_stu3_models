@@ -302,6 +302,30 @@ RSpec.describe 'FHIR' do
       end
     end
 
+    describe 'datatype: instant' do
+      let(:datatype) { 'instant' }
+
+      context 'returns true when' do
+        let(:result) { true }
+        specify "value='2017-03-05T10:23:15-05:00'" do
+          expect(subject.primitive?(datatype: datatype, value: '2017-03-05T10:23:15-05:00')).to be result
+        end
+        specify "value='2017-03-05T10:23:15-05:00'" do
+          expect(subject.primitive?(datatype: datatype, value: Time.parse('2017-03-05T10:23:15-05:00'))).to be result
+        end
+      end
+
+      context 'returns false when' do
+        let(:result) { false }
+        specify "value='2017-03-05T10:23:15' (missing timezone)" do
+          expect(subject.primitive?(datatype: datatype, value: '2017-03-05T10:23:15')).to be result
+        end
+        specify "value='2017-03-05T10:23-05:00' (missing seconds)" do
+          expect(subject.primitive?(datatype: datatype, value: '2017-03-05T10:23-05:00')).to be result
+        end
+      end
+    end
+
     describe 'datatype: date' do
       let(:datatype) { 'date' }
 
@@ -402,6 +426,11 @@ RSpec.describe 'FHIR' do
         end
         specify "value='24:00'" do
           expect(subject.primitive?(datatype: datatype, value: '24:00')).to be result
+        end
+        specify 'value=Time.now' do
+          # ruby does not have a class that represents a time independent of a date, so it is necessary to handle this type
+          # of time value as a string.
+          expect(subject.primitive?(datatype: datatype, value: Time.now)).to be result
         end
       end
     end
