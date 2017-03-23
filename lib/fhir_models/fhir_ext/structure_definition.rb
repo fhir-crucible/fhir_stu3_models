@@ -149,7 +149,7 @@ module FHIR
           element.max.to_i
         end
       if (nodes.size < min) || (nodes.size > max)
-        @errors << "#{element.path} failed cardinality test (#{min}..#{max}) -- found #{nodes.size}"
+        @errors << "#{describe_element(element)} failed cardinality test (#{min}..#{max}) -- found #{nodes.size}"
       end
 
       return if nodes.empty?
@@ -184,26 +184,26 @@ module FHIR
               end
             elsif data_type_found == 'CodeableConcept' && !element.pattern.nil? && element.pattern.is_a?(FHIR::CodeableConcept)
               # TODO: check that the CodeableConcept matches the defined pattern
-              @warnings << "Ignoring defined patterns on CodeableConcept #{element.path}"
+              @warnings << "Ignoring defined patterns on CodeableConcept #{describe_element(element)}"
             elsif data_type_found == 'String' && !element.maxLength.nil? && (value.size > element.maxLength)
-              @errors << "#{element.path} exceed maximum length of #{element.maxLength}: #{value}"
+              @errors << "#{describe_element(element)} exceed maximum length of #{element.maxLength}: #{value}"
             end
           elsif data_type_found
-            temp_messages << "#{element.path} is not a valid #{data_type_found}: '#{value}'"
+            temp_messages << "#{describe_element(element)} is not a valid #{data_type_found}: '#{value}'"
           else
             # we don't know the data type... so we say "OK"
             matching_type += 1
-            @warnings >> "Unable to guess data type for #{element.path}"
+            @warnings >> "Unable to guess data type for #{describe_element(element)}"
           end
 
           if matching_type <= 0
             @errors += temp_messages
-            @errors << "#{element.path} did not match one of the valid data types: #{element.type.map(&:code)}"
+            @errors << "#{describe_element(element)} did not match one of the valid data types: #{element.type.map(&:code)}"
           else
             @warnings += temp_messages
           end
           if !element.fixed.nil? && element.fixed != value
-            @errors << "#{element.path} value of '#{value}' did not match fixed value: #{element.fixed}"
+            @errors << "#{describe_element(element)} value of '#{value}' did not match fixed value: #{element.fixed}"
           end
         end
       end
@@ -220,10 +220,10 @@ module FHIR
         begin
           result = FluentPath.evaluate(constraint.expression, json)
           if !result && constraint.severity == 'error'
-            @errors << "#{element.path}: FluentPath expression evaluates to false for #{name} invariant rule #{constraint.key}: #{constraint.human}"
+            @errors << "#{describe_element(element)}: FluentPath expression evaluates to false for #{name} invariant rule #{constraint.key}: #{constraint.human}"
           end
         rescue
-          @warnings << "#{element.path}: unable to evaluate FluentPath expression against JSON for #{name} invariant rule #{constraint.key}: #{constraint.human}"
+          @warnings << "#{describe_element(element)}: unable to evaluate FluentPath expression against JSON for #{name} invariant rule #{constraint.key}: #{constraint.human}"
         end
       end
 
