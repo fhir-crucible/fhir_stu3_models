@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
+  Generated on Tue, Mar 21, 2017 06:09+1100 for FHIR v3.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -44,13 +44,13 @@
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="CodeableConcept">
-            
-          </xs:element>
           <xs:element name="identifier" minOccurs="1" maxOccurs="1" type="Identifier">
             
           </xs:element>
-          <xs:element name="lastSystemChange" minOccurs="1" maxOccurs="1" type="instant">
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="lastSystemChange" minOccurs="0" maxOccurs="1" type="instant">
             
           </xs:element>
           <xs:element name="source" minOccurs="0" maxOccurs="1" type="Reference">

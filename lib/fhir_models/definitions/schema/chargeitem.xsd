@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
+  Generated on Tue, Mar 21, 2017 06:09+1100 for FHIR v3.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -36,36 +36,24 @@
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="1.0">
   <xs:include schemaLocation="fhir-base.xsd"/>
-  <xs:element name="DiagnosticRequest" type="DiagnosticRequest">
+  <xs:element name="ChargeItem" type="ChargeItem">
     
   </xs:element>
-  <xs:complexType name="DiagnosticRequest">
+  <xs:complexType name="ChargeItem">
     
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
-          <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
+          <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
             
           </xs:element>
-          <xs:element name="definition" minOccurs="0" maxOccurs="unbounded" type="Reference">
+          <xs:element name="definition" minOccurs="0" maxOccurs="unbounded" type="uri">
             
           </xs:element>
-          <xs:element name="basedOn" minOccurs="0" maxOccurs="unbounded" type="Reference">
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="ChargeItemStatus">
             
           </xs:element>
-          <xs:element name="replaces" minOccurs="0" maxOccurs="unbounded" type="Reference">
-            
-          </xs:element>
-          <xs:element name="requisition" minOccurs="0" maxOccurs="1" type="Identifier">
-            
-          </xs:element>
-          <xs:element name="status" minOccurs="1" maxOccurs="1" type="code">
-            
-          </xs:element>
-          <xs:element name="intent" minOccurs="1" maxOccurs="1" type="code">
-            
-          </xs:element>
-          <xs:element name="priority" minOccurs="0" maxOccurs="1" type="code">
+          <xs:element name="partOf" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
           <xs:element name="code" minOccurs="1" maxOccurs="1" type="CodeableConcept">
@@ -83,34 +71,100 @@
             <xs:element name="occurrencePeriod" type="Period"/>
             <xs:element name="occurrenceTiming" type="Timing"/>
           </xs:choice>
-          <xs:element name="authoredOn" minOccurs="0" maxOccurs="1" type="dateTime">
+          <xs:element name="participant" type="ChargeItem.Participant" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="requester" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="performingOrganization" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="performerType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="requestingOrganization" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="performer" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="Quantity">
             
           </xs:element>
-          <xs:element name="reasonCode" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+          <xs:element name="bodysite" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="reasonReference" minOccurs="0" maxOccurs="unbounded" type="Reference">
+          <xs:element name="factorOverride" minOccurs="0" maxOccurs="1" type="decimal">
             
           </xs:element>
-          <xs:element name="supportingInformation" minOccurs="0" maxOccurs="unbounded" type="Reference">
+          <xs:element name="priceOverride" minOccurs="0" maxOccurs="1" type="Money">
+            
+          </xs:element>
+          <xs:element name="overrideReason" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="enterer" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="enteredDate" minOccurs="0" maxOccurs="1" type="dateTime">
+            
+          </xs:element>
+          <xs:element name="reason" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="service" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
+          <xs:element name="account" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
           <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
             
           </xs:element>
-          <xs:element name="relevantHistory" minOccurs="0" maxOccurs="unbounded" type="Reference">
+          <xs:element name="supportingInformation" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
         </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ChargeItem.Participant">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="role" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="actor" minOccurs="1" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ChargeItemStatus-list">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="planned">
+        
+      </xs:enumeration>
+      <xs:enumeration value="billable">
+        
+      </xs:enumeration>
+      <xs:enumeration value="not-billable">
+        
+      </xs:enumeration>
+      <xs:enumeration value="aborted">
+        
+      </xs:enumeration>
+      <xs:enumeration value="billed">
+        
+      </xs:enumeration>
+      <xs:enumeration value="entered-in-error">
+        
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
+        
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ChargeItemStatus">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="ChargeItemStatus-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

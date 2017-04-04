@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
+  Generated on Tue, Mar 21, 2017 06:09+1100 for FHIR v3.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -268,6 +268,7 @@
     <xs:choice>
       <xs:element ref="Account"/>
       <xs:element ref="ActivityDefinition"/>
+      <xs:element ref="AdverseEvent"/>
       <xs:element ref="AllergyIntolerance"/>
       <xs:element ref="Appointment"/>
       <xs:element ref="AppointmentResponse"/>
@@ -279,6 +280,7 @@
       <xs:element ref="CapabilityStatement"/>
       <xs:element ref="CarePlan"/>
       <xs:element ref="CareTeam"/>
+      <xs:element ref="ChargeItem"/>
       <xs:element ref="Claim"/>
       <xs:element ref="ClaimResponse"/>
       <xs:element ref="ClinicalImpression"/>
@@ -297,10 +299,9 @@
       <xs:element ref="Device"/>
       <xs:element ref="DeviceComponent"/>
       <xs:element ref="DeviceMetric"/>
-      <xs:element ref="DeviceUseRequest"/>
+      <xs:element ref="DeviceRequest"/>
       <xs:element ref="DeviceUseStatement"/>
       <xs:element ref="DiagnosticReport"/>
-      <xs:element ref="DiagnosticRequest"/>
       <xs:element ref="DocumentManifest"/>
       <xs:element ref="DocumentReference"/>
       <xs:element ref="EligibilityRequest"/>
@@ -315,6 +316,7 @@
       <xs:element ref="FamilyMemberHistory"/>
       <xs:element ref="Flag"/>
       <xs:element ref="Goal"/>
+      <xs:element ref="GraphDefinition"/>
       <xs:element ref="Group"/>
       <xs:element ref="GuidanceResponse"/>
       <xs:element ref="HealthcareService"/>
@@ -338,7 +340,7 @@
       <xs:element ref="MessageDefinition"/>
       <xs:element ref="MessageHeader"/>
       <xs:element ref="NamingSystem"/>
-      <xs:element ref="NutritionRequest"/>
+      <xs:element ref="NutritionOrder"/>
       <xs:element ref="Observation"/>
       <xs:element ref="OperationDefinition"/>
       <xs:element ref="OperationOutcome"/>
@@ -1143,6 +1145,64 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="Dosage">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:sequence>
+          <xs:element name="sequence" type="integer" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+          <xs:element name="text" type="string" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+          <xs:element name="additionalInstruction" type="CodeableConcept" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="patientInstruction" type="string" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+          <xs:element name="timing" type="Timing" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+           <xs:element name="asNeededBoolean" type="boolean" maxOccurs="1"/>
+           <xs:element name="asNeededCodeableConcept" type="CodeableConcept" maxOccurs="1"/>
+          </xs:choice>
+          <xs:element name="site" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+          <xs:element name="route" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+          <xs:element name="method" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+           <xs:element name="doseRange" type="Range" maxOccurs="1"/>
+           <xs:element name="doseQuantity" type="Quantity" maxOccurs="1"/>
+          </xs:choice>
+          <xs:element name="maxDosePerPeriod" type="Ratio" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+          <xs:element name="maxDosePerAdministration" type="Quantity" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+          <xs:element name="maxDosePerLifetime" type="Quantity" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+           <xs:element name="rateRatio" type="Ratio" maxOccurs="1"/>
+           <xs:element name="rateRange" type="Range" maxOccurs="1"/>
+           <xs:element name="rateQuantity" type="Quantity" maxOccurs="1"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="RelatedArtifact">
     
     <xs:complexContent>
@@ -1325,6 +1385,9 @@
       <xs:enumeration value="url">
         
       </xs:enumeration>
+      <xs:enumeration value="sms">
+        
+      </xs:enumeration>
       <xs:enumeration value="other">
         
       </xs:enumeration>
@@ -1448,7 +1511,7 @@
           <xs:element name="timeOfDay" type="time" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="when" type="EventTiming" minOccurs="0" maxOccurs="1">
+          <xs:element name="when" type="EventTiming" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
           <xs:element name="offset" type="unsignedInt" minOccurs="0" maxOccurs="1">
@@ -1503,6 +1566,9 @@
         
       </xs:enumeration>
       <xs:enumeration value="NIGHT">
+        
+      </xs:enumeration>
+      <xs:enumeration value="PHS">
         
       </xs:enumeration>
       <xs:enumeration value="HS">
@@ -1586,7 +1652,7 @@
           <xs:element name="definition" type="markdown" minOccurs="0" maxOccurs="1">
             
           </xs:element>
-          <xs:element name="comments" type="markdown" minOccurs="0" maxOccurs="1">
+          <xs:element name="comment" type="markdown" minOccurs="0" maxOccurs="1">
             
           </xs:element>
           <xs:element name="requirements" type="markdown" minOccurs="0" maxOccurs="1">
@@ -1595,7 +1661,7 @@
           <xs:element name="alias" type="string" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="min" type="integer" minOccurs="0" maxOccurs="1">
+          <xs:element name="min" type="unsignedInt" minOccurs="0" maxOccurs="1">
             
           </xs:element>
           <xs:element name="max" type="string" minOccurs="0" maxOccurs="1">
@@ -1652,6 +1718,9 @@
            <xs:element name="defaultValueMeta" type="Meta"/>
          </xs:choice>
           <xs:element name="meaningWhenMissing" type="markdown" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+          <xs:element name="orderMeaning" type="string" minOccurs="0" maxOccurs="1">
             
           </xs:element>
         <xs:choice minOccurs="0" maxOccurs="1">
@@ -1835,6 +1904,9 @@
           <xs:element name="map" type="string" minOccurs="1" maxOccurs="1">
             
           </xs:element>
+          <xs:element name="comment" type="string" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -1847,7 +1919,7 @@
           <xs:element name="path" type="string" minOccurs="1" maxOccurs="1">
             
           </xs:element>
-          <xs:element name="min" type="integer" minOccurs="1" maxOccurs="1">
+          <xs:element name="min" type="unsignedInt" minOccurs="1" maxOccurs="1">
             
           </xs:element>
           <xs:element name="max" type="string" minOccurs="1" maxOccurs="1">
@@ -1939,7 +2011,7 @@
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:sequence>
-          <xs:element name="discriminator" type="string" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="discriminator" type="ElementDefinition.Discriminator" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
           <xs:element name="description" type="string" minOccurs="0" maxOccurs="1">
@@ -1971,6 +2043,21 @@
            <xs:element name="valueSetUri" type="uri" maxOccurs="1"/>
            <xs:element name="valueSetReference" type="Reference" maxOccurs="1"/>
           </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ElementDefinition.Discriminator">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:sequence>
+          <xs:element name="type" type="DiscriminatorType" minOccurs="1" maxOccurs="1">
+            
+          </xs:element>
+          <xs:element name="path" type="string" minOccurs="1" maxOccurs="1">
+            
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -2107,60 +2194,32 @@
        </xs:extension>
      </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="DosageInstruction">
+  <xs:simpleType name="DiscriminatorType-list">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="value">
+        
+      </xs:enumeration>
+      <xs:enumeration value="exists">
+        
+      </xs:enumeration>
+      <xs:enumeration value="pattern">
+        
+      </xs:enumeration>
+      <xs:enumeration value="type">
+        
+      </xs:enumeration>
+      <xs:enumeration value="profile">
+        
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DiscriminatorType">
     
     <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:sequence>
-          <xs:element name="sequence" type="integer" minOccurs="0" maxOccurs="1">
-            
-          </xs:element>
-          <xs:element name="text" type="string" minOccurs="0" maxOccurs="1">
-            
-          </xs:element>
-          <xs:element name="additionalInstructions" type="CodeableConcept" minOccurs="0" maxOccurs="unbounded">
-            
-          </xs:element>
-          <xs:element name="timing" type="Timing" minOccurs="0" maxOccurs="1">
-            
-          </xs:element>
-          <xs:choice minOccurs="0" maxOccurs="1">
-            
-           <xs:element name="asNeededBoolean" type="boolean" maxOccurs="1"/>
-           <xs:element name="asNeededCodeableConcept" type="CodeableConcept" maxOccurs="1"/>
-          </xs:choice>
-          <xs:element name="site" type="CodeableConcept" minOccurs="0" maxOccurs="1">
-            
-          </xs:element>
-          <xs:element name="route" type="CodeableConcept" minOccurs="0" maxOccurs="1">
-            
-          </xs:element>
-          <xs:element name="method" type="CodeableConcept" minOccurs="0" maxOccurs="1">
-            
-          </xs:element>
-          <xs:choice minOccurs="0" maxOccurs="1">
-            
-           <xs:element name="doseRange" type="Range" maxOccurs="1"/>
-           <xs:element name="doseQuantity" type="Quantity" maxOccurs="1"/>
-          </xs:choice>
-          <xs:element name="maxDosePerPeriod" type="Ratio" minOccurs="0" maxOccurs="1">
-            
-          </xs:element>
-          <xs:element name="maxDosePerAdministration" type="Quantity" minOccurs="0" maxOccurs="1">
-            
-          </xs:element>
-          <xs:element name="maxDosePerLifetime" type="Quantity" minOccurs="0" maxOccurs="1">
-            
-          </xs:element>
-          <xs:choice minOccurs="0" maxOccurs="1">
-            
-           <xs:element name="rateRatio" type="Ratio" maxOccurs="1"/>
-           <xs:element name="rateRange" type="Range" maxOccurs="1"/>
-           <xs:element name="rateQuantity" type="Quantity" maxOccurs="1"/>
-          </xs:choice>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
+       <xs:extension base="Element">
+         <xs:attribute name="value" type="DiscriminatorType-list" use="optional"/>
+       </xs:extension>
+     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="ParameterDefinition">
     
@@ -2239,6 +2298,9 @@
         
       </xs:enumeration>
       <xs:enumeration value="retired">
+        
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
         
       </xs:enumeration>
     </xs:restriction>

@@ -36,15 +36,15 @@
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="1.0">
   <xs:include schemaLocation="fhir-base.xsd"/>
-  <xs:element name="SearchParameter" type="SearchParameter">
+  <xs:element name="GraphDefinition" type="GraphDefinition">
     
   </xs:element>
-  <xs:complexType name="SearchParameter">
+  <xs:complexType name="GraphDefinition">
     
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
-          <xs:element name="url" minOccurs="1" maxOccurs="1" type="uri">
+          <xs:element name="url" minOccurs="0" maxOccurs="1" type="uri">
             
           </xs:element>
           <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
@@ -68,6 +68,9 @@
           <xs:element name="contact" minOccurs="0" maxOccurs="unbounded" type="ContactDetail">
             
           </xs:element>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
+            
+          </xs:element>
           <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="UsageContext">
             
           </xs:element>
@@ -77,169 +80,109 @@
           <xs:element name="purpose" minOccurs="0" maxOccurs="1" type="markdown">
             
           </xs:element>
-          <xs:element name="code" minOccurs="1" maxOccurs="1" type="code">
+          <xs:element name="start" minOccurs="1" maxOccurs="1" type="ResourceType">
             
           </xs:element>
-          <xs:element name="base" minOccurs="1" maxOccurs="unbounded" type="ResourceType">
+          <xs:element name="profile" minOccurs="0" maxOccurs="1" type="uri">
             
           </xs:element>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="SearchParamType">
+          <xs:element name="link" type="GraphDefinition.Link" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="derivedFrom" minOccurs="0" maxOccurs="1" type="uri">
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GraphDefinition.Link">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="path" minOccurs="1" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="description" minOccurs="1" maxOccurs="1" type="markdown">
+          <xs:element name="sliceName" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="min" minOccurs="0" maxOccurs="1" type="integer">
+            
+          </xs:element>
+          <xs:element name="max" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="target" type="GraphDefinition.Target" minOccurs="1" maxOccurs="unbounded">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GraphDefinition.Target">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="ResourceType">
+            
+          </xs:element>
+          <xs:element name="profile" minOccurs="0" maxOccurs="1" type="uri">
+            
+          </xs:element>
+          <xs:element name="compartment" type="GraphDefinition.Compartment" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="link" type="GraphDefinition.Link" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GraphDefinition.Compartment">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="code" minOccurs="1" maxOccurs="1" type="CompartmentType">
+            
+          </xs:element>
+          <xs:element name="rule" minOccurs="1" maxOccurs="1" type="GraphCompartmentRule">
             
           </xs:element>
           <xs:element name="expression" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="xpath" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-          <xs:element name="xpathUsage" minOccurs="0" maxOccurs="1" type="XPathUsageType">
-            
-          </xs:element>
-          <xs:element name="target" minOccurs="0" maxOccurs="unbounded" type="ResourceType">
-            
-          </xs:element>
-          <xs:element name="comparator" minOccurs="0" maxOccurs="unbounded" type="SearchComparator">
-            
-          </xs:element>
-          <xs:element name="modifier" minOccurs="0" maxOccurs="unbounded" type="SearchModifierCode">
-            
-          </xs:element>
-          <xs:element name="chain" minOccurs="0" maxOccurs="unbounded" type="string">
-            
-          </xs:element>
-          <xs:element name="component" type="SearchParameter.Component" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="SearchParameter.Component">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="definition" minOccurs="1" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="expression" minOccurs="1" maxOccurs="1" type="string">
-            
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="XPathUsageType-list">
+  <xs:simpleType name="GraphCompartmentRule-list">
     <xs:restriction base="code-primitive">
-      <xs:enumeration value="normal">
+      <xs:enumeration value="identical">
         
       </xs:enumeration>
-      <xs:enumeration value="phonetic">
+      <xs:enumeration value="matching">
         
       </xs:enumeration>
-      <xs:enumeration value="nearby">
+      <xs:enumeration value="different">
         
       </xs:enumeration>
-      <xs:enumeration value="distance">
-        
-      </xs:enumeration>
-      <xs:enumeration value="other">
+      <xs:enumeration value="custom">
         
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:complexType name="XPathUsageType">
+  <xs:complexType name="GraphCompartmentRule">
     
     <xs:complexContent>
       <xs:extension base="Element">
-        <xs:attribute name="value" type="XPathUsageType-list" use="optional"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="SearchModifierCode-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="missing">
-        
-      </xs:enumeration>
-      <xs:enumeration value="exact">
-        
-      </xs:enumeration>
-      <xs:enumeration value="contains">
-        
-      </xs:enumeration>
-      <xs:enumeration value="not">
-        
-      </xs:enumeration>
-      <xs:enumeration value="text">
-        
-      </xs:enumeration>
-      <xs:enumeration value="in">
-        
-      </xs:enumeration>
-      <xs:enumeration value="not-in">
-        
-      </xs:enumeration>
-      <xs:enumeration value="below">
-        
-      </xs:enumeration>
-      <xs:enumeration value="above">
-        
-      </xs:enumeration>
-      <xs:enumeration value="type">
-        
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="SearchModifierCode">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="SearchModifierCode-list" use="optional"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="SearchComparator-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="eq">
-        
-      </xs:enumeration>
-      <xs:enumeration value="ne">
-        
-      </xs:enumeration>
-      <xs:enumeration value="gt">
-        
-      </xs:enumeration>
-      <xs:enumeration value="lt">
-        
-      </xs:enumeration>
-      <xs:enumeration value="ge">
-        
-      </xs:enumeration>
-      <xs:enumeration value="le">
-        
-      </xs:enumeration>
-      <xs:enumeration value="sa">
-        
-      </xs:enumeration>
-      <xs:enumeration value="eb">
-        
-      </xs:enumeration>
-      <xs:enumeration value="ap">
-        
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="SearchComparator">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="SearchComparator-list" use="optional"/>
+        <xs:attribute name="value" type="GraphCompartmentRule-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

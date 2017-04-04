@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
+  Generated on Tue, Mar 21, 2017 06:09+1100 for FHIR v3.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -44,29 +44,33 @@
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
-          <xs:element name="patient" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="source" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
-            
-          </xs:element>
           <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
             
           </xs:element>
           <xs:element name="status" minOccurs="0" maxOccurs="1" type="SupplyRequestStatus">
             
           </xs:element>
-          <xs:element name="kind" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="category" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="priority" minOccurs="0" maxOccurs="1" type="RequestPriority">
+            
+          </xs:element>
+          <xs:element name="orderedItem" type="SupplyRequest.OrderedItem" minOccurs="0" maxOccurs="1">
             
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1">
             
-            <xs:element name="orderedItemCodeableConcept" type="CodeableConcept"/>
-            <xs:element name="orderedItemReference" type="Reference"/>
+            <xs:element name="occurrenceDateTime" type="dateTime"/>
+            <xs:element name="occurrencePeriod" type="Period"/>
+            <xs:element name="occurrenceTiming" type="Timing"/>
           </xs:choice>
+          <xs:element name="authoredOn" minOccurs="0" maxOccurs="1" type="dateTime">
+            
+          </xs:element>
+          <xs:element name="requester" type="SupplyRequest.Requester" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
           <xs:element name="supplier" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
@@ -75,22 +79,42 @@
             <xs:element name="reasonCodeableConcept" type="CodeableConcept"/>
             <xs:element name="reasonReference" type="Reference"/>
           </xs:choice>
-          <xs:element name="when" type="SupplyRequest.When" minOccurs="0" maxOccurs="1">
+          <xs:element name="deliverFrom" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="deliverTo" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="SupplyRequest.When">
+  <xs:complexType name="SupplyRequest.OrderedItem">
     
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="code" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="quantity" minOccurs="1" maxOccurs="1" type="Quantity">
             
           </xs:element>
-          <xs:element name="schedule" minOccurs="0" maxOccurs="1" type="Timing">
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="itemCodeableConcept" type="CodeableConcept"/>
+            <xs:element name="itemReference" type="Reference"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SupplyRequest.Requester">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="agent" minOccurs="1" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="onBehalfOf" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
         </xs:sequence>
@@ -99,16 +123,25 @@
   </xs:complexType>
   <xs:simpleType name="SupplyRequestStatus-list">
     <xs:restriction base="code-primitive">
-      <xs:enumeration value="requested">
+      <xs:enumeration value="draft">
+        
+      </xs:enumeration>
+      <xs:enumeration value="active">
+        
+      </xs:enumeration>
+      <xs:enumeration value="suspended">
+        
+      </xs:enumeration>
+      <xs:enumeration value="cancelled">
         
       </xs:enumeration>
       <xs:enumeration value="completed">
         
       </xs:enumeration>
-      <xs:enumeration value="failed">
+      <xs:enumeration value="entered-in-error">
         
       </xs:enumeration>
-      <xs:enumeration value="cancelled">
+      <xs:enumeration value="unknown">
         
       </xs:enumeration>
     </xs:restriction>

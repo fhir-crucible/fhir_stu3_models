@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
+  Generated on Tue, Mar 21, 2017 06:09+1100 for FHIR v3.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -68,6 +68,9 @@
           <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
+          <xs:element name="publisher" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
           <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
             
           </xs:element>
@@ -98,9 +101,6 @@
           <xs:element name="contributor" minOccurs="0" maxOccurs="unbounded" type="Contributor">
             
           </xs:element>
-          <xs:element name="publisher" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
           <xs:element name="contact" minOccurs="0" maxOccurs="unbounded" type="ContactDetail">
             
           </xs:element>
@@ -116,13 +116,13 @@
           <xs:element name="disclaimer" minOccurs="0" maxOccurs="1" type="markdown">
             
           </xs:element>
-          <xs:element name="scoring" minOccurs="0" maxOccurs="1" type="MeasureScoring">
+          <xs:element name="scoring" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="compositeScoring" minOccurs="0" maxOccurs="1" type="CompositeMeasureScoring">
+          <xs:element name="compositeScoring" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="type" minOccurs="0" maxOccurs="unbounded" type="MeasureType">
+          <xs:element name="type" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="riskAdjustment" minOccurs="0" maxOccurs="1" type="string">
@@ -140,7 +140,7 @@
           <xs:element name="improvementNotation" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="definition" minOccurs="0" maxOccurs="1" type="markdown">
+          <xs:element name="definition" minOccurs="0" maxOccurs="unbounded" type="markdown">
             
           </xs:element>
           <xs:element name="guidance" minOccurs="0" maxOccurs="1" type="markdown">
@@ -188,10 +188,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="MeasurePopulationType">
+          <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
             
           </xs:element>
-          <xs:element name="identifier" minOccurs="1" maxOccurs="1" type="Identifier">
+          <xs:element name="code" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
@@ -212,7 +212,7 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="identifier" minOccurs="1" maxOccurs="1" type="Identifier">
+          <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
             
           </xs:element>
           <xs:element name="criteria" minOccurs="0" maxOccurs="1" type="string">
@@ -230,10 +230,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="identifier" minOccurs="1" maxOccurs="1" type="Identifier">
+          <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
             
           </xs:element>
-          <xs:element name="usage" minOccurs="0" maxOccurs="unbounded" type="MeasureDataUsage">
+          <xs:element name="usage" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="criteria" minOccurs="0" maxOccurs="1" type="string">
@@ -243,138 +243,6 @@
             
           </xs:element>
         </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="CompositeMeasureScoring-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="opportunity">
-        
-      </xs:enumeration>
-      <xs:enumeration value="all-or-nothing">
-        
-      </xs:enumeration>
-      <xs:enumeration value="linear">
-        
-      </xs:enumeration>
-      <xs:enumeration value="weighted">
-        
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="CompositeMeasureScoring">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="CompositeMeasureScoring-list" use="optional"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="MeasureType-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="process">
-        
-      </xs:enumeration>
-      <xs:enumeration value="outcome">
-        
-      </xs:enumeration>
-      <xs:enumeration value="structure">
-        
-      </xs:enumeration>
-      <xs:enumeration value="patient-reported-outcome">
-        
-      </xs:enumeration>
-      <xs:enumeration value="composite">
-        
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="MeasureType">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="MeasureType-list" use="optional"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="MeasureDataUsage-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="supplemental-data">
-        
-      </xs:enumeration>
-      <xs:enumeration value="risk-adjustment-factor">
-        
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="MeasureDataUsage">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="MeasureDataUsage-list" use="optional"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="MeasureScoring-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="proportion">
-        
-      </xs:enumeration>
-      <xs:enumeration value="ratio">
-        
-      </xs:enumeration>
-      <xs:enumeration value="continuous-variable">
-        
-      </xs:enumeration>
-      <xs:enumeration value="cohort">
-        
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="MeasureScoring">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="MeasureScoring-list" use="optional"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="MeasurePopulationType-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="initial-population">
-        
-      </xs:enumeration>
-      <xs:enumeration value="numerator">
-        
-      </xs:enumeration>
-      <xs:enumeration value="numerator-exclusion">
-        
-      </xs:enumeration>
-      <xs:enumeration value="denominator">
-        
-      </xs:enumeration>
-      <xs:enumeration value="denominator-exclusion">
-        
-      </xs:enumeration>
-      <xs:enumeration value="denominator-exception">
-        
-      </xs:enumeration>
-      <xs:enumeration value="measure-population">
-        
-      </xs:enumeration>
-      <xs:enumeration value="measure-population-exclusion">
-        
-      </xs:enumeration>
-      <xs:enumeration value="measure-observation">
-        
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="MeasurePopulationType">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="MeasurePopulationType-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
