@@ -50,13 +50,6 @@
             <display value="Heart valve replacement"/> 
         </coding> 
     </code>
-  <timingTiming>
-    <event>
-      <extension url="http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression">
-        <valueString value="Now()"/>
-      </extension>
-    </event>
-  </timingTiming>
   <location>
     <reference value="Location/1"/>
   </location>

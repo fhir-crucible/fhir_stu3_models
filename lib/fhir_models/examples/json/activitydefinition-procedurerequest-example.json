@@ -62,18 +62,6 @@
       }
     ]
   },
-  "timingTiming": {
-    "_event": [
-      {
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression",
-            "valueString": "Now()"
-          }
-        ]
-      }
-    ]
-  },
   "location": {
     "reference": "Location/1"
   },

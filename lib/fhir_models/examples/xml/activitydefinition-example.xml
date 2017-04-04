@@ -261,15 +261,6 @@
     </coding>
     <text value="Referral to service (procedure)"/>
   </code>
-  <timingTiming>
-    <event>
-	  <!--  The expression here specifies the value for the timing of the resulting resource.
-		   In this case, referralRequest.fulfillmentTime.start  -->
-      <extension url="http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression">
-        <valueString value="Now()"/>
-      </extension>
-    </event>
-  </timingTiming>
   <participant>
 		<type value="practitioner"/>
   </participant>
