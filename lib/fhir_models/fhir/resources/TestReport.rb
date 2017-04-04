@@ -4,22 +4,23 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = ['identifier', 'issued', 'name', 'participant', 'tester', 'testscript']
+    SEARCH_PARAMS = ['identifier', 'issued', 'participant', 'result', 'tester', 'testscript']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'TestReport.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'TestReport.meta', 'min'=>0, 'max'=>1},
       'implicitRules' => {'type'=>'uri', 'path'=>'TestReport.implicitRules', 'min'=>0, 'max'=>1},
-      'language' => {'valid_codes'=>{'urn:ietf:bcp:47'=>['bn', 'cs', 'da', 'de', 'de-AT', 'de-CH', 'de-DE', 'el', 'en', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-NZ', 'en-SG', 'en-US', 'es', 'es-AR', 'es-ES', 'es-UY', 'fi', 'fr', 'fr-BE', 'fr-CH', 'fr-FR', 'fy', 'fy-NL', 'hr', 'it', 'it-CH', 'it-IT', 'ja', 'ko', 'nl', 'nl-BE', 'nl-NL', 'no', 'no-NO', 'pt', 'pt-BR', 'ru', 'ru-RU', 'sr', 'sr-SP', 'sv', 'sv-SE', 'te', 'zh', 'zh-CN', 'zh-HK', 'zh-SG', 'zh-TW']}, 'type'=>'code', 'path'=>'TestReport.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}},
+      'language' => {'valid_codes'=>{'urn:ietf:bcp:47'=>['ar', 'bn', 'cs', 'da', 'de', 'de-AT', 'de-CH', 'de-DE', 'el', 'en', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-NZ', 'en-SG', 'en-US', 'es', 'es-AR', 'es-ES', 'es-UY', 'fi', 'fr', 'fr-BE', 'fr-CH', 'fr-FR', 'fy', 'fy-NL', 'hi', 'hr', 'it', 'it-CH', 'it-IT', 'ja', 'ko', 'nl', 'nl-BE', 'nl-NL', 'no', 'no-NO', 'pa', 'pt', 'pt-BR', 'ru', 'ru-RU', 'sr', 'sr-SP', 'sv', 'sv-SE', 'te', 'zh', 'zh-CN', 'zh-HK', 'zh-SG', 'zh-TW']}, 'type'=>'code', 'path'=>'TestReport.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}},
       'text' => {'type'=>'Narrative', 'path'=>'TestReport.text', 'min'=>0, 'max'=>1},
       'contained' => {'type'=>'Resource', 'path'=>'TestReport.contained', 'min'=>0, 'max'=>Float::INFINITY},
       'extension' => {'type'=>'Extension', 'path'=>'TestReport.extension', 'min'=>0, 'max'=>Float::INFINITY},
       'modifierExtension' => {'type'=>'Extension', 'path'=>'TestReport.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
       'identifier' => {'type'=>'Identifier', 'path'=>'TestReport.identifier', 'min'=>0, 'max'=>1},
       'name' => {'type'=>'string', 'path'=>'TestReport.name', 'min'=>0, 'max'=>1},
-      'status' => {'valid_codes'=>{'http://hl7.org/fhir/report-status-codes'=>['complete', 'pending', 'error', 'complete', 'pending', 'error']}, 'type'=>'code', 'path'=>'TestReport.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/report-status-codes'}},
+      'status' => {'valid_codes'=>{'http://hl7.org/fhir/report-status-codes'=>['completed', 'in-progress', 'waiting', 'stopped', 'entered-in-error', 'completed', 'in-progress', 'waiting', 'stopped', 'entered-in-error']}, 'type'=>'code', 'path'=>'TestReport.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/report-status-codes'}},
+      'testScript' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/TestScript'], 'type'=>'Reference', 'path'=>'TestReport.testScript', 'min'=>1, 'max'=>1},
+      'result' => {'valid_codes'=>{'http://hl7.org/fhir/report-result-codes'=>['pass', 'fail', 'pending', 'pass', 'fail', 'pending']}, 'type'=>'code', 'path'=>'TestReport.result', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/report-result-codes'}},
       'score' => {'type'=>'decimal', 'path'=>'TestReport.score', 'min'=>0, 'max'=>1},
       'tester' => {'type'=>'string', 'path'=>'TestReport.tester', 'min'=>0, 'max'=>1},
-      'testScript' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/TestScript'], 'type'=>'Reference', 'path'=>'TestReport.testScript', 'min'=>1, 'max'=>1},
       'issued' => {'type'=>'dateTime', 'path'=>'TestReport.issued', 'min'=>0, 'max'=>1},
       'participant' => {'type'=>'TestReport::Participant', 'path'=>'TestReport.participant', 'min'=>0, 'max'=>Float::INFINITY},
       'setup' => {'type'=>'TestReport::Setup', 'path'=>'TestReport.setup', 'min'=>0, 'max'=>1},
@@ -83,7 +84,7 @@ module FHIR
             'id' => {'type'=>'string', 'path'=>'Operation.id', 'min'=>0, 'max'=>1},
             'extension' => {'type'=>'Extension', 'path'=>'Operation.extension', 'min'=>0, 'max'=>Float::INFINITY},
             'modifierExtension' => {'type'=>'Extension', 'path'=>'Operation.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-            'result' => {'valid_codes'=>{'http://hl7.org/fhir/report-result-codes'=>['pass', 'skip', 'fail', 'warning', 'error', 'pass', 'skip', 'fail', 'warning', 'error']}, 'type'=>'code', 'path'=>'Operation.result', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/report-result-codes'}},
+            'result' => {'valid_codes'=>{'http://hl7.org/fhir/report-action-result-codes'=>['pass', 'skip', 'fail', 'warning', 'error', 'pass', 'skip', 'fail', 'warning', 'error']}, 'type'=>'code', 'path'=>'Operation.result', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/report-action-result-codes'}},
             'message' => {'type'=>'markdown', 'path'=>'Operation.message', 'min'=>0, 'max'=>1},
             'detail' => {'type'=>'uri', 'path'=>'Operation.detail', 'min'=>0, 'max'=>1}
           }
@@ -105,7 +106,7 @@ module FHIR
             'id' => {'type'=>'string', 'path'=>'Assert.id', 'min'=>0, 'max'=>1},
             'extension' => {'type'=>'Extension', 'path'=>'Assert.extension', 'min'=>0, 'max'=>Float::INFINITY},
             'modifierExtension' => {'type'=>'Extension', 'path'=>'Assert.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-            'result' => {'valid_codes'=>{'http://hl7.org/fhir/report-result-codes'=>['pass', 'skip', 'fail', 'warning', 'error', 'pass', 'skip', 'fail', 'warning', 'error']}, 'type'=>'code', 'path'=>'Assert.result', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/report-result-codes'}},
+            'result' => {'valid_codes'=>{'http://hl7.org/fhir/report-action-result-codes'=>['pass', 'skip', 'fail', 'warning', 'error', 'pass', 'skip', 'fail', 'warning', 'error']}, 'type'=>'code', 'path'=>'Assert.result', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/report-action-result-codes'}},
             'message' => {'type'=>'markdown', 'path'=>'Assert.message', 'min'=>0, 'max'=>1},
             'detail' => {'type'=>'string', 'path'=>'Assert.detail', 'min'=>0, 'max'=>1}
           }
@@ -220,9 +221,10 @@ module FHIR
     attr_accessor :identifier        # 0-1 Identifier
     attr_accessor :name              # 0-1 string
     attr_accessor :status            # 1-1 code
+    attr_accessor :testScript        # 1-1 Reference(TestScript)
+    attr_accessor :result            # 1-1 code
     attr_accessor :score             # 0-1 decimal
     attr_accessor :tester            # 0-1 string
-    attr_accessor :testScript        # 1-1 Reference(TestScript)
     attr_accessor :issued            # 0-1 dateTime
     attr_accessor :participant       # 0-* [ TestReport::Participant ]
     attr_accessor :setup             # 0-1 TestReport::Setup

@@ -4,18 +4,19 @@ module FHIR
     include FHIR::Json
     include FHIR::Xml
 
-    SEARCH_PARAMS = ['email', 'phone', 'telecom', 'endpoint', 'identifier', 'location', 'organization', 'practitioner', 'role', 'specialty']
+    SEARCH_PARAMS = ['email', 'phone', 'telecom', 'active', 'date', 'endpoint', 'identifier', 'location', 'organization', 'practitioner', 'role', 'service', 'specialty']
     METADATA = {
       'id' => {'type'=>'id', 'path'=>'PractitionerRole.id', 'min'=>0, 'max'=>1},
       'meta' => {'type'=>'Meta', 'path'=>'PractitionerRole.meta', 'min'=>0, 'max'=>1},
       'implicitRules' => {'type'=>'uri', 'path'=>'PractitionerRole.implicitRules', 'min'=>0, 'max'=>1},
-      'language' => {'valid_codes'=>{'urn:ietf:bcp:47'=>['bn', 'cs', 'da', 'de', 'de-AT', 'de-CH', 'de-DE', 'el', 'en', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-NZ', 'en-SG', 'en-US', 'es', 'es-AR', 'es-ES', 'es-UY', 'fi', 'fr', 'fr-BE', 'fr-CH', 'fr-FR', 'fy', 'fy-NL', 'hr', 'it', 'it-CH', 'it-IT', 'ja', 'ko', 'nl', 'nl-BE', 'nl-NL', 'no', 'no-NO', 'pt', 'pt-BR', 'ru', 'ru-RU', 'sr', 'sr-SP', 'sv', 'sv-SE', 'te', 'zh', 'zh-CN', 'zh-HK', 'zh-SG', 'zh-TW']}, 'type'=>'code', 'path'=>'PractitionerRole.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}},
+      'language' => {'valid_codes'=>{'urn:ietf:bcp:47'=>['ar', 'bn', 'cs', 'da', 'de', 'de-AT', 'de-CH', 'de-DE', 'el', 'en', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-NZ', 'en-SG', 'en-US', 'es', 'es-AR', 'es-ES', 'es-UY', 'fi', 'fr', 'fr-BE', 'fr-CH', 'fr-FR', 'fy', 'fy-NL', 'hi', 'hr', 'it', 'it-CH', 'it-IT', 'ja', 'ko', 'nl', 'nl-BE', 'nl-NL', 'no', 'no-NO', 'pa', 'pt', 'pt-BR', 'ru', 'ru-RU', 'sr', 'sr-SP', 'sv', 'sv-SE', 'te', 'zh', 'zh-CN', 'zh-HK', 'zh-SG', 'zh-TW']}, 'type'=>'code', 'path'=>'PractitionerRole.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}},
       'text' => {'type'=>'Narrative', 'path'=>'PractitionerRole.text', 'min'=>0, 'max'=>1},
       'contained' => {'type'=>'Resource', 'path'=>'PractitionerRole.contained', 'min'=>0, 'max'=>Float::INFINITY},
       'extension' => {'type'=>'Extension', 'path'=>'PractitionerRole.extension', 'min'=>0, 'max'=>Float::INFINITY},
       'modifierExtension' => {'type'=>'Extension', 'path'=>'PractitionerRole.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
       'identifier' => {'type'=>'Identifier', 'path'=>'PractitionerRole.identifier', 'min'=>0, 'max'=>Float::INFINITY},
       'active' => {'type'=>'boolean', 'path'=>'PractitionerRole.active', 'min'=>0, 'max'=>1},
+      'period' => {'type'=>'Period', 'path'=>'PractitionerRole.period', 'min'=>0, 'max'=>1},
       'practitioner' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner'], 'type'=>'Reference', 'path'=>'PractitionerRole.practitioner', 'min'=>0, 'max'=>1},
       'organization' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Organization'], 'type'=>'Reference', 'path'=>'PractitionerRole.organization', 'min'=>0, 'max'=>1},
       'code' => {'valid_codes'=>{'http://hl7.org/fhir/practitioner-role'=>['doctor', 'nurse', 'pharmacist', 'researcher', 'teacher', 'ict', 'doctor', 'nurse', 'pharmacist', 'researcher', 'teacher', 'ict']}, 'type'=>'CodeableConcept', 'path'=>'PractitionerRole.code', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/practitioner-role'}},
@@ -23,7 +24,6 @@ module FHIR
       'location' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Location'], 'type'=>'Reference', 'path'=>'PractitionerRole.location', 'min'=>0, 'max'=>Float::INFINITY},
       'healthcareService' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/HealthcareService'], 'type'=>'Reference', 'path'=>'PractitionerRole.healthcareService', 'min'=>0, 'max'=>Float::INFINITY},
       'telecom' => {'type'=>'ContactPoint', 'path'=>'PractitionerRole.telecom', 'min'=>0, 'max'=>Float::INFINITY},
-      'period' => {'type'=>'Period', 'path'=>'PractitionerRole.period', 'min'=>0, 'max'=>1},
       'availableTime' => {'type'=>'PractitionerRole::AvailableTime', 'path'=>'PractitionerRole.availableTime', 'min'=>0, 'max'=>Float::INFINITY},
       'notAvailable' => {'type'=>'PractitionerRole::NotAvailable', 'path'=>'PractitionerRole.notAvailable', 'min'=>0, 'max'=>Float::INFINITY},
       'availabilityExceptions' => {'type'=>'string', 'path'=>'PractitionerRole.availabilityExceptions', 'min'=>0, 'max'=>1},
@@ -84,6 +84,7 @@ module FHIR
     attr_accessor :modifierExtension      # 0-* [ Extension ]
     attr_accessor :identifier             # 0-* [ Identifier ]
     attr_accessor :active                 # 0-1 boolean
+    attr_accessor :period                 # 0-1 Period
     attr_accessor :practitioner           # 0-1 Reference(Practitioner)
     attr_accessor :organization           # 0-1 Reference(Organization)
     attr_accessor :code                   # 0-* [ CodeableConcept ]
@@ -91,7 +92,6 @@ module FHIR
     attr_accessor :location               # 0-* [ Reference(Location) ]
     attr_accessor :healthcareService      # 0-* [ Reference(HealthcareService) ]
     attr_accessor :telecom                # 0-* [ ContactPoint ]
-    attr_accessor :period                 # 0-1 Period
     attr_accessor :availableTime          # 0-* [ PractitionerRole::AvailableTime ]
     attr_accessor :notAvailable           # 0-* [ PractitionerRole::NotAvailable ]
     attr_accessor :availabilityExceptions # 0-1 string

@@ -39,7 +39,7 @@ module FHIR
         'periodUnit' => {'valid_codes'=>{'http://unitsofmeasure.org'=>['s', 'min', 'h', 'd', 'wk', 'mo', 'a']}, 'type'=>'code', 'path'=>'Repeat.periodUnit', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/units-of-time'}},
         'dayOfWeek' => {'valid_codes'=>{'http://hl7.org/fhir/days-of-week'=>['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']}, 'type'=>'code', 'path'=>'Repeat.dayOfWeek', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/days-of-week'}},
         'timeOfDay' => {'type'=>'time', 'path'=>'Repeat.timeOfDay', 'min'=>0, 'max'=>Float::INFINITY},
-        'when' => {'valid_codes'=>{'http://hl7.org/fhir/event-timing'=>['MORN', 'AFT', 'EVE', 'NIGHT', 'MORN', 'AFT', 'EVE', 'NIGHT'], 'http://hl7.org/fhir/v3/TimingEvent'=>['HS', 'WAKE', 'C', 'CM', 'CD', 'CV', 'AC', 'ACM', 'ACD', 'ACV', 'PC', 'PCM', 'PCD', 'PCV']}, 'type'=>'code', 'path'=>'Repeat.when', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/event-timing'}},
+        'when' => {'valid_codes'=>{'http://hl7.org/fhir/event-timing'=>['MORN', 'AFT', 'EVE', 'NIGHT', 'PHS', 'MORN', 'AFT', 'EVE', 'NIGHT', 'PHS'], 'http://hl7.org/fhir/v3/TimingEvent'=>['HS', 'WAKE', 'C', 'CM', 'CD', 'CV', 'AC', 'ACM', 'ACD', 'ACV', 'PC', 'PCM', 'PCD', 'PCV']}, 'type'=>'code', 'path'=>'Repeat.when', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/event-timing'}},
         'offset' => {'type'=>'unsignedInt', 'path'=>'Repeat.offset', 'min'=>0, 'max'=>1}
       }
 
@@ -60,7 +60,7 @@ module FHIR
       attr_accessor :periodUnit     # 0-1 code
       attr_accessor :dayOfWeek      # 0-* [ code ]
       attr_accessor :timeOfDay      # 0-* [ time ]
-      attr_accessor :when           # 0-1 code
+      attr_accessor :when           # 0-* [ code ]
       attr_accessor :offset         # 0-1 unsignedInt
     end
 
