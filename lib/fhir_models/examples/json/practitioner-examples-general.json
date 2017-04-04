@@ -7,6 +7,29 @@
   "type": "collection",
   "entry": [
     {
+      "fullUrl": "http://hl7.org/fhir/Practitioner/1",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "1",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Dr. Beverly Crusher</div>"
+        },
+        "name": [
+          {
+            "family": "Beverly",
+            "given": [
+              "Crusher"
+            ],
+            "prefix": [
+              "Dr"
+            ]
+          }
+        ],
+        "gender": "female"
+      }
+    },
+    {
       "fullUrl": "http://hl7.org/fhir/Practitioner/13",
       "resource": {
         "resourceType": "Practitioner",
@@ -56,14 +79,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -116,14 +132,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -176,14 +185,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -236,14 +238,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -296,14 +291,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -356,14 +344,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -416,14 +397,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -476,14 +450,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -536,14 +503,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -596,14 +556,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -656,14 +609,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -716,14 +662,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -776,14 +715,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -836,14 +768,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -896,14 +821,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -956,14 +874,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -1016,14 +927,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -1076,14 +980,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -1136,14 +1033,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -1196,14 +1086,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -1256,14 +1139,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -1316,14 +1192,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -1376,14 +1245,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -1436,14 +1298,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -1496,14 +1351,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -1556,14 +1404,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -1616,14 +1457,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -1676,14 +1510,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -1736,14 +1563,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -1796,14 +1616,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -1856,14 +1669,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -1916,14 +1722,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -1976,14 +1775,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -2036,14 +1828,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -2096,14 +1881,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -2156,14 +1934,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -2216,14 +1987,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -2276,14 +2040,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -2336,14 +2093,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -2396,14 +2146,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -2456,14 +2199,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -2516,14 +2252,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -2576,14 +2305,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -2636,14 +2358,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -2696,14 +2411,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -2756,14 +2464,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -2816,14 +2517,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -2876,14 +2570,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -2936,14 +2623,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -2996,14 +2676,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -3056,14 +2729,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -3116,14 +2782,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -3176,14 +2835,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -3236,14 +2888,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -3296,14 +2941,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -3356,14 +2994,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     },
     {
@@ -3416,14 +3047,7 @@
             ]
           }
         ],
-        "gender": "male",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "male"
       }
     },
     {
@@ -3476,14 +3100,7 @@
             ]
           }
         ],
-        "gender": "female",
-        "role": [
-          {
-            "organization": {
-              "reference": "Organization/hl7"
-            }
-          }
-        ]
+        "gender": "female"
       }
     }
   ]

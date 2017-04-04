@@ -228,11 +228,11 @@
     </Goal>
   </contained>
   <status value="active"/>
+  <intent value="plan"/>
   <subject>
     <reference value="Patient/1"/>
     <display value="Eve Everywoman"/>
   </subject>
-  <modified value="2012-09-10"/>
   <addresses>
     <reference value="#p1"/>
     <!--  Local reference  -->
@@ -269,7 +269,7 @@
       <text value="Eve eats one meal a day with her parents"/>
     </progress>
     <detail>
-      <extension url="http://example.org/DoNotUse/StructureDefinition/RevisionDate">
+      <extension url="http://example.org/fhir/StructureDefinition/RevisionDate">
         <valueDate value="2012-09-10"/>
       </extension>
       <category>
@@ -295,7 +295,7 @@
       <text value="Eve will sleep in her bed more often than the couch"/>
     </progress>
     <detail>
-      <extension url="http://example.org/DoNotUse/General/RevisionDate">
+      <extension url="http://example.org/fhir/StructureDefinition/RevisionDate">
         <valueDate value="2012-09-10"/>
       </extension>
       <category>
@@ -317,7 +317,7 @@
   </activity>
   <activity>
     <detail>
-      <extension url="http://example.org/DoNotUse/General/RevisionDate">
+      <extension url="http://example.org/fhir/StructureDefinition/RevisionDate">
         <valueDate value="2012-09-10"/>
       </extension>
       <category>
@@ -347,7 +347,7 @@
       <text value="Eve is still walking the dogs."/>
     </progress>
     <detail>
-      <extension url="http://example.org/DoNotUse/General/RevisionDate">
+      <extension url="http://example.org/fhir/StructureDefinition/RevisionDate">
         <valueDate value="2012-09-10"/>
       </extension>
       <category>
@@ -377,7 +377,7 @@
       <text value="Eve did not walk to her parents the last week, but has plans to start again"/>
     </progress>
     <detail>
-      <extension url="http://example.org/DoNotUse/General/RevisionDate">
+      <extension url="http://example.org/fhir/StructureDefinition/RevisionDate">
         <valueDate value="2012-09-10"/>
       </extension>
       <category>
@@ -399,7 +399,7 @@
   </activity>
   <activity>
     <detail>
-      <extension url="http://example.org/DoNotUse/General/RevisionDate">
+      <extension url="http://example.org/fhir/StructureDefinition/RevisionDate">
         <valueDate value="2012-08-13"/>
       </extension>
       <category>
@@ -429,7 +429,7 @@
       <text value="Since her skin is improved Eve has not been using the light treatment as often, maybe once a week.  She would like to increase to 3 times a week again"/>
     </progress>
     <detail>
-      <extension url="http://example.org/DoNotUse/General/RevisionDate">
+      <extension url="http://example.org/fhir/StructureDefinition/RevisionDate">
         <valueDate value="2012-08-27"/>
       </extension>
       <category>
@@ -455,7 +455,7 @@
       <text value="Eve created a chart as a reminer to take the medications that do not fit in her pill box"/>
     </progress>
     <detail>
-      <extension url="http://example.org/DoNotUse/General/RevisionDate">
+      <extension url="http://example.org/fhir/StructureDefinition/RevisionDate">
         <valueDate value="2012-09-10"/>
       </extension>
       <category>
@@ -485,7 +485,7 @@
       <text value="Eve prefers to focus on walking at this time"/>
     </progress>
     <detail>
-      <extension url="http://example.org/DoNotUse/General/RevisionDate">
+      <extension url="http://example.org/fhir/StructureDefinition/RevisionDate">
         <valueDate value="2012-08-23"/>
       </extension>
       <category>
@@ -507,7 +507,7 @@
   </activity>
   <activity>
     <detail>
-      <extension url="http://example.org/DoNotUse/General/RevisionDate">
+      <extension url="http://example.org/fhir/StructureDefinition/RevisionDate">
         <valueDate value="2012-07-23"/>
       </extension>
       <category>
@@ -533,7 +533,7 @@
       <text value="Eve now has some of her medications set up in pill packs by her pharmacist"/>
     </progress>
     <detail>
-      <extension url="http://example.org/DoNotUse/General/RevisionDate">
+      <extension url="http://example.org/fhir/StructureDefinition/RevisionDate">
         <valueDate value="2012-07-16"/>
       </extension>
       <category>
@@ -563,7 +563,7 @@
       <text value="hold until &quot;less busy&quot;"/>
     </progress>
     <detail>
-      <extension url="http://example.org/DoNotUse/General/RevisionDate">
+      <extension url="http://example.org/fhir/StructureDefinition/RevisionDate">
         <valueDate value="2012-08-13"/>
       </extension>
       <category>

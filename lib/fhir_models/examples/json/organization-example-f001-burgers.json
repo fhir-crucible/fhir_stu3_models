@@ -17,20 +17,22 @@
       "value": "17-0112278"
     }
   ],
-  "type": {
-    "coding": [
-      {
-        "system": "urn:oid:2.16.840.1.113883.2.4.15.1060",
-        "code": "V6",
-        "display": "University Medical Hospital"
-      },
-      {
-        "system": "http://hl7.org/fhir/organization-type",
-        "code": "prov",
-        "display": "Healthcare Provider"
-      }
-    ]
-  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "urn:oid:2.16.840.1.113883.2.4.15.1060",
+          "code": "V6",
+          "display": "University Medical Hospital"
+        },
+        {
+          "system": "http://hl7.org/fhir/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        }
+      ]
+    }
+  ],
   "name": "Burgers University Medical Center",
   "telecom": [
     {

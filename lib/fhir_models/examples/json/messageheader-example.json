@@ -5,14 +5,28 @@
     "status": "generated",
     "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>Update Person resource for Peter James CHALMERS (Jim), MRN: 12345 (Acme Healthcare)</p>\n    </div>"
   },
-  "timestamp": "2012-01-04T09:10:14Z",
   "event": {
-    "system": "http://hl7.org/fhir/message-type",
-    "code": "admin-update"
+    "system": "http://hl7.org/fhir/message-events",
+    "code": "admin-notify"
   },
-  "response": {
-    "identifier": "5015fe84-8e76-4526-89d8-44b322e8d4fb",
-    "code": "ok"
+  "destination": [
+    {
+      "name": "Acme Message Gateway",
+      "target": {
+        "reference": "Device/example"
+      },
+      "endpoint": "llp:10.11.12.14:5432"
+    }
+  ],
+  "sender": {
+    "reference": "Organization/1"
+  },
+  "timestamp": "2012-01-04T09:10:14Z",
+  "enterer": {
+    "reference": "Practitioner/example"
+  },
+  "author": {
+    "reference": "Practitioner/example"
   },
   "source": {
     "name": "Acme Central Patient Registry",
@@ -24,24 +38,6 @@
     },
     "endpoint": "llp:10.11.12.13:5432"
   },
-  "destination": [
-    {
-      "name": "Acme Message Gateway",
-      "target": {
-        "reference": "Device/example"
-      },
-      "endpoint": "llp:10.11.12.14:5432"
-    }
-  ],
-  "enterer": {
-    "reference": "Practitioner/example"
-  },
-  "author": {
-    "reference": "Practitioner/example"
-  },
-  "responsible": {
-    "reference": "Practitioner/example"
-  },
   "reason": {
     "coding": [
       {
@@ -50,7 +46,11 @@
       }
     ]
   },
-  "data": [
+  "response": {
+    "identifier": "5015fe84-8e76-4526-89d8-44b322e8d4fb",
+    "code": "ok"
+  },
+  "focus": [
     {
       "reference": "Patient/example"
     }

@@ -35,6 +35,7 @@
           "value": "ABC123"
         }
       ],
+      "status": "completed",
       "subject": {
         "reference": "Patient/1"
       }
@@ -52,26 +53,28 @@
     }
   ],
   "status": "completed",
-  "category": {
-    "coding": [
-      {
-        "system": "http://acme.org/messagetypes",
-        "code": "SolicitedAttachment"
-      }
-    ]
-  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://acme.org/messagetypes",
+          "code": "SolicitedAttachment"
+        }
+      ]
+    }
+  ],
   "subject": {
     "reference": "Patient/1"
-  },
-  "sent": "2016-06-12T18:01:10-08:00",
-  "sender": {
-    "reference": "#provider"
   },
   "recipient": [
     {
       "reference": "#payor"
     }
   ],
+  "sent": "2016-06-12T18:01:10-08:00",
+  "sender": {
+    "reference": "#provider"
+  },
   "payload": [
     {
       "contentAttachment": {

@@ -20,25 +20,10 @@
         ],
         "text": "gemcitabine"
       },
-      "dosageInstruction": [
+      "dosage": [
         {
-          "text": "1250 mg/m² IV over 30 minutes on days 1 and 8",
+          "text": "1250 mg/m² IV over 30 minutes",
           "timing": {
-            "extension": [
-              {
-                "url": "http://example.org/fhir/daysOfCycle",
-                "extension": [
-                  {
-                    "url": "day",
-                    "valueInteger": 1
-                  },
-                  {
-                    "url": "day",
-                    "valueInteger": 8
-                  }
-                ]
-              }
-            ],
             "repeat": {
               "duration": 30,
               "durationUnit": "min"
@@ -68,21 +53,10 @@
         ],
         "text": "CARBOplatin"
       },
-      "dosageInstruction": [
+      "dosage": [
         {
-          "text": "AUC 5 IV over 30 minutes on Day 1",
+          "text": "AUC 5 IV over 30 minutes",
           "timing": {
-            "extension": [
-              {
-                "url": "http://example.org/fhir/daysOfCycle",
-                "extension": [
-                  {
-                    "url": "day",
-                    "valueInteger": 1
-                  }
-                ]
-              }
-            ],
             "repeat": {
               "duration": 30,
               "durationUnit": "min"
@@ -116,6 +90,7 @@
   },
   "status": "draft",
   "experimental": true,
+  "publisher": "National Comprehensive Cancer Network, Inc.",
   "approvalDate": "2016-07-27",
   "lastReviewDate": "2016-07-27",
   "useContext": [
@@ -216,7 +191,6 @@
       "name": "Lee Surprenant"
     }
   ],
-  "publisher": "National Comprehensive Cancer Network, Inc.",
   "copyright": "All rights reserved.",
   "relatedArtifact": [
     {
@@ -238,22 +212,19 @@
       "url": "http://www.ncbi.nlm.nih.gov/pubmed/17437788"
     }
   ],
-  "actionDefinition": [
+  "action": [
     {
       "selectionBehavior": "exactly-one",
-      "actionDefinition": [
+      "action": [
         {
           "selectionBehavior": "all",
-          "actionDefinition": [
+          "action": [
             {
               "groupingBehavior": "sentence-group",
               "selectionBehavior": "exactly-one",
-              "actionDefinition": [
+              "action": [
                 {
-                  "actionIdentifier": {
-                    "system": "http://example.org/ordertemplates/KDN5",
-                    "value": "cycle-definition-1"
-                  },
+                  "id": "cycle-definition-1",
                   "textEquivalent": "21-day cycle for 6 cycles",
                   "timingTiming": {
                     "repeat": {
@@ -262,16 +233,50 @@
                       "durationUnit": "d"
                     }
                   },
-                  "actionDefinition": [
+                  "action": [
                     {
+                      "id": "action-1",
+                      "extension": [
+                        {
+                          "url": "http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle",
+                          "extension": [
+                            {
+                              "url": "day",
+                              "valueInteger": 1
+                            },
+                            {
+                              "url": "day",
+                              "valueInteger": 8
+                            }
+                          ]
+                        }
+                      ],
                       "textEquivalent": "Gemcitabine 1250 mg/m² IV over 30 minutes on days 1 and 8",
-                      "activityDefinition": {
+                      "definition": {
                         "reference": "#1111"
                       }
                     },
                     {
+                      "id": "action-2",
+                      "extension": [
+                        {
+                          "url": "http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle",
+                          "extension": [
+                            {
+                              "url": "day",
+                              "valueInteger": 1
+                            }
+                          ]
+                        }
+                      ],
                       "textEquivalent": "CARBOplatin AUC 5 IV over 30 minutes on Day 1",
-                      "activityDefinition": {
+                      "relatedAction": [
+                        {
+                          "actionId": "action-1",
+                          "relationship": "concurrent-with-start"
+                        }
+                      ],
+                      "definition": {
                         "reference": "#2222"
                       }
                     }

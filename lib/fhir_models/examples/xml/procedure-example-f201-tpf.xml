@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><Procedure xmlns="http://hl7.org/fhir">
   <id value="f201"/>
-  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f201</p><p><b>status</b>: completed</p><p><b>code</b>: Chemotherapy <span>(Details : {SNOMED CT code &#39;367336001&#39; = &#39;Chemotherapy (procedure)&#39;, given as &#39;Chemotherapy&#39;})</span></p><p><b>subject</b>: <a>Roel</a></p><p><b>encounter</b>: <a>Roel&#39;s encounter on January 28th, 2013</a></p><p><b>performed</b>: Jan 28, 2013 1:31:00 PM --&gt; Jan 28, 2013 2:27:00 PM</p><h3>Performers</h3><table><tr><td>-</td><td><b>Actor</b></td><td><b>Role</b></td></tr><tr><td>*</td><td><a>Dokter Bronsig</a></td><td>Medical oncologist <span>(Details : {SNOMED CT code &#39;310512001&#39; = &#39;Medical oncologist (occupation)&#39;, given as &#39;Medical oncologist&#39;})</span></td></tr></table><p><b>reasonCode</b>: DiagnosticReport/f201 <span>(Details )</span></p><p><b>bodySite</b>: Sphenoid bone <span>(Details : {SNOMED CT code &#39;272676008&#39; = &#39;Entire sphenoid bone (body structure)&#39;, given as &#39;Sphenoid bone&#39;})</span></p><p><b>notes</b>: Eerste neo-adjuvante TPF-kuur bij groot proces in sphenoid met intracraniale uitbreiding.</p></div></text><status value="completed"/>
+  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f201</p><p><b>status</b>: completed</p><p><b>code</b>: Chemotherapy <span>(Details : {SNOMED CT code &#39;367336001&#39; = &#39;Chemotherapy&#39;, given as &#39;Chemotherapy&#39;})</span></p><p><b>subject</b>: <a>Roel</a></p><p><b>context</b>: <a>Roel&#39;s encounter on January 28th, 2013</a></p><p><b>performed</b>: 28/01/2013 1:31:00 PM --&gt; 28/01/2013 2:27:00 PM</p><h3>Performers</h3><table><tr><td>-</td><td><b>Role</b></td><td><b>Actor</b></td></tr><tr><td>*</td><td>Medical oncologist <span>(Details : {SNOMED CT code &#39;310512001&#39; = &#39;Medical oncologist&#39;, given as &#39;Medical oncologist&#39;})</span></td><td><a>Dokter Bronsig</a></td></tr></table><p><b>reasonCode</b>: DiagnosticReport/f201 <span>(Details )</span></p><p><b>bodySite</b>: Sphenoid bone <span>(Details : {SNOMED CT code &#39;272676008&#39; = &#39;Entire sphenoid bone&#39;, given as &#39;Sphenoid bone&#39;})</span></p><p><b>note</b>: Eerste neo-adjuvante TPF-kuur bij groot proces in sphenoid met intracraniale uitbreiding.</p></div></text><status value="completed"/>
   <code>
     <!--  The procedure is TPF-based chemotherapy  -->
     <coding>
@@ -14,19 +14,15 @@
     <reference value="Patient/f201"/>
     <display value="Roel"/>
   </subject>
-  <encounter>
+  <context>
     <reference value="Encounter/f202"/>
     <display value="Roel&#39;s encounter on January 28th, 2013"/>
-  </encounter>
+  </context>
   <performedPeriod>
     <start value="2013-01-28T13:31:00+01:00"/>
     <end value="2013-01-28T14:27:00+01:00"/>
   </performedPeriod>
   <performer>
-    <actor>
-      <reference value="Practitioner/f201"/>
-      <display value="Dokter Bronsig"/>
-    </actor>
     <role>
       <coding>
         <system value="http://snomed.info/sct"/>
@@ -34,6 +30,10 @@
         <display value="Medical oncologist"/>
       </coding>
     </role>
+	<actor>
+      <reference value="Practitioner/f201"/>
+      <display value="Dokter Bronsig"/>
+    </actor>
   </performer>
   <reasonCode>
     <text value="DiagnosticReport/f201"/>
@@ -47,7 +47,7 @@
       </coding>
   </bodySite>
   <!--  No outcomes, reports, complications or follow-ups were available  -->
-  <notes> 
+  <note> 
     <text value="Eerste neo-adjuvante TPF-kuur bij groot proces in sphenoid met intracraniale uitbreiding."/>
-  </notes> 
+  </note> 
 </Procedure>

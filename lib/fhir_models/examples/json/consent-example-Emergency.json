@@ -3,22 +3,24 @@
   "id": "consent-example-Emergency",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t<p>\n\tWithhold Authorization for Treatment except for Emegency Treatment\n\t</p><p>\n    Patient &quot;P. van de Heuvel&quot; wishes to have no data at the Good Health Psychiatric Hospital \n   available except for Emergency treatment use.\n   </p>\n   </div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t<p>\n\tWithhold Authorization for Treatment except for Emegency Treatment\n\t</p><p>\n    Patient &quot;P. van de Heuvel&quot; wishes to have no data at the Good Health Psychiatric Hospital \n   available except for Emergency treatment use.\n   An overall Deny consent Directive, with an exception &quot;Permit&quot; of purposeOfUse &quot;ETREAT&quot; \n   at &quot;Good Health&quot; hospital, and exception &quot;Deny&quot; all other purposeOfUse from good health hospital.\n   </p>\n   </div>"
   },
   "status": "active",
-  "dateTime": "2015-11-18",
   "patient": {
     "reference": "Patient/f001",
     "display": "P. van de Heuvel"
   },
-  "organization": {
-    "reference": "Organization/Infoway",
-    "display": "Canada Infoway"
-  },
+  "dateTime": "2015-11-18",
+  "organization": [
+    {
+      "reference": "Organization/Infoway",
+      "display": "Canada Infoway"
+    }
+  ],
   "sourceAttachment": {
     "title": "The terms of the consent in lawyer speak."
   },
-  "policy": "http://hl7.org/fhir/ConsentPolicy/opt-in",
+  "policyRule": "http://hl7.org/fhir/ConsentPolicy/opt-out",
   "except": [
     {
       "type": "permit",

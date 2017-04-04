@@ -3,23 +3,8 @@
   "id": "proband",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      \n      <p>\n        \n        <b>Annie Proband</b>: Female, born 1966-04-04\n      </p>\n    \n    </div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\n      <p>\n\n        <b>Annie Proband</b>: Female, born 1966-04-04\n      </p>\n\n    </div>"
   },
-  "extension": [
-    {
-      "url": "http://hl7.org/fhir/StructureDefinition/us-core-race",
-      "extension": [
-        {
-          "url": "ombCategory",
-          "valueCoding": {
-            "system": "http://hl7.org/fhir/v3/Race",
-            "code": "2106-3",
-            "display": "White"
-          }
-        }
-      ]
-    }
-  ],
   "identifier": [
     {
       "use": "usual",

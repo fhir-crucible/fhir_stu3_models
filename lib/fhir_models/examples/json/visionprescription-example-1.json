@@ -15,9 +15,20 @@
   "patient": {
     "reference": "Patient/example"
   },
+  "encounter": {
+    "reference": "Encounter/f001"
+  },
   "dateWritten": "2014-06-15",
   "prescriber": {
     "reference": "Practitioner/example"
+  },
+  "reasonCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://samplevisionreasoncodes.com",
+        "code": "myopia"
+      }
+    ]
   },
   "dispense": [
     {
@@ -29,13 +40,7 @@
           }
         ]
       },
-      "eye": {
-        "coding": [
-          {
-            "code": "right"
-          }
-        ]
-      },
+      "eye": "right",
       "cylinder": -2.25,
       "axis": 160,
       "add": 1.75,
@@ -49,7 +54,12 @@
         "code": "month"
       },
       "color": "green",
-      "brand": "OphthaGuard"
+      "brand": "OphthaGuard",
+      "note": [
+        {
+          "text": "Shade treatment for extreme light sensitivity"
+        }
+      ]
     },
     {
       "product": {
@@ -60,13 +70,7 @@
           }
         ]
       },
-      "eye": {
-        "coding": [
-          {
-            "code": "left"
-          }
-        ]
-      },
+      "eye": "left",
       "cylinder": -3.50,
       "axis": 160,
       "add": 1.75,
@@ -80,7 +84,12 @@
         "code": "month"
       },
       "color": "green",
-      "brand": "OphthaGuard"
+      "brand": "OphthaGuard",
+      "note": [
+        {
+          "text": "Shade treatment for extreme light sensitivity"
+        }
+      ]
     }
   ]
 }

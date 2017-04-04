@@ -8,7 +8,7 @@
   "identifier": [
     {
       "system": "http://xyz.com/codes/identifier",
-      "value": "AB9876"
+      "value": "AB98761"
     }
   ],
   "status": "active",
@@ -24,6 +24,7 @@
   "subscriber": {
     "reference": "Patient/5"
   },
+  "subscriberId": "AB9876",
   "beneficiary": {
     "reference": "Patient/5"
   },
@@ -43,7 +44,7 @@
       "reference": "Organization/2"
     }
   ],
-  "group": {
+  "grouping": {
     "group": "WESTAIR",
     "groupDisplay": "Western Airlines",
     "plan": "WESTAIR",
@@ -51,5 +52,12 @@
     "subPlan": "D15C9",
     "subPlanDisplay": "Platinum"
   },
-  "dependent": "1"
+  "dependent": "1",
+  "order": 2,
+  "network": "5",
+  "contract": [
+    {
+      "reference": "Contract/563818"
+    }
+  ]
 }

@@ -36,8 +36,8 @@
   "appointmentType": {
     "coding": [
       {
-        "system": "http://hl7.org/fhir/v2-0276",
-        "code": "walkin",
+        "system": "http://hl7.org/fhir/v2/0276",
+        "code": "WALKIN",
         "display": "A previously unscheduled walk-in visit"
       }
     ]

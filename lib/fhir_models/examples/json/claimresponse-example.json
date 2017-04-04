@@ -12,6 +12,9 @@
     }
   ],
   "status": "active",
+  "patient": {
+    "reference": "Patient/1"
+  },
   "created": "2014-08-16",
   "insurer": {
     "identifier": {
@@ -19,11 +22,14 @@
       "value": "555123"
     }
   },
+  "requestProvider": {
+    "reference": "Practitioner/1"
+  },
   "requestOrganization": {
     "reference": "Organization/1"
   },
   "request": {
-    "reference": "http://www.BenefitsInc.com/fhir/Claim/15476332402"
+    "reference": "http://www.BenefitsInc.com/fhir/oralhealthclaim/15476332402"
   },
   "outcome": {
     "coding": [
@@ -115,7 +121,7 @@
     "type": {
       "coding": [
         {
-          "system": "http://hl7.org/fhir/ValueSet/ex-paymenttype",
+          "system": "http://hl7.org/fhir/ex-paymenttype",
           "code": "complete"
         }
       ]

@@ -16,16 +16,16 @@
               Address: https://sqlonfhir-dstu2.azurewebsites.net/fhir</div>
         </text>
         <status value="active"/>
-        <name value="CarePlan repository"/>
-        <managingOrganization>
-          <display value="Telstra Health"/>
-        </managingOrganization>
         <connectionType>
            <system value="http://hl7.org/fhir/endpoint-connection-type"/>
            <code value="hl7-fhir-rest"/>
         </connectionType>
+        <name value="CarePlan repository"/>
+        <managingOrganization>
+          <display value="Telstra Health"/>
+        </managingOrganization>
         <!-- <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <system value="http://hl7.org/fhir/http-verb" />
           <code value="POST" />
         </method> -->
         <payloadType>
@@ -51,16 +51,16 @@
               Address: https://sqlonfhir-dstu2.azurewebsites.net/fhir</div>
         </text>
         <status value="active"/>
-        <name value="Questionnaire Destination"/>
-        <managingOrganization>
-          <display value="Telstra Health"/>
-        </managingOrganization>
         <connectionType>
            <system value="http://hl7.org/fhir/endpoint-connection-type"/>
            <code value="hl7-fhir-rest"/>
         </connectionType>
+        <name value="Questionnaire Destination"/>
+        <managingOrganization>
+          <display value="Telstra Health"/>
+        </managingOrganization>
         <!-- <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <system value="http://hl7.org/fhir/http-verb" />
           <code value="POST" />
         </method> -->
         <payloadType>
@@ -86,16 +86,16 @@
               Address: https://sqlonfhir-dstu2.azurewebsites.net/fhir</div>
         </text>
         <status value="active"/>
-        <name value="Referral Requests"/>
-        <managingOrganization>
-          <display value="Telstra Health"/>
-        </managingOrganization>
         <connectionType>
            <system value="http://hl7.org/fhir/endpoint-connection-type"/>
            <code value="hl7-fhir-rest"/>
         </connectionType>
+        <name value="Referral Requests"/>
+        <managingOrganization>
+          <display value="Telstra Health"/>
+        </managingOrganization>
         <!-- <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <system value="http://hl7.org/fhir/http-verb" />
           <code value="POST" />
         </method> -->
         <payloadType>
@@ -121,16 +121,16 @@
               Address: https://open.epic.com/Interface/FHIR</div>
         </text>
         <status value="active"/>
-        <name value="Referral Requests"/>
-        <managingOrganization>
-          <display value="Epic demo organization"/>
-        </managingOrganization>
         <connectionType>
            <system value="http://hl7.org/fhir/endpoint-connection-type"/>
            <code value="hl7-fhir-rest"/>
         </connectionType>
+        <name value="Referral Requests"/>
+        <managingOrganization>
+          <display value="Epic demo organization"/>
+        </managingOrganization>
         <!-- <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <system value="http://hl7.org/fhir/http-verb" />
           <code value="POST" />
         </method> -->
         <payloadType>
@@ -156,16 +156,16 @@
               Address: mailto:subscriptions@example.org</div>
         </text>
         <status value="active"/>
-        <name value="Subscription receiver"/>
-        <managingOrganization>
-          <display value="Telstra Health"/>
-        </managingOrganization>
         <connectionType>
            <system value="http://hl7.org/fhir/endpoint-connection-type"/>
            <code value="secure-email"/>
         </connectionType>
+        <name value="Subscription receiver"/>
+        <managingOrganization>
+          <display value="Telstra Health"/>
+        </managingOrganization>
         <!-- <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <system value="http://hl7.org/fhir/http-verb" />
           <code value="POST PUT DELETE" />
         </method> -->
         <payloadType>
@@ -191,16 +191,16 @@
               Address: https://sqlonfhir-dstu2.azurewebsites.net/fhir</div>
         </text>
         <status value="active"/>
-        <name value="valid usecase?"/>
-        <managingOrganization>
-          <display value="Telstra Health"/>
-        </managingOrganization>
         <connectionType>
            <system value="http://hl7.org/fhir/endpoint-connection-type"/>
            <code value="hl7-fhir-msg"/>
         </connectionType>
+        <name value="valid usecase?"/>
+        <managingOrganization>
+          <display value="Telstra Health"/>
+        </managingOrganization>
         <!-- <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <system value="http://hl7.org/fhir/http-verb" />
           <code value="POST" />
         </method> -->
         <payloadType>
@@ -226,16 +226,16 @@
               Address: 127.0.0.1</div>
         </text>
         <status value="active"/>
-        <name value="v2 referral Requests"/>
-        <managingOrganization>
-          <display value="Epic demo organization"/>
-        </managingOrganization>
         <connectionType>
            <system value="http://hl7.org/fhir/endpoint-connection-type"/>
            <code value="hl7v2-mllp"/>
         </connectionType>
+        <name value="v2 referral Requests"/>
+        <managingOrganization>
+          <display value="Epic demo organization"/>
+        </managingOrganization>
         <!-- <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <system value="http://hl7.org/fhir/http-verb" />
           <code value="POST" />
         </method> -->
         <payloadType>
@@ -261,16 +261,16 @@
               Address: https://open.epic.com/Interface/XDS.b</div>
         </text>
         <status value="active"/>
-        <name value="xds event summaries"/>
-        <managingOrganization>
-          <display value="Epic demo organization"/>
-        </managingOrganization>
         <connectionType>
            <system value="http://hl7.org/fhir/endpoint-connection-type"/>
            <code value="ihe-xds"/>
         </connectionType>
+        <name value="xds event summaries"/>
+        <managingOrganization>
+          <display value="Epic demo organization"/>
+        </managingOrganization>
         <!-- <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <system value="http://hl7.org/fhir/http-verb" />
           <code value="POST" />
         </method> -->
         <payloadType>
@@ -296,16 +296,16 @@
               Address: https://pacs.hospital.org/dicomweb</div>
         </text>
         <status value="active"/>
-        <name value="Enterprise Image Archive"/>
-        <managingOrganization>
-          <display value="Multi-site Co."/>
-        </managingOrganization>
         <connectionType>
            <system value="http://hl7.org/fhir/endpoint-connection-type"/>
            <code value="dicom-wado-rs"/>
         </connectionType>
+        <name value="Enterprise Image Archive"/>
+        <managingOrganization>
+          <display value="Multi-site Co."/>
+        </managingOrganization>
         <!-- <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <system value="http://hl7.org/fhir/http-verb" />
           <code value="GET OPTIONS" />
         </method> -->
         <payloadType>
@@ -331,16 +331,16 @@
               Address: https://pacs.hospital.org/dicomweb</div>
         </text>
         <status value="active"/>
-        <name value="Enterprise Image Archive"/>
-        <managingOrganization>
-          <display value="Multi-site Co."/>
-        </managingOrganization>
         <connectionType>
            <system value="http://hl7.org/fhir/endpoint-connection-type"/>
            <code value="dicom-qido-rs"/>
         </connectionType>
+        <name value="Enterprise Image Archive"/>
+        <managingOrganization>
+          <display value="Multi-site Co."/>
+        </managingOrganization>
         <!-- <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <system value="http://hl7.org/fhir/http-verb" />
           <code value="GET OPTIONS" />
         </method> -->
         <payloadType>
@@ -366,16 +366,16 @@
               Address: https://pacs.hospital.org/dicomweb</div>
         </text>
         <status value="active"/>
-        <name value="Enterprise Image Archive"/>
-        <managingOrganization>
-          <display value="Multi-site Co."/>
-        </managingOrganization>
         <connectionType>
            <system value="http://hl7.org/fhir/endpoint-connection-type"/>
            <code value="dicom-stow-rs"/>
         </connectionType>
+        <name value="Enterprise Image Archive"/>
+        <managingOrganization>
+          <display value="Multi-site Co."/>
+        </managingOrganization>
         <!-- <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <system value="http://hl7.org/fhir/http-verb" />
           <code value="POST OPTIONS" />
         </method> -->
         <payloadType>
@@ -401,16 +401,16 @@
               Address: https://pacs.hospital.org/dicomweb</div>
         </text>
         <status value="active"/>
-        <name value="Enterprise Image Archive"/>
-        <managingOrganization>
-          <display value="Multi-site Co."/>
-        </managingOrganization>
         <connectionType>
            <system value="http://hl7.org/fhir/endpoint-connection-type"/>
            <code value="dicom-stow-rs"/>
         </connectionType>
+        <name value="Enterprise Image Archive"/>
+        <managingOrganization>
+          <display value="Multi-site Co."/>
+        </managingOrganization>
         <!-- <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <system value="http://hl7.org/fhir/http-verb" />
           <code value="GET PUT POST DELETE OPTIONS" />
         </method> -->
         <payloadType>
@@ -436,16 +436,16 @@
               Address: https://pacs.hospital.org/wadoUri</div>
         </text>
         <status value="active"/>
-        <name value="Enterprise Image Archive"/>
-        <managingOrganization>
-          <display value="Multi-site Co."/>
-        </managingOrganization>
         <connectionType>
            <system value="http://hl7.org/fhir/endpoint-connection-type"/>
            <code value="dicom-wado-uri"/>
         </connectionType>
+        <name value="Enterprise Image Archive"/>
+        <managingOrganization>
+          <display value="Multi-site Co."/>
+        </managingOrganization>
         <!-- <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <system value="http://hl7.org/fhir/http-verb" />
           <code value="GET" />
         </method> -->
         <payloadType>
@@ -471,16 +471,16 @@
               Address: https://pacs.hospital.org/IHEInvokeImageDisplay</div>
         </text>
         <status value="active"/>
-        <name value="Enterprise Image Archive"/>
-        <managingOrganization>
-          <display value="Multi-site Co."/>
-        </managingOrganization>
         <connectionType>
            <system value="http://hl7.org/fhir/endpoint-connection-type"/>
            <code value="ihe-iid"/>
         </connectionType>
+        <name value="Enterprise Image Archive"/>
+        <managingOrganization>
+          <display value="Multi-site Co."/>
+        </managingOrganization>
         <!-- <method>
-          <system value="http://hl7.org/fhir/ValueSet/http-verb" />
+          <system value="http://hl7.org/fhir/http-verb" />
           <code value="GET" />
         </method> -->
         <payloadType>

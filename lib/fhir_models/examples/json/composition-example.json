@@ -9,7 +9,7 @@
     "system": "http://healthintersections.com.au/test",
     "value": "1"
   },
-  "date": "2012-01-04T09:10:14Z",
+  "status": "final",
   "type": {
     "coding": [
       {
@@ -28,19 +28,22 @@
       }
     ]
   },
-  "title": "Consultation Note",
-  "status": "final",
-  "confidentiality": "N",
   "subject": {
     "reference": "Patient/xcda",
     "display": "Henry Levin the 7th"
   },
+  "encounter": {
+    "reference": "Encounter/xcda"
+  },
+  "date": "2012-01-04T09:10:14Z",
   "author": [
     {
       "reference": "Practitioner/xcda-author",
       "display": "Harold Hippocrates, MD"
     }
   ],
+  "title": "Consultation Note",
+  "confidentiality": "N",
   "attester": [
     {
       "mode": [
@@ -57,6 +60,21 @@
     "reference": "Organization/2.16.840.1.113883.19.5",
     "display": "Good Health Clinic"
   },
+  "relatesTo": [
+    {
+      "code": "replaces",
+      "targetReference": {
+        "reference": "Composition/old-example"
+      }
+    },
+    {
+      "code": "appends",
+      "targetIdentifier": {
+        "system": "http://example.org/fhir/NamingSystem/document-ids",
+        "value": "ABC123"
+      }
+    }
+  ],
   "event": [
     {
       "code": [
@@ -81,9 +99,6 @@
       ]
     }
   ],
-  "encounter": {
-    "reference": "Encounter/xcda"
-  },
   "section": [
     {
       "title": "History of present illness",
@@ -135,7 +150,7 @@
       },
       "text": {
         "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t<p>History of family member diseases - not available</p>\n\t\t\t</div>"
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t\t<p>History of family member diseases - not available</p>\n\t\t\t</div>"
       },
       "mode": "snapshot",
       "emptyReason": {

@@ -22,7 +22,7 @@
         ],
         "text": "permanent weakness of the left arm"
       },
-      "probabilityCodeableConcept": {
+      "qualitativeRisk": {
         "coding": [
           {
             "system": "http://hl7.org/fhir/risk-probability",

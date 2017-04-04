@@ -36,17 +36,14 @@
       <MedicationRequest>
         <id value="3123"/>
         <!--   snip   -->
-        <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: 3123</p><p><b>stage</b>: original-order <span>(Details : {[not stated] code &#39;original-order&#39; = &#39;original-order)</span></p><p><b>medication</b>: <a>Medication/example</a></p><p><b>patient</b>: <a>Patient/347</a></p></div></text><stage>
-          <coding>
-            <code value="original-order"/>
-          </coding>
-        </stage>
+        <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: 3123</p><p><b>intent</b>: order</p><p><b>medication</b>: <a>Medication/example</a></p><p><b>subject</b>: <a>Patient/347</a></p></div></text><intent value="order">
+        </intent>
 	<medicationReference>
           <reference value="Medication/example"/>
         </medicationReference>
-        <patient>
+        <subject>
           <reference value="Patient/347"/>
-        </patient>
+        </subject>
         <!--   snip   -->
       </MedicationRequest>
     </resource>

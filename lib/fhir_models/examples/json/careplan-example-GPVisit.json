@@ -71,6 +71,7 @@
     }
   ],
   "status": "active",
+  "intent": "plan",
   "subject": {
     "reference": "Patient/100",
     "display": "Peter James Chalmers"
@@ -96,7 +97,7 @@
   ],
   "activity": [
     {
-      "actionResulting": [
+      "outcomeReference": [
         {
           "reference": "Encounter/example"
         }

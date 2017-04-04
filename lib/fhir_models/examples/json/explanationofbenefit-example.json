@@ -24,8 +24,17 @@
     "reference": "Patient/pat1"
   },
   "created": "2014-08-16",
+  "enterer": {
+    "reference": "Practitioner/1"
+  },
+  "provider": {
+    "reference": "Practitioner/1"
+  },
   "organization": {
     "reference": "Organization/2"
+  },
+  "facility": {
+    "reference": "Location/1"
   },
   "claim": {
     "reference": "Claim/100150"
@@ -42,6 +51,27 @@
     ]
   },
   "disposition": "Claim settled as per contract.",
+  "payee": {
+    "type": {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/payeetype",
+          "code": "provider"
+        }
+      ]
+    },
+    "resourceType": {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/resource-type-link",
+          "code": "organization"
+        }
+      ]
+    },
+    "party": {
+      "reference": "Organization/2"
+    }
+  },
   "careTeam": [
     {
       "sequence": 1,
@@ -80,6 +110,11 @@
         "system": "urn:iso:std:iso:4217",
         "code": "USD"
       },
+      "encounter": [
+        {
+          "reference": "Encounter/example"
+        }
+      ],
       "adjudication": [
         {
           "category": {

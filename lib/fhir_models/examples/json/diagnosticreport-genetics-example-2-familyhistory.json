@@ -17,14 +17,14 @@
           }
         }
       ],
+      "status": "completed",
       "patient": {
         "reference": "Patient/example"
       },
-      "status": "completed",
       "relationship": {
         "coding": [
           {
-            "system": "http://hl7.org/fhir/familial-relationship",
+            "system": "http://hl7.org/fhir/v3/RoleCode",
             "code": "MTH",
             "display": "Mother"
           }
@@ -71,8 +71,10 @@
   "issued": "2014-05-16T10:28:00+01:00",
   "performer": [
     {
-      "reference": "Practitioner/genetics-example2",
-      "display": "Molecular Diagnostic Laboratory"
+      "actor": {
+        "reference": "Practitioner/genetics-example2",
+        "display": "Molecular Diagnostic Laboratory"
+      }
     }
   ],
   "specimen": [

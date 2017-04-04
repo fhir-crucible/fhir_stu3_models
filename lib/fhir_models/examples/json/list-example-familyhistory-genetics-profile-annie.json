@@ -63,11 +63,11 @@
           ]
         }
       ],
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "name": "Annie",
       "relationship": {
         "coding": [
@@ -137,11 +137,11 @@
           ]
         }
       ],
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "name": "Harriet",
       "relationship": {
         "coding": [
@@ -229,11 +229,11 @@
           ]
         }
       ],
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "name": "Donald",
       "relationship": {
         "coding": [
@@ -255,11 +255,11 @@
     {
       "resourceType": "FamilyMemberHistory",
       "id": "4",
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "name": "Gladys",
       "relationship": {
         "coding": [
@@ -299,11 +299,11 @@
     {
       "resourceType": "FamilyMemberHistory",
       "id": "5",
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "name": "Ian",
       "relationship": {
         "coding": [
@@ -324,11 +324,11 @@
     {
       "resourceType": "FamilyMemberHistory",
       "id": "6",
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "name": "Claire",
       "relationship": {
         "coding": [
@@ -349,11 +349,11 @@
     {
       "resourceType": "FamilyMemberHistory",
       "id": "7",
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "name": "Bob",
       "relationship": {
         "coding": [
@@ -441,11 +441,11 @@
           ]
         }
       ],
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "name": "Brian",
       "relationship": {
         "coding": [
@@ -534,11 +534,11 @@
           ]
         }
       ],
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "name": "Janet",
       "relationship": {
         "coding": [
@@ -579,11 +579,11 @@
     {
       "resourceType": "FamilyMemberHistory",
       "id": "10",
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "relationship": {
         "coding": [
           {
@@ -651,11 +651,11 @@
           ]
         }
       ],
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "name": "Ian",
       "relationship": {
         "coding": [
@@ -725,11 +725,11 @@
           ]
         }
       ],
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "name": "Helen",
       "relationship": {
         "coding": [
@@ -769,11 +769,11 @@
     {
       "resourceType": "FamilyMemberHistory",
       "id": "13",
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "relationship": {
         "coding": [
           {
@@ -841,11 +841,11 @@
           ]
         }
       ],
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "name": "Susan",
       "relationship": {
         "coding": [
@@ -914,11 +914,11 @@
           ]
         }
       ],
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "relationship": {
         "coding": [
           {
@@ -986,11 +986,11 @@
           ]
         }
       ],
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "relationship": {
         "coding": [
           {
@@ -1071,11 +1071,11 @@
           ]
         }
       ],
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "relationship": {
         "coding": [
           {
@@ -1143,11 +1143,11 @@
           ]
         }
       ],
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "relationship": {
         "coding": [
           {
@@ -1167,11 +1167,11 @@
     {
       "resourceType": "FamilyMemberHistory",
       "id": "19",
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "relationship": {
         "coding": [
           {
@@ -1233,11 +1233,11 @@
           ]
         }
       ],
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "relationship": {
         "coding": [
           {
@@ -1325,11 +1325,11 @@
           ]
         }
       ],
+      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "status": "completed",
       "relationship": {
         "coding": [
           {

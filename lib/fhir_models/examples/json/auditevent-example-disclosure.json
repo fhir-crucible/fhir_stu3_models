@@ -6,7 +6,7 @@
     "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Disclosure by some idiot, for marketing reasons, to places unknown, of a Poor Sap, data about Everthing important.</div>"
   },
   "type": {
-    "system": "http://nema.org/dicom/dicm",
+    "system": "http://dicom.nema.org/resources/ontology/DCM",
     "code": "110106",
     "display": "Export"
   },
@@ -37,7 +37,7 @@
         {
           "coding": [
             {
-              "system": "http://nema.org/dicom/dicm",
+              "system": "http://dicom.nema.org/resources/ontology/DCM",
               "code": "110153",
               "display": "Source Role ID"
             }
@@ -66,7 +66,7 @@
         {
           "coding": [
             {
-              "system": "http://nema.org/dicom/dicm",
+              "system": "http://dicom.nema.org/resources/ontology/DCM",
               "code": "110152",
               "display": "Destination Role ID"
             }
@@ -121,7 +121,7 @@
         "display": "Person"
       },
       "role": {
-        "system": "http://hl7.org/fhir/valueset-object-role",
+        "system": "http://hl7.org/fhir/object-role",
         "code": "1",
         "display": "Patient"
       }
@@ -139,12 +139,12 @@
         "display": "System Object"
       },
       "role": {
-        "system": "http://hl7.org/fhir/valueset-object-role",
+        "system": "http://hl7.org/fhir/object-role",
         "code": "4",
-        "display": "DomainResource"
+        "display": "Domain Resource"
       },
       "lifecycle": {
-        "system": "http://hl7.org/fhir/object-lifecycle",
+        "system": "http://hl7.org/fhir/dicom-audit-lifecycle",
         "code": "11",
         "display": "Disclosure"
       },

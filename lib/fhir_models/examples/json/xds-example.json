@@ -21,9 +21,7 @@
           "system": "urn:ietf:rfc:3986",
           "value": "urn:oid:129.6.58.92.88336"
         },
-        "subject": {
-          "reference": "Patient/a2"
-        },
+        "status": "current",
         "type": {
           "coding": [
             {
@@ -42,6 +40,11 @@
             }
           ]
         },
+        "subject": {
+          "reference": "Patient/a2"
+        },
+        "created": "2005-12-24",
+        "indexed": "2013-07-01T23:11:33+10:00",
         "author": [
           {
             "reference": "Practitioner/a3"
@@ -50,9 +53,6 @@
             "reference": "Practitioner/a4"
           }
         ],
-        "created": "2005-12-24",
-        "indexed": "2013-07-01T23:11:33+10:00",
-        "status": "current",
         "description": "Physical",
         "securityLabel": [
           {
@@ -72,12 +72,10 @@
               "language": "en-us",
               "url": "http://localhost:9556/svc/fhir/Binary/1e404af3-077f-4bee-b7a6-a9be97e1ce32"
             },
-            "format": [
-              {
-                "system": "urn:oid:1.3.6.1.4.1.19376.1.2.3",
-                "code": "urn:ihe:pcc:handp:2008"
-              }
-            ]
+            "format": {
+              "system": "urn:oid:1.3.6.1.4.1.19376.1.2.3",
+              "code": "urn:ihe:pcc:handp:2008"
+            }
           }
         ],
         "context": {
@@ -157,34 +155,6 @@
               "Gerald"
             ]
           }
-        ],
-        "role": [
-          {
-            "organization": {
-              "display": "Cleveland Clinic"
-            },
-            "code": {
-              "coding": [
-                {
-                  "code": "Attending"
-                }
-              ]
-            },
-            "specialty": [
-              {
-                "coding": [
-                  {
-                    "code": "Orthopedic"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "organization": {
-              "display": "Parma Community"
-            }
-          }
         ]
       },
       "request": {
@@ -211,34 +181,6 @@
             "given": [
               "Sherry"
             ]
-          }
-        ],
-        "role": [
-          {
-            "organization": {
-              "display": "Cleveland Clinic"
-            },
-            "code": {
-              "coding": [
-                {
-                  "code": "Primary Surgon"
-                }
-              ]
-            },
-            "specialty": [
-              {
-                "coding": [
-                  {
-                    "code": "Orthopedic"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "organization": {
-              "display": "Berea Community"
-            }
           }
         ]
       },

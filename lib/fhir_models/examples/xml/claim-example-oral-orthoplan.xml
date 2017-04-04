@@ -87,7 +87,7 @@
    <diagnosisLinkId value="1"/>
    <service>
     <coding>
-     <system value="http://hl7.org/fhir/oralservicecodes"/>
+     <system value="http://example.org/fhir/oralservicecodes"/>
      <code value="ORTHPLAN"/>
     </coding>
    </service>
@@ -106,7 +106,7 @@
      <sequence value="1"/> <!--  Exam Fee  -->
      <service>
 	  <coding>
-       <system value="http://hl7.org/fhir/oralservicecodes"/>
+       <system value="http://example.org/fhir/oralservicecodes"/>
        <code value="ORTHOEXAM"/>
       </coding>
 	 </service>
@@ -125,7 +125,7 @@
      <sequence value="2"/> <!--  Diagnostic Fee  -->
      <service>
 	  <coding>
-       <system value="http://hl7.org/fhir/oralservicecodes"/>
+       <system value="http://example.org/fhir/oralservicecodes"/>
        <code value="ORTHODIAG"/>
       </coding>
 	 </service>
@@ -144,7 +144,7 @@
      <sequence value="3"/> <!--  Initial Payment  -->
      <service>
 	  <coding>
-       <system value="http://hl7.org/fhir/oralservicecodes"/>
+       <system value="http://example.org/fhir/oralservicecodes"/>
        <code value="ORTHOINITIAL"/>
       </coding>
 	 </service>
@@ -163,7 +163,7 @@
      <sequence value="4"/> <!--  Duration in Months  -->
      <service>
 	  <coding>
-       <system value="http://hl7.org/fhir/oralservicecodes"/>
+       <system value="http://example.org/fhir/oralservicecodes"/>
        <code value="ORTHOMONTHS"/>
       </coding>
 	 </service>
@@ -175,7 +175,7 @@
      <sequence value="5"/> <!--  Periodic Payments  -->
      <service>
 	  <coding>
-       <system value="http://hl7.org/fhir/oralservicecodes"/>
+       <system value="http://example.org/fhir/oralservicecodes"/>
        <code value="ORTHOPERIODIC"/>
       </coding>
 	 </service>
@@ -200,7 +200,7 @@
    <careTeamLinkId value="1"/>
    <service>
     <coding>
-     <system value="http://hl7.org/fhir/oralservicecodes"/>
+     <system value="http://example.org/fhir/oralservicecodes"/>
      <code value="21211"/>
     </coding>
    </service>
@@ -234,7 +234,7 @@
    <careTeamLinkId value="1"/>
    <service>
     <coding>
-     <system value="http://hl7.org/fhir/oralservicecodes"/>
+     <system value="http://example.org/fhir/oralservicecodes"/>
      <code value="27211"/>
     </coding>
    </service>
@@ -259,7 +259,7 @@
      <sequence value="1"/>
      <service>
 	  <coding>
-       <system value="http://hl7.org/fhir/oralservicecodes"/>
+       <system value="http://example.org/fhir/oralservicecodes"/>
        <code value="27211"/>
       </coding>
 	 </service>
@@ -278,7 +278,7 @@
      <sequence value="2"/>
      <service>
 	  <coding>
-       <system value="http://hl7.org/fhir/oralservicecodes"/>
+       <system value="http://example.org/fhir/oralservicecodes"/>
        <code value="lab"/>
       </coding>
 	 </service>

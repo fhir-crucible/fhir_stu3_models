@@ -51,7 +51,7 @@
       ],
       "path": "prothrombin",
       "definition": "The PT test evaluates the extrinsic and common pathways of the coagulation cascade.",
-      "comments": "Used to screen the integrity of the extrinsic and common pathways of coagulation and to monitor warfarin anticoagulation. ",
+      "comment": "Used to screen the integrity of the extrinsic and common pathways of coagulation and to monitor warfarin anticoagulation. ",
       "requirements": "This test is orderable. A plasma specimen in a 3.2% sodium citrate blue top tube is required.",
       "alias": [
         "Protime, PT"

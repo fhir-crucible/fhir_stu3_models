@@ -6,13 +6,13 @@
     "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Application Start for under service login &quot;Grahame&quot; (id: Grahame's Test HL7Connect)</div>"
   },
   "type": {
-    "system": "http://nema.org/dicom/dicm",
+    "system": "http://dicom.nema.org/resources/ontology/DCM",
     "code": "110100",
     "display": "Application Activity"
   },
   "subtype": [
     {
-      "system": "http://nema.org/dicom/dicm",
+      "system": "http://dicom.nema.org/resources/ontology/DCM",
       "code": "110120",
       "display": "Application Start"
     }
@@ -41,7 +41,7 @@
         {
           "coding": [
             {
-              "system": "http://nema.org/dicom/dicm",
+              "system": "http://dicom.nema.org/resources/ontology/DCM",
               "code": "110153",
               "display": "Source Role ID"
             }
@@ -66,8 +66,9 @@
     },
     "type": [
       {
-        "system": "http://hl7.org/fhir/audit-event-sub-type",
-        "code": "1"
+        "system": "http://dicom.nema.org/resources/ontology/DCM",
+        "code": "110122",
+        "display": "Login"
       }
     ]
   },
@@ -96,7 +97,7 @@
         "display": "Domain Resource"
       },
       "lifecycle": {
-        "system": "http://hl7.org/fhir/object-lifecycle",
+        "system": "http://hl7.org/fhir/dicom-audit-lifecycle",
         "code": "6",
         "display": "Access / Use"
       },

@@ -25,10 +25,16 @@
   },
   "agent": [
     {
-      "role": {
-        "system": "http://hl7.org/fhir/provenance-participant-role",
-        "code": "verifier"
-      },
+      "role": [
+        {
+          "coding": [
+            {
+              "system": "http://www.hl7.org/fhir/contractsignertypecodes",
+              "code": "VERF"
+            }
+          ]
+        }
+      ],
       "whoUri": "mailto://hhd@ssa.gov"
     }
   ],
@@ -36,7 +42,7 @@
     {
       "type": [
         {
-          "system": "http://hl7.org/fhir/valueset-signature-type",
+          "system": "urn:iso-astm:E1762-95:2013",
           "code": "1.2.840.10065.1.12.1.5",
           "display": "Verification Signature"
         }

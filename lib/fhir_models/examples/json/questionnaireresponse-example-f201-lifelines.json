@@ -3,17 +3,17 @@
   "id": "f201",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f201</p><p><b>status</b>: completed</p><p><b>subject</b>: <a>Roel</a></p><p><b>author</b>: <a>Practitioner/f201</a></p><p><b>authored</b>: Jun 18, 2013 12:00:00 AM</p><p><b>source</b>: <a>Practitioner/f201</a></p><blockquote><p><b>item</b></p><p><b>linkId</b>: 1</p><h3>Items</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: 2</p><p><b>text</b>: General questions</p><h3>Items</h3><table><tr><td>-</td></tr><tr><td>*</td></tr><tr><td>*</td></tr><tr><td>*</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: 3</p><p><b>text</b>: Intoxications</p><h3>Items</h3><table><tr><td>-</td></tr><tr><td>*</td></tr><tr><td>*</td></tr></table></blockquote></div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f201</p><p><b>status</b>: completed</p><p><b>subject</b>: <a>Roel</a></p><p><b>authored</b>: 18/06/2013 12:00:00 AM</p><p><b>author</b>: <a>Practitioner/f201</a></p><p><b>source</b>: <a>Practitioner/f201</a></p><blockquote><p><b>item</b></p><p><b>linkId</b>: 1</p><h3>Items</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: 2</p><p><b>text</b>: General questions</p><h3>Items</h3><table><tr><td>-</td></tr><tr><td>*</td></tr><tr><td>*</td></tr><tr><td>*</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: 3</p><p><b>text</b>: Intoxications</p><h3>Items</h3><table><tr><td>-</td></tr><tr><td>*</td></tr><tr><td>*</td></tr></table></blockquote></div>"
   },
   "status": "completed",
   "subject": {
     "reference": "Patient/f201",
     "display": "Roel"
   },
+  "authored": "2013-06-18T00:00:00+01:00",
   "author": {
     "reference": "Practitioner/f201"
   },
-  "authored": "2013-06-18T00:00:00+01:00",
   "source": {
     "reference": "Practitioner/f201"
   },

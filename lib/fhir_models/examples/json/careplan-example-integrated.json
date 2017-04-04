@@ -107,11 +107,11 @@
     }
   ],
   "status": "active",
+  "intent": "plan",
   "subject": {
     "reference": "Patient/1",
     "display": "Eve Everywoman"
   },
-  "modified": "2012-09-10",
   "addresses": [
     {
       "reference": "#p1",
@@ -154,7 +154,7 @@
       "detail": {
         "extension": [
           {
-            "url": "http://example.org/DoNotUse/StructureDefinition/RevisionDate",
+            "url": "http://example.org/fhir/StructureDefinition/RevisionDate",
             "valueDate": "2012-09-10"
           }
         ],
@@ -189,7 +189,7 @@
       "detail": {
         "extension": [
           {
-            "url": "http://example.org/DoNotUse/General/RevisionDate",
+            "url": "http://example.org/fhir/StructureDefinition/RevisionDate",
             "valueDate": "2012-09-10"
           }
         ],
@@ -218,7 +218,7 @@
       "detail": {
         "extension": [
           {
-            "url": "http://example.org/DoNotUse/General/RevisionDate",
+            "url": "http://example.org/fhir/StructureDefinition/RevisionDate",
             "valueDate": "2012-09-10"
           }
         ],
@@ -257,7 +257,7 @@
       "detail": {
         "extension": [
           {
-            "url": "http://example.org/DoNotUse/General/RevisionDate",
+            "url": "http://example.org/fhir/StructureDefinition/RevisionDate",
             "valueDate": "2012-09-10"
           }
         ],
@@ -296,7 +296,7 @@
       "detail": {
         "extension": [
           {
-            "url": "http://example.org/DoNotUse/General/RevisionDate",
+            "url": "http://example.org/fhir/StructureDefinition/RevisionDate",
             "valueDate": "2012-09-10"
           }
         ],
@@ -325,7 +325,7 @@
       "detail": {
         "extension": [
           {
-            "url": "http://example.org/DoNotUse/General/RevisionDate",
+            "url": "http://example.org/fhir/StructureDefinition/RevisionDate",
             "valueDate": "2012-08-13"
           }
         ],
@@ -364,7 +364,7 @@
       "detail": {
         "extension": [
           {
-            "url": "http://example.org/DoNotUse/General/RevisionDate",
+            "url": "http://example.org/fhir/StructureDefinition/RevisionDate",
             "valueDate": "2012-08-27"
           }
         ],
@@ -399,7 +399,7 @@
       "detail": {
         "extension": [
           {
-            "url": "http://example.org/DoNotUse/General/RevisionDate",
+            "url": "http://example.org/fhir/StructureDefinition/RevisionDate",
             "valueDate": "2012-09-10"
           }
         ],
@@ -438,7 +438,7 @@
       "detail": {
         "extension": [
           {
-            "url": "http://example.org/DoNotUse/General/RevisionDate",
+            "url": "http://example.org/fhir/StructureDefinition/RevisionDate",
             "valueDate": "2012-08-23"
           }
         ],
@@ -467,7 +467,7 @@
       "detail": {
         "extension": [
           {
-            "url": "http://example.org/DoNotUse/General/RevisionDate",
+            "url": "http://example.org/fhir/StructureDefinition/RevisionDate",
             "valueDate": "2012-07-23"
           }
         ],
@@ -502,7 +502,7 @@
       "detail": {
         "extension": [
           {
-            "url": "http://example.org/DoNotUse/General/RevisionDate",
+            "url": "http://example.org/fhir/StructureDefinition/RevisionDate",
             "valueDate": "2012-07-16"
           }
         ],
@@ -541,7 +541,7 @@
       "detail": {
         "extension": [
           {
-            "url": "http://example.org/DoNotUse/General/RevisionDate",
+            "url": "http://example.org/fhir/StructureDefinition/RevisionDate",
             "valueDate": "2012-08-13"
           }
         ],
@@ -567,7 +567,9 @@
       }
     }
   ],
-  "note": {
-    "text": "Patient family is not ready to commit to goal setting at this time.  Goal setting will be addressed in the future"
-  }
+  "note": [
+    {
+      "text": "Patient family is not ready to commit to goal setting at this time.  Goal setting will be addressed in the future"
+    }
+  ]
 }

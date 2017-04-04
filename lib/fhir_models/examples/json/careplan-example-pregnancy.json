@@ -3,7 +3,7 @@
   "id": "preg",
   "text": {
     "status": "additional",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>A maternity care plan (for a pregnant woman).</p>\n      <p>LMP is 1st Jan, 2013 (a greaat new years party!) The plan has a scheduled first antenatal,\n            and 'placeholders' for the second antenatal and delivery (there would be lots of others of course)</p>\n      <p>Note that where is a proposed 'status' element against each activity</p>\n    </div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>A maternity care plan (for a pregnant woman).</p>\n      <p>LMP is 1st Jan, 2013 (a great new years party!) The plan has activities to take prenatal vitamins, schedule first antenatal,\n            and 'placeholders' for the second antenatal and delivery (there would be lots of others of course)</p>\n      <p>Note that where is a proposed 'status' element against each activity</p>\n    </div>"
   },
   "contained": [
     {
@@ -29,15 +29,6 @@
             "Mavis"
           ]
         }
-      ],
-      "role": [
-        {
-          "specialty": [
-            {
-              "text": "Midwife"
-            }
-          ]
-        }
       ]
     },
     {
@@ -48,15 +39,6 @@
           "family": "Obstetrician",
           "given": [
             "Oscar"
-          ]
-        }
-      ],
-      "role": [
-        {
-          "specialty": [
-            {
-              "text": "Obstetrician"
-            }
           ]
         }
       ]
@@ -112,11 +94,12 @@
   ],
   "extension": [
     {
-      "url": "http://example.org/DoNotUse/careplan#lmp",
+      "url": "http://example.org/fhir/StructureDefinition/careplan#lmp",
       "valueDateTime": "2013-01-01"
     }
   ],
   "status": "active",
+  "intent": "plan",
   "subject": {
     "reference": "Patient/1",
     "display": "Eve Everywoman"
@@ -143,9 +126,14 @@
   ],
   "activity": [
     {
+      "reference": {
+        "display": "Prenatal vitamin MedicationRequest"
+      }
+    },
+    {
       "extension": [
         {
-          "url": "http://example.org/DoNotUse/careplan#andetails",
+          "url": "http://example.org/fhir/StructureDefinition/careplan#andetails",
           "valueUri": "http://orionhealth.com/fhir/careplan/1andetails"
         }
       ],

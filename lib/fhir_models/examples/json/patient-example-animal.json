@@ -37,8 +37,8 @@
         {
           "coding": [
             {
-              "system": "http://hl7.org/fhir/patient-contact-relationship",
-              "code": "owner"
+              "system": "http://hl7.org/fhir/v2/0131",
+              "code": "C"
             }
           ]
         }

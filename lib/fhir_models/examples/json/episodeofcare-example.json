@@ -45,17 +45,28 @@
     {
       "coding": [
         {
-          "system": "http://example.org/EpisodeOfCare/Type",
-          "code": "HACC",
-          "display": "Home and Community Care Package"
+          "system": "http://hl7.org/fhir/episodeofcare-type",
+          "code": "hacc",
+          "display": "Home and Community Care"
         }
       ]
     }
   ],
-  "condition": [
+  "diagnosis": [
     {
-      "reference": "Condition/example",
-      "display": "Severe burn of left ear"
+      "condition": {
+        "reference": "Condition/stroke"
+      },
+      "role": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/diagnosis-role",
+            "code": "CC",
+            "display": "Chief complaint"
+          }
+        ]
+      },
+      "rank": 1
     }
   ],
   "patient": {

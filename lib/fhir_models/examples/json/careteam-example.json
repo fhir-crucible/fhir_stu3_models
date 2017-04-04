@@ -16,21 +16,32 @@
             "Dorothy"
           ]
         }
-      ],
-      "role": [
+      ]
+    }
+  ],
+  "identifier": [
+    {
+      "value": "12345"
+    }
+  ],
+  "status": "active",
+  "category": [
+    {
+      "coding": [
         {
-          "specialty": [
-            {
-              "text": "Dietician"
-            }
-          ]
+          "system": "http://hl7.org/fhir/care-team-category",
+          "code": "encounter"
         }
       ]
     }
   ],
+  "name": "Peter James Charlmers Care Plan for Inpatient Encounter",
   "subject": {
     "reference": "Patient/example",
     "display": "Peter James Chalmers"
+  },
+  "context": {
+    "reference": "Encounter/example"
   },
   "period": {
     "end": "2013-01-01"
@@ -52,7 +63,18 @@
       "member": {
         "reference": "#pr1",
         "display": "Dorothy Dietition"
+      },
+      "onBehalfOf": {
+        "reference": "Organization/f001"
+      },
+      "period": {
+        "end": "2013-01-01"
       }
+    }
+  ],
+  "managingOrganization": [
+    {
+      "reference": "Organization/f001"
     }
   ]
 }

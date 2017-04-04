@@ -15,6 +15,9 @@
       "diagnostics": "Acme.Interop.FHIRProcessors.Patient.processGender line 2453",
       "location": [
         "/f:Person/f:gender"
+      ],
+      "expression": [
+        "Person.gender"
       ]
     }
   ]

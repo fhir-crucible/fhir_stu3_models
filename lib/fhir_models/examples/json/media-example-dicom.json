@@ -46,7 +46,7 @@
   "subtype": {
     "coding": [
       {
-        "system": "http://nema.org/dicom/dicm",
+        "system": "http://dicom.nema.org/resources/ontology/DCM",
         "code": "US"
       }
     ]
@@ -63,7 +63,9 @@
   "subject": {
     "reference": "Patient/example"
   },
-  "deviceName": "G.E. Medical Systems",
+  "device": {
+    "display": "G.E. Medical Systems"
+  },
   "height": 480,
   "width": 640,
   "content": {

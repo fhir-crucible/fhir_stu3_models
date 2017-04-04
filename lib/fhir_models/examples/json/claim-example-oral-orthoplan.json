@@ -96,7 +96,7 @@
       "service": {
         "coding": [
           {
-            "system": "http://hl7.org/fhir/oralservicecodes",
+            "system": "http://example.org/fhir/oralservicecodes",
             "code": "ORTHPLAN"
           }
         ]
@@ -118,7 +118,7 @@
           "service": {
             "coding": [
               {
-                "system": "http://hl7.org/fhir/oralservicecodes",
+                "system": "http://example.org/fhir/oralservicecodes",
                 "code": "ORTHOEXAM"
               }
             ]
@@ -139,7 +139,7 @@
           "service": {
             "coding": [
               {
-                "system": "http://hl7.org/fhir/oralservicecodes",
+                "system": "http://example.org/fhir/oralservicecodes",
                 "code": "ORTHODIAG"
               }
             ]
@@ -160,7 +160,7 @@
           "service": {
             "coding": [
               {
-                "system": "http://hl7.org/fhir/oralservicecodes",
+                "system": "http://example.org/fhir/oralservicecodes",
                 "code": "ORTHOINITIAL"
               }
             ]
@@ -181,7 +181,7 @@
           "service": {
             "coding": [
               {
-                "system": "http://hl7.org/fhir/oralservicecodes",
+                "system": "http://example.org/fhir/oralservicecodes",
                 "code": "ORTHOMONTHS"
               }
             ]
@@ -195,7 +195,7 @@
           "service": {
             "coding": [
               {
-                "system": "http://hl7.org/fhir/oralservicecodes",
+                "system": "http://example.org/fhir/oralservicecodes",
                 "code": "ORTHOPERIODIC"
               }
             ]
@@ -224,7 +224,7 @@
       "service": {
         "coding": [
           {
-            "system": "http://hl7.org/fhir/oralservicecodes",
+            "system": "http://example.org/fhir/oralservicecodes",
             "code": "21211"
           }
         ]
@@ -267,7 +267,7 @@
       "service": {
         "coding": [
           {
-            "system": "http://hl7.org/fhir/oralservicecodes",
+            "system": "http://example.org/fhir/oralservicecodes",
             "code": "27211"
           }
         ]
@@ -297,7 +297,7 @@
           "service": {
             "coding": [
               {
-                "system": "http://hl7.org/fhir/oralservicecodes",
+                "system": "http://example.org/fhir/oralservicecodes",
                 "code": "27211"
               }
             ]
@@ -318,7 +318,7 @@
           "service": {
             "coding": [
               {
-                "system": "http://hl7.org/fhir/oralservicecodes",
+                "system": "http://example.org/fhir/oralservicecodes",
                 "code": "lab"
               }
             ]

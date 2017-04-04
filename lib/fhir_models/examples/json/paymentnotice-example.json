@@ -15,7 +15,23 @@
   "request": {
     "reference": "http://benefitsinc.com/fhir/claim/12345"
   },
+  "response": {
+    "reference": "http://benefitsinc.com/fhir/claimresponse/CR12345"
+  },
+  "statusDate": "2014-08-15",
   "created": "2014-08-16",
+  "target": {
+    "identifier": {
+      "system": "http://regulators.gov",
+      "value": "AB123"
+    }
+  },
+  "provider": {
+    "identifier": {
+      "system": "http://npid.org/provider",
+      "value": "PR957857"
+    }
+  },
   "organization": {
     "reference": "Organization/1"
   },

@@ -199,8 +199,10 @@
   "issued": "2013-01-27T11:45:33+11:00",
   "performer": [
     {
-      "reference": "Organization/1832473e-2fe0-452d-abe9-3cdb9879522f",
-      "display": "Acme Laboratory, Inc"
+      "actor": {
+        "reference": "Organization/1832473e-2fe0-452d-abe9-3cdb9879522f",
+        "display": "Acme Laboratory, Inc"
+      }
     }
   ],
   "result": [

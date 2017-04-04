@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><Condition xmlns="http://hl7.org/fhir">
   <id value="f204"/>
-  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f204</p><p><b>clinicalStatus</b>: active</p><p><b>verificationStatus</b>: differential</p><p><b>category</b>: Problem <span>(Details : {SNOMED CT code &#39;55607006&#39; = &#39;Problem (finding)&#39;, given as &#39;Problem&#39;}; {http://hl7.org/fhir/condition-category code &#39;problem-list-item&#39; = &#39;Problem List Item)</span></p><p><b>severity</b>: Severe <span>(Details : {SNOMED CT code &#39;24484000&#39; = &#39;Severe (severity modifier) (qualifier value)&#39;, given as &#39;Severe&#39;})</span></p><p><b>code</b>: Acute renal insufficiency specified as due to procedure <span>(Details : {SNOMED CT code &#39;36225005&#39; = &#39;Acute renal failure due to procedure (disorder)&#39;, given as &#39;Acute renal insufficiency specified as due to procedure&#39;})</span></p><p><b>bodySite</b>: Kidney <span>(Details : {SNOMED CT code &#39;181414000&#39; = &#39;Entire kidney (body structure)&#39;, given as &#39;Kidney&#39;})</span></p><p><b>subject</b>: <a>Roel</a></p><p><b>context</b>: <a>Roel&#39;s encounter on March eleventh</a></p><p><b>onset</b>: Mar 11, 2013</p><p><b>abatement</b>: Mar 20, 2013</p><p><b>assertedDate</b>: Mar 11, 2013</p><p><b>asserter</b>: <a>Practitioner/f201</a></p><h3>Stages</h3><table><tr><td>-</td><td><b>Summary</b></td></tr><tr><td>*</td><td>Temporary <span>(Details : {SNOMED CT code &#39;14803004&#39; = &#39;Transitory (qualifier value)&#39;, given as &#39;Temporary&#39;})</span></td></tr></table></div></text><clinicalStatus value="active"/>
+  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f204</p><p><b>clinicalStatus</b>: active</p><p><b>verificationStatus</b>: differential</p><p><b>category</b>: Problem <span>(Details : {SNOMED CT code &#39;55607006&#39; = &#39;Problem&#39;, given as &#39;Problem&#39;}; {http://hl7.org/fhir/condition-category code &#39;problem-list-item&#39; = &#39;Problem List Item)</span></p><p><b>severity</b>: Severe <span>(Details : {SNOMED CT code &#39;24484000&#39; = &#39;Severe&#39;, given as &#39;Severe&#39;})</span></p><p><b>code</b>: Acute renal insufficiency specified as due to procedure <span>(Details : {SNOMED CT code &#39;36225005&#39; = &#39;Acute renal failure due to procedure&#39;, given as &#39;Acute renal insufficiency specified as due to procedure&#39;})</span></p><p><b>bodySite</b>: Kidney <span>(Details : {SNOMED CT code &#39;181414000&#39; = &#39;Kidney&#39;, given as &#39;Kidney&#39;})</span></p><p><b>subject</b>: <a>Roel</a></p><p><b>context</b>: <a>Roel&#39;s encounter on March eleventh</a></p><p><b>onset</b>: 11/03/2013</p><p><b>abatement</b>: 20/03/2013</p><p><b>assertedDate</b>: 11/03/2013</p><p><b>asserter</b>: <a>Practitioner/f201</a></p><h3>Stages</h3><table><tr><td>-</td><td><b>Summary</b></td><td><b>Assessment</b></td></tr><tr><td>*</td><td>Temporary <span>(Details : {SNOMED CT code &#39;14803004&#39; = &#39;Transitory&#39;, given as &#39;Temporary&#39;})</span></td><td>Genetic analysis master panel</td></tr></table><p><b>note</b>: The patient is anuric.</p></div></text><clinicalStatus value="active"/>
   <verificationStatus value="differential"/>
   <category>
     <!--  Renal insufficiency could become a severe problem  -->
@@ -59,5 +59,11 @@
         <display value="Temporary"/>
       </coding>
     </summary>
+	<assessment>
+		<display value="Genetic analysis master panel"/>
+	</assessment>
   </stage>
+   <note>
+    <text value="The patient is anuric."/>
+  </note>
 </Condition>

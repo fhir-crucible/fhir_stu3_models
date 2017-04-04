@@ -1,9 +1,14 @@
 {
   "resourceType": "Observation",
   "id": "body-length",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/vitalsigns"
+    ]
+  },
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: body-length</p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span>(Details : {http://hl7.org/fhir/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Body Length <span>(Details : {LOINC code '8306-3' = 'Body height --lying', given as 'Body height --lying'})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: Jul 2, 1999</p><p><b>value</b>: 25 cm<span> (Details: UCUM code cm = 'cm')</span></p></div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: body-length</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span>(Details : {http://hl7.org/fhir/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Body Length <span>(Details : {LOINC code '8306-3' = 'Body height --lying', given as 'Body height --lying'})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: 02/07/1999</p><p><b>value</b>: 25 cm<span> (Details: UCUM code cm = 'cm')</span></p></div>"
   },
   "status": "final",
   "category": [

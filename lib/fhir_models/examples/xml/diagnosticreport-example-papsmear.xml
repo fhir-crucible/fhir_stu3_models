@@ -22,6 +22,8 @@
 	<effectiveDateTime value="2013-02-11T10:33:33+11:00"/>
 	<issued value="2013-02-13T11:45:33+11:00"/>
 	<performer>
-		<reference value="Practitioner/example"/>
+		<actor>
+			<reference value="Practitioner/example"/>
+		</actor>
 	</performer>
 </DiagnosticReport>
