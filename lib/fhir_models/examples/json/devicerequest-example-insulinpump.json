@@ -30,7 +30,12 @@
   },
   "status": "active",
   "intent": {
-    "text": "instance-order"
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/request-intent",
+        "code": "original-order"
+      }
+    ]
   },
   "priority": "routine",
   "codeCodeableConcept": {

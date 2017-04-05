@@ -29,7 +29,7 @@
     "reference": "Organization/1"
   },
   "request": {
-    "reference": "http://www.BenefitsInc.com/fhir/oralhealthclaim/15476332402"
+    "reference": "http://www.BenefitsInc.com/fhir/Claim/15476332402"
   },
   "outcome": {
     "coding": [

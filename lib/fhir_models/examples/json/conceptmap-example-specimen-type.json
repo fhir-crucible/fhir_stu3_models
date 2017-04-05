@@ -34,7 +34,7 @@
     "reference": "http://hl7.org/fhir/ValueSet/v2-0487"
   },
   "targetReference": {
-    "reference": "http://snomed.info/id?fhir_vs"
+    "reference": "http://hl7.org/fhir/ValueSet/specimen-container-type"
   },
   "group": [
     {
