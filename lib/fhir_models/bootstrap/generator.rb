@@ -162,7 +162,7 @@ module FHIR
             element['type'].select { |t| t['code'] == 'Reference' || t['code'] == 'Extension' }.each do |data_type|
               profiles << data_type['targetProfile']
             end
-            profiles.select! { |p| !p.nil? }
+            profiles.reject!(&:nil?)
             profiles.flatten!
 
             # Calculate fields that have multiple data types
@@ -186,7 +186,7 @@ module FHIR
               field.max = field.max.to_i
               field.max = '*' if element['max'] == '*'
 
-              if %w(code Coding CodeableConcept).include?(data_type) && element['binding']
+              if %w[code Coding CodeableConcept].include?(data_type) && element['binding']
                 field.binding = element['binding']
                 field.binding['uri'] = field.binding['valueSetUri']
                 field.binding['uri'] = field.binding['valueSetReference'] if field.binding['uri'].nil?
@@ -199,7 +199,7 @@ module FHIR
                 codes = @defn.get_codes(field.binding['uri'])
                 field.valid_codes = codes unless codes.nil?
                 FHIR.logger.warn "  MISSING EXPANSION -- #{field.path} #{field.min}..#{field.max}: #{field.binding['uri']} (#{field.binding['strength']})" if field.valid_codes.empty? && field.binding['uri'] && !field.binding['uri'].end_with?('bcp47') && !field.binding['uri'].end_with?('bcp13.txt')
-              elsif %w(Element BackboneElement).include?(data_type)
+              elsif %w[Element BackboneElement].include?(data_type)
                 # This is a nested structure or class
                 field.type = "#{hierarchy.join('::')}::#{cap_first(field.name)}"
               end
