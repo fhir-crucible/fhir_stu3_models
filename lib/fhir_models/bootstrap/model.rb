@@ -9,8 +9,10 @@ module FHIR
     def initialize(hash = {})
       from_hash(hash)
       self.class::METADATA.each do |key, value|
-        if value['max'] > 1 && instance_variable_get("@#{key}").nil?
-          instance_variable_set("@#{key}".to_sym, [])
+        local_name = key
+        local_name = value['local_name'] if value['local_name']
+        if value['max'] > 1 && instance_variable_get("@#{local_name}").nil?
+          instance_variable_set("@#{local_name}".to_sym, [])
         end
       end
     end

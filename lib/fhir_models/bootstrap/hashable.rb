@@ -82,12 +82,13 @@ module FHIR
     end
 
     def make_child(child, klass)
-      if child['resourceType']
+      if child['resourceType'] && !klass::METADATA['resourceType']
         klass = begin
           FHIR.const_get(child['resourceType'])
         rescue => _exception
           # TODO: this appears to be a dead code branch
           # TODO: should this log / re-raise the exception if encountered instead of silently swallowing it?
+          FHIR.logger.error("Unable to identify embedded class #{child['resourceType']}\n#{exception.backtrace}")
           nil
         end
       end
