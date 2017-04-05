@@ -13,7 +13,7 @@
   ],
   "status": "active",
   "request": {
-    "reference": "http://www.BenefitsInc.com/fhir/eligibility/225476332402"
+    "reference": "http://www.BenefitsInc.com/fhir/EnrollmentRequest/225476332402"
   },
   "outcome": {
     "coding": [

@@ -28,8 +28,11 @@
 
 	<status value="active"/>
 	<intent>
-		 <text value="instance-order"/>
-	 </intent>
+		<coding>
+			<system value="http://hl7.org/fhir/request-intent"/>
+			<code value="original-order"/>
+		</coding>
+	</intent>
 	<priority value="routine"/>
 
 	<codeCodeableConcept>
