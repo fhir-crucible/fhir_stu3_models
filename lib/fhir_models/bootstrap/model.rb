@@ -233,6 +233,7 @@ module FHIR
 
     def validate_reference_type(ref, meta, contained_here, errors)
       return unless ref.reference && meta['type_profiles']
+      return if ref.reference.start_with?('urn:uuid:', 'urn:oid:')
       matches_one_profile = false
       meta['type_profiles'].each do |p|
         basetype = p.split('/').last

@@ -110,7 +110,6 @@ module FHIR
     end
 
     def verify_element(element, json)
-      # puts "verify_element: #{describe_element(element)}"
       path = element.path
       path = path[(@hierarchy.path.size + 1)..-1] if path.start_with? @hierarchy.path
 
@@ -142,12 +141,7 @@ module FHIR
 
       # Check the cardinality
       min = element.min
-      max =
-        if element.max == '*'
-          Float::INFINITY
-        else
-          element.max.to_i
-        end
+      max = element.max == '*' ? Float::INFINITY : element.max.to_i
       if (nodes.size < min) || (nodes.size > max)
         @errors << "#{describe_element(element)} failed cardinality test (#{min}..#{max}) -- found #{nodes.size}"
       end
@@ -155,6 +149,8 @@ module FHIR
       return if nodes.empty?
       # Check the datatype for each node, only if the element has one declared, and it isn't the root element
       if !element.type.empty? && element.path != id
+        codeable_concept_pattern = element.pattern && element.pattern.is_a?(FHIR::CodeableConcept)
+        matching_pattern = false
         nodes.each do |value|
           matching_type = 0
 
@@ -182,9 +178,14 @@ module FHIR
               unless element.binding.nil?
                 matching_type += check_binding(element, value)
               end
-            elsif data_type_found == 'CodeableConcept' && !element.pattern.nil? && element.pattern.is_a?(FHIR::CodeableConcept)
-              # TODO: check that the CodeableConcept matches the defined pattern
-              @warnings << "Ignoring defined patterns on CodeableConcept #{describe_element(element)}"
+            elsif data_type_found == 'CodeableConcept' && codeable_concept_pattern
+              vcc = FHIR::CodeableConcept.new(value)
+              pattern = element.pattern.coding
+              pattern.each do |pcoding|
+                vcc.coding.each do |vcoding|
+                  matching_pattern = true if vcoding.system == pcoding.system && vcoding.code == pcoding.code
+                end
+              end
             elsif data_type_found == 'String' && !element.maxLength.nil? && (value.size > element.maxLength)
               @errors << "#{describe_element(element)} exceed maximum length of #{element.maxLength}: #{value}"
             end
@@ -206,6 +207,9 @@ module FHIR
             @errors << "#{describe_element(element)} value of '#{value}' did not match fixed value: #{element.fixed}"
           end
         end
+        if codeable_concept_pattern && matching_pattern == false
+          @errors << "#{describe_element(element)} CodeableConcept did not match defined pattern: #{element.pattern.to_hash}"
+        end
       end
 
       # Check FluentPath invariants 'constraint.xpath' constraints...
@@ -217,13 +221,17 @@ module FHIR
       # elsewhere. There is no good way to determine "where" you should evaluate the expression.
       element.constraint.each do |constraint|
         next unless constraint.expression && !nodes.empty?
-        begin
-          result = FluentPath.evaluate(constraint.expression, json)
-          if !result && constraint.severity == 'error'
-            @errors << "#{describe_element(element)}: FluentPath expression evaluates to false for #{name} invariant rule #{constraint.key}: #{constraint.human}"
+        nodes.each do |node|
+          begin
+            result = FluentPath.evaluate(constraint.expression, node)
+            if !result && constraint.severity == 'error'
+              @errors << "#{describe_element(element)}: FluentPath expression evaluates to false for #{name} invariant rule #{constraint.key}: #{constraint.human}"
+              @errors << node.to_s
+            end
+          rescue
+            @warnings << "#{describe_element(element)}: unable to evaluate FluentPath expression against JSON for #{name} invariant rule #{constraint.key}: #{constraint.human}"
+            @warnings << node.to_s
           end
-        rescue
-          @warnings << "#{describe_element(element)}: unable to evaluate FluentPath expression against JSON for #{name} invariant rule #{constraint.key}: #{constraint.human}"
         end
       end
 
