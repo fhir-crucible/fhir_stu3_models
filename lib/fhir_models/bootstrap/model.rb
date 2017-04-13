@@ -20,6 +20,12 @@ module FHIR
       to_hash.hash
     end
 
+    # allow two FHIR models to be compared for equality
+    def ==(other)
+      to_hash == other.to_hash
+    end
+    alias eql? ==
+
     def method_missing(method, *_args, &_block)
       if defined?(self.class::MULTIPLE_TYPES) && self.class::MULTIPLE_TYPES[method.to_s]
         self.class::MULTIPLE_TYPES[method.to_s].each do |type|
