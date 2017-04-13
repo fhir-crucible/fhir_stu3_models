@@ -15,6 +15,11 @@ module FHIR
       end
     end
 
+    # This is necessary for uniq to properly identify two FHIR models as being identical
+    def hash
+      to_hash.hash
+    end
+
     def method_missing(method, *_args, &_block)
       if defined?(self.class::MULTIPLE_TYPES) && self.class::MULTIPLE_TYPES[method.to_s]
         self.class::MULTIPLE_TYPES[method.to_s].each do |type|
