@@ -77,6 +77,28 @@ class ProfileValidationTest < Test::Unit::TestCase
     assert_memory(before, after)
   end
 
+  def test_profile_with_multiple_extensions
+    structure_definition_file = File.join(FIXTURES_DIR, 'custom_profiles', 'StructureDefinition-us-core-patient-modified.json')
+    # use a modified version of the core patient profile, that changes certain extensions like race and ethnicity from 0..1 to 1..1
+    structure_definition_json = JSON.parse(File.read(structure_definition_file))
+    profile = FHIR::StructureDefinition.new(structure_definition_json)
+
+    example_name = 'sample-us-core-record.json'
+    patient_record = File.join(FIXTURES_DIR, example_name)
+    input_json = File.read(patient_record)
+    bundle = FHIR::Json.from_json(input_json)
+    patient_entry = bundle.entry.find { |e| e.resource.is_a?(FHIR::Patient) }
+
+    assert_empty profile.validate_resource(patient_entry.resource), 'Record failed to validate against modified core profile.'
+    # check memory
+    before = check_memory
+    bundle = nil
+    patient_entry = nil
+    wait_for_gc
+    after = check_memory
+    assert_memory(before, after)
+  end
+
   def test_language_binding_validation
     binding_strength = FHIR::Resource::METADATA['language']['binding']['strength']
     FHIR::Resource::METADATA['language']['binding']['strength'] = 'required'
