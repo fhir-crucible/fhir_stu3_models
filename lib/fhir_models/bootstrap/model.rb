@@ -17,6 +17,17 @@ module FHIR
       end
     end
 
+    # This is necessary for uniq to properly identify two FHIR models as being identical
+    def hash
+      to_hash.hash
+    end
+
+    # allow two FHIR models to be compared for equality
+    def ==(other)
+      to_hash == other.to_hash
+    end
+    alias eql? ==
+
     def method_missing(method, *_args, &_block)
       if defined?(self.class::MULTIPLE_TYPES) && self.class::MULTIPLE_TYPES[method.to_s]
         self.class::MULTIPLE_TYPES[method.to_s].each do |type|
@@ -235,6 +246,7 @@ module FHIR
 
     def validate_reference_type(ref, meta, contained_here, errors)
       return unless ref.reference && meta['type_profiles']
+      return if ref.reference.start_with?('urn:uuid:', 'urn:oid:')
       matches_one_profile = false
       meta['type_profiles'].each do |p|
         basetype = p.split('/').last

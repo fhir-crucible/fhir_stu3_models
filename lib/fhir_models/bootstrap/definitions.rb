@@ -11,6 +11,8 @@ module FHIR
     @@valuesets = nil
     @@search_params = nil
 
+    @@cache = {}
+
     # ----------------------------------------------------------------
     #  Types
     # ----------------------------------------------------------------
@@ -41,9 +43,10 @@ module FHIR
 
     def self.type_definition(type_name)
       return nil if type_name.nil?
+      return @@cache[type_name] if @@cache[type_name]
       definition = types.find { |x| x['xmlId'] == type_name || x['name'] == type_name || x['url'] == type_name }
-      return nil if definition.nil?
-      FHIR::StructureDefinition.new(definition)
+      @@cache[type_name] = FHIR::StructureDefinition.new(definition) if definition
+      @@cache[type_name]
     end
     deprecate :get_type_definition, :type_definition
 
@@ -69,9 +72,10 @@ module FHIR
 
     def self.resource_definition(resource_name)
       return nil if resource_name.nil?
-      d = resources.find { |x| x['xmlId'] == resource_name || x['name'] == resource_name || x['url'] == resource_name }
-      return nil if d.nil?
-      FHIR::StructureDefinition.new(d)
+      return @@cache[resource_name] if @@cache[resource_name]
+      definition = resources.find { |x| x['xmlId'] == resource_name || x['name'] == resource_name || x['url'] == resource_name }
+      @@cache[resource_name] = FHIR::StructureDefinition.new(definition) if definition
+      @@cache[resource_name]
     end
     deprecate :get_resource_definition, :resource_definition
 
@@ -192,25 +196,25 @@ module FHIR
     # Get codes (Array of Strings) for a given expansion.
     def self.get_codes(uri)
       return nil if uri.nil?
-      codes = nil
+      return @@cache[uri] if @@cache[uri]
       valueset = expansions.select { |x| x['url'] == uri }.first
       unless valueset.nil?
-        codes = {}
+        @@cache[uri] = {}
         if !valueset['expansion'].nil? && !valueset['expansion']['contains'].nil?
           keys = valueset['expansion']['contains'].map { |x| x['system'] }.uniq
-          keys.each { |x| codes[x] = [] }
-          valueset['expansion']['contains'].each { |x| codes[x['system']] << x['code'] }
+          keys.each { |x| @@cache[uri][x] = [] }
+          valueset['expansion']['contains'].each { |x| @@cache[uri][x['system']] << x['code'] }
         end
         if !valueset['compose'].nil? && !valueset['compose']['include'].nil?
           included_systems = valueset['compose']['include'].map { |x| x['system'] }.uniq
-          included_systems.each { |x| codes[x] = [] unless codes.keys.include?(x) }
+          included_systems.each { |x| @@cache[uri][x] = [] unless @@cache[uri].keys.include?(x) }
           systems = valuesets.select { |x| x['resourceType'] == 'CodeSystem' && included_systems.include?(x['url']) }
           systems.each do |x|
-            x['concept'].each { |y| codes[x['url']] << y['code'] } if x['concept']
+            x['concept'].each { |y| @@cache[uri][x['url']] << y['code'] } if x['concept']
           end
         end
       end
-      codes
+      @@cache[uri]
     end
 
     # Get the "display" (human-readable title) for a given code in a code system (uri)
