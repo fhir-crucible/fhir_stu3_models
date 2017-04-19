@@ -101,10 +101,10 @@ module FHIR
         return results if json.nil?
       end
 
-      if !json.is_a? Array
-        results << json
+      if json.is_a? Array
+        results += json
       else
-        results = json
+        results << json
       end
       results
     end
@@ -136,7 +136,7 @@ module FHIR
       # special filtering on extension urls
       extension_profile = element.type.find { |t| t.code == 'Extension' && !t.profile.nil? }
       if extension_profile
-        nodes.keep_if { |x| extension_profile.profile == x['url'] }
+        nodes = nodes.select { |x| extension_profile.profile == x['url'] }
       end
 
       # Check the cardinality
