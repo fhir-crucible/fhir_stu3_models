@@ -17,11 +17,7 @@ class ProfileValidationTest < Test::Unit::TestCase
   FileUtils.rm_rf(ERROR_DIR) if File.directory?(ERROR_DIR)
   FileUtils.mkdir_p ERROR_DIR
 
-  def test_profile_validation
-    example_name = 'sample-us-core-record.json'
-    patient_record = File.join(FIXTURES_DIR, example_name)
-    input_json = File.read(patient_record)
-    bundle = FHIR::Json.from_json(input_json)
+  def validate_each_entry(bundle)
     complete_error_list = []
     bundle.entry.each do |entry|
       if entry.resource.meta
@@ -36,12 +32,40 @@ class ProfileValidationTest < Test::Unit::TestCase
         complete_error_list << rerrors unless rerrors.empty?
       end
     end
-    errors = complete_error_list.flatten
+    complete_error_list.flatten
+  end
+
+  def test_profile_validation
+    example_name = 'sample-us-core-record.json'
+    patient_record = File.join(FIXTURES_DIR, example_name)
+    input_json = File.read(patient_record)
+    bundle = FHIR::Json.from_json(input_json)
+    errors = validate_each_entry(bundle)
     unless errors.empty?
       File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') { |file| errors.each { |e| file.write("#{e}\n") } }
       File.open("#{ERROR_DIR}/#{example_name}.json", 'w:UTF-8') { |file| file.write(input_json) }
     end
     assert errors.empty?, 'Record failed to validate.'
+    # check memory
+    before = check_memory
+    resource = nil
+    profile = nil
+    wait_for_gc
+    after = check_memory
+    assert_memory(before, after)
+  end
+
+  def test_invalid_profile_validation
+    example_name = 'invalid-us-core-record.json'
+    patient_record = File.join(FIXTURES_DIR, example_name)
+    input_json = File.read(patient_record)
+    bundle = FHIR::Json.from_json(input_json)
+    errors = validate_each_entry(bundle)
+    unless errors
+      File.open("#{ERROR_DIR}/#{example_name}.json", 'w:UTF-8') { |file| file.write(input_json) }
+    end
+    assert !errors.empty?, 'Record improperly validated.'
+    assert errors.detect{|x| x.start_with?('Patient.identifier.value failed cardinality test')}
     # check memory
     before = check_memory
     resource = nil

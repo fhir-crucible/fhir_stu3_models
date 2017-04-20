@@ -92,8 +92,8 @@ module FHIR
         elsif json.is_a? Array
           json.each do |e|
             results << get_json_nodes(e, steps[index..-1].join('.'))
-            return results.flatten!
           end
+          return results.flatten!
         else
           # this thing doesn't exist
           return results
@@ -110,7 +110,7 @@ module FHIR
     end
 
     def verify_element(element, json)
-      path = element.path
+      path = element.local_name || element.path
       path = path[(@hierarchy.path.size + 1)..-1] if path.start_with? @hierarchy.path
 
       begin
@@ -237,8 +237,10 @@ module FHIR
 
       # check children if the element has any
       return unless element.children
-      element.children.each do |child|
-        verify_element(child, json)
+      nodes.each do |node|
+        element.children.each do |child|
+          verify_element(child, node)
+        end
       end
     end
 
