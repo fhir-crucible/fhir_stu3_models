@@ -22,7 +22,7 @@ module FHIR
 
     # allow two FHIR models to be compared for equality
     def ==(other)
-      to_hash == other.to_hash
+      self.class == other.class && to_hash == other.to_hash
     end
     alias eql? ==
 

@@ -41,7 +41,7 @@ RSpec.describe 'FHIR::Model' do
       expect(patient1).to eql patient2
     end
 
-    it 'should false for two models that do not have the same attributes' do
+    it 'should be false for two models that do not have the same attributes' do
       attributes1 = {
         name: [
           family: [ 'Smith' ]
@@ -57,5 +57,29 @@ RSpec.describe 'FHIR::Model' do
       expect(patient1).not_to eq patient2
       expect(patient1).not_to eql patient2
     end
+
+    it 'should be false when compared to a different class' do
+      attributes1 = {
+        name: [
+          family: [ 'Smith' ]
+        ]
+      }
+      patient1 = FHIR::Patient.new(attributes1)
+      patient2 = "patient 2"
+      expect(patient1).not_to eq patient2
+      expect(patient1).not_to eql patient2
+    end
+
+    it 'should be false when compared to nil' do
+      attributes1 = {
+        name: [
+          family: [ 'Smith' ]
+        ]
+      }
+      patient1 = FHIR::Patient.new(attributes1)
+      expect(patient1).not_to eq nil
+      expect(patient1).not_to be_nil
+    end
+
   end
 end
