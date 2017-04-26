@@ -2,7 +2,7 @@
   "resourceType": "Bundle",
   "id": "types",
   "meta": {
-    "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+    "lastUpdated": "2017-04-26T18:33:43.228-04:00"
   },
   "type": "collection",
   "entry": [
@@ -12,12 +12,12 @@
         "resourceType": "StructureDefinition",
         "id": "Element",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Element",
         "name": "Element",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
         "abstract": true,
@@ -37,7 +37,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div"
                 }
               ]
@@ -95,7 +95,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div"
                 }
               ]
@@ -146,12 +146,12 @@
         "resourceType": "StructureDefinition",
         "id": "BackboneElement",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/BackboneElement",
         "name": "BackboneElement",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
         "abstract": true,
@@ -173,7 +173,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -273,12 +273,12 @@
         "resourceType": "StructureDefinition",
         "id": "base64Binary",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/base64Binary",
         "name": "base64Binary",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "primitive-type",
         "abstract": false,
@@ -298,7 +298,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -419,12 +419,12 @@
         "resourceType": "StructureDefinition",
         "id": "boolean",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/boolean",
         "name": "boolean",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "primitive-type",
         "abstract": false,
@@ -443,7 +443,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -563,12 +563,12 @@
         "resourceType": "StructureDefinition",
         "id": "code",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/code",
         "name": "code",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "primitive-type",
         "abstract": false,
@@ -592,7 +592,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -729,12 +729,12 @@
         "resourceType": "StructureDefinition",
         "id": "date",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/date",
         "name": "date",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "primitive-type",
         "abstract": false,
@@ -753,7 +753,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -885,12 +885,12 @@
         "resourceType": "StructureDefinition",
         "id": "dateTime",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/dateTime",
         "name": "dateTime",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "primitive-type",
         "abstract": false,
@@ -909,7 +909,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -1041,12 +1041,12 @@
         "resourceType": "StructureDefinition",
         "id": "decimal",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/decimal",
         "name": "decimal",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "primitive-type",
         "abstract": false,
@@ -1066,7 +1066,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -1199,12 +1199,12 @@
         "resourceType": "StructureDefinition",
         "id": "id",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/id",
         "name": "id",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "primitive-type",
         "abstract": false,
@@ -1229,7 +1229,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -1367,12 +1367,12 @@
         "resourceType": "StructureDefinition",
         "id": "instant",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/instant",
         "name": "instant",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "primitive-type",
         "abstract": false,
@@ -1392,7 +1392,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -1513,12 +1513,12 @@
         "resourceType": "StructureDefinition",
         "id": "integer",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/integer",
         "name": "integer",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "primitive-type",
         "abstract": false,
@@ -1538,7 +1538,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -1675,12 +1675,12 @@
         "resourceType": "StructureDefinition",
         "id": "markdown",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/markdown",
         "name": "markdown",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "primitive-type",
         "abstract": false,
@@ -1705,7 +1705,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -1831,12 +1831,12 @@
         "resourceType": "StructureDefinition",
         "id": "oid",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/oid",
         "name": "oid",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "primitive-type",
         "abstract": false,
@@ -1861,7 +1861,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -1999,12 +1999,12 @@
         "resourceType": "StructureDefinition",
         "id": "positiveInt",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/positiveInt",
         "name": "positiveInt",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "primitive-type",
         "abstract": false,
@@ -2028,7 +2028,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -2165,12 +2165,12 @@
         "resourceType": "StructureDefinition",
         "id": "string",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/string",
         "name": "string",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "primitive-type",
         "abstract": false,
@@ -2190,7 +2190,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -2313,12 +2313,12 @@
         "resourceType": "StructureDefinition",
         "id": "time",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/time",
         "name": "time",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "primitive-type",
         "abstract": false,
@@ -2337,7 +2337,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -2469,12 +2469,12 @@
         "resourceType": "StructureDefinition",
         "id": "unsignedInt",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/unsignedInt",
         "name": "unsignedInt",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "primitive-type",
         "abstract": false,
@@ -2498,7 +2498,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -2635,12 +2635,12 @@
         "resourceType": "StructureDefinition",
         "id": "uri",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/uri",
         "name": "uri",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "primitive-type",
         "abstract": false,
@@ -2660,7 +2660,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -2781,12 +2781,12 @@
         "resourceType": "StructureDefinition",
         "id": "uuid",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/uuid",
         "name": "uuid",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "primitive-type",
         "abstract": false,
@@ -2811,7 +2811,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -2949,12 +2949,12 @@
         "resourceType": "StructureDefinition",
         "id": "xhtml",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/xhtml",
         "name": "xhtml",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "primitive-type",
         "abstract": false,
@@ -3088,12 +3088,12 @@
         "resourceType": "StructureDefinition",
         "id": "Address",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Address",
         "name": "Address",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "Need to be able to record postal addresses, along with notes about their use.",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -3117,7 +3117,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -3596,12 +3596,12 @@
         "resourceType": "StructureDefinition",
         "id": "Age",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Age",
         "name": "Age",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
         "abstract": false,
@@ -3630,7 +3630,7 @@
                   "severity": "error",
                   "human": "There SHALL be a code if there is a value and it SHALL be an expression of time.  If system is present, it SHALL be UCUM.  If value is present, it SHALL be positive.",
                   "expression": "(code or value.empty()) and (system.empty() or system = %ucum) and (value.empty() or value > 0)",
-                  "xpath": "(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='http://unitsofmeasure.org') and not(contains(f:value/@value, '-'))"
+                  "xpath": "(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='http://unitsofmeasure.org') and (not(f:value/@value) or f:value/@value >=0)"
                 }
               ]
             },
@@ -3807,7 +3807,7 @@
                   "severity": "error",
                   "human": "There SHALL be a code if there is a value and it SHALL be an expression of time.  If system is present, it SHALL be UCUM.  If value is present, it SHALL be positive.",
                   "expression": "(code or value.empty()) and (system.empty() or system = %ucum) and (value.empty() or value > 0)",
-                  "xpath": "(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='http://unitsofmeasure.org') and not(contains(f:value/@value, '-'))"
+                  "xpath": "(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='http://unitsofmeasure.org') and (not(f:value/@value) or f:value/@value >=0)"
                 }
               ]
             }
@@ -3821,12 +3821,12 @@
         "resourceType": "StructureDefinition",
         "id": "Annotation",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Annotation",
         "name": "Annotation",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
         "abstract": false,
@@ -3849,7 +3849,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -4016,12 +4016,12 @@
         "resourceType": "StructureDefinition",
         "id": "Attachment",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Attachment",
         "name": "Attachment",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "Many models need to include data defined in other specifications that is complex and opaque to the healthcare model. This includes documents, media recordings, structured data, etc.",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -4045,7 +4045,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 },
@@ -4468,12 +4468,12 @@
         "resourceType": "StructureDefinition",
         "id": "CodeableConcept",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/CodeableConcept",
         "name": "CodeableConcept",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "This is a common pattern in healthcare - a concept that may be defined by one or more codes from formal definitions including LOINC and SNOMED CT, and/or defined by the provision of text that captures a human sense of the concept.",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -4497,7 +4497,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -4634,12 +4634,12 @@
         "resourceType": "StructureDefinition",
         "id": "Coding",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Coding",
         "name": "Coding",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "References to codes are very common in healthcare models.",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -4663,7 +4663,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -4874,12 +4874,12 @@
         "resourceType": "StructureDefinition",
         "id": "ContactDetail",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/ContactDetail",
         "name": "ContactDetail",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "Need to track contact information in the same way across multiple resources.",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -4902,7 +4902,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -5024,12 +5024,12 @@
         "resourceType": "StructureDefinition",
         "id": "ContactPoint",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/ContactPoint",
         "name": "ContactPoint",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "Need to track phone, fax, mobile, sms numbers, email addresses, twitter tags, etc.",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -5052,7 +5052,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 },
@@ -5326,12 +5326,12 @@
         "resourceType": "StructureDefinition",
         "id": "Contributor",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Contributor",
         "name": "Contributor",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "Need to track contributor information in the same way across multiple resources.",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -5354,7 +5354,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -5524,12 +5524,12 @@
         "resourceType": "StructureDefinition",
         "id": "Count",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Count",
         "name": "Count",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "Need to able to capture all sorts of measured values, even if the measured value are not precisely quantified. Values include exact measures such as 3.51g, customary units such as 3 tablets, and currencies such as $100.32USD.",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -5751,12 +5751,12 @@
         "resourceType": "StructureDefinition",
         "id": "DataRequirement",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/DataRequirement",
         "name": "DataRequirement",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
         "abstract": false,
@@ -5778,7 +5778,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -5898,7 +5898,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -6030,7 +6030,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -6304,12 +6304,12 @@
         "resourceType": "StructureDefinition",
         "id": "Distance",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Distance",
         "name": "Distance",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
         "abstract": false,
@@ -6529,12 +6529,12 @@
         "resourceType": "StructureDefinition",
         "id": "Dosage",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Dosage",
         "name": "Dosage",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
         "abstract": false,
@@ -6556,7 +6556,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -7142,12 +7142,12 @@
         "resourceType": "StructureDefinition",
         "id": "Duration",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Duration",
         "name": "Duration",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
         "abstract": false,
@@ -7367,12 +7367,12 @@
         "resourceType": "StructureDefinition",
         "id": "ElementDefinition",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/ElementDefinition",
         "name": "ElementDefinition",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
         "abstract": false,
@@ -7394,7 +7394,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 },
@@ -7628,7 +7628,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 },
@@ -7704,7 +7704,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -8007,7 +8007,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -8138,7 +8138,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 },
@@ -8739,7 +8739,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -9048,7 +9048,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -9279,7 +9279,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 },
@@ -9434,7 +9434,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -11238,12 +11238,12 @@
         "resourceType": "StructureDefinition",
         "id": "Extension",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Extension",
         "name": "Extension",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "The ability to add extensions in a structured way is what keeps FHIR resources simple.",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -11266,7 +11266,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 },
@@ -11628,12 +11628,12 @@
         "resourceType": "StructureDefinition",
         "id": "HumanName",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/HumanName",
         "name": "HumanName",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "Need to be able to record names, along with notes about their use.",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -11657,7 +11657,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -11940,12 +11940,12 @@
         "resourceType": "StructureDefinition",
         "id": "Identifier",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Identifier",
         "name": "Identifier",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "Need to be able to identify things with confidence and be sure that the identification is not subject to misinterpretation.",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -11968,7 +11968,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -12280,12 +12280,12 @@
         "resourceType": "StructureDefinition",
         "id": "Meta",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Meta",
         "name": "Meta",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
         "abstract": false,
@@ -12307,7 +12307,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -12569,12 +12569,12 @@
         "resourceType": "StructureDefinition",
         "id": "Money",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Money",
         "name": "Money",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
         "abstract": false,
@@ -12794,12 +12794,12 @@
         "resourceType": "StructureDefinition",
         "id": "Narrative",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Narrative",
         "name": "Narrative",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
         "abstract": false,
@@ -12821,7 +12821,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -12997,12 +12997,12 @@
         "resourceType": "StructureDefinition",
         "id": "ParameterDefinition",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/ParameterDefinition",
         "name": "ParameterDefinition",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
         "abstract": false,
@@ -13024,7 +13024,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -13326,12 +13326,12 @@
         "resourceType": "StructureDefinition",
         "id": "Period",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Period",
         "name": "Period",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
         "abstract": false,
@@ -13354,7 +13354,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 },
@@ -13509,12 +13509,12 @@
         "resourceType": "StructureDefinition",
         "id": "Quantity",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Quantity",
         "name": "Quantity",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "Need to able to capture all sorts of measured values, even if the measured value are not precisely quantified. Values include exact measures such as 3.51g, customary units such as 3 tablets, and currencies such as $100.32USD.",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -13538,7 +13538,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 },
@@ -13801,12 +13801,12 @@
         "resourceType": "StructureDefinition",
         "id": "Range",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Range",
         "name": "Range",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "Need to be able to specify ranges of values.",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -13830,7 +13830,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 },
@@ -13987,12 +13987,12 @@
         "resourceType": "StructureDefinition",
         "id": "Ratio",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Ratio",
         "name": "Ratio",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "Need to able to capture ratios for some measurements (titers) and some rates (costs).",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -14015,7 +14015,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 },
@@ -14151,12 +14151,12 @@
         "resourceType": "StructureDefinition",
         "id": "Reference",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Reference",
         "name": "Reference",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
         "abstract": false,
@@ -14179,7 +14179,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 },
@@ -14364,12 +14364,12 @@
         "resourceType": "StructureDefinition",
         "id": "RelatedArtifact",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/RelatedArtifact",
         "name": "RelatedArtifact",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "Knowledge resources must be able to provide enough information for consumers of the content (and/or interventions or results produced by the content) to be able to determine and understand the justification for and evidence in support of the content.",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -14393,7 +14393,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -14644,12 +14644,12 @@
         "resourceType": "StructureDefinition",
         "id": "SampledData",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/SampledData",
         "name": "SampledData",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "There is a need for a concise way to handle the data produced by devices that sample a physical state at a high frequency.",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -14673,7 +14673,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -14920,12 +14920,12 @@
         "resourceType": "StructureDefinition",
         "id": "Signature",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Signature",
         "name": "Signature",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "There are a number of places where content must be signed in healthcare.",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -14949,7 +14949,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -15310,12 +15310,12 @@
         "resourceType": "StructureDefinition",
         "id": "Timing",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/Timing",
         "name": "Timing",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "Need to able to track proposed timing schedules. There are several different ways to do this: one or more specified times, a simple rules like three times a day, or  before/after meals.",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -15339,7 +15339,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -15418,7 +15418,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 },
@@ -15469,7 +15469,7 @@
                   "severity": "error",
                   "human": "If there's a timeOfDay, there cannot be be a when, or vice versa",
                   "expression": "timeOfDay.empty() or when.empty()",
-                  "xpath": "not(exists(f:timeofDay)) or not(exists(f:when))"
+                  "xpath": "not(exists(f:timeOfDay)) or not(exists(f:when))"
                 },
                 {
                   "key": "tim-2",
@@ -15885,7 +15885,7 @@
                   "severity": "error",
                   "human": "If there's a timeOfDay, there cannot be be a when, or vice versa",
                   "expression": "timeOfDay.empty() or when.empty()",
-                  "xpath": "not(exists(f:timeofDay)) or not(exists(f:when))"
+                  "xpath": "not(exists(f:timeOfDay)) or not(exists(f:when))"
                 },
                 {
                   "key": "tim-2",
@@ -16184,12 +16184,12 @@
         "resourceType": "StructureDefinition",
         "id": "TriggerDefinition",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/TriggerDefinition",
         "name": "TriggerDefinition",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
         "abstract": false,
@@ -16211,7 +16211,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -16425,12 +16425,12 @@
         "resourceType": "StructureDefinition",
         "id": "UsageContext",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/UsageContext",
         "name": "UsageContext",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "purpose": "Consumers of the resource must be able to determine the intended applicability for the resource. Ideally, this information would be used programmatically to determine when and how it should be incorporated or exposed.",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
@@ -16453,7 +16453,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 }
@@ -16637,12 +16637,12 @@
         "resourceType": "StructureDefinition",
         "id": "SimpleQuantity",
         "meta": {
-          "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+          "lastUpdated": "2017-04-26T18:33:43.228-04:00"
         },
         "url": "http://hl7.org/fhir/StructureDefinition/SimpleQuantity",
         "name": "SimpleQuantity",
         "status": "draft",
-        "date": "2017-03-21T06:09:53+11:00",
+        "date": "2017-04-26T18:33:43-04:00",
         "fhirVersion": "3.0.0",
         "kind": "complex-type",
         "abstract": false,
@@ -16671,7 +16671,7 @@
                   "key": "ele-1",
                   "severity": "error",
                   "human": "All FHIR elements must have a @value or children",
-                  "expression": "children().count() > id.count()",
+                  "expression": "hasValue() | (children().count() > id.count())",
                   "xpath": "@value|f:*|h:div",
                   "source": "Element"
                 },

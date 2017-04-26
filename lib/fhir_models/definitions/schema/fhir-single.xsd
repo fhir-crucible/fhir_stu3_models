@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Tue, Mar 21, 2017 06:09+1100 for FHIR v3.0.0 
+  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="3.0.0">
   <!-- Note: When using this schema with some tools, it may also be necessary to declare xmlns:xml="http://www.w3.org/XML/1998/namespace", however this causes performance issues with other tools and thus is not in the base schemas. -->
@@ -3132,10 +3132,10 @@
           <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
             
           </xs:element>
-          <xs:element name="category" minOccurs="0" maxOccurs="1" type="AdverseEventCategory">
+          <xs:element name="kind" minOccurs="1" maxOccurs="1" type="AdverseEventKind">
             
           </xs:element>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="event" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="subject" minOccurs="0" maxOccurs="1" type="Reference">
@@ -3144,13 +3144,16 @@
           <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="reaction" minOccurs="0" maxOccurs="unbounded" type="Reference">
+          <xs:element name="resultingCondition" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
           <xs:element name="location" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
           <xs:element name="seriousness" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="severity" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="outcome" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -3189,61 +3192,67 @@
           <xs:element name="instance" minOccurs="1" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="causality" minOccurs="0" maxOccurs="1" type="AdverseEventCausality">
-            
-          </xs:element>
-          <xs:element name="causalityAssessment" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="causalityProductRelatedness" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-          <xs:element name="causalityMethod" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="causalityAuthor" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="causalityResult" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="causality" type="AdverseEvent.Causality" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:simpleType name="AdverseEventCausality-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="causality1">
-        
-      </xs:enumeration>
-      <xs:enumeration value="causality2">
-        
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="AdverseEventCausality">
+  <xs:complexType name="AdverseEvent.Causality">
     
     <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="AdverseEventCausality-list" use="optional"/>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="assessment" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="productRelatedness" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="author" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="method" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+        </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:simpleType name="AdverseEventCategory-list">
+  <xs:simpleType name="AdverseEventKind-list">
     <xs:restriction base="code-primitive">
-      <xs:enumeration value="AE">
+      <xs:enumeration value="AdverseEvent">
         
       </xs:enumeration>
-      <xs:enumeration value="PAE">
+      <xs:enumeration value="SeriousAdverseEvent">
+        
+      </xs:enumeration>
+      <xs:enumeration value="ProductProblem">
+        
+      </xs:enumeration>
+      <xs:enumeration value="ProductUseError">
+        
+      </xs:enumeration>
+      <xs:enumeration value="MedicalDeviceUseError">
+        
+      </xs:enumeration>
+      <xs:enumeration value="ProblemDifferentManufacturer">
+        
+      </xs:enumeration>
+      <xs:enumeration value="NearMiss">
+        
+      </xs:enumeration>
+      <xs:enumeration value="UnsafeCondition">
         
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:complexType name="AdverseEventCategory">
+  <xs:complexType name="AdverseEventKind">
     
     <xs:complexContent>
       <xs:extension base="Element">
-        <xs:attribute name="value" type="AdverseEventCategory-list" use="optional"/>
+        <xs:attribute name="value" type="AdverseEventKind-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -12102,6 +12111,9 @@
             
           </xs:element>
           <xs:element name="uid" minOccurs="1" maxOccurs="1" type="oid">
+            
+          </xs:element>
+          <xs:element name="frameNumber" minOccurs="0" maxOccurs="unbounded" type="unsignedInt">
             
           </xs:element>
         </xs:sequence>

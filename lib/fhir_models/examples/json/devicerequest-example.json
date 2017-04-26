@@ -9,7 +9,6 @@
   "intent": {
     "coding": [
       {
-        "system": "http://hl7.org/fhir/request-intent",
         "code": "original-order"
       }
     ]

@@ -26,7 +26,7 @@
     }
   },
   "request": {
-    "reference": "http://www.BenefitsInc.com/fhir/EligibilityRequest/225476332406"
+    "reference": "http://www.BenefitsInc.com/fhir/eligibility/225476332406"
   },
   "outcome": {
     "coding": [

@@ -2,7 +2,7 @@
   "resourceType": "Bundle",
   "id": "searchParams",
   "meta": {
-    "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+    "lastUpdated": "2017-04-26T18:33:43.228-04:00"
   },
   "type": "collection",
   "entry": [
@@ -1115,21 +1115,6 @@
       }
     },
     {
-      "fullUrl": "http://hl7.org/fhir/SearchParameter/AdverseEvent-category",
-      "resource": {
-        "resourceType": "SearchParameter",
-        "status": "draft",
-        "experimental": false,
-        "code": "category",
-        "base": [
-          "AdverseEvent"
-        ],
-        "type": "token",
-        "expression": "AdverseEvent.category",
-        "xpath": "f:AdverseEvent/f:category"
-      }
-    },
-    {
       "fullUrl": "http://hl7.org/fhir/SearchParameter/AdverseEvent-date",
       "resource": {
         "resourceType": "SearchParameter",
@@ -1142,6 +1127,36 @@
         "type": "date",
         "expression": "AdverseEvent.date",
         "xpath": "f:AdverseEvent/f:date"
+      }
+    },
+    {
+      "fullUrl": "http://hl7.org/fhir/SearchParameter/AdverseEvent-event",
+      "resource": {
+        "resourceType": "SearchParameter",
+        "status": "draft",
+        "experimental": false,
+        "code": "event",
+        "base": [
+          "AdverseEvent"
+        ],
+        "type": "token",
+        "expression": "AdverseEvent.event",
+        "xpath": "f:AdverseEvent/f:event"
+      }
+    },
+    {
+      "fullUrl": "http://hl7.org/fhir/SearchParameter/AdverseEvent-kind",
+      "resource": {
+        "resourceType": "SearchParameter",
+        "status": "draft",
+        "experimental": false,
+        "code": "kind",
+        "base": [
+          "AdverseEvent"
+        ],
+        "type": "token",
+        "expression": "AdverseEvent.kind",
+        "xpath": "f:AdverseEvent/f:kind"
       }
     },
     {
@@ -1159,24 +1174,6 @@
         "xpath": "f:AdverseEvent/f:location",
         "target": [
           "Location"
-        ]
-      }
-    },
-    {
-      "fullUrl": "http://hl7.org/fhir/SearchParameter/AdverseEvent-reaction",
-      "resource": {
-        "resourceType": "SearchParameter",
-        "status": "draft",
-        "experimental": false,
-        "code": "reaction",
-        "base": [
-          "AdverseEvent"
-        ],
-        "type": "reference",
-        "expression": "AdverseEvent.reaction",
-        "xpath": "f:AdverseEvent/f:reaction",
-        "target": [
-          "Condition"
         ]
       }
     },
@@ -1201,6 +1198,24 @@
       }
     },
     {
+      "fullUrl": "http://hl7.org/fhir/SearchParameter/AdverseEvent-resultingcondition",
+      "resource": {
+        "resourceType": "SearchParameter",
+        "status": "draft",
+        "experimental": false,
+        "code": "resultingcondition",
+        "base": [
+          "AdverseEvent"
+        ],
+        "type": "reference",
+        "expression": "AdverseEvent.resultingCondition",
+        "xpath": "f:AdverseEvent/f:resultingCondition",
+        "target": [
+          "Condition"
+        ]
+      }
+    },
+    {
       "fullUrl": "http://hl7.org/fhir/SearchParameter/AdverseEvent-seriousness",
       "resource": {
         "resourceType": "SearchParameter",
@@ -1213,6 +1228,21 @@
         "type": "token",
         "expression": "AdverseEvent.seriousness",
         "xpath": "f:AdverseEvent/f:seriousness"
+      }
+    },
+    {
+      "fullUrl": "http://hl7.org/fhir/SearchParameter/AdverseEvent-severity",
+      "resource": {
+        "resourceType": "SearchParameter",
+        "status": "draft",
+        "experimental": false,
+        "code": "severity",
+        "base": [
+          "AdverseEvent"
+        ],
+        "type": "token",
+        "expression": "AdverseEvent.severity",
+        "xpath": "f:AdverseEvent/f:severity"
       }
     },
     {
@@ -1274,21 +1304,6 @@
           "MedicationAdministration",
           "MedicationStatement"
         ]
-      }
-    },
-    {
-      "fullUrl": "http://hl7.org/fhir/SearchParameter/AdverseEvent-type",
-      "resource": {
-        "resourceType": "SearchParameter",
-        "status": "draft",
-        "experimental": false,
-        "code": "type",
-        "base": [
-          "AdverseEvent"
-        ],
-        "type": "token",
-        "expression": "AdverseEvent.type",
-        "xpath": "f:AdverseEvent/f:type"
       }
     },
     {

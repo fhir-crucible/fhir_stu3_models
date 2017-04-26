@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><Practitioner xmlns="http://hl7.org/fhir">
   <id value="f004"/>
-    <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f004</p><p><b>identifier</b>: 118265112 (OFFICIAL), 523ASA1LK927 (USUAL)</p><p><b>name</b>: Ronald Briet (OFFICIAL)</p><p><b>telecom</b>: ph: 0205569273(WORK), r.briet@bmc.nl(WORK), fax: 0205664440(WORK)</p><p><b>address</b>: Galapagosweg 91 Amsterdam 1105 AZ NLD (WORK)</p><p><b>gender</b>: male</p><p><b>birthDate</b>: 04/02/1980</p><p><b>communication</b>: Language <span>(Details : {urn:oid:2.16.840.1.113883.6.121 code &#39;nl&#39; = &#39;nl&#39;, given as &#39;Netherlands&#39;})</span></p></div></text><identifier>
+    <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f004</p><p><b>identifier</b>: 118265112 (OFFICIAL), 523ASA1LK927 (USUAL)</p><p><b>name</b>: Ronald Briet (OFFICIAL)</p><p><b>telecom</b>: ph: 0205569273(WORK), r.briet@bmc.nl(WORK), fax: 0205664440(WORK)</p><p><b>address</b>: Galapagosweg 91 Amsterdam 1105 AZ NLD (WORK)</p><p><b>gender</b>: male</p><p><b>birthDate</b>: Feb 4, 1980</p><p><b>communication</b>: Language <span>(Details : {urn:oid:2.16.840.1.113883.6.121 code &#39;nl&#39; = &#39;nl&#39;, given as &#39;Netherlands&#39;})</span></p></div></text><identifier>
         <use value="official"/>
         <system value="urn:oid:2.16.528.1.1007.3.1"/>
         <!--   Identificatiesysteem Zorgverlener UZI   -->

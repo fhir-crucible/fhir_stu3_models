@@ -2,7 +2,7 @@
   "resourceType": "Bundle",
   "id": "v2-valuesets",
   "meta": {
-    "lastUpdated": "2017-03-21T06:09:53.925+11:00"
+    "lastUpdated": "2017-04-26T18:33:43.228-04:00"
   },
   "type": "collection",
   "entry": [
@@ -21960,57 +21960,6 @@
       }
     },
     {
-      "fullUrl": "http://hl7.org/fhir/v2/0475",
-      "resource": {
-        "resourceType": "CodeSystem",
-        "id": "v2-0475",
-        "extension": [
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-ballot-status",
-            "valueString": "External"
-          },
-          {
-            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
-            "valueInteger": 0
-          }
-        ],
-        "url": "http://hl7.org/fhir/v2/0475",
-        "identifier": {
-          "system": "urn:ietf:rfc:3986",
-          "value": "urn:oid:2.16.840.1.113883.18.303"
-        },
-        "version": "2.8.2",
-        "name": "v2 Charge Type Reason",
-        "status": "active",
-        "experimental": false,
-        "caseSensitive": false,
-        "valueSet": "http://hl7.org/fhir/ValueSet/v2-0475",
-        "content": "complete",
-        "concept": [
-          {
-            "code": "01",
-            "display": "Allergy"
-          },
-          {
-            "code": "02",
-            "display": "Intolerance"
-          },
-          {
-            "code": "03",
-            "display": "Treatment Failure"
-          },
-          {
-            "code": "04",
-            "display": "Patient Request"
-          },
-          {
-            "code": "05",
-            "display": "No Exception"
-          }
-        ]
-      }
-    },
-    {
       "fullUrl": "http://hl7.org/fhir/v2/0391/2.6",
       "resource": {
         "resourceType": "CodeSystem",
@@ -22457,6 +22406,57 @@
           },
           {
             "code": "VISIT"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://hl7.org/fhir/v2/0475",
+      "resource": {
+        "resourceType": "CodeSystem",
+        "id": "v2-0475",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-ballot-status",
+            "valueString": "External"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+            "valueInteger": 0
+          }
+        ],
+        "url": "http://hl7.org/fhir/v2/0475",
+        "identifier": {
+          "system": "urn:ietf:rfc:3986",
+          "value": "urn:oid:2.16.840.1.113883.18.303"
+        },
+        "version": "2.8.2",
+        "name": "v2 Charge Type Reason",
+        "status": "active",
+        "experimental": false,
+        "caseSensitive": false,
+        "valueSet": "http://hl7.org/fhir/ValueSet/v2-0475",
+        "content": "complete",
+        "concept": [
+          {
+            "code": "01",
+            "display": "Allergy"
+          },
+          {
+            "code": "02",
+            "display": "Intolerance"
+          },
+          {
+            "code": "03",
+            "display": "Treatment Failure"
+          },
+          {
+            "code": "04",
+            "display": "Patient Request"
+          },
+          {
+            "code": "05",
+            "display": "No Exception"
           }
         ]
       }

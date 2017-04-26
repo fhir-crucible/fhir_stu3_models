@@ -7,7 +7,7 @@
     <div xmlns="http://www.w3.org/1999/xhtml">
       <h2>FHIR-exanple-2 (http://hl7.org/fhir/ConceptMap/example2)</h2>
       <p>Mapping from http://example.org/fhir/example1 to http://example.org/fhir/example2</p>
-      <p>DRAFT (not intended for production usage). Published on 13/06/2012 by HL7, Inc (FHIR project team (example): 
+      <p>DRAFT (not intended for production usage). Published on Jun 13, 2012 by HL7, Inc (FHIR project team (example): 
         <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>). 
       </p>
       <div>

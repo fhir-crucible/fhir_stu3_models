@@ -3,7 +3,7 @@
 	<meta>
 		<profile value="http://hl7.org/fhir/StructureDefinition/vitalsigns"/>
 	</meta>
-	<text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: respiratory-rate</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span>(Details : {http://hl7.org/fhir/observation-category code &#39;vital-signs&#39; = &#39;Vital Signs&#39;, given as &#39;Vital Signs&#39;})</span></p><p><b>code</b>: Respiratory rate <span>(Details : {LOINC code &#39;9279-1&#39; = &#39;Respiratory rate&#39;, given as &#39;Respiratory rate&#39;})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: 02/07/1999</p><p><b>value</b>: 26 breaths/minute<span> (Details: UCUM code /min = &#39;/min&#39;)</span></p></div></text><status value="final"/>
+	<text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: respiratory-rate</p><p><b>meta</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span>(Details : {http://hl7.org/fhir/observation-category code &#39;vital-signs&#39; = &#39;Vital Signs&#39;, given as &#39;Vital Signs&#39;})</span></p><p><b>code</b>: Respiratory rate <span>(Details : {LOINC code &#39;9279-1&#39; = &#39;Respiratory rate&#39;, given as &#39;Respiratory rate&#39;})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: Jul 2, 1999</p><p><b>value</b>: 26 breaths/minute<span> (Details: UCUM code /min = &#39;/min&#39;)</span></p></div></text><status value="final"/>
 	<category>
 		<coding>
 			<system value="http://hl7.org/fhir/observation-category"/>

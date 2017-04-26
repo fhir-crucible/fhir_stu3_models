@@ -36,7 +36,7 @@
 	</requestOrganization>
 
 	<request>
-		<reference value="http://www.BenefitsInc.com/fhir/Claim/15476332402"/>
+		<reference value="http://www.BenefitsInc.com/fhir/oralhealthclaim/15476332402"/>
 	</request>
 
 	<outcome>

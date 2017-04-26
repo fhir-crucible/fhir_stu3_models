@@ -21,6 +21,18 @@
         ],
         "text": "Referral to service (procedure)"
       },
+      "timingTiming": {
+        "_event": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression",
+                "valueString": "Now()"
+              }
+            ]
+          }
+        ]
+      },
       "participant": [
         {
           "type": "practitioner"
