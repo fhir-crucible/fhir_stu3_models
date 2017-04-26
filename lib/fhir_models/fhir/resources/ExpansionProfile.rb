@@ -18,7 +18,7 @@ module FHIR
       'identifier' => {'type'=>'Identifier', 'path'=>'ExpansionProfile.identifier', 'min'=>0, 'max'=>1},
       'version' => {'type'=>'string', 'path'=>'ExpansionProfile.version', 'min'=>0, 'max'=>1},
       'name' => {'type'=>'string', 'path'=>'ExpansionProfile.name', 'min'=>0, 'max'=>1},
-      'status' => {'valid_codes'=>{'http://hl7.org/fhir/publication-status'=>['draft', 'active', 'retired', 'unknown', 'draft', 'active', 'retired', 'unknown']}, 'type'=>'code', 'path'=>'ExpansionProfile.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/publication-status'}},
+      'status' => {'valid_codes'=>{'http://hl7.org/fhir/publication-status'=>['draft', 'active', 'retired', 'unknown']}, 'type'=>'code', 'path'=>'ExpansionProfile.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/publication-status'}},
       'experimental' => {'type'=>'boolean', 'path'=>'ExpansionProfile.experimental', 'min'=>0, 'max'=>1},
       'date' => {'type'=>'dateTime', 'path'=>'ExpansionProfile.date', 'min'=>0, 'max'=>1},
       'publisher' => {'type'=>'string', 'path'=>'ExpansionProfile.publisher', 'min'=>0, 'max'=>1},
@@ -50,7 +50,7 @@ module FHIR
         'modifierExtension' => {'type'=>'Extension', 'path'=>'FixedVersion.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
         'system' => {'type'=>'uri', 'path'=>'FixedVersion.system', 'min'=>1, 'max'=>1},
         'version' => {'type'=>'string', 'path'=>'FixedVersion.version', 'min'=>1, 'max'=>1},
-        'mode' => {'valid_codes'=>{'http://hl7.org/fhir/system-version-processing-mode'=>['default', 'check', 'override', 'default', 'check', 'override']}, 'type'=>'code', 'path'=>'FixedVersion.mode', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/system-version-processing-mode'}}
+        'mode' => {'valid_codes'=>{'http://hl7.org/fhir/system-version-processing-mode'=>['default', 'check', 'override']}, 'type'=>'code', 'path'=>'FixedVersion.mode', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/system-version-processing-mode'}}
       }
 
       attr_accessor :id                # 0-1 string

@@ -18,7 +18,7 @@ module FHIR
       'title' => {'type'=>'string', 'path'=>'ResearchStudy.title', 'min'=>0, 'max'=>1},
       'protocol' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/PlanDefinition'], 'type'=>'Reference', 'path'=>'ResearchStudy.protocol', 'min'=>0, 'max'=>Float::INFINITY},
       'partOf' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/ResearchStudy'], 'type'=>'Reference', 'path'=>'ResearchStudy.partOf', 'min'=>0, 'max'=>Float::INFINITY},
-      'status' => {'valid_codes'=>{'http://hl7.org/fhir/research-study-status'=>['draft', 'in-progress', 'suspended', 'stopped', 'completed', 'entered-in-error', 'draft', 'in-progress', 'suspended', 'stopped', 'completed', 'entered-in-error']}, 'type'=>'code', 'path'=>'ResearchStudy.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/research-study-status'}},
+      'status' => {'valid_codes'=>{'http://hl7.org/fhir/research-study-status'=>['draft', 'in-progress', 'suspended', 'stopped', 'completed', 'entered-in-error']}, 'type'=>'code', 'path'=>'ResearchStudy.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/research-study-status'}},
       'category' => {'type'=>'CodeableConcept', 'path'=>'ResearchStudy.category', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'example', 'uri'=>nil}},
       'focus' => {'type'=>'CodeableConcept', 'path'=>'ResearchStudy.focus', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'example', 'uri'=>nil}},
       'contact' => {'type'=>'ContactDetail', 'path'=>'ResearchStudy.contact', 'min'=>0, 'max'=>Float::INFINITY},

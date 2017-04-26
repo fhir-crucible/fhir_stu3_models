@@ -18,7 +18,7 @@ module FHIR
       'extension' => {'type'=>'Extension', 'path'=>'DeviceUseStatement.extension', 'min'=>0, 'max'=>Float::INFINITY},
       'modifierExtension' => {'type'=>'Extension', 'path'=>'DeviceUseStatement.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
       'identifier' => {'type'=>'Identifier', 'path'=>'DeviceUseStatement.identifier', 'min'=>0, 'max'=>Float::INFINITY},
-      'status' => {'valid_codes'=>{'http://hl7.org/fhir/device-statement-status'=>['active', 'completed', 'entered-in-error', 'intended', 'stopped', 'on-hold', 'active', 'completed', 'entered-in-error', 'intended', 'stopped', 'on-hold']}, 'type'=>'code', 'path'=>'DeviceUseStatement.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/device-statement-status'}},
+      'status' => {'valid_codes'=>{'http://hl7.org/fhir/device-statement-status'=>['active', 'completed', 'entered-in-error', 'intended', 'stopped', 'on-hold']}, 'type'=>'code', 'path'=>'DeviceUseStatement.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/device-statement-status'}},
       'subject' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Group'], 'type'=>'Reference', 'path'=>'DeviceUseStatement.subject', 'min'=>1, 'max'=>1},
       'whenUsed' => {'type'=>'Period', 'path'=>'DeviceUseStatement.whenUsed', 'min'=>0, 'max'=>1},
       'timingTiming' => {'type'=>'Timing', 'path'=>'DeviceUseStatement.timing[x]', 'min'=>0, 'max'=>1},

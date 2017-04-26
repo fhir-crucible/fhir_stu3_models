@@ -15,11 +15,11 @@ module FHIR
       'extension' => {'type'=>'Extension', 'path'=>'Encounter.extension', 'min'=>0, 'max'=>Float::INFINITY},
       'modifierExtension' => {'type'=>'Extension', 'path'=>'Encounter.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
       'identifier' => {'type'=>'Identifier', 'path'=>'Encounter.identifier', 'min'=>0, 'max'=>Float::INFINITY},
-      'status' => {'valid_codes'=>{'http://hl7.org/fhir/encounter-status'=>['planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished', 'cancelled', 'entered-in-error', 'unknown', 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished', 'cancelled', 'entered-in-error', 'unknown']}, 'type'=>'code', 'path'=>'Encounter.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-status'}},
+      'status' => {'valid_codes'=>{'http://hl7.org/fhir/encounter-status'=>['planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished', 'cancelled', 'entered-in-error', 'unknown']}, 'type'=>'code', 'path'=>'Encounter.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-status'}},
       'statusHistory' => {'type'=>'Encounter::StatusHistory', 'path'=>'Encounter.statusHistory', 'min'=>0, 'max'=>Float::INFINITY},
       'class' => {'local_name'=>'local_class', 'valid_codes'=>{'http://hl7.org/fhir/v3/ActCode'=>['AMB', 'EMER', 'FLD', 'HH', 'IMP', 'ACUTE', 'NONAC', 'PRENC', 'SS', 'VR']}, 'type'=>'Coding', 'path'=>'Encounter.class', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/v3-ActEncounterCode'}},
       'classHistory' => {'type'=>'Encounter::ClassHistory', 'path'=>'Encounter.classHistory', 'min'=>0, 'max'=>Float::INFINITY},
-      'type' => {'valid_codes'=>{'http://hl7.org/fhir/encounter-type'=>['ADMS', 'BD/BM-clin', 'CCS60', 'OKI', 'ADMS', 'BD/BM-clin', 'CCS60', 'OKI']}, 'type'=>'CodeableConcept', 'path'=>'Encounter.type', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-type'}},
+      'type' => {'valid_codes'=>{'http://hl7.org/fhir/encounter-type'=>['ADMS', 'BD/BM-clin', 'CCS60', 'OKI']}, 'type'=>'CodeableConcept', 'path'=>'Encounter.type', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-type'}},
       'priority' => {'valid_codes'=>{'http://hl7.org/fhir/v3/ActPriority'=>['A', 'CR', 'CS', 'CSP', 'CSR', 'EL', 'EM', 'P', 'PRN', 'R', 'RR', 'S', 'T', 'UD', 'UR']}, 'type'=>'CodeableConcept', 'path'=>'Encounter.priority', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/v3-ActPriority'}},
       'subject' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Group'], 'type'=>'Reference', 'path'=>'Encounter.subject', 'min'=>0, 'max'=>1},
       'episodeOfCare' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/EpisodeOfCare'], 'type'=>'Reference', 'path'=>'Encounter.episodeOfCare', 'min'=>0, 'max'=>Float::INFINITY},
@@ -46,7 +46,7 @@ module FHIR
         'id' => {'type'=>'string', 'path'=>'StatusHistory.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'StatusHistory.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'StatusHistory.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-        'status' => {'valid_codes'=>{'http://hl7.org/fhir/encounter-status'=>['planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished', 'cancelled', 'entered-in-error', 'unknown', 'planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished', 'cancelled', 'entered-in-error', 'unknown']}, 'type'=>'code', 'path'=>'StatusHistory.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-status'}},
+        'status' => {'valid_codes'=>{'http://hl7.org/fhir/encounter-status'=>['planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished', 'cancelled', 'entered-in-error', 'unknown']}, 'type'=>'code', 'path'=>'StatusHistory.status', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-status'}},
         'period' => {'type'=>'Period', 'path'=>'StatusHistory.period', 'min'=>1, 'max'=>1}
       }
 
@@ -86,7 +86,7 @@ module FHIR
         'id' => {'type'=>'string', 'path'=>'Participant.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Participant.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Participant.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-        'type' => {'valid_codes'=>{'http://hl7.org/fhir/v3/ParticipationType'=>['ADM', 'ATND', 'CALLBCK', 'CON', 'DIS', 'ESC', 'REF', 'SPRF', 'PPRF', 'PART'], 'http://hl7.org/fhir/participant-type'=>['translator', 'emergency', 'translator', 'emergency']}, 'type'=>'CodeableConcept', 'path'=>'Participant.type', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-participant-type'}},
+        'type' => {'valid_codes'=>{'http://hl7.org/fhir/v3/ParticipationType'=>['ADM', 'ATND', 'CALLBCK', 'CON', 'DIS', 'ESC', 'REF', 'SPRF', 'PPRF', 'PART'], 'http://hl7.org/fhir/participant-type'=>['translator', 'emergency']}, 'type'=>'CodeableConcept', 'path'=>'Participant.type', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-participant-type'}},
         'period' => {'type'=>'Period', 'path'=>'Participant.period', 'min'=>0, 'max'=>1},
         'individual' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/RelatedPerson'], 'type'=>'Reference', 'path'=>'Participant.individual', 'min'=>0, 'max'=>1}
       }
@@ -109,7 +109,7 @@ module FHIR
         'extension' => {'type'=>'Extension', 'path'=>'Diagnosis.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Diagnosis.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
         'condition' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Condition', 'http://hl7.org/fhir/StructureDefinition/Procedure'], 'type'=>'Reference', 'path'=>'Diagnosis.condition', 'min'=>1, 'max'=>1},
-        'role' => {'valid_codes'=>{'http://hl7.org/fhir/diagnosis-role'=>['AD', 'DD', 'CC', 'CM', 'pre-op', 'post-op', 'billing', 'AD', 'DD', 'CC', 'CM', 'pre-op', 'post-op', 'billing']}, 'type'=>'CodeableConcept', 'path'=>'Diagnosis.role', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'preferred', 'uri'=>'http://hl7.org/fhir/ValueSet/diagnosis-role'}},
+        'role' => {'valid_codes'=>{'http://hl7.org/fhir/diagnosis-role'=>['AD', 'DD', 'CC', 'CM', 'pre-op', 'post-op', 'billing']}, 'type'=>'CodeableConcept', 'path'=>'Diagnosis.role', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'preferred', 'uri'=>'http://hl7.org/fhir/ValueSet/diagnosis-role'}},
         'rank' => {'type'=>'positiveInt', 'path'=>'Diagnosis.rank', 'min'=>0, 'max'=>1}
       }
 
@@ -132,13 +132,13 @@ module FHIR
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Hospitalization.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
         'preAdmissionIdentifier' => {'type'=>'Identifier', 'path'=>'Hospitalization.preAdmissionIdentifier', 'min'=>0, 'max'=>1},
         'origin' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Location'], 'type'=>'Reference', 'path'=>'Hospitalization.origin', 'min'=>0, 'max'=>1},
-        'admitSource' => {'valid_codes'=>{'http://hl7.org/fhir/admit-source'=>['hosp-trans', 'emd', 'outp', 'born', 'gp', 'mp', 'nursing', 'psych', 'rehab', 'other', 'hosp-trans', 'emd', 'outp', 'born', 'gp', 'mp', 'nursing', 'psych', 'rehab', 'other']}, 'type'=>'CodeableConcept', 'path'=>'Hospitalization.admitSource', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'preferred', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-admit-source'}},
+        'admitSource' => {'valid_codes'=>{'http://hl7.org/fhir/admit-source'=>['hosp-trans', 'emd', 'outp', 'born', 'gp', 'mp', 'nursing', 'psych', 'rehab', 'other']}, 'type'=>'CodeableConcept', 'path'=>'Hospitalization.admitSource', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'preferred', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-admit-source'}},
         'reAdmission' => {'valid_codes'=>{'http://hl7.org/fhir/v2/0092'=>['R']}, 'type'=>'CodeableConcept', 'path'=>'Hospitalization.reAdmission', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/v2-0092'}},
-        'dietPreference' => {'valid_codes'=>{'http://hl7.org/fhir/diet'=>['vegetarian', 'dairy-free', 'nut-free', 'gluten-free', 'vegan', 'halal', 'kosher', 'vegetarian', 'dairy-free', 'nut-free', 'gluten-free', 'vegan', 'halal', 'kosher']}, 'type'=>'CodeableConcept', 'path'=>'Hospitalization.dietPreference', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-diet'}},
+        'dietPreference' => {'valid_codes'=>{'http://hl7.org/fhir/diet'=>['vegetarian', 'dairy-free', 'nut-free', 'gluten-free', 'vegan', 'halal', 'kosher']}, 'type'=>'CodeableConcept', 'path'=>'Hospitalization.dietPreference', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-diet'}},
         'specialCourtesy' => {'valid_codes'=>{'http://hl7.org/fhir/v3/EncounterSpecialCourtesy'=>['EXT', 'NRM', 'PRF', 'STF', 'VIP'], 'http://hl7.org/fhir/v3/NullFlavor'=>['UNK']}, 'type'=>'CodeableConcept', 'path'=>'Hospitalization.specialCourtesy', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'preferred', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-special-courtesy'}},
-        'specialArrangement' => {'valid_codes'=>{'http://hl7.org/fhir/encounter-special-arrangements'=>['wheel', 'add-bed', 'int', 'att', 'dog', 'wheel', 'add-bed', 'int', 'att', 'dog']}, 'type'=>'CodeableConcept', 'path'=>'Hospitalization.specialArrangement', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'preferred', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-special-arrangements'}},
+        'specialArrangement' => {'valid_codes'=>{'http://hl7.org/fhir/encounter-special-arrangements'=>['wheel', 'add-bed', 'int', 'att', 'dog']}, 'type'=>'CodeableConcept', 'path'=>'Hospitalization.specialArrangement', 'min'=>0, 'max'=>Float::INFINITY, 'binding'=>{'strength'=>'preferred', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-special-arrangements'}},
         'destination' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Location'], 'type'=>'Reference', 'path'=>'Hospitalization.destination', 'min'=>0, 'max'=>1},
-        'dischargeDisposition' => {'valid_codes'=>{'http://hl7.org/fhir/discharge-disposition'=>['home', 'other-hcf', 'hosp', 'long', 'aadvice', 'exp', 'psy', 'rehab', 'snf', 'oth', 'home', 'other-hcf', 'hosp', 'long', 'aadvice', 'exp', 'psy', 'rehab', 'snf', 'oth']}, 'type'=>'CodeableConcept', 'path'=>'Hospitalization.dischargeDisposition', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-discharge-disposition'}}
+        'dischargeDisposition' => {'valid_codes'=>{'http://hl7.org/fhir/discharge-disposition'=>['home', 'other-hcf', 'hosp', 'long', 'aadvice', 'exp', 'psy', 'rehab', 'snf', 'oth']}, 'type'=>'CodeableConcept', 'path'=>'Hospitalization.dischargeDisposition', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-discharge-disposition'}}
       }
 
       attr_accessor :id                     # 0-1 string
@@ -165,7 +165,7 @@ module FHIR
         'extension' => {'type'=>'Extension', 'path'=>'Location.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Location.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
         'location' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Location'], 'type'=>'Reference', 'path'=>'Location.location', 'min'=>1, 'max'=>1},
-        'status' => {'valid_codes'=>{'http://hl7.org/fhir/encounter-location-status'=>['planned', 'active', 'reserved', 'completed', 'planned', 'active', 'reserved', 'completed']}, 'type'=>'code', 'path'=>'Location.status', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-location-status'}},
+        'status' => {'valid_codes'=>{'http://hl7.org/fhir/encounter-location-status'=>['planned', 'active', 'reserved', 'completed']}, 'type'=>'code', 'path'=>'Location.status', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/encounter-location-status'}},
         'period' => {'type'=>'Period', 'path'=>'Location.period', 'min'=>0, 'max'=>1}
       }
 

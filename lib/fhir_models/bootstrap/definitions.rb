@@ -213,6 +213,7 @@ module FHIR
             x['concept'].each { |y| @@cache[uri][x['url']] << y['code'] } if x['concept']
           end
         end
+        @@cache[uri].each { |system, codes| codes.uniq! }
       end
       @@cache[uri]
     end
