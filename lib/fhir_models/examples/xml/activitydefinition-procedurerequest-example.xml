@@ -51,11 +51,9 @@
         </coding> 
     </code>
   <timingTiming>
-    <event>
-      <extension url="http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression">
-        <valueString value="Now()"/>
-      </extension>
-    </event>
+    <extension url="http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression">
+      <valueString value="Now()"/>
+    </extension>
   </timingTiming>
   <location>
     <reference value="Location/1"/>
