@@ -18,6 +18,11 @@ namespace :fhir do
     # 4. generate extensions?
 
     # 5. generate profiles?
+    if generator.missing_required_expansion
+      FHIR.logger.error 'MISSING REQUIRED EXPANSION(S) -- This is a fatal error in the definition files.'
+    elsif generator.missing_expansions
+      FHIR.logger.info 'Missing expansions can be safely ignored due to weak binding strengths.'
+    end
   end
 
   desc 'preprocess definitions'
