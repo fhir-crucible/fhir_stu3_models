@@ -9,11 +9,11 @@
     {
       "resourceType": "FamilyMemberHistory",
       "id": "1",
+      "status": "completed",
       "patient": {
-        "reference": "Patient/147051",
+        "reference": "Patient/example",
         "display": "Pam Taylor"
       },
-      "status": "completed",
       "name": "Mary",
       "relationship": {
         "coding": [
@@ -50,11 +50,11 @@
     {
       "resourceType": "FamilyMemberHistory",
       "id": "2",
+      "status": "completed",
       "patient": {
-        "reference": "Patient/147051",
+        "reference": "Patient/example",
         "display": "Pam Taylor"
       },
-      "status": "completed",
       "name": "Bob",
       "relationship": {
         "coding": [
@@ -90,11 +90,11 @@
     {
       "resourceType": "FamilyMemberHistory",
       "id": "3",
+      "status": "completed",
       "patient": {
-        "reference": "Patient/147051",
+        "reference": "Patient/example",
         "display": "Pam Taylor"
       },
-      "status": "completed",
       "name": "Jon",
       "relationship": {
         "coding": [
@@ -137,11 +137,11 @@
           ]
         }
       ],
+      "status": "completed",
       "patient": {
-        "reference": "Patient/147051",
+        "reference": "Patient/example",
         "display": "Pam Taylor"
       },
-      "status": "completed",
       "name": "Alica",
       "relationship": {
         "coding": [
@@ -190,11 +190,11 @@
           ]
         }
       ],
+      "status": "completed",
       "patient": {
-        "reference": "Patient/147051",
+        "reference": "Patient/example",
         "display": "Pam Taylor"
       },
-      "status": "completed",
       "name": "Aunt with Parent ID",
       "relationship": {
         "coding": [
@@ -243,11 +243,11 @@
           ]
         }
       ],
+      "status": "completed",
       "patient": {
-        "reference": "Patient/147051",
+        "reference": "Patient/example",
         "display": "Pam Taylor"
       },
-      "status": "completed",
       "name": "Paul",
       "relationship": {
         "coding": [
@@ -280,7 +280,7 @@
     "text": "TPMT gene mutations found [Identifier] in Blood or Tissue by Sequencing Nominal"
   },
   "subject": {
-    "reference": "Patient/147051",
+    "reference": "Patient/example",
     "display": "Pam Taylor"
   },
   "entry": [

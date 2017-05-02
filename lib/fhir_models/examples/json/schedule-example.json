@@ -41,10 +41,12 @@
       ]
     }
   ],
-  "actor": {
-    "reference": "Location/1",
-    "display": "Burgers UMC, South Wing, second floor"
-  },
+  "actor": [
+    {
+      "reference": "Location/1",
+      "display": "Burgers UMC, South Wing, second floor"
+    }
+  ],
   "planningHorizon": {
     "start": "2013-12-25T09:15:00Z",
     "end": "2013-12-25T09:30:00Z"

@@ -3,10 +3,7 @@
   "id": "tumor",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: tumor</p><p><b>patient</b>: <a>Patient/example</a></p><p><b>identifier</b>: 12345</p><p><b>code</b>: Splenic mass <span>(Details : {SNOMED CT code '4147007' = 'Mass (morphologic abnormality)', given as 'Mass (morphologic abnormality)'})</span></p><p><b>modifier</b>: Splenic mass <span>(Details : {SNOMED CT code '78961009' = 'Splenic structure (body structure)', given as 'Splenic structure (body structure)'})</span></p><p><b>description</b>: 7 cm maximum diameter</p><p><b>image</b>: </p></div>"
-  },
-  "patient": {
-    "reference": "Patient/example"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: tumor</p><p><b>identifier</b>: 12345</p><p><b>code</b>: Splenic mass <span>(Details : {SNOMED CT code '4147007' = 'Mass', given as 'Mass (morphologic abnormality)'})</span></p><p><b>qualifier</b>: Splenic mass <span>(Details : {SNOMED CT code '78961009' = 'Spleen', given as 'Splenic structure (body structure)'})</span></p><p><b>description</b>: 7 cm maximum diameter</p><p><b>image</b>: </p><p><b>patient</b>: <a>Patient/example</a></p></div>"
   },
   "identifier": [
     {
@@ -24,7 +21,7 @@
     ],
     "text": "Splenic mass"
   },
-  "modifier": [
+  "qualifier": [
     {
       "coding": [
         {
@@ -40,7 +37,10 @@
   "image": [
     {
       "contentType": "application/dicom",
-      "url": "http://10.1.2.3:1000/wado?requestType=WADO&amp;wado_details..."
+      "url": "http://imaging.acme.com/wado/server?requestType=WADO&amp;wado_details"
     }
-  ]
+  ],
+  "patient": {
+    "reference": "Patient/example"
+  }
 }

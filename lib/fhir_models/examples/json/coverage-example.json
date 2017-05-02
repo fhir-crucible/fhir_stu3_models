@@ -46,7 +46,7 @@
       "reference": "Organization/2"
     }
   ],
-  "group": {
+  "grouping": {
     "group": "CBI35",
     "groupDisplay": "Corporate Baker's Inc. Local #35",
     "subGroup": "123",

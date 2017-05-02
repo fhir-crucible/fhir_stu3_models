@@ -101,7 +101,7 @@
           }
         }
       ],
-      "group": {
+      "grouping": {
         "plan": "CBI35",
         "planDisplay": "Corporate Baker's Inc. Plan#35",
         "subPlan": "123",

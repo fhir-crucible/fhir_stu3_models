@@ -3,18 +3,19 @@
   "id": "example-expansion",
   "meta": {
     "profile": [
-      "http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"
+      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
     ]
   },
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <table class=\"grid\">\n        <tr>\n          <td>http://loinc.org</td>\n          <td>14647-2</td>\n          <td>Cholesterol [Moles/volume] in Serum or Plasma</td>\n        </tr>\n        <tr>\n          <td colspan=\"3\">\n            <b>Additional Cholesterol codes</b>\n          </td>\n        </tr>\n        <tr>\n          <td>http://loinc.org</td>\n          <td>2093-3</td>\n          <td>Cholesterol [Mass/volume] in Serum or Plasma</td>\n        </tr>\n        <tr>\n          <td>http://loinc.org</td>\n          <td>48620-9</td>\n          <td>Cholesterol [Mass/volume] in Serum or Plasma ultracentrifugate</td>\n        </tr>\n        <tr>\n          <td>http://loinc.org</td>\n          <td>9342-7</td>\n          <td>Cholesterol [Percentile]</td>\n        </tr>\n        <tr>\n          <td colspan=\"3\">\n            <b>Cholesterol Ratios</b>\n          </td>\n        </tr>\n        <tr>\n          <td>http://loinc.org</td>\n          <td>2096-6</td>\n          <td>Cholesterol/Triglyceride [Mass Ratio] in Serum or Plasma</td>\n        </tr>\n        <tr>\n          <td>http://loinc.org</td>\n          <td>35200-5</td>\n          <td>Cholesterol/Triglyceride [Mass Ratio] in Serum or Plasma</td>\n        </tr>\n        <tr>\n          <td>http://loinc.org</td>\n          <td>48089-7</td>\n          <td>Cholesterol/Apolipoprotein B [Molar ratio] in Serum or Plasma</td>\n        </tr>\n        <tr>\n          <td>http://loinc.org</td>\n          <td>55838-7</td>\n          <td>Cholesterol/Phospholipid [Molar ratio] in Serum or Plasma</td>\n        </tr>\n      </table>\n    </div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t<table class=\"grid\">\n\t\t\t\t<tr>\n\t\t\t\t\t<td>http://loinc.org</td>\n\t\t\t\t\t<td>14647-2</td>\n\t\t\t\t\t<td>Cholesterol [Moles/volume] in Serum or Plasma</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td colspan=\"3\">\n\t\t\t\t\t\t<b>Additional Cholesterol codes</b>\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>http://loinc.org</td>\n\t\t\t\t\t<td>2093-3</td>\n\t\t\t\t\t<td>Cholesterol [Mass/volume] in Serum or Plasma</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>http://loinc.org</td>\n\t\t\t\t\t<td>48620-9</td>\n\t\t\t\t\t<td>Cholesterol [Mass/volume] in Serum or Plasma ultracentrifugate</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>http://loinc.org</td>\n\t\t\t\t\t<td>9342-7</td>\n\t\t\t\t\t<td>Cholesterol [Percentile]</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td colspan=\"3\">\n\t\t\t\t\t\t<b>Cholesterol Ratios</b>\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>http://loinc.org</td>\n\t\t\t\t\t<td>2096-6</td>\n\t\t\t\t\t<td>Cholesterol/Triglyceride [Mass Ratio] in Serum or Plasma</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>http://loinc.org</td>\n\t\t\t\t\t<td>35200-5</td>\n\t\t\t\t\t<td>Cholesterol/Triglyceride [Mass Ratio] in Serum or Plasma</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>http://loinc.org</td>\n\t\t\t\t\t<td>48089-7</td>\n\t\t\t\t\t<td>Cholesterol/Apolipoprotein B [Molar ratio] in Serum or Plasma</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td>http://loinc.org</td>\n\t\t\t\t\t<td>55838-7</td>\n\t\t\t\t\t<td>Cholesterol/Phospholipid [Molar ratio] in Serum or Plasma</td>\n\t\t\t\t</tr>\n\t\t\t</table>\n\t\t</div>"
   },
   "url": "http://hl7.org/fhir/ValueSet/example-expansion",
   "version": "20150622",
   "name": "LOINC Codes for Cholesterol in Serum/Plasma",
   "status": "draft",
   "experimental": true,
+  "date": "2015-06-22",
   "publisher": "FHIR Project team",
   "contact": [
     {
@@ -26,7 +27,6 @@
       ]
     }
   ],
-  "date": "2015-06-22",
   "description": "This is an example value set that includes all the LOINC codes for serum/plasma cholesterol from v2.36.",
   "copyright": "This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use.",
   "compose": {

@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
+  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -47,7 +47,7 @@
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             
           </xs:element>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="sequenceType">
+          <xs:element name="type" minOccurs="0" maxOccurs="1" type="code">
             
           </xs:element>
           <xs:element name="coordinateSystem" minOccurs="1" maxOccurs="1" type="integer">
@@ -87,9 +87,6 @@
             
           </xs:element>
           <xs:element name="pointer" minOccurs="0" maxOccurs="unbounded" type="Reference">
-            
-          </xs:element>
-          <xs:element name="structureVariant" type="Sequence.StructureVariant" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
         </xs:sequence>
@@ -234,60 +231,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="Sequence.StructureVariant">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="precisionOfBoundaries" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-          <xs:element name="reportedaCGHRatio" minOccurs="0" maxOccurs="1" type="decimal">
-            
-          </xs:element>
-          <xs:element name="length" minOccurs="0" maxOccurs="1" type="integer">
-            
-          </xs:element>
-          <xs:element name="outer" type="Sequence.Outer" minOccurs="0" maxOccurs="1">
-            
-          </xs:element>
-          <xs:element name="inner" type="Sequence.Inner" minOccurs="0" maxOccurs="1">
-            
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Sequence.Outer">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="start" minOccurs="0" maxOccurs="1" type="integer">
-            
-          </xs:element>
-          <xs:element name="end" minOccurs="0" maxOccurs="1" type="integer">
-            
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Sequence.Inner">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="start" minOccurs="0" maxOccurs="1" type="integer">
-            
-          </xs:element>
-          <xs:element name="end" minOccurs="0" maxOccurs="1" type="integer">
-            
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:simpleType name="repositoryType-list">
     <xs:restriction base="code-primitive">
       <xs:enumeration value="directlink">
@@ -317,13 +260,13 @@
   </xs:complexType>
   <xs:simpleType name="qualityType-list">
     <xs:restriction base="code-primitive">
-      <xs:enumeration value="INDEL">
+      <xs:enumeration value="indel">
         
       </xs:enumeration>
-      <xs:enumeration value="SNP">
+      <xs:enumeration value="snp">
         
       </xs:enumeration>
-      <xs:enumeration value="UNKNOWN">
+      <xs:enumeration value="unknown">
         
       </xs:enumeration>
     </xs:restriction>
@@ -333,27 +276,6 @@
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:attribute name="value" type="qualityType-list" use="optional"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="sequenceType-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="AA">
-        
-      </xs:enumeration>
-      <xs:enumeration value="DNA">
-        
-      </xs:enumeration>
-      <xs:enumeration value="RNA">
-        
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="sequenceType">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="sequenceType-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

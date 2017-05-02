@@ -6,16 +6,18 @@
     "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>\n        This example demonstrates how to encode this screen shot in a consent resource:\n      </p>\n      <p>\n       <img src=\"pkb.png\" alt=\"Screenshot from Patient Knows Best\"/>\n      </p>\n      <p>\n        Thanks to <a href=\"https://www.patientsknowbest.com/\">Patients Know Best</a> for contributing this example\n      </p>\n    </div>"
   },
   "status": "active",
-  "dateTime": "2016-06-16",
   "patient": {
     "reference": "Patient/example",
     "display": "...example patient..."
   },
-  "organization": {
-    "reference": "Organization/pkb",
-    "display": "Patients Know Best"
-  },
-  "policy": "http://hl7.org/fhir/ConsentPolicy/opt-in",
+  "dateTime": "2016-06-16",
+  "organization": [
+    {
+      "reference": "Organization/pkb",
+      "display": "Patients Know Best"
+    }
+  ],
+  "policyRule": "http://hl7.org/fhir/ConsentPolicy/opt-out",
   "except": [
     {
       "type": "permit",

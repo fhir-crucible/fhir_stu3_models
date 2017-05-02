@@ -32,13 +32,14 @@
                   <reference value="Observation/dgf1"/>
               </valueReference>
           </extension>
-          <patient>
+          <status value="completed"/>
+		  <patient>
               <reference value="Patient/example"/>
           </patient>
-          <status value="completed"/>
+          
           <relationship>
               <coding>
-                  <system value="http://hl7.org/fhir/familial-relationship"/>
+                  <system value="http://hl7.org/fhir/v3/RoleCode"/>
                   <code value="MTH"/>
                   <display value="Mother"/>
               </coding>
@@ -78,9 +79,11 @@
   <effectiveDateTime value="2015-05-26T15:30:10+01:00"/>
   <issued value="2014-05-16T10:28:00+01:00"/>
   <performer>
-      <reference value="Practitioner/genetics-example2"/>
-      <display value="Molecular Diagnostic Laboratory"/>
-  </performer>
+		<actor>
+			<reference value="Practitioner/genetics-example2"/>
+			<display value="Molecular Diagnostic Laboratory"/>
+		</actor>
+	</performer>
   <specimen>
       <reference value="Specimen/genetics-example2"/>
       <display value="Molecular Specimen ID: MLD45-Z4-1234"/>

@@ -13,7 +13,19 @@
   ],
   "status": "active",
   "action": "poll",
+  "target": {
+    "identifier": {
+      "system": "http://ninsurers.org/payorid",
+      "value": "WI12345"
+    }
+  },
   "created": "2014-08-16",
+  "provider": {
+    "identifier": {
+      "system": "http://npid.org/providerid",
+      "value": "AF12345"
+    }
+  },
   "organization": {
     "reference": "Organization/1"
   },

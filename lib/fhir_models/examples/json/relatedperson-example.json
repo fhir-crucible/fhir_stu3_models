@@ -22,8 +22,8 @@
   "relationship": {
     "coding": [
       {
-        "system": "http://hl7.org/fhir/patient-contact-relationship",
-        "code": "partner"
+        "system": "http://hl7.org/fhir/v2/0131",
+        "code": "N"
       },
       {
         "system": "http://hl7.org/fhir/v3/RoleCode",

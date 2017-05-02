@@ -34,62 +34,6 @@
       "postalCode": "3999"
     }
   ],
-  "role": [
-    {
-      "organization": {
-        "reference": "Organization/f001"
-      },
-      "code": {
-        "coding": [
-          {
-            "system": "http://hl7.org/fhir/v2/0286",
-            "code": "RP"
-          }
-        ]
-      },
-      "identifier": [
-        {
-          "system": "http://example.org/role-identifier",
-          "value": "52"
-        }
-      ],
-      "telecom": [
-        {
-          "system": "email",
-          "value": "dr.adam.careful@example.org"
-        }
-      ],
-      "period": {
-        "start": "2012-01-01",
-        "end": "2012-03-31"
-      },
-      "location": [
-        {
-          "reference": "Location/1",
-          "display": "South Wing, second floor"
-        }
-      ],
-      "healthcareService": [
-        {
-          "reference": "HealthcareService/example"
-        }
-      ],
-      "endpoint": [
-        {
-          "reference": "Endpoint/example"
-        }
-      ]
-    },
-    {
-      "organization": {
-        "reference": "Organization/2",
-        "display": "Good Health Clinic"
-      },
-      "period": {
-        "start": "2012-01-01"
-      }
-    }
-  ],
   "qualification": [
     {
       "identifier": [
@@ -99,6 +43,13 @@
         }
       ],
       "code": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/v2/0360/2.7",
+            "code": "BS",
+            "display": "Bachelor of Science"
+          }
+        ],
         "text": "Bachelor of Science"
       },
       "period": {

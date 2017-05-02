@@ -12,17 +12,27 @@
     }
   ],
   "status": "completed",
-  "category": {
-    "coding": [
-      {
-        "system": "http://acme.org/messagetypes",
-        "code": "SolicitedAttachment"
-      }
-    ]
-  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://acme.org/messagetypes",
+          "code": "SolicitedAttachment"
+        }
+      ]
+    }
+  ],
   "subject": {
     "reference": "Patient/1"
   },
+  "recipient": [
+    {
+      "identifier": {
+        "system": "http://www.jurisdiction.com/insurer",
+        "value": "123456"
+      }
+    }
+  ],
   "topic": [
     {
       "identifier": {
@@ -44,14 +54,6 @@
       "value": "3456"
     }
   },
-  "recipient": [
-    {
-      "identifier": {
-        "system": "http://www.jurisdiction.com/insurer",
-        "value": "123456"
-      }
-    }
-  ],
   "payload": [
     {
       "contentAttachment": {

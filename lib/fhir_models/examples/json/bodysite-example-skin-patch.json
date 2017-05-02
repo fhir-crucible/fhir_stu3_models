@@ -3,10 +3,7 @@
   "id": "skin-patch",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: skin-patch</p><p><b>patient</b>: <a>Patient/example</a></p><p><b>identifier</b>: 12345</p><p><b>code</b>: Skin patch <span>(Details : {SNOMED CT code '39937001' = 'Skin structure (body structure)', given as 'Skin structure (body structure)'})</span></p><p><b>description</b>: inner surface (volar) of the left forearm</p></div>"
-  },
-  "patient": {
-    "reference": "Patient/example"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: skin-patch</p><p><b>identifier</b>: 12345</p><p><b>active</b>: false</p><p><b>code</b>: Skin patch <span>(Details : {SNOMED CT code '39937001' = 'Skin', given as 'Skin structure (body structure)'})</span></p><p><b>description</b>: inner surface (volar) of the left forearm</p><p><b>patient</b>: <a>Patient/example</a></p></div>"
   },
   "identifier": [
     {
@@ -14,6 +11,7 @@
       "value": "12345"
     }
   ],
+  "active": false,
   "code": {
     "coding": [
       {
@@ -24,5 +22,8 @@
     ],
     "text": "Skin patch"
   },
-  "description": "inner surface (volar) of the left forearm"
+  "description": "inner surface (volar) of the left forearm",
+  "patient": {
+    "reference": "Patient/example"
+  }
 }

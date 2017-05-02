@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
+  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -47,7 +47,7 @@
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             
           </xs:element>
-          <xs:element name="status" minOccurs="0" maxOccurs="1" type="code">
+          <xs:element name="status" minOccurs="0" maxOccurs="1" type="FinancialResourceStatusCodes">
             
           </xs:element>
           <xs:element name="created" minOccurs="0" maxOccurs="1" type="dateTime">
@@ -74,7 +74,7 @@
           <xs:element name="form" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="note" type="ProcessResponse.Note" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="processNote" type="ProcessResponse.ProcessNote" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
           <xs:element name="error" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
@@ -87,7 +87,7 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="ProcessResponse.Note">
+  <xs:complexType name="ProcessResponse.ProcessNote">
     
     <xs:complexContent>
       <xs:extension base="BackboneElement">

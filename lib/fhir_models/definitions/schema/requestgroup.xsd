@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
+  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -44,7 +44,28 @@
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
-          <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
+          <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
+            
+          </xs:element>
+          <xs:element name="definition" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
+          <xs:element name="basedOn" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
+          <xs:element name="replaces" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
+          <xs:element name="groupIdentifier" minOccurs="0" maxOccurs="1" type="Identifier">
+            
+          </xs:element>
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="RequestStatus">
+            
+          </xs:element>
+          <xs:element name="intent" minOccurs="1" maxOccurs="1" type="RequestIntent">
+            
+          </xs:element>
+          <xs:element name="priority" minOccurs="0" maxOccurs="1" type="RequestPriority">
             
           </xs:element>
           <xs:element name="subject" minOccurs="0" maxOccurs="1" type="Reference">
@@ -53,7 +74,7 @@
           <xs:element name="context" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="occurrenceDateTime" minOccurs="0" maxOccurs="1" type="dateTime">
+          <xs:element name="authoredOn" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
           <xs:element name="author" minOccurs="0" maxOccurs="1" type="Reference">
@@ -79,9 +100,6 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="actionIdentifier" minOccurs="0" maxOccurs="1" type="Identifier">
-            
-          </xs:element>
           <xs:element name="label" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
@@ -120,19 +138,19 @@
           <xs:element name="type" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
-          <xs:element name="groupingBehavior" minOccurs="0" maxOccurs="1" type="code">
+          <xs:element name="groupingBehavior" minOccurs="0" maxOccurs="1" type="ActionGroupingBehavior">
             
           </xs:element>
-          <xs:element name="selectionBehavior" minOccurs="0" maxOccurs="1" type="code">
+          <xs:element name="selectionBehavior" minOccurs="0" maxOccurs="1" type="ActionSelectionBehavior">
             
           </xs:element>
-          <xs:element name="requiredBehavior" minOccurs="0" maxOccurs="1" type="code">
+          <xs:element name="requiredBehavior" minOccurs="0" maxOccurs="1" type="ActionRequiredBehavior">
             
           </xs:element>
-          <xs:element name="precheckBehavior" minOccurs="0" maxOccurs="1" type="code">
+          <xs:element name="precheckBehavior" minOccurs="0" maxOccurs="1" type="ActionPrecheckBehavior">
             
           </xs:element>
-          <xs:element name="cardinalityBehavior" minOccurs="0" maxOccurs="1" type="code">
+          <xs:element name="cardinalityBehavior" minOccurs="0" maxOccurs="1" type="ActionCardinalityBehavior">
             
           </xs:element>
           <xs:element name="resource" minOccurs="0" maxOccurs="1" type="Reference">
@@ -150,7 +168,7 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="kind" minOccurs="1" maxOccurs="1" type="code">
+          <xs:element name="kind" minOccurs="1" maxOccurs="1" type="ActionConditionKind">
             
           </xs:element>
           <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
@@ -171,10 +189,10 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="actionIdentifier" minOccurs="1" maxOccurs="1" type="Identifier">
+          <xs:element name="actionId" minOccurs="1" maxOccurs="1" type="id">
             
           </xs:element>
-          <xs:element name="relationship" minOccurs="1" maxOccurs="1" type="code">
+          <xs:element name="relationship" minOccurs="1" maxOccurs="1" type="ActionRelationshipType">
             
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1">

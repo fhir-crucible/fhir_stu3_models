@@ -11,19 +11,29 @@
       "value": "654321"
     }
   ],
-  "name": "HACC Funded Billing for Peter James Chalmers",
+  "status": "active",
   "type": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/v3/ActCode",
+        "code": "PBILLACCT",
+        "display": "patient billing account"
+      }
+    ],
     "text": "patient"
   },
-  "status": "active",
-  "active": {
+  "name": "HACC Funded Billing for Peter James Chalmers",
+  "subject": {
+    "reference": "Patient/example",
+    "display": "Peter James Chalmers"
+  },
+  "period": {
     "start": "2016-01-01",
     "end": "2016-06-30"
   },
-  "currency": {
-    "system": "urn:iso:std:iso:4217",
-    "code": "USD",
-    "display": "US Dollar"
+  "active": {
+    "start": "2016-01-01",
+    "end": "2016-06-30"
   },
   "balance": {
     "value": -1200,
@@ -33,17 +43,12 @@
   },
   "coverage": [
     {
-      "reference": "Coverage/9876B1"
+      "coverage": {
+        "reference": "Coverage/7546D"
+      },
+      "priority": 1
     }
   ],
-  "coveragePeriod": {
-    "start": "2016-01-01",
-    "end": "2016-06-30"
-  },
-  "subject": {
-    "reference": "Patient/example",
-    "display": "Peter James Chalmers"
-  },
   "owner": {
     "reference": "Organization/hl7"
   },

@@ -5,6 +5,7 @@ module FHIR
       attr_accessor :defn
       # templates keeps track of all the templates in context within a given StructureDefinition
       attr_accessor :templates
+      attr_accessor :missing_expansions, :missing_required_expansion
 
       def initialize(auto_setup: true)
         # load the valueset expansions
@@ -198,7 +199,11 @@ module FHIR
                 # set the actual code list
                 codes = @defn.get_codes(field.binding['uri'])
                 field.valid_codes = codes unless codes.nil?
-                FHIR.logger.warn "  MISSING EXPANSION -- #{field.path} #{field.min}..#{field.max}: #{field.binding['uri']} (#{field.binding['strength']})" if field.valid_codes.empty? && field.binding['uri'] && !field.binding['uri'].end_with?('bcp47') && !field.binding['uri'].end_with?('bcp13.txt')
+                if field.valid_codes.empty? && field.binding['uri'] && !field.binding['uri'].end_with?('bcp47') && !field.binding['uri'].end_with?('bcp13.txt')
+                  FHIR.logger.warn "  MISSING EXPANSION -- #{field.path} #{field.min}..#{field.max}: #{field.binding['uri']} (#{field.binding['strength']})"
+                  @missing_expansions = true
+                  @missing_required_expansion = (field.binding['strength'] == 'required') unless @missing_required_expansion
+                end
               elsif %w[Element BackboneElement].include?(data_type)
                 # This is a nested structure or class
                 field.type = "#{hierarchy.join('::')}::#{cap_first(field.name)}"

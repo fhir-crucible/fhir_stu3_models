@@ -5,6 +5,7 @@
     "status": "generated",
     "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Follow Infection Control Level 3 Protocol</div>"
   },
+  "status": "active",
   "category": {
     "coding": [
       {
@@ -14,14 +15,6 @@
       }
     ]
   },
-  "status": "active",
-  "subject": {
-    "reference": "Patient/example",
-    "display": "Peter Patient"
-  },
-  "encounter": {
-    "reference": "Encounter/example"
-  },
   "code": {
     "coding": [
       {
@@ -30,5 +23,12 @@
         "display": "Follow Level 3 Protocol"
       }
     ]
+  },
+  "subject": {
+    "reference": "Patient/example",
+    "display": "Peter Patient"
+  },
+  "encounter": {
+    "reference": "Encounter/example"
   }
 }

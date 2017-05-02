@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
+  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -77,16 +77,19 @@
           <xs:element name="interpreter" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
-          <xs:element name="baseLocation" type="ImagingStudy.BaseLocation" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="endpoint" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
-          <xs:element name="numberOfSeries" minOccurs="1" maxOccurs="1" type="unsignedInt">
+          <xs:element name="numberOfSeries" minOccurs="0" maxOccurs="1" type="unsignedInt">
             
           </xs:element>
-          <xs:element name="numberOfInstances" minOccurs="1" maxOccurs="1" type="unsignedInt">
+          <xs:element name="numberOfInstances" minOccurs="0" maxOccurs="1" type="unsignedInt">
             
           </xs:element>
-          <xs:element name="procedure" minOccurs="0" maxOccurs="unbounded" type="Reference">
+          <xs:element name="procedureReference" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
+          <xs:element name="procedureCode" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="reason" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -96,21 +99,6 @@
             
           </xs:element>
           <xs:element name="series" type="ImagingStudy.Series" minOccurs="0" maxOccurs="unbounded">
-            
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="ImagingStudy.BaseLocation">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="Coding">
-            
-          </xs:element>
-          <xs:element name="url" minOccurs="1" maxOccurs="1" type="uri">
             
           </xs:element>
         </xs:sequence>
@@ -134,13 +122,13 @@
           <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="numberOfInstances" minOccurs="1" maxOccurs="1" type="unsignedInt">
+          <xs:element name="numberOfInstances" minOccurs="0" maxOccurs="1" type="unsignedInt">
             
           </xs:element>
           <xs:element name="availability" minOccurs="0" maxOccurs="1" type="InstanceAvailability">
             
           </xs:element>
-          <xs:element name="baseLocation" type="ImagingStudy.BaseLocation1" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="endpoint" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
           <xs:element name="bodySite" minOccurs="0" maxOccurs="1" type="Coding">
@@ -152,22 +140,10 @@
           <xs:element name="started" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
+          <xs:element name="performer" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
           <xs:element name="instance" type="ImagingStudy.Instance" minOccurs="0" maxOccurs="unbounded">
-            
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="ImagingStudy.BaseLocation1">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="Coding">
-            
-          </xs:element>
-          <xs:element name="url" minOccurs="1" maxOccurs="1" type="uri">
             
           </xs:element>
         </xs:sequence>

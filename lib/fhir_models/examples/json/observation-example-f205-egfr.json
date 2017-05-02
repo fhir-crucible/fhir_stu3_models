@@ -71,6 +71,11 @@
             "system": "http://unitsofmeasure.org",
             "code": "mL/min/{1.73_m2}"
           },
+          "appliesTo": [
+            {
+              "text": "non-black/african-american"
+            }
+          ],
           "age": {
             "low": {
               "value": 18,

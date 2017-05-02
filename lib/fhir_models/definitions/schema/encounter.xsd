@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
+  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -56,13 +56,16 @@
           <xs:element name="class" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
+          <xs:element name="classHistory" type="Encounter.ClassHistory" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
           <xs:element name="type" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="priority" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="patient" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="subject" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
           <xs:element name="episodeOfCare" minOccurs="0" maxOccurs="unbounded" type="Reference">
@@ -86,7 +89,7 @@
           <xs:element name="reason" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="indication" minOccurs="0" maxOccurs="unbounded" type="Reference">
+          <xs:element name="diagnosis" type="Encounter.Diagnosis" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
           <xs:element name="account" minOccurs="0" maxOccurs="unbounded" type="Reference">
@@ -123,6 +126,21 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="Encounter.ClassHistory">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="class" minOccurs="1" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:element name="period" minOccurs="1" maxOccurs="1" type="Period">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="Encounter.Participant">
     
     <xs:complexContent>
@@ -135,6 +153,24 @@
             
           </xs:element>
           <xs:element name="individual" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Encounter.Diagnosis">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="condition" minOccurs="1" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="role" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="rank" minOccurs="0" maxOccurs="1" type="positiveInt">
             
           </xs:element>
         </xs:sequence>
@@ -155,9 +191,6 @@
           <xs:element name="admitSource" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="admittingDiagnosis" minOccurs="0" maxOccurs="unbounded" type="Reference">
-            
-          </xs:element>
           <xs:element name="reAdmission" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
@@ -174,9 +207,6 @@
             
           </xs:element>
           <xs:element name="dischargeDisposition" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="dischargeDiagnosis" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
         </xs:sequence>
@@ -233,6 +263,9 @@
       <xs:enumeration value="arrived">
         
       </xs:enumeration>
+      <xs:enumeration value="triaged">
+        
+      </xs:enumeration>
       <xs:enumeration value="in-progress">
         
       </xs:enumeration>
@@ -246,6 +279,9 @@
         
       </xs:enumeration>
       <xs:enumeration value="entered-in-error">
+        
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
         
       </xs:enumeration>
     </xs:restriction>

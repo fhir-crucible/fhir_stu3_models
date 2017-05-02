@@ -29,22 +29,10 @@
           }
         ]
       },
-      "eye": {
-        "coding": [
-          {
-            "code": "right"
-          }
-        ]
-      },
+      "eye": "right",
       "sphere": -2.00,
       "prism": 0.5,
-      "base": {
-        "coding": [
-          {
-            "code": "down"
-          }
-        ]
-      },
+      "base": "down",
       "add": 2.00
     },
     {
@@ -56,24 +44,12 @@
           }
         ]
       },
-      "eye": {
-        "coding": [
-          {
-            "code": "left"
-          }
-        ]
-      },
+      "eye": "left",
       "sphere": -1.00,
       "cylinder": -0.50,
       "axis": 180,
       "prism": 0.5,
-      "base": {
-        "coding": [
-          {
-            "code": "up"
-          }
-        ]
-      },
+      "base": "up",
       "add": 2.00
     }
   ]

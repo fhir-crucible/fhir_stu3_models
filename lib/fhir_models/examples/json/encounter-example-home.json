@@ -19,7 +19,7 @@
     "code": "HH",
     "display": "home health"
   },
-  "patient": {
+  "subject": {
     "reference": "Patient/example"
   },
   "participant": [

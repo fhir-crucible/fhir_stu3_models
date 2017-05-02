@@ -17,7 +17,7 @@
       "uid": "urn:oid:2.16.124.113543.6003.2588828330.45298.17418.2723805630",
       "number": 3,
       "modality": {
-        "system": "http://nema.org/dicom/dicm",
+        "system": "http://dicom.nema.org/resources/ontology/DCM",
         "code": "CT"
       },
       "description": "CT Surview 180",

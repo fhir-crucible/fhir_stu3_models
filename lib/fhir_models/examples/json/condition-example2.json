@@ -33,5 +33,5 @@
   "subject": {
     "reference": "Patient/example"
   },
-  "onsetDateTime": "2012-11-12"
+  "onsetString": "approximately November 2012"
 }

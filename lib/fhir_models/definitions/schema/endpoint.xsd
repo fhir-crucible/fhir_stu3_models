@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Dec 7, 2016 09:17-0500 for FHIR v1.8.0 
+  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -50,6 +50,9 @@
           <xs:element name="status" minOccurs="1" maxOccurs="1" type="EndpointStatus">
             
           </xs:element>
+          <xs:element name="connectionType" minOccurs="1" maxOccurs="1" type="Coding">
+            
+          </xs:element>
           <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
@@ -62,9 +65,6 @@
           <xs:element name="period" minOccurs="0" maxOccurs="1" type="Period">
             
           </xs:element>
-          <xs:element name="connectionType" minOccurs="1" maxOccurs="1" type="Coding">
-            
-          </xs:element>
           <xs:element name="payloadType" minOccurs="1" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
@@ -75,9 +75,6 @@
             
           </xs:element>
           <xs:element name="header" minOccurs="0" maxOccurs="unbounded" type="string">
-            
-          </xs:element>
-          <xs:element name="publicKey" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
         </xs:sequence>

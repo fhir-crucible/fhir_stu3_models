@@ -21,7 +21,9 @@
   "issued": "2013-02-13T11:45:33+11:00",
   "performer": [
     {
-      "reference": "Practitioner/example"
+      "actor": {
+        "reference": "Practitioner/example"
+      }
     }
   ]
 }

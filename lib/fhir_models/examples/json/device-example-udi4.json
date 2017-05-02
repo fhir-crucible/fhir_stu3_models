@@ -3,30 +3,14 @@
   "id": "example-udi4",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example-udi4</p><p><b>udiCarrier</b>: Universal Device Identifier = =)1TE123456A&amp;)RZ12345678</p><p><b>status</b>: not-available</p><p><b>type</b>: DI = 1TE123456A <span>(Details : {http://hl7.org/fhir/NamingSystem/iccbba-blood-di code '1TE123456A' = '1TE123456A)</span></p><p><b>lotNumber</b>: RZ12345678</p><p><b>manufacturer</b>: GlobalMed, Inc</p><p><b>patient</b>: <a>Patient/example</a></p></div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example-udi4</p><h3>Udis</h3><table><tr><td>-</td><td><b>Jurisdiction</b></td><td><b>CarrierHRF</b></td><td><b>Issuer</b></td></tr><tr><td>*</td><td><a>http://hl7.org/fhir/NamingSystem/fda-udi</a></td><td>=)1TE123456A&amp;)RZ12345678</td><td><a>http://hl7.org/fhir/NamingSystem/iccbba-blood</a></td></tr></table><p><b>status</b>: inactive</p><p><b>lotNumber</b>: RZ12345678</p><p><b>manufacturer</b>: GlobalMed, Inc</p><p><b>patient</b>: <a>Patient/example</a></p></div>"
   },
-  "udiCarrier": {
-    "type": {
-      "coding": [
-        {
-          "system": "http://hl7.org/fhir/identifier-type",
-          "code": "UDI"
-        }
-      ]
-    },
-    "system": "http://hl7.org/fhir/NamingSystem/fda-udi",
-    "value": "=)1TE123456A&)RZ12345678"
+  "udi": {
+    "jurisdiction": "http://hl7.org/fhir/NamingSystem/fda-udi",
+    "carrierHRF": "=)1TE123456A&)RZ12345678",
+    "issuer": "http://hl7.org/fhir/NamingSystem/iccbba-blood"
   },
-  "status": "not-available",
-  "type": {
-    "coding": [
-      {
-        "system": "http://hl7.org/fhir/NamingSystem/iccbba-blood-di",
-        "code": "1TE123456A"
-      }
-    ],
-    "text": "DI = 1TE123456A"
-  },
+  "status": "inactive",
   "lotNumber": "RZ12345678",
   "manufacturer": "GlobalMed, Inc",
   "patient": {

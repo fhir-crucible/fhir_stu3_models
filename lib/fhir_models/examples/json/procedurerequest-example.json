@@ -5,9 +5,20 @@
     "status": "generated",
     "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">To be added</div>"
   },
-  "subject": {
-    "reference": "Patient/example"
-  },
+  "status": "completed",
+  "intent": "order",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "103693007",
+          "display": "Diagnostic procedure (procedure)"
+        }
+      ],
+      "text": "Diagnostics Procedure"
+    }
+  ],
   "code": {
     "coding": [
       {
@@ -16,5 +27,8 @@
         "display": "Computed tomography of head"
       }
     ]
+  },
+  "subject": {
+    "reference": "Patient/example"
   }
 }

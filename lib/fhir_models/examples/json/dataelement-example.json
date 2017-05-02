@@ -3,7 +3,7 @@
   "id": "gender",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t<p>\n\t\t\t\t<b>Gender Code</b>: The code representing the gender of a person\n      \n      \n      \n      </p>\n\t\t\t<table>\n\t\t\t\t<tbody>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Code</th>\n\t\t\t\t\t\t<th>Display</th>\n\t\t\t\t\t\t<th>Definition</th>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>0</td>\n\t\t\t\t\t\t<td>Unknown</td>\n\t\t\t\t\t\t<td>Not known, not observed, not recorded, or refused.</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>1</td>\n\t\t\t\t\t\t<td>Male</td>\n\t\t\t\t\t\t<td>A person who belongs to the sex that normally produces sperm. The term is used to indicate biological sex distinctions, cultural gender role distinctions, or both.</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>2</td>\n\t\t\t\t\t\t<td>Female</td>\n\t\t\t\t\t\t<td>A person who belongs to the sex that normally produces ova. The term is used to indicate biological sex distinctions, or cultural gender role distinctions, or both.</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>3</td>\n\t\t\t\t\t\t<td>Not specified</td>\n\t\t\t\t\t\t<td>Not specified</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t\t<ul>\n\t\t\t\t<li/>\n\t\t\t</ul>\n\t\t</div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t<p>\n\t\t\t\t<b>Gender Code</b>: The code representing the gender of a person\n      </p>\n\t\t\t<table>\n\t\t\t\t<tbody>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>Code</th>\n\t\t\t\t\t\t<th>Display</th>\n\t\t\t\t\t\t<th>Definition</th>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>0</td>\n\t\t\t\t\t\t<td>Unknown</td>\n\t\t\t\t\t\t<td>Not known, not observed, not recorded, or refused.</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>1</td>\n\t\t\t\t\t\t<td>Male</td>\n\t\t\t\t\t\t<td>A person who belongs to the sex that normally produces sperm. The term is used to indicate biological sex distinctions, cultural gender role distinctions, or both.</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>2</td>\n\t\t\t\t\t\t<td>Female</td>\n\t\t\t\t\t\t<td>A person who belongs to the sex that normally produces ova. The term is used to indicate biological sex distinctions, or cultural gender role distinctions, or both.</td>\n\t\t\t\t\t</tr>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<td>3</td>\n\t\t\t\t\t\t<td>Not specified</td>\n\t\t\t\t\t\t<td>Not specified</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t\t<ul>\n\t\t\t\t<li/>\n\t\t\t</ul>\n\t\t</div>"
   },
   "contained": [
     {
@@ -115,8 +115,27 @@
   ],
   "version": "1.0",
   "status": "active",
+  "date": "2016-01-01",
   "publisher": "DCP",
   "name": "Gender Code",
+  "title": "Administrative gender",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "system": "urn:iso:std:iso:3166",
+          "code": "US"
+        }
+      ]
+    }
+  ],
+  "mapping": [
+    {
+      "identity": "fhir",
+      "uri": "http://hl7.org/fhir/api",
+      "name": "Fast Healthcare Interoperable Resources (FHIR)"
+    }
+  ],
   "element": [
     {
       "extension": [
@@ -130,6 +149,13 @@
         }
       ],
       "path": "Gender",
+      "code": [
+        {
+          "system": "http://loinc.org",
+          "code": "46098-0",
+          "display": "Sex"
+        }
+      ],
       "definition": "The code representing the gender of a person.",
       "type": [
         {
@@ -156,7 +182,14 @@
           ],
           "reference": "#2179414"
         }
-      }
+      },
+      "mapping": [
+        {
+          "identity": "fhir",
+          "language": "application/xquery",
+          "map": "return f:/Patient/f:gender"
+        }
+      ]
     }
   ]
 }

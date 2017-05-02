@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><MedicationStatement xmlns="http://hl7.org/fhir">
   <id value="example007"/>
-  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example007</p><p><b>contained</b>: </p><p><b>status</b>: intended</p><p><b>medication</b>: id: med0315; Mometasone Furoate 0.05mg/Actuat <span>(Details : {RxNorm code &#39;358793&#39; = &#39;358793&#39;, given as &#39;Mometasone Furoate 0.05mg/Actuat&#39;})</span>; </p><p><b>subject</b>: <a>Donald Duck</a></p><p><b>informationSource</b>: <a>Donald Duck</a></p><p><b>dateAsserted</b>: Feb 22, 2015</p><p><b>notTaken</b>: y</p><p><b>note</b>: patient plans to start using for seasonal allergies in the Spring when pollen is in the air</p></div></text><contained>
+  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example007</p><p><b>contained</b>: </p><p><b>status</b>: intended</p><p><b>medication</b>: id: med0315; Mometasone Furoate 0.05mg/Actuat <span>(Details : {RxNorm code &#39;358793&#39; = &#39;358793&#39;, given as &#39;Mometasone Furoate 0.05mg/Actuat&#39;})</span>; Nasal Spray <span>(Details : {SNOMED CT code &#39;385157007&#39; = &#39;Nasal spray&#39;, given as &#39;Nasal Spray&#39;})</span></p><p><b>informationSource</b>: <a>Donald Duck</a></p><p><b>subject</b>: <a>Donald Duck</a></p><p><b>taken</b>: y</p><p><b>note</b>: patient plans to start using for seasonal allergies in the Spring when pollen is in the air</p></div></text><contained>
     <Medication>
       <id value="med0315"/>
       <code>
@@ -11,7 +11,6 @@
         </coding>
       </code>
       <isBrand value="false"/>
-      <product>
         <form>
           <coding>
             <system value="http://snomed.info/sct"/>
@@ -19,23 +18,22 @@
             <display value="Nasal Spray"/>
           </coding>
         </form>
-      </product>
+      
     </Medication>
   </contained>
   <status value="intended"/>
   <medicationReference> <!--   Linked to a RESOURCE Medication   -->
     <reference value="#med0315"/>
   </medicationReference>
-  <subject>
-    <reference value="Patient/pat1"/>
-    <display value="Donald Duck"/> 
-  </subject>
   <informationSource>
     <reference value="Patient/pat1"/>
     <display value="Donald Duck"/> 
   </informationSource>
-  <dateAsserted value="2015-02-22"/>
-  <notTaken value="y"/>
+  <subject>
+    <reference value="Patient/pat1"/>
+    <display value="Donald Duck"/> 
+  </subject>
+  <taken value="y"/>
   <note>
     <text value="patient plans to start using for seasonal allergies in the Spring when pollen is in the air"/>
   </note>

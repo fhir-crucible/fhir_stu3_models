@@ -3,7 +3,7 @@
   "id": "f004",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f004</p><p><b>identifier</b>: 118265112 (OFFICIAL), 523ASA1LK927 (USUAL)</p><p><b>name</b>: Ronald Briet (OFFICIAL)</p><p><b>telecom</b>: ph: 0205569273(WORK), r.briet@bmc.nl(WORK), fax: 0205664440(WORK)</p><p><b>address</b>: Galapagosweg 91 Amsterdam 1105 AZ NLD (WORK)</p><p><b>gender</b>: male</p><p><b>birthDate</b>: Feb 4, 1980</p><h3>Roles</h3><table><tr><td>-</td><td><b>Organization</b></td><td><b>Code</b></td><td><b>Specialty</b></td></tr><tr><td>*</td><td><a>BMC</a></td><td>Care role <span>(Details : {urn:oid:2.16.840.1.113883.2.4.15.111 code '01.000' = '01.000', given as 'Arts'})</span></td><td>specialization <span>(Details : {urn:oid:2.16.840.1.113883.2.4.15.111 code '01.018' = '01.018', given as 'Ear-, Nose and Throat'})</span></td></tr></table><p><b>communication</b>: Language <span>(Details : {urn:oid:2.16.840.1.113883.6.121 code 'nl' = 'nl', given as 'Netherlands'})</span></p></div>"
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f004</p><p><b>identifier</b>: 118265112 (OFFICIAL), 523ASA1LK927 (USUAL)</p><p><b>name</b>: Ronald Briet (OFFICIAL)</p><p><b>telecom</b>: ph: 0205569273(WORK), r.briet@bmc.nl(WORK), fax: 0205664440(WORK)</p><p><b>address</b>: Galapagosweg 91 Amsterdam 1105 AZ NLD (WORK)</p><p><b>gender</b>: male</p><p><b>birthDate</b>: Feb 4, 1980</p><p><b>communication</b>: Language <span>(Details : {urn:oid:2.16.840.1.113883.6.121 code 'nl' = 'nl', given as 'Netherlands'})</span></p></div>"
   },
   "identifier": [
     {
@@ -59,36 +59,6 @@
   ],
   "gender": "male",
   "birthDate": "1980-02-04",
-  "role": [
-    {
-      "organization": {
-        "reference": "Organization/f001",
-        "display": "BMC"
-      },
-      "code": {
-        "coding": [
-          {
-            "system": "urn:oid:2.16.840.1.113883.2.4.15.111",
-            "code": "01.000",
-            "display": "Arts"
-          }
-        ],
-        "text": "Care role"
-      },
-      "specialty": [
-        {
-          "coding": [
-            {
-              "system": "urn:oid:2.16.840.1.113883.2.4.15.111",
-              "code": "01.018",
-              "display": "Ear-, Nose and Throat"
-            }
-          ],
-          "text": "specialization"
-        }
-      ]
-    }
-  ],
   "communication": [
     {
       "coding": [

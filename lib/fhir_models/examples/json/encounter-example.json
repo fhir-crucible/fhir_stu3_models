@@ -11,7 +11,7 @@
     "code": "IMP",
     "display": "inpatient encounter"
   },
-  "patient": {
+  "subject": {
     "reference": "Patient/example"
   }
 }

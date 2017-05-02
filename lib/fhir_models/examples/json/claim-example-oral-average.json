@@ -55,6 +55,56 @@
       }
     }
   ],
+  "information": [
+    {
+      "sequence": 1,
+      "category": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/claiminformationcategory",
+            "code": "missingtooth"
+          }
+        ]
+      },
+      "code": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/ex-tooth",
+            "code": "15"
+          }
+        ]
+      },
+      "timingDate": "2012-04-07",
+      "reason": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/missingtoothreason",
+            "code": "e"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 2,
+      "category": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/claiminformationcategory",
+            "code": "exception"
+          }
+        ]
+      },
+      "code": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/claim-exception",
+            "code": "student"
+          }
+        ]
+      },
+      "valueString": "Happy Valley Community College"
+    }
+  ],
   "diagnosis": [
     {
       "sequence": 1,
@@ -85,7 +135,7 @@
       "service": {
         "coding": [
           {
-            "system": "http://hl7.org/fhir/oralservicecodes",
+            "system": "http://example.org/fhir/oralservicecodes",
             "code": "1200"
           }
         ]
@@ -110,7 +160,7 @@
       "service": {
         "coding": [
           {
-            "system": "http://hl7.org/fhir/oralservicecodes",
+            "system": "http://example.org/fhir/oralservicecodes",
             "code": "21211"
           }
         ]
@@ -153,7 +203,7 @@
       "service": {
         "coding": [
           {
-            "system": "http://hl7.org/fhir/oralservicecodes",
+            "system": "http://example.org/fhir/oralservicecodes",
             "code": "27211"
           }
         ]
@@ -183,16 +233,17 @@
           "service": {
             "coding": [
               {
-                "system": "http://hl7.org/fhir/oralservicecodes",
+                "system": "http://example.org/fhir/oralservicecodes",
                 "code": "27211"
               }
             ]
           },
           "unitPrice": {
-            "value": 750.00,
+            "value": 1000.00,
             "system": "urn:iso:std:iso:4217",
             "code": "USD"
           },
+          "factor": 0.75,
           "net": {
             "value": 750.00,
             "system": "urn:iso:std:iso:4217",
@@ -204,7 +255,7 @@
           "service": {
             "coding": [
               {
-                "system": "http://hl7.org/fhir/oralservicecodes",
+                "system": "http://example.org/fhir/oralservicecodes",
                 "code": "lab"
               }
             ]

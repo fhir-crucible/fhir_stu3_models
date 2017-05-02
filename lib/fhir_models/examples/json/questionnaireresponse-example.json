@@ -26,6 +26,20 @@
       "birthDate": "1972-11-30"
     },
     {
+      "resourceType": "ReferralRequest",
+      "id": "order",
+      "status": "unknown",
+      "intent": "order",
+      "subject": {
+        "reference": "#patsub"
+      },
+      "requester": {
+        "agent": {
+          "reference": "Practitioner/example"
+        }
+      }
+    },
+    {
       "resourceType": "Practitioner",
       "id": "questauth",
       "identifier": [
@@ -39,14 +53,31 @@
       ]
     }
   ],
+  "identifier": {
+    "system": "http://example.org/fhir/NamingSystem/questionnaire-ids",
+    "value": "Q12349876"
+  },
+  "basedOn": [
+    {
+      "reference": "#order"
+    }
+  ],
+  "parent": [
+    {
+      "reference": "Procedure/f201"
+    }
+  ],
   "status": "completed",
   "subject": {
     "reference": "#patsub"
   },
+  "context": {
+    "reference": "Encounter/example"
+  },
+  "authored": "2013-02-19T14:15:00-05:00",
   "author": {
     "reference": "#questauth"
   },
-  "authored": "2013-02-19T14:15:00-05:00",
   "item": [
     {
       "linkId": "1",

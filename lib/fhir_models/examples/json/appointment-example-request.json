@@ -41,15 +41,17 @@
       }
     ]
   },
-  "reason": {
-    "coding": [
-      {
-        "system": "http://snomed.info/sct",
-        "code": "413095006"
-      }
-    ],
-    "text": "Clinical Review"
-  },
+  "reason": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "413095006"
+        }
+      ],
+      "text": "Clinical Review"
+    }
+  ],
   "priority": 5,
   "description": "Discussion on the results of your recent MRI",
   "minutesDuration": 15,

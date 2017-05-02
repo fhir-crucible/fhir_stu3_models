@@ -20,6 +20,16 @@
       }
     ]
   },
+  "subType": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/ex-claimsubtype",
+          "code": "emergency"
+        }
+      ]
+    }
+  ],
   "use": "complete",
   "patient": {
     "reference": "Patient/1"
@@ -112,7 +122,12 @@
         "value": 125.00,
         "system": "urn:iso:std:iso:4217",
         "code": "USD"
-      }
+      },
+      "encounter": [
+        {
+          "reference": "Encounter/example"
+        }
+      ]
     }
   ],
   "total": {

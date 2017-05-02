@@ -1,6 +1,6 @@
 {
   "resourceType": "EligibilityResponse",
-  "id": "E2500",
+  "id": "E2501",
   "text": {
     "status": "generated",
     "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the EligibilityResponse.</div>"
@@ -83,7 +83,7 @@
                   }
                 ]
               },
-              "benefitMoney": {
+              "allowedMoney": {
                 "value": 500000,
                 "system": "urn:iso:std:iso:4217",
                 "code": "SAR"
@@ -97,7 +97,7 @@
                   }
                 ]
               },
-              "benefitMoney": {
+              "allowedMoney": {
                 "value": 100,
                 "system": "urn:iso:std:iso:4217",
                 "code": "SAR"
@@ -111,7 +111,7 @@
                   }
                 ]
               },
-              "benefitUnsignedInt": 20
+              "allowedUnsignedInt": 20
             }
           ]
         },
@@ -166,7 +166,7 @@
                   }
                 ]
               },
-              "benefitMoney": {
+              "allowedMoney": {
                 "value": 15000,
                 "system": "urn:iso:std:iso:4217",
                 "code": "SAR"
@@ -225,7 +225,7 @@
                   }
                 ]
               },
-              "benefitMoney": {
+              "allowedMoney": {
                 "value": 2000,
                 "system": "urn:iso:std:iso:4217",
                 "code": "SAR"
@@ -284,7 +284,7 @@
                   }
                 ]
               },
-              "benefitMoney": {
+              "allowedMoney": {
                 "value": 400,
                 "system": "urn:iso:std:iso:4217",
                 "code": "SAR"
@@ -343,7 +343,7 @@
                   }
                 ]
               },
-              "benefitString": "shared"
+              "allowedString": "shared"
             },
             {
               "type": {
@@ -353,7 +353,7 @@
                   }
                 ]
               },
-              "benefitMoney": {
+              "allowedMoney": {
                 "value": 600,
                 "system": "urn:iso:std:iso:4217",
                 "code": "SAR"
