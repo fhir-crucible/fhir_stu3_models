@@ -139,12 +139,7 @@ module FHIR
         nodes = nodes.select { |x| extension_profile.profile == x['url'] }
       end
 
-      # Check the cardinality
-      min = element.min
-      max = element.max == '*' ? Float::INFINITY : element.max.to_i
-      if (nodes.size < min) || (nodes.size > max)
-        @errors << "#{describe_element(element)} failed cardinality test (#{min}..#{max}) -- found #{nodes.size}"
-      end
+      verify_cardinality(element, nodes)
 
       return if nodes.empty?
       # Check the datatype for each node, only if the element has one declared, and it isn't the root element
@@ -194,7 +189,7 @@ module FHIR
           else
             # we don't know the data type... so we say "OK"
             matching_type += 1
-            @warnings >> "Unable to guess data type for #{describe_element(element)}"
+            @warnings << "Unable to guess data type for #{describe_element(element)}"
           end
 
           if matching_type <= 0
@@ -203,9 +198,7 @@ module FHIR
           else
             @warnings += temp_messages
           end
-          if !element.fixed.nil? && element.fixed != value
-            @errors << "#{describe_element(element)} value of '#{value}' did not match fixed value: #{element.fixed}"
-          end
+          verify_fixed_value(element, value)
         end
         if codeable_concept_pattern && matching_pattern == false
           @errors << "#{describe_element(element)} CodeableConcept did not match defined pattern: #{element.pattern.to_hash}"
@@ -242,6 +235,19 @@ module FHIR
           verify_element(child, node)
         end
       end
+    end
+
+    def verify_cardinality(element, nodes)
+      # Check the cardinality
+      min = element.min
+      max = element.max == '*' ? Float::INFINITY : element.max.to_i
+      return unless (nodes.size < min) || (nodes.size > max)
+      @errors << "#{describe_element(element)} failed cardinality test (#{min}..#{max}) -- found #{nodes.size}"
+    end
+
+    def verify_fixed_value(element, value)
+      return unless !element.fixed.nil? && element.fixed != value
+      @errors << "#{describe_element(element)} value of '#{value}' did not match fixed value: #{element.fixed}"
     end
 
     # data_type_code == a FHIR DataType code (see http://hl7.org/fhir/2015May/datatypes.html)

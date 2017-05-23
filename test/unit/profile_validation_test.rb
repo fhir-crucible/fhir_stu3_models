@@ -136,4 +136,186 @@ class ProfileValidationTest < Test::Unit::TestCase
     after = check_memory
     assert_memory(before, after)
   end
+
+  def test_cardinality_check
+    sd = FHIR::StructureDefinition.new
+
+    element = FHIR::ElementDefinition.new('min' => 0, 'max' => '1', 'path' => "test1")
+
+    nodes = []
+    sd.errors = []
+    sd.verify_cardinality(element, nodes)
+    assert_empty(sd.errors)
+
+    nodes = ["one"]
+    sd.errors = []
+    sd.verify_cardinality(element, nodes)
+    assert_empty(sd.errors)
+
+    nodes = [1, 2, 3]
+    sd.errors = []    
+    sd.verify_cardinality(element, nodes)
+    assert_equal("test1 failed cardinality test (0..1) -- found 3", sd.errors[0])
+
+
+    element = FHIR::ElementDefinition.new('min' => 1, 'max' => '1', 'path' => "test2")
+
+    nodes = []
+    sd.errors = []
+    sd.verify_cardinality(element, nodes)
+    assert_equal("test2 failed cardinality test (1..1) -- found 0", sd.errors[0])
+
+    nodes = ["one"]
+    sd.errors = []
+    sd.verify_cardinality(element, nodes)
+    assert_empty(sd.errors)
+
+    nodes = [1, 2, 3]
+    sd.errors = []    
+    sd.verify_cardinality(element, nodes)
+    assert_equal("test2 failed cardinality test (1..1) -- found 3", sd.errors[0])
+
+
+    element = FHIR::ElementDefinition.new('min' => 2, 'max' => '*', 'path' => "test3")
+
+    nodes = []
+    sd.errors = []
+    sd.verify_cardinality(element, nodes)
+    assert_equal("test3 failed cardinality test (2..Infinity) -- found 0", sd.errors[0])
+
+    nodes = ["one"]
+    sd.errors = []
+    sd.verify_cardinality(element, nodes)
+    assert_equal("test3 failed cardinality test (2..Infinity) -- found 1", sd.errors[0])
+
+    nodes = [1, 2, 3]
+    sd.errors = []    
+    sd.verify_cardinality(element, nodes)
+    assert_empty(sd.errors)
+  end
+
+  def test_maximum_string_length_check
+    FHIR::StructureDefinition.send(:public, :verify_element) # make the function public so we can test it
+
+    sd = FHIR::StructureDefinition.new
+    sd.warnings = []
+
+    element = FHIR::ElementDefinition.new('path' => 'string', 'type' => [{ 'code' => 'String' }], 'maxLength' => 4, 'min' => 0, 'max' => '*')
+    sd.hierarchy = OpenStruct.new(path: 'x') # just a hack to make this work, wish it was cleaner
+    sd.errors = []
+    sd.verify_element(element, 'string' => "1234")
+    assert_empty(sd.errors)
+
+    sd.errors = []
+    sd.verify_element(element, 'string' => "12345")
+    assert_equal("string exceed maximum length of 4: 12345", sd.errors[0])
+
+    element = FHIR::ElementDefinition.new('path' => 'string', 'type' => [{ 'code' => 'String' }], 'min' => 0, 'max' => '*') # no maxlength
+
+    sd.errors = []
+    sd.verify_element(element, 'string' => "1234")
+    assert_empty(sd.errors)
+
+    sd.errors = []
+    long_string = (1..10000).map{ rand(10000).to_s }.join(', ') # somewhere in the range of 60k chars
+    sd.verify_element(element, 'string' => long_string)
+    assert_empty(sd.errors)
+  end
+
+  def test_fixed_value
+    sd = FHIR::StructureDefinition.new
+    
+    element = FHIR::ElementDefinition.new('path' => "fixed_value_test") # fixed == nil
+
+    sd.errors = []
+    sd.verify_fixed_value(element, nil)
+    assert_empty(sd.errors)
+
+    sd.errors = []
+    sd.verify_fixed_value(element, "some_other_value_it_doesnt_matter")
+    assert_empty(sd.errors)
+
+
+    element = FHIR::ElementDefinition.new('path' => "fixed_value_test", 'fixedString' => "string_value")
+
+    sd.errors = []
+    sd.verify_fixed_value(element, nil)
+    assert_equal("fixed_value_test value of '' did not match fixed value: string_value", sd.errors[0])
+
+    sd.errors = []
+    sd.verify_fixed_value(element, "string_value")
+    assert_empty(sd.errors)
+
+    sd.errors = []
+    sd.verify_fixed_value(element, "some_other_value")
+    assert_equal("fixed_value_test value of 'some_other_value' did not match fixed value: string_value", sd.errors[0])
+
+
+    element = FHIR::ElementDefinition.new('path' => "fixed_value_test", 'fixedCodeableConcept' => { 'coding' => [{ 'system' => 'http://ncimeta.nci.nih.gov', 'code' => 'C2004062' }] } )
+
+    sd.errors = []
+    sd.verify_fixed_value(element, nil)
+    assert_equal("fixed_value_test value of '' did not match fixed value: #{element.fixed}", sd.errors[0])
+    # these test cases use the string interpolation in because the error message includes the object ID which isn't constant
+
+    sd.errors = []
+    sd.verify_fixed_value(element, "some_other_value")
+    assert_equal("fixed_value_test value of 'some_other_value' did not match fixed value: #{element.fixed}", sd.errors[0])
+
+    sd.errors = []
+    sd.verify_fixed_value(element, FHIR::CodeableConcept.new('coding' => [{ 'system' => 'http://ncimeta.nci.nih.gov', 'code' => 'C2004062' }]))
+    assert_empty(sd.errors)
+
+    sd.errors = []
+    value = FHIR::CodeableConcept.new('coding' => [{ 'system' => 'http://snomed.info/sct', 'code' => 'C2004062' }])
+    sd.verify_fixed_value(element, value)
+    assert_equal("fixed_value_test value of '#{value}' did not match fixed value: #{element.fixed}", sd.errors[0])
+  end
+
+  def test_codeableConcept_pattern
+    FHIR::StructureDefinition.send(:public, :verify_element) # make the function public so we can test it
+
+    sd = FHIR::StructureDefinition.new
+    sd.warnings = []
+
+    element = FHIR::ElementDefinition.new('path' => 'cc', 'type' => [{ 'code' => 'CodeableConcept' }], 'min' => 1, 'max' => '1',
+                                          'patternCodeableConcept' => { 'coding' => [{ 'system' => 'http://ncimeta.nci.nih.gov', 'code' => 'C2004062' }] })
+    sd.hierarchy = OpenStruct.new(path: 'x') # just a hack to make this work, wish it was cleaner
+    sd.errors = []
+    sd.verify_element(element, 'cc' => { 'coding' => [{ 'system' => 'http://ncimeta.nci.nih.gov', 'code' => 'C2004062' }] }) # exact match
+    assert_empty(sd.errors)
+
+    sd.errors = []
+    sd.verify_element(element, 'cc' => { 'coding' => [{ 'system' => 'http://ncimeta.nci.nih.gov', 'code' => 'C2004062' }], 'text' => 'some dummy text' }) # added text
+    assert_empty(sd.errors)
+
+    sd.errors = []
+    sd.verify_element(element, 'cc' => { 'coding' => [{ 'system' => 'http://ncimeta.nci.nih.gov', 'code' => 'C2004062', 'display' => 'some_value' }] }) # match, with added 'display'
+    assert_empty(sd.errors)
+
+    sd.errors = []
+    sd.verify_element(element, 'cc' => { 'coding' => [{ 'system' => 'http://ncimeta.nci.nih.gov', 'code' => 'C2222222' }] }) # wrong code
+    assert_equal("cc CodeableConcept did not match defined pattern: {\"coding\"=>[{\"system\"=>\"http://ncimeta.nci.nih.gov\", \"code\"=>\"C2004062\"}]}", sd.errors[0])
+
+    sd.errors = []
+    sd.verify_element(element, 'cc' => { 'coding' => [{ 'system' => 'http://hl7.org/fhir/sid/icd-10', 'code' => 'Q841' }] }) # completely different
+    assert_equal("cc CodeableConcept did not match defined pattern: {\"coding\"=>[{\"system\"=>\"http://ncimeta.nci.nih.gov\", \"code\"=>\"C2004062\"}]}", sd.errors[0])
+  end
+
+  def test_get_json_nodes
+    FHIR::StructureDefinition.send(:public, :get_json_nodes) # make the function public so we can test it
+    sd = FHIR::StructureDefinition.new
+    json = { "colors" => ["red", "green", "blue"], 
+      "people" => [{ "first" => "John", "last" => "Smith"}, { "first" => "Jane", "last" => "Doe"} ],
+      "nested_level_1" => { "nested_level_2" => { "nested_level_3" => "value"}}}
+
+    nodes = sd.get_json_nodes(json, "colors")
+    assert_equal(["red", "green", "blue"], nodes)
+
+    nodes = sd.get_json_nodes(json, "people.first")
+    assert_equal(["John", "Jane"], nodes)
+
+    node = sd.get_json_nodes(json, "nested_level_1.nested_level_2.nested_level_3")
+    assert_equal(["value"], node)
+  end
 end
