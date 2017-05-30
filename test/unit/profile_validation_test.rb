@@ -141,7 +141,6 @@ class ProfileValidationTest < Test::Unit::TestCase
     sd = FHIR::StructureDefinition.new
 
     element = FHIR::ElementDefinition.new('min' => 0, 'max' => '1', 'path' => "test1")
-
     nodes = []
     sd.errors = []
     sd.verify_cardinality(element, nodes)
@@ -157,9 +156,7 @@ class ProfileValidationTest < Test::Unit::TestCase
     sd.verify_cardinality(element, nodes)
     assert_equal("test1 failed cardinality test (0..1) -- found 3", sd.errors[0])
 
-
     element = FHIR::ElementDefinition.new('min' => 1, 'max' => '1', 'path' => "test2")
-
     nodes = []
     sd.errors = []
     sd.verify_cardinality(element, nodes)
@@ -175,9 +172,7 @@ class ProfileValidationTest < Test::Unit::TestCase
     sd.verify_cardinality(element, nodes)
     assert_equal("test2 failed cardinality test (1..1) -- found 3", sd.errors[0])
 
-
     element = FHIR::ElementDefinition.new('min' => 2, 'max' => '*', 'path' => "test3")
-
     nodes = []
     sd.errors = []
     sd.verify_cardinality(element, nodes)
@@ -226,7 +221,6 @@ class ProfileValidationTest < Test::Unit::TestCase
     sd = FHIR::StructureDefinition.new
     
     element = FHIR::ElementDefinition.new('path' => "fixed_value_test") # fixed == nil
-
     sd.errors = []
     sd.verify_fixed_value(element, nil)
     assert_empty(sd.errors)
@@ -235,9 +229,7 @@ class ProfileValidationTest < Test::Unit::TestCase
     sd.verify_fixed_value(element, "some_other_value_it_doesnt_matter")
     assert_empty(sd.errors)
 
-
     element = FHIR::ElementDefinition.new('path' => "fixed_value_test", 'fixedString' => "string_value")
-
     sd.errors = []
     sd.verify_fixed_value(element, nil)
     assert_equal("fixed_value_test value of '' did not match fixed value: string_value", sd.errors[0])
@@ -250,9 +242,7 @@ class ProfileValidationTest < Test::Unit::TestCase
     sd.verify_fixed_value(element, "some_other_value")
     assert_equal("fixed_value_test value of 'some_other_value' did not match fixed value: string_value", sd.errors[0])
 
-
     element = FHIR::ElementDefinition.new('path' => "fixed_value_test", 'fixedCodeableConcept' => { 'coding' => [{ 'system' => 'http://ncimeta.nci.nih.gov', 'code' => 'C2004062' }] } )
-
     sd.errors = []
     sd.verify_fixed_value(element, nil)
     assert_equal("fixed_value_test value of '' did not match fixed value: #{element.fixed}", sd.errors[0])
@@ -300,6 +290,60 @@ class ProfileValidationTest < Test::Unit::TestCase
     sd.errors = []
     sd.verify_element(element, 'cc' => { 'coding' => [{ 'system' => 'http://hl7.org/fhir/sid/icd-10', 'code' => 'Q841' }] }) # completely different
     assert_equal("cc CodeableConcept did not match defined pattern: {\"coding\"=>[{\"system\"=>\"http://ncimeta.nci.nih.gov\", \"code\"=>\"C2004062\"}]}", sd.errors[0])
+  end
+
+  def test_invalid_value_per_type
+    FHIR::StructureDefinition.send(:public, :verify_element) # make the function public so we can test it
+
+    sd = FHIR::StructureDefinition.new
+    sd.warnings = []
+    sd.hierarchy = OpenStruct.new(path: 'x') # just a hack to make this work, wish it was cleaner
+
+    element = FHIR::ElementDefinition.new('path' => 'vinv', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1')
+    sd.errors = []
+    sd.verify_element(element, 'vinv' => 'string_value')
+    assert_empty(sd.errors)
+
+    sd.errors = []
+    sd.verify_element(element, 'vinv' => 12345)
+    assert_equal("vinv is not a valid string: '12345'", sd.errors[0])
+
+    element = FHIR::ElementDefinition.new('path' => 'vinv', 'type' => [{ 'code' => 'integer' }], 'min' => 1, 'max' => '1')
+    sd.errors = []
+    sd.verify_element(element, 'vinv' => 12345)
+    assert_empty(sd.errors)
+
+    sd.errors = []
+    sd.verify_element(element, 'vinv' => 'string_value')
+    assert_equal("vinv is not a valid integer: 'string_value'", sd.errors[0])
+
+    element = FHIR::ElementDefinition.new('path' => 'vinv', 'type' => [{ 'code' => 'Observation' }], 'min' => 1, 'max' => '1')
+    sd.errors = []
+    sd.verify_element(element, 'vinv' => 'something_that_isnt_an_Observation')
+    assert_equal("Unable to verify Observation as a FHIR Resource.", sd.errors[0])
+    assert_equal("vinv is not a valid Observation: 'something_that_isnt_an_Observation'", sd.errors[1])
+  end
+
+  def test_unable_to_guess_type
+    FHIR::StructureDefinition.send(:public, :verify_element) # make the function public so we can test it
+
+    sd = FHIR::StructureDefinition.new
+    sd.warnings = []
+    sd.hierarchy = OpenStruct.new(path: 'x') # just a hack
+
+    element = FHIR::ElementDefinition.new('path' => 'no_type', 'min' => 1, 'max' => '1')
+    sd.verify_element(element, 'no_type' => 'abcd')
+    assert_equal("Unable to guess data type for no_type", sd.warnings[0])
+
+    element = FHIR::ElementDefinition.new('path' => 'has_type','type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1')
+    sd.warnings = []
+    sd.errors = []
+    sd.verify_element(element, 'has_type' => 'abcd')
+    assert_empty(sd.errors)
+    assert_empty(sd.warnings)
+
+    # this test is unique in that the message is based purely on the element definition,
+    # not the object being validated against that definition
   end
 
   def test_get_json_nodes

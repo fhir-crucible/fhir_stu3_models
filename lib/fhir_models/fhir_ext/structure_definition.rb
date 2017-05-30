@@ -116,6 +116,7 @@ module FHIR
       begin
         data_type_found = element.type.first.code
       rescue
+        @warnings << "Unable to guess data type for #{describe_element(element)}"
         data_type_found = nil
       end
 
@@ -144,6 +145,7 @@ module FHIR
       return if nodes.empty?
       # Check the datatype for each node, only if the element has one declared, and it isn't the root element
       if !element.type.empty? && element.path != id
+        # element.type not being empty implies data_type_found != nil, for valid profiles
         codeable_concept_pattern = element.pattern && element.pattern.is_a?(FHIR::CodeableConcept)
         matching_pattern = false
         nodes.each do |value|
@@ -160,14 +162,14 @@ module FHIR
             # if extension_def
             #   verified_extension = extension_def.validates_resource?(FHIR::Extension.new(deep_copy(value)))
             # end
-          elsif data_type_found
+          else
             temp = @errors
             @errors = []
             verified_data_type = data_type?(data_type_found, value)
-            temp_messages << @errors
+            temp_messages += @errors
             @errors = temp
           end
-          if data_type_found && (verified_extension || verified_data_type)
+          if verified_extension || verified_data_type
             matching_type += 1
             if data_type_found == 'code' # then check the binding
               unless element.binding.nil?
@@ -184,12 +186,8 @@ module FHIR
             elsif data_type_found == 'String' && !element.maxLength.nil? && (value.size > element.maxLength)
               @errors << "#{describe_element(element)} exceed maximum length of #{element.maxLength}: #{value}"
             end
-          elsif data_type_found
-            temp_messages << "#{describe_element(element)} is not a valid #{data_type_found}: '#{value}'"
           else
-            # we don't know the data type... so we say "OK"
-            matching_type += 1
-            @warnings << "Unable to guess data type for #{describe_element(element)}"
+            temp_messages << "#{describe_element(element)} is not a valid #{data_type_found}: '#{value}'"
           end
 
           if matching_type <= 0
