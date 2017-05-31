@@ -357,7 +357,7 @@ module FHIR
           end
         end
       elsif !valueset.values.flatten.include?(value)
-        message = "#{element.path} has invalid code '#{value}' from #{valueset}"
+        message = "#{element.path} has invalid code '#{value}' from #{vs_uri}"
         if element.binding.strength == 'required'
           @errors << message
           matching_type -= 1
@@ -372,9 +372,8 @@ module FHIR
     def some_type_of_xml_or_json?(code)
       m = code.downcase
       return true if m == 'xml' || m == 'json'
-      return true if (m.starts_with?('application/') || m.starts_with?('text/')) && (m.ends_with?('json') || m.ends_with?('xml'))
-      return true if m.starts_with?('application/xml') || m.starts_with?('text/xml')
-      return true if m.starts_with?('application/json') || m.starts_with?('text/json')
+      return true if m.start_with?('application/', 'text/') && m.end_with?('json', 'xml')
+      return true if m.start_with?('application/xml', 'text/xml', 'application/json', 'text/json')
       false
     end
     deprecate :is_some_type_of_xml_or_json, :some_type_of_xml_or_json?

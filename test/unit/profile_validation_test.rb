@@ -307,6 +307,7 @@ class ProfileValidationTest < Test::Unit::TestCase
     sd.errors = []
     sd.verify_element(element, 'vinv' => 12345)
     assert_equal("vinv is not a valid string: '12345'", sd.errors[0])
+    assert_equal("vinv did not match one of the valid data types: [\"string\"]", sd.errors[1])
 
     element = FHIR::ElementDefinition.new('path' => 'vinv', 'type' => [{ 'code' => 'integer' }], 'min' => 1, 'max' => '1')
     sd.errors = []
@@ -316,12 +317,14 @@ class ProfileValidationTest < Test::Unit::TestCase
     sd.errors = []
     sd.verify_element(element, 'vinv' => 'string_value')
     assert_equal("vinv is not a valid integer: 'string_value'", sd.errors[0])
+    assert_equal("vinv did not match one of the valid data types: [\"integer\"]", sd.errors[1])
 
     element = FHIR::ElementDefinition.new('path' => 'vinv', 'type' => [{ 'code' => 'Observation' }], 'min' => 1, 'max' => '1')
     sd.errors = []
     sd.verify_element(element, 'vinv' => 'something_that_isnt_an_Observation')
     assert_equal("Unable to verify Observation as a FHIR Resource.", sd.errors[0])
     assert_equal("vinv is not a valid Observation: 'something_that_isnt_an_Observation'", sd.errors[1])
+    assert_equal("vinv did not match one of the valid data types: [\"Observation\"]", sd.errors[2])
   end
 
   def test_unable_to_guess_type
@@ -344,6 +347,85 @@ class ProfileValidationTest < Test::Unit::TestCase
 
     # this test is unique in that the message is based purely on the element definition,
     # not the object being validated against that definition
+  end
+
+  def test_valueset_binding
+    FHIR::StructureDefinition.send(:public, :check_binding) # make the function public so we can test it
+
+    sd = FHIR::StructureDefinition.new
+    sd.warnings = []
+    sd.hierarchy = OpenStruct.new(path: 'x') # just a hack
+
+    # first 2 value sets are special cases
+    element = FHIR::ElementDefinition.new('path' => 'mime', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1',
+                                          'binding' => { 'valueSetUri' => 'http://hl7.org/fhir/ValueSet/content-type' })
+    sd.errors = []
+    sd.check_binding(element, 'xml')
+    assert_empty(sd.errors)
+
+    sd.check_binding(element, 'application/xml')
+    assert_empty(sd.errors)
+
+    sd.check_binding(element, 'jpeg')
+    assert_equal("mime has invalid mime-type: 'jpeg'", sd.errors[0])
+
+    element = FHIR::ElementDefinition.new('path' => 'lang', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1',
+                                          'binding' => { 'valueSetUri' => 'http://hl7.org/fhir/ValueSet/languages' })
+    sd.errors = []
+    sd.check_binding(element, 'en')
+    assert_empty(sd.errors)
+
+    sd.check_binding(element, 'English (United States)')
+    assert_equal("lang has unrecognized language: 'English (United States)'", sd.errors[0])
+
+    sd.errors = []
+    sd.check_binding(element, 'qq')
+    assert_equal("lang has unrecognized language: 'qq'", sd.errors[0])
+
+
+    # use a valueset we don't have defined here
+    element = FHIR::ElementDefinition.new('path' => 'problem', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1',
+                                          'binding' => { 'valueSetUri' => 'http://standardhealthrecord.org/shr/problem/vs/ProblemCategoryVS' })
+    sd.errors = []
+    sd.warnings = []
+    sd.check_binding(element, 'disease')
+    assert_empty(sd.errors)
+    assert_equal("problem has unknown ValueSet: 'http://standardhealthrecord.org/shr/problem/vs/ProblemCategoryVS'", sd.warnings[0])
+
+
+    # regular case, FHIR VS with nothing special about it
+    # binding strength required => error if wrong
+    element = FHIR::ElementDefinition.new('path' => 'county', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1',
+                                          'binding' => { 'valueSetUri' => 'http://hl7.org/fhir/ValueSet/fips-county',
+                                                         'strength' => 'required' })
+    sd.errors = []
+    sd.warnings = []
+    sd.check_binding(element, '25017')
+    assert_empty(sd.errors)
+    assert_empty(sd.warnings)
+
+    sd.errors = []
+    sd.warnings = []
+    sd.check_binding(element, '98765')
+    assert_equal("county has invalid code '98765' from http://hl7.org/fhir/ValueSet/fips-county", sd.errors[0])
+    assert_empty(sd.warnings)
+
+    # binding strength example => warning if wrong
+    element = FHIR::ElementDefinition.new('path' => 'county', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1',
+                                          'binding' => { 'valueSetUri' => 'http://hl7.org/fhir/ValueSet/fips-county',
+                                                         'strength' => 'example' })
+    sd.errors = []
+    sd.warnings = []
+    sd.check_binding(element, '25017')
+    assert_empty(sd.errors)
+    assert_empty(sd.warnings)
+
+    sd.errors = []
+    sd.warnings = []
+    sd.check_binding(element, '98765')
+    assert_equal("county has invalid code '98765' from http://hl7.org/fhir/ValueSet/fips-county", sd.warnings[0])
+    assert_empty(sd.errors)
+
   end
 
   def test_get_json_nodes
