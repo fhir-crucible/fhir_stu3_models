@@ -198,7 +198,6 @@ module FHIR
       return nil if uri.nil?
       return @@cache[uri] if @@cache[uri]
       valueset = expansions.select { |x| x['url'] == uri }.first || valuesets.select { |x| x['url'] == uri && x['resourceType'] == 'ValueSet' }.first
-      # binding.pry if uri == 'http://hl7.org/fhir/ValueSet/fips-county'
       unless valueset.nil?
         @@cache[uri] = {}
         if !valueset['expansion'].nil? && !valueset['expansion']['contains'].nil?
