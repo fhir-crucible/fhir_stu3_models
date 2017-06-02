@@ -113,9 +113,9 @@ module FHIR
       path = element.local_name || element.path
       path = path[(@hierarchy.path.size + 1)..-1] if path.start_with? @hierarchy.path
 
-      begin
+      if element.type && !element.type.empty?
         data_type_found = element.type.first.code
-      rescue
+      else
         @warnings << "Unable to guess data type for #{describe_element(element)}"
         data_type_found = nil
       end
@@ -239,13 +239,11 @@ module FHIR
       # Check the cardinality
       min = element.min
       max = element.max == '*' ? Float::INFINITY : element.max.to_i
-      return unless (nodes.size < min) || (nodes.size > max)
-      @errors << "#{describe_element(element)} failed cardinality test (#{min}..#{max}) -- found #{nodes.size}"
+      @errors << "#{describe_element(element)} failed cardinality test (#{min}..#{max}) -- found #{nodes.size}" if (nodes.size < min) || (nodes.size > max)
     end
 
     def verify_fixed_value(element, value)
-      return unless !element.fixed.nil? && element.fixed != value
-      @errors << "#{describe_element(element)} value of '#{value}' did not match fixed value: #{element.fixed}"
+      @errors << "#{describe_element(element)} value of '#{value}' did not match fixed value: #{element.fixed}" if !element.fixed.nil? && element.fixed != value
     end
 
     # data_type_code == a FHIR DataType code (see http://hl7.org/fhir/2015May/datatypes.html)
