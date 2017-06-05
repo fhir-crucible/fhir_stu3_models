@@ -113,9 +113,10 @@ module FHIR
       path = element.local_name || element.path
       path = path[(@hierarchy.path.size + 1)..-1] if path.start_with? @hierarchy.path
 
-      begin
+      if element.type && !element.type.empty?
         data_type_found = element.type.first.code
-      rescue
+      else
+        @warnings << "Unable to guess data type for #{describe_element(element)}"
         data_type_found = nil
       end
 
@@ -139,16 +140,12 @@ module FHIR
         nodes = nodes.select { |x| extension_profile.profile == x['url'] }
       end
 
-      # Check the cardinality
-      min = element.min
-      max = element.max == '*' ? Float::INFINITY : element.max.to_i
-      if (nodes.size < min) || (nodes.size > max)
-        @errors << "#{describe_element(element)} failed cardinality test (#{min}..#{max}) -- found #{nodes.size}"
-      end
+      verify_cardinality(element, nodes)
 
       return if nodes.empty?
       # Check the datatype for each node, only if the element has one declared, and it isn't the root element
       if !element.type.empty? && element.path != id
+        # element.type not being empty implies data_type_found != nil, for valid profiles
         codeable_concept_pattern = element.pattern && element.pattern.is_a?(FHIR::CodeableConcept)
         matching_pattern = false
         nodes.each do |value|
@@ -165,14 +162,14 @@ module FHIR
             # if extension_def
             #   verified_extension = extension_def.validates_resource?(FHIR::Extension.new(deep_copy(value)))
             # end
-          elsif data_type_found
+          else
             temp = @errors
             @errors = []
             verified_data_type = data_type?(data_type_found, value)
-            temp_messages << @errors
+            temp_messages += @errors
             @errors = temp
           end
-          if data_type_found && (verified_extension || verified_data_type)
+          if verified_extension || verified_data_type
             matching_type += 1
             if data_type_found == 'code' # then check the binding
               unless element.binding.nil?
@@ -189,12 +186,8 @@ module FHIR
             elsif data_type_found == 'String' && !element.maxLength.nil? && (value.size > element.maxLength)
               @errors << "#{describe_element(element)} exceed maximum length of #{element.maxLength}: #{value}"
             end
-          elsif data_type_found
-            temp_messages << "#{describe_element(element)} is not a valid #{data_type_found}: '#{value}'"
           else
-            # we don't know the data type... so we say "OK"
-            matching_type += 1
-            @warnings >> "Unable to guess data type for #{describe_element(element)}"
+            temp_messages << "#{describe_element(element)} is not a valid #{data_type_found}: '#{value}'"
           end
 
           if matching_type <= 0
@@ -203,9 +196,7 @@ module FHIR
           else
             @warnings += temp_messages
           end
-          if !element.fixed.nil? && element.fixed != value
-            @errors << "#{describe_element(element)} value of '#{value}' did not match fixed value: #{element.fixed}"
-          end
+          verify_fixed_value(element, value)
         end
         if codeable_concept_pattern && matching_pattern == false
           @errors << "#{describe_element(element)} CodeableConcept did not match defined pattern: #{element.pattern.to_hash}"
@@ -242,6 +233,17 @@ module FHIR
           verify_element(child, node)
         end
       end
+    end
+
+    def verify_cardinality(element, nodes)
+      # Check the cardinality
+      min = element.min
+      max = element.max == '*' ? Float::INFINITY : element.max.to_i
+      @errors << "#{describe_element(element)} failed cardinality test (#{min}..#{max}) -- found #{nodes.size}" if (nodes.size < min) || (nodes.size > max)
+    end
+
+    def verify_fixed_value(element, value)
+      @errors << "#{describe_element(element)} value of '#{value}' did not match fixed value: #{element.fixed}" if !element.fixed.nil? && element.fixed != value
     end
 
     # data_type_code == a FHIR DataType code (see http://hl7.org/fhir/2015May/datatypes.html)
@@ -353,7 +355,7 @@ module FHIR
           end
         end
       elsif !valueset.values.flatten.include?(value)
-        message = "#{element.path} has invalid code '#{value}' from #{valueset}"
+        message = "#{element.path} has invalid code '#{value}' from #{vs_uri}"
         if element.binding.strength == 'required'
           @errors << message
           matching_type -= 1
@@ -368,9 +370,8 @@ module FHIR
     def some_type_of_xml_or_json?(code)
       m = code.downcase
       return true if m == 'xml' || m == 'json'
-      return true if (m.starts_with?('application/') || m.starts_with?('text/')) && (m.ends_with?('json') || m.ends_with?('xml'))
-      return true if m.starts_with?('application/xml') || m.starts_with?('text/xml')
-      return true if m.starts_with?('application/json') || m.starts_with?('text/json')
+      return true if m.start_with?('application/', 'text/') && m.end_with?('json', 'xml')
+      return true if m.start_with?('application/xml', 'text/xml', 'application/json', 'text/json')
       false
     end
     deprecate :is_some_type_of_xml_or_json, :some_type_of_xml_or_json?

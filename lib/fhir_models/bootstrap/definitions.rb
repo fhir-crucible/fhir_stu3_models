@@ -197,7 +197,7 @@ module FHIR
     def self.get_codes(uri)
       return nil if uri.nil?
       return @@cache[uri] if @@cache[uri]
-      valueset = expansions.select { |x| x['url'] == uri }.first
+      valueset = expansions.find { |x| x['url'] == uri } || valuesets.find { |x| x['url'] == uri && x['resourceType'] == 'ValueSet' }
       unless valueset.nil?
         @@cache[uri] = {}
         if !valueset['expansion'].nil? && !valueset['expansion']['contains'].nil?
@@ -206,11 +206,18 @@ module FHIR
           valueset['expansion']['contains'].each { |x| @@cache[uri][x['system']] << x['code'] }
         end
         if !valueset['compose'].nil? && !valueset['compose']['include'].nil?
-          included_systems = valueset['compose']['include'].map { |x| x['system'] }.uniq
-          included_systems.each { |x| @@cache[uri][x] = [] unless @@cache[uri].keys.include?(x) }
+          # for each system, if codes are included add those, otherwise lookup the codesystem in the list
+          included_systems = []
+          valueset['compose']['include'].each do |code_group|
+            system_url = code_group['system']
+            @@cache[uri][system_url] ||= []
+            code_group['concept'].each { |y| @@cache[uri][system_url] << y['code'] } if code_group['concept']
+            included_systems << system_url
+          end
+          included_systems.each { |x| @@cache[uri][x] ||= [] }
           systems = valuesets.select { |x| x['resourceType'] == 'CodeSystem' && included_systems.include?(x['url']) }
-          systems.each do |x|
-            x['concept'].each { |y| @@cache[uri][x['url']] << y['code'] } if x['concept']
+          systems.each do |included_system|
+            included_system['concept'].each { |y| @@cache[uri][included_system['url']] << y['code'] } if included_system['concept']
           end
         end
         @@cache[uri].each { |_system, codes| codes.uniq! }
