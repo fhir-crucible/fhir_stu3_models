@@ -350,26 +350,26 @@ class ProfileValidationTest < Test::Unit::TestCase
     element = FHIR::ElementDefinition.new('path' => 'mime', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1',
                                           'binding' => { 'valueSetUri' => 'http://hl7.org/fhir/ValueSet/content-type' })
     sd.errors = []
-    sd.send(:check_binding, element, 'xml')
+    sd.send(:check_binding_element, element, 'xml')
     assert_empty(sd.errors)
 
-    sd.send(:check_binding, element, 'application/xml')
+    sd.send(:check_binding_element, element, 'application/xml')
     assert_empty(sd.errors)
 
-    sd.send(:check_binding, element, 'jpeg')
+    sd.send(:check_binding_element, element, 'jpeg')
     assert_equal("mime has invalid mime-type: 'jpeg'", sd.errors[0])
 
     element = FHIR::ElementDefinition.new('path' => 'lang', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1',
                                           'binding' => { 'valueSetUri' => 'http://hl7.org/fhir/ValueSet/languages' })
     sd.errors = []
-    sd.send(:check_binding, element, 'en')
+    sd.send(:check_binding_element, element, 'en')
     assert_empty(sd.errors)
 
-    sd.send(:check_binding, element, 'English (United States)')
+    sd.send(:check_binding_element, element, 'English (United States)')
     assert_equal("lang has unrecognized language: 'English (United States)'", sd.errors[0])
 
     sd.errors = []
-    sd.send(:check_binding, element, 'qq')
+    sd.send(:check_binding_element, element, 'qq')
     assert_equal("lang has unrecognized language: 'qq'", sd.errors[0])
 
 
@@ -378,7 +378,7 @@ class ProfileValidationTest < Test::Unit::TestCase
                                           'binding' => { 'valueSetUri' => 'http://standardhealthrecord.org/shr/problem/vs/ProblemCategoryVS' })
     sd.errors = []
     sd.warnings = []
-    sd.send(:check_binding, element, 'disease')
+    sd.send(:check_binding_element, element, 'disease')
     assert_empty(sd.errors)
     assert_equal("problem has unknown ValueSet: 'http://standardhealthrecord.org/shr/problem/vs/ProblemCategoryVS'", sd.warnings[0])
 
@@ -390,13 +390,13 @@ class ProfileValidationTest < Test::Unit::TestCase
                                                          'strength' => 'required' })
     sd.errors = []
     sd.warnings = []
-    sd.send(:check_binding, element, '25017')
+    sd.send(:check_binding_element, element, '25017')
     assert_empty(sd.errors)
     assert_empty(sd.warnings)
 
     sd.errors = []
     sd.warnings = []
-    sd.send(:check_binding, element, '98765')
+    sd.send(:check_binding_element, element, '98765')
     assert_equal("county has invalid code '98765' from http://hl7.org/fhir/ValueSet/fips-county", sd.errors[0])
     assert_empty(sd.warnings)
 
@@ -406,13 +406,13 @@ class ProfileValidationTest < Test::Unit::TestCase
                                                          'strength' => 'example' })
     sd.errors = []
     sd.warnings = []
-    sd.send(:check_binding, element, '25017')
+    sd.send(:check_binding_element, element, '25017')
     assert_empty(sd.errors)
     assert_empty(sd.warnings)
 
     sd.errors = []
     sd.warnings = []
-    sd.send(:check_binding, element, '98765')
+    sd.send(:check_binding_element, element, '98765')
     assert_equal("county has invalid code '98765' from http://hl7.org/fhir/ValueSet/fips-county", sd.warnings[0])
     assert_empty(sd.errors)
 
