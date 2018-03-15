@@ -66,7 +66,7 @@ $ bundle exec rake fhir:console
   Using a profile or structure definition...
   ```ruby
   sd = FHIR::Definitions.resource_definition('Patient')
-  sd.validates_resource?(patient) # passing in FHIR::DSTU2::Patient
+  sd.validates_resource?(patient) # passing in FHIR::Patient
   # Validation failed? Get the errors and warnings...
   puts sd.errors
   puts sd.warnings
