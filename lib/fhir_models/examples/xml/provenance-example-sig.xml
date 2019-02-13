@@ -36,7 +36,7 @@
     <!--  very often, the user won't have a known system - these aren't available 
       for security system log ons. But where you can define it, you should.
       Most of the time the userId is fully qualfied such as an email address	   -->
-    <whoUri value="mailto://hhd@ssa.gov"/>
+    <whoUri value="mailto:hhd@ssa.gov"/>
   </agent>
    <signature>
   <!--  verification signature  -->

@@ -254,7 +254,7 @@
 		</binding>
 		<mapping>
       <identity value="fhir"/>
-      <language value="application/xquery"/>
+      <language value="application/xml"/>
       <map value="return f:/Patient/f:gender"/>
     </mapping>
 	</element>
