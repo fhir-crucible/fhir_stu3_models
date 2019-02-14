@@ -15,6 +15,20 @@ module FHIR
     #                            Profile Validation
     # -------------------------------------------------------------------------
 
+    class << self; attr_accessor :vs_validators end
+    @vs_validators = {}
+    def self.validates_vs(valueset_uri, &validator_fn)
+      @vs_validators[valueset_uri] = validator_fn
+    end
+
+    def self.clear_validates_vs(valueset_uri)
+      @vs_validators.delete valueset_uri
+    end
+
+    def self.clear_all_validates_vs
+      @vs_validators = {}
+    end
+
     def validates_resource?(resource)
       validate_resource(resource).empty?
     end
@@ -147,6 +161,7 @@ module FHIR
       if !element.type.empty? && element.path != id
         # element.type not being empty implies data_type_found != nil, for valid profiles
         codeable_concept_pattern = element.pattern && element.pattern.is_a?(FHIR::CodeableConcept)
+        codeable_concept_binding = element.binding
         matching_pattern = false
         nodes.each do |value|
           matching_type = 0
@@ -169,26 +184,60 @@ module FHIR
             temp_messages += @errors
             @errors = temp
           end
-          if verified_extension || verified_data_type
-            matching_type += 1
-            if data_type_found == 'code' # then check the binding
-              unless element.binding.nil?
-                matching_type += check_binding_element(element, value)
+          if data_type_found && (verified_extension || verified_data_type)
+          matching_type += 1
+          if data_type_found == 'code' # then check the binding
+            unless element.binding.nil?
+              matching_type += check_binding_element(element, value)
+            end
+          elsif data_type_found == 'CodeableConcept' && codeable_concept_pattern
+            vcc = FHIR::CodeableConcept.new(value)
+            pattern = element.pattern.coding
+            pattern.each do |pcoding|
+              vcc.coding.each do |vcoding|
+                matching_pattern = true if vcoding.system == pcoding.system && vcoding.code == pcoding.code
               end
-            elsif data_type_found == 'CodeableConcept' && codeable_concept_pattern
-              vcc = FHIR::CodeableConcept.new(value)
-              pattern = element.pattern.coding
-              pattern.each do |pcoding|
-                vcc.coding.each do |vcoding|
-                  matching_pattern = true if vcoding.system == pcoding.system && vcoding.code == pcoding.code
+            end
+          elsif data_type_found == 'CodeableConcept' && codeable_concept_binding
+            binding_issues =
+              if element.binding.strength == 'extensible'
+                @warnings
+              elsif element.binding.strength == 'required'
+                @errors
+              else # e.g., example-strength or unspecified
+                [] # Drop issues errors on the floor, in throwaway array
+              end
+
+            valueset_uri = element.binding && element.binding.valueSetReference && element.binding.valueSetReference.reference
+            vcc = FHIR::CodeableConcept.new(value)
+            if valueset_uri && self.class.vs_validators[valueset_uri]
+              check_fn = self.class.vs_validators[valueset_uri]
+              has_valid_code = vcc.coding && vcc.coding.any? { |c| check_fn.call(c) }
+              unless has_valid_code
+                binding_issues << "#{describe_element(element)} has no codings from #{valueset_uri}. Codings evaluated: #{vcc.to_json}"
+              end
+            end
+
+            unless has_valid_code
+              vcc.coding.each do |c|
+                check_fn = self.class.vs_validators[c.system]
+                if check_fn && !check_fn.call(c)
+                  binding_issues << "#{describe_element(element)} has no codings from it's specified system: #{c.system}.  "\
+                                    "Codings evaluated: #{vcc.to_json}"
                 end
               end
-            elsif data_type_found == 'String' && !element.maxLength.nil? && (value.size > element.maxLength)
-              @errors << "#{describe_element(element)} exceed maximum length of #{element.maxLength}: #{value}"
             end
-          else
-            temp_messages << "#{describe_element(element)} is not a valid #{data_type_found}: '#{value}'"
+
+          elsif data_type_found == 'String' && !element.maxLength.nil? && (value.size > element.maxLength)
+            @errors << "#{describe_element(element)} exceed maximum length of #{element.maxLength}: #{value}"
           end
+        elsif data_type_found
+          temp_messages << "#{describe_element(element)} is not a valid #{data_type_found}: '#{value}'"
+        else
+          # we don't know the data type... so we say "OK"
+          matching_type += 1
+          @warnings >> "Unable to guess data type for #{describe_element(element)}"
+        end
 
           if matching_type <= 0
             @errors += temp_messages
