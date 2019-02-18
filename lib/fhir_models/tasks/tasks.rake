@@ -38,6 +38,54 @@ namespace :fhir do
     end
   end
 
+  desc 'shrink implementation guide'
+  task :shrinkig, [:file_path] do |_t, args|
+    file_path = args[:file_path]
+    files = Dir.glob(File.join(file_path, '*.json'))
+    files.each do |filename|
+      # Load each file
+      start = File.size(filename)
+      json = File.open(filename, 'r:UTF-8', &:read)
+      hash = JSON.parse(json)
+
+      # process each file
+      FHIR::Boot::Preprocess.pre_process_structuredefinition(hash) if 'StructureDefinition' == hash['resourceType']
+      FHIR::Boot::Preprocess.pre_process_valueset(hash) if 'ValueSet' == hash['resourceType']
+      FHIR::Boot::Preprocess.pre_process_codesystem(hash) if 'CodeSystem' == hash['resourceType']
+      FHIR::Boot::Preprocess.pre_process_searchparam(hash) if 'SearchParameter' == hash['resourceType']
+      FHIR::Boot::Preprocess.remove_fhir_comments(hash)
+
+      # if BlueButton, fix URLs
+      if 'StructureDefinition' == hash['resourceType']
+        # hash['url'].gsub!('http://hl7.org/fhir/StructureDefinition/','https://bluebutton.cms.gov/assets/ig/StructureDefinition-')
+        fix_blue_button_urls(hash)
+      end
+
+      # Output the post processed file
+      f = File.open(filename, 'w:UTF-8')
+      f.write(JSON.pretty_unparse(hash))
+      f.close
+      finish = File.size(filename)
+      puts "  Removed #{(start - finish) / 1024} KB" if start != finish
+    end
+  end
+
+  def self.fix_blue_button_urls(hash)
+    hash.each do |key, value|
+      if value.is_a?(String)
+        if value.start_with?('http://hl7.org/fhir/StructureDefinition/bluebutton')
+          hash[key] = value.gsub('http://hl7.org/fhir/StructureDefinition/bluebutton', 'https://bluebutton.cms.gov/assets/ig/StructureDefinition-bluebutton')
+        end
+      elsif value.is_a?(Hash)
+        fix_blue_button_urls(value)
+      elsif value.is_a?(Array)
+        value.each do |v|
+          fix_blue_button_urls(v) if v.is_a?(Hash)
+        end
+      end
+    end
+  end
+
   desc 'copy artifacts from FHIR build'
   task :update, [:fhir_build_path] do |_t, args|
     fhir_build_path = args[:fhir_build_path]
