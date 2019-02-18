@@ -186,7 +186,7 @@
       "mapping": [
         {
           "identity": "fhir",
-          "language": "application/xquery",
+          "language": "application/xml",
           "map": "return f:/Patient/f:gender"
         }
       ]

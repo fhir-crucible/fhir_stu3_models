@@ -209,7 +209,7 @@
             <code value="CDA-EventSummary"/>
           </coding>
         </payloadType>
-        <payloadMimeType value="PDF"/>
+        <payloadMimeType value="application/pdf"/>
         <address value="https://sqlonfhir-dstu2.azurewebsites.net/fhir"/>
       </Endpoint>
     </resource>
@@ -244,7 +244,7 @@
             <code value="REF-I12"/>
           </coding>
         </payloadType>
-        <payloadMimeType value="HL7v2"/>
+        <payloadMimeType value="application/fhir+json"/>
         <address value="127.0.0.1"/>
       </Endpoint>
     </resource>
@@ -279,7 +279,7 @@
             <code value="CDA-EventSummary"/>
           </coding>
         </payloadType>
-        <payloadMimeType value="XDA/XDS"/>
+        <payloadMimeType value="application/xml"/>
         <address value="https://open.epic.com/Interface/XDS.b"/>
       </Endpoint>
     </resource>
@@ -314,7 +314,7 @@
             <code value="varies (application/dicom, application/dicom+xml, image/jpeg, and many more)"/>
           </coding>
         </payloadType>
-        <payloadMimeType value="DICOM WADO-RS"/>
+        <payloadMimeType value="application/dicom"/>
         <address value="https://pacs.hospital.org/dicomweb"/>
       </Endpoint>
     </resource>
@@ -349,7 +349,7 @@
             <code value="varies (application/dicom, application/dicom+xml, image/jpeg, and many more)"/>
           </coding>
         </payloadType>
-        <payloadMimeType value="DICOM QIDO-RS"/>
+        <payloadMimeType value="application/dicom"/>
         <address value="https://pacs.hospital.org/dicomweb"/>
       </Endpoint>
     </resource>
@@ -384,7 +384,7 @@
             <code value="varies (application/dicom, application/dicom+xml, image/jpeg, and many more)"/>
           </coding>
         </payloadType>
-        <payloadMimeType value="DICOM STOW-RS"/>
+        <payloadMimeType value="application/dicom"/>
         <address value="https://pacs.hospital.org/dicomweb"/>
       </Endpoint>
     </resource>
@@ -419,7 +419,7 @@
             <code value="varies (application/dicom, application/dicom+xml, image/jpeg, and many more)"/>
           </coding>
         </payloadType>
-        <payloadMimeType value="DICOM STOW-RS"/>
+        <payloadMimeType value="application/dicom"/>
         <address value="https://pacs.hospital.org/dicomweb"/>
       </Endpoint>
     </resource>
@@ -454,7 +454,7 @@
             <code value="varies (application/dicom, application/dicom+xml, image/jpeg, and many more)"/>
           </coding>
         </payloadType>
-        <payloadMimeType value="DICOM WADO-URI"/>
+        <payloadMimeType value="application/dicom"/>
         <address value="https://pacs.hospital.org/wadoUri"/>
       </Endpoint>
     </resource>
@@ -489,7 +489,7 @@
             <code value="varies (application/dicom, application/dicom+xml, image/jpeg, and many more)"/>
           </coding>
         </payloadType>
-        <payloadMimeType value="IHE IID"/>
+        <payloadMimeType value="application/dicom"/>
         <address value="https://pacs.hospital.org/IHEInvokeImageDisplay"/>
       </Endpoint>
     </resource>

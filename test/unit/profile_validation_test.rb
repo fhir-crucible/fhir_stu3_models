@@ -55,6 +55,66 @@ class ProfileValidationTest < Test::Unit::TestCase
     assert_memory(before, after)
   end
 
+  def validate_vital_sign_resource
+    example_name = 'sample-us-core-record.json'
+    patient_record = File.join(FIXTURES_DIR, example_name)
+    input_json = File.read(patient_record)
+    bundle = FHIR::Json.from_json(input_json)
+
+    vitalsign = bundle.entry.find do |entry|
+      entry.resource.meta and (entry.resource.meta.profile.first == 'http://hl7.org/fhir/StructureDefinition/vitalsigns')
+    end
+    assert vitalsign, 'Unable to find vital sign Observation resource'
+    profile = PROFILES['http://hl7.org/fhir/StructureDefinition/vitalsigns']
+    assert profile, 'Failed to find http://hl7.org/fhir/StructureDefinition/vitalsigns profile'
+    profile.validate_resource(vitalsign.resource)
+    profile
+  end
+
+  def test_profile_code_system_check
+    # Clear any registered validators
+    FHIR::StructureDefinition.clear_all_validates_vs
+    FHIR::StructureDefinition.validates_vs "http://hl7.org/fhir/ValueSet/observation-vitalsignresult" do |coding|
+      false # fails so that the code system validation happens
+    end
+    FHIR::StructureDefinition.validates_vs "http://loinc.org" do |coding|
+      false # errors related to code system validation should be present
+    end
+    profile = validate_vital_sign_resource
+    assert profile.errors.empty?, 'Expected no errors.'
+    assert profile.warnings.detect{|x| x.start_with?('Observation.code has no codings from http://hl7.org/fhir/ValueSet/observation-vitalsignresult')}
+    assert profile.warnings.detect{|x| x.start_with?("Observation.code has no codings from it's specified system: http://loinc.org")}
+    # check memory
+    before = check_memory
+    resource = nil
+    profile = nil
+    wait_for_gc
+    after = check_memory
+    assert_memory(before, after)
+  end
+
+  def test_profile_valueset_check
+    # Clear any registered validators
+    FHIR::StructureDefinition.clear_all_validates_vs
+    FHIR::StructureDefinition.validates_vs "http://hl7.org/fhir/ValueSet/observation-vitalsignresult" do |coding|
+      true # fails so that the code system validation never happens
+    end
+    FHIR::StructureDefinition.validates_vs "http://loinc.org" do |coding|
+      false # no errors related to code system should be present
+    end
+    profile = validate_vital_sign_resource
+    assert profile.errors.empty?, 'Expected no errors.'
+    assert !profile.warnings.detect{|x| x.start_with?('Observation.code has no codings from http://hl7.org/fhir/ValueSet/observation-vitalsignresult')}
+    assert !profile.warnings.detect{|x| x.start_with?("Observation.code has no codings from it's specified system: http://loinc.org")}
+    # check memory
+    before = check_memory
+    resource = nil
+    profile = nil
+    wait_for_gc
+    after = check_memory
+    assert_memory(before, after)
+  end
+
   def test_invalid_profile_validation
     example_name = 'invalid-us-core-record.json'
     patient_record = File.join(FIXTURES_DIR, example_name)

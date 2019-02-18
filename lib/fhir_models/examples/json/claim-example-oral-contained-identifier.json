@@ -109,7 +109,7 @@
       "sequence": 1,
       "focal": true,
       "coverage": {
-        "reference": "http://www.jurisdiction.com/nationalplan/123AB345"
+        "reference": "http://www.jurisdiction.com/Coverage/123AB345"
       }
     }
   ],

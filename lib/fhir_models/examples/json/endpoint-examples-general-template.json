@@ -199,7 +199,7 @@
           }
         ],
         "payloadMimeType": [
-          "PDF"
+          "application/pdf"
         ],
         "address": "https://sqlonfhir-dstu2.azurewebsites.net/fhir"
       }
@@ -232,7 +232,7 @@
           }
         ],
         "payloadMimeType": [
-          "HL7v2"
+          "application/fhir+json"
         ],
         "address": "127.0.0.1"
       }
@@ -265,7 +265,7 @@
           }
         ],
         "payloadMimeType": [
-          "XDA/XDS"
+          "application/xml"
         ],
         "address": "https://open.epic.com/Interface/XDS.b"
       }
@@ -298,7 +298,7 @@
           }
         ],
         "payloadMimeType": [
-          "DICOM WADO-RS"
+          "application/dicom"
         ],
         "address": "https://pacs.hospital.org/dicomweb"
       }
@@ -331,7 +331,7 @@
           }
         ],
         "payloadMimeType": [
-          "DICOM QIDO-RS"
+          "application/dicom"
         ],
         "address": "https://pacs.hospital.org/dicomweb"
       }
@@ -364,7 +364,7 @@
           }
         ],
         "payloadMimeType": [
-          "DICOM STOW-RS"
+          "application/dicom"
         ],
         "address": "https://pacs.hospital.org/dicomweb"
       }
@@ -397,7 +397,7 @@
           }
         ],
         "payloadMimeType": [
-          "DICOM STOW-RS"
+          "application/dicom"
         ],
         "address": "https://pacs.hospital.org/dicomweb"
       }
@@ -430,7 +430,7 @@
           }
         ],
         "payloadMimeType": [
-          "DICOM WADO-URI"
+          "application/dicom"
         ],
         "address": "https://pacs.hospital.org/wadoUri"
       }
@@ -463,7 +463,7 @@
           }
         ],
         "payloadMimeType": [
-          "IHE IID"
+          "application/dicom"
         ],
         "address": "https://pacs.hospital.org/IHEInvokeImageDisplay"
       }
