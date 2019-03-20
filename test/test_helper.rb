@@ -7,7 +7,7 @@ require 'test/unit'
 require 'pry'
 
 require 'fhir_stu3_models'
-FHIR.logger.level = Logger::INFO
+FHIR::STU3.logger.level = Logger::INFO
 
 
 TESTMEMORY = (ENV['TESTMEMORY'] || 0).to_i
@@ -18,7 +18,7 @@ puts "***** GCDELAY: #{GCDELAY} *****"
 def check_memory
   memory = Hash.new(0)
   return memory if TESTMEMORY==0
-  ObjectSpace.each_object(FHIR::Model) {|x| memory[x.class.to_s] += 1}
+  ObjectSpace.each_object(FHIR::STU3::Model) {|x| memory[x.class.to_s] += 1}
   memory
 end
 
