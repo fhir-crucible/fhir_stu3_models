@@ -2,7 +2,7 @@ require_relative '../test_helper'
 
 class XmlValidationTest < Test::Unit::TestCase
   ERROR_DIR = File.join('tmp', 'errors', 'XmlValidationTest')
-  EXAMPLE_ROOT = File.join('lib', 'fhir_models', 'examples', 'xml')
+  EXAMPLE_ROOT = File.join('lib', 'fhir_stu3_models', 'examples', 'xml')
 
   # Automatically generate one test method per example file
   example_files = File.join(EXAMPLE_ROOT, '**', '*.xml')
@@ -21,7 +21,7 @@ class XmlValidationTest < Test::Unit::TestCase
 
   def run_xml_validation_test(example_file, example_name)
     input_xml = File.read(example_file)
-    resource = FHIR::Xml.from_xml(input_xml)
+    resource = FHIR::STU3::Xml.from_xml(input_xml)
     errors = resource.validate
     unless errors.empty?
       File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') { |file| file.write(JSON.pretty_unparse(errors)) }
@@ -39,7 +39,7 @@ class XmlValidationTest < Test::Unit::TestCase
   def test_xml_is_valid
     filename = File.join(EXAMPLE_ROOT, 'patient-example.xml')
     xml = File.read(filename)
-    assert FHIR::Xml.valid?(xml), 'XML failed to schema validate.'
+    assert FHIR::STU3::Xml.valid?(xml), 'XML failed to schema validate.'
     # check memory
     wait_for_gc
     after = check_memory
@@ -49,7 +49,7 @@ class XmlValidationTest < Test::Unit::TestCase
   def test_resource_is_valid
     filename = File.join(EXAMPLE_ROOT, 'patient-example.xml')
     xml = File.read(filename)
-    resource = FHIR::Xml.from_xml(xml)
+    resource = FHIR::STU3::Xml.from_xml(xml)
     assert resource.valid?, 'Resource failed to validate.'
     # check memory
     before = check_memory

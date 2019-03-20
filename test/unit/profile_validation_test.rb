@@ -9,7 +9,7 @@ class ProfileValidationTest < Test::Unit::TestCase
   PROFILES = {}
   Dir.glob(us_core_ig).each do |definition|
     json = File.read(definition)
-    resource = FHIR.from_contents(json)
+    resource = FHIR::STU3.from_contents(json)
     PROFILES[resource.url] = resource
   end
 
@@ -39,7 +39,7 @@ class ProfileValidationTest < Test::Unit::TestCase
     example_name = 'sample-us-core-record.json'
     patient_record = File.join(FIXTURES_DIR, example_name)
     input_json = File.read(patient_record)
-    bundle = FHIR::Json.from_json(input_json)
+    bundle = FHIR::STU3::Json.from_json(input_json)
     errors = validate_each_entry(bundle)
     unless errors.empty?
       File.open("#{ERROR_DIR}/#{example_name}.err", 'w:UTF-8') { |file| errors.each { |e| file.write("#{e}\n") } }
@@ -59,7 +59,7 @@ class ProfileValidationTest < Test::Unit::TestCase
     example_name = 'sample-us-core-record.json'
     patient_record = File.join(FIXTURES_DIR, example_name)
     input_json = File.read(patient_record)
-    bundle = FHIR::Json.from_json(input_json)
+    bundle = FHIR::STU3::Json.from_json(input_json)
 
     vitalsign = bundle.entry.find do |entry|
       entry.resource.meta and (entry.resource.meta.profile.first == 'http://hl7.org/fhir/StructureDefinition/vitalsigns')
@@ -73,11 +73,11 @@ class ProfileValidationTest < Test::Unit::TestCase
 
   def test_profile_code_system_check
     # Clear any registered validators
-    FHIR::StructureDefinition.clear_all_validates_vs
-    FHIR::StructureDefinition.validates_vs "http://hl7.org/fhir/ValueSet/observation-vitalsignresult" do |coding|
+    FHIR::STU3::StructureDefinition.clear_all_validates_vs
+    FHIR::STU3::StructureDefinition.validates_vs "http://hl7.org/fhir/ValueSet/observation-vitalsignresult" do |coding|
       false # fails so that the code system validation happens
     end
-    FHIR::StructureDefinition.validates_vs "http://loinc.org" do |coding|
+    FHIR::STU3::StructureDefinition.validates_vs "http://loinc.org" do |coding|
       false # errors related to code system validation should be present
     end
     profile = validate_vital_sign_resource
@@ -95,11 +95,11 @@ class ProfileValidationTest < Test::Unit::TestCase
 
   def test_profile_valueset_check
     # Clear any registered validators
-    FHIR::StructureDefinition.clear_all_validates_vs
-    FHIR::StructureDefinition.validates_vs "http://hl7.org/fhir/ValueSet/observation-vitalsignresult" do |coding|
+    FHIR::STU3::StructureDefinition.clear_all_validates_vs
+    FHIR::STU3::StructureDefinition.validates_vs "http://hl7.org/fhir/ValueSet/observation-vitalsignresult" do |coding|
       true # fails so that the code system validation never happens
     end
-    FHIR::StructureDefinition.validates_vs "http://loinc.org" do |coding|
+    FHIR::STU3::StructureDefinition.validates_vs "http://loinc.org" do |coding|
       false # no errors related to code system should be present
     end
     profile = validate_vital_sign_resource
@@ -119,7 +119,7 @@ class ProfileValidationTest < Test::Unit::TestCase
     example_name = 'invalid-us-core-record.json'
     patient_record = File.join(FIXTURES_DIR, example_name)
     input_json = File.read(patient_record)
-    bundle = FHIR::Json.from_json(input_json)
+    bundle = FHIR::STU3::Json.from_json(input_json)
     errors = validate_each_entry(bundle)
     unless errors
       File.open("#{ERROR_DIR}/#{example_name}.json", 'w:UTF-8') { |file| file.write(input_json) }
@@ -139,8 +139,8 @@ class ProfileValidationTest < Test::Unit::TestCase
     example_name = 'sample-us-core-record.json'
     patient_record = File.join(FIXTURES_DIR, example_name)
     input_json = File.read(patient_record)
-    bundle = FHIR::Json.from_json(input_json)
-    definition = FHIR::Definitions.resource_definition('Bundle')
+    bundle = FHIR::STU3::Json.from_json(input_json)
+    definition = FHIR::STU3::Definitions.resource_definition('Bundle')
     assert definition.validates_resource?(bundle), 'Bundle StructureDefinition failed to validate Bundle.'
     # check memory
     before = check_memory
@@ -151,8 +151,8 @@ class ProfileValidationTest < Test::Unit::TestCase
   end
 
   def test_profile_validation_rejects_bad_resource
-    definition = FHIR::Definitions.resource_definition('Bundle')
-    assert !definition.validates_resource?(String.new), 'Bundle StructureDefinition should reject anything that is not a FHIR::Model.'
+    definition = FHIR::STU3::Definitions.resource_definition('Bundle')
+    assert !definition.validates_resource?(String.new), 'Bundle StructureDefinition should reject anything that is not a FHIR::STU3::Model.'
     # check memory
     before = check_memory
     model = nil
@@ -165,13 +165,13 @@ class ProfileValidationTest < Test::Unit::TestCase
     structure_definition_file = File.join(FIXTURES_DIR, 'custom_profiles', 'StructureDefinition-us-core-patient-modified.json')
     # use a modified version of the core patient profile, that changes certain extensions like race and ethnicity from 0..1 to 1..1
     structure_definition_json = JSON.parse(File.read(structure_definition_file))
-    profile = FHIR::StructureDefinition.new(structure_definition_json)
+    profile = FHIR::STU3::StructureDefinition.new(structure_definition_json)
 
     example_name = 'sample-us-core-record.json'
     patient_record = File.join(FIXTURES_DIR, example_name)
     input_json = File.read(patient_record)
-    bundle = FHIR::Json.from_json(input_json)
-    patient_entry = bundle.entry.find { |e| e.resource.is_a?(FHIR::Patient) }
+    bundle = FHIR::STU3::Json.from_json(input_json)
+    patient_entry = bundle.entry.find { |e| e.resource.is_a?(FHIR::STU3::Patient) }
 
     assert_empty profile.validate_resource(patient_entry.resource), 'Record failed to validate against modified core profile.'
     # check memory
@@ -184,11 +184,11 @@ class ProfileValidationTest < Test::Unit::TestCase
   end
 
   def test_language_binding_validation
-    binding_strength = FHIR::Resource::METADATA['language']['binding']['strength']
-    FHIR::Resource::METADATA['language']['binding']['strength'] = 'required'
-    model = FHIR::Resource.new('language' => 'en-US')
+    binding_strength = FHIR::STU3::Resource::METADATA['language']['binding']['strength']
+    FHIR::STU3::Resource::METADATA['language']['binding']['strength'] = 'required'
+    model = FHIR::STU3::Resource.new('language' => 'en-US')
     assert model.valid?, 'Language validation failed.'
-    FHIR::Resource::METADATA['language']['binding']['strength'] = binding_strength
+    FHIR::STU3::Resource::METADATA['language']['binding']['strength'] = binding_strength
     # check memory
     before = check_memory
     model = nil
@@ -198,9 +198,9 @@ class ProfileValidationTest < Test::Unit::TestCase
   end
 
   def test_cardinality_check
-    sd = FHIR::StructureDefinition.new
+    sd = FHIR::STU3::StructureDefinition.new
 
-    element = FHIR::ElementDefinition.new('min' => 0, 'max' => '1', 'path' => "test1")
+    element = FHIR::STU3::ElementDefinition.new('min' => 0, 'max' => '1', 'path' => "test1")
     nodes = []
     sd.errors = []
     sd.send(:verify_cardinality, element, nodes)
@@ -216,7 +216,7 @@ class ProfileValidationTest < Test::Unit::TestCase
     sd.verify_cardinality(element, nodes)
     assert_equal("test1 failed cardinality test (0..1) -- found 3", sd.errors[0])
 
-    element = FHIR::ElementDefinition.new('min' => 1, 'max' => '1', 'path' => "test2")
+    element = FHIR::STU3::ElementDefinition.new('min' => 1, 'max' => '1', 'path' => "test2")
     nodes = []
     sd.errors = []
     sd.send(:verify_cardinality, element, nodes)
@@ -232,7 +232,7 @@ class ProfileValidationTest < Test::Unit::TestCase
     sd.send(:verify_cardinality, element, nodes)
     assert_equal("test2 failed cardinality test (1..1) -- found 3", sd.errors[0])
 
-    element = FHIR::ElementDefinition.new('min' => 2, 'max' => '*', 'path' => "test3")
+    element = FHIR::STU3::ElementDefinition.new('min' => 2, 'max' => '*', 'path' => "test3")
     nodes = []
     sd.errors = []
     sd.send(:verify_cardinality, element, nodes)
@@ -250,10 +250,10 @@ class ProfileValidationTest < Test::Unit::TestCase
   end
 
   def test_maximum_string_length_check
-    sd = FHIR::StructureDefinition.new
+    sd = FHIR::STU3::StructureDefinition.new
     sd.warnings = []
 
-    element = FHIR::ElementDefinition.new('path' => 'string', 'type' => [{ 'code' => 'String' }], 'maxLength' => 4, 'min' => 0, 'max' => '*')
+    element = FHIR::STU3::ElementDefinition.new('path' => 'string', 'type' => [{ 'code' => 'String' }], 'maxLength' => 4, 'min' => 0, 'max' => '*')
     sd.hierarchy = OpenStruct.new(path: 'x') # just a hack to make this work, wish it was cleaner
     sd.errors = []
     sd.send(:verify_element, element, 'string' => "1234")
@@ -263,7 +263,7 @@ class ProfileValidationTest < Test::Unit::TestCase
     sd.send(:verify_element, element, 'string' => "12345")
     assert_equal("string exceed maximum length of 4: 12345", sd.errors[0])
 
-    element = FHIR::ElementDefinition.new('path' => 'string', 'type' => [{ 'code' => 'String' }], 'min' => 0, 'max' => '*') # no maxlength
+    element = FHIR::STU3::ElementDefinition.new('path' => 'string', 'type' => [{ 'code' => 'String' }], 'min' => 0, 'max' => '*') # no maxlength
 
     sd.errors = []
     sd.send(:verify_element, element, 'string' => "1234")
@@ -276,9 +276,9 @@ class ProfileValidationTest < Test::Unit::TestCase
   end
 
   def test_fixed_value
-    sd = FHIR::StructureDefinition.new
+    sd = FHIR::STU3::StructureDefinition.new
     
-    element = FHIR::ElementDefinition.new('path' => "fixed_value_test") # fixed == nil
+    element = FHIR::STU3::ElementDefinition.new('path' => "fixed_value_test") # fixed == nil
     sd.errors = []
     sd.verify_fixed_value(element, nil)
     assert_empty(sd.errors)
@@ -287,7 +287,7 @@ class ProfileValidationTest < Test::Unit::TestCase
     sd.verify_fixed_value(element, "some_other_value_it_doesnt_matter")
     assert_empty(sd.errors)
 
-    element = FHIR::ElementDefinition.new('path' => "fixed_value_test", 'fixedString' => "string_value")
+    element = FHIR::STU3::ElementDefinition.new('path' => "fixed_value_test", 'fixedString' => "string_value")
     sd.errors = []
     sd.verify_fixed_value(element, nil)
     assert_equal("fixed_value_test value of '' did not match fixed value: string_value", sd.errors[0])
@@ -300,7 +300,7 @@ class ProfileValidationTest < Test::Unit::TestCase
     sd.verify_fixed_value(element, "some_other_value")
     assert_equal("fixed_value_test value of 'some_other_value' did not match fixed value: string_value", sd.errors[0])
 
-    element = FHIR::ElementDefinition.new('path' => "fixed_value_test", 'fixedCodeableConcept' => { 'coding' => [{ 'system' => 'http://ncimeta.nci.nih.gov', 'code' => 'C2004062' }] } )
+    element = FHIR::STU3::ElementDefinition.new('path' => "fixed_value_test", 'fixedCodeableConcept' => { 'coding' => [{ 'system' => 'http://ncimeta.nci.nih.gov', 'code' => 'C2004062' }] } )
     sd.errors = []
     sd.verify_fixed_value(element, nil)
     assert_equal("fixed_value_test value of '' did not match fixed value: #{element.fixed}", sd.errors[0])
@@ -311,20 +311,20 @@ class ProfileValidationTest < Test::Unit::TestCase
     assert_equal("fixed_value_test value of 'some_other_value' did not match fixed value: #{element.fixed}", sd.errors[0])
 
     sd.errors = []
-    sd.verify_fixed_value(element, FHIR::CodeableConcept.new('coding' => [{ 'system' => 'http://ncimeta.nci.nih.gov', 'code' => 'C2004062' }]))
+    sd.verify_fixed_value(element, FHIR::STU3::CodeableConcept.new('coding' => [{ 'system' => 'http://ncimeta.nci.nih.gov', 'code' => 'C2004062' }]))
     assert_empty(sd.errors)
 
     sd.errors = []
-    value = FHIR::CodeableConcept.new('coding' => [{ 'system' => 'http://snomed.info/sct', 'code' => 'C2004062' }])
+    value = FHIR::STU3::CodeableConcept.new('coding' => [{ 'system' => 'http://snomed.info/sct', 'code' => 'C2004062' }])
     sd.verify_fixed_value(element, value)
     assert_equal("fixed_value_test value of '#{value}' did not match fixed value: #{element.fixed}", sd.errors[0])
   end
 
   def test_codeableConcept_pattern
-    sd = FHIR::StructureDefinition.new
+    sd = FHIR::STU3::StructureDefinition.new
     sd.warnings = []
 
-    element = FHIR::ElementDefinition.new('path' => 'cc', 'type' => [{ 'code' => 'CodeableConcept' }], 'min' => 1, 'max' => '1',
+    element = FHIR::STU3::ElementDefinition.new('path' => 'cc', 'type' => [{ 'code' => 'CodeableConcept' }], 'min' => 1, 'max' => '1',
                                           'patternCodeableConcept' => { 'coding' => [{ 'system' => 'http://ncimeta.nci.nih.gov', 'code' => 'C2004062' }] })
     sd.hierarchy = OpenStruct.new(path: 'x') # just a hack to make this work, wish it was cleaner
     sd.errors = []
@@ -349,11 +349,11 @@ class ProfileValidationTest < Test::Unit::TestCase
   end
 
   def test_invalid_value_per_type
-    sd = FHIR::StructureDefinition.new
+    sd = FHIR::STU3::StructureDefinition.new
     sd.warnings = []
     sd.hierarchy = OpenStruct.new(path: 'x') # just a hack to make this work, wish it was cleaner
 
-    element = FHIR::ElementDefinition.new('path' => 'vinv', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1')
+    element = FHIR::STU3::ElementDefinition.new('path' => 'vinv', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1')
     sd.errors = []
     sd.send(:verify_element, element, 'vinv' => 'string_value')
     assert_empty(sd.errors)
@@ -363,7 +363,7 @@ class ProfileValidationTest < Test::Unit::TestCase
     assert_equal("vinv is not a valid string: '12345'", sd.errors[0])
     assert_equal("vinv did not match one of the valid data types: [\"string\"]", sd.errors[1])
 
-    element = FHIR::ElementDefinition.new('path' => 'vinv', 'type' => [{ 'code' => 'integer' }], 'min' => 1, 'max' => '1')
+    element = FHIR::STU3::ElementDefinition.new('path' => 'vinv', 'type' => [{ 'code' => 'integer' }], 'min' => 1, 'max' => '1')
     sd.errors = []
     sd.send(:verify_element, element, 'vinv' => 12345)
     assert_empty(sd.errors)
@@ -373,7 +373,7 @@ class ProfileValidationTest < Test::Unit::TestCase
     assert_equal("vinv is not a valid integer: 'string_value'", sd.errors[0])
     assert_equal("vinv did not match one of the valid data types: [\"integer\"]", sd.errors[1])
 
-    element = FHIR::ElementDefinition.new('path' => 'vinv', 'type' => [{ 'code' => 'Observation' }], 'min' => 1, 'max' => '1')
+    element = FHIR::STU3::ElementDefinition.new('path' => 'vinv', 'type' => [{ 'code' => 'Observation' }], 'min' => 1, 'max' => '1')
     sd.errors = []
     sd.send(:verify_element, element, 'vinv' => 'something_that_isnt_an_Observation')
     assert_equal("Unable to verify Observation as a FHIR Resource.", sd.errors[0])
@@ -382,15 +382,15 @@ class ProfileValidationTest < Test::Unit::TestCase
   end
 
   def test_unable_to_guess_type
-    sd = FHIR::StructureDefinition.new
+    sd = FHIR::STU3::StructureDefinition.new
     sd.warnings = []
     sd.hierarchy = OpenStruct.new(path: 'x') # just a hack
 
-    element = FHIR::ElementDefinition.new('path' => 'no_type', 'min' => 1, 'max' => '1')
+    element = FHIR::STU3::ElementDefinition.new('path' => 'no_type', 'min' => 1, 'max' => '1')
     sd.send(:verify_element, element, 'no_type' => 'abcd')
     assert_equal("Unable to guess data type for no_type", sd.warnings[0])
 
-    element = FHIR::ElementDefinition.new('path' => 'has_type','type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1')
+    element = FHIR::STU3::ElementDefinition.new('path' => 'has_type','type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1')
     sd.warnings = []
     sd.errors = []
     sd.send(:verify_element, element, 'has_type' => 'abcd')
@@ -402,12 +402,12 @@ class ProfileValidationTest < Test::Unit::TestCase
   end
 
   def test_valueset_binding
-    sd = FHIR::StructureDefinition.new
+    sd = FHIR::STU3::StructureDefinition.new
     sd.warnings = []
     sd.hierarchy = OpenStruct.new(path: 'x') # just a hack
 
     # first 2 value sets are special cases
-    element = FHIR::ElementDefinition.new('path' => 'mime', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1',
+    element = FHIR::STU3::ElementDefinition.new('path' => 'mime', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1',
                                           'binding' => { 'valueSetUri' => 'http://hl7.org/fhir/ValueSet/content-type' })
     sd.errors = []
     sd.send(:check_binding_element, element, 'xml')
@@ -419,7 +419,7 @@ class ProfileValidationTest < Test::Unit::TestCase
     sd.send(:check_binding_element, element, 'jpeg')
     assert_equal("mime has invalid mime-type: 'jpeg'", sd.errors[0])
 
-    element = FHIR::ElementDefinition.new('path' => 'lang', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1',
+    element = FHIR::STU3::ElementDefinition.new('path' => 'lang', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1',
                                           'binding' => { 'valueSetUri' => 'http://hl7.org/fhir/ValueSet/languages' })
     sd.errors = []
     sd.send(:check_binding_element, element, 'en')
@@ -434,7 +434,7 @@ class ProfileValidationTest < Test::Unit::TestCase
 
 
     # use a valueset we don't have defined here
-    element = FHIR::ElementDefinition.new('path' => 'problem', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1',
+    element = FHIR::STU3::ElementDefinition.new('path' => 'problem', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1',
                                           'binding' => { 'valueSetUri' => 'http://standardhealthrecord.org/shr/problem/vs/ProblemCategoryVS' })
     sd.errors = []
     sd.warnings = []
@@ -445,7 +445,7 @@ class ProfileValidationTest < Test::Unit::TestCase
 
     # regular case, FHIR VS with nothing special about it
     # binding strength required => error if wrong
-    element = FHIR::ElementDefinition.new('path' => 'county', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1',
+    element = FHIR::STU3::ElementDefinition.new('path' => 'county', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1',
                                           'binding' => { 'valueSetUri' => 'http://hl7.org/fhir/ValueSet/fips-county',
                                                          'strength' => 'required' })
     sd.errors = []
@@ -461,7 +461,7 @@ class ProfileValidationTest < Test::Unit::TestCase
     assert_empty(sd.warnings)
 
     # binding strength example => warning if wrong
-    element = FHIR::ElementDefinition.new('path' => 'county', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1',
+    element = FHIR::STU3::ElementDefinition.new('path' => 'county', 'type' => [{ 'code' => 'string' }], 'min' => 1, 'max' => '1',
                                           'binding' => { 'valueSetUri' => 'http://hl7.org/fhir/ValueSet/fips-county',
                                                          'strength' => 'example' })
     sd.errors = []
@@ -479,7 +479,7 @@ class ProfileValidationTest < Test::Unit::TestCase
   end
 
   def test_get_json_nodes
-    sd = FHIR::StructureDefinition.new
+    sd = FHIR::STU3::StructureDefinition.new
     json = { "colors" => ["red", "green", "blue"], 
       "people" => [{ "first" => "John", "last" => "Smith"}, { "first" => "Jane", "last" => "Doe"} ],
       "nested_level_1" => { "nested_level_2" => { "nested_level_3" => "value"}}}

@@ -2,9 +2,9 @@ require_relative '../test_helper'
 
 class XmlSchemaValidationTest < Test::Unit::TestCase
   ERROR_DIR = File.join('tmp', 'errors', 'XmlSchemaValidationTest')
-  EXAMPLE_ROOT = File.join('lib', 'fhir_models', 'examples', 'xml')
+  EXAMPLE_ROOT = File.join('lib', 'fhir_stu3_models', 'examples', 'xml')
 
-  XSD_ROOT = File.join('lib', 'fhir_models', 'definitions', 'schema')
+  XSD_ROOT = File.join('lib', 'fhir_stu3_models', 'definitions', 'schema')
   XSD = Nokogiri::XML::Schema(File.new(File.join(XSD_ROOT, 'fhir-single.xsd')))
 
   # Automatically generate one test method per example file
@@ -24,7 +24,7 @@ class XmlSchemaValidationTest < Test::Unit::TestCase
 
   def run_xml_schema_validation_test(example_file, example_name)
     input_xml = File.read(example_file)
-    resource = FHIR::Xml.from_xml(input_xml)
+    resource = FHIR::STU3::Xml.from_xml(input_xml)
     assert !resource.nil?
 
     output_xml = resource.to_xml

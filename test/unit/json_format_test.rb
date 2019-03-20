@@ -3,7 +3,7 @@ require_relative '../test_helper'
 class JsonFormatTest < Test::Unit::TestCase
   ERROR_DIR = File.join('tmp', 'errors', 'JsonFormatTest')
   ERROR_LOSSY_DIR = File.join('tmp', 'errors', 'JsonLossinessTest')
-  EXAMPLE_ROOT = File.join('lib', 'fhir_models', 'examples', 'json')
+  EXAMPLE_ROOT = File.join('lib', 'fhir_stu3_models', 'examples', 'json')
 
   # Automatically generate one test method per example file
   example_files = File.join(EXAMPLE_ROOT, '**', '*.json')
@@ -27,7 +27,7 @@ class JsonFormatTest < Test::Unit::TestCase
 
   def run_json_roundtrip_test(example_file, example_name)
     input_json = File.read(example_file)
-    resource = FHIR::Json.from_json(input_json)
+    resource = FHIR::STU3::Json.from_json(input_json)
     output_json = resource.to_json
 
     input_hash = JSON.parse(input_json)
@@ -52,9 +52,9 @@ class JsonFormatTest < Test::Unit::TestCase
 
   def run_json_xml_json_lossiness_test(example_file, example_name)
     input_json = File.read(example_file)
-    resource_from_json = FHIR::Json.from_json(input_json)
+    resource_from_json = FHIR::STU3::Json.from_json(input_json)
     output_xml = resource_from_json.to_xml
-    resource_from_xml = FHIR::Xml.from_xml(output_xml)
+    resource_from_xml = FHIR::STU3::Xml.from_xml(output_xml)
     output_json = resource_from_xml.to_json
 
     input_hash = JSON.parse(input_json)
@@ -151,7 +151,7 @@ class JsonFormatTest < Test::Unit::TestCase
     return false unless value.is_a?(String)
 
     %w(date dateTime time).each do |type|
-      meta = FHIR::PRIMITIVES[type]
+      meta = FHIR::STU3::PRIMITIVES[type]
       expression = meta['regex']
       regex = Regexp.new(expression)
       return true unless (regex =~ value).nil?

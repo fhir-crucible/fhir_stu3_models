@@ -56,30 +56,30 @@ Metrics/PerceivedComplexity:
 # Offense count: 16
 Style/ClassVars:
   Exclude:
-    - 'lib/fhir_models/bootstrap/definitions.rb'
-    - 'lib/fhir_models/fluentpath/parse.rb'
+    - 'lib/fhir_stu3_models/bootstrap/definitions.rb'
+    - 'lib/fhir_stu3_models/fluentpath/parse.rb'
 
 # Offense count: 14
 Style/Documentation:
   Exclude:
     - 'spec/**/*'
     - 'test/**/*'
-    - 'lib/fhir_models/bootstrap/definitions.rb'
-    - 'lib/fhir_models/bootstrap/field.rb'
-    - 'lib/fhir_models/bootstrap/generator.rb'
-    - 'lib/fhir_models/bootstrap/hashable.rb'
-    - 'lib/fhir_models/bootstrap/json.rb'
-    - 'lib/fhir_models/bootstrap/model.rb'
-    - 'lib/fhir_models/bootstrap/preprocess.rb'
-    - 'lib/fhir_models/bootstrap/template.rb'
-    - 'lib/fhir_models/bootstrap/xml.rb'
-    - 'lib/fhir_models/fhir.rb'
-    - 'lib/fhir_models/fhir_ext/structure_definition.rb'
-    - 'lib/fhir_models/fhir_ext/structure_definition_finding.rb'
-    - 'lib/fhir_models/fluentpath/expression.rb'
-    - 'lib/fhir_models/fluentpath/parse.rb'
+    - 'lib/fhir_stu3_models/bootstrap/definitions.rb'
+    - 'lib/fhir_stu3_models/bootstrap/field.rb'
+    - 'lib/fhir_stu3_models/bootstrap/generator.rb'
+    - 'lib/fhir_stu3_models/bootstrap/hashable.rb'
+    - 'lib/fhir_stu3_models/bootstrap/json.rb'
+    - 'lib/fhir_stu3_models/bootstrap/model.rb'
+    - 'lib/fhir_stu3_models/bootstrap/preprocess.rb'
+    - 'lib/fhir_stu3_models/bootstrap/template.rb'
+    - 'lib/fhir_stu3_models/bootstrap/xml.rb'
+    - 'lib/fhir_stu3_models/fhir.rb'
+    - 'lib/fhir_stu3_models/fhir_ext/structure_definition.rb'
+    - 'lib/fhir_stu3_models/fhir_ext/structure_definition_finding.rb'
+    - 'lib/fhir_stu3_models/fluentpath/expression.rb'
+    - 'lib/fhir_stu3_models/fluentpath/parse.rb'
 
 # Offense count: 1
 Style/MethodMissing:
   Exclude:
-    - 'lib/fhir_models/bootstrap/model.rb'
+    - 'lib/fhir_stu3_models/bootstrap/model.rb'
