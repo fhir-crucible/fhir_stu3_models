@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'fhir_models/version'
+require 'fhir_stu3_models/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'fhir_models'
-  spec.version       = FHIR::Models::VERSION
-  spec.authors       = ['Jason Walonoski', 'Andre Quina', "Michael O'Keefe", 'Robert Scanlon']
+  spec.name          = 'fhir_stu3_models'
+  spec.version       = FHIR::STU3::Models::VERSION
+  spec.authors       = ['Jason Walonoski', 'Robert Scanlon']
   spec.email         = ['jwalonoski@mitre.org']
 
-  spec.summary       = %q{A Gem for handling FHIR models in ruby}
-  spec.description   = %q{A Gem for handling FHIR models in ruby}
-  spec.homepage      = 'https://github.com/fhir-crucible/fhir_models'
+  spec.summary       = %q{A Gem for handling FHIR STU3 models in ruby}
+  spec.description   = %q{A Gem for handling FHIR STU3 models in ruby}
+  spec.homepage      = 'https://github.com/fhir-crucible/fhir_stu3_models'
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})

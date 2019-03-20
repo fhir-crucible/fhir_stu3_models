@@ -1,4 +1,4 @@
-require 'fhir_models'
+require 'fhir_stu3_models'
 namespace :fhir do
   desc 'console'
   task :console, [] do |_t, _args|
@@ -27,13 +27,13 @@ namespace :fhir do
 
   desc 'preprocess definitions'
   task :preprocess, [] do |_t, _args|
-    FileList['lib/fhir_models/definitions/structures/*.json'].each do |file|
+    FileList['lib/fhir_stu3_models/definitions/structures/*.json'].each do |file|
       FHIR::Boot::Preprocess.pre_process_bundle(file)
     end
-    FileList['lib/fhir_models/definitions/valuesets/*.json'].each do |file|
+    FileList['lib/fhir_stu3_models/definitions/valuesets/*.json'].each do |file|
       FHIR::Boot::Preprocess.pre_process_bundle(file)
     end
-    FileList['lib/fhir_models/definitions/schema/*.xsd'].each do |file|
+    FileList['lib/fhir_stu3_models/definitions/schema/*.xsd'].each do |file|
       FHIR::Boot::Preprocess.pre_process_schema(file)
     end
   end
@@ -90,7 +90,7 @@ namespace :fhir do
   task :update, [:fhir_build_path] do |_t, args|
     fhir_build_path = args[:fhir_build_path]
     root = File.expand_path '../..', File.dirname(File.absolute_path(__FILE__))
-    defns = File.join(root, 'fhir_models', 'definitions')
+    defns = File.join(root, 'fhir_stu3_models', 'definitions')
 
     # copy structure definitions and profiles...
     src = File.join(fhir_build_path, 'publish')
@@ -109,7 +109,7 @@ namespace :fhir do
     copy_artifacts(files, src, dest, false)
 
     # delete the JSON examples
-    dest = File.join(root, 'fhir_models', 'examples', 'json')
+    dest = File.join(root, 'fhir_stu3_models', 'examples', 'json')
     puts '  Replacing JSON examples...'
     Dir.glob(File.join(dest, '*')).each { |f| File.delete(f) unless File.directory?(f) }
     # copy the new JSON examples over
@@ -125,7 +125,7 @@ namespace :fhir do
     copy_artifacts(files, qicore, dest, false)
 
     # delete the XML examples
-    dest = File.join(root, 'fhir_models', 'examples', 'xml')
+    dest = File.join(root, 'fhir_stu3_models', 'examples', 'xml')
     puts '  Replacing XML examples...'
     Dir.glob(File.join(dest, '*')).each { |f| File.delete(f) unless File.directory?(f) }
     # copy the new XML examples over

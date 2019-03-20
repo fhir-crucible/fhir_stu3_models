@@ -3,7 +3,7 @@ require_relative '../test_helper'
 class JsonFormatTest < Test::Unit::TestCase
   ERROR_DIR = File.join('tmp', 'errors', 'JsonFormatTest')
   ERROR_LOSSY_DIR = File.join('tmp', 'errors', 'JsonLossinessTest')
-  EXAMPLE_ROOT = File.join('lib', 'fhir_models', 'examples', 'json')
+  EXAMPLE_ROOT = File.join('lib', 'fhir_stu3_models', 'examples', 'json')
 
   # Automatically generate one test method per example file
   example_files = File.join(EXAMPLE_ROOT, '**', '*.json')

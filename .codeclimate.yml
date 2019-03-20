@@ -21,6 +21,6 @@ ratings:
 exclude_paths:
 - test/
 - spec/
-- lib/fhir_models/fhir/
-- lib/fhir_models/definitions/
-- lib/fhir_models/examples/
+- lib/fhir_stu3_models/fhir/
+- lib/fhir_stu3_models/definitions/
+- lib/fhir_stu3_models/examples/

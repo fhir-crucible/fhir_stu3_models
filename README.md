@@ -1,8 +1,8 @@
-# fhir_models [![Build Status](https://api.travis-ci.org/fhir-crucible/fhir_models.svg?branch=master)](https://travis-ci.org/fhir-crucible/fhir_models)
+# fhir_stu3_models [![Build Status](https://api.travis-ci.org/fhir-crucible/fhir_stu3_models.svg?branch=master)](https://travis-ci.org/fhir-crucible/fhir_stu3_models)
 
 FHIR STU3 Resource models generated from FHIR StructureDefinitions.
 
-The StructureDefinitions, XML Schemas, and examples are reused from the [HL7 FHIR build tools](https://github.com/hl7-fhir/fhir-svn).
+The StructureDefinitions, XML Schemas, and examples are reused from the [HL7 FHIR build tools](https://github.com/HL7/fhir).
 
 ### Getting Started
 ```
@@ -23,19 +23,19 @@ $ bundle exec rake fhir:console
   Using XML...
   ```ruby
   xml = File.read('patient-example.xml')
-  patient = FHIR.from_contents(xml)
+  patient = FHIR::STU3.from_contents(xml)
   puts patient.to_xml
   ```
   Using JSON...
   ```ruby
   json = File.read('patient-example.json')
-  patient = FHIR.from_contents(json)
+  patient = FHIR::STU3.from_contents(json)
   puts patient.to_json
   ```
 
   Creating an `Observation` by hand...
   ```ruby
-  obs = FHIR::Observation.new(
+  obs = FHIR::STU3::Observation.new(
     'status' => 'final',
     'code' => {
       'coding' => [{ 'system' => 'http://loinc.org', 'code' => '3141-9', 'display' => 'Weight Measured' }],
@@ -47,7 +47,7 @@ $ bundle exec rake fhir:console
     'subject' => { 'reference' => 'Patient/example' },
     'context' => { 'reference' => 'Encounter/example' }
   )
-  obs.valueQuantity = FHIR::Quantity.new(
+  obs.valueQuantity = FHIR::STU3::Quantity.new(
     'value' => 185,
     'unit' => 'lbs',
     'code' => '[lb_av]',
@@ -65,7 +65,7 @@ $ bundle exec rake fhir:console
 
   Using a profile or structure definition...
   ```ruby
-  sd = FHIR::Definitions.resource_definition('Patient')
+  sd = FHIR::STU3::Definitions.resource_definition('Patient')
   sd.validates_resource?(patient) # passing in FHIR::Patient
   # Validation failed? Get the errors and warnings...
   puts sd.errors
@@ -73,7 +73,7 @@ $ bundle exec rake fhir:console
   ```
 # License
 
-Copyright 2014-2018 The MITRE Corporation
+Copyright 2014-2019 The MITRE Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

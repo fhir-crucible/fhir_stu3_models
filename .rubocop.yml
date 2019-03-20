@@ -1,11 +1,11 @@
 inherit_from: .rubocop_todo.yml
 AllCops:
-  TargetRubyVersion: 2.2
+  TargetRubyVersion: 2.4
   Exclude:
     - 'test/**/*'
     - 'spec/**/*'
-    - 'lib/fhir_models/fhir/**/*'
-    - 'lib/fhir_models/fluentpath/evaluate.rb'
+    - 'lib/fhir_stu3_models/fhir/**/*'
+    - 'lib/fhir_stu3_models/fluentpath/evaluate.rb'
     - 'lib/**/*.rake'
     - 'tmp/**/*'
     - '*.gemspec'

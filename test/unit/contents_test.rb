@@ -1,8 +1,8 @@
 require_relative '../test_helper'
 
 class ContentsTest < Test::Unit::TestCase
-  EXAMPLE_JSON = File.join('lib', 'fhir_models', 'examples', 'json', 'patient-example.json')
-  EXAMPLE_XML  = File.join('lib', 'fhir_models', 'examples', 'xml', 'patient-example.xml')
+  EXAMPLE_JSON = File.join('lib', 'fhir_stu3_models', 'examples', 'json', 'patient-example.json')
+  EXAMPLE_XML  = File.join('lib', 'fhir_stu3_models', 'examples', 'xml', 'patient-example.xml')
 
   def test_xml_from_contents
     xml = File.read(EXAMPLE_XML)

@@ -3,7 +3,7 @@ require_relative '../test_helper'
 class XmlFormatTest < Test::Unit::TestCase
   ERROR_DIR = File.join('tmp', 'errors', 'XmlFormatTest')
   ERROR_LOSSY_DIR = File.join('tmp', 'errors', 'XmlLossinessTest')
-  EXAMPLE_ROOT = File.join('lib', 'fhir_models', 'examples', 'xml')
+  EXAMPLE_ROOT = File.join('lib', 'fhir_stu3_models', 'examples', 'xml')
 
   # Automatically generate one test method per example file
   example_files = File.join(EXAMPLE_ROOT, '**', '*.xml')

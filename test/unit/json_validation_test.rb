@@ -2,7 +2,7 @@ require_relative '../test_helper'
 
 class JsonValidationTest < Test::Unit::TestCase
   ERROR_DIR = File.join('tmp', 'errors', 'JsonValidationTest')
-  EXAMPLE_ROOT = File.join('lib', 'fhir_models', 'examples', 'json')
+  EXAMPLE_ROOT = File.join('lib', 'fhir_stu3_models', 'examples', 'json')
 
   # Automatically generate one test method per example file
   example_files = File.join(EXAMPLE_ROOT, '**', '*.json')

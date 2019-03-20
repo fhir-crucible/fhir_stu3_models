@@ -6,7 +6,7 @@ require 'nokogiri/diff'
 require 'test/unit'
 require 'pry'
 
-require 'fhir_models'
+require 'fhir_stu3_models'
 FHIR.logger.level = Logger::INFO
 
 

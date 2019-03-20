@@ -4,7 +4,7 @@ require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
 require 'pry'
 
-Dir['lib/fhir_models/tasks/**/*.rake'].each do |file|
+Dir['lib/fhir_stu3_models/tasks/**/*.rake'].each do |file|
   load file
 end
 
