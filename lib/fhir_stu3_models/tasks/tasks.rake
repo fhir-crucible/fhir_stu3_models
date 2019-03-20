@@ -8,7 +8,7 @@ namespace :fhir do
   desc 'generate fhir models'
   task :generate, [] do |_t, _args|
     # create a generator and load the definitions
-    generator = FHIR::Boot::Generator.new
+    generator = FHIR::STU3::Boot::Generator.new
     # 1. generate the lists of primitive data types, complex types, and resources
     generator.generate_metadata
     # 2. generate the complex data types
@@ -19,22 +19,22 @@ namespace :fhir do
 
     # 5. generate profiles?
     if generator.missing_required_expansion
-      FHIR.logger.error 'MISSING REQUIRED EXPANSION(S) -- This is a fatal error in the definition files.'
+      FHIR::STU3.logger.error 'MISSING REQUIRED EXPANSION(S) -- This is a fatal error in the definition files.'
     elsif generator.missing_expansions
-      FHIR.logger.info 'Missing expansions can be safely ignored due to weak binding strengths.'
+      FHIR::STU3.logger.info 'Missing expansions can be safely ignored due to weak binding strengths.'
     end
   end
 
   desc 'preprocess definitions'
   task :preprocess, [] do |_t, _args|
     FileList['lib/fhir_stu3_models/definitions/structures/*.json'].each do |file|
-      FHIR::Boot::Preprocess.pre_process_bundle(file)
+      FHIR::STU3::Boot::Preprocess.pre_process_bundle(file)
     end
     FileList['lib/fhir_stu3_models/definitions/valuesets/*.json'].each do |file|
-      FHIR::Boot::Preprocess.pre_process_bundle(file)
+      FHIR::STU3::Boot::Preprocess.pre_process_bundle(file)
     end
     FileList['lib/fhir_stu3_models/definitions/schema/*.xsd'].each do |file|
-      FHIR::Boot::Preprocess.pre_process_schema(file)
+      FHIR::STU3::Boot::Preprocess.pre_process_schema(file)
     end
   end
 
@@ -49,11 +49,11 @@ namespace :fhir do
       hash = JSON.parse(json)
 
       # process each file
-      FHIR::Boot::Preprocess.pre_process_structuredefinition(hash) if 'StructureDefinition' == hash['resourceType']
-      FHIR::Boot::Preprocess.pre_process_valueset(hash) if 'ValueSet' == hash['resourceType']
-      FHIR::Boot::Preprocess.pre_process_codesystem(hash) if 'CodeSystem' == hash['resourceType']
-      FHIR::Boot::Preprocess.pre_process_searchparam(hash) if 'SearchParameter' == hash['resourceType']
-      FHIR::Boot::Preprocess.remove_fhir_comments(hash)
+      FHIR::STU3::Boot::Preprocess.pre_process_structuredefinition(hash) if 'StructureDefinition' == hash['resourceType']
+      FHIR::STU3::Boot::Preprocess.pre_process_valueset(hash) if 'ValueSet' == hash['resourceType']
+      FHIR::STU3::Boot::Preprocess.pre_process_codesystem(hash) if 'CodeSystem' == hash['resourceType']
+      FHIR::STU3::Boot::Preprocess.pre_process_searchparam(hash) if 'SearchParameter' == hash['resourceType']
+      FHIR::STU3::Boot::Preprocess.remove_fhir_comments(hash)
 
       # if BlueButton, fix URLs
       if 'StructureDefinition' == hash['resourceType']
@@ -148,7 +148,7 @@ namespace :fhir do
   desc 'output invariant expressions from definitions'
   task :invariants, [] do |_t, _args|
     # create a generator and load the definitions
-    d = FHIR::Definitions
+    d = FHIR::STU3::Definitions
     defs = d.get_complex_types + d.get_resource_definitions
     invariants = {}
     defs.each do |structure_definition|
