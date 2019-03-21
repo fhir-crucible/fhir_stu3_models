@@ -1,6 +1,6 @@
-RSpec.describe 'FHIR' do
+RSpec.describe 'FHIR::STU3' do
   describe '#primitive?(datatype: datatype, value: value)' do
-    subject { FHIR }
+    subject { FHIR::STU3 }
 
     describe "datatype: 'boolean'" do
       let(:datatype) { 'boolean' }
