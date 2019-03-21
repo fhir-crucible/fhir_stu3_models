@@ -212,13 +212,13 @@ module FHIR
             valueset['compose']['include'].each do |code_group|
               system_url = code_group['system']
               @@cache[uri][system_url] ||= []
-              code_group['concept'].each { |y| @@cache[uri][system_url] << y['code'] } if code_group['concept']
+              code_group['concept']&.each { |y| @@cache[uri][system_url] << y['code'] }
               included_systems << system_url
             end
             included_systems.each { |x| @@cache[uri][x] ||= [] }
             systems = valuesets.select { |x| x['resourceType'] == 'CodeSystem' && included_systems.include?(x['url']) }
             systems.each do |included_system|
-              included_system['concept'].each { |y| @@cache[uri][included_system['url']] << y['code'] } if included_system['concept']
+              included_system['concept']&.each { |y| @@cache[uri][included_system['url']] << y['code'] }
             end
           end
           @@cache[uri].each { |_system, codes| codes.uniq! }

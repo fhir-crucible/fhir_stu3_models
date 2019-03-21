@@ -50,7 +50,7 @@ module FHIR
           s = []
           # always declare the FHIR module
           if @top_level
-            s << 'module FHIR' 
+            s << 'module FHIR'
             s << '  module STU3'
             offset += 2
           end
