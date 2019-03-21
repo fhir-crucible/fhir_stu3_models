@@ -15,6 +15,9 @@ Style/MultipleComparison:
 Style/YodaCondition:
   Enabled: false
 
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 # Offense count: 37
 Metrics/AbcSize:
   Max: 423

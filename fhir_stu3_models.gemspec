@@ -6,7 +6,7 @@ require 'fhir_stu3_models/version'
 Gem::Specification.new do |spec|
   spec.name          = 'fhir_stu3_models'
   spec.version       = FHIR::STU3::Models::VERSION
-  spec.authors       = ['Jason Walonoski', 'Robert Scanlon']
+  spec.authors       = ['Jason Walonoski', 'Robert Scanlon', 'Reece Adamson']
   spec.email         = ['jwalonoski@mitre.org']
 
   spec.summary       = %q{A Gem for handling FHIR STU3 models in ruby}

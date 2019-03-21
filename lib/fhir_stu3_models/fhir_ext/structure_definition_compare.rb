@@ -58,7 +58,7 @@ module FHIR
         left_missing.each do |e|
           next if e.include? 'extension'
           elem = get_element_by_path(e, right_elements)
-          if !elem.min.nil? && elem.min > 0
+          if !elem.min.nil? && elem.min.positive?
             @errors << @finding.error(e, 'min', 'Missing REQUIRED element', 'Missing', elem.min.to_s)
           elsif elem.isModifier == true
             @errors << @finding.error(e, 'isModifier', 'Missing MODIFIER element', 'Missing', elem.isModifier.to_s)
@@ -69,7 +69,7 @@ module FHIR
         right_missing.each do |e|
           next if e.include? 'extension'
           elem = get_element_by_path(e, left_elements)
-          if !elem.min.nil? && elem.min > 0
+          if !elem.min.nil? && elem.min.positive?
             @errors << @finding.error(e, 'min', 'Missing REQUIRED element', elem.min.to_s, 'Missing')
           elsif elem.isModifier == true
             @errors << @finding.error(e, 'isModifier', 'Missing MODIFIER element', elem.isModifier.to_s, 'Missing')
