@@ -12,3 +12,6 @@ AllCops:
     - 'bin/*'
 Metrics/LineLength:
   Enabled: false
+inherit_mode:
+  merge:
+    - Exclude
