@@ -5,3 +5,4 @@ invariants.txt
 .ruby-version
 .ruby-gemset
 tmp/
+.idea/
