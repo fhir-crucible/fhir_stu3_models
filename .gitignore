@@ -2,7 +2,7 @@
 **/coverage/**
 fhir_stu3_models*log*
 invariants.txt
-Gemfile.lock
 .ruby-version
 .ruby-gemset
 tmp/
+.idea/
