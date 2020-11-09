@@ -7,7 +7,7 @@ module FHIR
 
       SEARCH_PARAMS = 
       METADATA = {
-        'id' => {'type'=>'string', 'path'=>'Coding.id', 'min'=>0, 'max'=>1},
+        'id' => {'type'=>'id', 'path'=>'Coding.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'Coding.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'system' => {'type'=>'uri', 'path'=>'Coding.system', 'min'=>0, 'max'=>1},
         'version' => {'type'=>'string', 'path'=>'Coding.version', 'min'=>0, 'max'=>1},
@@ -16,7 +16,7 @@ module FHIR
         'userSelected' => {'type'=>'boolean', 'path'=>'Coding.userSelected', 'min'=>0, 'max'=>1}
       }
 
-      attr_accessor :id           # 0-1 string
+      attr_accessor :id           # 0-1 id
       attr_accessor :extension    # 0-* [ Extension ]
       attr_accessor :system       # 0-1 uri
       attr_accessor :version      # 0-1 string

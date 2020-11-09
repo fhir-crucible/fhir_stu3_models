@@ -7,7 +7,7 @@ module FHIR
 
       SEARCH_PARAMS = 
       METADATA = {
-        'id' => {'type'=>'string', 'path'=>'SampledData.id', 'min'=>0, 'max'=>1},
+        'id' => {'type'=>'id', 'path'=>'SampledData.id', 'min'=>0, 'max'=>1},
         'extension' => {'type'=>'Extension', 'path'=>'SampledData.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'origin' => {'type'=>'Quantity', 'path'=>'SampledData.origin', 'min'=>1, 'max'=>1},
         'period' => {'type'=>'decimal', 'path'=>'SampledData.period', 'min'=>1, 'max'=>1},
@@ -18,7 +18,7 @@ module FHIR
         'data' => {'type'=>'string', 'path'=>'SampledData.data', 'min'=>1, 'max'=>1}
       }
 
-      attr_accessor :id         # 0-1 string
+      attr_accessor :id         # 0-1 id
       attr_accessor :extension  # 0-* [ Extension ]
       attr_accessor :origin     # 1-1 Quantity
       attr_accessor :period     # 1-1 decimal

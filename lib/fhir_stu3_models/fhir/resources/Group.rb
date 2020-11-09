@@ -10,15 +10,15 @@ module FHIR
         'id' => {'type'=>'id', 'path'=>'Group.id', 'min'=>0, 'max'=>1},
         'meta' => {'type'=>'Meta', 'path'=>'Group.meta', 'min'=>0, 'max'=>1},
         'implicitRules' => {'type'=>'uri', 'path'=>'Group.implicitRules', 'min'=>0, 'max'=>1},
-        'language' => {'valid_codes'=>{'urn:ietf:bcp:47'=>['ar', 'bn', 'cs', 'da', 'de', 'de-AT', 'de-CH', 'de-DE', 'el', 'en', 'en-AU', 'en-CA', 'en-GB', 'en-IN', 'en-NZ', 'en-SG', 'en-US', 'es', 'es-AR', 'es-ES', 'es-UY', 'fi', 'fr', 'fr-BE', 'fr-CH', 'fr-FR', 'fy', 'fy-NL', 'hi', 'hr', 'it', 'it-CH', 'it-IT', 'ja', 'ko', 'nl', 'nl-BE', 'nl-NL', 'no', 'no-NO', 'pa', 'pt', 'pt-BR', 'ru', 'ru-RU', 'sr', 'sr-SP', 'sv', 'sv-SE', 'te', 'zh', 'zh-CN', 'zh-HK', 'zh-SG', 'zh-TW']}, 'type'=>'code', 'path'=>'Group.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'extensible', 'uri'=>'http://hl7.org/fhir/ValueSet/languages'}},
+        'language' => {'type'=>'code', 'path'=>'Group.language', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://tools.ietf.org/html/bcp47'}},
         'text' => {'type'=>'Narrative', 'path'=>'Group.text', 'min'=>0, 'max'=>1},
         'contained' => {'type'=>'Resource', 'path'=>'Group.contained', 'min'=>0, 'max'=>Float::INFINITY},
         'extension' => {'type'=>'Extension', 'path'=>'Group.extension', 'min'=>0, 'max'=>Float::INFINITY},
         'modifierExtension' => {'type'=>'Extension', 'path'=>'Group.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
         'identifier' => {'type'=>'Identifier', 'path'=>'Group.identifier', 'min'=>0, 'max'=>Float::INFINITY},
-        'active' => {'type'=>'boolean', 'path'=>'Group.active', 'min'=>0, 'max'=>1},
         'type' => {'valid_codes'=>{'http://hl7.org/fhir/group-type'=>['person', 'animal', 'practitioner', 'device', 'medication', 'substance']}, 'type'=>'code', 'path'=>'Group.type', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'required', 'uri'=>'http://hl7.org/fhir/ValueSet/group-type'}},
         'actual' => {'type'=>'boolean', 'path'=>'Group.actual', 'min'=>1, 'max'=>1},
+        'active' => {'type'=>'boolean', 'path'=>'Group.active', 'min'=>0, 'max'=>1},
         'code' => {'type'=>'CodeableConcept', 'path'=>'Group.code', 'min'=>0, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>nil}},
         'name' => {'type'=>'string', 'path'=>'Group.name', 'min'=>0, 'max'=>1},
         'quantity' => {'type'=>'unsignedInt', 'path'=>'Group.quantity', 'min'=>0, 'max'=>1},
@@ -35,7 +35,7 @@ module FHIR
           'value' => ['CodeableConcept', 'boolean', 'Quantity', 'Range']
         }
         METADATA = {
-          'id' => {'type'=>'string', 'path'=>'Characteristic.id', 'min'=>0, 'max'=>1},
+          'id' => {'type'=>'id', 'path'=>'Characteristic.id', 'min'=>0, 'max'=>1},
           'extension' => {'type'=>'Extension', 'path'=>'Characteristic.extension', 'min'=>0, 'max'=>Float::INFINITY},
           'modifierExtension' => {'type'=>'Extension', 'path'=>'Characteristic.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
           'code' => {'type'=>'CodeableConcept', 'path'=>'Characteristic.code', 'min'=>1, 'max'=>1, 'binding'=>{'strength'=>'example', 'uri'=>nil}},
@@ -47,7 +47,7 @@ module FHIR
           'period' => {'type'=>'Period', 'path'=>'Characteristic.period', 'min'=>0, 'max'=>1}
         }
 
-        attr_accessor :id                   # 0-1 string
+        attr_accessor :id                   # 0-1 id
         attr_accessor :extension            # 0-* [ Extension ]
         attr_accessor :modifierExtension    # 0-* [ Extension ]
         attr_accessor :code                 # 1-1 CodeableConcept
@@ -65,18 +65,18 @@ module FHIR
         include FHIR::STU3::Xml
 
         METADATA = {
-          'id' => {'type'=>'string', 'path'=>'Member.id', 'min'=>0, 'max'=>1},
+          'id' => {'type'=>'id', 'path'=>'Member.id', 'min'=>0, 'max'=>1},
           'extension' => {'type'=>'Extension', 'path'=>'Member.extension', 'min'=>0, 'max'=>Float::INFINITY},
           'modifierExtension' => {'type'=>'Extension', 'path'=>'Member.modifierExtension', 'min'=>0, 'max'=>Float::INFINITY},
-          'entity' => {'type_profiles'=>['http://hl7.org/fhir/StructureDefinition/Patient', 'http://hl7.org/fhir/StructureDefinition/Practitioner', 'http://hl7.org/fhir/StructureDefinition/Device', 'http://hl7.org/fhir/StructureDefinition/Medication', 'http://hl7.org/fhir/StructureDefinition/Substance'], 'type'=>'Reference', 'path'=>'Member.entity', 'min'=>1, 'max'=>1},
+          'entity' => {'type'=>'Reference', 'path'=>'Member.entity', 'min'=>1, 'max'=>1},
           'period' => {'type'=>'Period', 'path'=>'Member.period', 'min'=>0, 'max'=>1},
           'inactive' => {'type'=>'boolean', 'path'=>'Member.inactive', 'min'=>0, 'max'=>1}
         }
 
-        attr_accessor :id                # 0-1 string
+        attr_accessor :id                # 0-1 id
         attr_accessor :extension         # 0-* [ Extension ]
         attr_accessor :modifierExtension # 0-* [ Extension ]
-        attr_accessor :entity            # 1-1 Reference(Patient|Practitioner|Device|Medication|Substance)
+        attr_accessor :entity            # 1-1 Reference()
         attr_accessor :period            # 0-1 Period
         attr_accessor :inactive          # 0-1 boolean
       end
@@ -90,9 +90,9 @@ module FHIR
       attr_accessor :extension         # 0-* [ Extension ]
       attr_accessor :modifierExtension # 0-* [ Extension ]
       attr_accessor :identifier        # 0-* [ Identifier ]
-      attr_accessor :active            # 0-1 boolean
       attr_accessor :type              # 1-1 code
       attr_accessor :actual            # 1-1 boolean
+      attr_accessor :active            # 0-1 boolean
       attr_accessor :code              # 0-1 CodeableConcept
       attr_accessor :name              # 0-1 string
       attr_accessor :quantity          # 0-1 unsignedInt
