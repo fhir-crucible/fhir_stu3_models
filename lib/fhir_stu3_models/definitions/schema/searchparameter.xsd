@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
+  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -47,13 +47,10 @@
           <xs:element name="url" minOccurs="1" maxOccurs="1" type="uri">
             
           </xs:element>
-          <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
           <xs:element name="name" minOccurs="1" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="status" minOccurs="1" maxOccurs="1" type="PublicationStatus">
+          <xs:element name="status" minOccurs="0" maxOccurs="1" type="ConformanceResourceStatus">
             
           </xs:element>
           <xs:element name="experimental" minOccurs="0" maxOccurs="1" type="boolean">
@@ -65,31 +62,25 @@
           <xs:element name="publisher" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="contact" minOccurs="0" maxOccurs="unbounded" type="ContactDetail">
+          <xs:element name="contact" type="SearchParameter.Contact" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="UsageContext">
+          <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="jurisdiction" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="purpose" minOccurs="0" maxOccurs="1" type="markdown">
+          <xs:element name="requirements" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
           <xs:element name="code" minOccurs="1" maxOccurs="1" type="code">
             
           </xs:element>
-          <xs:element name="base" minOccurs="1" maxOccurs="unbounded" type="ResourceType">
+          <xs:element name="base" minOccurs="1" maxOccurs="1" type="code">
             
           </xs:element>
           <xs:element name="type" minOccurs="1" maxOccurs="1" type="SearchParamType">
             
           </xs:element>
-          <xs:element name="derivedFrom" minOccurs="0" maxOccurs="1" type="uri">
-            
-          </xs:element>
-          <xs:element name="description" minOccurs="1" maxOccurs="1" type="markdown">
+          <xs:element name="description" minOccurs="1" maxOccurs="1" type="string">
             
           </xs:element>
           <xs:element name="expression" minOccurs="0" maxOccurs="1" type="string">
@@ -101,34 +92,22 @@
           <xs:element name="xpathUsage" minOccurs="0" maxOccurs="1" type="XPathUsageType">
             
           </xs:element>
-          <xs:element name="target" minOccurs="0" maxOccurs="unbounded" type="ResourceType">
-            
-          </xs:element>
-          <xs:element name="comparator" minOccurs="0" maxOccurs="unbounded" type="SearchComparator">
-            
-          </xs:element>
-          <xs:element name="modifier" minOccurs="0" maxOccurs="unbounded" type="SearchModifierCode">
-            
-          </xs:element>
-          <xs:element name="chain" minOccurs="0" maxOccurs="unbounded" type="string">
-            
-          </xs:element>
-          <xs:element name="component" type="SearchParameter.Component" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="target" minOccurs="0" maxOccurs="unbounded" type="code">
             
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="SearchParameter.Component">
+  <xs:complexType name="SearchParameter.Contact">
     
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="definition" minOccurs="1" maxOccurs="1" type="Reference">
+          <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="expression" minOccurs="1" maxOccurs="1" type="string">
+          <xs:element name="telecom" minOccurs="0" maxOccurs="unbounded" type="ContactPoint">
             
           </xs:element>
         </xs:sequence>
@@ -136,22 +115,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="XPathUsageType-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="normal">
-        
-      </xs:enumeration>
-      <xs:enumeration value="phonetic">
-        
-      </xs:enumeration>
-      <xs:enumeration value="nearby">
-        
-      </xs:enumeration>
-      <xs:enumeration value="distance">
-        
-      </xs:enumeration>
-      <xs:enumeration value="other">
-        
-      </xs:enumeration>
+    <xs:restriction base="xs:string">
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="XPathUsageType">
@@ -159,87 +123,6 @@
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:attribute name="value" type="XPathUsageType-list" use="optional"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="SearchModifierCode-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="missing">
-        
-      </xs:enumeration>
-      <xs:enumeration value="exact">
-        
-      </xs:enumeration>
-      <xs:enumeration value="contains">
-        
-      </xs:enumeration>
-      <xs:enumeration value="not">
-        
-      </xs:enumeration>
-      <xs:enumeration value="text">
-        
-      </xs:enumeration>
-      <xs:enumeration value="in">
-        
-      </xs:enumeration>
-      <xs:enumeration value="not-in">
-        
-      </xs:enumeration>
-      <xs:enumeration value="below">
-        
-      </xs:enumeration>
-      <xs:enumeration value="above">
-        
-      </xs:enumeration>
-      <xs:enumeration value="type">
-        
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="SearchModifierCode">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="SearchModifierCode-list" use="optional"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="SearchComparator-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="eq">
-        
-      </xs:enumeration>
-      <xs:enumeration value="ne">
-        
-      </xs:enumeration>
-      <xs:enumeration value="gt">
-        
-      </xs:enumeration>
-      <xs:enumeration value="lt">
-        
-      </xs:enumeration>
-      <xs:enumeration value="ge">
-        
-      </xs:enumeration>
-      <xs:enumeration value="le">
-        
-      </xs:enumeration>
-      <xs:enumeration value="sa">
-        
-      </xs:enumeration>
-      <xs:enumeration value="eb">
-        
-      </xs:enumeration>
-      <xs:enumeration value="ap">
-        
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="SearchComparator">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="SearchComparator-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

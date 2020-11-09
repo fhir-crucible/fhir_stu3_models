@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
+  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -65,10 +65,7 @@
           <xs:element name="date" minOccurs="1" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="vaccineCode" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="targetDisease" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="vaccineCode" minOccurs="1" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="doseNumber" minOccurs="0" maxOccurs="1" type="positiveInt">
@@ -113,7 +110,7 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="doseSequence" minOccurs="0" maxOccurs="1" type="positiveInt">
+          <xs:element name="doseSequence" minOccurs="0" maxOccurs="1" type="integer">
             
           </xs:element>
           <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">

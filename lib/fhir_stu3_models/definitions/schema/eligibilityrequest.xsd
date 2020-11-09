@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
+  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -47,13 +47,54 @@
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             
           </xs:element>
-          <xs:element name="status" minOccurs="0" maxOccurs="1" type="FinancialResourceStatusCodes">
+          <xs:element name="ruleset" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
-          <xs:element name="priority" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="originalRuleset" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
-          <xs:element name="patient" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="created" minOccurs="0" maxOccurs="1" type="dateTime">
+            
+          </xs:element>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="targetIdentifier" type="Identifier"/>
+            <xs:element name="targetReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="providerIdentifier" type="Identifier"/>
+            <xs:element name="providerReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="organizationIdentifier" type="Identifier"/>
+            <xs:element name="organizationReference" type="Reference"/>
+          </xs:choice>
+          <xs:element name="priority" minOccurs="0" maxOccurs="1" type="Coding">
+            
+          </xs:element>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="entererIdentifier" type="Identifier"/>
+            <xs:element name="entererReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="facilityIdentifier" type="Identifier"/>
+            <xs:element name="facilityReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="patientIdentifier" type="Identifier"/>
+            <xs:element name="patientReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="coverageIdentifier" type="Identifier"/>
+            <xs:element name="coverageReference" type="Reference"/>
+          </xs:choice>
+          <xs:element name="businessArrangement" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1">
@@ -61,34 +102,10 @@
             <xs:element name="servicedDate" type="date"/>
             <xs:element name="servicedPeriod" type="Period"/>
           </xs:choice>
-          <xs:element name="created" minOccurs="0" maxOccurs="1" type="dateTime">
+          <xs:element name="benefitCategory" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
-          <xs:element name="enterer" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="provider" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="organization" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="insurer" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="facility" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="coverage" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="businessArrangement" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-          <xs:element name="benefitCategory" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="benefitSubCategory" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="benefitSubCategory" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
         </xs:sequence>

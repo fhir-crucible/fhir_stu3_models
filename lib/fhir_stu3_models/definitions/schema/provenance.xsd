@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
+  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -53,16 +53,16 @@
           <xs:element name="recorded" minOccurs="1" maxOccurs="1" type="instant">
             
           </xs:element>
-          <xs:element name="policy" minOccurs="0" maxOccurs="unbounded" type="uri">
+          <xs:element name="reason" minOccurs="0" maxOccurs="unbounded" type="Coding">
+            
+          </xs:element>
+          <xs:element name="activity" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="location" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="reason" minOccurs="0" maxOccurs="unbounded" type="Coding">
-            
-          </xs:element>
-          <xs:element name="activity" minOccurs="0" maxOccurs="1" type="Coding">
+          <xs:element name="policy" minOccurs="0" maxOccurs="unbounded" type="uri">
             
           </xs:element>
           <xs:element name="agent" type="Provenance.Agent" minOccurs="1" maxOccurs="unbounded">
@@ -83,20 +83,31 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="role" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+          <xs:element name="role" minOccurs="1" maxOccurs="1" type="Coding">
             
           </xs:element>
-          <xs:choice minOccurs="1" maxOccurs="1">
+          <xs:element name="actor" minOccurs="0" maxOccurs="1" type="Reference">
             
-            <xs:element name="whoUri" type="uri"/>
-            <xs:element name="whoReference" type="Reference"/>
-          </xs:choice>
-          <xs:choice minOccurs="0" maxOccurs="1">
+          </xs:element>
+          <xs:element name="userId" minOccurs="0" maxOccurs="1" type="Identifier">
             
-            <xs:element name="onBehalfOfUri" type="uri"/>
-            <xs:element name="onBehalfOfReference" type="Reference"/>
-          </xs:choice>
-          <xs:element name="relatedAgentType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          </xs:element>
+          <xs:element name="relatedAgent" type="Provenance.RelatedAgent" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Provenance.RelatedAgent">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="target" minOccurs="1" maxOccurs="1" type="uri">
             
           </xs:element>
         </xs:sequence>
@@ -111,13 +122,16 @@
           <xs:element name="role" minOccurs="1" maxOccurs="1" type="ProvenanceEntityRole">
             
           </xs:element>
-          <xs:choice minOccurs="1" maxOccurs="1">
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="Coding">
             
-            <xs:element name="whatUri" type="uri"/>
-            <xs:element name="whatReference" type="Reference"/>
-            <xs:element name="whatIdentifier" type="Identifier"/>
-          </xs:choice>
-          <xs:element name="agent" type="Provenance.Agent" minOccurs="0" maxOccurs="unbounded">
+          </xs:element>
+          <xs:element name="reference" minOccurs="1" maxOccurs="1" type="uri">
+            
+          </xs:element>
+          <xs:element name="display" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="agent" type="Provenance.Agent" minOccurs="0" maxOccurs="1">
             
           </xs:element>
         </xs:sequence>
@@ -125,22 +139,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="ProvenanceEntityRole-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="derivation">
-        
-      </xs:enumeration>
-      <xs:enumeration value="revision">
-        
-      </xs:enumeration>
-      <xs:enumeration value="quotation">
-        
-      </xs:enumeration>
-      <xs:enumeration value="source">
-        
-      </xs:enumeration>
-      <xs:enumeration value="removal">
-        
-      </xs:enumeration>
+    <xs:restriction base="xs:string">
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ProvenanceEntityRole">

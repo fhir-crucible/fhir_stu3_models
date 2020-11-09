@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
+  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -44,73 +44,19 @@
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
-          <xs:element name="url" minOccurs="0" maxOccurs="1" type="uri">
+          <xs:element name="moduleMetadata" minOccurs="0" maxOccurs="1" type="ModuleMetadata">
             
           </xs:element>
-          <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
+          <xs:element name="model" type="Library.Model" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="library" type="Library.Library" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="codeSystem" type="Library.CodeSystem" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="title" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-          <xs:element name="status" minOccurs="1" maxOccurs="1" type="PublicationStatus">
-            
-          </xs:element>
-          <xs:element name="experimental" minOccurs="0" maxOccurs="1" type="boolean">
-            
-          </xs:element>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
-            
-          </xs:element>
-          <xs:element name="publisher" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-          <xs:element name="description" minOccurs="0" maxOccurs="1" type="markdown">
-            
-          </xs:element>
-          <xs:element name="purpose" minOccurs="0" maxOccurs="1" type="markdown">
-            
-          </xs:element>
-          <xs:element name="usage" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-          <xs:element name="approvalDate" minOccurs="0" maxOccurs="1" type="date">
-            
-          </xs:element>
-          <xs:element name="lastReviewDate" minOccurs="0" maxOccurs="1" type="date">
-            
-          </xs:element>
-          <xs:element name="effectivePeriod" minOccurs="0" maxOccurs="1" type="Period">
-            
-          </xs:element>
-          <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="UsageContext">
-            
-          </xs:element>
-          <xs:element name="jurisdiction" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="topic" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="contributor" minOccurs="0" maxOccurs="unbounded" type="Contributor">
-            
-          </xs:element>
-          <xs:element name="contact" minOccurs="0" maxOccurs="unbounded" type="ContactDetail">
-            
-          </xs:element>
-          <xs:element name="copyright" minOccurs="0" maxOccurs="1" type="markdown">
-            
-          </xs:element>
-          <xs:element name="relatedArtifact" minOccurs="0" maxOccurs="unbounded" type="RelatedArtifact">
+          <xs:element name="valueSet" type="Library.ValueSet" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
           <xs:element name="parameter" minOccurs="0" maxOccurs="unbounded" type="ParameterDefinition">
@@ -119,7 +65,87 @@
           <xs:element name="dataRequirement" minOccurs="0" maxOccurs="unbounded" type="DataRequirement">
             
           </xs:element>
-          <xs:element name="content" minOccurs="0" maxOccurs="unbounded" type="Attachment">
+          <xs:element name="document" minOccurs="1" maxOccurs="1" type="Attachment">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Library.Model">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="identifier" minOccurs="1" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Library.Library">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="identifier" minOccurs="1" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="documentAttachment" type="Attachment"/>
+            <xs:element name="documentReference" type="Reference"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Library.CodeSystem">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="identifier" minOccurs="1" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Library.ValueSet">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="identifier" minOccurs="1" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="codeSystem" minOccurs="0" maxOccurs="unbounded" type="string">
             
           </xs:element>
         </xs:sequence>

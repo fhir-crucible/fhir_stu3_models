@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
+  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -47,48 +47,37 @@
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             
           </xs:element>
-          <xs:element name="definition" minOccurs="0" maxOccurs="unbounded" type="Reference">
-            
-          </xs:element>
           <xs:element name="basedOn" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
-          <xs:element name="replaces" minOccurs="0" maxOccurs="unbounded" type="Reference">
+          <xs:element name="parent" minOccurs="0" maxOccurs="1" type="Identifier">
             
           </xs:element>
-          <xs:element name="groupIdentifier" minOccurs="0" maxOccurs="1" type="Identifier">
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="ReferralStatus">
             
           </xs:element>
-          <xs:element name="status" minOccurs="1" maxOccurs="1" type="RequestStatus">
-            
-          </xs:element>
-          <xs:element name="intent" minOccurs="1" maxOccurs="1" type="RequestIntent">
+          <xs:element name="category" minOccurs="1" maxOccurs="1" type="ReferralCategory">
             
           </xs:element>
           <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="priority" minOccurs="0" maxOccurs="1" type="RequestPriority">
+          <xs:element name="priority" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="serviceRequested" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="subject" minOccurs="1" maxOccurs="1" type="Reference">
+          <xs:element name="patient" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
           <xs:element name="context" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:choice minOccurs="0" maxOccurs="1">
-            
-            <xs:element name="occurrenceDateTime" type="dateTime"/>
-            <xs:element name="occurrencePeriod" type="Period"/>
-          </xs:choice>
-          <xs:element name="authoredOn" minOccurs="0" maxOccurs="1" type="dateTime">
+          <xs:element name="fulfillmentTime" minOccurs="0" maxOccurs="1" type="Period">
             
           </xs:element>
-          <xs:element name="requester" type="ReferralRequest.Requester" minOccurs="0" maxOccurs="1">
+          <xs:element name="authored" minOccurs="0" maxOccurs="1" type="dateTime">
+            
+          </xs:element>
+          <xs:element name="requester" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
           <xs:element name="specialty" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -97,40 +86,43 @@
           <xs:element name="recipient" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
-          <xs:element name="reasonCode" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="reasonReference" minOccurs="0" maxOccurs="unbounded" type="Reference">
+          <xs:element name="reason" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="supportingInfo" minOccurs="0" maxOccurs="unbounded" type="Reference">
+          <xs:element name="serviceRequested" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
-            
-          </xs:element>
-          <xs:element name="relevantHistory" minOccurs="0" maxOccurs="unbounded" type="Reference">
+          <xs:element name="supportingInformation" minOccurs="0" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="ReferralRequest.Requester">
+  <xs:simpleType name="ReferralCategory-list">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ReferralCategory">
     
     <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="agent" minOccurs="1" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="onBehalfOf" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-        </xs:sequence>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="ReferralCategory-list" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ReferralStatus-list">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ReferralStatus">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="ReferralStatus-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

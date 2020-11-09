@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
+  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -47,7 +47,7 @@
           <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
             
           </xs:element>
-          <xs:element name="status" minOccurs="1" maxOccurs="1" type="CompositionStatus">
+          <xs:element name="date" minOccurs="1" maxOccurs="1" type="dateTime">
             
           </xs:element>
           <xs:element name="type" minOccurs="1" maxOccurs="1" type="CodeableConcept">
@@ -56,22 +56,19 @@
           <xs:element name="class" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="subject" minOccurs="1" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="encounter" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="date" minOccurs="1" maxOccurs="1" type="dateTime">
-            
-          </xs:element>
-          <xs:element name="author" minOccurs="1" maxOccurs="unbounded" type="Reference">
-            
-          </xs:element>
           <xs:element name="title" minOccurs="1" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="confidentiality" minOccurs="0" maxOccurs="1" type="ConfidentialityClassification">
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="CompositionStatus">
+            
+          </xs:element>
+          <xs:element name="confidentiality" minOccurs="0" maxOccurs="1" type="code">
+            
+          </xs:element>
+          <xs:element name="subject" minOccurs="1" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="author" minOccurs="1" maxOccurs="unbounded" type="Reference">
             
           </xs:element>
           <xs:element name="attester" type="Composition.Attester" minOccurs="0" maxOccurs="unbounded">
@@ -80,10 +77,10 @@
           <xs:element name="custodian" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="relatesTo" type="Composition.RelatesTo" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="event" type="Composition.Event" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="event" type="Composition.Event" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="encounter" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
           <xs:element name="section" type="Composition.Section" minOccurs="0" maxOccurs="unbounded">
@@ -107,23 +104,6 @@
           <xs:element name="party" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Composition.RelatesTo">
-    
-    <xs:complexContent>
-      <xs:extension base="BackboneElement">
-        <xs:sequence>
-          <xs:element name="code" minOccurs="1" maxOccurs="1" type="DocumentRelationshipType">
-            
-          </xs:element>
-          <xs:choice minOccurs="1" maxOccurs="1">
-            
-            <xs:element name="targetIdentifier" type="Identifier"/>
-            <xs:element name="targetReference" type="Reference"/>
-          </xs:choice>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -160,7 +140,7 @@
           <xs:element name="text" minOccurs="0" maxOccurs="1" type="Narrative">
             
           </xs:element>
-          <xs:element name="mode" minOccurs="0" maxOccurs="1" type="ListMode">
+          <xs:element name="mode" minOccurs="0" maxOccurs="1" type="code">
             
           </xs:element>
           <xs:element name="orderedBy" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -180,19 +160,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="CompositionStatus-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="preliminary">
-        
-      </xs:enumeration>
-      <xs:enumeration value="final">
-        
-      </xs:enumeration>
-      <xs:enumeration value="amended">
-        
-      </xs:enumeration>
-      <xs:enumeration value="entered-in-error">
-        
-      </xs:enumeration>
+    <xs:restriction base="xs:string">
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="CompositionStatus">
@@ -203,74 +171,8 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:simpleType name="ConfidentialityClassification-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="U">
-        
-      </xs:enumeration>
-      <xs:enumeration value="L">
-        
-      </xs:enumeration>
-      <xs:enumeration value="M">
-        
-      </xs:enumeration>
-      <xs:enumeration value="N">
-        
-      </xs:enumeration>
-      <xs:enumeration value="R">
-        
-      </xs:enumeration>
-      <xs:enumeration value="V">
-        
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="ConfidentialityClassification">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="ConfidentialityClassification-list" use="optional"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="DocumentRelationshipType-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="replaces">
-        
-      </xs:enumeration>
-      <xs:enumeration value="transforms">
-        
-      </xs:enumeration>
-      <xs:enumeration value="signs">
-        
-      </xs:enumeration>
-      <xs:enumeration value="appends">
-        
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="DocumentRelationshipType">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="DocumentRelationshipType-list" use="optional"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:simpleType name="CompositionAttestationMode-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="personal">
-        
-      </xs:enumeration>
-      <xs:enumeration value="professional">
-        
-      </xs:enumeration>
-      <xs:enumeration value="legal">
-        
-      </xs:enumeration>
-      <xs:enumeration value="official">
-        
-      </xs:enumeration>
+    <xs:restriction base="xs:string">
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="CompositionAttestationMode">
@@ -278,27 +180,6 @@
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:attribute name="value" type="CompositionAttestationMode-list" use="optional"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="ListMode-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="working">
-        
-      </xs:enumeration>
-      <xs:enumeration value="snapshot">
-        
-      </xs:enumeration>
-      <xs:enumeration value="changes">
-        
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="ListMode">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="ListMode-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

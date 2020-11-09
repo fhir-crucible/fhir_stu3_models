@@ -1,6 +1,6 @@
 ﻿
 [FHIR]
-FhirVersion=3.0.0.11917
-version=3.0.0
-revision=11917
-date=20170426183343
+FhirVersion=1.4.0.8136
+version=1.4.0
+revision=8136
+date=20160404133126

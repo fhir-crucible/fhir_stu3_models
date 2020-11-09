@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
+  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -79,94 +79,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="IssueType-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="invalid">
-        
-      </xs:enumeration>
-      <xs:enumeration value="structure">
-        
-      </xs:enumeration>
-      <xs:enumeration value="required">
-        
-      </xs:enumeration>
-      <xs:enumeration value="value">
-        
-      </xs:enumeration>
-      <xs:enumeration value="invariant">
-        
-      </xs:enumeration>
-      <xs:enumeration value="security">
-        
-      </xs:enumeration>
-      <xs:enumeration value="login">
-        
-      </xs:enumeration>
-      <xs:enumeration value="unknown">
-        
-      </xs:enumeration>
-      <xs:enumeration value="expired">
-        
-      </xs:enumeration>
-      <xs:enumeration value="forbidden">
-        
-      </xs:enumeration>
-      <xs:enumeration value="suppressed">
-        
-      </xs:enumeration>
-      <xs:enumeration value="processing">
-        
-      </xs:enumeration>
-      <xs:enumeration value="not-supported">
-        
-      </xs:enumeration>
-      <xs:enumeration value="duplicate">
-        
-      </xs:enumeration>
-      <xs:enumeration value="not-found">
-        
-      </xs:enumeration>
-      <xs:enumeration value="too-long">
-        
-      </xs:enumeration>
-      <xs:enumeration value="code-invalid">
-        
-      </xs:enumeration>
-      <xs:enumeration value="extension">
-        
-      </xs:enumeration>
-      <xs:enumeration value="too-costly">
-        
-      </xs:enumeration>
-      <xs:enumeration value="business-rule">
-        
-      </xs:enumeration>
-      <xs:enumeration value="conflict">
-        
-      </xs:enumeration>
-      <xs:enumeration value="incomplete">
-        
-      </xs:enumeration>
-      <xs:enumeration value="transient">
-        
-      </xs:enumeration>
-      <xs:enumeration value="lock-error">
-        
-      </xs:enumeration>
-      <xs:enumeration value="no-store">
-        
-      </xs:enumeration>
-      <xs:enumeration value="exception">
-        
-      </xs:enumeration>
-      <xs:enumeration value="timeout">
-        
-      </xs:enumeration>
-      <xs:enumeration value="throttled">
-        
-      </xs:enumeration>
-      <xs:enumeration value="informational">
-        
-      </xs:enumeration>
+    <xs:restriction base="xs:string">
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="IssueType">
@@ -178,19 +91,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="IssueSeverity-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="fatal">
-        
-      </xs:enumeration>
-      <xs:enumeration value="error">
-        
-      </xs:enumeration>
-      <xs:enumeration value="warning">
-        
-      </xs:enumeration>
-      <xs:enumeration value="information">
-        
-      </xs:enumeration>
+    <xs:restriction base="xs:string">
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="IssueSeverity">

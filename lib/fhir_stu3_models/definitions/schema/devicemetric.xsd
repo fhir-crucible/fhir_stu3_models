@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
+  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -44,10 +44,10 @@
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
-          <xs:element name="identifier" minOccurs="1" maxOccurs="1" type="Identifier">
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="identifier" minOccurs="1" maxOccurs="1" type="Identifier">
             
           </xs:element>
           <xs:element name="unit" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -97,19 +97,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="DeviceMetricCalibrationType-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="unspecified">
-        
-      </xs:enumeration>
-      <xs:enumeration value="offset">
-        
-      </xs:enumeration>
-      <xs:enumeration value="gain">
-        
-      </xs:enumeration>
-      <xs:enumeration value="two-point">
-        
-      </xs:enumeration>
+    <xs:restriction base="xs:string">
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="DeviceMetricCalibrationType">
@@ -121,31 +109,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="DeviceMetricColor-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="black">
-        
-      </xs:enumeration>
-      <xs:enumeration value="red">
-        
-      </xs:enumeration>
-      <xs:enumeration value="green">
-        
-      </xs:enumeration>
-      <xs:enumeration value="yellow">
-        
-      </xs:enumeration>
-      <xs:enumeration value="blue">
-        
-      </xs:enumeration>
-      <xs:enumeration value="magenta">
-        
-      </xs:enumeration>
-      <xs:enumeration value="cyan">
-        
-      </xs:enumeration>
-      <xs:enumeration value="white">
-        
-      </xs:enumeration>
+    <xs:restriction base="xs:string">
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="DeviceMetricColor">
@@ -157,19 +121,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="DeviceMetricCalibrationState-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="not-calibrated">
-        
-      </xs:enumeration>
-      <xs:enumeration value="calibration-required">
-        
-      </xs:enumeration>
-      <xs:enumeration value="calibrated">
-        
-      </xs:enumeration>
-      <xs:enumeration value="unspecified">
-        
-      </xs:enumeration>
+    <xs:restriction base="xs:string">
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="DeviceMetricCalibrationState">
@@ -181,19 +133,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="DeviceMetricOperationalStatus-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="on">
-        
-      </xs:enumeration>
-      <xs:enumeration value="off">
-        
-      </xs:enumeration>
-      <xs:enumeration value="standby">
-        
-      </xs:enumeration>
-      <xs:enumeration value="entered-in-error">
-        
-      </xs:enumeration>
+    <xs:restriction base="xs:string">
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="DeviceMetricOperationalStatus">
@@ -205,19 +145,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="DeviceMetricCategory-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="measurement">
-        
-      </xs:enumeration>
-      <xs:enumeration value="setting">
-        
-      </xs:enumeration>
-      <xs:enumeration value="calculation">
-        
-      </xs:enumeration>
-      <xs:enumeration value="unspecified">
-        
-      </xs:enumeration>
+    <xs:restriction base="xs:string">
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="DeviceMetricCategory">

@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
+  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -109,16 +109,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="ListStatus-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="current">
-        
-      </xs:enumeration>
-      <xs:enumeration value="retired">
-        
-      </xs:enumeration>
-      <xs:enumeration value="entered-in-error">
-        
-      </xs:enumeration>
+    <xs:restriction base="xs:string">
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ListStatus">
@@ -126,6 +117,18 @@
     <xs:complexContent>
       <xs:extension base="Element">
         <xs:attribute name="value" type="ListStatus-list" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ListMode-list">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ListMode">
+    
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="ListMode-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
+  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -44,10 +44,7 @@
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
-          <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
-            
-          </xs:element>
-          <xs:element name="status" minOccurs="1" maxOccurs="1" type="ObservationStatus">
+          <xs:element name="patient" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
           <xs:element name="category" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -56,7 +53,10 @@
           <xs:element name="severity" minOccurs="0" maxOccurs="1" type="DetectedIssueSeverity">
             
           </xs:element>
-          <xs:element name="patient" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="implicated" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
+          <xs:element name="detail" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
           <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
@@ -65,10 +65,7 @@
           <xs:element name="author" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="implicated" minOccurs="0" maxOccurs="unbounded" type="Reference">
-            
-          </xs:element>
-          <xs:element name="detail" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
             
           </xs:element>
           <xs:element name="reference" minOccurs="0" maxOccurs="1" type="uri">
@@ -99,53 +96,8 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:simpleType name="ObservationStatus-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="registered">
-        
-      </xs:enumeration>
-      <xs:enumeration value="preliminary">
-        
-      </xs:enumeration>
-      <xs:enumeration value="final">
-        
-      </xs:enumeration>
-      <xs:enumeration value="amended">
-        
-      </xs:enumeration>
-      <xs:enumeration value="corrected">
-        
-      </xs:enumeration>
-      <xs:enumeration value="cancelled">
-        
-      </xs:enumeration>
-      <xs:enumeration value="entered-in-error">
-        
-      </xs:enumeration>
-      <xs:enumeration value="unknown">
-        
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="ObservationStatus">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="ObservationStatus-list" use="optional"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:simpleType name="DetectedIssueSeverity-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="high">
-        
-      </xs:enumeration>
-      <xs:enumeration value="moderate">
-        
-      </xs:enumeration>
-      <xs:enumeration value="low">
-        
-      </xs:enumeration>
+    <xs:restriction base="xs:string">
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="DetectedIssueSeverity">

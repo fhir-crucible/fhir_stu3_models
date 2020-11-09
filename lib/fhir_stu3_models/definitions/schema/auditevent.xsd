@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
+  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -62,7 +62,7 @@
           <xs:element name="outcomeDesc" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="purposeOfEvent" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+          <xs:element name="purposeOfEvent" minOccurs="0" maxOccurs="unbounded" type="Coding">
             
           </xs:element>
           <xs:element name="agent" type="AuditEvent.Agent" minOccurs="1" maxOccurs="unbounded">
@@ -113,7 +113,7 @@
           <xs:element name="network" type="AuditEvent.Network" minOccurs="0" maxOccurs="1">
             
           </xs:element>
-          <xs:element name="purposeOfUse" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+          <xs:element name="purposeOfUse" minOccurs="0" maxOccurs="unbounded" type="Coding">
             
           </xs:element>
         </xs:sequence>
@@ -128,7 +128,7 @@
           <xs:element name="address" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="AuditEventAgentNetworkType">
+          <xs:element name="type" minOccurs="0" maxOccurs="1" type="AuditEventParticipantNetworkType">
             
           </xs:element>
         </xs:sequence>
@@ -208,19 +208,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="AuditEventOutcome-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="0">
-        
-      </xs:enumeration>
-      <xs:enumeration value="4">
-        
-      </xs:enumeration>
-      <xs:enumeration value="8">
-        
-      </xs:enumeration>
-      <xs:enumeration value="12">
-        
-      </xs:enumeration>
+    <xs:restriction base="xs:string">
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="AuditEventOutcome">
@@ -232,22 +220,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:simpleType name="AuditEventAction-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="C">
-        
-      </xs:enumeration>
-      <xs:enumeration value="R">
-        
-      </xs:enumeration>
-      <xs:enumeration value="U">
-        
-      </xs:enumeration>
-      <xs:enumeration value="D">
-        
-      </xs:enumeration>
-      <xs:enumeration value="E">
-        
-      </xs:enumeration>
+    <xs:restriction base="xs:string">
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="AuditEventAction">
@@ -258,30 +231,15 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:simpleType name="AuditEventAgentNetworkType-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="1">
-        
-      </xs:enumeration>
-      <xs:enumeration value="2">
-        
-      </xs:enumeration>
-      <xs:enumeration value="3">
-        
-      </xs:enumeration>
-      <xs:enumeration value="4">
-        
-      </xs:enumeration>
-      <xs:enumeration value="5">
-        
-      </xs:enumeration>
+  <xs:simpleType name="AuditEventParticipantNetworkType-list">
+    <xs:restriction base="xs:string">
     </xs:restriction>
   </xs:simpleType>
-  <xs:complexType name="AuditEventAgentNetworkType">
+  <xs:complexType name="AuditEventParticipantNetworkType">
     
     <xs:complexContent>
       <xs:extension base="Element">
-        <xs:attribute name="value" type="AuditEventAgentNetworkType-list" use="optional"/>
+        <xs:attribute name="value" type="AuditEventParticipantNetworkType-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
+  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -44,13 +44,7 @@
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
-          <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
-            
-          </xs:element>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="code">
-            
-          </xs:element>
-          <xs:element name="coordinateSystem" minOccurs="1" maxOccurs="1" type="integer">
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="sequenceType">
             
           </xs:element>
           <xs:element name="patient" minOccurs="0" maxOccurs="1" type="Reference">
@@ -62,22 +56,28 @@
           <xs:element name="device" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
-          <xs:element name="performer" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
           <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="Quantity">
             
           </xs:element>
-          <xs:element name="referenceSeq" type="Sequence.ReferenceSeq" minOccurs="0" maxOccurs="1">
+          <xs:element name="species" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
-          <xs:element name="variant" type="Sequence.Variant" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="referenceSeq" type="Sequence.ReferenceSeq" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="observedSeq" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="variation" type="Sequence.Variation" minOccurs="0" maxOccurs="1">
             
           </xs:element>
           <xs:element name="quality" type="Sequence.Quality" minOccurs="0" maxOccurs="unbounded">
+            
+          </xs:element>
+          <xs:element name="allelicState" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            
+          </xs:element>
+          <xs:element name="allelicFrequency" minOccurs="0" maxOccurs="1" type="decimal">
+            
+          </xs:element>
+          <xs:element name="copyNumberEvent" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="readCoverage" minOccurs="0" maxOccurs="1" type="integer">
@@ -87,6 +87,15 @@
             
           </xs:element>
           <xs:element name="pointer" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            
+          </xs:element>
+          <xs:element name="observedSeq" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="observation" minOccurs="0" maxOccurs="1" type="Reference">
+            
+          </xs:element>
+          <xs:element name="structureVariation" type="Sequence.StructureVariation" minOccurs="0" maxOccurs="1">
             
           </xs:element>
         </xs:sequence>
@@ -104,16 +113,13 @@
           <xs:element name="genomeBuild" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="referenceSeqId" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="referenceSeqId" minOccurs="1" maxOccurs="1" type="CodeableConcept">
             
           </xs:element>
           <xs:element name="referenceSeqPointer" minOccurs="0" maxOccurs="1" type="Reference">
             
           </xs:element>
           <xs:element name="referenceSeqString" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-          <xs:element name="strand" minOccurs="0" maxOccurs="1" type="integer">
             
           </xs:element>
           <xs:element name="windowStart" minOccurs="1" maxOccurs="1" type="integer">
@@ -126,7 +132,7 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="Sequence.Variant">
+  <xs:complexType name="Sequence.Variation">
     
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -146,9 +152,6 @@
           <xs:element name="cigar" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="variantPointer" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -158,12 +161,6 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="qualityType">
-            
-          </xs:element>
-          <xs:element name="standardSequence" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            
-          </xs:element>
           <xs:element name="start" minOccurs="0" maxOccurs="1" type="integer">
             
           </xs:element>
@@ -173,31 +170,7 @@
           <xs:element name="score" minOccurs="0" maxOccurs="1" type="Quantity">
             
           </xs:element>
-          <xs:element name="method" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="truthTP" minOccurs="0" maxOccurs="1" type="decimal">
-            
-          </xs:element>
-          <xs:element name="queryTP" minOccurs="0" maxOccurs="1" type="decimal">
-            
-          </xs:element>
-          <xs:element name="truthFN" minOccurs="0" maxOccurs="1" type="decimal">
-            
-          </xs:element>
-          <xs:element name="queryFP" minOccurs="0" maxOccurs="1" type="decimal">
-            
-          </xs:element>
-          <xs:element name="gtFP" minOccurs="0" maxOccurs="1" type="decimal">
-            
-          </xs:element>
-          <xs:element name="precision" minOccurs="0" maxOccurs="1" type="decimal">
-            
-          </xs:element>
-          <xs:element name="recall" minOccurs="0" maxOccurs="1" type="decimal">
-            
-          </xs:element>
-          <xs:element name="fScore" minOccurs="0" maxOccurs="1" type="decimal">
+          <xs:element name="method" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
         </xs:sequence>
@@ -209,73 +182,85 @@
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="type" minOccurs="1" maxOccurs="1" type="repositoryType">
-            
-          </xs:element>
           <xs:element name="url" minOccurs="0" maxOccurs="1" type="uri">
             
           </xs:element>
           <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="datasetId" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="variantId" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="variantsetId" minOccurs="0" maxOccurs="1" type="string">
-            
-          </xs:element>
-          <xs:element name="readsetId" minOccurs="0" maxOccurs="1" type="string">
+          <xs:element name="readId" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:simpleType name="repositoryType-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="directlink">
-        
-      </xs:enumeration>
-      <xs:enumeration value="openapi">
-        
-      </xs:enumeration>
-      <xs:enumeration value="login">
-        
-      </xs:enumeration>
-      <xs:enumeration value="oauth">
-        
-      </xs:enumeration>
-      <xs:enumeration value="other">
-        
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="repositoryType">
+  <xs:complexType name="Sequence.StructureVariation">
     
     <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="repositoryType-list" use="optional"/>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="precisionOfBoundaries" minOccurs="0" maxOccurs="1" type="string">
+            
+          </xs:element>
+          <xs:element name="reportedaCGHRatio" minOccurs="0" maxOccurs="1" type="decimal">
+            
+          </xs:element>
+          <xs:element name="length" minOccurs="0" maxOccurs="1" type="integer">
+            
+          </xs:element>
+          <xs:element name="outer" type="Sequence.Outer" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+          <xs:element name="inner" type="Sequence.Inner" minOccurs="0" maxOccurs="1">
+            
+          </xs:element>
+        </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:simpleType name="qualityType-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="indel">
-        
-      </xs:enumeration>
-      <xs:enumeration value="snp">
-        
-      </xs:enumeration>
-      <xs:enumeration value="unknown">
-        
-      </xs:enumeration>
+  <xs:complexType name="Sequence.Outer">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="start" minOccurs="0" maxOccurs="1" type="integer">
+            
+          </xs:element>
+          <xs:element name="end" minOccurs="0" maxOccurs="1" type="integer">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Sequence.Inner">
+    
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="start" minOccurs="0" maxOccurs="1" type="integer">
+            
+          </xs:element>
+          <xs:element name="end" minOccurs="0" maxOccurs="1" type="integer">
+            
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="sequenceType-list">
+    <xs:restriction base="xs:string">
     </xs:restriction>
   </xs:simpleType>
-  <xs:complexType name="qualityType">
+  <xs:complexType name="sequenceType">
     
     <xs:complexContent>
       <xs:extension base="Element">
-        <xs:attribute name="value" type="qualityType-list" use="optional"/>
+        <xs:attribute name="value" type="sequenceType-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

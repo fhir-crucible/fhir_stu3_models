@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
+  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -47,52 +47,60 @@
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             
           </xs:element>
-          <xs:element name="status" minOccurs="0" maxOccurs="1" type="FinancialResourceStatusCodes">
+          <xs:choice minOccurs="0" maxOccurs="1">
             
-          </xs:element>
-          <xs:element name="created" minOccurs="0" maxOccurs="1" type="dateTime">
-            
-          </xs:element>
-          <xs:element name="organization" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="request" minOccurs="0" maxOccurs="1" type="Reference">
-            
-          </xs:element>
-          <xs:element name="outcome" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+            <xs:element name="requestIdentifier" type="Identifier"/>
+            <xs:element name="requestReference" type="Reference"/>
+          </xs:choice>
+          <xs:element name="outcome" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="disposition" minOccurs="0" maxOccurs="1" type="string">
             
           </xs:element>
-          <xs:element name="requestProvider" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="ruleset" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
-          <xs:element name="requestOrganization" minOccurs="0" maxOccurs="1" type="Reference">
+          <xs:element name="originalRuleset" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
-          <xs:element name="form" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="created" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="processNote" type="ProcessResponse.ProcessNote" minOccurs="0" maxOccurs="unbounded">
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="organizationIdentifier" type="Identifier"/>
+            <xs:element name="organizationReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="requestProviderIdentifier" type="Identifier"/>
+            <xs:element name="requestProviderReference" type="Reference"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="1">
+            
+            <xs:element name="requestOrganizationIdentifier" type="Identifier"/>
+            <xs:element name="requestOrganizationReference" type="Reference"/>
+          </xs:choice>
+          <xs:element name="form" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
-          <xs:element name="error" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
+          <xs:element name="notes" type="ProcessResponse.Notes" minOccurs="0" maxOccurs="unbounded">
             
           </xs:element>
-          <xs:element name="communicationRequest" minOccurs="0" maxOccurs="unbounded" type="Reference">
+          <xs:element name="error" minOccurs="0" maxOccurs="unbounded" type="Coding">
             
           </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="ProcessResponse.ProcessNote">
+  <xs:complexType name="ProcessResponse.Notes">
     
     <xs:complexContent>
       <xs:extension base="BackboneElement">
         <xs:sequence>
-          <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="type" minOccurs="0" maxOccurs="1" type="Coding">
             
           </xs:element>
           <xs:element name="text" minOccurs="0" maxOccurs="1" type="string">

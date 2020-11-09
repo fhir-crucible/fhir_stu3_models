@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Wed, Apr 26, 2017 18:33-0400 for FHIR v3.0.0 
+  Generated on Thu, Mar 31, 2016 08:59-0400 for FHIR v1.4.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -45,9 +45,6 @@
       <xs:extension base="DomainResource">
         <xs:sequence>
           <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
-            
-          </xs:element>
-          <xs:element name="status" minOccurs="0" maxOccurs="1" type="ContractResourceStatusCodes">
             
           </xs:element>
           <xs:element name="issued" minOccurs="0" maxOccurs="1" type="dateTime">
@@ -78,15 +75,6 @@
             
           </xs:element>
           <xs:element name="actionReason" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="decisionType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="contentDerivative" minOccurs="0" maxOccurs="1" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="securityLabel" minOccurs="0" maxOccurs="unbounded" type="Coding">
             
           </xs:element>
           <xs:element name="agent" type="Contract.Agent" minOccurs="0" maxOccurs="unbounded">
@@ -168,7 +156,7 @@
           <xs:element name="effectiveTime" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="Quantity">
+          <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="SimpleQuantity">
             
           </xs:element>
           <xs:element name="unitPrice" minOccurs="0" maxOccurs="1" type="Money">
@@ -214,9 +202,6 @@
             
           </xs:element>
           <xs:element name="actionReason" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
-            
-          </xs:element>
-          <xs:element name="securityLabel" minOccurs="0" maxOccurs="unbounded" type="Coding">
             
           </xs:element>
           <xs:element name="agent" type="Contract.Agent1" minOccurs="0" maxOccurs="unbounded">
@@ -266,7 +251,7 @@
           <xs:element name="effectiveTime" minOccurs="0" maxOccurs="1" type="dateTime">
             
           </xs:element>
-          <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="Quantity">
+          <xs:element name="quantity" minOccurs="0" maxOccurs="1" type="SimpleQuantity">
             
           </xs:element>
           <xs:element name="unitPrice" minOccurs="0" maxOccurs="1" type="Money">
@@ -324,63 +309,6 @@
             <xs:element name="contentReference" type="Reference"/>
           </xs:choice>
         </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="ContractResourceStatusCodes-list">
-    <xs:restriction base="code-primitive">
-      <xs:enumeration value="amended">
-        
-      </xs:enumeration>
-      <xs:enumeration value="appended">
-        
-      </xs:enumeration>
-      <xs:enumeration value="cancelled">
-        
-      </xs:enumeration>
-      <xs:enumeration value="disputed">
-        
-      </xs:enumeration>
-      <xs:enumeration value="entered-in-error">
-        
-      </xs:enumeration>
-      <xs:enumeration value="executable">
-        
-      </xs:enumeration>
-      <xs:enumeration value="executed">
-        
-      </xs:enumeration>
-      <xs:enumeration value="negotiable">
-        
-      </xs:enumeration>
-      <xs:enumeration value="offered">
-        
-      </xs:enumeration>
-      <xs:enumeration value="policy">
-        
-      </xs:enumeration>
-      <xs:enumeration value="rejected">
-        
-      </xs:enumeration>
-      <xs:enumeration value="renewed">
-        
-      </xs:enumeration>
-      <xs:enumeration value="revoked">
-        
-      </xs:enumeration>
-      <xs:enumeration value="resolved">
-        
-      </xs:enumeration>
-      <xs:enumeration value="terminated">
-        
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="ContractResourceStatusCodes">
-    
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="ContractResourceStatusCodes-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
