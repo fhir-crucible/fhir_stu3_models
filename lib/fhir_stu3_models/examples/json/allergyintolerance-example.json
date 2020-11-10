@@ -2,8 +2,11 @@
   "resourceType": "AllergyIntolerance",
   "id": "example",
   "text": {
+    "fhir_comments": [
+      "   an identifier used for this allergic propensity (adverse reaction risk)   "
+    ],
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p><p><b>identifier</b>: 49476534</p><p><b>clinicalStatus</b>: active</p><p><b>verificationStatus</b>: confirmed</p><p><b>type</b>: allergy</p><p><b>category</b>: food</p><p><b>criticality</b>: high</p><p><b>code</b>: Cashew nuts <span>(Details : {SNOMED CT code '227493005' = 'Cashew nuts', given as 'Cashew nuts'})</span></p><p><b>patient</b>: <a>Patient/example</a></p><p><b>onset</b>: Jan 1, 2004</p><p><b>assertedDate</b>: Oct 9, 2014 2:58:00 PM</p><p><b>recorder</b>: <a>Practitioner/example</a></p><p><b>asserter</b>: <a>Patient/example</a></p><p><b>lastOccurrence</b>: Jun 1, 2012</p><p><b>note</b>: The criticality is high becasue of the observed anaphylactic reaction when challenged with cashew extract.</p><blockquote><p><b>reaction</b></p><p><b>substance</b>: cashew nut allergenic extract Injectable Product <span>(Details : {RxNorm code '1160593' = '1160593', given as 'cashew nut allergenic extract Injectable Product'})</span></p><p><b>manifestation</b>: Anaphylactic reaction <span>(Details : {SNOMED CT code '39579001' = 'Anaphylaxis', given as 'Anaphylactic reaction'})</span></p><p><b>description</b>: Challenge Protocol. Severe reaction to subcutaneous cashew extract. Epinephrine administered</p><p><b>onset</b>: Jun 12, 2012</p><p><b>severity</b>: severe</p><p><b>exposureRoute</b>: Subcutaneous route <span>(Details : {SNOMED CT code '34206005' = 'Subcutaneous route', given as 'Subcutaneous route'})</span></p></blockquote><blockquote><p><b>reaction</b></p><p><b>manifestation</b>: Urticaria <span>(Details : {SNOMED CT code '64305001' = 'Urticaria', given as 'Urticaria'})</span></p><p><b>onset</b>: Jan 1, 2004</p><p><b>severity</b>: moderate</p><p><b>note</b>: The patient reports that the onset of urticaria was within 15 minutes of eating cashews.</p></blockquote></div>"
+    "div": "<div><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p><p><b>identifier</b>: 49476534</p><p><b>status</b>: confirmed</p><p><b>type</b>: allergy</p><p><b>category</b>: food</p><p><b>criticality</b>: high</p><p><b>substance</b>: Cashew nuts <span>(Details : {SNOMED CT code '227493005' = 'Cashew nut (substance)', given as 'Cashew nuts'})</span></p><p><b>patient</b>: <a>Patient/example</a></p><p><b>recordedDate</b>: Oct 9, 2014 2:58:00 PM</p><p><b>recorder</b>: <a>Practitioner/example</a></p><p><b>reporter</b>: <a>Patient/example</a></p><p><b>onset</b>: Jan 1, 2004</p><p><b>lastOccurence</b>: Jun 1, 2012</p><p><b>note</b>: The criticality is high becasue of the observed anaphylactic reaction when challenged with cashew extract.</p><blockquote><p><b>reaction</b></p><p><b>substance</b>: cashew nut allergenic extract Injectable Product <span>(Details : {RxNorm code 'C3214954' = '??', given as 'cashew nut allergenic extract Injectable Product'})</span></p><p><b>certainty</b>: confirmed</p><p><b>manifestation</b>: Anaphylactic reaction <span>(Details : {SNOMED CT code '39579001' = 'Anaphylaxis (disorder)', given as 'Anaphylactic reaction'})</span></p><p><b>description</b>: Challenge Protocol. Severe reaction to subcutaneous cashew extract. Epinephrine administered</p><p><b>onset</b>: Jun 12, 2012</p><p><b>severity</b>: severe</p><p><b>exposureRoute</b>: Subcutaneous route <span>(Details : {SNOMED CT code '34206005' = 'Subcutaneous route (qualifier value)', given as 'Subcutaneous route'})</span></p></blockquote><blockquote><p><b>reaction</b></p><p><b>certainty</b>: likely</p><p><b>manifestation</b>: Urticaria <span>(Details : {SNOMED CT code '64305001' = 'Urticaria (morphologic abnormality)', given as 'Urticaria'})</span></p><p><b>onset</b>: Jan 1, 2004</p><p><b>severity</b>: moderate</p><p><b>note</b>: The patient reports that the onset of urticaria was within 15 minutes of eating cashews.</p></blockquote></div>"
   },
   "identifier": [
     {
@@ -11,14 +14,34 @@
       "value": "49476534"
     }
   ],
-  "clinicalStatus": "active",
-  "verificationStatus": "confirmed",
+  "status": "confirmed",
+  "_status": {
+    "fhir_comments": [
+      "   this individual has had several reactions   "
+    ]
+  },
   "type": "allergy",
-  "category": [
-    "food"
-  ],
+  "_type": {
+    "fhir_comments": [
+      "   note: it's often unknown whether an allergy is mediated by an immune response, and not as significant as once thought   "
+    ]
+  },
+  "category": "food",
+  "_category": {
+    "fhir_comments": [
+      "   this categorisation is implied by \"cashew nut\" and therefore basically \n    redundant, but many systems collect this field anyway, since it's either \n    useful when the substance is not coded, or it's quicker to sort/filter on\n    than using terminology based reasoning   "
+    ]
+  },
   "criticality": "high",
-  "code": {
+  "_criticality": {
+    "fhir_comments": [
+      "   there is no question that the allergy is real and serious   "
+    ]
+  },
+  "substance": {
+    "fhir_comments": [
+      "   substance - either coded, or text. A few times, \n    there's a full description of a complex substance - in these caes, use the\n    extension [url] to refer to a Substance resource   "
+    ],
     "coding": [
       {
         "system": "http://snomed.info/sct",
@@ -28,33 +51,67 @@
     ]
   },
   "patient": {
+    "fhir_comments": [
+      "   the patient that actually has the risk of adverse reaction   "
+    ],
     "reference": "Patient/example"
   },
-  "onsetDateTime": "2004",
-  "assertedDate": "2014-10-09T14:58:00+11:00",
+  "recordedDate": "2014-10-09T14:58:00+11:00",
+  "_recordedDate": {
+    "fhir_comments": [
+      "   the date that this entry was recorded   "
+    ]
+  },
   "recorder": {
+    "fhir_comments": [
+      "   who made the record / last updated it   "
+    ],
     "reference": "Practitioner/example"
   },
-  "asserter": {
+  "reporter": {
+    "fhir_comments": [
+      "   the patient is the reporter in this case   "
+    ],
     "reference": "Patient/example"
   },
-  "lastOccurrence": "2012-06",
+  "onset": "2004",
+  "_onset": {
+    "fhir_comments": [
+      "   when the allergy was first noted (in this case the same as reaction.onset of the first occurrence)   "
+    ]
+  },
+  "lastOccurence": "2012-06",
+  "_lastOccurence": {
+    "fhir_comments": [
+      "   last happened June 2012. Typically, systems either track lastOccurence,\n     or a list of events.   "
+    ]
+  },
   "note": [
     {
+      "fhir_comments": [
+        "   an additional note about the allergy propensity by the recorder   "
+      ],
       "text": "The criticality is high becasue of the observed anaphylactic reaction when challenged with cashew extract."
     }
   ],
   "reaction": [
     {
+      "fhir_comments": [
+        "   past events. There's no claim that this is all the events, and \n     that should not be assumed   "
+      ],
       "substance": {
+        "fhir_comments": [
+          "   \n      It's possible to list specific things to which the patient responded,\n      e.g. chocolate (that happened to contain cashew nuts). This event has\n      such a specific substance. Note that systems should ensure that what\n      goes in here does not conflict with the substance above, and systems\n      processing the data can be sure that what is here does not contravene\n      the substance above\n      "
+        ],
         "coding": [
           {
             "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-            "code": "1160593",
+            "code": "C3214954",
             "display": "cashew nut allergenic extract Injectable Product"
           }
         ]
       },
+      "certainty": "confirmed",
       "manifestation": [
         {
           "coding": [
@@ -80,6 +137,10 @@
       }
     },
     {
+      "fhir_comments": [
+        "   this was the first occurrence   "
+      ],
+      "certainty": "likely",
       "manifestation": [
         {
           "coding": [
@@ -95,6 +156,9 @@
       "severity": "moderate",
       "note": [
         {
+          "fhir_comments": [
+            "   an additional note about the reaction by the recorder   "
+          ],
           "text": "The patient reports that the onset of urticaria was within 15 minutes of eating cashews."
         }
       ]

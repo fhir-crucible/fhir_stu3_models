@@ -3,19 +3,18 @@
   "id": "mother",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Mother died of a stroke aged 56</div>"
+    "div": "<div>Mother died of a stroke aged 56</div>"
   },
-  "status": "completed",
   "patient": {
     "reference": "Patient/100",
     "display": "Peter Patient"
   },
+  "status": "completed",
   "relationship": {
     "coding": [
       {
-        "system": "http://hl7.org/fhir/v3/RoleCode",
-        "code": "MTH",
-        "display": "mother"
+        "system": "http://hl7.org/fhir/familial-relationship",
+        "code": "mother"
       }
     ]
   },
@@ -31,11 +30,10 @@
         ],
         "text": "Stroke"
       },
-      "onsetAge": {
+      "onsetQuantity": {
         "value": 56,
-        "unit": "yr",
-        "system": "http://unitsofmeasure.org",
-        "code": "a"
+        "unit": "a",
+        "system": "http://unitsofmeasure.org"
       }
     }
   ]

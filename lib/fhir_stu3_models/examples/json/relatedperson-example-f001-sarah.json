@@ -3,10 +3,13 @@
   "id": "f001",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n     Sarah Abels\n    </div>"
+    "div": "<div>\n     Sarah Abels\n    </div>"
   },
   "identifier": [
     {
+      "fhir_comments": [
+        "  Dutch BSN identification system  "
+      ],
       "use": "official",
       "type": {
         "text": "BSN"
@@ -25,15 +28,15 @@
       }
     ]
   },
-  "name": [
-    {
-      "use": "usual",
-      "family": "Abels",
-      "given": [
-        "Sarah"
-      ]
-    }
-  ],
+  "name": {
+    "use": "usual",
+    "family": [
+      "Abels"
+    ],
+    "given": [
+      "Sarah"
+    ]
+  },
   "telecom": [
     {
       "system": "phone",

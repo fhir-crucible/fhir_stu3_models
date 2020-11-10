@@ -16,7 +16,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Everywoman, Eve. SSN:\n            444222222</div>"
+          "div": "<div>Everywoman, Eve. SSN:\n            444222222</div>"
         },
         "identifier": [
           {
@@ -36,7 +36,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Everywoman",
+            "family": [
+              "Everywoman"
+            ],
             "given": [
               "Eve"
             ]
@@ -74,7 +76,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Everyman, Adam. SSN:\n            444333333</div>"
+          "div": "<div>Everyman, Adam. SSN:\n            444333333</div>"
         },
         "identifier": [
           {
@@ -94,7 +96,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Everyman",
+            "family": [
+              "Everyman"
+            ],
             "given": [
               "Adam"
             ]
@@ -131,7 +135,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Kidd, Kari. SSN:\n            444555555</div>"
+          "div": "<div>Kidd, Kari. SSN:\n            444555555</div>"
         },
         "identifier": [
           {
@@ -151,7 +155,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Kidd",
+            "family": [
+              "Kidd"
+            ],
             "given": [
               "Kari"
             ]
@@ -188,7 +194,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Nuclear, Nancy. SSN:\n            444114567</div>"
+          "div": "<div>Nuclear, Nancy. SSN:\n            444114567</div>"
         },
         "identifier": [
           {
@@ -208,7 +214,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Nuclear",
+            "family": [
+              "Nuclear"
+            ],
             "given": [
               "Nancy"
             ]
@@ -245,7 +253,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Nuclear, Neville. SSN:\n            444111234</div>"
+          "div": "<div>Nuclear, Neville. SSN:\n            444111234</div>"
         },
         "identifier": [
           {
@@ -265,7 +273,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Nuclear",
+            "family": [
+              "Nuclear"
+            ],
             "given": [
               "Neville"
             ]
@@ -302,7 +312,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Nuclear, Ned. SSN:\n            444113456</div>"
+          "div": "<div>Nuclear, Ned. SSN:\n            444113456</div>"
         },
         "identifier": [
           {
@@ -322,7 +332,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Nuclear",
+            "family": [
+              "Nuclear"
+            ],
             "given": [
               "Ned"
             ]
@@ -359,7 +371,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Nuclear, Nelda. SSN:\n            444112345</div>"
+          "div": "<div>Nuclear, Nelda. SSN:\n            444112345</div>"
         },
         "identifier": [
           {
@@ -379,7 +391,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Nuclear",
+            "family": [
+              "Nuclear"
+            ],
             "given": [
               "Nelda"
             ]
@@ -416,7 +430,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Mum, Martha. SSN:\n            444666666</div>"
+          "div": "<div>Mum, Martha. SSN:\n            444666666</div>"
         },
         "identifier": [
           {
@@ -436,7 +450,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Mum",
+            "family": [
+              "Mum"
+            ],
             "given": [
               "Martha"
             ]
@@ -473,7 +489,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Sons, Stuart. SSN:\n            444777777</div>"
+          "div": "<div>Sons, Stuart. SSN:\n            444777777</div>"
         },
         "identifier": [
           {
@@ -493,7 +509,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Sons",
+            "family": [
+              "Sons"
+            ],
             "given": [
               "Stuart"
             ]
@@ -547,7 +565,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Betterhalf, Boris. SSN:\n            444888888</div>"
+          "div": "<div>Betterhalf, Boris. SSN:\n            444888888</div>"
         },
         "identifier": [
           {
@@ -567,7 +585,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Betterhalf",
+            "family": [
+              "Betterhalf"
+            ],
             "given": [
               "Boris"
             ]
@@ -604,7 +624,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Relative, Ralph. SSN:\n            444999999</div>"
+          "div": "<div>Relative, Ralph. SSN:\n            444999999</div>"
         },
         "identifier": [
           {
@@ -624,7 +644,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Relative",
+            "family": [
+              "Relative"
+            ],
             "given": [
               "Ralph"
             ]
@@ -661,7 +683,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Contact, Carrie. SSN:\n            555222222</div>"
+          "div": "<div>Contact, Carrie. SSN:\n            555222222</div>"
         },
         "identifier": [
           {
@@ -681,7 +703,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Contact",
+            "family": [
+              "Contact"
+            ],
             "given": [
               "Carrie"
             ]

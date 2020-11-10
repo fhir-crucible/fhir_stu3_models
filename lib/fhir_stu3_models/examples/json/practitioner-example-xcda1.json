@@ -3,7 +3,7 @@
   "id": "xcda1",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: xcda1</p><p><b>identifier</b>: D234123 (OFFICIAL)</p><p><b>name</b>: Sherry Dopplemeyer </p><p><b>telecom</b>: john.doe@healthcare.example.org</p></div>"
+    "div": "<div><p><b>Generated Narrative with Details</b></p><p><b>id</b>: xcda1</p><p><b>identifier</b>: D234123 (OFFICIAL)</p><p><b>name</b>: Sherry Dopplemeyer </p><p><b>telecom</b>: john.doe@healthcare.example.org</p><h3>PractitionerRoles</h3><table><tr><td>-</td><td><b>Organization</b></td><td><b>Role</b></td><td><b>Specialty</b></td></tr><tr><td>*</td><td>Cleveland Clinic</td><td>Primary Surgon <span>(Details )</span></td><td>Orthopedic <span>(Details )</span></td></tr></table></div>"
   },
   "identifier": [
     {
@@ -14,7 +14,9 @@
   ],
   "name": [
     {
-      "family": "Dopplemeyer",
+      "family": [
+        "Dopplemeyer"
+      ],
       "given": [
         "Sherry"
       ]
@@ -24,6 +26,21 @@
     {
       "system": "email",
       "value": "john.doe@healthcare.example.org"
+    }
+  ],
+  "practitionerRole": [
+    {
+      "organization": {
+        "display": "Cleveland Clinic"
+      },
+      "role": {
+        "text": "Primary Surgon"
+      },
+      "specialty": [
+        {
+          "text": "Orthopedic"
+        }
+      ]
     }
   ]
 }

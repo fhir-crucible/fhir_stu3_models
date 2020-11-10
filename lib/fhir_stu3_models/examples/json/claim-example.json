@@ -3,75 +3,47 @@
   "id": "100150",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Oral Health Claim</div>"
+    "div": "<div>A human-readable rendering of the Oral Health Claim</div>"
   },
+  "type": "oral",
   "identifier": [
     {
       "system": "http://happyvalley.com/claim",
       "value": "12345"
     }
   ],
-  "status": "active",
-  "type": {
-    "coding": [
-      {
-        "system": "http://hl7.org/fhir/ex-claimtype",
-        "code": "oral"
-      }
-    ]
-  },
-  "use": "complete",
-  "patient": {
-    "reference": "Patient/1"
-  },
   "created": "2014-08-16",
-  "insurer": {
+  "targetReference": {
     "reference": "Organization/2"
   },
-  "organization": {
+  "organizationReference": {
     "reference": "Organization/1"
   },
+  "use": "complete",
   "priority": {
-    "coding": [
-      {
-        "code": "normal"
-      }
-    ]
+    "code": "normal"
   },
   "payee": {
     "type": {
-      "coding": [
-        {
-          "code": "provider"
-        }
-      ]
+      "code": "provider"
     }
   },
-  "careTeam": [
-    {
-      "sequence": 1,
-      "provider": {
-        "reference": "Practitioner/example"
-      }
-    }
-  ],
   "diagnosis": [
     {
       "sequence": 1,
-      "diagnosisCodeableConcept": {
-        "coding": [
-          {
-            "code": "123456"
-          }
-        ]
+      "diagnosis": {
+        "code": "123456"
       }
     }
   ],
-  "insurance": [
+  "patientReference": {
+    "reference": "Patient/1"
+  },
+  "coverage": [
     {
       "sequence": 1,
       "focal": true,
-      "coverage": {
+      "coverageReference": {
         "reference": "Coverage/9876B1"
       }
     }
@@ -79,15 +51,14 @@
   "item": [
     {
       "sequence": 1,
-      "careTeamLinkId": [
-        1
-      ],
+      "type": {
+        "code": "service"
+      },
+      "providerReference": {
+        "reference": "Practitioner/example"
+      },
       "service": {
-        "coding": [
-          {
-            "code": "1200"
-          }
-        ]
+        "code": "1200"
       },
       "servicedDate": "2014-08-16",
       "unitPrice": {

@@ -3,22 +3,21 @@
   "id": "1113",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Poll ProcessRequest</div>"
+    "div": "<div>A human-readable rendering of the Poll ProcessRequest</div>"
   },
+  "action": "poll",
   "identifier": [
     {
       "system": "http://happyvalley.com/processrequest",
       "value": "113"
     }
   ],
-  "status": "active",
-  "action": "poll",
   "created": "2014-08-16",
-  "organization": {
+  "organizationReference": {
     "reference": "Organization/1"
   },
   "exclude": [
-    "Communication",
-    "PaymentReconciliation"
+    "SupportingDocumentation",
+    "Reconciliation"
   ]
 }

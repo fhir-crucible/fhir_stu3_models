@@ -3,35 +3,22 @@
   "id": "father",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Father died of a heart attack aged 74</div>"
+    "div": "<div>Father died of a heart attack aged 74</div>"
   },
-  "identifier": [
-    {
-      "value": "12345"
-    }
-  ],
-  "definition": [
-    {
-      "display": "Family Member History Questionnaire"
-    }
-  ],
-  "status": "completed",
-  "notDone": false,
   "patient": {
     "reference": "Patient/example",
     "display": "Peter Patient"
   },
   "date": "2011-03-18",
+  "status": "completed",
   "relationship": {
     "coding": [
       {
-        "system": "http://hl7.org/fhir/v3/RoleCode",
-        "code": "FTH",
-        "display": "father"
+        "system": "http://hl7.org/fhir/familial-relationship",
+        "code": "father"
       }
     ]
   },
-  "gender": "male",
   "condition": [
     {
       "code": {
@@ -44,17 +31,14 @@
         ],
         "text": "Heart Attack"
       },
-      "onsetAge": {
+      "onsetQuantity": {
         "value": 74,
-        "unit": "yr",
-        "system": "http://unitsofmeasure.org",
-        "code": "a"
+        "unit": "a",
+        "system": "http://unitsofmeasure.org"
       },
-      "note": [
-        {
-          "text": "Was fishing at the time. At least he went doing someting he loved."
-        }
-      ]
+      "note": {
+        "text": "Was fishing at the time. At least he went doing someting he loved."
+      }
     }
   ]
 }

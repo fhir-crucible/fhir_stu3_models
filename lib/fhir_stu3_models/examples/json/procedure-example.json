@@ -3,7 +3,10 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Routine Appendectomy</div>"
+    "div": "<div>Routine Appendectomy</div>"
+  },
+  "subject": {
+    "reference": "Patient/example"
   },
   "status": "completed",
   "code": {
@@ -16,10 +19,9 @@
     ],
     "text": "Appendectomy"
   },
-  "subject": {
-    "reference": "Patient/example"
+  "reasonCodeableConcept": {
+    "text": "Generalized abdominal pain 24 hours. Localized in RIF with rebound and guarding"
   },
-  "performedDateTime": "2013-04-05",
   "performer": [
     {
       "actor": {
@@ -28,17 +30,13 @@
       }
     }
   ],
-  "reasonCode": [
-    {
-      "text": "Generalized abdominal pain 24 hours. Localized in RIF with rebound and guarding"
-    }
-  ],
+  "performedDateTime": "2013-04-05",
   "followUp": [
     {
       "text": "ROS 5 days  - 2013-04-10"
     }
   ],
-  "note": [
+  "notes": [
     {
       "text": "Routine Appendectomy. Appendix was inflamed and in retro-caecal position"
     }

@@ -3,19 +3,24 @@
   "id": "lipids",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\n\n      <h3>Lipid Report for Wile. E. COYOTE (MRN: 23453) issued 3-Mar 2009 14:26</h3>\n\n\n      <pre>\nTest                  Units       Value       Reference Range\nCholesterol           mmol/L      6.3         &lt;4.5\nTriglyceride          mmol/L      1.3         &lt;2.0\nHDL Cholesterol       mmol/L      1.3         &gt;1.5\nLDL Chol. (calc)      mmol/L      4.2         &lt;3.0\n      </pre>\n\n\n      <p>Acme Laboratory, Inc signed: Dr Pete Pathologist</p>\n\n\n    </div>"
+    "div": "<div>\n      \n      \n      <h3>Lipid Report for Wile. E. COYOTE (MRN: 23453) issued 3-Mar 2009 14:26</h3>\n      \n      \n      <pre>\nTest                  Units       Value       Reference Range\nCholesterol           mmol/L      6.3         &lt;4.5\nTriglyceride          mmol/L      1.3         &lt;2.0\nHDL Cholesterol       mmol/L      1.3         &gt;1.5\nLDL Chol. (calc)      mmol/L      4.2         &lt;3.0\n      </pre>\n      \n      \n      <p>Acme Laboratory, Inc signed: Dr Pete Pathologist</p>\n    \n    \n    </div>"
   },
   "contained": [
     {
       "resourceType": "Observation",
       "id": "cholesterol",
+      "_id": {
+        "fhir_comments": [
+          "   \n\t  all the data items (= Observations) are contained\n\t  in this diagnostic report. It would be equally\n      valid - and normal - for them to be separate trackable\n      items. However for the purposes of this example, it's\n\t  more convenient to have them here. For more discussion,\n\t  see under \"Contained Resources\" on the Resource Definitions\n\t  topic page     ",
+          "     for users steeped in v2, each observation roughly corresponds with an\n\t    OBX, and the Diagnostic Report with an ORU_R01 message     "
+        ]
+      },
       "status": "final",
       "code": {
         "coding": [
           {
             "system": "http://loinc.org",
-            "code": "14647-2",
-            "display": "Cholesterol [Moles/​volume] in Serum or Plasma"
+            "code": "35200-5"
           }
         ],
         "text": "Cholesterol"
@@ -54,8 +59,7 @@
         "coding": [
           {
             "system": "http://loinc.org",
-            "code": "14927-8",
-            "display": "Triglyceride [Moles/​volume] in Serum or Plasma"
+            "code": "35217-9"
           }
         ],
         "text": "Triglyceride"
@@ -94,8 +98,7 @@
         "coding": [
           {
             "system": "http://loinc.org",
-            "code": "2085-9",
-            "display": "Cholesterol in HDL [Moles/​volume] in Serum or Plasma"
+            "code": "2085-9"
           }
         ],
         "text": "Cholesterol in HDL"
@@ -134,8 +137,7 @@
         "coding": [
           {
             "system": "http://loinc.org",
-            "code": "39469-2",
-            "display": "Cholesterol in LDL [Moles/​volume] in Serum or Plasma by calculation"
+            "code": "13457-7"
           }
         ],
         "text": "LDL Chol. (Calc)"
@@ -183,11 +185,14 @@
     ]
   },
   "code": {
+    "fhir_comments": [
+      "     first, various administrative/context stuff     "
+    ],
     "coding": [
       {
         "system": "http://loinc.org",
-        "code": "24331-1",
-        "display": "Lipid 1996 panel - Serum or Plasma"
+        "code": "57698-3",
+        "display": "Lipid panel with direct LDL - Serum or Plasma"
       }
     ],
     "text": "Lipid Panel"
@@ -197,16 +202,20 @@
   },
   "effectiveDateTime": "2011-03-04T08:30:00+11:00",
   "issued": "2013-01-27T11:45:33+11:00",
-  "performer": [
-    {
-      "actor": {
-        "reference": "Organization/1832473e-2fe0-452d-abe9-3cdb9879522f",
-        "display": "Acme Laboratory, Inc"
-      }
-    }
-  ],
+  "_issued": {
+    "fhir_comments": [
+      "     all this report is final     "
+    ]
+  },
+  "performer": {
+    "reference": "Organization/1832473e-2fe0-452d-abe9-3cdb9879522f",
+    "display": "Acme Laboratory, Inc"
+  },
   "result": [
     {
+      "fhir_comments": [
+        "     now the atomic results     "
+      ],
       "reference": "#cholesterol"
     },
     {

@@ -3,11 +3,11 @@
   "id": "f204",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f204</p><p><b>identifier</b>: 15970</p><p><b>category</b>: Chemical <span>(Details : {http://hl7.org.fhir/substance-category code 'chemical' = 'chemical', given as 'Chemical'})</span></p><p><b>code</b>: Silver nitrate 20% solution (product) <span>(Details : {SNOMED CT code '333346007' = 'Silver nitrate 20% solution', given as 'Silver nitrate 20% solution (product)'})</span></p><p><b>description</b>: Solution for silver nitrate stain</p><h3>Instances</h3><table><tr><td>-</td><td><b>Identifier</b></td><td><b>Expiry</b></td><td><b>Quantity</b></td></tr><tr><td>*</td><td>AB94687</td><td>Jan 1, 2018</td><td>100 mL<span> (Details: UCUM code mL = 'mL')</span></td></tr></table></div>"
+    "div": "<div><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f204</p><p><b>identifier</b>: 15970</p><p><b>category</b>: Chemical <span>(Details : {http://hl7.org.fhir/substance-category code 'chemical' = '??', given as 'Chemical'})</span></p><p><b>code</b>: Silver nitrate 20% solution (product) <span>(Details : {SNOMED CT code '333346007' = 'Silver nitrate 20% solution (product)', given as 'Silver nitrate 20% solution (product)'})</span></p><p><b>description</b>: Solution for silver nitrate stain</p><h3>Instances</h3><table><tr><td>-</td><td><b>Identifier</b></td><td><b>Expiry</b></td><td><b>Quantity</b></td></tr><tr><td>*</td><td>AB94687</td><td>Jan 1, 2018</td><td>100 mL<span> (Details: http://unitsofmeasure.org code mL = 'mL')</span></td></tr></table></div>"
   },
   "identifier": [
     {
-      "system": "http://acme.org/identifiers/substances",
+      "system": "http://acme.org/indentifiers/substances",
       "value": "15970"
     }
   ],
@@ -35,7 +35,7 @@
   "instance": [
     {
       "identifier": {
-        "system": "http://acme.org/identifiers/substances/lot",
+        "system": "http://acme.org/indentifiers/substances/lot",
         "value": "AB94687"
       },
       "expiry": "2018-01-01",

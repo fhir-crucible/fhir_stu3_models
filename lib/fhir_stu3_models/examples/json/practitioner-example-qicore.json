@@ -1,0 +1,60 @@
+{
+  "resourceType": "Practitioner",
+  "id": "practitioner-example-qicore",
+  "text": {
+    "status": "generated",
+    "div": "<div>\n      <p>Dr Ronald Heart is a cardiologist at Acme Hospital</p>\n    </div>"
+  },
+  "identifier": [
+    {
+      "system": "http://www.acme.org/practitioners",
+      "value": "24"
+    }
+  ],
+  "name": [
+    {
+      "family": [
+        "Heart"
+      ],
+      "given": [
+        "Ronald"
+      ],
+      "prefix": [
+        "Dr"
+      ]
+    }
+  ],
+  "practitionerRole": [
+    {
+      "organization": {
+        "reference": "Organization/1"
+      },
+      "role": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/practitioner-role",
+            "code": "doctor",
+            "display": "Doctor"
+          }
+        ]
+      },
+      "specialty": [
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/practitioner-primaryInd",
+              "valueBoolean": true
+            }
+          ],
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/practitioner-specialty",
+              "code": "cardio",
+              "display": "Cardiologist"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -3,7 +3,7 @@
   "id": "examplereq",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Brian MRI results discussion</div>"
+    "div": "<div>Brian MRI results discussion</div>"
   },
   "identifier": [
     {
@@ -41,17 +41,15 @@
       }
     ]
   },
-  "reason": [
-    {
-      "coding": [
-        {
-          "system": "http://snomed.info/sct",
-          "code": "413095006"
-        }
-      ],
-      "text": "Clinical Review"
-    }
-  ],
+  "reason": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "413095006"
+      }
+    ],
+    "text": "Clinical Review"
+  },
   "priority": 5,
   "description": "Discussion on the results of your recent MRI",
   "minutesDuration": 15,
@@ -91,13 +89,12 @@
         "display": "South Wing, second floor"
       },
       "required": "required",
+      "_required": {
+        "fhir_comments": [
+          "  This resource auto accepts, so doesn't need negotiation  "
+        ]
+      },
       "status": "accepted"
-    }
-  ],
-  "requestedPeriod": [
-    {
-      "start": "2016-06-02",
-      "end": "2016-06-09"
     }
   ]
 }

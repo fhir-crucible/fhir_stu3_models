@@ -3,7 +3,7 @@
   "id": "101",
   "text": {
     "status": "additional",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>W is not a recognized code for Gender.</p>\n    </div>"
+    "div": "<div>\n      <p>W is not a recognized code for Gender.</p>\n    </div>"
   },
   "issue": [
     {
@@ -15,9 +15,6 @@
       "diagnostics": "Acme.Interop.FHIRProcessors.Patient.processGender line 2453",
       "location": [
         "/f:Person/f:gender"
-      ],
-      "expression": [
-        "Person.gender"
       ]
     }
   ]

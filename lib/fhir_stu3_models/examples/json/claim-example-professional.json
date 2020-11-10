@@ -3,75 +3,47 @@
   "id": "860150",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Claim</div>"
+    "div": "<div>A human-readable rendering of the Claim</div>"
   },
+  "type": "professional",
   "identifier": [
     {
       "system": "http://happypdocs.com/claim",
       "value": "8612345"
     }
   ],
-  "status": "active",
-  "type": {
-    "coding": [
-      {
-        "system": "http://hl7.org/fhir/ex-claimtype",
-        "code": "professional"
-      }
-    ]
-  },
-  "use": "complete",
-  "patient": {
-    "reference": "Patient/1"
-  },
   "created": "2014-08-16",
-  "insurer": {
+  "targetReference": {
     "reference": "Organization/2"
   },
-  "organization": {
+  "organizationReference": {
     "reference": "Organization/1"
   },
+  "use": "complete",
   "priority": {
-    "coding": [
-      {
-        "code": "normal"
-      }
-    ]
+    "code": "normal"
   },
   "payee": {
     "type": {
-      "coding": [
-        {
-          "code": "provider"
-        }
-      ]
+      "code": "provider"
     }
   },
-  "careTeam": [
-    {
-      "sequence": 1,
-      "provider": {
-        "reference": "Practitioner/example"
-      }
-    }
-  ],
   "diagnosis": [
     {
       "sequence": 1,
-      "diagnosisCodeableConcept": {
-        "coding": [
-          {
-            "code": "654456"
-          }
-        ]
+      "diagnosis": {
+        "code": "654456"
       }
     }
   ],
-  "insurance": [
+  "patientReference": {
+    "reference": "Patient/1"
+  },
+  "coverage": [
     {
       "sequence": 1,
       "focal": true,
-      "coverage": {
+      "coverageReference": {
         "reference": "Coverage/9876B1"
       }
     }
@@ -79,16 +51,15 @@
   "item": [
     {
       "sequence": 1,
-      "careTeamLinkId": [
-        1
-      ],
+      "type": {
+        "code": "service"
+      },
+      "providerReference": {
+        "reference": "Practitioner/example"
+      },
       "service": {
-        "coding": [
-          {
-            "system": "http://hl7.org/fhir/ex-serviceproduct",
-            "code": "exam"
-          }
-        ]
+        "system": "http://hl7.org/fhir/ex-serviceproduct",
+        "code": "exam"
       },
       "servicedDate": "2014-08-16",
       "unitPrice": {

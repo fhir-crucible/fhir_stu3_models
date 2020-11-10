@@ -3,10 +3,9 @@
   "id": "prognosis",
   "text": {
     "status": "additional",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>Moderate risk of permanent weakness of the left arm, but otherwise no permanent disability</p>\n    </div>"
+    "div": "<div>\n      <p>Moderate risk of permanent weakness of the left arm, but otherwise no permanent disability</p>\n    </div>"
   },
-  "status": "final",
-  "occurrenceDateTime": "2010-11-22",
+  "date": "2010-11-22",
   "condition": {
     "reference": "Condition/stroke",
     "display": "Ischemic Stroke"
@@ -22,7 +21,7 @@
         ],
         "text": "permanent weakness of the left arm"
       },
-      "qualitativeRisk": {
+      "probabilityCodeableConcept": {
         "coding": [
           {
             "system": "http://hl7.org/fhir/risk-probability",

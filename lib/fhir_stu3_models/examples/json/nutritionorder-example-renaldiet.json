@@ -1,13 +1,19 @@
 {
   "resourceType": "NutritionOrder",
   "id": "renaldiet",
+  "_id": {
+    "fhir_comments": [
+      "   id = renaldiet  file name = nutritionorder-example-renaldiet.xml Name= Renal Diet  Description = Nutrition Order Renal Diet Example\nedited by Eric Haas Health eData Inc\n  ",
+      "   EH: use oral Diet element   "
+    ]
+  },
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: renaldiet</p><p><b>identifier</b>: 123</p><p><b>status</b>: active</p><p><b>patient</b>: <a>Peter Chalmers</a></p><p><b>encounter</b>: <a>Inpatient</a></p><p><b>dateTime</b>: Sep 17, 2014</p><p><b>orderer</b>: <a>Dr Adam Careful</a></p><p><b>allergyIntolerance</b>: <a>Cashew Nuts</a></p><p><b>foodPreferenceModifier</b>: Dairy Free <span>(Details : {http://hl7.org/fhir/diet code 'dairy-free' = 'Dairy Free)</span></p><p><b>excludeFoodModifier</b>: Cashew Nut <span>(Details : {SNOMED CT code '227493005' = 'Cashew nuts', given as 'Cashew Nut'})</span></p><blockquote><p><b>oralDiet</b></p><p><b>type</b>: Renal Diet <span>(Details : {SNOMED CT code '33489005' = 'Renal disease diet', given as 'Renal diet'}; {http://goodhealthhospital.org/diet-type-codes code '1050' = '1050', given as 'Renal'})</span></p><p><b>schedule</b>: Starting Feb 10, 2015, Do 3 per 1 days</p><blockquote><p><b>nutrient</b></p><p><b>modifier</b>: Sodium <span>(Details : {SNOMED CT code '39972003' = 'Sodium', given as 'Sodium'})</span></p><p><b>amount</b>: 2 grams<span> (Details: UCUM code g = 'g')</span></p></blockquote><blockquote><p><b>nutrient</b></p><p><b>modifier</b>: Phosphorus <span>(Details : {SNOMED CT code '30820000' = 'Phosphorus', given as 'Phosphorus'})</span></p><p><b>amount</b>: 1000 milligrams<span> (Details: UCUM code mg = 'mg')</span></p></blockquote><blockquote><p><b>nutrient</b></p><p><b>modifier</b>: Potassium <span>(Details : {SNOMED CT code '88480006' = 'Potassium', given as 'Potassium'})</span></p><p><b>amount</b>: 2 grams<span> (Details: UCUM code g = 'g')</span></p></blockquote></blockquote></div>"
+    "div": "<div><p><b>Generated Narrative with Details</b></p><p><b>id</b>: renaldiet</p><p><b>identifier</b>: 123</p><p><b>status</b>: active</p><p><b>patient</b>: <a>Peter Chalmers</a></p><p><b>encounter</b>: <a>Inpatient</a></p><p><b>dateTime</b>: Sep 17, 2014</p><p><b>orderer</b>: <a>Dr Adam Careful</a></p><p><b>allergyIntolerance</b>: <a>Cashew Nuts</a></p><p><b>foodPreferenceModifier</b>: Dairy Free <span>(Details : {http://hl7.org/fhir/diet code 'dairy-free' = 'Dairy Free)</span></p><p><b>excludeFoodModifier</b>: Cashew Nut <span>(Details : {SNOMED CT code '227493005' = 'Cashew nut (substance)', given as 'Cashew Nut'})</span></p><blockquote><p><b>oralDiet</b></p><p><b>type</b>: Renal Diet <span>(Details : {SNOMED CT code '33489005' = 'Renal disease diet (finding)', given as 'Renal diet'}; {http://goodhealthhospital.org/diet-type-codes code '1050' = '??', given as 'Renal'})</span></p><p><b>schedule</b>: Starting Feb 10, 2015, Do 3 per 1 days</p><blockquote><p><b>nutrient</b></p><p><b>modifier</b>: Sodium <span>(Details : {SNOMED CT code '39972003' = 'Sodium (substance)', given as 'Sodium'})</span></p><p><b>amount</b>: 2 grams<span> (Details: http://unitsofmeasure.org code g = 'g')</span></p></blockquote><blockquote><p><b>nutrient</b></p><p><b>modifier</b>: Phosphorus <span>(Details : {SNOMED CT code '30820000' = 'Phosphorus (substance)', given as 'Phosphorus'})</span></p><p><b>amount</b>: 1000 milligrams<span> (Details: http://unitsofmeasure.org code mg = 'mg')</span></p></blockquote><blockquote><p><b>nutrient</b></p><p><b>modifier</b>: Potassium <span>(Details : {SNOMED CT code '88480006' = 'Potassium (substance)', given as 'Potassium'})</span></p><p><b>amount</b>: 2 grams<span> (Details: http://unitsofmeasure.org code g = 'g')</span></p></blockquote></blockquote></div>"
   },
   "identifier": [
     {
-      "system": "http://goodhealthhospital.org/nutrition-requests",
+      "system": "http://goodhealthhospital.org/nutrition-orders",
       "value": "123"
     }
   ],
@@ -28,6 +34,11 @@
   "allergyIntolerance": [
     {
       "reference": "AllergyIntolerance/example",
+      "_reference": {
+        "fhir_comments": [
+          "  EH  Show all the elements in this examples for preference, and intolerance   "
+        ]
+      },
       "display": "Cashew Nuts"
     }
   ],
@@ -73,6 +84,9 @@
     ],
     "schedule": [
       {
+        "fhir_comments": [
+          "   EH example of three times a day starting on 2/10   "
+        ],
         "repeat": {
           "boundsPeriod": {
             "start": "2015-02-10"
@@ -86,6 +100,9 @@
     "nutrient": [
       {
         "modifier": {
+          "fhir_comments": [
+            "   list nutrients and amounts here   "
+          ],
           "coding": [
             {
               "system": "http://snomed.info/sct",

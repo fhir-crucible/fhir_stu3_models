@@ -3,15 +3,11 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Encounter with patient @example</div>"
+    "div": "<div>Encounter with patient @example</div>"
   },
   "status": "in-progress",
-  "class": {
-    "system": "http://hl7.org/fhir/v3/ActCode",
-    "code": "IMP",
-    "display": "inpatient encounter"
-  },
-  "subject": {
+  "class": "inpatient",
+  "patient": {
     "reference": "Patient/example"
   }
 }

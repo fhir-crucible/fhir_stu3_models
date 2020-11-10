@@ -3,7 +3,7 @@
   "id": "ph",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Patient's Home</div>"
+    "div": "<div>Patient's Home</div>"
   },
   "status": "active",
   "name": "Patient's Home",

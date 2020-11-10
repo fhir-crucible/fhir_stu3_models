@@ -3,7 +3,7 @@
   "id": "benedicte",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <table>\n        <tbody>\n          <tr>\n            <td>Name</td>\n            <td>Bénédicte du Marché</td>\n          </tr>\n          <tr>\n            <td>Address</td>\n            <td>43, Place du Marché Sainte Catherine, 75004 Paris, France</td>\n          </tr>\n          <tr>\n            <td>Contacts</td>\n            <td>Phone: +33 (237) 998327</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>"
+    "div": "<div>\n      <table>\n        <tbody>\n          <tr>\n            <td>Name</td>\n            <td>Bénédicte du Marché</td>\n          </tr>\n          <tr>\n            <td>Address</td>\n            <td>43, Place du Marché Sainte Catherine, 75004 Paris, France</td>\n          </tr>\n          <tr>\n            <td>Contacts</td>\n            <td>Phone: +33 (237) 998327</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>"
   },
   "identifier": [
     {
@@ -15,15 +15,14 @@
       "value": "272117510400399"
     }
   ],
-  "active": true,
   "patient": {
     "reference": "Patient/example"
   },
   "relationship": {
     "coding": [
       {
-        "system": "http://hl7.org/fhir/v2/0131",
-        "code": "N"
+        "system": "http://hl7.org/fhir/patient-contact-relationship",
+        "code": "partner"
       },
       {
         "system": "http://hl7.org/fhir/v3/RoleCode",
@@ -31,22 +30,29 @@
       }
     ]
   },
-  "name": [
-    {
-      "family": "du Marché",
-      "_family": {
+  "name": {
+    "family": [
+      "du",
+      "Marché"
+    ],
+    "_family": [
+      {
         "extension": [
           {
-            "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix",
-            "valueString": "VV"
+            "fhir_comments": [
+              "  the \"du\" part is a family name prefix (VV in iso 21090)  "
+            ],
+            "url": "http://hl7.org/fhir/StructureDefinitioniso-21090#qualifier",
+            "valueCode": "VV"
           }
         ]
       },
-      "given": [
-        "Bénédicte"
-      ]
-    }
-  ],
+      null
+    ],
+    "given": [
+      "Bénédicte"
+    ]
+  },
   "telecom": [
     {
       "system": "phone",

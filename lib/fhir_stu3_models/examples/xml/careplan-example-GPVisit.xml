@@ -17,119 +17,78 @@
     <!--  This is the reason for the encounter. It is referenced by the concern  -->
     <Condition>
       <id value="p1"/>
-      <clinicalStatus value="active"/>
-	  <verificationStatus value="confirmed"/>
+      <patient>
+        <reference value="Patient/100"/>
+        <display value="Peter James Chalmers"/>
+      </patient>
       <code>
         <!--  Could coded if we wanted to... -->
         <text value="Overseas encounter"/>
       </code>
+      <verificationStatus value="confirmed"/>
+    </Condition>
+  </contained>
+  <contained>
+    <Goal>
+      <id value="goal"/>
       <subject>
         <reference value="Patient/100"/>
         <display value="Peter James Chalmers"/>
       </subject>
-    </Condition>
-  </contained>
-  
-  <contained>
-    <CareTeam>
-        <id value="careteam"/>
-        <participant id="part1">
-    
-	    <role>
-      
-	    	<coding>
-        
-		    <system value="http://example.org/local"/>
-        
-		    <code value="nur"/>
-      
-	    	</coding>
-      
-		<text value="nurse"/>
-    
-	    </role>
-    
-	    <member>
-      
-		<reference value="Practitioner/13"/>
-      
-		<display value="Nurse Nancy"/>
-    
-	    </member>
-  
-	</participant>
-  
-	<participant id="part2">
-    
-	    <role>
-      
-		<coding>
-        
-		    <system value="http://example.org/local"/>
-        
-		    <code value="doc"/>
-      
-	        </coding>
-      
-		<text value="doctor"/>
-    
-	     </role>
-    
-	     <member>
-      
-		<reference value="Practitioner/14"/>
-      
-		<display value="Doctor Dave"/>
-    
-	     </member>
-  
-	</participant>
-
-    </CareTeam>
-  </contained>
-
-
-<contained>
-    <Goal>
-      <id value="goal"/>
+      <description value="Complete consultation"/>
       <status value="planned"/>
-	  <description>
-        <text value="Complete consultation"/>
-      </description>
-	  <subject>
-        <reference value="Patient/100"/>
-        <display value="Peter James Chalmers"/>
-      </subject>
     </Goal>
   </contained>
-  <status value="active"/>
-  <intent value="plan"/>
   <subject>
     <reference value="Patient/100"/>
     <display value="Peter James Chalmers"/>
   </subject>
+  <status value="active"/>
   <period>
     <!--  This is the time the plan started - i.e. when they arrived -->
     <start value="2013-01-01T10:30:00+00:00"/>
     <!--  No end yet as the encounter is still in progress. -->
   </period>
-  <careTeam>
-    <reference value="#careteam"/>
-  </careTeam>
   <addresses>
     <reference value="#p1"/>
     <display value="obesity"/>
   </addresses>
+  <participant id="part1">
+    <role>
+      <coding>
+        <system value="http://example.org/local"/>
+        <code value="nur"/>
+      </coding>
+      <text value="nurse"/>
+    </role>
+    <member>
+      <reference value="Practitioner/13"/>
+      <display value="Nurse Nancy"/>
+    </member>
+  </participant>
+  <participant id="part2">
+    <role>
+      <coding>
+        <system value="http://example.org/local"/>
+        <code value="doc"/>
+      </coding>
+      <text value="doctor"/>
+    </role>
+    <member>
+      <reference value="Practitioner/14"/>
+      <display value="Doctor Dave"/>
+    </member>
+  </participant>
   <goal>
     <reference value="#goal"/>
   </goal>
   <activity>
-    <outcomeReference>
-		<!--  This is a link to the nurse encounter. The assumption is that all contacts with practitioners
-		are modelled as separate encounters. Ideally, there will be  a 'master/parent' encounter that ties them together.
-		If there is a single encounter, then all participants will be linked to that encounter. -->
-		<reference value="Encounter/example"/>
-    </outcomeReference>
+    <actionResulting>
+      <!--  This is a link to the nurse encounter. The assumption is that all contacts with practitioners
+            are modelled as separate encounters. Ideally, there will be  a 'master/parent' encounter that ties them together.
+            If there is a single encounter, then all participants will be linked to that encounter. -->
+      <reference value="Encounter/example"/>
+    </actionResulting>
     <detail>
       <!--  This activity is for the initial nurse encounter where vitals are taken. It has been completed. -->
       <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="encounter"/></coding></category>

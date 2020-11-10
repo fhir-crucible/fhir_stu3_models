@@ -3,7 +3,7 @@
   "id": "2docs",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Brian MRI results discussion</div>"
+    "div": "<div>Brian MRI results discussion</div>"
   },
   "status": "booked",
   "serviceCategory": {
@@ -47,11 +47,6 @@
   },
   "priority": 5,
   "description": "Discussion about Peter Chalmers MRI results",
-  "supportingInformation": [
-    {
-      "reference": "DiagnosticReport/ultrasound"
-    }
-  ],
   "start": "2013-12-09T09:00:00Z",
   "end": "2013-12-09T11:00:00Z",
   "comment": "Clarify the results of the MRI to ensure context of test was correct",

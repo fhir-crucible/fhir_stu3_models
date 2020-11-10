@@ -3,22 +3,12 @@
   "id": "100152",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Oral Health Claim</div>"
+    "div": "<div>A human-readable rendering of the Oral Health Claim</div>"
   },
   "contained": [
     {
       "resourceType": "Organization",
-      "id": "org-insurer",
-      "identifier": [
-        {
-          "system": "http://www.bindb.com/bin",
-          "value": "123456"
-        }
-      ]
-    },
-    {
-      "resourceType": "Organization",
-      "id": "org-org",
+      "id": "organization-1",
       "identifier": [
         {
           "system": "http://www.jurisdiction.com/oralhealthoffices",
@@ -27,8 +17,18 @@
       ]
     },
     {
+      "resourceType": "Organization",
+      "id": "organization-2",
+      "identifier": [
+        {
+          "system": "http://www.bindb.com/bin",
+          "value": "123456"
+        }
+      ]
+    },
+    {
       "resourceType": "Practitioner",
-      "id": "provider-1",
+      "id": "practitioner-1",
       "identifier": [
         {
           "system": "http://www.jurisdiction.com/oralhealthproviders",
@@ -42,7 +42,9 @@
       "name": [
         {
           "use": "official",
-          "family": "Donald",
+          "family": [
+            "Donald"
+          ],
           "given": [
             "Duck"
           ]
@@ -65,119 +67,73 @@
     {
       "resourceType": "Coverage",
       "id": "coverage-1",
+      "issuerReference": {
+        "reference": "#organization-2"
+      },
+      "type": {
+        "system": "http://hl7.org/fhir/v3/ActCode",
+        "code": "EHCPOL"
+      },
+      "planholderReference": {
+        "reference": "#patient-1"
+      },
+      "beneficiaryReference": {
+        "reference": "#patient-1"
+      },
+      "relationship": {
+        "code": "self"
+      },
       "identifier": [
         {
           "system": "http://benefitsinc.com/certificate",
           "value": "12345"
         }
       ],
-      "status": "active",
-      "type": {
-        "coding": [
-          {
-            "system": "http://hl7.org/fhir/v3/ActCode",
-            "code": "EHCPOL"
-          }
-        ]
-      },
-      "subscriber": {
-        "reference": "#patient-1"
-      },
-      "beneficiary": {
-        "reference": "#patient-1"
-      },
-      "relationship": {
-        "coding": [
-          {
-            "code": "self"
-          }
-        ]
-      },
-      "payor": [
-        {
-          "identifier": {
-            "system": "http://www.bindb.com/bin",
-            "value": "123456"
-          }
-        }
-      ],
-      "grouping": {
-        "plan": "CBI35",
-        "planDisplay": "Corporate Baker's Inc. Plan#35",
-        "subPlan": "123",
-        "subPlanDisplay": "Trainee Part-time Benefits"
-      },
-      "dependent": "1",
-      "sequence": "1"
+      "plan": "CBI35",
+      "subPlan": "123",
+      "dependent": 1,
+      "sequence": 1
     }
   ],
+  "type": "oral",
   "identifier": [
     {
       "system": "http://happyvalley.com/claim",
       "value": "12347"
     }
   ],
-  "status": "active",
-  "type": {
-    "coding": [
-      {
-        "system": "http://hl7.org/fhir/ex-claimtype",
-        "code": "oral"
-      }
-    ]
+  "created": "2014-08-16",
+  "targetReference": {
+    "reference": "#organization-2"
+  },
+  "organizationReference": {
+    "reference": "#organization-1"
   },
   "use": "complete",
-  "patient": {
-    "reference": "#patient-1"
-  },
-  "created": "2014-08-16",
-  "insurer": {
-    "reference": "#org-insurer"
-  },
-  "organization": {
-    "reference": "#org-org"
-  },
   "priority": {
-    "coding": [
-      {
-        "code": "normal"
-      }
-    ]
+    "code": "normal"
   },
   "payee": {
     "type": {
-      "coding": [
-        {
-          "code": "provider"
-        }
-      ]
+      "code": "provider"
     }
   },
-  "careTeam": [
-    {
-      "sequence": 1,
-      "provider": {
-        "reference": "#provider-1"
-      }
-    }
-  ],
   "diagnosis": [
     {
       "sequence": 1,
-      "diagnosisCodeableConcept": {
-        "coding": [
-          {
-            "code": "123456"
-          }
-        ]
+      "diagnosis": {
+        "code": "123456"
       }
     }
   ],
-  "insurance": [
+  "patientReference": {
+    "reference": "#patient-1"
+  },
+  "coverage": [
     {
       "sequence": 1,
       "focal": true,
-      "coverage": {
+      "coverageReference": {
         "reference": "#coverage-1"
       }
     }
@@ -185,15 +141,14 @@
   "item": [
     {
       "sequence": 1,
-      "careTeamLinkId": [
-        1
-      ],
+      "type": {
+        "code": "service"
+      },
+      "providerReference": {
+        "reference": "#practitioner-1"
+      },
       "service": {
-        "coding": [
-          {
-            "code": "1200"
-          }
-        ]
+        "code": "1200"
       },
       "servicedDate": "2014-08-16",
       "unitPrice": {

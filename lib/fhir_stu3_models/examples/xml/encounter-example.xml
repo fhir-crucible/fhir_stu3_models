@@ -5,12 +5,8 @@
     <div xmlns="http://www.w3.org/1999/xhtml">Encounter with patient @example</div>
   </text> 
   <status value="in-progress"/>
-    <class>
-        <system value="http://hl7.org/fhir/v3/ActCode"/>
-        <code value="IMP"/>
-        <display value="inpatient encounter"/>
-    </class>
-	<subject>
+  <class value="inpatient"/>
+  <patient>
     <reference value="Patient/example"/>
-  </subject>
+  </patient>
 </Encounter>

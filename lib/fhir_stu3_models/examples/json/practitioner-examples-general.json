@@ -7,29 +7,6 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "http://hl7.org/fhir/Practitioner/1",
-      "resource": {
-        "resourceType": "Practitioner",
-        "id": "1",
-        "text": {
-          "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Dr. Beverly Crusher</div>"
-        },
-        "name": [
-          {
-            "family": "Beverly",
-            "given": [
-              "Crusher"
-            ],
-            "prefix": [
-              "Dr"
-            ]
-          }
-        ],
-        "gender": "female"
-      }
-    },
-    {
       "fullUrl": "http://hl7.org/fhir/Practitioner/13",
       "resource": {
         "resourceType": "Practitioner",
@@ -39,7 +16,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Seven, Henry. SSN:\n            333333333</div>"
+          "div": "<div>Seven, Henry. SSN:\n            333333333</div>"
         },
         "identifier": [
           {
@@ -58,7 +35,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Seven",
+            "family": [
+              "Seven"
+            ],
             "given": [
               "Henry"
             ]
@@ -79,7 +58,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -92,7 +78,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Assigned, Amanda. SSN:\n            33344444</div>"
+          "div": "<div>Assigned, Amanda. SSN:\n            33344444</div>"
         },
         "identifier": [
           {
@@ -111,7 +97,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Assigned",
+            "family": [
+              "Assigned"
+            ],
             "given": [
               "Amanda"
             ]
@@ -132,7 +120,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -145,7 +140,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Hippocrates, Harold. SSN:\n            444444444</div>"
+          "div": "<div>Hippocrates, Harold. SSN:\n            444444444</div>"
         },
         "identifier": [
           {
@@ -164,7 +159,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Hippocrates",
+            "family": [
+              "Hippocrates"
+            ],
             "given": [
               "Harold"
             ]
@@ -185,7 +182,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -198,7 +202,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Primary, Patricia. SSN:\n            555555555</div>"
+          "div": "<div>Primary, Patricia. SSN:\n            555555555</div>"
         },
         "identifier": [
           {
@@ -217,7 +221,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Primary",
+            "family": [
+              "Primary"
+            ],
             "given": [
               "Patricia"
             ]
@@ -238,7 +244,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -251,7 +264,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Admit, Alan. SSN:\n            666666666</div>"
+          "div": "<div>Admit, Alan. SSN:\n            666666666</div>"
         },
         "identifier": [
           {
@@ -270,7 +283,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Admit",
+            "family": [
+              "Admit"
+            ],
             "given": [
               "Alan"
             ]
@@ -291,7 +306,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -304,7 +326,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Attend, Aaron. SSN:\n            777777777</div>"
+          "div": "<div>Attend, Aaron. SSN:\n            777777777</div>"
         },
         "identifier": [
           {
@@ -323,7 +345,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Attend",
+            "family": [
+              "Attend"
+            ],
             "given": [
               "Aaron"
             ]
@@ -344,7 +368,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -357,7 +388,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Sender, Sam. SSN:\n            888888888</div>"
+          "div": "<div>Sender, Sam. SSN:\n            888888888</div>"
         },
         "identifier": [
           {
@@ -376,7 +407,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Sender",
+            "family": [
+              "Sender"
+            ],
             "given": [
               "Sam"
             ]
@@ -397,7 +430,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -410,7 +450,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Intern, Irving. SSN:\n            888222222</div>"
+          "div": "<div>Intern, Irving. SSN:\n            888222222</div>"
         },
         "identifier": [
           {
@@ -429,7 +469,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Intern",
+            "family": [
+              "Intern"
+            ],
             "given": [
               "Irving"
             ]
@@ -450,7 +492,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -463,7 +512,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Resident, Rachel. SSN:\n            888333333</div>"
+          "div": "<div>Resident, Rachel. SSN:\n            888333333</div>"
         },
         "identifier": [
           {
@@ -482,7 +531,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Resident",
+            "family": [
+              "Resident"
+            ],
             "given": [
               "Rachel"
             ]
@@ -503,7 +554,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -516,7 +574,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Leader, Linda. SSN:\n            888444444</div>"
+          "div": "<div>Leader, Linda. SSN:\n            888444444</div>"
         },
         "identifier": [
           {
@@ -535,7 +593,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Leader",
+            "family": [
+              "Leader"
+            ],
             "given": [
               "Linda"
             ]
@@ -556,7 +616,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -569,7 +636,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Verify, Virgil. SSN:\n            999999999</div>"
+          "div": "<div>Verify, Virgil. SSN:\n            999999999</div>"
         },
         "identifier": [
           {
@@ -588,7 +655,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Verify",
+            "family": [
+              "Verify"
+            ],
             "given": [
               "Virgil"
             ]
@@ -609,7 +678,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -622,7 +698,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Specialize, Sara. SSN:\n            222333333</div>"
+          "div": "<div>Specialize, Sara. SSN:\n            222333333</div>"
         },
         "identifier": [
           {
@@ -641,7 +717,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Specialize",
+            "family": [
+              "Specialize"
+            ],
             "given": [
               "Sara"
             ]
@@ -662,7 +740,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -675,7 +760,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Reaction, Ramsey. SSN:\n            222223333</div>"
+          "div": "<div>Reaction, Ramsey. SSN:\n            222223333</div>"
         },
         "identifier": [
           {
@@ -694,7 +779,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Reaction",
+            "family": [
+              "Reaction"
+            ],
             "given": [
               "Ramsey"
             ]
@@ -715,7 +802,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -728,7 +822,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Sleeper, Sally. SSN:\n            222666666</div>"
+          "div": "<div>Sleeper, Sally. SSN:\n            222666666</div>"
         },
         "identifier": [
           {
@@ -747,7 +841,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Sleeper",
+            "family": [
+              "Sleeper"
+            ],
             "given": [
               "Sally"
             ]
@@ -768,7 +864,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -781,7 +884,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Pump, Patrick. SSN:\n            222334444</div>"
+          "div": "<div>Pump, Patrick. SSN:\n            222334444</div>"
         },
         "identifier": [
           {
@@ -800,7 +903,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Pump",
+            "family": [
+              "Pump"
+            ],
             "given": [
               "Patrick"
             ]
@@ -821,7 +926,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -834,7 +946,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Valve, Vera. SSN:\n            222335555</div>"
+          "div": "<div>Valve, Vera. SSN:\n            222335555</div>"
         },
         "identifier": [
           {
@@ -853,7 +965,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Valve",
+            "family": [
+              "Valve"
+            ],
             "given": [
               "Vera"
             ]
@@ -874,7 +988,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -887,7 +1008,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Scratch, Sophie. SSN:\n            222336666</div>"
+          "div": "<div>Scratch, Sophie. SSN:\n            222336666</div>"
         },
         "identifier": [
           {
@@ -906,7 +1027,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Scratch",
+            "family": [
+              "Scratch"
+            ],
             "given": [
               "Sophie"
             ]
@@ -927,7 +1050,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -940,7 +1070,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Emergency, Eric. SSN:\n            222337777</div>"
+          "div": "<div>Emergency, Eric. SSN:\n            222337777</div>"
         },
         "identifier": [
           {
@@ -959,7 +1089,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Emergency",
+            "family": [
+              "Emergency"
+            ],
             "given": [
               "Eric"
             ]
@@ -980,7 +1112,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -993,7 +1132,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Hormone, Horace. SSN:\n            222338888</div>"
+          "div": "<div>Hormone, Horace. SSN:\n            222338888</div>"
         },
         "identifier": [
           {
@@ -1012,7 +1151,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Hormone",
+            "family": [
+              "Hormone"
+            ],
             "given": [
               "Horace"
             ]
@@ -1033,7 +1174,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -1046,7 +1194,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Family, Fay. SSN:\n            222339999</div>"
+          "div": "<div>Family, Fay. SSN:\n            222339999</div>"
         },
         "identifier": [
           {
@@ -1065,7 +1213,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Family",
+            "family": [
+              "Family"
+            ],
             "given": [
               "Fay"
             ]
@@ -1086,7 +1236,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -1099,7 +1256,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Tum, Tony. SSN:\n            222442222</div>"
+          "div": "<div>Tum, Tony. SSN:\n            222442222</div>"
         },
         "identifier": [
           {
@@ -1118,7 +1275,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Tum",
+            "family": [
+              "Tum"
+            ],
             "given": [
               "Tony"
             ]
@@ -1139,7 +1298,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -1152,7 +1318,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Sage, Stanley. SSN:\n            222443333</div>"
+          "div": "<div>Sage, Stanley. SSN:\n            222443333</div>"
         },
         "identifier": [
           {
@@ -1171,7 +1337,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Sage",
+            "family": [
+              "Sage"
+            ],
             "given": [
               "Stanley"
             ]
@@ -1192,7 +1360,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -1205,7 +1380,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Bleeder, Boris. SSN:\n            222443344</div>"
+          "div": "<div>Bleeder, Boris. SSN:\n            222443344</div>"
         },
         "identifier": [
           {
@@ -1224,7 +1399,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Bleeder",
+            "family": [
+              "Bleeder"
+            ],
             "given": [
               "Boris"
             ]
@@ -1245,7 +1422,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -1258,7 +1442,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Pasteur, Paula. SSN:\n            222445555</div>"
+          "div": "<div>Pasteur, Paula. SSN:\n            222445555</div>"
         },
         "identifier": [
           {
@@ -1277,7 +1461,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Pasteur",
+            "family": [
+              "Pasteur"
+            ],
             "given": [
               "Paula"
             ]
@@ -1298,7 +1484,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -1311,7 +1504,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Osler, Otto. SSN:\n            222446666</div>"
+          "div": "<div>Osler, Otto. SSN:\n            222446666</div>"
         },
         "identifier": [
           {
@@ -1330,7 +1523,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Osler",
+            "family": [
+              "Osler"
+            ],
             "given": [
               "Otto"
             ]
@@ -1351,7 +1546,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -1364,7 +1566,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Renal, Rory. SSN:\n            222447777</div>"
+          "div": "<div>Renal, Rory. SSN:\n            222447777</div>"
         },
         "identifier": [
           {
@@ -1383,7 +1585,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Renal",
+            "family": [
+              "Renal"
+            ],
             "given": [
               "Rory"
             ]
@@ -1404,7 +1608,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -1417,7 +1628,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Brain, Barry. SSN:\n            222448888</div>"
+          "div": "<div>Brain, Barry. SSN:\n            222448888</div>"
         },
         "identifier": [
           {
@@ -1436,7 +1647,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Brain",
+            "family": [
+              "Brain"
+            ],
             "given": [
               "Barry"
             ]
@@ -1457,7 +1670,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -1470,7 +1690,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Cranium, Carol. SSN:\n            222449999</div>"
+          "div": "<div>Cranium, Carol. SSN:\n            222449999</div>"
         },
         "identifier": [
           {
@@ -1489,7 +1709,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Cranium",
+            "family": [
+              "Cranium"
+            ],
             "given": [
               "Carol"
             ]
@@ -1510,7 +1732,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -1523,7 +1752,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Fem, Flora. SSN:\n            222552222</div>"
+          "div": "<div>Fem, Flora. SSN:\n            222552222</div>"
         },
         "identifier": [
           {
@@ -1542,7 +1771,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Fem",
+            "family": [
+              "Fem"
+            ],
             "given": [
               "Flora"
             ]
@@ -1563,7 +1794,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -1576,7 +1814,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Tumor, Trudy. SSN:\n            222553333</div>"
+          "div": "<div>Tumor, Trudy. SSN:\n            222553333</div>"
         },
         "identifier": [
           {
@@ -1595,7 +1833,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Tumor",
+            "family": [
+              "Tumor"
+            ],
             "given": [
               "Trudy"
             ]
@@ -1616,7 +1856,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -1629,7 +1876,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Vision, Victor. SSN:\n            222554444</div>"
+          "div": "<div>Vision, Victor. SSN:\n            222554444</div>"
         },
         "identifier": [
           {
@@ -1648,7 +1895,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Vision",
+            "family": [
+              "Vision"
+            ],
             "given": [
               "Victor"
             ]
@@ -1669,7 +1918,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -1682,7 +1938,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Carpenter, Calvin. SSN:\n            222555545</div>"
+          "div": "<div>Carpenter, Calvin. SSN:\n            222555545</div>"
         },
         "identifier": [
           {
@@ -1701,7 +1957,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Carpenter",
+            "family": [
+              "Carpenter"
+            ],
             "given": [
               "Calvin"
             ]
@@ -1722,7 +1980,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -1735,7 +2000,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Rhino, Rick. SSN:\n            222556666</div>"
+          "div": "<div>Rhino, Rick. SSN:\n            222556666</div>"
         },
         "identifier": [
           {
@@ -1754,7 +2019,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Rhino",
+            "family": [
+              "Rhino"
+            ],
             "given": [
               "Rick"
             ]
@@ -1775,7 +2042,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -1788,7 +2062,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Slide, Stan. SSN:\n            222444444</div>"
+          "div": "<div>Slide, Stan. SSN:\n            222444444</div>"
         },
         "identifier": [
           {
@@ -1807,7 +2081,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Slide",
+            "family": [
+              "Slide"
+            ],
             "given": [
               "Stan"
             ]
@@ -1828,7 +2104,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -1841,7 +2124,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Kidder, Karen. SSN:\n            222557777</div>"
+          "div": "<div>Kidder, Karen. SSN:\n            222557777</div>"
         },
         "identifier": [
           {
@@ -1860,7 +2143,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Kidder",
+            "family": [
+              "Kidder"
+            ],
             "given": [
               "Karen"
             ]
@@ -1881,7 +2166,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -1894,7 +2186,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Hollywood, Heddie. SSN:\n            222558888</div>"
+          "div": "<div>Hollywood, Heddie. SSN:\n            222558888</div>"
         },
         "identifier": [
           {
@@ -1913,7 +2205,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Hollywood",
+            "family": [
+              "Hollywood"
+            ],
             "given": [
               "Heddie"
             ]
@@ -1934,7 +2228,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -1947,7 +2248,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Shrink, Serena. SSN:\n            222559999</div>"
+          "div": "<div>Shrink, Serena. SSN:\n            222559999</div>"
         },
         "identifier": [
           {
@@ -1966,7 +2267,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Shrink",
+            "family": [
+              "Shrink"
+            ],
             "given": [
               "Serena"
             ]
@@ -1987,7 +2290,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2000,7 +2310,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Puffer, Penny. SSN:\n            222662222</div>"
+          "div": "<div>Puffer, Penny. SSN:\n            222662222</div>"
         },
         "identifier": [
           {
@@ -2019,7 +2329,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Puffer",
+            "family": [
+              "Puffer"
+            ],
             "given": [
               "Penny"
             ]
@@ -2040,7 +2352,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2053,7 +2372,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Curie, Christine. SSN:\n            222555555</div>"
+          "div": "<div>Curie, Christine. SSN:\n            222555555</div>"
         },
         "identifier": [
           {
@@ -2072,7 +2391,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Curie",
+            "family": [
+              "Curie"
+            ],
             "given": [
               "Christine"
             ]
@@ -2093,7 +2414,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2106,7 +2434,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Joint, Jeffrey. SSN:\n            222663333</div>"
+          "div": "<div>Joint, Jeffrey. SSN:\n            222663333</div>"
         },
         "identifier": [
           {
@@ -2125,7 +2453,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Joint",
+            "family": [
+              "Joint"
+            ],
             "given": [
               "Jeffrey"
             ]
@@ -2146,7 +2476,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2159,7 +2496,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Cutter, Carl. SSN:\n            222777777</div>"
+          "div": "<div>Cutter, Carl. SSN:\n            222777777</div>"
         },
         "identifier": [
           {
@@ -2178,7 +2515,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Cutter",
+            "family": [
+              "Cutter"
+            ],
             "given": [
               "Carl"
             ]
@@ -2199,7 +2538,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2212,7 +2558,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Plumber, Peter. SSN:\n            222664444</div>"
+          "div": "<div>Plumber, Peter. SSN:\n            222664444</div>"
         },
         "identifier": [
           {
@@ -2231,7 +2577,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Plumber",
+            "family": [
+              "Plumber"
+            ],
             "given": [
               "Peter"
             ]
@@ -2252,7 +2600,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2265,7 +2620,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Helper, Horace. SSN:\n            222665555</div>"
+          "div": "<div>Helper, Horace. SSN:\n            222665555</div>"
         },
         "identifier": [
           {
@@ -2284,7 +2639,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Helper",
+            "family": [
+              "Helper"
+            ],
             "given": [
               "Horace"
             ]
@@ -2305,7 +2662,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2318,7 +2682,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Nightingale, Nancy. SSN:\n            222888888</div>"
+          "div": "<div>Nightingale, Nancy. SSN:\n            222888888</div>"
         },
         "identifier": [
           {
@@ -2337,7 +2701,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Nightingale",
+            "family": [
+              "Nightingale"
+            ],
             "given": [
               "Nancy"
             ]
@@ -2358,7 +2724,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2371,7 +2744,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Barton, Clarence. SSN:\n            222999999</div>"
+          "div": "<div>Barton, Clarence. SSN:\n            222999999</div>"
         },
         "identifier": [
           {
@@ -2390,7 +2763,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Barton",
+            "family": [
+              "Barton"
+            ],
             "given": [
               "Clarence"
             ]
@@ -2411,7 +2786,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2424,7 +2806,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Bender, Bob. SSN:\n            222666666</div>"
+          "div": "<div>Bender, Bob. SSN:\n            222666666</div>"
         },
         "identifier": [
           {
@@ -2443,7 +2825,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Bender",
+            "family": [
+              "Bender"
+            ],
             "given": [
               "Bob"
             ]
@@ -2464,7 +2848,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2477,7 +2868,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Chopper, Charlie. SSN:\n            222667777</div>"
+          "div": "<div>Chopper, Charlie. SSN:\n            222667777</div>"
         },
         "identifier": [
           {
@@ -2496,7 +2887,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Chopper",
+            "family": [
+              "Chopper"
+            ],
             "given": [
               "Charlie"
             ]
@@ -2517,7 +2910,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2530,7 +2930,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Brace, Ben. SSN:\n            222668888</div>"
+          "div": "<div>Brace, Ben. SSN:\n            222668888</div>"
         },
         "identifier": [
           {
@@ -2549,7 +2949,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Brace",
+            "family": [
+              "Brace"
+            ],
             "given": [
               "Ben"
             ]
@@ -2570,7 +2972,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2583,7 +2992,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Specs, Sylvia. SSN:\n            222669999</div>"
+          "div": "<div>Specs, Sylvia. SSN:\n            222669999</div>"
         },
         "identifier": [
           {
@@ -2602,7 +3011,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Specs",
+            "family": [
+              "Specs"
+            ],
             "given": [
               "Sylvia"
             ]
@@ -2623,7 +3034,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2636,7 +3054,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Script, Susan. SSN:\n            333222222</div>"
+          "div": "<div>Script, Susan. SSN:\n            333222222</div>"
         },
         "identifier": [
           {
@@ -2655,7 +3073,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Script",
+            "family": [
+              "Script"
+            ],
             "given": [
               "Susan"
             ]
@@ -2676,7 +3096,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2689,7 +3116,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Bunion, Paul. SSN:\n            222772222</div>"
+          "div": "<div>Bunion, Paul. SSN:\n            222772222</div>"
         },
         "identifier": [
           {
@@ -2708,7 +3135,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Bunion",
+            "family": [
+              "Bunion"
+            ],
             "given": [
               "Paul"
             ]
@@ -2729,7 +3158,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2742,7 +3178,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Listener, Larry. SSN:\n            222773333</div>"
+          "div": "<div>Listener, Larry. SSN:\n            222773333</div>"
         },
         "identifier": [
           {
@@ -2761,7 +3197,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Listener",
+            "family": [
+              "Listener"
+            ],
             "given": [
               "Larry"
             ]
@@ -2782,7 +3220,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2795,7 +3240,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Beaker, Bill. SSN:\n            333444444</div>"
+          "div": "<div>Beaker, Bill. SSN:\n            333444444</div>"
         },
         "identifier": [
           {
@@ -2814,7 +3259,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Beaker",
+            "family": [
+              "Beaker"
+            ],
             "given": [
               "Bill"
             ]
@@ -2835,7 +3282,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2848,7 +3302,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Chow, Connie. SSN:\n            333555555</div>"
+          "div": "<div>Chow, Connie. SSN:\n            333555555</div>"
         },
         "identifier": [
           {
@@ -2867,7 +3321,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Chow",
+            "family": [
+              "Chow"
+            ],
             "given": [
               "Connie"
             ]
@@ -2888,7 +3344,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2901,7 +3364,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">teHelper. SSN: 000111111</div>"
+          "div": "<div>teHelper. SSN: 000111111</div>"
         },
         "identifier": [
           {
@@ -2920,7 +3383,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Helper",
+            "family": [
+              "Helper"
+            ],
             "given": [
               "Helen"
             ]
@@ -2941,7 +3406,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -2954,7 +3426,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Player, Pamela. SSN:\n            222776666</div>"
+          "div": "<div>Player, Pamela. SSN:\n            222776666</div>"
         },
         "identifier": [
           {
@@ -2973,7 +3445,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Player",
+            "family": [
+              "Player"
+            ],
             "given": [
               "Pamela"
             ]
@@ -2994,7 +3468,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -3007,7 +3488,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Stretcher, Seth. SSN:\n            222778888</div>"
+          "div": "<div>Stretcher, Seth. SSN:\n            222778888</div>"
         },
         "identifier": [
           {
@@ -3026,7 +3507,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Stretcher",
+            "family": [
+              "Stretcher"
+            ],
             "given": [
               "Seth"
             ]
@@ -3047,7 +3530,14 @@
             ]
           }
         ],
-        "gender": "male"
+        "gender": "male",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     },
     {
@@ -3060,7 +3550,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Enter Ellen, ElleSSN:\n            333777777</div>"
+          "div": "<div>Enter Ellen, ElleSSN:\n            333777777</div>"
         },
         "identifier": [
           {
@@ -3079,7 +3569,9 @@
         "name": [
           {
             "use": "official",
-            "family": "Enter",
+            "family": [
+              "Enter"
+            ],
             "given": [
               "Ellen"
             ]
@@ -3100,7 +3592,14 @@
             ]
           }
         ],
-        "gender": "female"
+        "gender": "female",
+        "practitionerRole": [
+          {
+            "organization": {
+              "reference": "Organization/hl7"
+            }
+          }
+        ]
       }
     }
   ]

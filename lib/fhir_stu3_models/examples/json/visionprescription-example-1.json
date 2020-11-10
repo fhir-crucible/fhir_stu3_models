@@ -3,7 +3,7 @@
   "id": "33124",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Sample Contract Lens prescription</div>"
+    "div": "<div>Sample Contract Lens prescription</div>"
   },
   "identifier": [
     {
@@ -11,34 +11,18 @@
       "value": "15014"
     }
   ],
-  "status": "active",
+  "dateWritten": "2014-06-15",
   "patient": {
     "reference": "Patient/example"
   },
-  "encounter": {
-    "reference": "Encounter/f001"
-  },
-  "dateWritten": "2014-06-15",
   "prescriber": {
     "reference": "Practitioner/example"
-  },
-  "reasonCodeableConcept": {
-    "coding": [
-      {
-        "system": "http://samplevisionreasoncodes.com",
-        "code": "myopia"
-      }
-    ]
   },
   "dispense": [
     {
       "product": {
-        "coding": [
-          {
-            "system": "http://hl7.org/fhir/ex-visionprescriptionproduct",
-            "code": "contact"
-          }
-        ]
+        "system": "http://hl7.org/fhir/ex-visionprescriptionproduct",
+        "code": "contact"
       },
       "eye": "right",
       "cylinder": -2.25,
@@ -54,21 +38,12 @@
         "code": "month"
       },
       "color": "green",
-      "brand": "OphthaGuard",
-      "note": [
-        {
-          "text": "Shade treatment for extreme light sensitivity"
-        }
-      ]
+      "brand": "OphthaGuard"
     },
     {
       "product": {
-        "coding": [
-          {
-            "system": "http://hl7.org/fhir/ex-visionprescriptionproduct",
-            "code": "contact"
-          }
-        ]
+        "system": "http://hl7.org/fhir/ex-visionprescriptionproduct",
+        "code": "contact"
       },
       "eye": "left",
       "cylinder": -3.50,
@@ -84,12 +59,7 @@
         "code": "month"
       },
       "color": "green",
-      "brand": "OphthaGuard",
-      "note": [
-        {
-          "text": "Shade treatment for extreme light sensitivity"
-        }
-      ]
+      "brand": "OphthaGuard"
     }
   ]
 }

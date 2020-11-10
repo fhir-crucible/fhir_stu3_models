@@ -3,17 +3,14 @@
 <CodeSystem xmlns="http://hl7.org/fhir">
   <id value="list-example-codes"/>
   <meta>
-    <lastUpdated value="2017-04-26T18:33:43.228-04:00"/>
-    <profile value="http://hl7.org/fhir/StructureDefinition/shareablecodesystem"/>
+    <lastUpdated value="2016-03-31T08:59:41.431-04:00"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"/>
   </meta>
   <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
       <h2>Example Use Codes for List</h2>
-      <div>
-        <p>Example use codes for the List resource - typical kinds of use.</p>
-
-      </div>
+      <p>Example use codes for the List resource - typical kinds of use.</p>
       <p>This code system http://hl7.org/fhir/list-example-use-codes defines the following codes:</p>
       <table class="codes">
         <tr>
@@ -29,63 +26,63 @@
         </tr>
         <tr>
           <td>alerts
-            <a name="list-example-codes-alerts"> </a>
+            <a name="alerts"> </a>
           </td>
           <td>Alerts</td>
           <td>A list of alerts for the patient.</td>
         </tr>
         <tr>
           <td>adverserxns
-            <a name="list-example-codes-adverserxns"> </a>
+            <a name="adverserxns"> </a>
           </td>
           <td>Adverse Reactions</td>
           <td>A list of part adverse reactions.</td>
         </tr>
         <tr>
           <td>allergies
-            <a name="list-example-codes-allergies"> </a>
+            <a name="allergies"> </a>
           </td>
           <td>Allergies</td>
           <td>A list of Allergies for the patient.</td>
         </tr>
         <tr>
           <td>medications
-            <a name="list-example-codes-medications"> </a>
+            <a name="medications"> </a>
           </td>
           <td>Medication List</td>
           <td>A list of medication statements for the patient.</td>
         </tr>
         <tr>
           <td>problems
-            <a name="list-example-codes-problems"> </a>
+            <a name="problems"> </a>
           </td>
           <td>Problem List</td>
           <td>A list of problems that the patient is known of have (or have had in the past).</td>
         </tr>
         <tr>
           <td>worklist
-            <a name="list-example-codes-worklist"> </a>
+            <a name="worklist"> </a>
           </td>
           <td>Worklist</td>
           <td>A list of items that constitute a set of work to be performed (typically this code would be specialized for more specific uses, such as a ward round list).</td>
         </tr>
         <tr>
           <td>waiting
-            <a name="list-example-codes-waiting"> </a>
+            <a name="waiting"> </a>
           </td>
           <td>Waiting List</td>
           <td>A list of items waiting for an event (perhaps a surgical patient waiting list).</td>
         </tr>
         <tr>
           <td>protocols
-            <a name="list-example-codes-protocols"> </a>
+            <a name="protocols"> </a>
           </td>
           <td>Protocols</td>
           <td>A set of protocols to be followed.</td>
         </tr>
         <tr>
           <td>plans
-            <a name="list-example-codes-plans"> </a>
+            <a name="plans"> </a>
           </td>
           <td>Care Plans</td>
           <td>A set of care plans that apply in a particular context of care.</td>
@@ -93,28 +90,18 @@
       </table>
     </div>
   </text>
-  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-ballot-status">
-    <valueString value="Informative"/>
-  </extension>
-  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
-    <valueInteger value="1"/>
-  </extension>
-  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
-    <valueCode value="fhir"/>
+  <extension url="http://hl7.org/fhir/StructureDefinition/valueset-oid">
+    <valueUri value="urn:oid:2.16.840.1.113883.4.642.1.173"/>
   </extension>
   <url value="http://hl7.org/fhir/list-example-use-codes"/>
-  <identifier>
-    <system value="urn:ietf:rfc:3986"/>
-    <value value="urn:oid:2.16.840.1.113883.4.642.1.308"/>
-  </identifier>
-  <version value="3.0.0"/>
+  <version value="1.4.0"/>
   <name value="Example Use Codes for List"/>
   <status value="draft"/>
   <experimental value="true"/>
   <publisher value="FHIR Project"/>
   <contact>
     <telecom>
-      <system value="url"/>
+      <system value="other"/>
       <value value="http://hl7.org/fhir"/>
     </telecom>
   </contact>

@@ -36,17 +36,14 @@
 		</extension>
 		<path value="prothrombin"/>
 		<definition value="The PT test evaluates the extrinsic and common pathways of the coagulation cascade."/>
-		<comment value="Used to screen the integrity of the extrinsic and common pathways of coagulation and to monitor warfarin anticoagulation. "/>
+		<comments value="Used to screen the integrity of the extrinsic and common pathways of coagulation and to monitor warfarin anticoagulation. "/>
 		<requirements value="This test is orderable. A plasma specimen in a 3.2% sodium citrate blue top tube is required."/>
 		<alias value="Protime, PT"/>
 		<type>
 			<code value="decimal"/>
 		</type>
 		<!--    Is this the FHIR datatype for the observation? ( ie the datatype when ordering the test) or the Result? ( ie. numeric, codeable concept or text for lab tests )   -->
-		<example>
-      <label value="Simple"/>
-      <valueDecimal value="10.0"/>
-    </example>
+		<exampleDecimal value="10.0"/>
 		<!--    Is this the an example result like "10.0"  for the observation/dataelement?    -->
 		<mapping>
 			<identity value="loinc"/>

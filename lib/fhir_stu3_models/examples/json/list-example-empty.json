@@ -3,7 +3,7 @@
   "id": "example-empty",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>The patient is not on any medications</p>\n    </div>"
+    "div": "<div>\n      <p>The patient is not on any medications</p>\n    </div>"
   },
   "status": "current",
   "mode": "snapshot",

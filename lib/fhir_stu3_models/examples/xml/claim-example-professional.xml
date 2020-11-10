@@ -1,87 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?><Claim xmlns="http://hl7.org/fhir">
  <id value="860150"/>
 
-  <text>
+ <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Claim</div>
   </text>
 
+  <type value="professional"/>
+  
   <identifier>
     <system value="http://happypdocs.com/claim"/>
     <value value="8612345"/>
-  </identifier>
- 
-  <status value="active"/>
-
-  <type>
-   <coding>
-    <system value="http://hl7.org/fhir/ex-claimtype"/>
-    <code value="professional"/>
-   </coding>	
-  </type>
-  
-  <use value="complete"/>
-
-  <patient>
-    <reference value="Patient/1"/>
-  </patient>
+ </identifier>
  
   <created value="2014-08-16"/>
 
-  <insurer>
-    <reference value="Organization/2"/>
-  </insurer>
+ <targetReference>
+  <reference value="Organization/2"/>
+ </targetReference>
 
-  <organization>
+ <organizationReference>
     <reference value="Organization/1"/>
-  </organization>
+ </organizationReference>
 
-  <priority>
-   <coding>
+ <use value="complete"/>
+
+ <priority>
     <code value="normal"/>
-   </coding>
-  </priority>
+ </priority>
 
-  <payee>
-    <type>
-	 <coding>
-      <code value="provider"/>
-	 </coding>
-    </type>
-  </payee>
-
-   <careTeam>
-     <sequence value="1"/>
-     <provider>
-       <reference value="Practitioner/example"/>
-     </provider>
-   </careTeam>
-  
+ <payee>
+   <type>
+     <code value="provider"/>
+   </type>
+ </payee>
+ 
   <diagnosis>
     <sequence value="1"/>
-	<diagnosisCodeableConcept>
-	 <coding>
+	<diagnosis>
 	  <code value="654456"/>
-	 </coding>
-	</diagnosisCodeableConcept>
+	  </diagnosis>
   </diagnosis>
  
-  <insurance>
+ <patientReference>
+   <reference value="Patient/1"/>
+ </patientReference>
+ 
+ <coverage>
    <sequence value="1"/>
    <focal value="true"/>
-   <coverage>
+   <coverageReference>
      <reference value="Coverage/9876B1"/>
-   </coverage>
-  </insurance>
+   </coverageReference>
+ </coverage>
   
-  <item>
+ <item>
    <sequence value="1"/>
-   <careTeamLinkId value="1"/>
+   <type>
+     <code value="service"/>
+   </type>
+   <providerReference>
+     <reference value="Practitioner/example"/>
+   </providerReference>
    <service>
-    <coding>
      <system value="http://hl7.org/fhir/ex-serviceproduct"/>
      <code value="exam"/> 
-    </coding>
    </service>
    <servicedDate value="2014-08-16"/>
    <unitPrice>

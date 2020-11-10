@@ -3,7 +3,7 @@
   "id": "example-id",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>\n        <b>Australian IHI Number</b>\n      </p>\n      \n      <p> oid: 1.2.36.1.2001.1003.0</p>\n      \n      <p> uri: http://ns.electronichealth.net.au/id/hi/ihi/1.0</p>\n    \n    </div>"
+    "div": "<div>\n      <p>\n        <b>Australian IHI Number</b>\n      </p>\n      \n      <p> oid: 1.2.36.1.2001.1003.0</p>\n      \n      <p> uri: http://ns.electronichealth.net.au/id/hi/ihi/1.0</p>\n    \n    </div>"
   },
   "name": "Austalian Healthcare Identifier - Individual",
   "status": "active",
@@ -15,7 +15,7 @@
       "name": "HL7 Australia FHIR Team",
       "telecom": [
         {
-          "system": "url",
+          "system": "other",
           "value": "http://hl7-australia.wikispaces.com/FHIR+Australia"
         }
       ]
@@ -33,7 +33,7 @@
     "text": "IHI"
   },
   "description": "Australian HI Identifier as established by relevant regulations etc",
-  "jurisdiction": [
+  "useContext": [
     {
       "coding": [
         {
@@ -47,8 +47,7 @@
   "uniqueId": [
     {
       "type": "oid",
-      "value": "1.2.36.1.2001.1003.0",
-      "comment": "This value is used in Australian CDA documents"
+      "value": "1.2.36.1.2001.1003.0"
     },
     {
       "type": "uri",

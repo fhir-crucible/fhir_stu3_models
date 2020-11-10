@@ -3,25 +3,23 @@
   <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
-
+      
       <p>
-
+        
         <b>Annie Proband</b>: Female, born 1966-04-04
       </p>
-
+    
     </div>
   </text>
-  <!-- 
   <extension url="http://hl7.org/fhir/StructureDefinition/us-core-race">
-  <extension url="ombCategory">
-    <valueCoding>
-        <system value="http://hl7.org/fhir/v3/Race"/>
+    <valueCodeableConcept>
+      <coding>
+        <system value="urn:oid:2.16.840.1.113883.6.238"/>
         <code value="2106-3"/>
-        <display value="White"/>
-    </valueCoding>
-    </extension>
+        <display value="white"/>
+      </coding>
+    </valueCodeableConcept>
   </extension>
- -->
   <identifier>
     <use value="usual"/>
     <type>

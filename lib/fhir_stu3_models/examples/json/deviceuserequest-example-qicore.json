@@ -1,0 +1,29 @@
+{
+  "resourceType": "DeviceUseRequest",
+  "id": "deviceuserequest-example-qicore",
+  "text": {
+    "status": "generated",
+    "div": "<div>To be filled out at a later time</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/deviceuserequest-reasonRejected",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/v3/ActReason",
+            "code": "MEDPREC",
+            "display": "medical precaution"
+          }
+        ]
+      }
+    }
+  ],
+  "status": "rejected",
+  "device": {
+    "reference": "Device/example"
+  },
+  "subject": {
+    "reference": "Patient/example"
+  }
+}

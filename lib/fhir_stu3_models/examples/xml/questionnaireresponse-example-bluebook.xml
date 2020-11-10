@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><QuestionnaireResponse xmlns="http://hl7.org/fhir">
   <!--  Please not that in this questionnaire, the questions are mostly unnamed, that is, the questions are not identified using the <name> element. It will therefore
-    be hard to extract useful information in an automated way from this questionnaire. This is, however, quite often the case when modeling existing questionnaires  -->
+    be hard to extract useful information in an automated way from this questionnaire. This is, however, quite often the case when modelling existing questionnaires  -->
   <id value="bb"/>
   <text>
     <status value="generated"/>
@@ -16,16 +16,15 @@
   <subject>
     <reference value="http://hl7.org/fhir/Patient/1"/>
   </subject>
-  <authored value="2013-02-19T14:15:00+10:00"/>
   <author>
     <reference value="http://hl7.org/fhir/Practitioner/example"/>
   </author>
+  <authored value="2013-02-19T14:15:00+10:00"/>
     <!--  Many groups left out of this example  -->
   <item>
     <linkId value="birthDetails"/>
     <text value="Birth details - To be completed by health professional"/>
     <item>
-	  <linkId value="group"/>
       <item>
         <linkId value="nameOfChild"/>
         <text value="Name of child"/>
@@ -93,10 +92,12 @@
           <valueBoolean value="true"/>
           <item>
             <linkId value="hepBgivenDate"/>
-            <text value="Date given"/>
-            <answer>
-              <valueDate value="1972-12-04"/>
-            </answer>
+            <item>
+              <text value="Date given"/>
+              <answer>
+                <valueDate value="1972-12-04"/>
+              </answer>
+            </item>
           </item>
         </answer>
       </item>

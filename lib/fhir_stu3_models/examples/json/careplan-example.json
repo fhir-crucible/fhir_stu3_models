@@ -3,107 +3,123 @@
   "id": "example",
   "text": {
     "status": "additional",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p> A simple care plan to indicate a patient taking their weight once a day because of obesity.</p>\n    </div>"
+    "div": "<div>\n      <p> A simple care plan to indicate a patient taking their weight once a day because of obesity.\n            Some Notes: </p>\n      <ul>\n        <li>It would be good to have some way of specifying/coding a goal; e.g. what the target weight is</li>\n        <li>In the codeable concepts I've been lazy and just put the text. There should, of course, be a code behind these</li>\n      </ul>\n    </div>"
   },
   "contained": [
     {
       "resourceType": "Condition",
       "id": "p1",
-      "clinicalStatus": "active",
-      "verificationStatus": "confirmed",
+      "patient": {
+        "reference": "Patient/example",
+        "display": "Peter James Chalmers"
+      },
       "code": {
         "text": "Obesity"
       },
+      "verificationStatus": "confirmed"
+    },
+    {
+      "resourceType": "Practitioner",
+      "id": "pr1",
+      "name": [
+        {
+          "family": [
+            "Dietician"
+          ],
+          "given": [
+            "Dorothy"
+          ]
+        }
+      ],
+      "practitionerRole": [
+        {
+          "specialty": [
+            {
+              "text": "Dietician"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resourceType": "Goal",
+      "id": "goal",
+      "extension": [
+        {
+          "extension": [
+            {
+              "url": "goal-target.measure",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://loinc.org",
+                    "code": "29463-7",
+                    "display": "Body weight"
+                  }
+                ]
+              }
+            },
+            {
+              "url": "goal-target.detail",
+              "valueQuantity": {
+                "value": 80,
+                "system": "http://units-of-measure.org",
+                "code": "kg"
+              }
+            }
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/goal-target"
+        }
+      ],
       "subject": {
         "reference": "Patient/example",
         "display": "Peter James Chalmers"
-      }
+      },
+      "description": "Target weight is 80 kg",
+      "status": "planned"
     }
   ],
-  "identifier": [
-    {
-      "value": "12345"
-    }
-  ],
-  "definition": [
-    {
-      "display": "A PlanDefinition protocol for obesity"
-    }
-  ],
-  "basedOn": [
-    {
-      "display": "Management of Type 2 Diabetes"
-    }
-  ],
-  "replaces": [
-    {
-      "display": "Plan from urgent care clinic"
-    }
-  ],
-  "partOf": [
-    {
-      "display": "Overall wellness plan"
-    }
-  ],
-  "status": "active",
-  "intent": "plan",
-  "category": [
-    {
-      "text": "Weight management plan"
-    }
-  ],
-  "description": "Manage obesity and weight loss",
   "subject": {
     "reference": "Patient/example",
     "display": "Peter James Chalmers"
   },
-  "context": {
-    "reference": "Encounter/home"
-  },
+  "status": "active",
   "period": {
-    "end": "2017-06-01"
+    "end": "2013-01-01"
   },
-  "author": [
-    {
-      "reference": "Practitioner/example",
-      "display": "Dr Adam Careful"
-    }
-  ],
-  "careTeam": [
-    {
-      "reference": "CareTeam/example"
-    }
-  ],
   "addresses": [
     {
       "reference": "#p1",
       "display": "obesity"
     }
   ],
+  "participant": [
+    {
+      "role": {
+        "text": "responsiblePerson"
+      },
+      "member": {
+        "reference": "Patient/example",
+        "display": "Peter James Chalmers"
+      }
+    },
+    {
+      "role": {
+        "text": "adviser"
+      },
+      "member": {
+        "reference": "#pr1",
+        "display": "Dorothy Dietition"
+      }
+    }
+  ],
   "goal": [
     {
-      "reference": "Goal/example"
+      "reference": "#goal"
     }
   ],
   "activity": [
     {
-      "outcomeCodeableConcept": [
-        {
-          "coding": [
-            {
-              "system": "http://snomed.info/sct",
-              "code": "161832001",
-              "display": "Progressive weight loss"
-            }
-          ]
-        }
-      ],
-      "outcomeReference": [
-        {
-          "reference": "Observation/example",
-          "display": "Weight Measured"
-        }
-      ],
       "detail": {
         "category": {
           "coding": [
@@ -114,21 +130,8 @@
           ]
         },
         "code": {
-          "coding": [
-            {
-              "system": "http://loinc.org",
-              "code": "3141-9",
-              "display": "Weight Measured"
-            },
-            {
-              "system": "http://snomed.info/sct",
-              "code": "27113001",
-              "display": "Body weight"
-            }
-          ]
+          "text": "a code for weight measurement"
         },
-        "status": "completed",
-        "statusReason": "Achieved weight loss to mitigate diabetes risk.",
         "prohibited": false,
         "scheduledTiming": {
           "repeat": {
@@ -136,9 +139,6 @@
             "period": 1,
             "periodUnit": "d"
           }
-        },
-        "location": {
-          "display": "Patient's home"
         },
         "performer": [
           {

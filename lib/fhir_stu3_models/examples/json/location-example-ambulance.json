@@ -3,7 +3,7 @@
   "id": "amb",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Mobile Clinic</div>"
+    "div": "<div>Mobile Clinic</div>"
   },
   "status": "active",
   "name": "BUMC Ambulance",

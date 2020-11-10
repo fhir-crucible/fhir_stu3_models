@@ -3,10 +3,10 @@
   "id": "example-disclosure",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Disclosure by some idiot, for marketing reasons, to places unknown, of a Poor Sap, data about Everthing important.</div>"
+    "div": "<div>Disclosure by some idiot, for marketing reasons, to places unknown, of a Poor Sap, data about Everthing important.</div>"
   },
   "type": {
-    "system": "http://dicom.nema.org/resources/ontology/DCM",
+    "system": "http://nema.org/dicom/dicm",
     "code": "110106",
     "display": "Export"
   },
@@ -22,22 +22,21 @@
   "outcomeDesc": "Successful  Disclosure",
   "purposeOfEvent": [
     {
-      "coding": [
-        {
-          "system": "http://hl7.org/fhir/v3/ActReason",
-          "code": "HMARKT",
-          "display": "healthcare marketing"
-        }
-      ]
+      "system": "http://hl7.org/fhir/v3/ActReason",
+      "code": "HMARKT",
+      "display": "healthcare marketing"
     }
   ],
   "agent": [
     {
       "role": [
         {
+          "fhir_comments": [
+            "  who disclosed the data  "
+          ],
           "coding": [
             {
-              "system": "http://dicom.nema.org/resources/ontology/DCM",
+              "system": "http://nema.org/dicom/dicm",
               "code": "110153",
               "display": "Source Role ID"
             }
@@ -64,9 +63,12 @@
     {
       "role": [
         {
+          "fhir_comments": [
+            "  who received the data  "
+          ],
           "coding": [
             {
-              "system": "http://dicom.nema.org/resources/ontology/DCM",
+              "system": "http://nema.org/dicom/dicm",
               "code": "110152",
               "display": "Destination Role ID"
             }
@@ -86,19 +88,20 @@
       },
       "purposeOfUse": [
         {
-          "coding": [
-            {
-              "system": "http://hl7.org/fhir/v3/ActReason",
-              "code": "HMARKT",
-              "display": "healthcare marketing"
-            }
-          ]
+          "system": "http://hl7.org/fhir/v3/ActReason",
+          "code": "HMARKT",
+          "display": "healthcare marketing"
         }
       ]
     }
   ],
   "source": {
     "site": "Watcher",
+    "_site": {
+      "fhir_comments": [
+        "  what system detected this disclosure  "
+      ]
+    },
     "identifier": {
       "value": "Watchers Accounting of Disclosures Application"
     },
@@ -113,6 +116,9 @@
   "entity": [
     {
       "reference": {
+        "fhir_comments": [
+          "  patient whos data got disclosed  "
+        ],
         "reference": "Patient/example"
       },
       "type": {
@@ -121,13 +127,16 @@
         "display": "Person"
       },
       "role": {
-        "system": "http://hl7.org/fhir/object-role",
+        "system": "http://hl7.org/fhir/valueset-object-role",
         "code": "1",
         "display": "Patient"
       }
     },
     {
       "identifier": {
+        "fhir_comments": [
+          "  data that got disclosed  "
+        ],
         "value": "What.id"
       },
       "reference": {
@@ -139,12 +148,12 @@
         "display": "System Object"
       },
       "role": {
-        "system": "http://hl7.org/fhir/object-role",
+        "system": "http://hl7.org/fhir/valueset-object-role",
         "code": "4",
-        "display": "Domain Resource"
+        "display": "DomainResource"
       },
       "lifecycle": {
-        "system": "http://hl7.org/fhir/dicom-audit-lifecycle",
+        "system": "http://hl7.org/fhir/object-lifecycle",
         "code": "11",
         "display": "Disclosure"
       },

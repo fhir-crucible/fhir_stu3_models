@@ -3,50 +3,25 @@
   "id": "meddisp008",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: meddisp008</p><p><b>contained</b>: </p><p><b>status</b>: completed</p><p><b>medication</b>: id: medexample015; Capecitabine 500mg oral tablet (Xeloda) <span>(Details : {RxNorm code '213293' = '213293', given as 'Capecitabine 500mg oral tablet (Xeloda)'})</span>; isBrand</p><p><b>subject</b>: <a>Donald Duck</a></p><h3>Performers</h3><table><tr><td>-</td><td><b>Actor</b></td><td><b>OnBehalfOf</b></td></tr><tr><td>*</td><td><a>Practitioner/f006</a></td><td><a>Organization/2.16.840.1.113883.19.5</a></td></tr></table><p><b>authorizingPrescription</b>: <a>MedicationRequest/medrx0309</a></p><p><b>dosageInstruction</b>: </p></div>"
+    "div": "<div>\n\t\t\t<p>\n\t\t\t\t<big>Capecitabine (Recurrent/Metastatic)</big>\n\t\t\t</p>\n\t\t\t<p>Course:</p>\n\t\t\t<p>Name: Capecitabine</p>\n\t\t\t<p>Agent Protocols Options:</p>\n\t\t\t<p>\n\t\t\t\t<b>Capecitabine 1000-1250 mg/m^2 PO twice daily D1-14</b>\n\t\t\t</p>\n\t\t\t<p>Offset: None</p>\n\t\t\t<p>Cycle length: Q21D</p>\n\t\t</div>"
   },
-  "contained": [
-    {
-      "resourceType": "Medication",
-      "id": "medexample015",
-      "code": {
-        "coding": [
-          {
-            "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-            "code": "213293",
-            "display": "Capecitabine 500mg oral tablet (Xeloda)"
-          }
-        ]
-      },
-      "isBrand": true
-    }
-  ],
   "status": "completed",
   "medicationReference": {
-    "reference": "#medexample015"
+    "reference": "Medication/f001"
   },
-  "subject": {
-    "reference": "Patient/pat1",
-    "display": "Donald Duck"
+  "patient": {
+    "reference": "Patient/example"
   },
-  "performer": [
-    {
-      "actor": {
-        "reference": "Practitioner/f006"
-      },
-      "onBehalfOf": {
-        "reference": "Organization/2.16.840.1.113883.19.5"
-      }
-    }
-  ],
+  "dispenser": {
+    "reference": "Practitioner/example"
+  },
   "authorizingPrescription": [
     {
-      "reference": "MedicationRequest/medrx0309"
+      "reference": "MedicationOrder/medrx006"
     }
   ],
   "dosageInstruction": [
     {
-      "sequence": 1,
       "timing": {
         "repeat": {
           "frequency": 2,
@@ -64,10 +39,10 @@
         ]
       },
       "doseQuantity": {
-        "value": 500,
-        "unit": "mg",
+        "value": 1000,
+        "unit": "mg/m^2",
         "system": "http://unitsofmeasure.org",
-        "code": "mg"
+        "code": "ml"
       }
     }
   ]

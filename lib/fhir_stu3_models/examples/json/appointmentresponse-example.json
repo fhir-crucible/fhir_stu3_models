@@ -3,7 +3,7 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Accept Brian MRI results discussion</div>"
+    "div": "<div>Accept Brian MRI results discussion</div>"
   },
   "appointment": {
     "reference": "Appointment/example",

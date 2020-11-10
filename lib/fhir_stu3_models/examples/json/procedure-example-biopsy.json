@@ -3,19 +3,12 @@
   "id": "biopsy",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Biopsy of suspected melanoma L) arm</div>"
+    "div": "<div>Biopsy of suspected melanoma L) arm</div>"
+  },
+  "subject": {
+    "reference": "Patient/example"
   },
   "status": "completed",
-  "category": {
-    "coding": [
-      {
-        "system": "http://snomed.info/sct",
-        "code": "103693007",
-        "display": "Diagnostic procedure (procedure)"
-      }
-    ],
-    "text": "Diagnostic procedure"
-  },
   "code": {
     "coding": [
       {
@@ -26,23 +19,6 @@
     ],
     "text": "Biopsy of suspected melanoma L) arm"
   },
-  "subject": {
-    "reference": "Patient/example"
-  },
-  "performedDateTime": "2014-02-03",
-  "performer": [
-    {
-      "actor": {
-        "reference": "Practitioner/example",
-        "display": "Dr Bert Biopser"
-      }
-    }
-  ],
-  "reasonCode": [
-    {
-      "text": "Dark lesion l) forearm. getting darker last 3 months."
-    }
-  ],
   "bodySite": [
     {
       "coding": [
@@ -55,38 +31,26 @@
       "text": "Left forearm"
     }
   ],
-  "complication": [
+  "reasonCodeableConcept": {
+    "text": "Dark lesion l) forearm. getting darker last 3 months."
+  },
+  "performer": [
     {
-      "coding": [
-        {
-          "system": "http://snomed.info/sct",
-          "code": "67750007",
-          "display": "Ineffective airway clearance (finding)"
-        }
-      ],
-      "text": "Ineffective airway clearance"
+      "actor": {
+        "reference": "Practitioner/example",
+        "display": "Dr Bert Biopser"
+      }
     }
   ],
+  "performedDateTime": "2014-02-03",
   "followUp": [
     {
       "text": "Review in clinic"
     }
   ],
-  "note": [
+  "notes": [
     {
       "text": "Standard Biopsy"
-    }
-  ],
-  "usedCode": [
-    {
-      "coding": [
-        {
-          "system": "http://snomed.info/sct",
-          "code": "79068005",
-          "display": "Needle, device (physical object)"
-        }
-      ],
-      "text": "30-guage needle"
     }
   ]
 }

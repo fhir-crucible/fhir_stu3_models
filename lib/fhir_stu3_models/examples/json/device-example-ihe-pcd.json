@@ -3,7 +3,7 @@
   "id": "ihe-pcd",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>Acme Patient Monitor</p>\n    </div>"
+    "div": "<div>\n      <p>Acme Patient Monitor</p>\n    </div>"
   },
   "identifier": [
     {

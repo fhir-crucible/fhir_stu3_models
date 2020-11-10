@@ -3,7 +3,7 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>Dr Adam Careful is a Referring Practitioner for Acme Hospital from 1-Jan 2012 to 31-Mar\n        2012</p>\n    </div>"
+    "div": "<div>\n      <p>Dr Adam Careful is a Referring Practitioner for Acme Hospital from 1-Jan 2012 to 31-Mar\n        2012</p>\n    </div>"
   },
   "identifier": [
     {
@@ -14,7 +14,9 @@
   "active": true,
   "name": [
     {
-      "family": "Careful",
+      "family": [
+        "Careful"
+      ],
       "given": [
         "Adam"
       ],
@@ -23,15 +25,37 @@
       ]
     }
   ],
-  "address": [
+  "practitionerRole": [
     {
-      "use": "home",
-      "line": [
-        "534 Erewhon St"
+      "organization": {
+        "reference": "Organization/f001"
+      },
+      "role": {
+        "fhir_comments": [
+          "  Referring Practitioner for the first 3 months of 2012  "
+        ],
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/v2/0286",
+            "code": "RP"
+          }
+        ]
+      },
+      "period": {
+        "start": "2012-01-01",
+        "end": "2012-03-31"
+      },
+      "location": [
+        {
+          "reference": "Location/1",
+          "display": "South Wing, second floor"
+        }
       ],
-      "city": "PleasantVille",
-      "state": "Vic",
-      "postalCode": "3999"
+      "healthcareService": [
+        {
+          "reference": "HealthcareService/example"
+        }
+      ]
     }
   ],
   "qualification": [
@@ -43,13 +67,6 @@
         }
       ],
       "code": {
-        "coding": [
-          {
-            "system": "http://hl7.org/fhir/v2/0360/2.7",
-            "code": "BS",
-            "display": "Bachelor of Science"
-          }
-        ],
         "text": "Bachelor of Science"
       },
       "period": {

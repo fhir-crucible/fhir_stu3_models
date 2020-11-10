@@ -43,10 +43,6 @@
   <modifierExtension url="http://example.org/do-not-use/fhir-extensions/referral#status">
     <valueCode value="complete"/>
   </modifierExtension>
-  <identifier>
-    <system value="http://goodhealth.org/basic/identifiers"/>
-    <value value="19283746"/>
-  </identifier>
   <code>
     <coding>
       <system value="http://hl7.org/fhir/basic-resource-type"/>

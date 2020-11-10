@@ -7,34 +7,34 @@
   
   <contained>
     <Organization>
-      <id value="org-insurer"/>
-      <identifier>
-        <system value="http://www.bindb.com/bin"/>
-        <value value="123456"/>
-      </identifier>
-    </Organization>
-  </contained>
-
-  <contained>
-    <Organization>
-      <id value="org-org"/>
+      <id value="organization-1"/>
       <identifier>
         <system value="http://www.jurisdiction.com/oralhealthoffices"/>
         <value value="3456"/>
       </identifier>
     </Organization>
   </contained>
-
+  
+  <contained>
+    <Organization>
+      <id value="organization-2"/>
+      <identifier>
+        <system value="http://www.bindb.com/bin"/>
+        <value value="123456"/>
+      </identifier>
+    </Organization>
+  </contained>
+  
   <contained>
     <Practitioner>
-      <id value="provider-1"/>
+      <id value="practitioner-1"/>
       <identifier>
         <system value="http://www.jurisdiction.com/oralhealthproviders"/>
         <value value="123456789"/>
       </identifier>
     </Practitioner>
   </contained>
- 
+  
   <contained>
     <Patient>
       <id value="patient-1"/>
@@ -58,130 +58,95 @@
   <contained>
     <Coverage>
       <id value="coverage-1"/>
+      <issuerReference>
+        <reference value="#organization-2"/>
+      </issuerReference>
+      <type>
+        <system value="http://hl7.org/fhir/v3/ActCode"/>
+        <code value="EHCPOL"/>
+      </type>
+	  <planholderReference>
+	     <reference value="#patient-1"/>
+      </planholderReference>
+ 
+      <beneficiaryReference>
+	     <reference value="#patient-1"/>
+      </beneficiaryReference>
+ 
+      <relationship>
+        <code value="self"/>
+      </relationship>
 	  
       <identifier>
         <system value="http://benefitsinc.com/certificate"/>
         <value value="12345"/>
       </identifier>
-
-      <status value="active"/>
-
-      <type>
-	   <coding>
-        <system value="http://hl7.org/fhir/v3/ActCode"/>
-        <code value="EHCPOL"/>
-       </coding>
-	  </type>
-	  
-      <subscriber>
-        <reference value="#patient-1"/>
-      </subscriber>
- 
-      <beneficiary>
-        <reference value="#patient-1"/>
-      </beneficiary>
- 
-      <relationship>
-	   <coding>
-        <code value="self"/>
-       </coding>
-	  </relationship>
-
-      <payor>
-	    <identifier>
-          <system value="http://www.bindb.com/bin"/>
-          <value value="123456"/>
-	    </identifier>
-      </payor>
-	  
-	  <grouping>
-	    <plan value="CBI35"/>
-        <planDisplay value="Corporate Baker&#39;s Inc. Plan#35"/>
-        <subPlan value="123"/>
-        <subPlanDisplay value="Trainee Part-time Benefits"/>
-	  </grouping> 
-	  	  
+      <plan value="CBI35"/>
+      <subPlan value="123"/>
       <dependent value="1"/>
       <sequence value="1"/>
     </Coverage>
   </contained>
+  
+  <type value="oral"/>
   
   <identifier>
     <system value="http://happyvalley.com/claim"/>
     <value value="12347"/>
   </identifier>
   
-  <status value="active"/>
-  
-  <type>
-   <coding>
-    <system value="http://hl7.org/fhir/ex-claimtype"/>
-    <code value="oral"/>
-   </coding>
-  </type>
-
-  <use value="complete"/>
-  
-  <patient>
-    <reference value="#patient-1"/>
-  </patient>
-
   <created value="2014-08-16"/>
   
-  <insurer>
-    <reference value="#org-insurer"/>
-  </insurer>
+  <targetReference>
+    <reference value="#organization-2"/>
+  </targetReference>
   
-  <organization>
-    <reference value="#org-org"/>
-  </organization>  
+  <organizationReference>
+    <reference value="#organization-1"/>
+  </organizationReference>
+  
+  <use value="complete"/>
   
   <priority>
-   <coding>
     <code value="normal"/>
-   </coding>
   </priority>
   
   <payee>
     <type>
-	 <coding>
       <code value="provider"/>
-     </coding>
-	</type>
+    </type>
   </payee>
-
-   <careTeam>
-    <sequence value="1"/>
-    <provider>
-      <reference value="#provider-1"/>
-    </provider>
-   </careTeam>
   
   <diagnosis>
     <sequence value="1"/>
-    <diagnosisCodeableConcept>
-	 <coding>
+    <diagnosis>
       <code value="123456"/>
-     </coding>
-	</diagnosisCodeableConcept>
+    </diagnosis>
   </diagnosis>
   
-  <insurance>
+  <patientReference>
+    <reference value="#patient-1"/>
+  </patientReference>
+  
+  <coverage>
     <sequence value="1"/>
     <focal value="true"/>
-    <coverage>
+    <coverageReference>
       <reference value="#coverage-1"/>
-    </coverage>
-  </insurance>
+    </coverageReference>
+  </coverage>
   
   <item>
     <sequence value="1"/>
-    <careTeamLinkId value="1"/>
+    <type>
+      <code value="service"/>
+    </type>
+    <providerReference>
+      <reference value="#practitioner-1"/>
+    </providerReference>
     <service>
-	 <coding>
       <code value="1200"/>
-     </coding>
-	</service>
+    </service>
     <servicedDate value="2014-08-16"/>
     <unitPrice>
       <value value="135.57"/>

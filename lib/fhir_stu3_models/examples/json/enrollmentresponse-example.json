@@ -3,7 +3,7 @@
   "id": "ER2500",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the EnrollmentResponse</div>"
+    "div": "<div>A human-readable rendering of the EnrollmentResponse</div>"
   },
   "identifier": [
     {
@@ -11,21 +11,16 @@
       "value": "781234"
     }
   ],
-  "status": "active",
   "request": {
     "reference": "http://www.BenefitsInc.com/fhir/EnrollmentRequest/225476332402"
   },
-  "outcome": {
-    "coding": [
-      {
-        "system": "http://hl7.org/fhir/remittance-outcome",
-        "code": "complete"
-      }
-    ]
-  },
+  "outcome": "complete",
   "disposition": "Dependant added to policy.",
   "created": "2014-08-16",
   "organization": {
     "reference": "Organization/2"
+  },
+  "requestOrganization": {
+    "reference": "Organization/1"
   }
 }

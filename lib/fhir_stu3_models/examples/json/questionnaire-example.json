@@ -3,19 +3,18 @@
   "id": "3141",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <pre>\n            1.Comorbidity?\n              1.1 Cardial Comorbidity\n                1.1.1 Angina?\n                1.1.2 MI?\n              1.2 Vascular Comorbidity?\n              ...\n            Histopathology\n              Abdominal\n                pT category?\n              ...\n          </pre>\n    </div>"
+    "div": "<div>\n      <pre>\n            Comorbidity? YES\n              Cardial Comorbidity? YES\n                Angina? YES\n                MI? NO\n              Vascular Comorbidity?\n                (no answers)\n              ...\n            Histopathology\n              Abdominal\n                pT category: 1a\n              ...\n          </pre>\n    </div>"
   },
-  "url": "http://hl7.org/fhir/Questionnaire/3141",
-  "title": "Cancer Quality Forum Questionnaire 2012",
   "status": "draft",
   "date": "2012-01",
+  "title": "Cancer Quality Forum Questionnaire 2012",
   "subjectType": [
     "Patient"
   ],
   "item": [
     {
       "linkId": "1",
-      "code": [
+      "concept": [
         {
           "system": "http://example.org/system/code/sections",
           "code": "COMORBIDITY"
@@ -25,13 +24,12 @@
       "item": [
         {
           "linkId": "1.1",
-          "code": [
+          "concept": [
             {
               "system": "http://example.org/system/code/questions",
               "code": "COMORB"
             }
           ],
-          "prefix": "1",
           "type": "choice",
           "options": {
             "reference": "http://hl7.org/fhir/ValueSet/yesnodontknow"
@@ -39,83 +37,55 @@
           "item": [
             {
               "linkId": "1.1.1",
-              "code": [
+              "concept": [
                 {
                   "system": "http://example.org/system/code/sections",
                   "code": "CARDIAL"
                 }
               ],
               "type": "group",
-              "enableWhen": [
-                {
-                  "question": "1.1",
-                  "answerCoding": {
-                    "system": "http://hl7.org/fhir/v2/0136",
-                    "code": "Y"
-                  }
-                }
-              ],
               "item": [
                 {
                   "linkId": "1.1.1.1",
-                  "code": [
+                  "concept": [
                     {
                       "system": "http://example.org/system/code/questions",
                       "code": "COMORBCAR"
                     }
                   ],
-                  "prefix": "1.1",
                   "type": "choice",
                   "options": {
                     "reference": "http://hl7.org/fhir/ValueSet/yesnodontknow"
-                  },
-                  "item": [
-                    {
-                      "linkId": "1.1.1.1.1",
-                      "code": [
-                        {
-                          "system": "http://example.org/system/code/questions",
-                          "code": "COMCAR00",
-                          "display": "Angina Pectoris"
-                        },
-                        {
-                          "system": "http://snomed.info/sct",
-                          "code": "194828000",
-                          "display": "Angina (disorder)"
-                        }
-                      ],
-                      "prefix": "1.1.1",
-                      "type": "choice",
-                      "options": {
-                        "reference": "http://hl7.org/fhir/ValueSet/yesnodontknow"
-                      }
-                    },
-                    {
-                      "linkId": "1.1.1.1.2",
-                      "code": [
-                        {
-                          "system": "http://snomed.info/sct",
-                          "code": "22298006",
-                          "display": "Myocardial infarction (disorder)"
-                        }
-                      ],
-                      "prefix": "1.1.2",
-                      "type": "choice",
-                      "options": {
-                        "reference": "http://hl7.org/fhir/ValueSet/yesnodontknow"
-                      }
-                    }
-                  ]
+                  }
                 },
                 {
                   "linkId": "1.1.1.2",
-                  "code": [
+                  "concept": [
                     {
                       "system": "http://example.org/system/code/questions",
-                      "code": "COMORBVAS"
+                      "code": "COMCAR00",
+                      "display": "Angina Pectoris"
+                    },
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "194828000",
+                      "display": "Angina (disorder)"
                     }
                   ],
-                  "prefix": "1.2",
+                  "type": "choice",
+                  "options": {
+                    "reference": "http://hl7.org/fhir/ValueSet/yesnodontknow"
+                  }
+                },
+                {
+                  "linkId": "1.1.1.3",
+                  "concept": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "22298006",
+                      "display": "Myocardial infarction (disorder)"
+                    }
+                  ],
                   "type": "choice",
                   "options": {
                     "reference": "http://hl7.org/fhir/ValueSet/yesnodontknow"
@@ -129,7 +99,7 @@
     },
     {
       "linkId": "2",
-      "code": [
+      "concept": [
         {
           "system": "http://example.org/system/code/sections",
           "code": "HISTOPATHOLOGY"
@@ -139,7 +109,7 @@
       "item": [
         {
           "linkId": "2.1",
-          "code": [
+          "concept": [
             {
               "system": "http://example.org/system/code/sections",
               "code": "ABDOMINAL"
@@ -149,7 +119,7 @@
           "item": [
             {
               "linkId": "2.1.2",
-              "code": [
+              "concept": [
                 {
                   "system": "http://example.org/system/code/questions",
                   "code": "STADPT",

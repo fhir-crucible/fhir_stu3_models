@@ -3,7 +3,7 @@
   "id": "1",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Burgers UMC, South Wing, second floor</div>"
+    "div": "<div>Burgers UMC, South Wing, second floor</div>"
   },
   "extension": [
     {
@@ -40,7 +40,7 @@
       "value": "second wing admissions"
     },
     {
-      "system": "url",
+      "system": "other",
       "value": "http://sampleorg.com/southwing",
       "use": "work"
     }
@@ -70,10 +70,5 @@
   },
   "managingOrganization": {
     "reference": "Organization/f001"
-  },
-  "endpoint": [
-    {
-      "reference": "Endpoint/example"
-    }
-  ]
+  }
 }

@@ -2,54 +2,39 @@
   "resourceType": "ValueSet",
   "id": "list-example-codes",
   "meta": {
-    "lastUpdated": "2017-04-26T18:33:43.228-04:00",
+    "lastUpdated": "2016-03-31T08:59:41.431-04:00",
     "profile": [
-      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+      "http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"
     ]
   },
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>Example Use Codes for List</h2><div><p>Example use codes for the List resource - typical kinds of use.</p>\n</div><p>This value set includes codes from the following code systems:</p><ul><li>Include all codes defined in <a href=\"codesystem-list-example-codes.html\"><code>http://hl7.org/fhir/list-example-use-codes</code></a></li></ul></div>"
+    "div": "<div><h2>Example Use Codes for List</h2><p>Example use codes for the List resource - typical kinds of use.</p><p>This value set includes codes from the following code systems:</p><ul><li>Include all codes defined in <a href=\"codesystem-list-example-codes.html\">http://hl7.org/fhir/list-example-use-codes</a></li></ul></div>"
   },
   "extension": [
     {
-      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-ballot-status",
-      "valueString": "Informative"
-    },
-    {
-      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
-      "valueInteger": 1
-    },
-    {
-      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
-      "valueCode": "fhir"
+      "url": "http://hl7.org/fhir/StructureDefinition/valueset-oid",
+      "valueUri": "urn:oid:2.16.840.1.113883.4.642.2.173"
     }
   ],
   "url": "http://hl7.org/fhir/ValueSet/list-example-codes",
-  "identifier": [
-    {
-      "system": "urn:ietf:rfc:3986",
-      "value": "urn:oid:2.16.840.1.113883.4.642.3.307"
-    }
-  ],
-  "version": "3.0.0",
+  "version": "1.4.0",
   "name": "Example Use Codes for List",
   "status": "draft",
   "experimental": true,
-  "date": "2017-04-26T18:33:43-04:00",
   "publisher": "FHIR Project",
   "contact": [
     {
       "telecom": [
         {
-          "system": "url",
+          "system": "other",
           "value": "http://hl7.org/fhir"
         }
       ]
     }
   ],
+  "date": "2016-03-31T08:59:41-04:00",
   "description": "Example use codes for the List resource - typical kinds of use.",
-  "immutable": true,
   "compose": {
     "include": [
       {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><Substance xmlns="http://hl7.org/fhir">
 	<id value="f204"/>
-	<text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f204</p><p><b>identifier</b>: 15970</p><p><b>category</b>: Chemical <span>(Details : {http://hl7.org.fhir/substance-category code &#39;chemical&#39; = &#39;chemical&#39;, given as &#39;Chemical&#39;})</span></p><p><b>code</b>: Silver nitrate 20% solution (product) <span>(Details : {SNOMED CT code &#39;333346007&#39; = &#39;Silver nitrate 20% solution&#39;, given as &#39;Silver nitrate 20% solution (product)&#39;})</span></p><p><b>description</b>: Solution for silver nitrate stain</p><h3>Instances</h3><table><tr><td>-</td><td><b>Identifier</b></td><td><b>Expiry</b></td><td><b>Quantity</b></td></tr><tr><td>*</td><td>AB94687</td><td>Jan 1, 2018</td><td>100 mL<span> (Details: UCUM code mL = &#39;mL&#39;)</span></td></tr></table></div></text><identifier>
-		<system value="http://acme.org/identifiers/substances"/>
+	<text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f204</p><p><b>identifier</b>: 15970</p><p><b>category</b>: Chemical <span>(Details : {http://hl7.org.fhir/substance-category code &#39;chemical&#39; = &#39;??&#39;, given as &#39;Chemical&#39;})</span></p><p><b>code</b>: Silver nitrate 20% solution (product) <span>(Details : {SNOMED CT code &#39;333346007&#39; = &#39;Silver nitrate 20% solution (product)&#39;, given as &#39;Silver nitrate 20% solution (product)&#39;})</span></p><p><b>description</b>: Solution for silver nitrate stain</p><h3>Instances</h3><table><tr><td>-</td><td><b>Identifier</b></td><td><b>Expiry</b></td><td><b>Quantity</b></td></tr><tr><td>*</td><td>AB94687</td><td>Jan 1, 2018</td><td>100 mL<span> (Details: http://unitsofmeasure.org code mL = &#39;mL&#39;)</span></td></tr></table></div></text><identifier>
+		<system value="http://acme.org/indentifiers/substances"/>
 		<value value="15970"/>
 	</identifier>
 	<category>
@@ -21,7 +21,7 @@
 	<description value="Solution for silver nitrate stain"/>
 	<instance>
 		<identifier>
-			<system value="http://acme.org/identifiers/substances/lot"/>
+			<system value="http://acme.org/indentifiers/substances/lot"/>
 			<value value="AB94687"/>
 		</identifier>
 		<expiry value="2018-01-01"/>

@@ -1,39 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?><MedicationDispense xmlns="http://hl7.org/fhir">
 	<id value="meddisp008"/>
-	<text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: meddisp008</p><p><b>contained</b>: </p><p><b>status</b>: completed</p><p><b>medication</b>: id: medexample015; Capecitabine 500mg oral tablet (Xeloda) <span>(Details : {RxNorm code &#39;213293&#39; = &#39;213293&#39;, given as &#39;Capecitabine 500mg oral tablet (Xeloda)&#39;})</span>; isBrand</p><p><b>subject</b>: <a>Donald Duck</a></p><h3>Performers</h3><table><tr><td>-</td><td><b>Actor</b></td><td><b>OnBehalfOf</b></td></tr><tr><td>*</td><td><a>Practitioner/f006</a></td><td><a>Organization/2.16.840.1.113883.19.5</a></td></tr></table><p><b>authorizingPrescription</b>: <a>MedicationRequest/medrx0309</a></p><p><b>dosageInstruction</b>: </p></div></text><contained>
-		<Medication>
-			<id value="medexample015"/>
-		<code>
-			<coding>
-				<system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
-				<code value="213293"/>
-				<display value="Capecitabine 500mg oral tablet (Xeloda)"/>
-			</coding>
-		</code>
-		<isBrand value="true"/>
-		</Medication>
-	</contained>
+	<text>
+		<status value="generated"/>
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<p>
+				<big>Capecitabine (Recurrent/Metastatic)</big>
+			</p>
+			<p>Course:</p>
+			<p>Name: Capecitabine</p>
+			<p>Agent Protocols Options:</p>
+			<p>
+				<b>Capecitabine 1000-1250 mg/m^2 PO twice daily D1-14</b>
+			</p>
+			<p>Offset: None</p>
+			<p>Cycle length: Q21D</p>
+		</div>
+	</text>
 	<status value="completed"/>
 	<medicationReference>
-		<reference value="#medexample015"/>
+		<reference value="Medication/f001"/>
 	</medicationReference>
-	<subject>
-		<reference value="Patient/pat1"/>
-		<display value="Donald Duck"/> 
-	</subject>
-	<performer>
-		<actor>
-			<reference value="Practitioner/f006"/>
-		</actor>
-		<onBehalfOf>
-			<reference value="Organization/2.16.840.1.113883.19.5"/>
-		</onBehalfOf>
-	</performer>
+	<patient>
+		<reference value="Patient/example"/>
+	</patient>
+	<dispenser>
+		<reference value="Practitioner/example"/>
+	</dispenser>
 	<authorizingPrescription>
-		<reference value="MedicationRequest/medrx0309"/>
+		<reference value="MedicationOrder/medrx006"/>
 	</authorizingPrescription>
 		<dosageInstruction>
-			<sequence value="1"/>
 		<timing>
 			<repeat>
 				<frequency value="2"/>
@@ -49,10 +45,10 @@
 			</coding>
 		</route>
 		<doseQuantity>
-			<value value="500"/>
-			<unit value="mg"/>
+			<value value="1000"/>
+			<unit value="mg/m^2"/>
 			<system value="http://unitsofmeasure.org"/>
-			<code value="mg"/>
+			<code value="ml"/>
 		</doseQuantity>
 	</dosageInstruction>
 </MedicationDispense>

@@ -1,58 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><GuidanceResponse xmlns="http://hl7.org/fhir">
   <id value="example"/>
-  <!--   This example demonstrates the response to an $evaluate operation using the GuidanceResponse resource.   -->
-  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p><p><b>contained</b>: </p><p><b>requestId</b>: guidanceRequest1</p><p><b>identifier</b>: guidanceResponse1</p><p><b>module</b>: <a>ServiceDefinition/example</a></p><p><b>status</b>: success</p><p><b>subject</b>: <a>Patient/example</a></p><p><b>context</b>: <a>Encounter/example</a></p><p><b>occurrenceDateTime</b>: Mar 10, 2017 4:02:00 PM</p><p><b>performer</b>: <a>Device/software</a></p><p><b>reason</b>: Guideline Appropriate Ordering Assessment <span>(Details )</span></p><p><b>outputParameters</b>: id: outputParameters1</p></div></text><contained>
-    <Parameters>
-      <id value="outputParameters1"/>
-      <parameter>
-        <name value="score"/>
-        <valueDecimal value="7"/>
-      </parameter>
-      <parameter>
-        <name value="item-assessed"/>
-		<valueCodeableConcept>
-		  <coding>
-			<system value="http://www.ama-assn.org/go/cpt"/>
-			<code value="70450"/>
-			<display value="CT, head, wo iv contrast"/>
-		  </coding>
-		</valueCodeableConcept>
-      </parameter>
-      <parameter>
-        <name value="device"/>
-        <valueReference>
-          <reference value="Device/software"/>
-        </valueReference>
-      </parameter>
-      <parameter>
-        <name value="guideline-followed"/>
-        <valueUri value="http://someguidelineprovider.org/radiology-appropriateness-guidelines.html"/>
-      </parameter>
-    </Parameters>
-  </contained>
-  <requestId value="guidanceRequest1"/>
-  <identifier>
-    <system value="http://example.org"/>
-    <value value="guidanceResponse1"/>
-  </identifier>
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>
+  </text>
+  
   <module>
-    <reference value="ServiceDefinition/example"/>
+	  <reference value="DecisionSupportServiceModule/example"/>
   </module>
+  
   <status value="success"/>
-  <subject>
-    <reference value="Patient/example"/>
-  </subject>
-  <context>
-    <reference value="Encounter/example"/>
-  </context>
-  <occurrenceDateTime value="2017-03-10T16:02:00Z"/>
-  <performer>
-    <reference value="Device/software"/>
-  </performer>
-  <reasonCodeableConcept>
-    <text value="Guideline Appropriate Ordering Assessment"/>
-  </reasonCodeableConcept>
-  <outputParameters>
-    <reference value="#outputParameters1"/>
-  </outputParameters>
+  
 </GuidanceResponse>

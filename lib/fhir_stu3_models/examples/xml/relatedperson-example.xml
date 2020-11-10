@@ -8,11 +8,11 @@
         <tbody>
           <tr>
             <td>Name</td>
-            <td>B&#xE9;n&#xE9;dicte du March&#xE9;</td>
+            <td>Bénédicte du Marché</td>
           </tr>
           <tr>
             <td>Address</td>
-            <td>43, Place du March&#xE9; Sainte Catherine, 75004 Paris, France</td>
+            <td>43, Place du Marché Sainte Catherine, 75004 Paris, France</td>
           </tr>
           <tr>
             <td>Contacts</td>
@@ -29,7 +29,6 @@
     <system value="urn:oid:1.2.250.1.61"/>
     <value value="272117510400399"/>
   </identifier>
-  <active value="true"/>
 
   <patient>
     <reference value="Patient/example"/>
@@ -37,8 +36,8 @@
   
   <relationship>
     <coding>
-      <system value="http://hl7.org/fhir/v2/0131"/>
-      <code value="N"/>
+      <system value="http://hl7.org/fhir/patient-contact-relationship"/>
+      <code value="partner"/>
     </coding>
     <coding>
       <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -47,13 +46,14 @@
   </relationship>
   
   <name>
-    <family value="du March&#xE9;">
-    <!--   the "du" part is a family name prefix (VV in iso 21090)   -->
-      <extension url="http://hl7.org/fhir/StructureDefinition/humanname-own-prefix">
-        <valueString value="VV"/>
+    <family value="du">
+      <!--  the "du" part is a family name prefix (VV in iso 21090)  -->
+      <extension url="http://hl7.org/fhir/StructureDefinitioniso-21090#qualifier">
+        <valueCode value="VV"/>
       </extension>
     </family>
-    <given value="B&#xE9;n&#xE9;dicte"/>
+    <family value="Marché"/>
+    <given value="Bénédicte"/>
   </name>
 
   <telecom>
@@ -64,7 +64,7 @@
 	<gender value="female"/>
  
   <address>
-    <line value="43, Place du March&#xE9; Sainte Catherine"/>
+    <line value="43, Place du Marché Sainte Catherine"/>
     <city value="Paris"/>
     <postalCode value="75004"/>
     <country value="FRA"/>

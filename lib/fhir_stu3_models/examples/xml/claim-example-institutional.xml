@@ -1,128 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?><Claim xmlns="http://hl7.org/fhir">
-	<id value="960150"/>
+ <id value="960150"/>
 
-	<text>
-		<status value="generated"/>
-		<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Claim</div>
-	</text>
+ <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Claim</div>
+  </text>
 
-	<identifier>
-		<system value="http://happyhospital.com/claim"/>
-		<value value="9612345"/>
-	</identifier>
+  <type value="institutional"/>
+  
+  <identifier>
+    <system value="http://happyhospital.com/claim"/>
+    <value value="9612345"/>
+ </identifier>
+ 
+  <created value="2014-08-16"/>
 
-	<status value="active"/>
+ <targetReference>
+  <reference value="Organization/2"/>
+</targetReference>
 
-	<type>
-		<coding>
-			<system value="http://hl7.org/fhir/ex-claimtype"/>
-			<code value="institutional"/>
-		</coding>
-	</type>
+ <organizationReference>
+    <reference value="Organization/1"/>
+ </organizationReference>
 
-	<subType>
-		<coding>
-			<system value="http://hl7.org/fhir/ex-claimsubtype"/>
-			<code value="emergency"/>
-		</coding>
-	</subType> 
+ <use value="complete"/>
 
-	<use value="complete"/>
+ <priority>
+    <code value="normal"/>
+ </priority>
 
-	<patient>
-		<reference value="Patient/1"/>
-	</patient>
+ <entererIdentifier>
+    <system value="http://jurisdiction.org/facilities/HOSP1234/users"/>
+    <value value="UC1234"/>
+</entererIdentifier>
 
-	<created value="2014-08-16"/>
-
-	<enterer>
-		<identifier>
-			<system value="http://jurisdiction.org/facilities/HOSP1234/users"/>
-			<value value="UC1234"/>
-		</identifier>
-	</enterer>
-
-	<insurer>
-		<reference value="Organization/2"/>
-	</insurer>
-
-	<organization>
-		<reference value="Organization/1"/>
-	</organization>
-
-	<priority>
-		<coding>
-			<code value="normal"/>
-		</coding>
-	</priority>
-
-	<payee>
-		<type>
-			<coding>
-				<code value="provider"/>
-			</coding>
-		</type>
-	</payee>
-
-	<facility>
-		<identifier>
-			<system value="http://jurisdiction.org/facilities"/>
-			<value value="HOSP1234"/>
-		</identifier>
-	</facility>
-
-	<careTeam>
-		<sequence value="1"/>
-		<provider>
-			<reference value="Practitioner/example"/>
-		</provider>
-	</careTeam>
-
+ <facilityIdentifier>
+    <system value="http://jurisdiction.org/facilities"/>
+    <value value="HOSP1234"/>
+</facilityIdentifier>
+ 
+ <payee>
+   <type>
+     <code value="provider"/>
+   </type>
+ </payee>
+ 
+  <diagnosis>
+    <sequence value="1"/>
 	<diagnosis>
-		<sequence value="1"/>
-		<diagnosisCodeableConcept>
-			<coding>
-				<code value="654456"/>
-			</coding>
-		</diagnosisCodeableConcept>
-	</diagnosis>
+	  <code value="654456"/>
+	  </diagnosis>
+  </diagnosis>
+ 
+ <patientReference>
+   <reference value="Patient/1"/>
+ </patientReference>
+ 
+ <coverage>
+   <sequence value="1"/>
+   <focal value="true"/>
+   <coverageReference>
+     <reference value="Coverage/9876B1"/>
+   </coverageReference>
+ </coverage>
+  
+ <item>
+   <sequence value="1"/>
+   <type>
+     <code value="service"/>
+   </type>
+   <providerReference>
+     <reference value="Practitioner/example"/>
+   </providerReference>
+   <service>
+     <system value="http://hl7.org/fhir/ex-serviceproduct"/>
+     <code value="exam"/> 
+   </service>
+   <servicedDate value="2014-08-16"/>
+   <unitPrice>
+      <value value="125.00"/>
+	  <system value="urn:iso:std:iso:4217"/>
+      <code value="USD"/> 
+   </unitPrice> 
+   <net>
+      <value value="125.00"/>
+	  <system value="urn:iso:std:iso:4217"/>
+      <code value="USD"/> 
+   </net> 
+  </item>
 
-	<insurance>
-		<sequence value="1"/>
-		<focal value="true"/>
-		<coverage>
-			<reference value="Coverage/9876B1"/>
-		</coverage>
-	</insurance>
-
-	<item>
-		<sequence value="1"/>
-		<careTeamLinkId value="1"/>
-		<service>
-			<coding>
-				<system value="http://hl7.org/fhir/ex-serviceproduct"/>
-				<code value="exam"/> 
-			</coding>
-		</service>
-		<servicedDate value="2014-08-16"/>
-		<unitPrice>
-			<value value="125.00"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/> 
-		</unitPrice> 
-		<net>
-			<value value="125.00"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/> 
-		</net> 
-		<encounter>
-			<reference value="Encounter/example"/>
-		</encounter>
-	</item>
-
-	<total>
-		<value value="125.00"/>
-		<system value="urn:iso:std:iso:4217"/>
-		<code value="USD"/>  
-	</total>
+  <total>
+    <value value="125.00"/>
+	<system value="urn:iso:std:iso:4217"/>
+    <code value="USD"/>  
+  </total>
 </Claim>

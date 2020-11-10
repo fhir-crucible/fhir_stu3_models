@@ -1,13 +1,19 @@
 {
   "resourceType": "NutritionOrder",
   "id": "diabeticsupplement",
+  "_id": {
+    "fhir_comments": [
+      "   id = diabeticsupplement  file name = nutritionorder-example-diabeticsupplement.xml Name= Diabetic Supplement  Description = Nutrition Order Diabetic Supplement Canonical Example\nedited by Eric Haas Health eData Inc\n\n  ",
+      "   EH: use supplement element   "
+    ]
+  },
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: diabeticsupplement</p><p><b>identifier</b>: 123</p><p><b>status</b>: active</p><p><b>patient</b>: <a>Peter Chalmers</a></p><p><b>encounter</b>: <a>Inpatient</a></p><p><b>dateTime</b>: Sep 17, 2014</p><p><b>orderer</b>: <a>Dr Adam Careful</a></p><p><b>allergyIntolerance</b>: <a>Cashew Nuts</a></p><p><b>foodPreferenceModifier</b>: Kosher <span>(Details : {http://hl7.org/fhir/diet code 'kosher' = 'Kosher)</span></p><p><b>excludeFoodModifier</b>: Cashew Nut <span>(Details : {SNOMED CT code '227493005' = 'Cashew nuts', given as 'Cashew Nut'})</span></p><h3>Supplements</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>ProductName</b></td><td><b>Schedule</b></td><td><b>Quantity</b></td></tr><tr><td>*</td><td>Adult diabetic formula <span>(Details : {SNOMED CT code '443051000124104' = 'Adult diabetic specialty formula (product)', given as 'Adult diabetes specialty formula'}; {http://goodhealthhospital.org/supplement-type-codes code '1010' = '1010', given as 'Adult diabetic formula'})</span></td><td>Glucerna</td><td>Starting Feb 10, 2015 3:00:00 PM, Do Once per 24 hours</td><td>1 8 oz bottle</td></tr></table></div>"
+    "div": "<div><p><b>Generated Narrative with Details</b></p><p><b>id</b>: diabeticsupplement</p><p><b>identifier</b>: 123</p><p><b>status</b>: active</p><p><b>patient</b>: <a>Peter Chalmers</a></p><p><b>encounter</b>: <a>Inpatient</a></p><p><b>dateTime</b>: Sep 17, 2014</p><p><b>orderer</b>: <a>Dr Adam Careful</a></p><p><b>allergyIntolerance</b>: <a>Cashew Nuts</a></p><p><b>foodPreferenceModifier</b>: Kosher <span>(Details : {http://hl7.org/fhir/diet code 'kosher' = 'Kosher)</span></p><p><b>excludeFoodModifier</b>: Cashew Nut <span>(Details : {SNOMED CT code '227493005' = 'Cashew nut (substance)', given as 'Cashew Nut'})</span></p><h3>Supplements</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>ProductName</b></td><td><b>Schedule</b></td><td><b>Quantity</b></td></tr><tr><td>*</td><td>Adult diabetic formula <span>(Details : {SNOMED CT code '443051000124104' = 'Adult diabetic specialty formula (product)', given as 'Adult diabetes specialty formula'}; {http://goodhealthhospital.org/supplement-type-codes code '1010' = '??', given as 'Adult diabetic formula'})</span></td><td>Glucerna</td><td>Starting Feb 10, 2015 10:00:00 AM, Do Once per 24 hours</td><td>1 8 oz bottle</td></tr></table></div>"
   },
   "identifier": [
     {
-      "system": "http://goodhealthhospital.org/nutrition-requests",
+      "system": "http://goodhealthhospital.org/nutrition-orders",
       "value": "123"
     }
   ],
@@ -55,6 +61,9 @@
   ],
   "supplement": [
     {
+      "fhir_comments": [
+        "   EH:  use the .instructions element to list diet  supplement order\n\t\t<instruction value=\"Glucerna Shake at 3pm and HS\"/>\n  "
+      ],
       "type": {
         "coding": [
           {
@@ -73,6 +82,9 @@
       "productName": "Glucerna",
       "schedule": [
         {
+          "fhir_comments": [
+            "  EH:Glucerna Shake at 3pm and HS  "
+          ],
           "repeat": {
             "boundsPeriod": {
               "start": "2015-02-10T15:00:00Z"
@@ -86,9 +98,7 @@
           "repeat": {
             "duration": 1,
             "durationUnit": "h",
-            "when": [
-              "HS"
-            ]
+            "when": "HS"
           }
         }
       ],

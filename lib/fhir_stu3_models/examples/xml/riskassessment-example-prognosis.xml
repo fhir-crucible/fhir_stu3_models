@@ -6,8 +6,7 @@
       <p>Moderate risk of permanent weakness of the left arm, but otherwise no permanent disability</p>
     </div>
   </text>
-  <status value="final"/>
-  <occurrenceDateTime value="2010-11-22"/>
+  <date value="2010-11-22"/>
   <condition>
     <reference value="Condition/stroke"/>
     <display value="Ischemic Stroke"/>
@@ -20,12 +19,12 @@
       </coding>
       <text value="permanent weakness of the left arm"/>
     </outcome>
-    <qualitativeRisk>
+    <probabilityCodeableConcept>
       <coding>
         <system value="http://hl7.org/fhir/risk-probability"/>
         <code value="moderate"/>
         <display value="moderate likelihood"/>
       </coding>
-    </qualitativeRisk>
+    </probabilityCodeableConcept>
   </prediction>
 </RiskAssessment>

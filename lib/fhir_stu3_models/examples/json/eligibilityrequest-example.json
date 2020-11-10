@@ -3,7 +3,7 @@
   "id": "52345",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the EligibilityRequest</div>"
+    "div": "<div>A human-readable rendering of the EligibilityRequest</div>"
   },
   "identifier": [
     {
@@ -11,25 +11,20 @@
       "value": "52345"
     }
   ],
-  "status": "active",
-  "priority": {
-    "coding": [
-      {
-        "code": "normal"
-      }
-    ]
-  },
-  "patient": {
-    "reference": "Patient/pat1"
-  },
   "created": "2014-08-16",
-  "organization": {
-    "reference": "Organization/1"
-  },
-  "insurer": {
+  "targetReference": {
     "reference": "Organization/2"
   },
-  "coverage": {
+  "organizationReference": {
+    "reference": "Organization/1"
+  },
+  "priority": {
+    "code": "normal"
+  },
+  "patientReference": {
+    "reference": "Patient/pat1"
+  },
+  "coverageReference": {
     "reference": "Coverage/9876B1"
   }
 }

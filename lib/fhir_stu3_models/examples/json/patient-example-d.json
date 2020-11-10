@@ -3,7 +3,7 @@
   "id": "pat4",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t<p>Patient Sandy Notsowell @ Acme Healthcare, Inc. MR = 123458, DECEASED</p>\n\t\t</div>"
+    "div": "<div>\n      \n      <p>Patient Sandy Notsowell @ Acme Healthcare, Inc. MR = 123458, DECEASED</p>\n    \n    </div>"
   },
   "identifier": [
     {
@@ -24,7 +24,9 @@
   "name": [
     {
       "use": "official",
-      "family": "Notsowell",
+      "family": [
+        "Notsowell"
+      ],
       "given": [
         "Sandy"
       ]

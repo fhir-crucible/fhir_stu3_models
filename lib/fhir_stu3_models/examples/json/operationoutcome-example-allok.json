@@ -3,7 +3,7 @@
   "id": "allok",
   "text": {
     "status": "additional",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>All OK</p>\n    </div>"
+    "div": "<div>\n      <p>All OK</p>\n    </div>"
   },
   "issue": [
     {

@@ -3,7 +3,7 @@
   "id": "validationfail",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>Error parsing resource XML (Unknown Content &quot;label&quot; @ /Patient/identifier/label)</p>\n    </div>"
+    "div": "<div>\n      <p>Error parsing resource XML (Unknown Content &quot;label&quot; @ /Patient/identifier/label)</p>\n    </div>"
   },
   "issue": [
     {
@@ -14,9 +14,6 @@
       },
       "location": [
         "/f:Patient/f:identifier"
-      ],
-      "expression": [
-        "Patient.identifier"
       ]
     }
   ]

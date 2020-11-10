@@ -21,24 +21,16 @@
       </pre>
     </div>
   </text>
-  <url value="http://hl7.org/fhir/Questionnaire/bb"/>
-  <title value="NSW Government My Personal Health Record"/>
   <status value="draft"/>
   <date value="2013-02-19"/>
   <publisher value="New South Wales Department of Health"/>
-  <jurisdiction>
-    <coding>
-      <system value="urn:iso:std:iso:3166"/>
-      <code value="AU"/>
-    </coding>
-  </jurisdiction>
+  <title value="NSW Government My Personal Health Record"/>
   <subjectType value="Patient"/>
   <item>
     <linkId value="birthDetails"/>
     <text value="Birth details - To be completed by health professional"/>
     <type value="group"/>
     <item>
-      <linkId value="group"/>
       <type value="group"/>
       <item>
         <linkId value="nameOfChild"/>
@@ -97,10 +89,6 @@
         <item>
           <linkId value="vitaminKgivenDoses"/>
           <type value="group"/>
-          <enableWhen>
-            <question value="vitaminKgiven"/>
-            <hasAnswer value="true"/>
-          </enableWhen>
           <item>
             <linkId value="vitaminiKDose1"/>
             <text value="1st dose"/>

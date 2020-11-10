@@ -1,0 +1,53 @@
+{
+  "resourceType": "Encounter",
+  "id": "encounter-example-qicore",
+  "text": {
+    "status": "generated",
+    "div": "<div>Encounter with patient @qicore</div>"
+  },
+  "extension": [
+    {
+      "extension": [
+        {
+          "url": "condition",
+          "valueReference": {
+            "reference": "Condition/qicore"
+          }
+        },
+        {
+          "url": "role",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "8319008",
+                "display": "Principal diagnosis"
+              }
+            ]
+          }
+        }
+      ],
+      "url": "http://hl7.org/fhir/StructureDefinition/encounter-relatedCondition"
+    }
+  ],
+  "status": "finished",
+  "class": "inpatient",
+  "patient": {
+    "reference": "Patient/example"
+  },
+  "period": {
+    "start": "2015-02-09T00:00:00Z",
+    "end": "2015-02-20T00:00:00Z"
+  },
+  "hospitalization": {
+    "dischargeDisposition": {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/discharge-disposition",
+          "code": "home",
+          "display": "Home"
+        }
+      ]
+    }
+  }
+}

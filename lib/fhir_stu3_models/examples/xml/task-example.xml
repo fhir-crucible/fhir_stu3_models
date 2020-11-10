@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><Task xmlns="http://hl7.org/fhir">
+  <id value="example"/>
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p><p><b>text</b>: </p><p><b>type</b>: Refill Request <span>(Details )</span></p><p><b>status</b>: draft</p><p><b>subject</b>: <a>Medication/123</a></p><p><b>created</b>: Mar 10, 2016 10:39:32 PM</p><p><b>lastModified</b>: Mar 10, 2016 10:39:32 PM</p><p><b>creator</b>: <a>Patient/Keith</a></p><p><b>owner</b>: <a>Practitioner/MyDoc</a></p></div>
+  </text>
+  <type>
+    <text value="Refill Request"/>
+  </type>
+  <status value="draft"/>
+  <subject>
+    <reference value="Medication/123"/>
+  </subject>
+  <created value="2016-03-10T22:39:32-04:00"/>
+  <lastModified value="2016-03-10T22:39:32-04:00"/>
+  <creator>
+    <reference value="Patient/Keith"/>
+  </creator>
+  <owner>
+    <reference value="Practitioner/MyDoc"/>
+  </owner>
+</Task>

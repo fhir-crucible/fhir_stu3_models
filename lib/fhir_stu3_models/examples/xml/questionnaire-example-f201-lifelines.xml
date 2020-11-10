@@ -15,14 +15,13 @@
       3.b) Do you drink alcohol?</pre>
     </div>
   </text>
-  <url value="http://hl7.org/fhir/Questionnaire/f201"/>
-  <status value="active"/>
+  <status value="published"/>
   <date value="2010"/>
-  <code>
+  <concept>
     <system value="http://example.org/system/code/lifelines/nl"/>
     <code value="VL 1-1, 18-65_1.2.2"/>
     <display value="Lifelines Questionnaire 1 part 1"/>
-  </code>
+  </concept>
   <subjectType value="Patient"/>
   <item>
     <linkId value="1"/>

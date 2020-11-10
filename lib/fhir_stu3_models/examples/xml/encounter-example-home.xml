@@ -12,17 +12,11 @@
 		</Location>
 	</contained>
 	<status value="finished"/>
-	<class>
-		<system value="http://hl7.org/fhir/v3/ActCode"/>
-		<!--  Note that this value implies that the practitioner was at the patients home, 
-			if it was a tele-service, then the virtual code should be used.  -->
-		<code value="HH"/>
-		<display value="home health"/>
-	</class>
+	<class value="virtual"/>
 
-	<subject>
+	<patient>
 		<reference value="Patient/example"/>
-	</subject>
+	</patient>
 	<participant>
 		<period>
 			<start value="2015-01-17T16:00:00+10:00"/>

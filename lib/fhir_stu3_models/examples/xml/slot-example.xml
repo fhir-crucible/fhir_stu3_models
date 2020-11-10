@@ -15,7 +15,7 @@
 	<serviceType>
 		<coding>
 			<code value="57"/>
-			<display value="Immunization"/>
+			<display value="Immunisation"/>
 		</coding>
 	</serviceType>
 	<specialty>
@@ -26,8 +26,8 @@
 	</specialty>
 	<appointmentType>
 		<coding>
-			<system value="http://hl7.org/fhir/v2/0276"/>
-			<code value="WALKIN"/>
+			<system value="http://hl7.org/fhir/v2-0276"/>
+			<code value="walkin"/>
 			<display value="A previously unscheduled walk-in visit"/>
 		</coding>
 	</appointmentType>

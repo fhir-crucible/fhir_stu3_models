@@ -1,48 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?><MedicationAdministration xmlns="http://hl7.org/fhir"> 
   <id value="medadminexample03"/>
-  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: medadminexample03</p><p><b>contained</b>: </p><p><b>status</b>: on-hold</p><p><b>medication</b>: id: med0303; Alemtuzumab 10mg/ml (Lemtrada) <span>(Details : {RxNorm code &#39;1594660&#39; = &#39;1594660&#39;, given as &#39;Alemtuzumab 10mg/ml (Lemtrada)&#39;})</span></p><p><b>subject</b>: <a>Donald Duck</a></p><p><b>context</b>: <a>Encounter/f001</a></p><p><b>supportingInformation</b>: <a>Condition/f204</a></p><p><b>effective</b>: Jan 15, 2015 2:30:00 PM --&gt; Jan 15, 2015 2:30:00 PM</p><p><b>notGiven</b>: true</p><p><b>reasonNotGiven</b>: Administration of medication not done due to a contraindication (situation) <span>(Details : {SNOMED CT code &#39;373147003&#39; = &#39;Medication not administered because contraindicated&#39;, given as &#39;Administration of medication not done due to a contraindication (situation)&#39;})</span></p><p><b>prescription</b>: <a>MedicationRequest/medrx0317</a></p><p><b>note</b>: Patient started Bupropion this morning - will administer in a reduced dose tomorrow</p></div></text><contained>
-    <Medication>
-      <id value="med0303"/>
-      <code>
-        <coding>
-          <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
-          <code value="1594660"/>
-          <display value="Alemtuzumab 10mg/ml (Lemtrada)"/>
-        </coding>
-      </code>
-    </Medication>
-  </contained>
-  <status value="on-hold"/>
+  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: medadminexample03</p><p><b>status</b>: on-hold</p><p><b>medication</b>: <a>Medication/medicationexample17</a></p><p><b>patient</b>: <a>Patient/example</a></p><p><b>effectiveTime</b>: Jan 15, 2015 2:30:00 PM --&gt; Jan 15, 2015 2:30:00 PM</p><p><b>practitioner</b>: <a>Practitioner/example</a></p><p><b>prescription</b>: <a>MedicationOrder/medrx008</a></p><h3>Dosages</h3><table><tr><td>-</td><td><b>Route</b></td><td><b>Quantity</b></td><td><b>Rate[x]</b></td></tr><tr><td>*</td><td>Intravenous route <span>(Details : {SNOMED CT code &#39;47625008&#39; = &#39;Intravenous route (qualifier value)&#39;, given as &#39;Intravenous route&#39;})</span></td><td>80 mg<span> (Details: http://unitsofmeasure.org code mg = &#39;mg&#39;)</span></td><td>80 mg<span> (Details: http://unitsofmeasure.org code mg = &#39;mg&#39;)</span>/60 minutes<span> (Details: SNOMED CT code 258702006 = &#39;hour (qualifier value)&#39;)</span></td></tr></table></div></text><status value="on-hold"/>
   <medicationReference>
-    <reference value="#med0303"/> 
+    <!--   references medication 6   -->
+    <reference value="Medication/medicationexample17"/> 
   </medicationReference>
- <subject>
-   <reference value="Patient/pat1"/>
-   <display value="Donald Duck"/> 
-  </subject>
-<context>
-  <reference value="Encounter/f001"/>
-</context>
-<supportingInformation>
-  <reference value="Condition/f204"/>
-</supportingInformation>
- <effectivePeriod>
+ <patient>
+    <reference value="Patient/example"/>
+  </patient>
+ <effectiveTimePeriod>
   <start value="2015-01-15T14:30:00+01:00"/>
   <end value="2015-01-15T14:30:00+01:00"/>
-</effectivePeriod>
-  <notGiven value="true"/>
-  <reasonNotGiven>
-    <coding>
-      <system value="http://snomed.info/sct"/>
-      <code value="373147003"/>
-      <display value="Administration of medication not done due to a contraindication (situation)"/>
-    </coding>
-  </reasonNotGiven>
+</effectiveTimePeriod>
+  <practitioner>
+    <reference value="Practitioner/example"/>
+  </practitioner>
   <prescription>
-    <reference value="MedicationRequest/medrx0317"/>
+    <reference value="MedicationOrder/medrx008"/>
   </prescription>
+   <dosage>
+    <route>
+      <coding>
+        <system value="http://snomed.info/sct"/>
+        <code value="47625008"/>
+        <display value="Intravenous route"/>
+      </coding>
+    </route>
+    <quantity>
+      <value value="80"/>
+      <unit value="mg"/>
+      <system value="http://unitsofmeasure.org"/>
+      <code value="mg"/>
+    </quantity>
+    <rateRatio>
+      <numerator>
+        <value value="80"/>
+        <unit value="mg"/>
+        <system value="http://unitsofmeasure.org"/>
+        <code value="mg"/>
+      </numerator>
+      <denominator>
+        <value value="60"/>
+        <unit value="minutes"/>
+        <system value="http://snomed.info/sct"/>
+        <code value="258702006"/>
+      </denominator>
+    </rateRatio>
+  </dosage>
   
-  <note>
-    <text value="Patient started Bupropion this morning - will administer in a reduced dose tomorrow"/>
-  </note>
 </MedicationAdministration>

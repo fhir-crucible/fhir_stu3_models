@@ -6,82 +6,65 @@
     <div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Vision Claim</div>
   </text>
 
+  <type value="vision"/>
+  
   <identifier>
     <system value="http://happysight.com/claim"/>
     <value value="6612345"/>
  </identifier>
  
-  <status value="active"/>
-
-  <type>
-   <coding>
-    <system value="http://hl7.org/fhir/ex-claimtype"/>
-    <code value="vision"/>
-   </coding>
-  </type>
-  
- <use value="complete"/>
-
- <patient>
-   <reference value="Patient/1"/>
- </patient>
- 
   <created value="2014-08-16"/>
 
- <insurer>
+ <targetReference>
   <reference value="Organization/2"/>
- </insurer>
+</targetReference>
 
- <organization>
+ <organizationReference>
     <reference value="Organization/1"/>
- </organization>
+ </organizationReference>
+
+ <use value="complete"/>
 
  <priority>
-  <coding>
     <code value="normal"/>
-  </coding>
  </priority>
 
  <payee>
    <type>
-    <coding>
      <code value="provider"/>
-    </coding>
    </type>
  </payee>
-
-   <careTeam>
-     <sequence value="1"/>
-     <provider>
-       <reference value="Practitioner/example"/>
-     </provider>
-   </careTeam>
  
   <diagnosis>
     <sequence value="1"/>
-	<diagnosisCodeableConcept>
-	 <coding>
+	<diagnosis>
 	  <code value="654321"/>
-     </coding>
-	</diagnosisCodeableConcept>
+	  </diagnosis>
   </diagnosis>
  
- <insurance>
+ <patientReference>
+   <reference value="Patient/1"/>
+ </patientReference>
+ 
+ <coverage>
    <sequence value="1"/>
    <focal value="true"/>
-   <coverage>
+   <coverageReference>
      <reference value="Coverage/9876B1"/>
-   </coverage>
- </insurance>
+   </coverageReference>
+ </coverage>
   
  <item>
    <sequence value="1"/>
-   <careTeamLinkId value="1"/>
+   <type>
+     <code value="service"/>
+   </type>
+   <providerReference>
+     <reference value="Practitioner/example"/>
+   </providerReference>
    <service>
-    <coding>
      <system value="http://hl7.org/fhir/ex-visionservice"/>
      <code value="exam"/>
-	</coding>
    </service>
    <servicedDate value="2014-08-16"/>
    <unitPrice>

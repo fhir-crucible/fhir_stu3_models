@@ -3,7 +3,7 @@
   "id": "prognosis",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <img src=\"#image\" alt=\"Family history diagram for Annie Proband\"/>\n    </div>"
+    "div": "<div>\n      <img src=\"#image\" alt=\"Family history diagram for Annie Proband\"/>\n    </div>"
   },
   "contained": [
     {
@@ -14,87 +14,12 @@
     },
     {
       "resourceType": "FamilyMemberHistory",
-      "id": "1",
-      "extension": [
-        {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
-          "extension": [
-            {
-              "url": "type",
-              "valueCodeableConcept": {
-                "coding": [
-                  {
-                    "system": "http://hl7.org/fhir/v3/RoleCode",
-                    "code": "NMTH",
-                    "display": "natural mother"
-                  }
-                ]
-              }
-            },
-            {
-              "url": "reference",
-              "valueReference": {
-                "reference": "#2"
-              }
-            }
-          ]
-        },
-        {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
-          "extension": [
-            {
-              "url": "type",
-              "valueCodeableConcept": {
-                "coding": [
-                  {
-                    "system": "http://hl7.org/fhir/v3/RoleCode",
-                    "code": "NFTH",
-                    "display": "natural father"
-                  }
-                ]
-              }
-            },
-            {
-              "url": "reference",
-              "valueReference": {
-                "reference": "#3"
-              }
-            }
-          ]
-        }
-      ],
-      "status": "completed",
-      "patient": {
-        "reference": "Patient/proband",
-        "display": "Annie Proband, female, born 1966"
-      },
-      "name": "Annie",
-      "relationship": {
-        "coding": [
-          {
-            "system": "http://hl7.org/fhir/v3/RoleCode",
-            "code": "ONESELF",
-            "display": "self"
-          }
-        ]
-      },
-      "ageAge": {
-        "value": 42,
-        "unit": "years",
-        "system": "http://unitsofmeasure.org",
-        "code": "a"
-      },
-      "deceasedBoolean": false
-    },
-    {
-      "resourceType": "FamilyMemberHistory",
       "id": "2",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -106,18 +31,18 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#4"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         },
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -129,19 +54,20 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#5"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         }
       ],
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "name": "Harriet",
       "relationship": {
         "coding": [
@@ -152,7 +78,7 @@
           }
         ]
       },
-      "deceasedAge": {
+      "deceasedQuantity": {
         "value": 50,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -169,7 +95,7 @@
               }
             ]
           },
-          "onsetAge": {
+          "onsetQuantity": {
             "value": 45,
             "unit": "years",
             "system": "http://unitsofmeasure.org",
@@ -183,10 +109,9 @@
       "id": "3",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -198,18 +123,18 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#6"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         },
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -221,19 +146,20 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#7"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         }
       ],
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "name": "Donald",
       "relationship": {
         "coding": [
@@ -244,7 +170,7 @@
           }
         ]
       },
-      "ageAge": {
+      "ageQuantity": {
         "value": 72,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -255,11 +181,11 @@
     {
       "resourceType": "FamilyMemberHistory",
       "id": "4",
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "name": "Gladys",
       "relationship": {
         "coding": [
@@ -270,7 +196,7 @@
           }
         ]
       },
-      "deceasedAge": {
+      "deceasedQuantity": {
         "value": 77,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -287,7 +213,7 @@
               }
             ]
           },
-          "onsetAge": {
+          "onsetQuantity": {
             "value": 55,
             "unit": "years",
             "system": "http://unitsofmeasure.org",
@@ -299,11 +225,11 @@
     {
       "resourceType": "FamilyMemberHistory",
       "id": "5",
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "name": "Ian",
       "relationship": {
         "coding": [
@@ -314,7 +240,7 @@
           }
         ]
       },
-      "deceasedAge": {
+      "deceasedQuantity": {
         "value": 76,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -324,11 +250,11 @@
     {
       "resourceType": "FamilyMemberHistory",
       "id": "6",
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "name": "Claire",
       "relationship": {
         "coding": [
@@ -339,7 +265,7 @@
           }
         ]
       },
-      "deceasedAge": {
+      "deceasedQuantity": {
         "value": 74,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -349,11 +275,11 @@
     {
       "resourceType": "FamilyMemberHistory",
       "id": "7",
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "name": "Bob",
       "relationship": {
         "coding": [
@@ -364,7 +290,7 @@
           }
         ]
       },
-      "deceasedAge": {
+      "deceasedQuantity": {
         "value": 73,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -381,7 +307,7 @@
               }
             ]
           },
-          "onsetAge": {
+          "onsetQuantity": {
             "value": 72,
             "unit": "years",
             "system": "http://unitsofmeasure.org",
@@ -395,10 +321,9 @@
       "id": "8",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -410,18 +335,18 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#2"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         },
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -433,19 +358,20 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#3"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         }
       ],
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "name": "Brian",
       "relationship": {
         "coding": [
@@ -456,7 +382,7 @@
           }
         ]
       },
-      "ageAge": {
+      "ageQuantity": {
         "value": 32,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -474,7 +400,7 @@
               }
             ]
           },
-          "onsetAge": {
+          "onsetQuantity": {
             "value": 32,
             "unit": "years",
             "system": "http://unitsofmeasure.org",
@@ -488,10 +414,9 @@
       "id": "9",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -503,18 +428,18 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#2"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         },
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -526,19 +451,20 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#3"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         }
       ],
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "name": "Janet",
       "relationship": {
         "coding": [
@@ -549,7 +475,10 @@
           }
         ]
       },
-      "ageAge": {
+      "ageQuantity": {
+        "fhir_comments": [
+          " Age was 31 in source, but 36 in diagram  "
+        ],
         "value": 36,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -567,7 +496,7 @@
               }
             ]
           },
-          "onsetAge": {
+          "onsetQuantity": {
             "value": 35,
             "unit": "years",
             "system": "http://unitsofmeasure.org",
@@ -579,11 +508,11 @@
     {
       "resourceType": "FamilyMemberHistory",
       "id": "10",
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "relationship": {
         "coding": [
           {
@@ -593,7 +522,7 @@
           }
         ]
       },
-      "ageAge": {
+      "ageQuantity": {
         "value": 30,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -605,10 +534,9 @@
       "id": "11",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -620,18 +548,18 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#9"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         },
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -643,19 +571,20 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#10"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         }
       ],
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "name": "Ian",
       "relationship": {
         "coding": [
@@ -666,7 +595,7 @@
           }
         ]
       },
-      "ageAge": {
+      "ageQuantity": {
         "value": 16,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -679,10 +608,9 @@
       "id": "12",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -694,18 +622,18 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#9"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         },
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -717,19 +645,20 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#10"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         }
       ],
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "name": "Helen",
       "relationship": {
         "coding": [
@@ -740,7 +669,7 @@
           }
         ]
       },
-      "ageAge": {
+      "ageQuantity": {
         "value": 15,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -753,6 +682,11 @@
             "coding": [
               {
                 "code": "657",
+                "_code": {
+                  "fhir_comments": [
+                    " No system or OID for NCBI Entrez yet  "
+                  ]
+                },
                 "display": "BRCA2"
               },
               {
@@ -769,11 +703,11 @@
     {
       "resourceType": "FamilyMemberHistory",
       "id": "13",
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "relationship": {
         "coding": [
           {
@@ -783,7 +717,7 @@
           }
         ]
       },
-      "ageAge": {
+      "ageQuantity": {
         "value": 35,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -795,10 +729,9 @@
       "id": "14",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -810,18 +743,18 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#1"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         },
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -833,20 +766,20 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#13"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         }
       ],
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
-      "name": "Susan",
+      "status": "completed",
       "relationship": {
         "coding": [
           {
@@ -856,7 +789,7 @@
           }
         ]
       },
-      "ageAge": {
+      "ageQuantity": {
         "value": 17,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -868,10 +801,9 @@
       "id": "15",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -883,18 +815,18 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#6"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         },
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -906,19 +838,20 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#7"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         }
       ],
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "relationship": {
         "coding": [
           {
@@ -928,7 +861,7 @@
           }
         ]
       },
-      "ageAge": {
+      "ageQuantity": {
         "value": 56,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -940,10 +873,9 @@
       "id": "16",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -955,18 +887,18 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#6"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         },
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -978,19 +910,20 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#7"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         }
       ],
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "relationship": {
         "coding": [
           {
@@ -1000,7 +933,7 @@
           }
         ]
       },
-      "ageAge": {
+      "ageQuantity": {
         "value": 57,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -1025,10 +958,9 @@
       "id": "17",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -1040,18 +972,18 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#4"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         },
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -1063,19 +995,20 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#5"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         }
       ],
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "relationship": {
         "coding": [
           {
@@ -1085,7 +1018,7 @@
           }
         ]
       },
-      "ageAge": {
+      "ageQuantity": {
         "value": 60,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -1097,10 +1030,9 @@
       "id": "18",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -1112,18 +1044,18 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#4"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         },
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -1135,19 +1067,20 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#5"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         }
       ],
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "relationship": {
         "coding": [
           {
@@ -1157,7 +1090,7 @@
           }
         ]
       },
-      "ageAge": {
+      "ageQuantity": {
         "value": 57,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -1167,11 +1100,11 @@
     {
       "resourceType": "FamilyMemberHistory",
       "id": "19",
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "relationship": {
         "coding": [
           {
@@ -1187,10 +1120,9 @@
       "id": "20",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -1202,18 +1134,18 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#18"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         },
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -1225,19 +1157,20 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#19"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         }
       ],
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "relationship": {
         "coding": [
           {
@@ -1248,7 +1181,7 @@
         ]
       },
       "gender": "female",
-      "ageAge": {
+      "ageQuantity": {
         "value": 30,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -1265,7 +1198,7 @@
               }
             ]
           },
-          "onsetAge": {
+          "onsetQuantity": {
             "value": 30,
             "unit": "years",
             "system": "http://unitsofmeasure.org",
@@ -1279,10 +1212,9 @@
       "id": "21",
       "extension": [
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -1294,18 +1226,18 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#18"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         },
         {
-          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent",
           "extension": [
             {
-              "url": "type",
+              "url": "parent.type",
               "valueCodeableConcept": {
                 "coding": [
                   {
@@ -1317,19 +1249,20 @@
               }
             },
             {
-              "url": "reference",
+              "url": "parent.reference",
               "valueReference": {
                 "reference": "#19"
               }
             }
-          ]
+          ],
+          "url": "http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent"
         }
       ],
-      "status": "completed",
       "patient": {
         "reference": "Patient/proband",
         "display": "Annie Proband, female, born 1966"
       },
+      "status": "completed",
       "relationship": {
         "coding": [
           {
@@ -1340,7 +1273,7 @@
         ]
       },
       "gender": "female",
-      "ageAge": {
+      "ageQuantity": {
         "value": 31,
         "unit": "years",
         "system": "http://unitsofmeasure.org",
@@ -1360,15 +1293,13 @@
     ]
   },
   "subject": {
+    "fhir_comments": [
+      " Age said 33, but diagram shows 42, so adjusted DOB  "
+    ],
     "reference": "Patient/proband",
     "display": "Annie Proband, female, born 1966"
   },
   "entry": [
-    {
-      "item": {
-        "reference": "#image"
-      }
-    },
     {
       "item": {
         "reference": "#2"

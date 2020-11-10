@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><Specimen xmlns="http://hl7.org/fhir">
 	<id value="vma-urine"/>
-	<text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: vma-urine</p><p><b>accessionIdentifier</b>: X352356</p><p><b>status</b>: available</p><p><b>type</b>: Urine, Random <span>(Details : {http://hl7.org/fhir/v2/0487 code &#39;RANDU&#39; = &#39;Urine, Random&#39;, given as &#39;Urine, Random&#39;})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>receivedTime</b>: Aug 18, 2015 7:03:00 AM</p><h3>Collections</h3><table><tr><td>-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td></tr><tr><td>*</td><td><a>Practitioner/f202</a></td><td>Aug 18, 2015 7:03:00 AM</td></tr></table><h3>Processings</h3><table><tr><td>-</td><td><b>Description</b></td><td><b>Procedure</b></td><td><b>Additive</b></td><td><b>Time[x]</b></td></tr><tr><td>*</td><td>Acidify to pH &lt; 3.0 with 6 N HCl.</td><td>Acidification <span>(Details : {http://hl7.org/fhir/v2/0373 code &#39;ACID&#39; = &#39;Acidification)</span></td><td>6 N HCl</td><td>Aug 18, 2015 8:10:00 AM</td></tr></table><h3>Containers</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Capacity</b></td><td><b>SpecimenQuantity</b></td></tr><tr><td>*</td><td>Non-sterile specimen container <span>(Details )</span></td><td>50 mls</td><td>10 mls</td></tr></table></div></text><accessionIdentifier>
+	<text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: vma-urine</p><p><b>accessionIdentifier</b>: X352356</p><p><b>status</b>: available</p><p><b>type</b>: Urine, Random <span>(Details : {http://hl7.org/fhir/v2/0487 code &#39;RANDU&#39; = &#39;Urine, Random&#39;, given as &#39;Urine, Random&#39;})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>receivedTime</b>: Aug 18, 2015 3:03:00 AM</p><h3>Collections</h3><table><tr><td>-</td><td><b>Collector</b></td><td><b>Collected[x]</b></td></tr><tr><td>*</td><td><a>Practitioner/f202</a></td><td>Aug 18, 2015 3:03:00 AM</td></tr></table><h3>Treatments</h3><table><tr><td>-</td><td><b>Description</b></td><td><b>Procedure</b></td></tr><tr><td>*</td><td>Acidify to pH &lt; 3.0 with 6 N HCl.</td><td>Acidification <span>(Details : {http://hl7.org/fhir/v2/0373 code &#39;ACID&#39; = &#39;Acidification)</span></td></tr></table><h3>Containers</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Capacity</b></td><td><b>SpecimenQuantity</b></td></tr><tr><td>*</td><td>Non-sterile specimen container <span>(Details )</span></td><td>50 mls</td><td>10 mls</td></tr></table></div></text><accessionIdentifier>
 		<!--   accession identifier - e.g. assigned by the labaratory when it is received.
      This is common, unlike specimen identifier   -->
 		<system value="http://lab.acme.org/specimens/2015"/>
@@ -39,7 +39,7 @@
 		<collectedDateTime value="2015-08-18T07:03:00Z"/>
 		<!--   method is usually implied by type   -->
 	</collection>
-	<processing>
+	<treatment>
 		<description value="Acidify to pH &lt; 3.0 with 6 N HCl."/>
 		<procedure>
 			<coding>
@@ -47,11 +47,7 @@
 				<code value="ACID"/>
 			</coding>
 		</procedure>
-		<additive>
-			<display value="6 N HCl"/>
-		</additive>
-		<timeDateTime value="2015-08-18T08:10:00Z"/>
-	</processing>
+	</treatment>
 	<container>
 		<type>
 			<text value="Non-sterile specimen container"/>

@@ -1,34 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?><MedicationStatement xmlns="http://hl7.org/fhir">
   <id value="example004"/>
-  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example004</p><p><b>partOf</b>: <a>Observation/blood-pressure</a></p><p><b>status</b>: completed</p><p><b>medication</b>: Amoxicillin (product) <span>(Details : {SNOMED CT code &#39;27658006&#39; = &#39;p-Hydroxyampicillin&#39;, given as &#39;Amoxicillin (product)&#39;})</span></p><p><b>effective</b>: Jan 23, 2014</p><p><b>dateAsserted</b>: Feb 22, 2015</p><p><b>informationSource</b>: <a>Donald Duck</a></p><p><b>subject</b>: <a>Donald Duck</a></p><p><b>taken</b>: y</p><p><b>reasonCode</b>: Otitis Media <span>(Details : {SNOMED CT code &#39;65363002&#39; = &#39;Otitis media&#39;, given as &#39;Otitis Media&#39;})</span></p><p><b>note</b>: Patient indicates they miss the occasional dose</p><p><b>dosage</b>: </p></div></text><partOf>
-    <reference value="Observation/blood-pressure"/>
-  </partOf>
-  <status value="completed"/> 
-  <medicationCodeableConcept>
-    <coding>
-      <system value="http://snomed.info/sct"/>
-      <code value="27658006"/>
-      <display value="Amoxicillin (product)"/>
-    </coding>
-  </medicationCodeableConcept>
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>Amoxicillin 250mg capsule - one capsule three times daily</p>
+    </div>
+  </text>
+  <status value="completed"/>  
+  <medicationReference> <!--  Linked to a RESOURCE Medication  -->
+    <reference value="Medication/MedicationExample6"/>
+  </medicationReference>  
+  <patient>
+    <reference value="Patient/example"/>
+  </patient>
   <effectiveDateTime value="2014-01-23"/>
-  <dateAsserted value="2015-02-22"/>
   <informationSource>
-    <reference value="Patient/pat1"/>
-    <display value="Donald Duck"/> 
+    <reference value="Patient/example"/>
   </informationSource>
-  <subject>
-    <reference value="Patient/pat1"/>
-    <display value="Donald Duck"/> 
-  </subject>
-  <taken value="y"/>
-  <reasonCode>
+  <dateAsserted value="2015-02-22"/>
+  <wasNotTaken value="false"/>
+  <reasonForUseCodeableConcept>
     <coding>
       <system value="http://snomed.info/sct"/>
       <code value="65363002"/>
       <display value="Otitis Media"/>
     </coding>
-  </reasonCode>
+  </reasonForUseCodeableConcept>
   <note>
     <text value="Patient indicates they miss the occasional dose"/>
   </note>
@@ -49,6 +46,9 @@
         <display value="Oral"/>
       </coding>
     </route>
+    <quantityQuantity>
+      <value value="1"/>
+    </quantityQuantity>
     <maxDosePerPeriod>
       <numerator>
         <value value="3"/>

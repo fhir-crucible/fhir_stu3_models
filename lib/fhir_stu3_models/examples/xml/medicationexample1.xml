@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><Medication xmlns="http://hl7.org/fhir">
-  <id value="medicationexample1"/>
+  <id value="medexample001"/>
 
   <!--  this example includes the code text element only  -->
   

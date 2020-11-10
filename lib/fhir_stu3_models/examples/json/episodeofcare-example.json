@@ -1,9 +1,12 @@
 {
   "resourceType": "EpisodeOfCare",
+  "fhir_comments": [
+    " <careTeam>\n    <role>\n      <coding>\n        <system value=\"http://example.org/EpisodeOfCare/Role\"/>\n        <code value=\"AO\"/>\n        <display value=\"Assessment Worker\"/>\n      </coding>\n    </role>\n    <period>\n      <start value=\"2014-09-01\"/>\n      <end value=\"2014-09-16\"/>\n    </period>\n    <member>\n      <reference value=\"Practitioner/13\"/>\n      <display value=\"Henry Seven\"/>\n    </member>\n  </careTeam> "
+  ],
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      HACC Program for Peter James Chalmers at HL7 Healthcare 15 Sept 2014 - current<br/>\n\t\t\twas on leave from 22 Sept - 24 Sept while in respite care\n    </div>"
+    "div": "<div>\n      HACC Program for Peter James Chalmers at HL7 Healthcare 15 Sept 2014 - current<br/>\n\t\t\twas on leave from 22 Sept - 24 Sept while in respite care\n    </div>"
   },
   "identifier": [
     {
@@ -45,28 +48,17 @@
     {
       "coding": [
         {
-          "system": "http://hl7.org/fhir/episodeofcare-type",
-          "code": "hacc",
-          "display": "Home and Community Care"
+          "system": "http://example.org/EpisodeOfCare/Type",
+          "code": "HACC",
+          "display": "Home and Community Care Package"
         }
       ]
     }
   ],
-  "diagnosis": [
+  "condition": [
     {
-      "condition": {
-        "reference": "Condition/stroke"
-      },
-      "role": {
-        "coding": [
-          {
-            "system": "http://hl7.org/fhir/diagnosis-role",
-            "code": "CC",
-            "display": "Chief complaint"
-          }
-        ]
-      },
-      "rank": 1
+      "reference": "Condition/example",
+      "display": "Severe burn of left ear"
     }
   ],
   "patient": {
@@ -86,17 +78,5 @@
   "careManager": {
     "reference": "Practitioner/14",
     "display": "Amanda Assigned"
-  },
-  "team": [
-    {
-      "reference": "CareTeam/example",
-      "display": "example care team"
-    }
-  ],
-  "account": [
-    {
-      "reference": "Account/example",
-      "display": "example account"
-    }
-  ]
+  }
 }

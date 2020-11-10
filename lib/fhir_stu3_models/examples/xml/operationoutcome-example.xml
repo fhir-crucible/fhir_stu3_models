@@ -14,6 +14,5 @@
     </details>
     <diagnostics value="Acme.Interop.FHIRProcessors.Patient.processGender line 2453"/>
     <location value="/f:Person/f:gender"/>
-    <expression value="Person.gender"/>
   </issue>
 </OperationOutcome>

@@ -1,37 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?><EligibilityResponse xmlns="http://hl7.org/fhir">
-	<id value="E2500"/>
+ <id value="E2500"/>
 
-	<text>
-		<status value="generated"/>
-		<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the EligibilityResponse.</div>
-	</text>
+ <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the EligibilityResponse.</div>
+  </text>
 
-	<identifier>
-		<system value="http://www.BenefitsInc.com/fhir/eligibilityresponse"/>
-		<value value="881234"/>
-	</identifier>
+  <identifier>
+    <system value="http://www.BenefitsInc.com/fhir/eligibilityresponse"/>
+    <value value="881234"/>
+  </identifier>
 
-	<status value="active"/>
+  <requestReference>
+	<reference value="http://www.BenefitsInc.com/fhir/EligibilityRequest/225476332402"/>
+  </requestReference>
 
-	<created value="2014-08-16"/>
+  <outcome value="complete"/>
 
-	<request>
-		<reference value="http://www.BenefitsInc.com/fhir/EligibilityRequest/225476332402"/>
-	</request>
+  <disposition value="Policy is currently in-force."/>
 
-	<outcome>
-		<coding>
-			<system value="http://hl7.org/fhir/remittance-outcome"/>
-			<code value="complete"/>
-		</coding>
-	</outcome>
+  <created value="2014-08-16"/>
 
-	<disposition value="Policy is currently in-force."/>
+  <organizationReference>
+    <reference value="Organization/2"/>
+  </organizationReference>
 
-	<insurer>
-		<reference value="Organization/2"/>
-	</insurer>
-
-	<inforce value="true"/>
+<!--
+  <requestOrganizationReference>
+    <reference value="Organization/1"/>
+  </requestOrganizationReference>
+ -->
+  <inforce value="true"/>
 
 </EligibilityResponse>

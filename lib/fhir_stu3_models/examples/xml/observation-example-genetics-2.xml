@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?><Observation xmlns="http://hl7.org/fhir">
-  <id value="example-genetics-2"/>
-  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example-genetics-2</p><p><b>status</b>: final</p><p><b>code</b>: Genetic analysis master panel--This is the parent OBR for the panel holding all of the associated observations that can be reported with a molecular genetics analysis result. <span>(Details : {LOINC code &#39;55233-1&#39; = &#39;Genetic analysis master panel - Blood or Tissue by Molecular genetics method&#39;, given as &#39;Genetic analysis master panel--This is the parent OBR for the panel holding all of the associated observations that can be reported with a molecular genetics analysis result.&#39;})</span></p><p><b>subject</b>: <a>Molecular Lab Patient ID: HOSP-23456</a></p><p><b>issued</b>: Apr 3, 2013 3:30:10 PM</p><p><b>performer</b>: <a>Molecular Diagnostics Laboratory</a></p><p><b>value</b>: Positive <span>(Details : {SNOMED CT code &#39;10828004&#39; = &#39;Positive&#39;, given as &#39;Positive&#39;})</span></p><h3>Relateds</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Target</b></td></tr><tr><td>*</td><td>derived-from</td><td><a>Observation/example-genetics-1</a></td></tr></table><blockquote><p><b>component</b></p><p><b>code</b>: Genetic disease assessed <span>(Details : {LOINC code &#39;51967-8&#39; = &#39;Genetic disease assessed [Identifier] in Blood or Tissue by Molecular genetics method&#39;, given as &#39;Genetic disease assessed&#39;})</span></p><p><b>value</b>: Lung cancer <span>(Details : {SNOMED CT code &#39;363358000&#39; = &#39;Malignant tumor of lung&#39;, given as &#39;Malignant tumor of lung (disorder)&#39;})</span></p></blockquote><blockquote><p><b>component</b></p><p><b>code</b>: Genetic disease sequence variation interpretation <span>(Details : {LOINC code &#39;53037-8&#39; = &#39;Genetic disease sequence variation interpretation [interpretation] in Blood or Tissue by Molecular genetics method&#39;, given as &#39;Genetic disease sequence variation interpretation&#39;})</span></p><p><b>value</b>: Pathogenic <span>(Details : {[not stated] code &#39;LA6669-1&#39; = &#39;LA6669-1&#39;, given as &#39;Pathogenic&#39;})</span></p></blockquote></div></text><status value="final"/>
+  <id value="example-observation-genetics-2"/>
+  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example-observation-genetics-2</p><p><b>status</b>: final</p><p><b>code</b>: Genetic analysis master panel <span>(Details : {LOINC code &#39;55233-1&#39; = &#39;Genetic analysis master panel - Blood or Tissue by Molecular genetics method&#39;, given as &#39;Genetic analysis master panel&#39;})</span></p><p><b>subject</b>: <a>Molecular Lab Patient ID: HOSP-23456</a></p><p><b>issued</b>: Apr 3, 2013 3:30:10 PM</p><p><b>performer</b>: <a>Molecular Diagnostics Laboratory</a></p><p><b>value</b>: Positive <span>(Details : {SNOMED CT code &#39;10828004&#39; = &#39;Positive (qualifier value)&#39;, given as &#39;Positive&#39;})</span></p><h3>Relateds</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Target</b></td></tr><tr><td>*</td><td>derived-from</td><td><a>Observation/example-observation-genetics-1</a></td></tr></table><blockquote><p><b>component</b></p><p><b>code</b>: Genetic disease assessed <span>(Details : {LOINC code &#39;51967-8&#39; = &#39;Genetic disease assessed [Identifier] in Blood or Tissue by Molecular genetics method&#39;, given as &#39;Genetic disease assessed&#39;})</span></p><p><b>value</b>: Lung cancer <span>(Details : {SNOMED CT code &#39;363358000&#39; = &#39;Malignant tumor of lung (disorder)&#39;, given as &#39;Malignant tumor of lung (disorder)&#39;})</span></p></blockquote><blockquote><p><b>component</b></p><p><b>code</b>: Genetic disease sequence variation interpretation <span>(Details : {LOINC code &#39;53037-8&#39; = &#39;Genetic disease sequence variation interpretation [interpretation] in Blood or Tissue by Molecular genetics method&#39;, given as &#39;Genetic disease sequence variation interpretation&#39;})</span></p><p><b>value</b>: Pathogenic <span>(Details : {[not stated] code &#39;LA6669-1&#39; = &#39;??&#39;, given as &#39;Pathogenic&#39;})</span></p></blockquote></div></text><status value="final"/>
   <code>
     <coding>
       <system value="http://loinc.org"/>
       <code value="55233-1"/>
-      <display value="Genetic analysis master panel--This is the parent OBR for the panel holding all of the associated observations that can be reported with a molecular genetics analysis result."/>
+      <display value="Genetic analysis master panel"/>
     </coding>
   </code>
   <subject>
-    <reference value="Patient/example"/>
+    <reference value="Patient/example-genetics-somatic"/>
     <display value="Molecular Lab Patient ID: HOSP-23456"/>
   </subject>
   <issued value="2013-04-03T15:30:10+01:00"/>
   <performer>
-    <reference value="Practitioner/example"/>
+    <reference value="Practitioner/example-genetics-somatic"/>
     <display value="Molecular Diagnostics Laboratory"/>
   </performer>
   <valueCodeableConcept>
@@ -27,7 +27,7 @@
   <related>
     <type value="derived-from"/>
     <target>
-      <reference value="Observation/example-genetics-1"/>
+      <reference value="Observation/example-observation-genetics-1"/>
     </target>
   </related>
   <component>

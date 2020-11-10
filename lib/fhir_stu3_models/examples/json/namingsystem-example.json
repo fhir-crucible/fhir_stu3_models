@@ -3,7 +3,7 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      \n      <p>\n        <b>SNOMED CT</b>\n      </p>\n      \n      <p> oid: 2.16.840.1.113883.6.96</p>\n      \n      <p> uri: http://snomed.info/sct</p>\n    \n    </div>"
+    "div": "<div>\n      \n      <p>\n        <b>SNOMED CT</b>\n      </p>\n      \n      <p> oid: 2.16.840.1.113883.6.96</p>\n      \n      <p> uri: http://snomed.info/sct</p>\n    \n    </div>"
   },
   "name": "SNOMED CT",
   "status": "active",
@@ -15,7 +15,7 @@
       "name": "FHIR project team",
       "telecom": [
         {
-          "system": "url",
+          "system": "other",
           "value": "http://hl7.org/fhir"
         }
       ]

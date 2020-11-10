@@ -3,34 +3,10 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Severe burn of left ear (Date: 24-May 2012)</div>"
+    "div": "<div>Severe burn of left ear (Date: 24-May 2012)</div>"
   },
-  "clinicalStatus": "active",
-  "verificationStatus": "confirmed",
-  "category": [
-    {
-      "coding": [
-        {
-          "system": "http://hl7.org/fhir/condition-category",
-          "code": "encounter-diagnosis",
-          "display": "Encounter Diagnosis"
-        },
-        {
-          "system": "http://snomed.info/sct",
-          "code": "439401001",
-          "display": "Diagnosis"
-        }
-      ]
-    }
-  ],
-  "severity": {
-    "coding": [
-      {
-        "system": "http://snomed.info/sct",
-        "code": "24484000",
-        "display": "Severe"
-      }
-    ]
+  "patient": {
+    "reference": "Patient/example"
   },
   "code": {
     "coding": [
@@ -42,6 +18,34 @@
     ],
     "text": "Burnt Ear"
   },
+  "category": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/condition-category",
+        "code": "diagnosis",
+        "display": "Diagnosis"
+      },
+      {
+        "fhir_comments": [
+          "  and also a SNOMED CT coding  "
+        ],
+        "system": "http://snomed.info/sct",
+        "code": "439401001",
+        "display": "Diagnosis"
+      }
+    ]
+  },
+  "verificationStatus": "confirmed",
+  "severity": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "24484000",
+        "display": "Severe"
+      }
+    ]
+  },
+  "onsetDateTime": "2012-05-24",
   "bodySite": [
     {
       "coding": [
@@ -53,9 +57,5 @@
       ],
       "text": "Left Ear"
     }
-  ],
-  "subject": {
-    "reference": "Patient/example"
-  },
-  "onsetDateTime": "2012-05-24"
+  ]
 }

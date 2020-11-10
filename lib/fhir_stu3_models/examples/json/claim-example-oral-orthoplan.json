@@ -3,83 +3,51 @@
   "id": "100153",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Oral Health Claim</div>"
+    "div": "<div>A human-readable rendering of the Oral Health Claim</div>"
   },
+  "type": "oral",
   "identifier": [
     {
       "system": "http://happyvalley.com/claim",
       "value": "12355"
     }
   ],
-  "status": "active",
-  "type": {
-    "coding": [
-      {
-        "system": "http://hl7.org/fhir/ex-claimtype",
-        "code": "oral"
-      }
-    ]
-  },
-  "use": "proposed",
-  "patient": {
-    "reference": "Patient/1"
-  },
   "created": "2015-03-16",
-  "insurer": {
+  "targetReference": {
     "reference": "Organization/2"
   },
-  "organization": {
+  "organizationReference": {
     "reference": "Organization/1"
   },
+  "use": "proposed",
   "priority": {
-    "coding": [
-      {
-        "code": "normal"
-      }
-    ]
+    "code": "normal"
   },
   "fundsReserve": {
-    "coding": [
-      {
-        "code": "provider"
-      }
-    ]
+    "code": "provider"
   },
   "payee": {
     "type": {
-      "coding": [
-        {
-          "code": "provider"
-        }
-      ]
+      "code": "provider"
     }
   },
-  "careTeam": [
-    {
-      "sequence": 1,
-      "provider": {
-        "reference": "Practitioner/example"
-      }
-    }
-  ],
   "diagnosis": [
     {
       "sequence": 1,
-      "diagnosisCodeableConcept": {
-        "coding": [
-          {
-            "system": "http://hl7.org/fhir/sid/icd-10",
-            "code": "123457"
-          }
-        ]
+      "diagnosis": {
+        "system": "http://hl7.org/fhir/sid/icd-10",
+        "code": "123457"
       }
     }
   ],
-  "insurance": [
+  "patientReference": {
+    "reference": "Patient/1"
+  },
+  "coverage": [
     {
       "sequence": 1,
       "focal": true,
-      "coverage": {
+      "coverageReference": {
         "reference": "Coverage/9876B1"
       }
     }
@@ -87,22 +55,28 @@
   "item": [
     {
       "sequence": 1,
-      "careTeamLinkId": [
-        1
-      ],
+      "type": {
+        "fhir_comments": [
+          "  was group changed by GG to be valid  "
+        ],
+        "system": "http://hl7.org/fhir/v3/ActCode",
+        "code": "FRAMEING"
+      },
+      "providerReference": {
+        "reference": "Practitioner/example"
+      },
       "diagnosisLinkId": [
         1
       ],
       "service": {
-        "coding": [
-          {
-            "system": "http://example.org/fhir/oralservicecodes",
-            "code": "ORTHPLAN"
-          }
-        ]
+        "system": "http://hl7.org/fhir/oralservicecodes",
+        "code": "ORTHPLAN"
       },
       "servicedDate": "2015-05-16",
       "unitPrice": {
+        "fhir_comments": [
+          "  Start Date  "
+        ],
         "value": 9000.00,
         "system": "urn:iso:std:iso:4217",
         "code": "USD"
@@ -115,13 +89,17 @@
       "detail": [
         {
           "sequence": 1,
+          "type": {
+            "fhir_comments": [
+              "  Exam Fee  ",
+              "  was service, changed by GG to be valid  "
+            ],
+            "system": "http://hl7.org/fhir/v3/ActCode",
+            "code": "CSINV"
+          },
           "service": {
-            "coding": [
-              {
-                "system": "http://example.org/fhir/oralservicecodes",
-                "code": "ORTHOEXAM"
-              }
-            ]
+            "system": "http://hl7.org/fhir/oralservicecodes",
+            "code": "ORTHOEXAM"
           },
           "unitPrice": {
             "value": 1000.00,
@@ -136,13 +114,17 @@
         },
         {
           "sequence": 2,
+          "type": {
+            "fhir_comments": [
+              "  Diagnostic Fee  ",
+              "  was service, changed by GG to be valid  "
+            ],
+            "system": "http://hl7.org/fhir/v3/ActCode",
+            "code": "CSINV"
+          },
           "service": {
-            "coding": [
-              {
-                "system": "http://example.org/fhir/oralservicecodes",
-                "code": "ORTHODIAG"
-              }
-            ]
+            "system": "http://hl7.org/fhir/oralservicecodes",
+            "code": "ORTHODIAG"
           },
           "unitPrice": {
             "value": 1500.00,
@@ -157,13 +139,17 @@
         },
         {
           "sequence": 3,
+          "type": {
+            "fhir_comments": [
+              "  Initial Payment  ",
+              "  was service, changed by GG to be valid  "
+            ],
+            "system": "http://hl7.org/fhir/v3/ActCode",
+            "code": "CSINV"
+          },
           "service": {
-            "coding": [
-              {
-                "system": "http://example.org/fhir/oralservicecodes",
-                "code": "ORTHOINITIAL"
-              }
-            ]
+            "system": "http://hl7.org/fhir/oralservicecodes",
+            "code": "ORTHOINITIAL"
           },
           "unitPrice": {
             "value": 500.00,
@@ -178,13 +164,17 @@
         },
         {
           "sequence": 4,
+          "type": {
+            "fhir_comments": [
+              "  Duration in Months  ",
+              "  was service, changed by GG to be valid  "
+            ],
+            "system": "http://hl7.org/fhir/v3/ActCode",
+            "code": "CSINV"
+          },
           "service": {
-            "coding": [
-              {
-                "system": "http://example.org/fhir/oralservicecodes",
-                "code": "ORTHOMONTHS"
-              }
-            ]
+            "system": "http://hl7.org/fhir/oralservicecodes",
+            "code": "ORTHOMONTHS"
           },
           "quantity": {
             "value": 24
@@ -192,13 +182,17 @@
         },
         {
           "sequence": 5,
+          "type": {
+            "fhir_comments": [
+              "  Periodic Payments  ",
+              "  was service, changed by GG to be valid  "
+            ],
+            "system": "http://hl7.org/fhir/v3/ActCode",
+            "code": "CSINV"
+          },
           "service": {
-            "coding": [
-              {
-                "system": "http://example.org/fhir/oralservicecodes",
-                "code": "ORTHOPERIODIC"
-              }
-            ]
+            "system": "http://hl7.org/fhir/oralservicecodes",
+            "code": "ORTHOPERIODIC"
           },
           "quantity": {
             "value": 24
@@ -218,16 +212,15 @@
     },
     {
       "sequence": 2,
-      "careTeamLinkId": [
-        1
-      ],
+      "type": {
+        "code": "service"
+      },
+      "providerReference": {
+        "reference": "Practitioner/example"
+      },
       "service": {
-        "coding": [
-          {
-            "system": "http://example.org/fhir/oralservicecodes",
-            "code": "21211"
-          }
-        ]
+        "system": "http://hl7.org/fhir/oralservicecodes",
+        "code": "21211"
       },
       "servicedDate": "2014-08-16",
       "unitPrice": {
@@ -241,36 +234,27 @@
         "code": "USD"
       },
       "bodySite": {
-        "coding": [
-          {
-            "system": "http://fdi.org/fhir/oraltoothcodes",
-            "code": "21"
-          }
-        ]
+        "system": "http://fdi.org/fhir/oraltoothcodes",
+        "code": "21"
       },
       "subSite": [
         {
-          "coding": [
-            {
-              "system": "http://fdi.org/fhir/oralsurfacecodes",
-              "code": "L"
-            }
-          ]
+          "system": "http://fdi.org/fhir/oralsurfacecodes",
+          "code": "L"
         }
       ]
     },
     {
       "sequence": 3,
-      "careTeamLinkId": [
-        1
-      ],
+      "type": {
+        "code": "group"
+      },
+      "providerReference": {
+        "reference": "Practitioner/example"
+      },
       "service": {
-        "coding": [
-          {
-            "system": "http://example.org/fhir/oralservicecodes",
-            "code": "27211"
-          }
-        ]
+        "system": "http://hl7.org/fhir/oralservicecodes",
+        "code": "27211"
       },
       "servicedDate": "2014-08-16",
       "unitPrice": {
@@ -284,23 +268,18 @@
         "code": "USD"
       },
       "bodySite": {
-        "coding": [
-          {
-            "system": "http://fdi.org/fhir/oraltoothcodes",
-            "code": "36"
-          }
-        ]
+        "system": "http://fdi.org/fhir/oraltoothcodes",
+        "code": "36"
       },
       "detail": [
         {
           "sequence": 1,
+          "type": {
+            "code": "service"
+          },
           "service": {
-            "coding": [
-              {
-                "system": "http://example.org/fhir/oralservicecodes",
-                "code": "27211"
-              }
-            ]
+            "system": "http://hl7.org/fhir/oralservicecodes",
+            "code": "27211"
           },
           "unitPrice": {
             "value": 750.00,
@@ -315,13 +294,12 @@
         },
         {
           "sequence": 2,
+          "type": {
+            "code": "service"
+          },
           "service": {
-            "coding": [
-              {
-                "system": "http://example.org/fhir/oralservicecodes",
-                "code": "lab"
-              }
-            ]
+            "system": "http://hl7.org/fhir/oralservicecodes",
+            "code": "lab"
           },
           "unitPrice": {
             "value": 350.00,

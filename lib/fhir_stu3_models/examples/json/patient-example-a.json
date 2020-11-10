@@ -3,7 +3,7 @@
   "id": "pat1",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      \n      <p>Patient Donald DUCK @ Acme Healthcare, Inc. MR = 654321</p>\n    \n    </div>"
+    "div": "<div>\n      \n      <p>Patient Donald DUCK @ Acme Healthcare, Inc. MR = 654321</p>\n    \n    </div>"
   },
   "identifier": [
     {
@@ -24,7 +24,9 @@
   "name": [
     {
       "use": "official",
-      "family": "Donald",
+      "family": [
+        "Donald"
+      ],
       "given": [
         "Duck"
       ]
@@ -43,8 +45,8 @@
         {
           "coding": [
             {
-              "system": "http://hl7.org/fhir/v2/0131",
-              "code": "E"
+              "system": "http://hl7.org/fhir/patient-contact-relationship",
+              "code": "owner"
             }
           ]
         }

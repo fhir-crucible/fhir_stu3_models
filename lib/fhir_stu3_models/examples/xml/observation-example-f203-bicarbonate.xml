@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><Observation xmlns="http://hl7.org/fhir">
   <id value="f203"/>
-  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f203</p><p><b>identifier</b>: 1304-03720-Bicarbonate</p><p><b>status</b>: final</p><p><b>code</b>: Bicarbonate [Moles/?volume] in Serum <span>(Details : {LOINC code &#39;1963-8&#39; = &#39;Bicarbonate [Moles/volume] in Serum&#39;, given as &#39;Bicarbonate [Moles/?volume] in Serum&#39;}; {SNOMED CT code &#39;365722008&#39; = &#39;Bicarbonate level - finding&#39;, given as &#39;Bicarbonate level&#39;})</span></p><p><b>subject</b>: <a>Roel</a></p><p><b>issued</b>: Apr 4, 2013 2:34:00 PM</p><p><b>performer</b>: <a>Luigi Maas</a></p><p><b>value</b>: 28 mmol/L<span> (Details: SNOMED CT code 258813002 = &#39;mM&#39;)</span></p><p><b>interpretation</b>: Serum bicarbonate level normal <span>(Details : {SNOMED CT code &#39;166698001&#39; = &#39;Serum bicarbonate level normal&#39;, given as &#39;Serum bicarbonate level normal&#39;}; {http://hl7.org/fhir/v2/0078 code &#39;N&#39; = &#39;Normal)</span></p><p><b>method</b>: enzymatic method <span>(Details )</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td><td><b>Type</b></td></tr><tr><td>*</td><td>22</td><td>29</td><td>Normal Range <span>(Details : {http://hl7.org/fhir/referencerange-meaning code &#39;normal&#39; = &#39;Normal Range&#39;, given as &#39;Normal Range&#39;})</span></td></tr></table></div></text><identifier>
+  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f203</p><p><b>identifier</b>: 1304-03720-Bicarbonate</p><p><b>status</b>: final</p><p><b>code</b>: Bicarbonate [Moles/?volume] in Serum <span>(Details : {LOINC code &#39;1963-8&#39; = &#39;Bicarbonate [Moles/volume] in Serum&#39;, given as &#39;Bicarbonate [Moles/?volume] in Serum&#39;}; {SNOMED CT code &#39;365722008&#39; = &#39;Finding of bicarbonate level (finding)&#39;, given as &#39;Bicarbonate level&#39;})</span></p><p><b>subject</b>: <a>Roel</a></p><p><b>issued</b>: Apr 4, 2013 2:34:00 PM</p><p><b>performer</b>: <a>Luigi Maas</a></p><p><b>value</b>: 28 mmol/L<span> (Details: SNOMED CT code 258813002 = &#39;Millimole/liter (qualifier value)&#39;)</span></p><p><b>interpretation</b>: Serum bicarbonate level normal <span>(Details : {SNOMED CT code &#39;166698001&#39; = &#39;Serum bicarbonate level normal (finding)&#39;, given as &#39;Serum bicarbonate level normal&#39;}; {http://hl7.org/fhir/v2/0078 code &#39;N&#39; = &#39;Normal)</span></p><p><b>method</b>: enzymatic method <span>(Details )</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td><td><b>Meaning</b></td></tr><tr><td>*</td><td>22</td><td>29</td><td>Normal Range <span>(Details : {http://hl7.org/fhir/referencerange-meaning code &#39;normal&#39; = &#39;Normal Range&#39;, given as &#39;Normal Range&#39;})</span></td></tr></table></div></text><identifier>
     <system value="https://intranet.aumc.nl/labvalues"/>
   <!--   Does not exist   -->
     <value value="1304-03720-Bicarbonate"/>
@@ -61,12 +61,12 @@
     <high>
       <value value="29"/>
     </high>
-    <type>
+    <meaning>
       <coding>
         <system value="http://hl7.org/fhir/referencerange-meaning"/>
         <code value="normal"/>
         <display value="Normal Range"/>
       </coding>
-    </type>
+    </meaning>
   </referenceRange>
 </Observation>

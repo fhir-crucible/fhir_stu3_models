@@ -3,7 +3,7 @@
   "id": "xds",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      \n      <p>Patient John Doe, M, 27-May 1956. ID: 89765a87b</p>\n    \n    </div>"
+    "div": "<div>\n      \n      <p>Patient John Doe, M, 27-May 1956. ID: 89765a87b</p>\n    \n    </div>"
   },
   "identifier": [
     {
@@ -23,7 +23,9 @@
   "active": true,
   "name": [
     {
-      "family": "Doe",
+      "family": [
+        "Doe"
+      ],
       "given": [
         "John"
       ]

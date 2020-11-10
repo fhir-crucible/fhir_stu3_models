@@ -3,18 +3,16 @@
   "id": "gcs",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: gcs</p><p><b>contained</b>: , , </p><p><b>url</b>: <a>http://hl7.org/fhir/Questionnaire/gcs</a></p><p><b>title</b>: Glasgow Coma Score</p><p><b>status</b>: draft</p><p><b>date</b>: Aug 3, 2015</p><p><b>publisher</b>: FHIR Project team</p><p><b>code</b>: Glasgow coma score total (Details: LOINC code 9269-2 = 'Glasgow coma score total', stated as 'null')</p><p><b>subjectType</b>: Patient</p><blockquote><p><b>item</b></p><p><b>linkId</b>: 1.1</p><p><b>code</b>: Glasgow coma score verbal (Details: LOINC code 9270-0 = 'Glasgow coma score verbal', stated as 'null')</p><p><b>type</b>: choice</p><p><b>options</b>: id: verbal; http://loinc.org/ValueSet/LL356-7; name: GCS Verbal Value Set; status: active; description: LOINC ANSWER LIST    (LL356-7)</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: 1.2</p><p><b>code</b>: Glasgow coma score motor (Details: LOINC code 9268-4 = 'Glasgow coma score motor', stated as 'null')</p><p><b>type</b>: choice</p><p><b>options</b>: id: motor; http://loinc.org/ValueSet/LL357-5; name: GCS Motor Value Set; status: active; description: LOINC ANSWER LIST    (LL357-5)</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: 1.3</p><p><b>code</b>: Glasgow coma score eye opening (Details: LOINC code 9267-6 = 'Glasgow coma score eye opening', stated as 'null')</p><p><b>type</b>: choice</p><p><b>options</b>: id: eye; http://loinc.org/ValueSet/LL355-9; name: GCS Eye Value Set; status: active; description: LOINC ANSWER LIST    (LL355-9)</p></blockquote></div>"
+    "div": "<div><p><b>Generated Narrative with Details</b></p><p><b>id</b>: gcs</p><p><b>contained</b>: , , </p><p><b>status</b>: draft</p><p><b>date</b>: Aug 3, 2015</p><p><b>publisher</b>: FHIR Project team</p><p><b>title</b>: Glasgow Coma Score</p><p><b>concept</b>: Glasgow coma score total (Details: LOINC code 9269-2 = 'Glasgow coma score total', stated as 'null')</p><p><b>subjectType</b>: Patient</p><blockquote><p><b>item</b></p><p><b>linkId</b>: 1.1</p><p><b>concept</b>: Glasgow coma score verbal (Details: LOINC code 9270-0 = 'Glasgow coma score verbal', stated as 'null')</p><p><b>type</b>: choice</p><p><b>options</b>: id: verbal; http://loinc.org/ValueSet/LL356-7; name: GCS Verbal Value Set; status: active; description: LOINC ANSWER LIST    (LL356-7)</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: 1.2</p><p><b>concept</b>: Glasgow coma score motor (Details: LOINC code 9268-4 = 'Glasgow coma score motor', stated as 'null')</p><p><b>type</b>: choice</p><p><b>options</b>: id: motor; http://loinc.org/ValueSet/LL357-5; name: GCS Motor Value Set; status: active; description: LOINC ANSWER LIST    (LL357-5)</p></blockquote><blockquote><p><b>item</b></p><p><b>linkId</b>: 1.3</p><p><b>concept</b>: Glasgow coma score eye opening (Details: LOINC code 9267-6 = 'Glasgow coma score eye opening', stated as 'null')</p><p><b>type</b>: choice</p><p><b>options</b>: id: eye; http://loinc.org/ValueSet/LL355-9; name: GCS Eye Value Set; status: active; description: LOINC ANSWER LIST    (LL355-9)</p></blockquote></div>"
   },
   "contained": [
     {
       "resourceType": "ValueSet",
       "id": "motor",
-      "identifier": [
-        {
-          "system": "http://loinc.org",
-          "value": "http://loinc.org/ValueSet/LL357-5"
-        }
-      ],
+      "identifier": {
+        "system": "http://loinc.org",
+        "value": "http://loinc.org/ValueSet/LL357-5"
+      },
       "name": "GCS Motor Value Set",
       "status": "active",
       "description": "LOINC ANSWER LIST    (LL357-5)",
@@ -55,12 +53,10 @@
     {
       "resourceType": "ValueSet",
       "id": "verbal",
-      "identifier": [
-        {
-          "system": "http://loinc.org",
-          "value": "http://loinc.org/ValueSet/LL356-7"
-        }
-      ],
+      "identifier": {
+        "system": "http://loinc.org",
+        "value": "http://loinc.org/ValueSet/LL356-7"
+      },
       "name": "GCS Verbal Value Set",
       "status": "active",
       "description": "LOINC ANSWER LIST    (LL356-7)",
@@ -97,12 +93,10 @@
     {
       "resourceType": "ValueSet",
       "id": "eye",
-      "identifier": [
-        {
-          "system": "http://loinc.org",
-          "value": "http://loinc.org/ValueSet/LL355-9"
-        }
-      ],
+      "identifier": {
+        "system": "http://loinc.org",
+        "value": "http://loinc.org/ValueSet/LL355-9"
+      },
       "name": "GCS Eye Value Set",
       "status": "active",
       "description": "LOINC ANSWER LIST    (LL355-9)",
@@ -133,12 +127,11 @@
       }
     }
   ],
-  "url": "http://hl7.org/fhir/Questionnaire/gcs",
-  "title": "Glasgow Coma Score",
   "status": "draft",
   "date": "2015-08-03",
   "publisher": "FHIR Project team",
-  "code": [
+  "title": "Glasgow Coma Score",
+  "concept": [
     {
       "system": "http://loinc.org",
       "code": "9269-2"
@@ -150,7 +143,7 @@
   "item": [
     {
       "linkId": "1.1",
-      "code": [
+      "concept": [
         {
           "system": "http://loinc.org",
           "code": "9270-0"
@@ -163,7 +156,7 @@
     },
     {
       "linkId": "1.2",
-      "code": [
+      "concept": [
         {
           "system": "http://loinc.org",
           "code": "9268-4"
@@ -176,7 +169,7 @@
     },
     {
       "linkId": "1.3",
-      "code": [
+      "concept": [
         {
           "system": "http://loinc.org",
           "code": "9267-6"

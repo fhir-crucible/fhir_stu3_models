@@ -41,24 +41,15 @@
   </statusHistory>
   <type>
     <coding>
-        <system value="http://hl7.org/fhir/episodeofcare-type"/>
-        <code value="hacc"/>
-        <display value="Home and Community Care"/>
+        <system value="http://example.org/EpisodeOfCare/Type"/>
+        <code value="HACC"/>
+        <display value="Home and Community Care Package"/>
     </coding>
   </type>
-  <diagnosis>
-    <condition>
-	    <reference value="Condition/stroke"/>
-    </condition>
-    <role>
-      <coding>
-        <system value="http://hl7.org/fhir/diagnosis-role"/>
-        <code value="CC"/>
-        <display value="Chief complaint"/>
-      </coding>
-    </role>
-    <rank value="1"/>
-  </diagnosis>
+  <condition>
+	  <reference value="Condition/example"/>
+	  <display value="Severe burn of left ear"/>
+  </condition>
   <patient>
     <reference value="Patient/example"/>
   </patient>
@@ -75,12 +66,21 @@
     <reference value="Practitioner/14"/>
     <display value="Amanda Assigned"/>
   </careManager>
-  <team>
-    <reference value="CareTeam/example"/>
-    <display value="example care team"/>
-  </team>
-  <account>
-    <reference value="Account/example"/>
-    <display value="example account"/>
-  </account>
+  <!-- <careTeam>
+    <role>
+      <coding>
+        <system value="http://example.org/EpisodeOfCare/Role"/>
+        <code value="AO"/>
+        <display value="Assessment Worker"/>
+      </coding>
+    </role>
+    <period>
+      <start value="2014-09-01"/>
+      <end value="2014-09-16"/>
+    </period>
+    <member>
+      <reference value="Practitioner/13"/>
+      <display value="Henry Seven"/>
+    </member>
+  </careTeam> -->
 </EpisodeOfCare>

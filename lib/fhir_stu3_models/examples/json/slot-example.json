@@ -3,7 +3,7 @@
   "id": "example",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t25 Dec 2013 9:15am - 9:30am: <b>Busy</b> Physiotherapy\n\t\t</div>"
+    "div": "<div>\n\t\t\t25 Dec 2013 9:15am - 9:30am: <b>Busy</b> Physiotherapy\n\t\t</div>"
   },
   "serviceCategory": {
     "coding": [
@@ -18,7 +18,7 @@
       "coding": [
         {
           "code": "57",
-          "display": "Immunization"
+          "display": "Immunisation"
         }
       ]
     }
@@ -36,8 +36,8 @@
   "appointmentType": {
     "coding": [
       {
-        "system": "http://hl7.org/fhir/v2/0276",
-        "code": "WALKIN",
+        "system": "http://hl7.org/fhir/v2-0276",
+        "code": "walkin",
         "display": "A previously unscheduled walk-in visit"
       }
     ]

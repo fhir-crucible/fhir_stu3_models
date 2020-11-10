@@ -3,16 +3,15 @@
   "id": "1115",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the Poll ProcessRequest</div>"
+    "div": "<div>A human-readable rendering of the Poll ProcessRequest</div>"
   },
+  "action": "poll",
   "identifier": [
     {
       "system": "http://www.phr.com/patient/12345/processrequest",
       "value": "115"
     }
   ],
-  "status": "active",
-  "action": "poll",
   "created": "2014-08-16",
   "include": [
     "ExplanationOfBenefit"

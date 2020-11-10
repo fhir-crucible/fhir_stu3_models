@@ -1,9 +1,12 @@
 {
   "resourceType": "Medication",
-  "id": "medicationexample1",
+  "id": "medexample001",
   "text": {
+    "fhir_comments": [
+      "  this example includes the code text element only  "
+    ],
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Amoxicillin 250mg/5ml Suspension</div>"
+    "div": "<div>Amoxicillin 250mg/5ml Suspension</div>"
   },
   "code": {
     "text": "Amoxicillin 250mg/5ml Suspension"

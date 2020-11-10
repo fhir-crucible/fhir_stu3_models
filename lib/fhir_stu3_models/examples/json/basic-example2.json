@@ -3,18 +3,16 @@
   "id": "classModel",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p><b>Class1</b></p>\n      <ul>\n        <li>Attribute1: 1..*</li>\n        <li>Attribute2: 0..1</li>\n      </ul>\n    </div>"
+    "div": "<div>\n      <p><b>Class1</b></p>\n      <ul>\n        <li>Attribute1: 1..*</li>\n        <li>Attribute2: 0..1</li>\n      </ul>\n    </div>"
   },
   "extension": [
     {
-      "url": "http://example.org/do-not-use/fhir-extensions/UMLclass",
       "extension": [
         {
           "url": "name",
           "valueString": "Class1"
         },
         {
-          "url": "attribute",
           "extension": [
             {
               "url": "name",
@@ -28,10 +26,10 @@
               "url": "maxOccurs",
               "valueCode": "*"
             }
-          ]
+          ],
+          "url": "attribute"
         },
         {
-          "url": "attribute",
           "extension": [
             {
               "url": "name",
@@ -45,9 +43,11 @@
               "url": "maxOccurs",
               "valueInteger": 1
             }
-          ]
+          ],
+          "url": "attribute"
         }
-      ]
+      ],
+      "url": "http://example.org/do-not-use/fhir-extensions/UMLclass"
     }
   ],
   "code": {

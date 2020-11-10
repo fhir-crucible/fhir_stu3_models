@@ -2,8 +2,11 @@
   "resourceType": "Observation",
   "id": "f004",
   "text": {
+    "fhir_comments": [
+      "     urn:oid:2.16.840.1.113883.4.642.1.7     "
+    ],
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f004</p><p><b>identifier</b>: 6326 (OFFICIAL)</p><p><b>status</b>: final</p><p><b>code</b>: Erythrocytes [#/volume] in Blood by Automated count <span>(Details : {LOINC code '789-8' = 'Erythrocytes [#/volume] in Blood by Automated count', given as 'Erythrocytes [#/volume] in Blood by Automated count'})</span></p><p><b>subject</b>: <a>P. van de Heuvel</a></p><p><b>effective</b>: Apr 2, 2013 10:30:10 AM --&gt; Apr 5, 2013 10:30:10 AM</p><p><b>issued</b>: Apr 3, 2013 3:30:10 PM</p><p><b>performer</b>: <a>A. Langeveld</a></p><p><b>value</b>: 4.12 10^12/L<span> (Details: UCUM code 10*12/L = '10*12/L')</span></p><p><b>interpretation</b>: Low <span>(Details : {http://hl7.org/fhir/v2/0078 code 'L' = 'Low', given as 'Low'})</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Text</b></td></tr><tr><td>*</td><td> 12-14 y Male: 4.4 - 5.2  x  10^12/L ; 12-14 y Female: 4.2 - 4.8  x  10^12/L ; 15-17 y Male: 4.6 - 5.4  x  10^12/L ; 15-17 y Female: 4.2 - 4.8  x  10^12/L ; 18-64 y Male: 4.6 - 5.4  x  10^12/L ; 18-64 y Female: 4.0 - 4.8  x  10^12/L ; 65-74 y Male: 4.3 - 5.3  x  10^12/L ; 65-74 y Female: 4.1 - 4.9  x  10^12/L       </td></tr></table></div>"
+    "div": "<div><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f004</p><p><b>identifier</b>: 6326 (OFFICIAL)</p><p><b>status</b>: final</p><p><b>code</b>: Erythrocytes [#/volume] in Blood by Automated count <span>(Details : {LOINC code '789-8' = 'Erythrocytes [#/volume] in Blood by Automated count', given as 'Erythrocytes [#/volume] in Blood by Automated count'})</span></p><p><b>subject</b>: <a>P. van de Heuvel</a></p><p><b>effective</b>: Apr 2, 2013 10:30:10 AM --&gt; Apr 5, 2013 10:30:10 AM</p><p><b>issued</b>: Apr 3, 2013 3:30:10 PM</p><p><b>performer</b>: <a>A. Langeveld</a></p><p><b>value</b>: 4.12 10 trillion/L<span> (Details: http://unitsofmeasure.org code 10*12/L = '10*12/L')</span></p><p><b>interpretation</b>: Low <span>(Details : {http://hl7.org/fhir/v2/0078 code 'L' = 'Low', given as 'Low'})</span></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td></tr><tr><td>*</td><td>4.4 10^12/L<span> (Details: http://unitsofmeasure.org code 10*12/L = '10*12/L')</span></td><td>5.8 10^12/L<span> (Details: http://unitsofmeasure.org code 10*12/L = '10*12/L')</span></td></tr></table></div>"
   },
   "identifier": [
     {
@@ -39,7 +42,12 @@
   ],
   "valueQuantity": {
     "value": 4.12,
-    "unit": "10^12/L",
+    "unit": "10 trillion/L",
+    "_unit": {
+      "fhir_comments": [
+        "    Actually, 4.12E+12    "
+      ]
+    },
     "system": "http://unitsofmeasure.org",
     "code": "10*12/L"
   },
@@ -54,7 +62,28 @@
   },
   "referenceRange": [
     {
-      "text": " 12-14 y Male: 4.4 - 5.2  x  10^12/L ; 12-14 y Female: 4.2 - 4.8  x  10^12/L ; 15-17 y Male: 4.6 - 5.4  x  10^12/L ; 15-17 y Female: 4.2 - 4.8  x  10^12/L ; 18-64 y Male: 4.6 - 5.4  x  10^12/L ; 18-64 y Female: 4.0 - 4.8  x  10^12/L ; 65-74 y Male: 4.3 - 5.3  x  10^12/L ; 65-74 y Female: 4.1 - 4.9  x  10^12/L       "
+      "low": {
+        "value": 4.4,
+        "unit": "10^12/L",
+        "_unit": {
+          "fhir_comments": [
+            "   for male gender   "
+          ]
+        },
+        "system": "http://unitsofmeasure.org",
+        "code": "10*12/L"
+      },
+      "high": {
+        "value": 5.8,
+        "unit": "10^12/L",
+        "_unit": {
+          "fhir_comments": [
+            "   for male gender   "
+          ]
+        },
+        "system": "http://unitsofmeasure.org",
+        "code": "10*12/L"
+      }
     }
   ]
 }

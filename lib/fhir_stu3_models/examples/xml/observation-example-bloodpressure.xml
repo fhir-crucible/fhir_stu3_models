@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?><Observation xmlns="http://hl7.org/fhir">
 	<id value="blood-pressure"/>
 	<meta>
-		<profile value="http://hl7.org/fhir/StructureDefinition/vitalsigns"/>
+		<lastUpdated value="2014-01-30T22:35:23+11:00"/>
 	</meta>
-	<text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: blood-pressure</p><p><b>meta</b>: </p><p><b>identifier</b>: urn:uuid:187e0c12-8dd2-67e2-99b2-bf273c878281</p><p><b>basedOn</b>: </p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span>(Details : {http://hl7.org/fhir/observation-category code &#39;vital-signs&#39; = &#39;Vital Signs&#39;, given as &#39;Vital Signs&#39;})</span></p><p><b>code</b>: Blood pressure systolic &amp; diastolic <span>(Details : {LOINC code &#39;85354-9&#39; = &#39;lood pressure panel with all children optional&#39;, given as &#39;Bood pressure panel with all children optional&#39;})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: Sep 17, 2012</p><p><b>performer</b>: <a>Practitioner/example</a></p><p><b>interpretation</b>: Below low normal <span>(Details : {http://hl7.org/fhir/v2/0078 code &#39;L&#39; = &#39;Low&#39;, given as &#39;low&#39;})</span></p><p><b>bodySite</b>: Right arm <span>(Details : {SNOMED CT code &#39;368209003&#39; = &#39;Right upper arm&#39;, given as &#39;Right arm&#39;})</span></p><blockquote><p><b>component</b></p><p><b>code</b>: Systolic blood pressure <span>(Details : {LOINC code &#39;8480-6&#39; = &#39;Systolic blood pressure&#39;, given as &#39;Systolic blood pressure&#39;}; {SNOMED CT code &#39;271649006&#39; = &#39;Systolic blood pressure&#39;, given as &#39;Systolic blood pressure&#39;}; {http://acme.org/devices/clinical-codes code &#39;bp-s&#39; = &#39;bp-s&#39;, given as &#39;Systolic Blood pressure&#39;})</span></p><p><b>value</b>: 107 mmHg<span> (Details: UCUM code mm[Hg] = &#39;mmHg&#39;)</span></p><p><b>interpretation</b>: Normal <span>(Details : {http://hl7.org/fhir/v2/0078 code &#39;N&#39; = &#39;Normal&#39;, given as &#39;normal&#39;})</span></p></blockquote><blockquote><p><b>component</b></p><p><b>code</b>: Diastolic blood pressure <span>(Details : {LOINC code &#39;8462-4&#39; = &#39;Diastolic blood pressure&#39;, given as &#39;Diastolic blood pressure&#39;})</span></p><p><b>value</b>: 60 mmHg<span> (Details: UCUM code mm[Hg] = &#39;mmHg&#39;)</span></p><p><b>interpretation</b>: Below low normal <span>(Details : {http://hl7.org/fhir/v2/0078 code &#39;L&#39; = &#39;Low&#39;, given as &#39;low&#39;})</span></p></blockquote></div></text><identifier>
+	<!--  	EH  Narrative created by build
+	<text>
+		<status value="generated"/>
+		<div xmlns="http://www.w3.org/1999/xhtml">Sept 17, 2012: Systolic Blood pressure 107/60 mmHg (low)</div>
+	</text>
+  -->
+	<text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: blood-pressure</p><p><b>meta</b>: </p><p><b>identifier</b>: urn:uuid:187e0c12-8dd2-67e2-99b2-bf273c878281</p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span>(Details : {http://hl7.org/fhir/observation-category code &#39;vital-signs&#39; = &#39;Vital Signs&#39;, given as &#39;Vital Signs&#39;})</span></p><p><b>code</b>: Blood pressure systolic &amp; diastolic <span>(Details : {LOINC code &#39;55284-4&#39; = &#39;Blood pressure systolic and diastolic&#39;, given as &#39;Blood pressure systolic &amp; diastolic&#39;})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: Sep 17, 2012</p><p><b>performer</b>: <a>Practitioner/example</a></p><p><b>interpretation</b>: Below low normal <span>(Details : {http://hl7.org/fhir/v2/0078 code &#39;L&#39; = &#39;Low&#39;, given as &#39;low&#39;})</span></p><p><b>bodySite</b>: Right arm <span>(Details : {SNOMED CT code &#39;368209003&#39; = &#39;Right upper arm structure (body structure)&#39;, given as &#39;Right arm&#39;})</span></p><blockquote><p><b>component</b></p><p><b>code</b>: Systolic blood pressure <span>(Details : {LOINC code &#39;8480-6&#39; = &#39;Systolic blood pressure&#39;, given as &#39;Systolic blood pressure&#39;}; {SNOMED CT code &#39;271649006&#39; = &#39;Systolic blood pressure (observable entity)&#39;, given as &#39;Systolic blood pressure&#39;}; {http://acme.org/devices/clinical-codes code &#39;bp-s&#39; = &#39;??&#39;, given as &#39;Systolic Blood pressure&#39;})</span></p><p><b>value</b>: 107 mmHg<span> (Details: http://unitsofmeasure.org code mm[Hg] = &#39;mmHg&#39;)</span></p></blockquote><blockquote><p><b>component</b></p><p><b>code</b>: Diastolic blood pressure <span>(Details : {LOINC code &#39;8462-4&#39; = &#39;Diastolic blood pressure&#39;, given as &#39;Diastolic blood pressure&#39;})</span></p><p><b>value</b>: 60 mmHg<span> (Details: http://unitsofmeasure.org code mm[Hg] = &#39;mmHg&#39;)</span></p></blockquote></div></text><identifier>
 		<system value="urn:ietf:rfc:3986"/>
 		<value value="urn:uuid:187e0c12-8dd2-67e2-99b2-bf273c878281"/>
 	</identifier>
-	<!--    demonstrating the use of the baseOn element with a fictive identifier  -->
-	<basedOn>
-		<identifier>
-			<system value="https://acme.org/identifiers"/>
-			<value value="1234"/>
-		</identifier>
-	</basedOn>
 	<status value="final"/>
 	<category>
 		<coding>
@@ -23,19 +22,11 @@
 		</coding>
 	</category>
 	<code>
-		<!--   replaced by 85354-9
-				<coding>
-					<system value="http://loinc.org"/>
-					<code value="55284-4"/>
-					<display value="Blood pressure systolic &amp; diastolic"/>
-				</coding>
-		  -->
-				<coding>
-					<system value="http://loinc.org"/>
-					<code value="85354-9"/>
-					<display value="Bood pressure panel with all children optional"/>
-				</coding>
-				<text value="Blood pressure systolic &amp; diastolic"/>
+		<coding>
+			<system value="http://loinc.org"/>
+			<code value="55284-4"/>
+			<display value="Blood pressure systolic &amp; diastolic"/>
+		</coding>
 	</code>
 	<subject>
 		<reference value="Patient/example"/>
@@ -44,10 +35,10 @@
 	<performer>
 		<reference value="Practitioner/example"/>
 	</performer>
-	<!--     an interpretation offered to the combination observation
+	<!--   an interpretation offered to the combination observation
         generally, it would only be appropriate to offer an interpretation
         of an observation that has no value if it has "COMP" (component)
-        observations     -->
+        observations   -->
 	<interpretation>
 		<coding>
 			<system value="http://hl7.org/fhir/v2/0078"/>
@@ -56,7 +47,6 @@
 		</coding>
 		<text value="Below low normal"/>
 	</interpretation>
-	<!--  The BodySite can be captured in a LOINC code but am showing it here to demonstrate populating the element   -->
 	<bodySite>
 		<coding>
 			<system value="http://snomed.info/sct"/>
@@ -71,27 +61,28 @@
            - snomed provides a clinically relevant code that is usually less granular than LOINC
            - the source system provides its own code, which may be less or more granular than LOINC
 
-this is shown here to demonstrate  the concept of translations within the codeableConcept datatype. The diastolic code below only has a LOINC code
-             -->
+this is shown here to demonstrate  the concept of translations within the codeableConcept datatype. The diastolic code below only has a LOINC code 
+           -->
 		<code>
-			<!--     LOINC -code     -->
+			<!--   LOINC -code   -->
 			<coding>
 				<system value="http://loinc.org"/>
 				<code value="8480-6"/>
 				<display value="Systolic blood pressure"/>
 			</coding>
-			<!--     SNOMED CT Codes     -->
+			<!--   SNOMED CT Codes   -->
 			<coding>
 				<system value="http://snomed.info/sct"/>
 				<code value="271649006"/>
 				<display value="Systolic blood pressure"/>
 			</coding>
-			<!--     Also, a local code specific to the source system     -->
+			<!--   Also, a local code specific to the source system   -->
 			<coding>
 				<system value="http://acme.org/devices/clinical-codes"/>
 				<code value="bp-s"/>
 				<display value="Systolic Blood pressure"/>
 			</coding>
+			
 		</code>
 		<valueQuantity>
 			<value value="107"/>
@@ -99,19 +90,10 @@ this is shown here to demonstrate  the concept of translations within the codeab
 			<system value="http://unitsofmeasure.org"/>
 			<code value="mm[Hg]"/>
 		</valueQuantity>
-		<!--     an interpretation for the individual composite observation   -->
-		<interpretation>
-			<coding>
-				<system value="http://hl7.org/fhir/v2/0078"/>
-				<code value="N"/>
-				<display value="normal"/>
-			</coding>
-			<text value="Normal"/>
-		</interpretation>
-		<!--    	Should have a refrange as well    -->
+<!--  	Should have a refrange as well  -->
 	</component>
 	<component>
-		<!--     this codes only has a LOINC code     -->
+	<!--   this codes only has a LOINC code   -->
 		<code>
 			<coding>
 				<system value="http://loinc.org"/>
@@ -119,21 +101,14 @@ this is shown here to demonstrate  the concept of translations within the codeab
 				<display value="Diastolic blood pressure"/>
 			</coding>
 		</code>
+	
 		<valueQuantity>
 			<value value="60"/>
 			<unit value="mmHg"/>
 			<system value="http://unitsofmeasure.org"/>
 			<code value="mm[Hg]"/>
 		</valueQuantity>
-		<!--     an interpretation for the individual composite observation   -->
-		<interpretation>
-			<coding>
-				<system value="http://hl7.org/fhir/v2/0078"/>
-				<code value="L"/>
-				<display value="low"/>
-			</coding>
-			<text value="Below low normal"/>
-		</interpretation>
-		<!--    	Should have a refrange as well    -->
+		<!--  	Should have a refrange as well  -->
 	</component>
+	
 </Observation>

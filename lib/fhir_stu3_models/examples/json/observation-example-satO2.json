@@ -1,14 +1,9 @@
 {
   "resourceType": "Observation",
   "id": "satO2",
-  "meta": {
-    "profile": [
-      "http://hl7.org/fhir/StructureDefinition/vitalsigns"
-    ]
-  },
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: satO2</p><p><b>meta</b>: </p><p><b>identifier</b>: o1223435-10</p><p><b>status</b>: final</p><p><b>category</b>: Vital Signs <span>(Details : {http://hl7.org/fhir/observation-category code 'vital-signs' = 'Vital Signs', given as 'Vital Signs'})</span></p><p><b>code</b>: Oxygen saturation in Arterial blood by Pulse oximetry <span>(Details : {LOINC code '59408-5' = 'Oxygen saturation in Arterial blood by Pulse oximetry', given as 'Oxygen saturation in Arterial blood by Pulse oximetry'}; {urn:iso:std:iso:11073:10101 code '150456' = '150456', given as 'MDC_PULS_OXIM_SAT_O2'})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: Dec 5, 2014 9:30:10 AM</p><p><b>value</b>: 95 %<span> (Details: UCUM code % = '%')</span></p><p><b>interpretation</b>: Normal (applies to non-numeric results) <span>(Details : {http://hl7.org/fhir/v2/0078 code 'N' = 'Normal', given as 'Normal'})</span></p><p><b>device</b>: <a>DeviceMetric/example</a></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td></tr><tr><td>*</td><td>90 %<span> (Details: UCUM code % = '%')</span></td><td>99 %<span> (Details: UCUM code % = '%')</span></td></tr></table></div>"
+    "div": "<div><p><b>Generated Narrative with Details</b></p><p><b>id</b>: satO2</p><p><b>identifier</b>: o1223435-10</p><p><b>status</b>: final</p><p><b>code</b>: MDC_PULS_OXIM_SAT_O2 <span>(Details : {https://rtmms.nist.gov code '150456' = '??', given as 'MDC_PULS_OXIM_SAT_O2'})</span></p><p><b>subject</b>: <a>Patient/example</a></p><p><b>effective</b>: Dec 5, 2014 9:30:10 AM</p><p><b>value</b>: 95 %<span> (Details: https://rtmms.nist.gov code 262688 = '??')</span></p><p><b>interpretation</b>: Normal (applies to non-numeric results) <span>(Details : {http://hl7.org/fhir/v2/0078 code 'N' = 'Normal', given as 'Normal'})</span></p><p><b>device</b>: <a>DeviceMetric/example</a></p><h3>ReferenceRanges</h3><table><tr><td>-</td><td><b>Low</b></td><td><b>High</b></td></tr><tr><td>*</td><td>90 %<span> (Details: https://rtmms.nist.gov code 262688 = '??')</span></td><td>99 %<span> (Details: https://rtmms.nist.gov code 262688 = '??')</span></td></tr></table></div>"
   },
   "identifier": [
     {
@@ -17,28 +12,16 @@
     }
   ],
   "status": "final",
-  "category": [
-    {
-      "coding": [
-        {
-          "system": "http://hl7.org/fhir/observation-category",
-          "code": "vital-signs",
-          "display": "Vital Signs"
-        }
-      ],
-      "text": "Vital Signs"
-    }
-  ],
   "code": {
     "coding": [
       {
-        "system": "http://loinc.org",
-        "code": "59408-5",
-        "display": "Oxygen saturation in Arterial blood by Pulse oximetry"
-      },
-      {
-        "system": "urn:iso:std:iso:11073:10101",
+        "system": "https://rtmms.nist.gov",
         "code": "150456",
+        "_code": {
+          "fhir_comments": [
+            "      mdc      "
+          ]
+        },
         "display": "MDC_PULS_OXIM_SAT_O2"
       }
     ]
@@ -50,8 +33,8 @@
   "valueQuantity": {
     "value": 95,
     "unit": "%",
-    "system": "http://unitsofmeasure.org",
-    "code": "%"
+    "system": "https://rtmms.nist.gov",
+    "code": "262688"
   },
   "interpretation": {
     "coding": [
@@ -71,14 +54,14 @@
       "low": {
         "value": 90,
         "unit": "%",
-        "system": "http://unitsofmeasure.org",
-        "code": "%"
+        "system": "https://rtmms.nist.gov",
+        "code": "262688"
       },
       "high": {
         "value": 99,
         "unit": "%",
-        "system": "http://unitsofmeasure.org",
-        "code": "%"
+        "system": "https://rtmms.nist.gov",
+        "code": "262688"
       }
     }
   ]

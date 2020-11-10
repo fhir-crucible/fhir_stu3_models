@@ -3,30 +3,40 @@
   "id": "preg",
   "text": {
     "status": "additional",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>A maternity care plan (for a pregnant woman).</p>\n      <p>LMP is 1st Jan, 2013 (a great new years party!) The plan has activities to take prenatal vitamins, schedule first antenatal,\n            and 'placeholders' for the second antenatal and delivery (there would be lots of others of course)</p>\n      <p>Note that where is a proposed 'status' element against each activity</p>\n    </div>"
+    "div": "<div>\n      <p>A maternity care plan (for a pregnant woman).</p>\n      <p>LMP is 1st Jan, 2013 (a greaat new years party!) The plan has a scheduled first antenatal,\n            and 'placeholders' for the second antenatal and delivery (there would be lots of others of course)</p>\n      <p>Note that where is a proposed 'status' element against each activity</p>\n    </div>"
   },
   "contained": [
     {
       "resourceType": "Condition",
       "id": "p1",
-      "clinicalStatus": "active",
-      "verificationStatus": "confirmed",
+      "patient": {
+        "reference": "Patient/1",
+        "display": "Eve Everywoman"
+      },
       "code": {
         "text": "pregnancy"
       },
-      "subject": {
-        "reference": "Patient/1",
-        "display": "Eve Everywoman"
-      }
+      "verificationStatus": "confirmed"
     },
     {
       "resourceType": "Practitioner",
       "id": "pr1",
       "name": [
         {
-          "family": "Midwife",
+          "family": [
+            "Midwife"
+          ],
           "given": [
             "Mavis"
+          ]
+        }
+      ],
+      "practitionerRole": [
+        {
+          "specialty": [
+            {
+              "text": "Midwife"
+            }
           ]
         }
       ]
@@ -36,87 +46,110 @@
       "id": "pr2",
       "name": [
         {
-          "family": "Obstetrician",
+          "family": [
+            "Obstetrician"
+          ],
           "given": [
             "Oscar"
           ]
         }
-      ]
-    },
-    {
-      "resourceType": "CareTeam",
-      "id": "careteam",
-      "participant": [
+      ],
+      "practitionerRole": [
         {
-          "role": {
-            "coding": [
-              {
-                "system": "http://example.org/mysys",
-                "code": "lmc"
-              }
-            ],
-            "text": "Midwife"
-          },
-          "member": {
-            "reference": "#pr1",
-            "display": "Mavis Midwife"
-          }
-        },
-        {
-          "role": {
-            "coding": [
-              {
-                "system": "http://example.org/mysys",
-                "code": "obs"
-              }
-            ],
-            "text": "Obstretitian"
-          },
-          "member": {
-            "reference": "#pr2",
-            "display": "Oscar Obstetrician"
-          }
+          "specialty": [
+            {
+              "text": "Obstetrician"
+            }
+          ]
         }
       ]
     },
     {
       "resourceType": "Goal",
       "id": "goal",
-      "status": "in-progress",
-      "description": {
-        "text": "Maintain patient's health throughout pregnancy and ensure a healthy child"
-      },
       "subject": {
         "reference": "Patient/1",
         "display": "Eve Everywoman"
-      }
+      },
+      "description": "Maintain patient's health throughout pregnancy and ensure a healthy child",
+      "status": "in-progress"
     }
   ],
   "extension": [
     {
-      "url": "http://example.org/fhir/StructureDefinition/careplan#lmp",
+      "fhir_comments": [
+        "  an extension to record the LMP, which is required at the plan level...  "
+      ],
+      "url": "http://example.org/DoNotUse/careplan#lmp",
       "valueDateTime": "2013-01-01"
     }
   ],
-  "status": "active",
-  "intent": "plan",
   "subject": {
     "reference": "Patient/1",
     "display": "Eve Everywoman"
   },
+  "status": "active",
   "period": {
     "start": "2013-01-01",
+    "_start": {
+      "fhir_comments": [
+        "  The likely duration of the pregnancy  "
+      ]
+    },
     "end": "2013-10-01"
   },
-  "careTeam": [
-    {
-      "reference": "#careteam"
-    }
-  ],
   "addresses": [
     {
       "reference": "#p1",
       "display": "pregnancy"
+    }
+  ],
+  "participant": [
+    {
+      "role": {
+        "fhir_comments": [
+          "  In New Zealand, there is a Lead Maternity Carer (LMC) - often a midwife  "
+        ],
+        "coding": [
+          {
+            "system": "http://example.org/mysys",
+            "code": "lmc"
+          }
+        ],
+        "text": "Midwife"
+      },
+      "member": {
+        "reference": "#pr1",
+        "_reference": {
+          "fhir_comments": [
+            "  This links to the clinician resource, so we get all the stuff related to that like address, contact etc...  "
+          ]
+        },
+        "display": "Mavis Midwife"
+      }
+    },
+    {
+      "role": {
+        "fhir_comments": [
+          "  To indicate that there is an obstretian consultant involved in this case.  "
+        ],
+        "coding": [
+          {
+            "system": "http://example.org/mysys",
+            "code": "obs"
+          }
+        ],
+        "text": "Obstretitian"
+      },
+      "member": {
+        "reference": "#pr2",
+        "_reference": {
+          "fhir_comments": [
+            "  This links to the clinician resource, so we get all the stuff related to that like address, contact etc...  "
+          ]
+        },
+        "display": "Oscar Obstetrician"
+      }
     }
   ],
   "goal": [
@@ -126,18 +159,20 @@
   ],
   "activity": [
     {
-      "reference": {
-        "display": "Prenatal vitamin MedicationRequest"
-      }
-    },
-    {
       "extension": [
         {
-          "url": "http://example.org/fhir/StructureDefinition/careplan#andetails",
+          "fhir_comments": [
+            "  This will be the first antenatal encounter  ",
+            "  a link to further details about the first antenatal details  "
+          ],
+          "url": "http://example.org/DoNotUse/careplan#andetails",
           "valueUri": "http://orionhealth.com/fhir/careplan/1andetails"
         }
       ],
       "detail": {
+        "fhir_comments": [
+          "  This is a booked encounter with Mavis Midwife for the first antenatal checkup. \n        This entry is only made after the appointment (a planned encounter) has been made.\n        Commented out for now because Encounter hasn't been defined yet\n        <actionTaken>\n            <url value=\"xxx\"/>\n            <display value=\"Appointment with Mavis midwife @12.30pm, 112 St albans Ave\"/>\n        </actionTaken> "
+        ],
         "category": {
           "coding": [
             {
@@ -159,6 +194,9 @@
         "prohibited": false,
         "scheduledTiming": {
           "repeat": {
+            "fhir_comments": [
+              "  The encounter should occur between 14 feb and 28 feb  "
+            ],
             "boundsPeriod": {
               "start": "2013-02-14",
               "end": "2013-02-28"
@@ -177,6 +215,9 @@
     {
       "detail": {
         "category": {
+          "fhir_comments": [
+            "  This will be the second antenatal encounter - 3 months after LMP. It is not yet scheduled.  "
+          ],
           "coding": [
             {
               "system": "http://hl7.org/fhir/care-plan-activity-category",
@@ -187,6 +228,9 @@
         "code": {
           "coding": [
             {
+              "fhir_comments": [
+                "  The code is just for an antenatal encounter. There are many of these, the first is special...  "
+              ],
               "system": "http://example.org/mySystem",
               "code": "an"
             }
@@ -197,6 +241,9 @@
         "prohibited": false,
         "scheduledTiming": {
           "repeat": {
+            "fhir_comments": [
+              "  The encounter should occur between 1 march and 14 march  "
+            ],
             "boundsPeriod": {
               "start": "2013-03-01",
               "end": "2013-03-14"
@@ -206,6 +253,11 @@
         "performer": [
           {
             "reference": "#pr1",
+            "_reference": {
+              "fhir_comments": [
+                "  The performer is known, but the actual appointment is not yet made, hence there is no action element...  "
+              ]
+            },
             "display": "Mavis Midwife"
           }
         ],
@@ -213,8 +265,14 @@
       }
     },
     {
+      "fhir_comments": [
+        "  \n        There would be a number of other encounters to be scheduled here... \n        ...\n        ...\n    \n     "
+      ],
       "detail": {
         "category": {
+          "fhir_comments": [
+            "  This will be the delivery. It is not yet scheduled.  "
+          ],
           "coding": [
             {
               "system": "http://hl7.org/fhir/care-plan-activity-category",
@@ -235,6 +293,9 @@
         "prohibited": false,
         "scheduledTiming": {
           "repeat": {
+            "fhir_comments": [
+              "  The delivery should occur between 1 September and 14 September  "
+            ],
             "boundsPeriod": {
               "start": "2013-09-01",
               "end": "2013-09-14"
@@ -243,7 +304,15 @@
         },
         "performer": [
           {
+            "fhir_comments": [
+              "  Where the delivery is to occur... \n          Commented out for now because location resource isn't defined\n        <location>\n            <url value=\"loc100\"/>\n            <display value=\"St Albans delivery suite\"/>\n        </location> "
+            ],
             "reference": "#pr1",
+            "_reference": {
+              "fhir_comments": [
+                "  The intention is that Maris will be performing the delivery...  "
+              ]
+            },
             "display": "Mavis Midwife"
           }
         ],

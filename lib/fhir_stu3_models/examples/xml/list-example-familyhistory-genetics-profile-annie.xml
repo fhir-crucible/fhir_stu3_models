@@ -15,67 +15,9 @@
   </contained>
   <contained>
     <FamilyMemberHistory>
-      <id value="1"/>
-      <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/v3/RoleCode"/>
-              <code value="NMTH"/>
-              <display value="natural mother"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <extension url="reference">
-          <valueReference>
-            <reference value="#2"/>
-          </valueReference>
-        </extension>
-      </extension>
-      <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/v3/RoleCode"/>
-              <code value="NFTH"/>
-              <display value="natural father"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <extension url="reference">
-          <valueReference>
-            <reference value="#3"/>
-          </valueReference>
-        </extension>
-      </extension>
-      <status value="completed"/>
-	  <patient>
-        <reference value="Patient/proband"/>
-        <display value="Annie Proband, female, born 1966"/>
-      </patient>
-      
-      <name value="Annie"/>
-      <relationship>
-        <coding>
-          <system value="http://hl7.org/fhir/v3/RoleCode"/>
-          <code value="ONESELF"/>
-          <display value="self"/>
-        </coding>
-      </relationship>
-      <ageAge>
-        <value value="42"/>
-        <unit value="years"/>
-        <system value="http://unitsofmeasure.org"/>
-        <code value="a"/>
-      </ageAge>
-      <deceasedBoolean value="false"/>
-    </FamilyMemberHistory>
-  </contained>
-  <contained>
-    <FamilyMemberHistory>
       <id value="2"/>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -84,14 +26,14 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#4"/>
           </valueReference>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -100,18 +42,17 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#5"/>
           </valueReference>
         </extension>
       </extension>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <name value="Harriet"/>
       <relationship>
         <coding>
@@ -120,12 +61,12 @@
           <display value="natural mother"/>
         </coding>
       </relationship>
-      <deceasedAge>
+      <deceasedQuantity>
         <value value="50"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </deceasedAge>
+      </deceasedQuantity>
       <condition>
         <code>
           <coding>
@@ -134,12 +75,12 @@
             <display value="Ovarian Carcinoma"/>
           </coding>
         </code>
-        <onsetAge>
+        <onsetQuantity>
           <value value="45"/>
           <unit value="years"/>
           <system value="http://unitsofmeasure.org"/>
           <code value="a"/>
-        </onsetAge>
+        </onsetQuantity>
       </condition>
     </FamilyMemberHistory>
   </contained>
@@ -147,7 +88,7 @@
     <FamilyMemberHistory>
       <id value="3"/>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -156,14 +97,14 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#6"/>
           </valueReference>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -172,18 +113,17 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#7"/>
           </valueReference>
         </extension>
       </extension>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <name value="Donald"/>
       <relationship>
         <coding>
@@ -192,24 +132,23 @@
           <display value="natural father"/>
         </coding>
       </relationship>
-      <ageAge>
+      <ageQuantity>
         <value value="72"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </ageAge>
+      </ageQuantity>
       <deceasedBoolean value="false"/>
     </FamilyMemberHistory>
   </contained>
   <contained>
     <FamilyMemberHistory>
       <id value="4"/>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <name value="Gladys"/>
       <relationship>
         <coding>
@@ -218,12 +157,12 @@
           <display value="maternal grandmother"/>
         </coding>
       </relationship>
-      <deceasedAge>
+      <deceasedQuantity>
         <value value="77"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </deceasedAge>
+      </deceasedQuantity>
       <condition>
         <code>
           <coding>
@@ -232,24 +171,23 @@
             <display value="Breast Carcinoma"/>
           </coding>
         </code>
-        <onsetAge>
+        <onsetQuantity>
           <value value="55"/>
           <unit value="years"/>
           <system value="http://unitsofmeasure.org"/>
           <code value="a"/>
-        </onsetAge>
+        </onsetQuantity>
       </condition>
     </FamilyMemberHistory>
   </contained>
   <contained>
     <FamilyMemberHistory>
       <id value="5"/>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <name value="Ian"/>
       <relationship>
         <coding>
@@ -258,23 +196,22 @@
           <display value="maternal grandfather"/>
         </coding>
       </relationship>
-      <deceasedAge>
+      <deceasedQuantity>
         <value value="76"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </deceasedAge>
+      </deceasedQuantity>
     </FamilyMemberHistory>
   </contained>
   <contained>
     <FamilyMemberHistory>
       <id value="6"/>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <name value="Claire"/>
       <relationship>
         <coding>
@@ -283,23 +220,22 @@
           <display value="paternal grandmother"/>
         </coding>
       </relationship>
-      <deceasedAge>
+      <deceasedQuantity>
         <value value="74"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </deceasedAge>
+      </deceasedQuantity>
     </FamilyMemberHistory>
   </contained>
   <contained>
     <FamilyMemberHistory>
       <id value="7"/>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <name value="Bob"/>
       <relationship>
         <coding>
@@ -308,12 +244,12 @@
           <display value="paternal grandfather"/>
         </coding>
       </relationship>
-      <deceasedAge>
+      <deceasedQuantity>
         <value value="73"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </deceasedAge>
+      </deceasedQuantity>
       <condition>
         <code>
           <coding>
@@ -322,12 +258,12 @@
             <display value="Colorectal Carcinoma"/>
           </coding>
         </code>
-        <onsetAge>
+        <onsetQuantity>
           <value value="72"/>
           <unit value="years"/>
           <system value="http://unitsofmeasure.org"/>
           <code value="a"/>
-        </onsetAge>
+        </onsetQuantity>
       </condition>
     </FamilyMemberHistory>
   </contained>
@@ -335,7 +271,7 @@
     <FamilyMemberHistory>
       <id value="8"/>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -344,14 +280,14 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#2"/>
           </valueReference>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -360,18 +296,17 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#3"/>
           </valueReference>
         </extension>
       </extension>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <name value="Brian"/>
       <relationship>
         <coding>
@@ -380,12 +315,12 @@
           <display value="natural brother"/>
         </coding>
       </relationship>
-      <ageAge>
+      <ageQuantity>
         <value value="32"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </ageAge>
+      </ageQuantity>
       <deceasedBoolean value="false"/>
       <condition>
         <code>
@@ -395,12 +330,12 @@
             <display value="Rectal Carcinoma"/>
           </coding>
         </code>
-        <onsetAge>
+        <onsetQuantity>
           <value value="32"/>
           <unit value="years"/>
           <system value="http://unitsofmeasure.org"/>
           <code value="a"/>
-        </onsetAge>
+        </onsetQuantity>
       </condition>
     </FamilyMemberHistory>
   </contained>
@@ -408,7 +343,7 @@
     <FamilyMemberHistory>
       <id value="9"/>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -417,14 +352,14 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#2"/>
           </valueReference>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -433,18 +368,17 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#3"/>
           </valueReference>
         </extension>
       </extension>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <name value="Janet"/>
       <relationship>
         <coding>
@@ -453,13 +387,13 @@
           <display value="natural sister"/>
         </coding>
       </relationship>
-      <!-- Age was 31 in source, but 36 in diagram  -->
-      <ageAge>
+          <!-- Age was 31 in source, but 36 in diagram  -->
+    <ageQuantity>
         <value value="36"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </ageAge>
+      </ageQuantity>
       <deceasedBoolean value="false"/>
       <condition>
         <code>
@@ -469,44 +403,43 @@
             <display value="Ductal Carcinoma In Situ of the Breast"/>
           </coding>
         </code>
-        <onsetAge>
+        <onsetQuantity>
           <value value="35"/>
           <unit value="years"/>
           <system value="http://unitsofmeasure.org"/>
           <code value="a"/>
-        </onsetAge>
+        </onsetQuantity>
       </condition>
     </FamilyMemberHistory>
   </contained>
   <contained>
     <FamilyMemberHistory>
       <id value="10"/>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <relationship>
         <coding>
-          <system value="http://hl7.org/fhir/v3/RoleCode"/>
+        <system value="http://hl7.org/fhir/v3/RoleCode"/>
           <code value="BROINLAW"/>
           <display value="brother-in-law"/>
         </coding>
       </relationship>
-      <ageAge>
+      <ageQuantity>
         <value value="30"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </ageAge>
+      </ageQuantity>
     </FamilyMemberHistory>
   </contained>
   <contained>
     <FamilyMemberHistory>
       <id value="11"/>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -515,14 +448,14 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#9"/>
           </valueReference>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -531,18 +464,17 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#10"/>
           </valueReference>
         </extension>
       </extension>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <name value="Ian"/>
       <relationship>
         <coding>
@@ -551,12 +483,12 @@
           <display value="Nephew"/>
         </coding>
       </relationship>
-      <ageAge>
+      <ageQuantity>
         <value value="16"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </ageAge>
+      </ageQuantity>
       <deceasedBoolean value="false"/>
     </FamilyMemberHistory>
   </contained>
@@ -564,7 +496,7 @@
     <FamilyMemberHistory>
       <id value="12"/>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -573,14 +505,14 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#9"/>
           </valueReference>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -589,18 +521,17 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#10"/>
           </valueReference>
         </extension>
       </extension>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <name value="Helen"/>
       <relationship>
         <coding>
@@ -609,18 +540,18 @@
           <display value="niece"/>
         </coding>
       </relationship>
-      <ageAge>
+      <ageQuantity>
         <value value="15"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </ageAge>
+      </ageQuantity>
       <deceasedBoolean value="false"/>
       <condition>
         <code>
           <coding>
-            <!-- No system or OID for NCBI Entrez yet  -->
-            <code value="657"/>
+           <!-- No system or OID for NCBI Entrez yet  -->
+          <code value="657"/>
             <display value="BRCA2"/>
           </coding>
           <coding>
@@ -636,12 +567,11 @@
   <contained>
     <FamilyMemberHistory>
       <id value="13"/>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <relationship>
         <coding>
           <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -649,19 +579,19 @@
           <display value="significant other"/>
         </coding>
       </relationship>
-      <ageAge>
+      <ageQuantity>
         <value value="35"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </ageAge>
+      </ageQuantity>
     </FamilyMemberHistory>
   </contained>
   <contained>
     <FamilyMemberHistory>
       <id value="14"/>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -670,14 +600,14 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#1"/>
           </valueReference>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -686,19 +616,17 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#13"/>
           </valueReference>
         </extension>
       </extension>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
-      <name value="Susan"/>
+      <status value="completed"/>
       <relationship>
         <coding>
           <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -706,19 +634,19 @@
           <display value="natural daughter"/>
         </coding>
       </relationship>
-      <ageAge>
+      <ageQuantity>
         <value value="17"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </ageAge>
+      </ageQuantity>
     </FamilyMemberHistory>
   </contained>
   <contained>
     <FamilyMemberHistory>
       <id value="15"/>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -727,14 +655,14 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#6"/>
           </valueReference>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -743,18 +671,17 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#7"/>
           </valueReference>
         </extension>
       </extension>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <relationship>
         <coding>
           <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -762,19 +689,19 @@
           <display value="paternal uncle"/>
         </coding>
       </relationship>
-      <ageAge>
+      <ageQuantity>
         <value value="56"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </ageAge>
+      </ageQuantity>
     </FamilyMemberHistory>
   </contained>
   <contained>
     <FamilyMemberHistory>
       <id value="16"/>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -783,14 +710,14 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#6"/>
           </valueReference>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -799,18 +726,17 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#7"/>
           </valueReference>
         </extension>
       </extension>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <relationship>
         <coding>
           <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -818,12 +744,12 @@
           <display value="paternal aunt"/>
         </coding>
       </relationship>
-      <ageAge>
+      <ageQuantity>
         <value value="57"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </ageAge>
+      </ageQuantity>
       <condition>
         <code>
           <coding>
@@ -839,7 +765,7 @@
     <FamilyMemberHistory>
       <id value="17"/>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -848,14 +774,14 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#4"/>
           </valueReference>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -864,18 +790,17 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#5"/>
           </valueReference>
         </extension>
       </extension>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <relationship>
         <coding>
           <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -883,19 +808,19 @@
           <display value="maternal uncle"/>
         </coding>
       </relationship>
-      <ageAge>
+      <ageQuantity>
         <value value="60"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </ageAge>
+      </ageQuantity>
     </FamilyMemberHistory>
   </contained>
   <contained>
     <FamilyMemberHistory>
       <id value="18"/>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -904,14 +829,14 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#4"/>
           </valueReference>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -920,18 +845,17 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#5"/>
           </valueReference>
         </extension>
       </extension>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <relationship>
         <coding>
           <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -939,23 +863,22 @@
           <display value="maternal aunt"/>
         </coding>
       </relationship>
-      <ageAge>
+      <ageQuantity>
         <value value="57"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </ageAge>
+      </ageQuantity>
     </FamilyMemberHistory>
   </contained>
   <contained>
     <FamilyMemberHistory>
       <id value="19"/>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <relationship>
         <coding>
           <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -969,7 +892,7 @@
     <FamilyMemberHistory>
       <id value="20"/>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -978,14 +901,14 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#18"/>
           </valueReference>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -994,18 +917,17 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#19"/>
           </valueReference>
         </extension>
       </extension>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <relationship>
         <coding>
           <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -1014,13 +936,13 @@
         </coding>
       </relationship>
       <gender value="female"/>
-      <ageAge>
+      <ageQuantity>
         <value value="30"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </ageAge>
-      <condition>
+      </ageQuantity>
+    <condition>
         <code>
           <coding>
             <system value="urn:oid:2.16.840.1.113883.3.26.1.1"/>
@@ -1028,12 +950,12 @@
             <display value="Breast Carcinoma"/>
           </coding>
         </code>
-        <onsetAge>
+        <onsetQuantity>
           <value value="30"/>
           <unit value="years"/>
           <system value="http://unitsofmeasure.org"/>
           <code value="a"/>
-        </onsetAge>
+        </onsetQuantity>
       </condition>
     </FamilyMemberHistory>
   </contained>
@@ -1041,7 +963,7 @@
     <FamilyMemberHistory>
       <id value="21"/>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -1050,14 +972,14 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#18"/>
           </valueReference>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="type">
+        <extension url="parent.type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -1066,18 +988,17 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="reference">
+        <extension url="parent.reference">
           <valueReference>
             <reference value="#19"/>
           </valueReference>
         </extension>
       </extension>
-      <status value="completed"/>
-	  <patient>
+      <patient>
         <reference value="Patient/proband"/>
         <display value="Annie Proband, female, born 1966"/>
       </patient>
-      
+      <status value="completed"/>
       <relationship>
         <coding>
           <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -1086,12 +1007,12 @@
         </coding>
       </relationship>
       <gender value="female"/>
-      <ageAge>
+    <ageQuantity>
         <value value="31"/>
         <unit value="years"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="a"/>
-      </ageAge>
+      </ageQuantity>
     </FamilyMemberHistory>
   </contained>
   <status value="current"/>
@@ -1106,13 +1027,8 @@
   <subject>
     <reference value="Patient/proband"/>
     <display value="Annie Proband, female, born 1966"/>
-    <!-- Age said 33, but diagram shows 42, so adjusted DOB  -->
+       <!-- Age said 33, but diagram shows 42, so adjusted DOB  -->
   </subject>
-  <entry>
-    <item>
-      <reference value="#image"/>
-    </item>
-  </entry>
   <entry>
     <item>
       <reference value="#2"/>

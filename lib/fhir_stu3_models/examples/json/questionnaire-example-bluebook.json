@@ -3,23 +3,12 @@
   "id": "bb",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <pre>\n        <b>Birth details - To be completed by health professional</b>\n  Name of child: ____________________________________\n            Sex: __\n            \n  Neonatal Information\n    Birth Weight (kg): ___________\n    Birth Length (cm): ___________\n    Vitamin K given  : __\n             1st dose: ___________\n             2nd dose: ___________\n    Hep B given      : __\n      Date given     : ___________\n    Abnormalities noted at birth:\n      _______________________________________________\n      </pre>\n    </div>"
+    "div": "<div>\n      <pre>\n        <b>Birth details - To be completed by health professional</b>\n  Name of child: ____________________________________\n            Sex: __\n            \n  Neonatal Information\n    Birth Weight (kg): ___________\n    Birth Length (cm): ___________\n    Vitamin K given  : __\n             1st dose: ___________\n             2nd dose: ___________\n    Hep B given      : __\n      Date given     : ___________\n    Abnormalities noted at birth:\n      _______________________________________________\n      </pre>\n    </div>"
   },
-  "url": "http://hl7.org/fhir/Questionnaire/bb",
-  "title": "NSW Government My Personal Health Record",
   "status": "draft",
   "date": "2013-02-19",
   "publisher": "New South Wales Department of Health",
-  "jurisdiction": [
-    {
-      "coding": [
-        {
-          "system": "urn:iso:std:iso:3166",
-          "code": "AU"
-        }
-      ]
-    }
-  ],
+  "title": "NSW Government My Personal Health Record",
   "subjectType": [
     "Patient"
   ],
@@ -30,7 +19,6 @@
       "type": "group",
       "item": [
         {
-          "linkId": "group",
           "type": "group",
           "item": [
             {
@@ -97,12 +85,6 @@
                 {
                   "linkId": "vitaminKgivenDoses",
                   "type": "group",
-                  "enableWhen": [
-                    {
-                      "question": "vitaminKgiven",
-                      "hasAnswer": true
-                    }
-                  ],
                   "item": [
                     {
                       "linkId": "vitaminiKDose1",

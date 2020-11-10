@@ -3,7 +3,7 @@
   "id": "pat2",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      \n      <p>Patient Donald D DUCK @ Acme Healthcare, Inc. MR = 123456</p>\n    \n    </div>"
+    "div": "<div>\n      \n      <p>Patient Donald D DUCK @ Acme Healthcare, Inc. MR = 123456</p>\n    \n    </div>"
   },
   "identifier": [
     {
@@ -24,7 +24,9 @@
   "name": [
     {
       "use": "official",
-      "family": "Donald",
+      "family": [
+        "Donald"
+      ],
       "given": [
         "Duck",
         "D"

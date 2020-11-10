@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><Observation xmlns="http://hl7.org/fhir">
   <id value="glasgow"/>
-  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: glasgow</p><p><b>contained</b>: , , </p><p><b>status</b>: final</p><p><b>code</b>: Glasgow Coma Scale , (GCS) <span>(Details : {LOINC code &#39;9269-2&#39; = &#39;Glasgow coma score total&#39;, given as &#39;Glasgow coma score total&#39;})</span></p><p><b>subject</b>: <a>Peter James Chalmers</a></p><p><b>effective</b>: Dec 11, 2014 4:44:16 AM</p><p><b>value</b>: 13 {score}<span> (Details: UCUM code {score} = &#39;{score}&#39;)</span></p><blockquote><p><b>referenceRange</b></p><p><b>high</b>: 8 {score}<span> (Details: UCUM code {score} = &#39;{score}&#39;)</span></p><p><b>type</b>: Severe TBI <span>(Details )</span></p></blockquote><blockquote><p><b>referenceRange</b></p><p><b>low</b>: 9 {score}<span> (Details: UCUM code {score} = &#39;{score}&#39;)</span></p><p><b>high</b>: 12 {score}<span> (Details: UCUM code {score} = &#39;{score}&#39;)</span></p><p><b>type</b>: Moderate TBI <span>(Details )</span></p></blockquote><blockquote><p><b>referenceRange</b></p><p><b>low</b>: 13 {score}<span> (Details: UCUM code {score} = &#39;{score}&#39;)</span></p><p><b>type</b>: Mild TBI <span>(Details )</span></p></blockquote><blockquote><p><b>related</b></p><p><b>type</b>: derived-from</p><p><b>target</b>: Motor score. Generated Summary: id: motor; status: final; GCS motor <span>(Details : {LOINC code &#39;9268-4&#39; = &#39;Glasgow coma score motor&#39;, given as &#39;Glasgow coma score motor&#39;})</span>; ????; effective: Dec 11, 2014 4:44:16 AM; 5 (Localizes painful stimuli) <span>(Details : {http:/acme.ec/gcsmotor code &#39;5&#39; = &#39;5&#39;, given as &#39;Localizes painful stimuli&#39;}; {LOINC code &#39;LA6566-9&#39; = &#39;Localizing pain&#39;, given as &#39;Localizing pain&#39;})</span></p></blockquote><blockquote><p><b>related</b></p><p><b>type</b>: derived-from</p><p><b>target</b>: Verbal score. Generated Summary: id: verbal; status: final; Verbal <span>(Details : {LOINC code &#39;9270-0&#39; = &#39;Glasgow coma score verbal&#39;, given as &#39;Glasgow coma score verbal&#39;})</span>; ????; effective: Dec 11, 2014 4:44:16 AM; 4 (Confused, disoriented) <span>(Details : {http:/acme.ec/gcsverbal code &#39;4&#39; = &#39;4&#39;, given as &#39;Confused, disoriented&#39;}; {LOINC code &#39;LA6560-2&#39; = &#39;Confused&#39;, given as &#39;Confused&#39;})</span></p></blockquote><blockquote><p><b>related</b></p><p><b>type</b>: derived-from</p><p><b>target</b>: Eyes score. Generated Summary: id: eyes; status: final; Eyes <span>(Details : {LOINC code &#39;9267-6&#39; = &#39;Glasgow coma score eye opening&#39;, given as &#39;Glasgow coma score eye opening&#39;})</span>; ????; effective: Dec 11, 2014 4:44:16 AM; 4 (Opens eyes spontaneously) <span>(Details : {http:/acme.ec/gcseye code &#39;4&#39; = &#39;4&#39;, given as &#39;Opens eyes spontaneously&#39;}; {LOINC code &#39;LA6556-0&#39; = &#39;Eyes open spontaneously&#39;, given as &#39;Eyes open spontaneously&#39;})</span></p></blockquote></div></text><contained>
+  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: glasgow</p><p><b>contained</b>: , , </p><p><b>status</b>: final</p><p><b>code</b>: Glasgow Coma Scale , (GCS) <span>(Details : {LOINC code &#39;9269-2&#39; = &#39;Glasgow coma score total&#39;, given as &#39;Glasgow coma score total&#39;})</span></p><p><b>subject</b>: <a>Peter James Chalmers</a></p><p><b>effective</b>: Dec 10, 2014 11:44:16 PM</p><p><b>value</b>: 13 {score}<span> (Details: http://unitsofmeasure.org code {score} = &#39;{score}&#39;)</span></p><blockquote><p><b>referenceRange</b></p><p><b>high</b>: 8 {score}<span> (Details: http://unitsofmeasure.org code {score} = &#39;{score}&#39;)</span></p><p><b>meaning</b>: Severe TBI <span>(Details )</span></p></blockquote><blockquote><p><b>referenceRange</b></p><p><b>low</b>: 9 {score}<span> (Details: http://unitsofmeasure.org code {score} = &#39;{score}&#39;)</span></p><p><b>high</b>: 12 {score}<span> (Details: http://unitsofmeasure.org code {score} = &#39;{score}&#39;)</span></p><p><b>meaning</b>: Moderate TBI <span>(Details )</span></p></blockquote><blockquote><p><b>referenceRange</b></p><p><b>low</b>: 13 {score}<span> (Details: http://unitsofmeasure.org code {score} = &#39;{score}&#39;)</span></p><p><b>meaning</b>: Mild TBI <span>(Details )</span></p></blockquote><blockquote><p><b>related</b></p><p><b>type</b>: derived-from</p><p><b>target</b>: Motor score. Generated Summary: id: motor; status: final; GCS motor <span>(Details : {LOINC code &#39;9268-4&#39; = &#39;Glasgow coma score motor&#39;, given as &#39;Glasgow coma score motor&#39;})</span>; Patient/example; effective: Dec 10, 2014 11:44:16 PM; 5 (Localizes painful stimuli) <span>(Details : {http:/acme.ec/gcsmotor code &#39;5&#39; = &#39;??&#39;, given as &#39;Localizes painful stimuli&#39;}; {LOINC code &#39;LA6566-9&#39; = &#39;Localizing pain&#39;, given as &#39;Localizing pain&#39;})</span></p></blockquote><blockquote><p><b>related</b></p><p><b>type</b>: derived-from</p><p><b>target</b>: Verbal score. Generated Summary: id: verbal; status: final; Verbal <span>(Details : {LOINC code &#39;9270-0&#39; = &#39;Glasgow coma score verbal&#39;, given as &#39;Glasgow coma score verbal&#39;})</span>; Patient/example; effective: Dec 10, 2014 11:44:16 PM; 4 (Confused, disoriented) <span>(Details : {http:/acme.ec/gcsverbal code &#39;4&#39; = &#39;??&#39;, given as &#39;Confused, disoriented&#39;}; {LOINC code &#39;LA6560-2&#39; = &#39;Confused&#39;, given as &#39;Confused&#39;})</span></p></blockquote><blockquote><p><b>related</b></p><p><b>type</b>: derived-from</p><p><b>target</b>: Eyes score. Generated Summary: id: eyes; status: final; Eyes <span>(Details : {LOINC code &#39;9267-6&#39; = &#39;Glasgow coma score eye opening&#39;, given as &#39;Glasgow coma score eye opening&#39;})</span>; Patient/example; effective: Dec 10, 2014 11:44:16 PM; 4 (Opens eyes spontaneously) <span>(Details : {http:/acme.ec/gcseye code &#39;4&#39; = &#39;??&#39;, given as &#39;Opens eyes spontaneously&#39;}; {LOINC code &#39;LA6556-0&#39; = &#39;Eyes open spontaneously&#39;, given as &#39;Eyes open spontaneously&#39;})</span></p></blockquote></div></text><contained>
   <!--    FHIR build is generating the narratives
 <text>
 		<status value="generated"></status>
@@ -179,9 +179,9 @@
       <code value="{score}"/>
     </high>
   <!--    meaning as text    -->
-    <type>
+    <meaning>
       <text value="Severe TBI"/>
-    </type>
+    </meaning>
   </referenceRange>
   <referenceRange>
     <low>
@@ -195,9 +195,9 @@
       <code value="{score}"/>
     </high>
   <!--    meaning as text    -->
-    <type>
+    <meaning>
       <text value="Moderate TBI"/>
-    </type>
+    </meaning>
   </referenceRange>
   <referenceRange>
     <low>
@@ -206,9 +206,9 @@
       <code value="{score}"/>
     </low>
   <!--    meaning as text    -->
-    <type>
+    <meaning>
       <text value="Mild TBI"/>
-    </type>
+    </meaning>
   </referenceRange>
 <!--    put the references to the contained components here using the derived-From type     -->
   <related>

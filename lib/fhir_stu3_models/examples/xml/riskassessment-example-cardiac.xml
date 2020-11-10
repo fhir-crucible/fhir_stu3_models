@@ -63,7 +63,7 @@
         </tr>
         <tr>
           <td colspan="2">To find out what your risk score means and how to lower your risk for a heart attack, go to<br/>
-            <a href="http://www.nhlbi.nih.gov/health/public/heart/chol/hbc_what.htm">&quot;High Blood Cholesterol&#x2014;What You Need to Know&quot;</a>.<br/>
+            <a href="http://www.nhlbi.nih.gov/health/public/heart/chol/hbc_what.htm">&quot;High Blood Cholesterol—What You Need to Know&quot;</a>.<br/>
             <a href="http://www.nhlbi.nih.gov/health/public/heart/chol/chol_tlc.htm">Your Guide to Lowering Cholesterol with Therapeutic Lifestyle Changes (TLC)</a><br/>
             <a href="http://www.nhlbi.nih.gov/health/public/heart/other/hhw/index.htm">The Healthy Heart Handbook for Women</a>
           </td>
@@ -71,24 +71,12 @@
       </table>
     </div>
   </text>
-  <identifier>
-    <use value="official"/>
-    <system value="http://example.org"/>
-    <value value="risk-assessment-cardiac"/>
-  </identifier>
-  <status value="final"/>
-  <subject>
-    <reference value="Patient/pat2"/>
-  </subject>
-  <context>
-    <reference value="Encounter/example"/>
-  </context>
-  <occurrenceDateTime value="2014-07-19T16:04:00Z"/>
+  <date value="2014-07-19T16:04:00Z"/>
   <performer>
     <display value="http://cvdrisk.nhlbi.nih.gov/#cholesterol"/>
   </performer>
   <basis>
-    <reference value="Patient/pat2"/>
+    <reference value="Patient/example"/>
   </basis>
   <basis>
     <reference value="DiagnosticReport/lipids"/>

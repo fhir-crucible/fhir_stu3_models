@@ -3,7 +3,7 @@
   "id": "sound",
   "text": {
     "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Sound recording of speech example for Patient Henry Levin (MRN 12345):<br/><img src=\"#11\" alt=\"diagram\"/></div>"
+    "div": "<div>Sound recording of speech example for Patient Henry Levin (MRN 12345):<br/><img src=\"#11\" alt=\"diagram\"/></div>"
   },
   "type": "video",
   "subject": {
@@ -16,6 +16,11 @@
   "content": {
     "id": "a1",
     "contentType": "audio/mpeg",
-    "data": "dG9vIGJpZyB0b28gaW5jbHVkZSB0aGUgd2hvbGU="
+    "data": "dG9vIGJpZyB0b28gaW5jbHVkZSB0aGUgd2hvbGU=",
+    "_data": {
+      "fhir_comments": [
+        "  too big too include the whole  "
+      ]
+    }
   }
 }
