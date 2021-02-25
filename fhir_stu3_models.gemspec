@@ -9,6 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Jason Walonoski', 'Robert Scanlon', 'Reece Adamson']
   spec.email         = ['jwalonoski@mitre.org']
 
+  spec.license       = 'apache-2.0'
   spec.summary       = %q{A Gem for handling FHIR STU3 models in ruby}
   spec.description   = %q{A Gem for handling FHIR STU3 models in ruby}
   spec.homepage      = 'https://github.com/fhir-crucible/fhir_stu3_models'
