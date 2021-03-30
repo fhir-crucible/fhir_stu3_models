@@ -1,6 +1,6 @@
 inherit_from: .rubocop_todo.yml
 AllCops:
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.7
   Exclude:
     - 'test/**/*'
     - 'spec/**/*'
@@ -10,8 +10,16 @@ AllCops:
     - 'tmp/**/*'
     - '*.gemspec'
     - 'bin/*'
-Metrics/LineLength:
+Layout/LineLength:
   Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
 inherit_mode:
   merge:
     - Exclude
