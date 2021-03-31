@@ -263,16 +263,14 @@ module FHIR
         element.constraint.each do |constraint|
           next unless constraint.expression && !nodes.empty?
           nodes.each do |node|
-            begin
-              result = FluentPath::STU3.evaluate(constraint.expression, node)
-              if !result && constraint.severity == 'error'
-                @errors << "#{describe_element(element)}: FluentPath expression evaluates to false for #{name} invariant rule #{constraint.key}: #{constraint.human}"
-                @errors << node.to_s
-              end
-            rescue
-              @warnings << "#{describe_element(element)}: unable to evaluate FluentPath expression against JSON for #{name} invariant rule #{constraint.key}: #{constraint.human}"
-              @warnings << node.to_s
+            result = FluentPath::STU3.evaluate(constraint.expression, node)
+            if !result && constraint.severity == 'error'
+              @errors << "#{describe_element(element)}: FluentPath expression evaluates to false for #{name} invariant rule #{constraint.key}: #{constraint.human}"
+              @errors << node.to_s
             end
+          rescue
+            @warnings << "#{describe_element(element)}: unable to evaluate FluentPath expression against JSON for #{name} invariant rule #{constraint.key}: #{constraint.human}"
+            @warnings << node.to_s
           end
         end
 
