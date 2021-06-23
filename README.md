@@ -54,6 +54,16 @@ $ bundle exec rake fhir:console
     'system' => 'http://unitsofmeasure.org'
   )
   ```
+  
+  Iterating over all elements in a resource, including nested elements...
+  ```ruby
+  patient.each_element do |value, metadata, path|
+    puts "Info for #{path}:"
+    puts "- value: #{value}"
+    puts "- type: #{metadata['type']}"
+    puts "- cardinality: #{metadata['min']}..#{metadata['max']}"
+  end
+  ```
 
   ### Validation
 
