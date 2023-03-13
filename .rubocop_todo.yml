@@ -151,7 +151,7 @@ Style/IfUnlessModifier:
     - 'lib/fhir_stu3_models/fhir_ext/structure_definition_compare.rb'
 
 # Offense count: 1
-Style/MethodMissingSuper:
+Style/Lint/MissingSuper:
   Exclude:
     - 'lib/fhir_stu3_models/bootstrap/model.rb'
 
