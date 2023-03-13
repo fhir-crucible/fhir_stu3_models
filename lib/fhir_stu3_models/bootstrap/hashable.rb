@@ -17,17 +17,37 @@ module FHIR
             end
           end
         end
-        hash.keep_if do |_key, value|
-          !value.nil? && ((value.is_a?(Hash) && !value.empty?) ||
-                            (value.is_a?(Array) && !value.empty?) ||
-                            (!value.is_a?(Hash) && !value.is_a?(Array))
-                         )
-        end
+        hash = prune(hash)
         hash['resourceType'] = resourceType if respond_to?(:resourceType)
         hash
       end
 
-      def from_hash(hash)
+      def prune(thing)
+        # Inspired by active-support `blank` but in our case false isn't blank ...
+        # https://github.com/rails/rails/blob/v5.2.3/activesupport/lib/active_support/core_ext/object/blank.rb
+        blank = ->(obj) { obj.respond_to?(:empty?) ? obj.empty? : obj.nil? }
+        if thing.is_a?(Array)
+          return nil if thing.empty?
+
+          thing
+            .map { |i| prune(i) }
+            .reject(&blank)
+        elsif thing.is_a?(Hash)
+          return {} if thing.empty?
+
+          new_thing = {}
+          thing.each do |key, value|
+            new_thing[key] = prune(value) unless blank.call(value)
+          end
+          new_thing
+        else
+          thing
+        end
+      end
+
+      def from_hash(original_hash)
+        # eliminate empty stuff
+        pruned_hash = prune(original_hash) unless original_hash.empty?
         # clear the existing variables
         self.class::METADATA.each do |key, value|
           local_name = key
@@ -35,7 +55,8 @@ module FHIR
           instance_variable_set("@#{local_name}", nil)
         end
         # set the variables to the hash values
-        hash.each do |key, value|
+        pruned_hash&.each_key do |key|
+          value = original_hash[key]
           key = key.to_s
           meta = self.class::METADATA[key]
           next if meta.nil?
@@ -52,13 +73,7 @@ module FHIR
           if !klass.nil? && !value.nil?
             # handle array of objects
             if value.is_a?(Array)
-              value = value.map do |child|
-                obj = child
-                unless [FHIR::STU3::RESOURCES, FHIR::STU3::TYPES].flatten.include? child.class.name.gsub('FHIR::STU3::', '')
-                  obj = make_child(child, klass)
-                end
-                obj
-              end
+              value = value.map { |child| make_child(child, klass) }
             else # handle single object
               value = make_child(value, klass)
               # if there is only one of these, but cardinality allows more, we need to wrap it in an array.
@@ -83,20 +98,21 @@ module FHIR
       end
 
       def make_child(child, klass)
+        return child if child.is_a?(FHIR::STU3::Model)
+
         if child['resourceType'] && !klass::METADATA['resourceType']
           klass = begin
             FHIR::STU3.const_get(child['resourceType'])
           rescue => _exception
             # TODO: this appears to be a dead code branch
             # TODO: should this log / re-raise the exception if encountered instead of silently swallowing it?
-            FHIR::STU3.logger.error("Unable to identify embedded class #{child['resourceType']}\n#{exception.backtrace}")
+            FHIR:STU3.logger.error("Unable to identify embedded class #{child['resourceType']}\n#{exception.backtrace}")
             nil
           end
         end
         begin
           obj = klass.new(child)
         rescue => exception
-          # TODO: this appears to be a dead code branch
           # TODO: should this re-raise the exception if encountered instead of silently swallowing it?
           FHIR::STU3.logger.error("Unable to inflate embedded class #{klass}\n#{exception.backtrace}")
         end
@@ -110,8 +126,7 @@ module FHIR
         if meta['type'] == 'boolean'
           rval = value.strip == 'true'
         elsif FHIR::STU3::PRIMITIVES.include?(meta['type'])
-          primitive_meta = FHIR::STU3::PRIMITIVES[meta['type']]
-          if primitive_meta['type'] == 'number'
+          if %w[decimal integer positiveInt unsignedInt].include?(meta['type'])
             rval = BigDecimal(value.to_s)
             rval = rval.frac.zero? ? rval.to_i : rval.to_f
           end # primitive is number
@@ -119,7 +134,7 @@ module FHIR
         rval
       end
 
-      private :make_child, :convert_primitive
+      private :prune, :make_child, :convert_primitive
     end
   end
 end
