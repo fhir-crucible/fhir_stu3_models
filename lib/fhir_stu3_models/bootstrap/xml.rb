@@ -25,7 +25,7 @@ module FHIR
         # if hash contains resourceType
         # create a child node with the name==resourceType
         # fill that, and place the child under the above `node`
-        if hash['resourceType'] && hash['resourceType'].is_a?(String)
+        if hash['resourceType'].is_a?(String)
           child_name = hash['resourceType']
           hash.delete('resourceType')
           child = hash_to_xml_node(child_name, hash, doc)
@@ -36,9 +36,11 @@ module FHIR
         hash.each do |key, value|
           next if ['extension', 'modifierExtension'].include?(name) && key == 'url'
           next if key == 'id' && !FHIR::STU3::RESOURCES.include?(name)
-          if value.is_a?(Hash)
+
+          case value
+          when Hash
             node.add_child(hash_to_xml_node(key, value, doc))
-          elsif value.is_a?(Array)
+          when Array
             value.each do |v|
               if v.is_a?(Hash)
                 node.add_child(hash_to_xml_node(key, v, doc))
@@ -79,7 +81,7 @@ module FHIR
           resource_type = doc.root.name
           klass = Module.const_get("FHIR::STU3::#{resource_type}")
           resource = klass.new(hash)
-        rescue => e
+        rescue StandardError => e
           FHIR::STU3.logger.error("Failed to deserialize XML:\n#{e.backtrace}")
           FHIR::STU3.logger.debug("XML:\n#{xml}")
           resource = nil

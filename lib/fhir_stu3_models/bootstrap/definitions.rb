@@ -45,6 +45,7 @@ module FHIR
       def self.type_definition(type_name)
         return nil if type_name.nil?
         return @@cache[type_name] if @@cache[type_name]
+
         definition = types.find { |x| x['xmlId'] == type_name || x['name'] == type_name || x['url'] == type_name }
         @@cache[type_name] = FHIR::STU3::StructureDefinition.new(definition) if definition
         @@cache[type_name]
@@ -74,6 +75,7 @@ module FHIR
       def self.resource_definition(resource_name)
         return nil if resource_name.nil?
         return @@cache[resource_name] if @@cache[resource_name]
+
         definition = resources.find { |x| x['xmlId'] == resource_name || x['name'] == resource_name || x['url'] == resource_name }
         @@cache[resource_name] = FHIR::STU3::StructureDefinition.new(definition) if definition
         @@cache[resource_name]
@@ -104,8 +106,10 @@ module FHIR
 
       def self.extension_definition(extension_name)
         return nil if extension_name.nil?
+
         extension = extensions.find { |x| x['xmlId'] == extension_name || x['name'] == extension_name || x['url'] == extension_name }
         return nil if extension.nil?
+
         FHIR::STU3::StructureDefinition.new(extension)
       end
       deprecate :get_extension_definition, :extension_definition
@@ -113,8 +117,10 @@ module FHIR
       # Get the basetype (String) for a given profile or extension.
       def self.basetype(uri)
         return nil if uri.nil?
+
         defn = profiles.detect { |x| x['url'] == uri } || extensions.detect { |x| x['url'] == uri }
         return nil if defn.nil?
+
         defn['baseType']
       end
       deprecate :get_basetype, :basetype
@@ -122,14 +128,17 @@ module FHIR
       # Get the StructureDefinition for a given profile.
       def self.profile(uri)
         return nil if uri.nil?
+
         defn = profiles.detect { |x| x['url'] == uri } || extensions.detect { |x| x['url'] == uri }
         return nil if defn.nil?
+
         FHIR::STU3::StructureDefinition.new(defn)
       end
       deprecate :get_profile, :profile
 
       def self.profiles_for_resource(resource_name)
         return nil if resource_name.nil?
+
         profiles.select { |x| x['baseType'] == resource_name }.map { |x| FHIR::STU3::StructureDefinition.new(x) }
       end
       deprecate :get_profiles_for_resource, :profile_for_resource
@@ -137,6 +146,7 @@ module FHIR
       # Get a dynamically generated class for a given profile.
       def self.get_profile_class(uri)
         return nil if uri.nil?
+
         load_profiles
         load_extensions
 
@@ -162,7 +172,7 @@ module FHIR
             load f
             # set the return class type
             klass = Object.const_get("FHIR::STU3::Profile::#{id}::#{type}")
-          rescue
+          rescue StandardError
             FHIR::STU3.logger.error "Failed to generate class for profile #{uri}"
           end
           # unlink the file so it can be garbage collected
@@ -198,6 +208,7 @@ module FHIR
       def self.get_codes(uri)
         return nil if uri.nil?
         return @@cache[uri] if @@cache[uri]
+
         valueset = expansions.find { |x| x['url'] == uri } || valuesets.find { |x| x['url'] == uri && x['resourceType'] == 'ValueSet' }
         unless valueset.nil?
           @@cache[uri] = {}
@@ -230,6 +241,7 @@ module FHIR
       # If one can't be found, return nil
       def self.get_display(uri, code)
         return nil if uri.nil? || code.nil?
+
         valuesets_and_expansions = expansions.select { |ex| ex['compose']['include'].detect { |i| i['system'] == uri } }
         valuesets_and_expansions += valuesets.select { |vs| vs['url'] == uri }
         code_hash = nil
@@ -269,6 +281,7 @@ module FHIR
 
       def self.search_parameters(type_name)
         return nil if type_name.nil?
+
         search_params.select { |p| p['base'].include?(type_name) && p['xpath'] && !p['xpath'].include?('extension') }.map { |p| p['code'] }
       end
       deprecate :get_search_parameters, :search_parameters

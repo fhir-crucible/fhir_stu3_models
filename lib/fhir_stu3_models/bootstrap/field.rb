@@ -23,7 +23,7 @@ module FHIR
       def serialize
         hash = {}
         instance_variables.each do |v|
-          hash[v.to_s[1..-1]] = instance_variable_get(v)
+          hash[v.to_s[1..]] = instance_variable_get(v)
         end
         hash.delete('name')
         hash.keep_if do |_key, value|
