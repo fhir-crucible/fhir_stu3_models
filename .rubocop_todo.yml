@@ -15,7 +15,7 @@ Metrics/AbcSize:
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
 # IgnoredMethods: refine
 Metrics/BlockLength:
-  Max: 70
+  Max: 71
 
 # Offense count: 7
 # Configuration parameters: CountBlocks.
@@ -25,7 +25,7 @@ Metrics/BlockNesting:
 # Offense count: 6
 # Configuration parameters: CountComments, CountAsOne.
 Metrics/ClassLength:
-  Max: 343
+  Max: 345
 
 # Offense count: 32
 # Configuration parameters: IgnoredMethods.
@@ -35,12 +35,12 @@ Metrics/CyclomaticComplexity:
 # Offense count: 44
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
 Metrics/MethodLength:
-  Max: 125
+  Max: 126
 
 # Offense count: 1
 # Configuration parameters: CountComments, CountAsOne.
 Metrics/ModuleLength:
-  Max: 114
+  Max: 115
 
 # Offense count: 29
 # Configuration parameters: IgnoredMethods.
@@ -131,12 +131,6 @@ Style/OptionalBooleanParameter:
   Exclude:
     - 'lib/fhir_stu3_models/bootstrap/generator.rb'
     - 'lib/fhir_stu3_models/bootstrap/template.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/OrAssignment:
-  Exclude:
-    - 'lib/fhir_stu3_models/bootstrap/generator.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.

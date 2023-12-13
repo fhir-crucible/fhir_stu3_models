@@ -205,7 +205,7 @@ module FHIR
                   if field.valid_codes.empty? && field.binding['uri'] && !field.binding['uri'].end_with?('bcp47') && !field.binding['uri'].end_with?('bcp13.txt')
                     FHIR::STU3.logger.warn "  MISSING EXPANSION -- #{field.path} #{field.min}..#{field.max}: #{field.binding['uri']} (#{field.binding['strength']})"
                     @missing_expansions = true
-                    @missing_required_expansion = (field.binding['strength'] == 'required') unless @missing_required_expansion
+                    @missing_required_expansion ||= (field.binding['strength'] == 'required')
                   end
                 elsif ['Element', 'BackboneElement'].include?(data_type)
                   # This is a nested structure or class
