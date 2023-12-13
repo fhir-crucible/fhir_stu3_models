@@ -188,7 +188,7 @@ module FHIR
                 field.max = field.max.to_i
                 field.max = '*' if element['max'] == '*'
 
-                if %w[code Coding CodeableConcept].include?(data_type) && element['binding']
+                if ['code', 'Coding', 'CodeableConcept'].include?(data_type) && element['binding']
                   field.binding = element['binding']
                   field.binding['uri'] = field.binding['valueSetUri']
                   field.binding['uri'] = field.binding['valueSetReference'] if field.binding['uri'].nil?
@@ -205,7 +205,7 @@ module FHIR
                     @missing_expansions = true
                     @missing_required_expansion = (field.binding['strength'] == 'required') unless @missing_required_expansion
                   end
-                elsif %w[Element BackboneElement].include?(data_type)
+                elsif ['Element', 'BackboneElement'].include?(data_type)
                   # This is a nested structure or class
                   field.type = "#{hierarchy.join('::')}::#{cap_first(field.name)}"
                 end
