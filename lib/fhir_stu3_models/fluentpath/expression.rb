@@ -18,7 +18,7 @@ module FluentPath
       def clone
         clone_tree = @tree.map do |x|
           x.clone
-        rescue
+        rescue StandardError
           # TODO: This appears to be dead code
           x
         end

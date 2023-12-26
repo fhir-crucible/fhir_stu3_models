@@ -39,11 +39,12 @@ module FHIR
           key = key.to_s
           meta = self.class::METADATA[key]
           next if meta.nil?
+
           local_name = key
           local_name = meta['local_name'] if meta['local_name']
           begin
             instance_variable_set("@#{local_name}", value)
-          rescue
+          rescue StandardError
             # TODO: this appears to be a dead code branch
             nil
           end
@@ -86,7 +87,7 @@ module FHIR
         if child['resourceType'] && !klass::METADATA['resourceType']
           klass = begin
             FHIR::STU3.const_get(child['resourceType'])
-          rescue => _exception
+          rescue StandardError => _e
             # TODO: this appears to be a dead code branch
             # TODO: should this log / re-raise the exception if encountered instead of silently swallowing it?
             FHIR::STU3.logger.error("Unable to identify embedded class #{child['resourceType']}\n#{exception.backtrace}")
@@ -95,10 +96,10 @@ module FHIR
         end
         begin
           obj = klass.new(child)
-        rescue => exception
+        rescue StandardError => e
           # TODO: this appears to be a dead code branch
           # TODO: should this re-raise the exception if encountered instead of silently swallowing it?
-          FHIR::STU3.logger.error("Unable to inflate embedded class #{klass}\n#{exception.backtrace}")
+          FHIR::STU3.logger.error("Unable to inflate embedded class #{klass}\n#{e.backtrace}")
         end
         obj
       end
