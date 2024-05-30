@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fhir_stu3_models (3.1.1)
+    fhir_stu3_models (3.2.0)
       bcp47 (>= 0.3)
       date_time_precision (>= 0.8)
       mime-types (>= 3.0)
@@ -48,9 +48,9 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2021.0901)
-    mini_portile2 (2.8.5)
+    mini_portile2 (2.8.6)
     nenv (0.3.0)
-    nokogiri (1.15.5)
+    nokogiri (1.16.5)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     nokogiri-diff (0.2.0)
@@ -67,14 +67,15 @@ GEM
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    racc (1.7.3)
+    racc (1.8.0)
     rainbow (3.1.1)
     rake (12.3.3)
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.8.3)
-    rexml (3.2.6)
+    rexml (3.2.8)
+      strscan (>= 3.0.9)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)
@@ -106,6 +107,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
+    strscan (3.1.0)
     tdiff (0.3.4)
     test-unit (3.3.3)
       power_assert
@@ -132,4 +134,4 @@ RUBY VERSION
    ruby 3.1.2p20
 
 BUNDLED WITH
-   2.1.4
+   2.2.21
